@@ -1,0 +1,24 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+#
+*.d
+*.o
+*.DS_Store
+proj.mac/Build
+proj.ios/Build
+proj.android/assets
+proj.android/bin
+proj.android/obj
+proj.android/gen
