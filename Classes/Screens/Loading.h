@@ -1,21 +1,16 @@
-#ifndef CONST_UTILS_H
-#define CONST_UTILS_H
+#ifndef CONST_LOADING_H
+#define CONST_LOADING_H
 
 #include "cocos2d.h"
 
-#include "Options.h"
+#include "Screen.h"
 
-#include <string>
-#include <sstream>
-#include <stdlib.h>
-#include <cmath>
+#include "AppDelegate.h"
+#include "ScreenManager.h"
 
-using namespace std;
 using namespace cocos2d;
 
-class Entity;
-
-class Utils
+class Loading : public Screen
 {
 	protected:
 		// ===========================================================
@@ -25,10 +20,19 @@ class Utils
 		// ===========================================================
 		// Constants
 		// ===========================================================
+    
+        static const int TEXTURES_COUNT = 5;
 
 		// ===========================================================
 		// Fields
-		// ===========================================================
+        // ===========================================================
+    
+        int mNumberOfSprites;
+        int mNumberOfLoadedSprites;
+    
+        CCLabelTTF* mLoadingText;
+    
+        const char* mTexturesLibrary[TEXTURES_COUNT];
 
 		// ===========================================================
 		// Constructors
@@ -36,7 +40,9 @@ class Utils
 
 		// ===========================================================
 		// Methods
-		// ===========================================================
+        // ===========================================================
+    
+        void loadingCallBack(CCObject *obj);
 
 		// ===========================================================
 		// Virtual Methods
@@ -76,8 +82,6 @@ class Utils
 		// Constants
 		// ===========================================================
 
-		static float Pi;
-
 		// ===========================================================
 		// Fields
 		// ===========================================================
@@ -85,29 +89,12 @@ class Utils
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        Loading();
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		static CCPoint vectorNormalize(float pVectorX, float pVectorY, float pMultipleFactor);
-
-        static float coord(float pCoordinate);
-        static float coordP(float pCoordinate);
-
-		static float distance(float dX0, float dY0, float dX1, float dY1);
-
-		static float randomf(float min, float max);
-
-		static int random(int min, int max);
-
-		static bool probably(int pProbably);
-    
-        static long millisecondNow();
-
-        static float round(float x);
-    
-        static string intToString(int i);
 		
 		// ===========================================================
 		// Virtual Methods

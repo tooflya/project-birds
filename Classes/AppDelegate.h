@@ -7,9 +7,8 @@
 #include <vector>
 
 #include "Options.h"
-#include "Screen.h"
 #include "ScreenManager.h"
-#include "Menu.h"
+#include "Loading.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -22,9 +21,9 @@ typedef struct tagResource {
 	char directory[100];
 } Resource;
 
-static Resource resources480x320	= { CCSizeMake(480, 320),  "Graphics/480x320" };
-static Resource resources1280x720	= { CCSizeMake(1280, 720),  "Graphics/1280x720" };
-static CCSize   designResolutionSize  = CCSizeMake(1280, 720);
+static Resource resources480x320	= { CCSizeMake(320, 480),  "Graphics/480x320" };
+static Resource resources1280x720	= { CCSizeMake(720, 1280),  "Graphics/1280x720" };
+static CCSize   designResolutionSize  = CCSizeMake(720, 1280);
 
 class AppDelegate : private CCApplication
 {

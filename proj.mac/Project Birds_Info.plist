@@ -34,7 +34,7 @@
 	<string>NSApplication</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>go3v2.ttf</string>
+		<string>casual.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -50,26 +50,16 @@ ScreenManager::ScreenManager()
 
 void ScreenManager::generate()
 {
+    this->mScreens[Screen::SCREEN_MENU] = new Menu();
 }
 
-void ScreenManager::set(float pAnimationTime, int pAction, int pIndex)
+void ScreenManager::set(float pAnimationTime, int pIndex)
 {
 	this->mCurrentScreenIndex = pIndex;
 	
 	CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, this->mScreens[pIndex]);
 
-	switch(pAction)
-	{
-		case 0:
-			CCDirector::sharedDirector()->replaceScene(transition);
-		break;
-		case 1:
-			CCDirector::sharedDirector()->pushScene(transition);
-		break;
-		case 2:
-			CCDirector::sharedDirector()->replaceScene(transition);
-		break;
-	}
+	CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 // ===========================================================

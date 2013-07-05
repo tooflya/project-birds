@@ -64,9 +64,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	director->setAnimationInterval(1.0f / 60.0f);
 
-	AppDelegate::screens = new ScreenManager();
-
-	Screen* pScene = new Screen();
+	Screen* pScene = new Loading();
 
 	director->runWithScene(pScene);   
 

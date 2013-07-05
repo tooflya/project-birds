@@ -5,6 +5,8 @@
 
 #include "Screen.h"
 
+#include "Menu.h"
+
 using namespace cocos2d;
 
 class ScreenManager
@@ -88,7 +90,7 @@ class ScreenManager
 
 		void generate();
 		
-		void set(float pAnimationTime, int pAction, int pIndex);
+		void set(float pAnimationTime, int pIndex);
 		
 		// ===========================================================
 		// Virtual Methods

@@ -27,12 +27,12 @@ float Utils::Pi = atan(1.0) * 4;
 
 float Utils::randomf(float min, float max)
 {
-	return min + (float) rand() / ((float) RAND_MAX / (max - min));
+	return min + (float) arc4random() / ((float) RAND_MAX / (max - min));
 }
 
 int Utils::random(int min, int max)
 {
-	return min + rand() / (RAND_MAX / (max + 1 - min));
+	return min + arc4random() / (RAND_MAX / (max + 1 - min));
 }
 
 float Utils::coord(float pCoordinate)
@@ -75,6 +75,15 @@ long Utils::millisecondNow()
     struct cc_timeval now;
     CCTime::gettimeofdayCocos2d(&now, NULL);
     return (now.tv_sec * 1000 + now.tv_usec / 1000);
+}
+
+string Utils::intToString(int i)
+{
+	stringstream s;
+    
+    s << i;
+    
+    return s.str();
 }
 
 // ===========================================================
