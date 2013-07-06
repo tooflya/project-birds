@@ -78,6 +78,7 @@ class Screen : public CCScene, public Touchable
         static const int SCREEN_SHOP = 2;
         static const int SCREEN_BOXES = 3;
         static const int SCREEN_LEVELS = 4;
+        static const int SCREEN_CREDITS = 5;
 
 		// ===========================================================
 		// Fields

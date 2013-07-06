@@ -9,6 +9,8 @@
 
 using namespace cocos2d;
 
+class BoxesTouchLayer;
+
 class Boxes : public Screen
 {
 	protected:
@@ -26,6 +28,13 @@ class Boxes : public Screen
     
         Entity* mBackground;
         Entity* mBackButton;
+        Entity* mTablet;
+    
+        Entity* mBoxes[3];
+    
+        BatchEntityManager* mNavigations;
+    
+        BoxesTouchLayer* mTouchLayer;
 
 		// ===========================================================
 		// Constructors

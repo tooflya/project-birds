@@ -7,10 +7,10 @@
 // Inner Classes
 // ===========================================================
 
-class BackButton : public Entity
+class SettingsBackButton : public Entity
 {
     public:
-    BackButton(CCNode* pParent) :
+    SettingsBackButton(CCNode* pParent) :
     Entity("btn_sprite@2x.png", 2, 3, pParent)
     {
         this->create()->setCurrentFrameIndex(1);
@@ -29,6 +29,14 @@ class BackButton : public Entity
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
         
         Entity::onEnter();
+    }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
     }
 };
 
@@ -52,6 +60,7 @@ class CreditsButton : public Entity
     
     void onTouch(CCTouch* touch, CCEvent* event)
     {
+        AppDelegate::screens->set(0.5, Screen::SCREEN_CREDITS);
     }
     
     void onEnter()
@@ -60,6 +69,14 @@ class CreditsButton : public Entity
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
         
         Entity::onEnter();
+    }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
     }
 };
 
@@ -91,6 +108,14 @@ class RateButton : public Entity
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
         
         Entity::onEnter();
+    }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
     }
 };
 
@@ -126,6 +151,14 @@ class SoundButton : public Entity
         
         Entity::onEnter();
     }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
+    }
 };
 
 class MusicButton : public Entity
@@ -160,6 +193,14 @@ class MusicButton : public Entity
         
         Entity::onEnter();
     }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
+    }
 };
 
 // ===========================================================
@@ -177,7 +218,7 @@ class MusicButton : public Entity
 Settings::Settings()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new BackButton(this);
+    this->mBackButton = new SettingsBackButton(this);
     this->mRateButton = new RateButton(this);
     this->mCreditsButton = new CreditsButton(this);
     this->mSoundButton = new SoundButton(this);

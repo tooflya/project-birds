@@ -38,6 +38,11 @@ Loading::Loading()
     this->mTexturesLibrary[11] = "shop_wheel@2x.png";
     this->mTexturesLibrary[12] = "shop_shelf_sprite@2x.png";
     this->mTexturesLibrary[13] = "shop_item_icon_test@2x.png";
+    this->mTexturesLibrary[14] = "choose_box_navi_sprite@2x.png";
+    this->mTexturesLibrary[15] = "choose_box_summer@2x.png";
+    this->mTexturesLibrary[16] = "choose_box_winter@2x.png";
+    this->mTexturesLibrary[17] = "choose_box_space@2x.png";
+    this->mTexturesLibrary[18] = "choose_box_lvl_sprite@2x.png";
     
     this->mLoadingText = CCLabelTTF::create("Loading... 0%", "Apple Casual", Utils::coord(32));
     this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(140), Utils::coord(50)));

@@ -1,5 +1,5 @@
-#ifndef CONST_LEVELS_H
-#define CONST_LEVELS_H
+#ifndef CONST_CREDITS_H
+#define CONST_CREDITS_H
 
 #include "cocos2d.h"
 
@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-class Levels : public Screen
+class Credits : public Screen
 {
 	protected:
 		// ===========================================================
@@ -22,12 +22,10 @@ class Levels : public Screen
 
 		// ===========================================================
 		// Fields
-		// ===========================================================
+        // ===========================================================
     
         Entity* mBackground;
         Entity* mBackButton;
-    
-        EntityManager* mLevels;
 
 		// ===========================================================
 		// Constructors
@@ -78,12 +76,12 @@ class Levels : public Screen
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        Levels();
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        Credits();
 
 		// ===========================================================
 		// Methods
@@ -92,9 +90,6 @@ class Levels : public Screen
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-    
-        void onEnter();
-        void onExit();
 };
 
 #endif

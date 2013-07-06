@@ -7,10 +7,10 @@
 // Inner Classes
 // ===========================================================
 
-class BackButton : public Entity
+class ShopBackButton : public Entity
 {
     public:
-    BackButton(CCNode* pParent) :
+    ShopBackButton(CCNode* pParent) :
     Entity("btn_sprite@2x.png", 2, 3, pParent)
     {
         this->create()->setCurrentFrameIndex(1);
@@ -89,7 +89,7 @@ class TouchLayer : public CCLayer
         {
             case 0:
                 if(
-                   y < Options::CAMERA_CENTER_Y + Utils::coord(300) + Utils::coord(100) &&
+                   y < Options::CAMERA_CENTER_Y + Utils::coord(300) + Utils::coord(150) &&
                    y > Options::CAMERA_CENTER_Y + Utils::coord(300) - Utils::coord(100))
                     {
                         return true;
@@ -97,7 +97,7 @@ class TouchLayer : public CCLayer
                 break;
             case 1:
                 if(
-                   y < Options::CAMERA_CENTER_Y + Utils::coord(100) &&
+                   y < Options::CAMERA_CENTER_Y + Utils::coord(150) &&
                    y > Options::CAMERA_CENTER_Y - Utils::coord(100))
                     {
                         return true;
@@ -105,7 +105,7 @@ class TouchLayer : public CCLayer
                 break;
             case 2:
                 if(
-                   y < Options::CAMERA_CENTER_Y - Utils::coord(300) + Utils::coord(100) &&
+                   y < Options::CAMERA_CENTER_Y - Utils::coord(300) + Utils::coord(150) &&
                    y > Options::CAMERA_CENTER_Y - Utils::coord(300) - Utils::coord(100))
                     {
                         return true;
@@ -149,7 +149,7 @@ Shop::Shop()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
     this->mTablet = new Entity("shop_money_bg@2x.png", this);
-    this->mBackButton = new BackButton(this);
+    this->mBackButton = new ShopBackButton(this);
     
     this->mWheels = new BatchEntityManager(9, new Entity("shop_wheel@2x.png"), this);
     

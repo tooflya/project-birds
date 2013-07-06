@@ -29,6 +29,14 @@ class TwitterButton : public Entity
         
         Entity::onEnter();
     }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
+    }
 };
 
 class FacebookButton : public Entity
@@ -52,6 +60,14 @@ class FacebookButton : public Entity
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
         
         Entity::onEnter();
+    }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
     }
 };
 
@@ -78,6 +94,14 @@ class SettingsButton : public Entity
         
         Entity::onEnter();
     }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
+    }
 };
 
 class PlayButton : public Entity
@@ -101,6 +125,14 @@ class PlayButton : public Entity
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
         
         Entity::onEnter();
+    }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
     }
 };
 
@@ -126,6 +158,14 @@ class ShopButton : public Entity
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
         
         Entity::onEnter();
+    }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        Entity::onExit();
     }
 };
 

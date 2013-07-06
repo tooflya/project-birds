@@ -24,6 +24,12 @@
 		7847A54E17879AF10019A480 /* shop_wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A54D17879AF10019A480 /* shop_wheel@2x.png */; };
 		7847A55017879CEA0019A480 /* shop_shelf_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A54F17879CEA0019A480 /* shop_shelf_sprite@2x.png */; };
 		7847A5521787A1A10019A480 /* shop_item_icon_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A5511787A1A10019A480 /* shop_item_icon_test@2x.png */; };
+		7847A5DB1787B9820019A480 /* Credits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7847A5D91787B9820019A480 /* Credits.cpp */; };
+		7847A5DD1787BBA30019A480 /* choose_box_navi_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A5DC1787BBA30019A480 /* choose_box_navi_sprite@2x.png */; };
+		7847A5E11787BEC20019A480 /* choose_box_space@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A5DE1787BEC20019A480 /* choose_box_space@2x.png */; };
+		7847A5E21787BEC20019A480 /* choose_box_summer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A5DF1787BEC20019A480 /* choose_box_summer@2x.png */; };
+		7847A5E31787BEC20019A480 /* choose_box_winter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A5E01787BEC20019A480 /* choose_box_winter@2x.png */; };
+		7847A66E1787C7F60019A480 /* choose_box_lvl_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7847A66D1787C7F50019A480 /* choose_box_lvl_sprite@2x.png */; };
 		78605304174FABF400ACE2D3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 78605303174FABF400ACE2D3 /* libz.dylib */; };
 		78AEFB601787609800CD5109 /* Project Birds_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AEFB5F1787609800CD5109 /* Project Birds_Info.plist */; };
 		78AEFB6C1787652900CD5109 /* main_menu_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AEFB631787652900CD5109 /* main_menu_bg@2x.png */; };
@@ -113,6 +119,13 @@
 		7847A54D17879AF10019A480 /* shop_wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_wheel@2x.png"; sourceTree = "<group>"; };
 		7847A54F17879CEA0019A480 /* shop_shelf_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_shelf_sprite@2x.png"; sourceTree = "<group>"; };
 		7847A5511787A1A10019A480 /* shop_item_icon_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_item_icon_test@2x.png"; sourceTree = "<group>"; };
+		7847A5D91787B9820019A480 /* Credits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Credits.cpp; sourceTree = "<group>"; };
+		7847A5DA1787B9820019A480 /* Credits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credits.h; sourceTree = "<group>"; };
+		7847A5DC1787BBA30019A480 /* choose_box_navi_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_box_navi_sprite@2x.png"; sourceTree = "<group>"; };
+		7847A5DE1787BEC20019A480 /* choose_box_space@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_box_space@2x.png"; sourceTree = "<group>"; };
+		7847A5DF1787BEC20019A480 /* choose_box_summer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_box_summer@2x.png"; sourceTree = "<group>"; };
+		7847A5E01787BEC20019A480 /* choose_box_winter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_box_winter@2x.png"; sourceTree = "<group>"; };
+		7847A66D1787C7F50019A480 /* choose_box_lvl_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_box_lvl_sprite@2x.png"; sourceTree = "<group>"; };
 		78605303174FABF400ACE2D3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		78AEFB5F1787609800CD5109 /* Project Birds_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Project Birds_Info.plist"; sourceTree = "<group>"; };
 		78AEFB631787652900CD5109 /* main_menu_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg@2x.png"; sourceTree = "<group>"; };
@@ -280,6 +293,11 @@
 		78AEFB621787652900CD5109 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				7847A66D1787C7F50019A480 /* choose_box_lvl_sprite@2x.png */,
+				7847A5DE1787BEC20019A480 /* choose_box_space@2x.png */,
+				7847A5DF1787BEC20019A480 /* choose_box_summer@2x.png */,
+				7847A5E01787BEC20019A480 /* choose_box_winter@2x.png */,
+				7847A5DC1787BBA30019A480 /* choose_box_navi_sprite@2x.png */,
 				7847A5511787A1A10019A480 /* shop_item_icon_test@2x.png */,
 				7847A54F17879CEA0019A480 /* shop_shelf_sprite@2x.png */,
 				7847A54D17879AF10019A480 /* shop_wheel@2x.png */,
@@ -358,6 +376,8 @@
 		78B37C8D177E4A4A00773C6A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				7847A5D91787B9820019A480 /* Credits.cpp */,
+				7847A5DA1787B9820019A480 /* Credits.h */,
 				78AEFB931787904F00CD5109 /* Boxes.cpp */,
 				78AEFB951787904F00CD5109 /* Boxes.h */,
 				78AEFB941787904F00CD5109 /* Levels.cpp */,
@@ -578,6 +598,11 @@
 				7847A54E17879AF10019A480 /* shop_wheel@2x.png in Resources */,
 				7847A55017879CEA0019A480 /* shop_shelf_sprite@2x.png in Resources */,
 				7847A5521787A1A10019A480 /* shop_item_icon_test@2x.png in Resources */,
+				7847A5DD1787BBA30019A480 /* choose_box_navi_sprite@2x.png in Resources */,
+				7847A5E11787BEC20019A480 /* choose_box_space@2x.png in Resources */,
+				7847A5E21787BEC20019A480 /* choose_box_summer@2x.png in Resources */,
+				7847A5E31787BEC20019A480 /* choose_box_winter@2x.png in Resources */,
+				7847A66E1787C7F60019A480 /* choose_box_lvl_sprite@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +638,7 @@
 				78AEFB8817877E1B00CD5109 /* Shop.cpp in Sources */,
 				78AEFB971787904F00CD5109 /* Boxes.cpp in Sources */,
 				78AEFB981787904F00CD5109 /* Levels.cpp in Sources */,
+				7847A5DB1787B9820019A480 /* Credits.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
