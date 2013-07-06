@@ -6,6 +6,10 @@
 #include "Screen.h"
 
 #include "Menu.h"
+#include "Settings.h"
+#include "Shop.h"
+#include "Boxes.h"
+#include "Levels.h"
 
 using namespace cocos2d;
 
@@ -74,7 +78,7 @@ class ScreenManager
 		// Fields
 		// ===========================================================
 
-		Screen* mScreens[4];
+		Screen* mScreens[5];
 
 		int mCurrentScreenIndex;
 

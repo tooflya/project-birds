@@ -84,7 +84,7 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 	this->mAnimationScaleDownTime = 0.2;
 	this->mAnimationScaleUpTime = 0.2;
 
-	this->mAnimationScaleDownFactor = 0.8;
+	this->mAnimationScaleDownFactor = 0.9;
 	this->mAnimationScaleUpFactor = 1.0;
 
 	this->mIsRegisterAsTouchable = false;
@@ -491,8 +491,8 @@ void Entity::onEnter()
 
 void Entity::onExit()
 {
-	//CCDirector* pDirector = CCDirector::sharedDirector();
-	//pDirector->getTouchDispatcher()->removeDelegate(this);
+	CCDirector* pDirector = CCDirector::sharedDirector();
+	pDirector->getTouchDispatcher()->removeDelegate(this);
 
 	CCSprite::onExit();
 }

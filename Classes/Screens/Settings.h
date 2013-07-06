@@ -1,16 +1,15 @@
-#ifndef CONST_SCREEN_H
-#define CONST_SCREEN_H
+#ifndef CONST_SETTINGS_H
+#define CONST_SETTINGS_H
 
 #include "cocos2d.h"
 
-#include "Touchable.h"
-#include "Entity.h"
-#include "Utils.h"
-#include "Options.h"
+#include "Screen.h"
+
+#include "AppDelegate.h"
 
 using namespace cocos2d;
 
-class Screen : public CCScene, public Touchable
+class Settings : public Screen
 {
 	protected:
 		// ===========================================================
@@ -24,7 +23,14 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Fields
 		// ===========================================================
-
+    
+        Entity* mBackground;
+        Entity* mBackButton;
+        Entity* mCreditsButton;
+        Entity* mRateButton;
+        Entity* mSoundButton;
+        Entity* mMusicButton;
+    
 		// ===========================================================
 		// Constructors
 		// ===========================================================
@@ -36,8 +42,6 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-		
-		bool containsTouchLocation(CCTouch* touch);
 
 	private:
 		// ===========================================================
@@ -72,22 +76,16 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Constants
 		// ===========================================================
-    
-        static const int SCREEN_MENU = 0;
-        static const int SCREEN_SETTINGS = 1;
-        static const int SCREEN_SHOP = 2;
-        static const int SCREEN_BOXES = 3;
-        static const int SCREEN_LEVELS = 4;
 
 		// ===========================================================
 		// Fields
 		// ===========================================================
+    
+        Settings();
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
-
-		Screen();
 
 		// ===========================================================
 		// Methods
@@ -96,9 +94,6 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		virtual void onEnter();
-		virtual void onExit();
 };
 
 #endif

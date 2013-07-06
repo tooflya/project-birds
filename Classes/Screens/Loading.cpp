@@ -29,6 +29,15 @@ Loading::Loading()
     this->mTexturesLibrary[2] = "main_menu_btn_shop@2x.png";
     this->mTexturesLibrary[3] = "main_menu_btn_play@2x.png";
     this->mTexturesLibrary[4] = "main_menu_btn_bg_play@2x.png";
+    this->mTexturesLibrary[5] = "btn_sprite@2x.png";
+    this->mTexturesLibrary[6] = "settings_bg@2x.png";
+    this->mTexturesLibrary[7] = "settings_btn_big@2x.png";
+    this->mTexturesLibrary[8] = "btn_mfx_sprite@2x.png";
+    this->mTexturesLibrary[9] = "choose_box_name@2x.png";
+    this->mTexturesLibrary[10] = "shop_money_bg@2x.png";
+    this->mTexturesLibrary[11] = "shop_wheel@2x.png";
+    this->mTexturesLibrary[12] = "shop_shelf_sprite@2x.png";
+    this->mTexturesLibrary[13] = "shop_item_icon_test@2x.png";
     
     this->mLoadingText = CCLabelTTF::create("Loading... 0%", "Apple Casual", Utils::coord(32));
     this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(140), Utils::coord(50)));
@@ -57,7 +66,7 @@ void Loading::loadingCallBack(CCObject *obj)
 	{
 		AppDelegate::screens = new ScreenManager();
         
-		AppDelegate::screens->set(1.0f, 0);
+		AppDelegate::screens->set(1.0f, Screen::SCREEN_MENU);
 	}
 	else
 	{

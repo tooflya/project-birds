@@ -5,6 +5,9 @@
 
 #include "Screen.h"
 
+#include "ScreenManager.h"
+#include "AppDelegate.h"
+
 using namespace cocos2d;
 
 class Menu : public Screen
@@ -26,6 +29,10 @@ class Menu : public Screen
         Entity* mBackgroundDecoration;
         Entity* mPlayDecoration;
         Entity* mPlayButton;
+        Entity* mShopButton;
+        Entity* mTwitterButton;
+        Entity* mFacebookButton;
+        Entity* mSettingsButton;
 
 		// ===========================================================
 		// Constructors
@@ -90,6 +97,8 @@ class Menu : public Screen
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+    
+        void update(float pDeltaTime);
 };
 
 #endif
