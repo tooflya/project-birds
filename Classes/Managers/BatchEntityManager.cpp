@@ -26,7 +26,7 @@ BatchEntityManager::BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode
 		}
 
 		if(pScreen != NULL)
-		pScreen->addChild(this, 1);
+		pScreen->addChild(this, 0);
 	}
 
 Entity* BatchEntityManager::create()

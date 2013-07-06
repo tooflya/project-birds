@@ -1,16 +1,16 @@
-#ifndef CONST_SCREEN_H
-#define CONST_SCREEN_H
+#ifndef CONST_SPLASH_H
+#define CONST_SPLASH_H
 
 #include "cocos2d.h"
 
-#include "Touchable.h"
 #include "Entity.h"
-#include "Utils.h"
-#include "Options.h"
+#include "Splash.h"
+
+#include "BatchEntityManager.h"
 
 using namespace cocos2d;
 
-class Screen : public CCScene, public Touchable
+class Splash : public CCLayer
 {
 	protected:
 		// ===========================================================
@@ -24,6 +24,15 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Fields
 		// ===========================================================
+    
+        bool mShowBackground;
+    
+        float mBackgroundTime;
+        float mBackgroundTimeElapsed;
+    
+        Entity* mBackground;
+    
+        BatchEntityManager* mParts;
 
 		// ===========================================================
 		// Constructors
@@ -36,8 +45,6 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-		
-		bool containsTouchLocation(CCTouch* touch);
 
 	private:
 		// ===========================================================
@@ -72,15 +79,6 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Constants
 		// ===========================================================
-    
-        static const int SCREEN_MENU = 0;
-        static const int SCREEN_SETTINGS = 1;
-        static const int SCREEN_SHOP = 2;
-        static const int SCREEN_BOXES = 3;
-        static const int SCREEN_LEVELS = 4;
-        static const int SCREEN_CREDITS = 5;
-        static const int SCREEN_LOADER = 6;
-        static const int SCREEN_LEVEL = 7;
 
 		// ===========================================================
 		// Fields
@@ -89,19 +87,21 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Constructors
 		// ===========================================================
-
-		Screen();
+    
+        Splash(CCNode* pParent);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
+    
+        void show();
+        void hide();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		virtual void onEnter();
-		virtual void onExit();
+    
+        void update(float pDeltaTime);
 };
 
 #endif

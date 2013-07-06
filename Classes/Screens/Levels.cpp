@@ -47,7 +47,7 @@ class LevelButton : public Entity
     CCLabelTTF* mText;
     
     public:
-    LevelButton() : Entity("choose_box_lvl_sprite@2x.png", 3, 2)
+    LevelButton() : Entity("choose_box_lvl_sprite@2x.png", 3, 5)
     {
         this->setRegisterAsTouchable(true);
         
@@ -65,7 +65,7 @@ class LevelButton : public Entity
         
         if(this->mId > 10)
         {
-            this->setCurrentFrameIndex(3);
+            this->setCurrentFrameIndex(12);
             
             this->mText->setVisible(false);
         }
@@ -77,8 +77,27 @@ class LevelButton : public Entity
         }
     }
     
+    void updateCurrentFrameIndex()
+    {
+        this->setId(this->mId);
+        
+        if(this->mId > 10)
+        {
+            this->setCurrentFrameIndex(12 + Boxes::BOX);
+            
+            this->mText->setVisible(false);
+        }
+        else
+        {
+            this->setCurrentFrameIndex(0 + Boxes::BOX);
+            
+            this->mText->setVisible(true);
+        }
+    }
+    
     void onTouch(CCTouch* touch, CCEvent* event)
     {
+        AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
     }
     
     void onEnter()
@@ -119,13 +138,15 @@ Levels::Levels()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
     this->mBackButton = new LevelsBackButton(this);
+    this->mTablet = new Entity("shop_money_bg@2x.png", this);
     
     this->mLevels = new EntityManager(20, new LevelButton(), this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(110));
     
     float x = 0;
-    float y = Options::CAMERA_CENTER_Y + Utils::coord(200) * 2;
+    float y = Options::CAMERA_CENTER_Y + Utils::coord(180) * 2;
     
     int id = 0;
     
@@ -161,7 +182,9 @@ void Levels::onEnter()
     
     for(int i = 0; i < 20; i++)
     {
-        Entity* item = (Entity*) this->mLevels->objectAtIndex(i);
+        LevelButton* item = (LevelButton*) this->mLevels->objectAtIndex(i);
+        
+        item->updateCurrentFrameIndex();
         
         item->setScale(0.0);
         item->runAction(CCScaleTo::create(0.6, 1.0));

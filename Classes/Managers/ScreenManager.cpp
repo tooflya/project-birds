@@ -56,6 +56,8 @@ void ScreenManager::generate()
     this->mScreens[Screen::SCREEN_BOXES] = new Boxes();
     this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
     this->mScreens[Screen::SCREEN_CREDITS] = new Credits();
+    this->mScreens[Screen::SCREEN_LOADER] = new Loader();
+    this->mScreens[Screen::SCREEN_LEVEL] = new Level();
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)

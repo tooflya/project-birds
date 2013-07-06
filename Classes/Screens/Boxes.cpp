@@ -44,11 +44,12 @@ class BoxesTouchLayer : public CCLayer
 {
     protected:
     CCPoint mBeganPoint;
+    int mId;
     
     public:
     BoxesTouchLayer()
     {
-        
+        this->mId = 0;
     }
     
     bool ccTouchBegan(CCTouch* touch, CCEvent* event)
@@ -72,16 +73,22 @@ class BoxesTouchLayer : public CCLayer
         if(abs(distance) < Utils::coord(10.0))
         {
             AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+            
+            Boxes::BOX = this->mId;
         }
         else
         {
-           if(distance < 0)
+           if(distance < 0 && this->mId < 2)
            {
                this->runAction(CCMoveTo::create(0.3, ccp(this->getPosition().x - Options::CAMERA_WIDTH, this->getPosition().y)));
+               
+               this->mId++;
            }
-           else
+           else if(distance > 0 && this->mId > 0)
            {
                this->runAction(CCMoveTo::create(0.3, ccp(this->getPosition().x + Options::CAMERA_WIDTH, this->getPosition().y)));
+               
+               this->mId--;
            }
         }
     }
@@ -118,6 +125,8 @@ class BoxesTouchLayer : public CCLayer
 // ===========================================================
 // Constants
 // ===========================================================
+
+int Boxes::BOX = 0;
 
 // ===========================================================
 // Fields

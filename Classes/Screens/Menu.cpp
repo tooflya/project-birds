@@ -106,17 +106,39 @@ class SettingsButton : public Entity
 
 class PlayButton : public Entity
 {
+    protected:
+    float mAnimationTime;
+    float mAnimationTimeElapsed;
+    
     public:
     PlayButton(CCNode* pParent) :
-    Entity("main_menu_btn_play@2x.png", pParent)
+    Entity("play_btn_animation@2x.png", 6, 2, pParent)
     {
         this->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
         this->setRegisterAsTouchable(true);
+        
+        this->mAnimationTime = Utils::randomf(1.5, 5.0);
+        this->mAnimationTimeElapsed = 0;
     }
     
     void onTouch(CCTouch* touch, CCEvent* event)
     {
         AppDelegate::screens->set(0.5, Screen::SCREEN_BOXES);
+    }
+    
+    void update(float pDeltatime)
+    {
+        Entity::update(pDeltatime);
+        
+        this->mAnimationTimeElapsed += pDeltatime;
+        
+        if(this->mAnimationTimeElapsed >= this->mAnimationTime)
+        {
+            this->mAnimationTime = Utils::randomf(1.5, 5.0);
+            this->mAnimationTimeElapsed = 0;
+            
+            this->animate(0.08, 1);
+        }
     }
     
     void onEnter()

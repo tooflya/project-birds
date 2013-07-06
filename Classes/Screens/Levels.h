@@ -26,6 +26,7 @@ class Levels : public Screen
     
         Entity* mBackground;
         Entity* mBackButton;
+        Entity* mTablet;
     
         EntityManager* mLevels;
 

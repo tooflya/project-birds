@@ -1,16 +1,16 @@
-#ifndef CONST_SCREEN_H
-#define CONST_SCREEN_H
+#ifndef CONST_LOADER_H
+#define CONST_LOADER_H
 
 #include "cocos2d.h"
 
-#include "Touchable.h"
-#include "Entity.h"
-#include "Utils.h"
-#include "Options.h"
+#include "Screen.h"
+
+#include "AppDelegate.h"
+#include "ScreenManager.h"
 
 using namespace cocos2d;
 
-class Screen : public CCScene, public Touchable
+class Loader : public Screen
 {
 	protected:
 		// ===========================================================
@@ -23,7 +23,13 @@ class Screen : public CCScene, public Touchable
 
 		// ===========================================================
 		// Fields
-		// ===========================================================
+        // ===========================================================
+    
+        float mLoadingTime;
+    
+        int mLoadingPercentrage;
+    
+        CCLabelTTF* mLoadingText;
 
 		// ===========================================================
 		// Constructors
@@ -31,13 +37,11 @@ class Screen : public CCScene, public Touchable
 
 		// ===========================================================
 		// Methods
-		// ===========================================================
+        // ===========================================================
 
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-		
-		bool containsTouchLocation(CCTouch* touch);
 
 	private:
 		// ===========================================================
@@ -72,15 +76,6 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Constants
 		// ===========================================================
-    
-        static const int SCREEN_MENU = 0;
-        static const int SCREEN_SETTINGS = 1;
-        static const int SCREEN_SHOP = 2;
-        static const int SCREEN_BOXES = 3;
-        static const int SCREEN_LEVELS = 4;
-        static const int SCREEN_CREDITS = 5;
-        static const int SCREEN_LOADER = 6;
-        static const int SCREEN_LEVEL = 7;
 
 		// ===========================================================
 		// Fields
@@ -89,8 +84,8 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Constructors
 		// ===========================================================
-
-		Screen();
+    
+        Loader();
 
 		// ===========================================================
 		// Methods
@@ -99,9 +94,10 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		virtual void onEnter();
-		virtual void onExit();
+    
+        void update(float pDeltaTime);
+    
+        void onEnter();
 };
 
 #endif

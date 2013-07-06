@@ -27,7 +27,7 @@ Loading::Loading()
     this->mTexturesLibrary[0] = "main_menu_bg@2x.png";
     this->mTexturesLibrary[1] = "main_menu_bg_back@2x.png";
     this->mTexturesLibrary[2] = "main_menu_btn_shop@2x.png";
-    this->mTexturesLibrary[3] = "main_menu_btn_play@2x.png";
+    this->mTexturesLibrary[3] = "play_btn_animation@2x.png";
     this->mTexturesLibrary[4] = "main_menu_btn_bg_play@2x.png";
     this->mTexturesLibrary[5] = "btn_sprite@2x.png";
     this->mTexturesLibrary[6] = "settings_bg@2x.png";
@@ -43,6 +43,11 @@ Loading::Loading()
     this->mTexturesLibrary[16] = "choose_box_winter@2x.png";
     this->mTexturesLibrary[17] = "choose_box_space@2x.png";
     this->mTexturesLibrary[18] = "choose_box_lvl_sprite@2x.png";
+    this->mTexturesLibrary[19] = "game_gui_bg_summer@2x.png";
+    this->mTexturesLibrary[20] = "game_gui_btn_sprite@2x.png";
+    this->mTexturesLibrary[21] = "end_lvl_bg_popup@2x.png";
+    this->mTexturesLibrary[22] = "end_lvl_bg_sprite@2x.png";
+    this->mTexturesLibrary[23] = "end_lvl_btn_sprite@2x.png";
     
     this->mLoadingText = CCLabelTTF::create("Loading... 0%", "Apple Casual", Utils::coord(32));
     this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(140), Utils::coord(50)));

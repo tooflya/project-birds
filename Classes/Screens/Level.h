@@ -1,16 +1,14 @@
-#ifndef CONST_SCREEN_H
-#define CONST_SCREEN_H
+#ifndef CONST_LEVEL_H
+#define CONST_LEVEL_H
 
 #include "cocos2d.h"
 
-#include "Touchable.h"
-#include "Entity.h"
-#include "Utils.h"
-#include "Options.h"
+#include "Screen.h"
+#include "End.h"
 
 using namespace cocos2d;
 
-class Screen : public CCScene, public Touchable
+class Level : public Screen
 {
 	protected:
 		// ===========================================================
@@ -23,7 +21,14 @@ class Screen : public CCScene, public Touchable
 
 		// ===========================================================
 		// Fields
-		// ===========================================================
+        // ===========================================================
+    
+        Entity* mBackground;
+    
+        Entity* mPauseButton;
+        Entity* mRestartButton;
+    
+        Splash* mFinishPopup;
 
 		// ===========================================================
 		// Constructors
@@ -36,8 +41,6 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-		
-		bool containsTouchLocation(CCTouch* touch);
 
 	private:
 		// ===========================================================
@@ -72,15 +75,6 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Constants
 		// ===========================================================
-    
-        static const int SCREEN_MENU = 0;
-        static const int SCREEN_SETTINGS = 1;
-        static const int SCREEN_SHOP = 2;
-        static const int SCREEN_BOXES = 3;
-        static const int SCREEN_LEVELS = 4;
-        static const int SCREEN_CREDITS = 5;
-        static const int SCREEN_LOADER = 6;
-        static const int SCREEN_LEVEL = 7;
 
 		// ===========================================================
 		// Fields
@@ -89,19 +83,22 @@ class Screen : public CCScene, public Touchable
 		// ===========================================================
 		// Constructors
 		// ===========================================================
-
-		Screen();
+    
+        Level();
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
+    
+        void start();
+        void finish();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		virtual void onEnter();
-		virtual void onExit();
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif
