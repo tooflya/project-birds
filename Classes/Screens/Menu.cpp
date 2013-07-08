@@ -7,193 +7,11 @@
 // Inner Classes
 // ===========================================================
 
-class TwitterButton : public Entity
-{
-    public:
-    TwitterButton(CCNode* pParent) :
-    Entity("btn_sprite@2x.png", 2, 3, pParent)
-    {
-        this->create()->setCurrentFrameIndex(0);
-        this->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
-class FacebookButton : public Entity
-{
-    public:
-    FacebookButton(CCNode* pParent) :
-    Entity("btn_sprite@2x.png", 2, 3, pParent)
-    {
-        this->create()->setCurrentFrameIndex(2);
-        this->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
-class SettingsButton : public Entity
-{
-    public:
-    SettingsButton(CCNode* pParent) :
-    Entity("btn_sprite@2x.png", 2, 3, pParent)
-    {
-        this->create()->setCurrentFrameIndex(4);
-        this->setCenterPosition(Utils::coord(100), Utils::coord(100));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
-class PlayButton : public Entity
-{
-    protected:
-    float mAnimationTime;
-    float mAnimationTimeElapsed;
-    
-    public:
-    PlayButton(CCNode* pParent) :
-    Entity("play_btn_animation@2x.png", 6, 2, pParent)
-    {
-        this->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
-        this->setRegisterAsTouchable(true);
-        
-        this->mAnimationTime = Utils::randomf(1.5, 5.0);
-        this->mAnimationTimeElapsed = 0;
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_BOXES);
-    }
-    
-    void update(float pDeltatime)
-    {
-        Entity::update(pDeltatime);
-        
-        this->mAnimationTimeElapsed += pDeltatime;
-        
-        if(this->mAnimationTimeElapsed >= this->mAnimationTime)
-        {
-            this->mAnimationTime = Utils::randomf(1.5, 5.0);
-            this->mAnimationTimeElapsed = 0;
-            
-            this->animate(0.08, 1);
-        }
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
-class ShopButton : public Entity
-{
-    public:
-    ShopButton(CCNode* pParent) :
-    Entity("main_menu_btn_shop@2x.png", pParent)
-    {
-        this->create()->setCenterPosition(Utils::coord(170), Utils::coord(270));
-        this->setRotation(10);
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
 // ===========================================================
 // Constants
 // ===========================================================
+
+Menu* Menu::m_Instance = NULL;
 
 // ===========================================================
 // Fields
@@ -208,14 +26,22 @@ Menu::Menu()
     this->mBackgroundDecoration = new Entity("main_menu_bg_back@2x.png", this);
     this->mBackground = new Entity("main_menu_bg@2x.png", this);
     this->mPlayDecoration = new Entity("main_menu_btn_bg_play@2x.png", this);
-    this->mPlayButton = new PlayButton(this);
-    this->mShopButton = new ShopButton(this);
-    this->mTwitterButton = new TwitterButton(this);
-    this->mFacebookButton = new FacebookButton(this);
-    this->mSettingsButton = new SettingsButton(this);
+    this->mPlayButton = new PlayButton("play_btn_animation@2x.png", 6, 2, this, Options::BUTTONS_ID_MENU_PLAY, onTouchButtonsCallback);
+    this->mShopButton = new Button("main_menu_btn_shop@2x.png", 1, 1, this, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mTwitterButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
+    this->mFacebookButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
+    this->mSettingsButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
     
     this->mBackgroundDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mShopButton->create()->setCenterPosition(Utils::coord(170), Utils::coord(270));
+    this->mShopButton->setRotation(10);
+    this->mSettingsButton->create()->setCurrentFrameIndex(4);
+    this->mSettingsButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    this->mTwitterButton->create()->setCurrentFrameIndex(0);
+    this->mTwitterButton->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
+    this->mFacebookButton->create()->setCurrentFrameIndex(2);
+    this->mFacebookButton->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
     this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
     this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
 }
@@ -223,6 +49,51 @@ Menu::Menu()
 // ===========================================================
 // Methods
 // ===========================================================
+
+void Menu::onTouchButtonsCallback(const int pAction, const int pID)
+{
+    Menu* pSender = (Menu*) Menu::m_Instance;
+
+    switch(pAction)
+    {
+        case Options::BUTTONS_ACTION_ONTOUCH:
+            switch(pID)
+            {
+                case Options::BUTTONS_ID_MENU_SHOP:
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+
+                break;
+                case Options::BUTTONS_ID_MENU_PLAY:
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_BOXES);
+
+                break;
+                case Options::BUTTONS_ID_MENU_SETTINGS:
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+
+                break;
+                case Options::BUTTONS_ID_MENU_TWITTER:
+
+                    // TODO: Call JNI
+
+                break;
+                case Options::BUTTONS_ID_MENU_FACEBOOK:
+
+                    // TODO: Call JNI
+
+                break;
+            }
+        break;
+
+        case Options::BUTTONS_ACTION_ONBEGIN:
+        break;
+
+        case Options::BUTTONS_ACTION_ONEND:
+        break;
+    }
+}
 
 // ===========================================================
 // Virtual Methods

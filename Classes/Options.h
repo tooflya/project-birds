@@ -80,6 +80,25 @@ class Options
 		static bool MUSIC_ENABLE;
 		static bool SOUND_ENABLE;
 
+		static const int BUTTONS_ACTION_ONTOUCH = 0;
+		static const int BUTTONS_ACTION_ONBEGIN = 1;
+		static const int BUTTONS_ACTION_ONEND = 2;
+
+		static const int BUTTONS_ID_SETTINGS_BACK = 101;
+		static const int BUTTONS_ID_SETTINGS_RATE = 102;
+		static const int BUTTONS_ID_SETTINGS_SOUND = 103;
+		static const int BUTTONS_ID_SETTINGS_MUSIC = 104;
+		static const int BUTTONS_ID_SETTINGS_CREDITS = 105;
+		static const int BUTTONS_ID_CREDITS_BACK = 106;
+		static const int BUTTONS_ID_MENU_PLAY = 107;
+		static const int BUTTONS_ID_MENU_SHOP = 108;
+		static const int BUTTONS_ID_MENU_TWITTER = 109;
+		static const int BUTTONS_ID_MENU_FACEBOOK = 110;
+		static const int BUTTONS_ID_MENU_SETTINGS = 111;
+		static const int BUTTONS_ID_LEVELS_BACK = 112;
+		static const int BUTTONS_ID_BOXES_BACK = 113;
+		static const int BUTTONS_ID_SHOP_BACK = 114;
+
 		// ===========================================================
 		// Fields
 		// ===========================================================

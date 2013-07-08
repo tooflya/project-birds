@@ -5,8 +5,9 @@
 
 #include "Screen.h"
 
-#include "ScreenManager.h"
 #include "AppDelegate.h"
+
+#include "PlayButton.h"
 
 using namespace cocos2d;
 
@@ -20,6 +21,8 @@ class Menu : public Screen
 		// ===========================================================
 		// Constants
 		// ===========================================================
+
+        static Menu* m_Instance;
 
 		// ===========================================================
 		// Fields
@@ -66,6 +69,8 @@ class Menu : public Screen
 		// ===========================================================
 		// Methods
 		// ===========================================================
+
+		static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods

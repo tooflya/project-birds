@@ -1,15 +1,14 @@
-#ifndef CONST_SETTINGS_H
-#define CONST_SETTINGS_H
+#ifndef CONST_BUTTON_H
+#define CONST_BUTTON_H
 
 #include "cocos2d.h"
 
-#include "Screen.h"
-
-#include "AppDelegate.h"
+#include "Entity.h"
+#include "Touchable.h"
 
 using namespace cocos2d;
 
-class Settings : public Screen
+class Button : public Entity
 {
 	protected:
 		// ===========================================================
@@ -20,19 +19,16 @@ class Settings : public Screen
 		// Constants
 		// ===========================================================
 
-        static Settings* m_Instance;
-
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        Entity* mBackground;
-        Button* mBackButton;
-        Button* mCreditsButton;
-        Button* mRateButton;
-        Button* mSoundButton;
-        Button* mMusicButton;
-    
+
+		int mID;
+
+		CCLabelTTF* mText;
+
+		void (*mOnTouchCallback)(int, int);
+
 		// ===========================================================
 		// Constructors
 		// ===========================================================
@@ -65,8 +61,6 @@ class Settings : public Screen
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods
@@ -84,8 +78,8 @@ class Settings : public Screen
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        Settings();
+
+		Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
 
 		// ===========================================================
 		// Constructors
@@ -94,10 +88,18 @@ class Settings : public Screen
 		// ===========================================================
 		// Methods
 		// ===========================================================
+
+		void onTouch(CCTouch* touch, CCEvent* event);
+
+		void setText(const char* pString, int pSize);
+		void setString(const char* pString);
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+
+		void onEnter();
+		void onExit();
 };
 
 #endif

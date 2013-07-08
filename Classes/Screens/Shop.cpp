@@ -7,31 +7,6 @@
 // Inner Classes
 // ===========================================================
 
-class ShopBackButton : public Entity
-{
-    public:
-    ShopBackButton(CCNode* pParent) :
-    Entity("btn_sprite@2x.png", 2, 3, pParent)
-    {
-        this->create()->setCurrentFrameIndex(1);
-        this->setCenterPosition(Utils::coord(100), Utils::coord(100));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-};
-
 class TouchLayer : public CCLayer
 {
     protected:
@@ -137,6 +112,8 @@ class TouchLayer : public CCLayer
 // Constants
 // ===========================================================
 
+Shop* Shop::m_Instance = NULL;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -149,7 +126,7 @@ Shop::Shop()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
     this->mTablet = new Entity("shop_money_bg@2x.png", this);
-    this->mBackButton = new ShopBackButton(this);
+    this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
     
     this->mWheels = new BatchEntityManager(9, new Entity("shop_wheel@2x.png"), this);
     
@@ -198,6 +175,10 @@ Shop::Shop()
     }
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    
+    this->mBackButton->create()->setCurrentFrameIndex(1);
+    this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+
     this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(110));
     
     x = Options::CAMERA_CENTER_X - Utils::coord(500);
@@ -222,6 +203,31 @@ Shop::Shop()
 // ===========================================================
 // Methods
 // ===========================================================
+
+void Shop::onTouchButtonsCallback(const int pAction, const int pID)
+{
+    Shop* pSender = (Shop*) Shop::m_Instance;
+
+    switch(pAction)
+    {
+        case Options::BUTTONS_ACTION_ONTOUCH:
+            switch(pID)
+            {
+                case Options::BUTTONS_ID_SHOP_BACK:
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+
+                break;
+            }
+        break;
+
+        case Options::BUTTONS_ACTION_ONBEGIN:
+        break;
+
+        case Options::BUTTONS_ACTION_ONEND:
+        break;
+    }
+}
 
 // ===========================================================
 // Virtual Methods

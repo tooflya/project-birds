@@ -1,15 +1,13 @@
-#ifndef CONST_SETTINGS_H
-#define CONST_SETTINGS_H
+#ifndef CONST_PLAYBUTTON_H
+#define CONST_PLAYBUTTON_H
 
 #include "cocos2d.h"
 
-#include "Screen.h"
-
-#include "AppDelegate.h"
+#include "Button.h"
 
 using namespace cocos2d;
 
-class Settings : public Screen
+class PlayButton : public Button
 {
 	protected:
 		// ===========================================================
@@ -20,19 +18,13 @@ class Settings : public Screen
 		// Constants
 		// ===========================================================
 
-        static Settings* m_Instance;
-
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        Entity* mBackground;
-        Button* mBackButton;
-        Button* mCreditsButton;
-        Button* mRateButton;
-        Button* mSoundButton;
-        Button* mMusicButton;
-    
+   
+   	 	float mAnimationTime;
+    	float mAnimationTimeElapsed;
+
 		// ===========================================================
 		// Constructors
 		// ===========================================================
@@ -65,8 +57,6 @@ class Settings : public Screen
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods
@@ -84,20 +74,24 @@ class Settings : public Screen
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        Settings();
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
 
+		PlayButton(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+
 		// ===========================================================
 		// Methods
 		// ===========================================================
+
+		void onCreate();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+
+		void update(float pDeltaTime);
 };
 
 #endif

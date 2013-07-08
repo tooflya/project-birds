@@ -7,39 +7,6 @@
 // Inner Classes
 // ===========================================================
 
-class BoxesBackButton : public Entity
-{
-    public:
-    BoxesBackButton(CCNode* pParent) :
-    Entity("btn_sprite@2x.png", 2, 3, pParent)
-    {
-        this->create()->setCurrentFrameIndex(1);
-        this->setCenterPosition(Utils::coord(100), Utils::coord(100));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
 class BoxesTouchLayer : public CCLayer
 {
     protected:
@@ -126,6 +93,8 @@ class BoxesTouchLayer : public CCLayer
 // Constants
 // ===========================================================
 
+Boxes* Boxes::m_Instance = NULL;
+
 int Boxes::BOX = 0;
 
 // ===========================================================
@@ -139,7 +108,7 @@ int Boxes::BOX = 0;
 Boxes::Boxes()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new BoxesBackButton(this);
+    this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_BOXES_BACK, onTouchButtonsCallback);
     this->mTablet = new Entity("choose_box_name@2x.png");
     
     this->addChild(this->mTablet, 5);
@@ -153,6 +122,8 @@ Boxes::Boxes()
     const char* boxes[3] = { "choose_box_summer@2x.png", "choose_box_winter@2x.png", "choose_box_space@2x.png" };
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mBackButton->create()->setCurrentFrameIndex(1);
+    this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
     this->mTablet->create()->setCenterPosition(Utils::coord(280), Options::CAMERA_HEIGHT - Utils::coord(170));
     this->mTablet->setRotation(-15);
     
@@ -188,6 +159,31 @@ Boxes::Boxes()
 // ===========================================================
 // Methods
 // ===========================================================
+
+void Boxes::onTouchButtonsCallback(const int pAction, const int pID)
+{
+    Boxes* pSender = (Boxes*) Boxes::m_Instance;
+
+    switch(pAction)
+    {
+        case Options::BUTTONS_ACTION_ONTOUCH:
+            switch(pID)
+            {
+                case Options::BUTTONS_ID_BOXES_BACK:
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+
+                break;
+            }
+        break;
+
+        case Options::BUTTONS_ACTION_ONBEGIN:
+        break;
+
+        case Options::BUTTONS_ACTION_ONEND:
+        break;
+    }
+}
 
 // ===========================================================
 // Virtual Methods

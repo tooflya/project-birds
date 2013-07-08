@@ -1,15 +1,11 @@
-#ifndef CONST_SETTINGS_H
-#define CONST_SETTINGS_H
+#ifndef CONST_TEMPLATE_H
+#define CONST_TEMPLATE_H
 
 #include "cocos2d.h"
 
-#include "Screen.h"
-
-#include "AppDelegate.h"
-
 using namespace cocos2d;
 
-class Settings : public Screen
+class Template
 {
 	protected:
 		// ===========================================================
@@ -20,19 +16,10 @@ class Settings : public Screen
 		// Constants
 		// ===========================================================
 
-        static Settings* m_Instance;
-
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        Entity* mBackground;
-        Button* mBackButton;
-        Button* mCreditsButton;
-        Button* mRateButton;
-        Button* mSoundButton;
-        Button* mMusicButton;
-    
+
 		// ===========================================================
 		// Constructors
 		// ===========================================================
@@ -65,8 +52,6 @@ class Settings : public Screen
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods
@@ -84,8 +69,6 @@ class Settings : public Screen
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        Settings();
 
 		// ===========================================================
 		// Constructors

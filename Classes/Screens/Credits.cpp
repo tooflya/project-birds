@@ -7,42 +7,11 @@
 // Inner Classes
 // ===========================================================
 
-class CreditsBackButton : public Entity
-{
-public:
-    CreditsBackButton(CCNode* pParent) :
-    Entity("btn_sprite@2x.png", 2, 3, pParent)
-    {
-        this->create()->setCurrentFrameIndex(1);
-        this->setCenterPosition(Utils::coord(100), Utils::coord(100));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
 // ===========================================================
 // Constants
 // ===========================================================
+
+Credits* Credits::m_Instance = NULL;
 
 // ===========================================================
 // Fields
@@ -55,14 +24,42 @@ public:
 Credits::Credits()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new CreditsBackButton(this);
+    this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_CREDITS_BACK, onTouchButtonsCallback);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    
+    this->mBackButton->create()->setCurrentFrameIndex(1);
+    this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
 }
 
 // ===========================================================
 // Methods
 // ===========================================================
+
+void Credits::onTouchButtonsCallback(const int pAction, const int pID)
+{
+    Credits* pSender = (Credits*) Credits::m_Instance;
+
+    switch(pAction)
+    {
+        case Options::BUTTONS_ACTION_ONTOUCH:
+            switch(pID)
+            {
+                case Options::BUTTONS_ID_CREDITS_BACK:
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+
+                break;
+            }
+        break;
+
+        case Options::BUTTONS_ACTION_ONBEGIN:
+        break;
+
+        case Options::BUTTONS_ACTION_ONEND:
+        break;
+    }
+}
 
 // ===========================================================
 // Virtual Methods

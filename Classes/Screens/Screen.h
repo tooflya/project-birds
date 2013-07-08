@@ -5,6 +5,7 @@
 
 #include "Touchable.h"
 #include "Entity.h"
+#include "Button.h"
 #include "Utils.h"
 #include "Options.h"
 

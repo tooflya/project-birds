@@ -27,12 +27,28 @@ float Utils::Pi = atan(1.0) * 4;
 
 float Utils::randomf(float min, float max)
 {
+	#if (CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_IOS)
+
 	return min + (float) arc4random() / ((float) RAND_MAX / (max - min));
+
+	#else
+
+	return min + (float) rand() / ((float) RAND_MAX / (max - min));
+
+	#endif
 }
 
 int Utils::random(int min, int max)
 {
+	#if (CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_IOS)
+
 	return min + arc4random() / (RAND_MAX / (max + 1 - min));
+
+	#else
+
+	return min + rand() / (RAND_MAX / (max + 1 - min));
+
+	#endif
 }
 
 float Utils::coord(float pCoordinate)

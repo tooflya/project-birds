@@ -22,3 +22,5 @@ proj.android/assets
 proj.android/bin
 proj.android/obj
 proj.android/gen
+proj.linux/obj
+proj.linux/bin
