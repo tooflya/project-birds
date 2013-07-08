@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 
 #include "Entity.h"
-#include "Splash.h"
+#include "Button.h"
 
 #include "BatchEntityManager.h"
 

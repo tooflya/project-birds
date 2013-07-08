@@ -11,22 +11,39 @@ class TouchLayer : public CCLayer
 {
     protected:
     int mId;
+
+    int mItemsCount;
+
+    float mMaxWidth;
     
-    float sX;
-    float ssX;
+    float mStartCoordinateX;
+    float mStartPositionCoordinateX;
+
+    float mStartTime; // ?
+
+    float mPostUpdatePower;
+
+    bool mPostUpdate;
     
     public:
-    TouchLayer(const int pId)
+    TouchLayer(const int pId, int pItemsCount)
     {
+        this->scheduleUpdate();
+
         this->mId = pId;
+        this->mItemsCount = pItemsCount;
+
+        this->mMaxWidth = Utils::coord(230) * (this->mItemsCount - 3);
+
+        this->mPostUpdate = false;
     }
     
     bool ccTouchBegan(CCTouch* touch, CCEvent* event)
     {
-        float x = touch->getLocation().x;
-        
-        this->sX = x;
-        this->ssX = this->getPosition().x;
+        this->mPostUpdate = false;
+
+        this->mStartCoordinateX = touch->getLocation().x;
+        this->mStartPositionCoordinateX = this->getPosition().x;
         
         return this->containsTouchLocation(touch);
     }
@@ -35,25 +52,34 @@ class TouchLayer : public CCLayer
     {
         if(this->containsTouchLocation(touch))
         {
-            float x = this->ssX + touch->getLocation().x - this->sX;
-            
-            if(x >= 0) x = 0;
-            if(x <= -700) x = -700;
+            float x = this->mStartPositionCoordinateX + touch->getLocation().x - this->mStartCoordinateX;
             
             this->setPosition(ccp(x, this->getPosition().y));
-            
-            for(int i = this->mId * 3; i < this->mId * 3 + 3; i++)
-            {
-                Entity* wheel = (Entity*) ((Shop*) this->getParent())->mWheels->objectAtIndex(i);
-                
-                wheel->setRotation(this->getPosition().x);
-            }
         }
     }
     
     void ccTouchEnded(CCTouch* touch, CCEvent* event)
     {
-        
+        float x = this->getPosition().x;
+
+        if(x > 0)
+        {
+            this->runAction(CCMoveTo::create(0.3, ccp(0, this->getPosition().y)));
+        }
+        else if(x < -this->mMaxWidth)
+        {
+            this->runAction(CCMoveTo::create(0.3, ccp(-this->mMaxWidth, this->getPosition().y)));
+        }
+        else
+        {
+            float distance = (this->mStartCoordinateX - touch->getLocation().x) / 10.0;
+
+            int t = distance > 0 ? 1 : -1;
+
+            this->mPostUpdatePower = abs(floor(distance)) > Utils::coord(30.0) ? Utils::coord(30.0) * t : floor(distance);
+
+            this->mPostUpdate = true;
+        }
     }
     
     bool containsTouchLocation(CCTouch* touch)
@@ -90,6 +116,44 @@ class TouchLayer : public CCLayer
         
         return false;
     }
+
+    void update(float pDeltaTime)
+    {
+        CCLayer::update(pDeltaTime);
+        
+        this->updateWheels();
+
+        if(this->mPostUpdate)
+        {
+            float x = this->getPosition().x - this->mPostUpdatePower;
+            
+            if(x >= 0) x = 0;
+            if(x <= -this->mMaxWidth) x = -this->mMaxWidth;
+
+            this->setPosition(ccp(x, this->getPosition().y));
+
+            this->mPostUpdatePower = this->mPostUpdatePower > 0 ? this->mPostUpdatePower - 1.0 : this->mPostUpdatePower + 1.0;
+
+            if(abs(this->mPostUpdatePower) < Utils::coord(2.0))
+            {
+                int x = floor(this->getPosition().x);
+
+                if(x % (int) floor(Utils::coord(230)) != 0)
+                {
+                    this->mPostUpdatePower = this->mPostUpdatePower < 0 ? this->mPostUpdatePower - 1.0 : this->mPostUpdatePower + 1.0;
+                }
+                else
+                {
+                    this->mPostUpdatePower = 0;
+                }
+            }
+
+            if(this->mPostUpdatePower == 0)
+            {
+                this->mPostUpdate = false;
+            }
+        }
+    }
     
     void onEnter()
     {
@@ -105,6 +169,16 @@ class TouchLayer : public CCLayer
         pDirector->getTouchDispatcher()->removeDelegate(this);
         
         CCLayer::onExit();
+    }
+
+    void updateWheels()
+    {
+        for(int i = this->mId * 3; i < this->mId * 3 + 3; i++)
+        {
+            Entity* wheel = (Entity*) ((Shop*) this->getParent())->mWheels->objectAtIndex(i);
+                
+            wheel->setRotation(this->getPosition().x);
+        }
     }
 };
 
@@ -137,14 +211,14 @@ Shop::Shop()
     
     for(int i = 0; i < 3; i++)
     {
-        this->mLayers[i] = new TouchLayer(i);
+        this->mLayers[i] = new TouchLayer(i, ITEMS_COUNT[i]);
         
         this->addChild(this->mLayers[i], 2);
         
         this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i]);
-        this->mItems[i] = new BatchEntityManager(10, new Entity("shop_item_icon_test@2x.png"), this->mLayers[i]);
+        this->mItems[i] = new BatchEntityManager(10, new Entity("shop_item_icon_test@2x.png", 5, 6), this->mLayers[i]);
         
-        for(int j = 0; j < 3; j++)
+        for(int j = -1; j < 3; j++)
         {
             Entity* shelf = (Entity*) this->mShelfs[i]->create();
             
@@ -164,11 +238,12 @@ Shop::Shop()
             }
         }
         
-        for(int j = 0; j < 10; j++)
+        for(int j = 0; j < ITEMS_COUNT[i]; j++)
         {
             Entity* item = (Entity*) this->mItems[i]->create();
             
             item->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
+            item->setCurrentFrameIndex(10 * i + j);
         }
         
         y -= Utils::coord(300);

@@ -98,6 +98,9 @@ class Options
 		static const int BUTTONS_ID_LEVELS_BACK = 112;
 		static const int BUTTONS_ID_BOXES_BACK = 113;
 		static const int BUTTONS_ID_SHOP_BACK = 114;
+		static const int BUTTONS_ID_END_MENU = 115;
+		static const int BUTTONS_ID_END_RESTART = 116;
+		static const int BUTTONS_ID_END_CONTINUE = 117;
 
 		// ===========================================================
 		// Fields

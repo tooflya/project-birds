@@ -7,105 +7,11 @@
 // Inner Classes
 // ===========================================================
 
-class EndMenuButton : public Entity
-{
-    public:
-    EndMenuButton(CCNode* pParent) :
-    Entity("end_lvl_btn_sprite@2x.png", 3, 1, pParent)
-    {
-        this->create()->setCurrentFrameIndex(0);
-        this->setCenterPosition(this->getParent()->getContentSize().width / 2 - Utils::coord(200), this->getParent()->getContentSize().height / 2 - Utils::coord(300));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
-class EndRestartButton : public Entity
-{
-    public:
-    EndRestartButton(CCNode* pParent) :
-    Entity("end_lvl_btn_sprite@2x.png", 3, 1, pParent)
-    {
-        this->create()->setCurrentFrameIndex(1);
-        this->setCenterPosition(this->getParent()->getContentSize().width / 2, this->getParent()->getContentSize().height / 2 - Utils::coord(340));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
-class EndContinueButton : public Entity
-{
-    public:
-    EndContinueButton(CCNode* pParent) :
-    Entity("end_lvl_btn_sprite@2x.png", 3, 1, pParent)
-    {
-        this->create()->setCurrentFrameIndex(2);
-        this->setCenterPosition(this->getParent()->getContentSize().width / 2 + Utils::coord(200), this->getParent()->getContentSize().height / 2 - Utils::coord(320));
-        this->setRegisterAsTouchable(true);
-    }
-    
-    void onTouch(CCTouch* touch, CCEvent* event)
-    {
-    }
-    
-    void onEnter()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
-        Entity::onEnter();
-    }
-    
-    void onExit()
-    {
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->removeDelegate(this);
-        
-        Entity::onExit();
-    }
-};
-
 // ===========================================================
 // Constants
 // ===========================================================
+
+End* End::m_Instance = NULL;
 
 // ===========================================================
 // Fields
@@ -135,9 +41,18 @@ Splash(pParent)
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackground->setVisible(false);
     
-    this->mMenuButton = new EndMenuButton(this->mBackground);
-    this->mRestartButton = new EndRestartButton(this->mBackground);
-    this->mContinueButton = new EndContinueButton(this->mBackground);
+    this->mMenuButton = new Button("end_lvl_btn_sprite@2x.png", 3, 1, this->mBackground, Options::BUTTONS_ID_END_MENU, onTouchButtonsCallback);
+    this->mRestartButton = new Button("end_lvl_btn_sprite@2x.png", 3, 1, this->mBackground, Options::BUTTONS_ID_END_RESTART, onTouchButtonsCallback);
+    this->mContinueButton = new Button("end_lvl_btn_sprite@2x.png", 3, 1, this->mBackground, Options::BUTTONS_ID_END_CONTINUE, onTouchButtonsCallback);
+
+    this->mContinueButton->create()->setCurrentFrameIndex(2);
+    this->mContinueButton->setCenterPosition(this->mBackground->getContentSize().width / 2 + Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(320));
+        
+    this->mRestartButton->create()->setCurrentFrameIndex(1);
+    this->mRestartButton->setCenterPosition(this->mBackground->getContentSize().width / 2, this->mBackground->getContentSize().height / 2 - Utils::coord(340));
+
+    this->mMenuButton->create()->setCurrentFrameIndex(0);
+    this->mMenuButton->setCenterPosition(this->mBackground->getContentSize().width / 2 - Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(300));
     
     this->setVisible(false);
 }
@@ -145,6 +60,41 @@ Splash(pParent)
 // ===========================================================
 // Methods
 // ===========================================================
+
+void End::onTouchButtonsCallback(const int pAction, const int pID)
+{
+    End* pSender = (End*) End::m_Instance;
+
+    switch(pAction)
+    {
+        case Options::BUTTONS_ACTION_ONTOUCH:
+            switch(pID)
+            {
+                case Options::BUTTONS_ID_END_MENU:
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+
+                break;
+                case Options::BUTTONS_ID_END_RESTART:
+
+                    //
+
+                break;
+                case Options::BUTTONS_ID_END_CONTINUE:
+
+                    //
+
+                break;
+            }
+        break;
+
+        case Options::BUTTONS_ACTION_ONBEGIN:
+        break;
+
+        case Options::BUTTONS_ACTION_ONEND:
+        break;
+    }
+}
 
 // ===========================================================
 // Virtual Methods

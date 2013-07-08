@@ -45,6 +45,7 @@ void Button::setText(const char* pString, int pSize)
 {
 	this->mText = CCLabelTTF::create(pString, "Apple casual", pSize);
 	this->mText->setPosition(ccp(this->getWidth() / 2, this->getHeight() / 2));
+	this->mText->enableShadow(CCSize(0, 1), 255.0, 0.0, true);
 	this->addChild(this->mText);
 }
 

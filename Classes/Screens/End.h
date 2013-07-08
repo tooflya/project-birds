@@ -4,6 +4,9 @@
 #include "cocos2d.h"
 
 #include "Splash.h"
+#include "Screen.h"
+
+#include "AppDelegate.h"
 
 using namespace cocos2d;
 
@@ -18,13 +21,15 @@ class End : public Splash
 		// Constants
 		// ===========================================================
 
+        static End* m_Instance;
+
 		// ===========================================================
 		// Fields
 		// ===========================================================
     
-        Entity* mMenuButton;
-        Entity* mRestartButton;
-        Entity* mContinueButton;
+        Button* mMenuButton;
+        Button* mRestartButton;
+        Button* mContinueButton;
 
 		// ===========================================================
 		// Constructors
@@ -58,6 +63,8 @@ class End : public Splash
 		// ===========================================================
 		// Methods
 		// ===========================================================
+
+		static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods
