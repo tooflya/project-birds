@@ -98,6 +98,8 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 
 	this->mIsAnimationReverse = false;
 	this->mIsAnimationReverseNeed = false;
+    
+    this->mModalTouch = false;
 
 	this->scheduleUpdate();
 
@@ -513,9 +515,12 @@ bool Entity::ccTouchBegan(CCTouch* touch, CCEvent* event)
 	{
 		this->mWasTouched = true;
 
-		this->runAction(CCScaleTo::create(this->mAnimationScaleDownTime, this->mAnimationScaleDownFactor));
+        if(!this->mModalTouch)
+        {
+            this->runAction(CCScaleTo::create(this->mAnimationScaleDownTime, this->mAnimationScaleDownFactor));
+        }
 
-		return true;
+		return true;//!this->mModalTouch;
 	}
 
 	return false;

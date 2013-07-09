@@ -153,6 +153,13 @@ Boxes::Boxes()
         this->mBoxes[i] = new Entity(boxes[i], this->mTouchLayer);
         
         this->mBoxes[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Options::CAMERA_WIDTH * i, Options::CAMERA_CENTER_Y + Utils::coord(100));
+        
+        if(i > 0)
+        {
+            Entity* temp = new Entity("choose_box_locked@2x.png", this->mTouchLayer);
+            
+            temp->create()->setCenterPosition(Options::CAMERA_CENTER_X + Options::CAMERA_WIDTH * i, Options::CAMERA_CENTER_Y + Utils::coord(100));
+        }
     }
 }
 

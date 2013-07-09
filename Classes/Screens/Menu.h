@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 
 #include "Screen.h"
+#include "Exit.h"
+#include "PleaseRate.h"
 
 #include "AppDelegate.h"
 
@@ -36,6 +38,9 @@ class Menu : public Screen
         Entity* mTwitterButton;
         Entity* mFacebookButton;
         Entity* mSettingsButton;
+    
+        Popup* mExitPopup;
+        Popup* mRatePopup;
 
 		// ===========================================================
 		// Constructors

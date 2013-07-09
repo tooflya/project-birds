@@ -1,14 +1,14 @@
-#ifndef CONST_BUTTON_H
-#define CONST_BUTTON_H
+#ifndef CONST_PLEASERATE_H
+#define CONST_PLEASERATE_H
 
 #include "cocos2d.h"
 
-#include "Entity.h"
-#include "Touchable.h"
+#include "Popup.h"
+#include "Text.h"
 
 using namespace cocos2d;
 
-class Button : public Entity
+class PleaseRate : public Popup
 {
 	protected:
 		// ===========================================================
@@ -17,17 +17,15 @@ class Button : public Entity
 
 		// ===========================================================
 		// Constants
-		// ===========================================================
+        // ===========================================================
+    
+        static PleaseRate* m_Instance;
 
 		// ===========================================================
 		// Fields
 		// ===========================================================
-
-		int mID;
-
-		CCLabelTTF* mText;
-
-		void (*mOnTouchCallback)(int, int);
+    
+        Button* mRateButton;
 
 		// ===========================================================
 		// Constructors
@@ -60,7 +58,9 @@ class Button : public Entity
 
 		// ===========================================================
 		// Methods
-		// ===========================================================
+        // ===========================================================
+    
+        static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods
@@ -79,31 +79,19 @@ class Button : public Entity
 		// Fields
 		// ===========================================================
 
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
-    
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
-
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        PleaseRate(Screen* pScreen);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		void onTouch(CCTouch* touch, CCEvent* event);
-
-		void setText(const char* pString, int pSize);
-		void setString(const char* pString);
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		void onEnter();
-		void onExit();
-    
-        Button* deepCopy();
 };
 
 #endif

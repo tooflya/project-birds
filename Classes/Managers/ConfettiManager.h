@@ -1,11 +1,14 @@
-#ifndef CONST_TEMPLATE_H
-#define CONST_TEMPLATE_H
+#ifndef CONST_CONFETTIMANAGER_H
+#define CONST_CONFETTIMANAGER_H
 
 #include "cocos2d.h"
 
+#include "Confetti.h"
+#include "BatchEntityManager.h"
+
 using namespace cocos2d;
 
-class Template
+class ConfettiManager : public BatchEntityManager
 {
 	protected:
 		// ===========================================================
@@ -73,10 +76,14 @@ class Template
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        ConfettiManager(int pCreateCount, Entity* pEntity, CCNode* pScreen);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
+    
+        void init(float pX, float pY);
 		
 		// ===========================================================
 		// Virtual Methods

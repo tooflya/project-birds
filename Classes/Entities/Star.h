@@ -1,14 +1,13 @@
-#ifndef CONST_BUTTON_H
-#define CONST_BUTTON_H
+#ifndef CONST_STAR_H
+#define CONST_STAR_H
 
 #include "cocos2d.h"
 
 #include "Entity.h"
-#include "Touchable.h"
 
 using namespace cocos2d;
 
-class Button : public Entity
+class Star : public Entity
 {
 	protected:
 		// ===========================================================
@@ -22,12 +21,11 @@ class Button : public Entity
 		// ===========================================================
 		// Fields
 		// ===========================================================
-
-		int mID;
-
-		CCLabelTTF* mText;
-
-		void (*mOnTouchCallback)(int, int);
+    
+    
+        float mAnimationTimeElapsed;
+    
+        bool mIsAnimationRunning;
 
 		// ===========================================================
 		// Constructors
@@ -79,31 +77,25 @@ class Button : public Entity
 		// Fields
 		// ===========================================================
 
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
-    
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
-
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        Star();
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		void onTouch(CCTouch* touch, CCEvent* event);
-
-		void setText(const char* pString, int pSize);
-		void setString(const char* pString);
+    
+        void animate();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		void onEnter();
-		void onExit();
     
-        Button* deepCopy();
+        void update(float pDeltaTime);
+    
+        Star* deepCopy();
 };
 
 #endif

@@ -48,6 +48,14 @@ Loading::Loading()
     this->mTexturesLibrary[21] = "end_lvl_bg_popup@2x.png";
     this->mTexturesLibrary[22] = "end_lvl_bg_sprite@2x.png";
     this->mTexturesLibrary[23] = "end_lvl_btn_sprite@2x.png";
+    this->mTexturesLibrary[24] = "popup_bg@2x.png";
+    this->mTexturesLibrary[25] = "popup_darkness@2x.png";
+    this->mTexturesLibrary[26] = "popup_btn@2x.png";
+    this->mTexturesLibrary[27] = "popup_getcoins_picture@2x.png";
+    this->mTexturesLibrary[28] = "get_coins_light@2x.png";
+    this->mTexturesLibrary[29] = "choose_box_locked@2x.png";
+    this->mTexturesLibrary[30] = "end_lvl_star_sprite@2x.png";
+    this->mTexturesLibrary[31] = "konfeti_sprite@2x.png";
     
     this->mLoadingText = CCLabelTTF::create("Loading... 0%", "Apple Casual", Utils::coord(32));
     this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(140), Utils::coord(50)));

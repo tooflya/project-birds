@@ -5,6 +5,9 @@
 
 #include "Splash.h"
 #include "Screen.h"
+#include "Star.h"
+#include "BatchEntityManager.h"
+#include "ConfettiManager.h"
 
 #include "AppDelegate.h"
 
@@ -30,6 +33,17 @@ class End : public Splash
         Button* mMenuButton;
         Button* mRestartButton;
         Button* mContinueButton;
+    
+        BatchEntityManager* mStars;
+    
+        ConfettiManager* mConfetti;
+    
+        int mAnimationCounter;
+    
+        float mAnimationTime;
+        float mAnimationtimeElapsed;
+    
+        bool mIsAnimationRunning;
 
 		// ===========================================================
 		// Constructors
@@ -92,10 +106,15 @@ class End : public Splash
 		// ===========================================================
 		// Methods
 		// ===========================================================
+    
+        void onShow();
+        void onHide();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+    
+        void update(float pDeltaTime);
 };
 
 #endif

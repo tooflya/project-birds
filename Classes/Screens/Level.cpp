@@ -20,7 +20,7 @@ public:
     
     void onTouch(CCTouch* touch, CCEvent* event)
     {
-        ((Level*) this->getParent())->finish();
+        ((Level*) this->getParent())->finish();SimpleAudioEngine::sharedEngine()->playBackgroundMusic("level-end.mp3");
     }
     
     void onEnter()

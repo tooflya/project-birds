@@ -32,6 +32,9 @@ Menu::Menu()
     this->mFacebookButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
     this->mSettingsButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
     
+    this->mExitPopup = new Exit(this);
+    this->mRatePopup = new PleaseRate(this);
+    
     this->mBackgroundDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mShopButton->create()->setCenterPosition(Utils::coord(170), Utils::coord(270));
@@ -44,6 +47,10 @@ Menu::Menu()
     this->mFacebookButton->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
     this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
     this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
+    
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-1.mp3");
+    
+    m_Instance = this;
 }
 
 // ===========================================================
@@ -77,11 +84,13 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
                 case Options::BUTTONS_ID_MENU_TWITTER:
 
                     // TODO: Call JNI
+                    pSender->mExitPopup->show();
 
                 break;
                 case Options::BUTTONS_ID_MENU_FACEBOOK:
 
                     // TODO: Call JNI
+                    pSender->mRatePopup->show();
 
                 break;
             }

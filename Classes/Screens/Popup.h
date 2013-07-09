@@ -1,14 +1,15 @@
-#ifndef CONST_BUTTON_H
-#define CONST_BUTTON_H
+#ifndef CONST_POPUP_H
+#define CONST_POPUP_H
 
 #include "cocos2d.h"
 
+#include "Screen.h"
 #include "Entity.h"
-#include "Touchable.h"
+#include "Button.h"
 
 using namespace cocos2d;
 
-class Button : public Entity
+class Popup : public CCLayer
 {
 	protected:
 		// ===========================================================
@@ -17,17 +18,31 @@ class Button : public Entity
 
 		// ===========================================================
 		// Constants
-		// ===========================================================
+        // ===========================================================
 
 		// ===========================================================
 		// Fields
 		// ===========================================================
-
-		int mID;
-
-		CCLabelTTF* mText;
-
-		void (*mOnTouchCallback)(int, int);
+    
+        Screen* mScreen;
+    
+        Entity* mBackground;
+        Entity* mDarkness;
+        Entity* mIllustration;
+    
+        Button* mCloseButton;
+    
+        int mShowAnimationCount;
+        int mHideAnimationCount;
+    
+        float mShowAnimationTime;
+        float mShowAnimationTimeElapsed;
+        
+        float mHideAnimationTime;
+        float mHideAnimationTimeElapsed;
+    
+        bool mShowAnimationRunning;
+        bool mHideAnimationRunning;
 
 		// ===========================================================
 		// Constructors
@@ -35,7 +50,7 @@ class Button : public Entity
 
 		// ===========================================================
 		// Methods
-		// ===========================================================
+        // ===========================================================
 
 		// ===========================================================
 		// Virtual Methods
@@ -77,33 +92,31 @@ class Button : public Entity
 
 		// ===========================================================
 		// Fields
-		// ===========================================================
-
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        // ===========================================================
     
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        bool mShowed;
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        Popup(Screen* pScreen);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		void onTouch(CCTouch* touch, CCEvent* event);
-
-		void setText(const char* pString, int pSize);
-		void setString(const char* pString);
+    
+        void show();
+        void hide();
+    
+        virtual void onShow();
+        virtual void onHide();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		void onEnter();
-		void onExit();
     
-        Button* deepCopy();
+        void update(float pDeltaTime);
 };
 
 #endif

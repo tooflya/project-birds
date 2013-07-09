@@ -30,6 +30,8 @@ class Settings : public Screen
         Button* mBackButton;
         Button* mCreditsButton;
         Button* mRateButton;
+        Button* mMoreButton;
+        Button* mLanguageButton;
         Button* mSoundButton;
         Button* mMusicButton;
     

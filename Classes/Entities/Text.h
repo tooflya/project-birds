@@ -1,14 +1,13 @@
-#ifndef CONST_BUTTON_H
-#define CONST_BUTTON_H
+#ifndef CONST_TEMPLATE_H
+#define CONST_TEMPLATE_H
 
 #include "cocos2d.h"
 
-#include "Entity.h"
-#include "Touchable.h"
+#include "Utils.h"
 
 using namespace cocos2d;
 
-class Button : public Entity
+class Text : public CCLabelTTF
 {
 	protected:
 		// ===========================================================
@@ -22,12 +21,6 @@ class Button : public Entity
 		// ===========================================================
 		// Fields
 		// ===========================================================
-
-		int mID;
-
-		CCLabelTTF* mText;
-
-		void (*mOnTouchCallback)(int, int);
 
 		// ===========================================================
 		// Constructors
@@ -79,31 +72,19 @@ class Button : public Entity
 		// Fields
 		// ===========================================================
 
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
-    
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
-
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        Text(const char* pString, float pSize, CCNode* pParent);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		void onTouch(CCTouch* touch, CCEvent* event);
-
-		void setText(const char* pString, int pSize);
-		void setString(const char* pString);
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		void onEnter();
-		void onExit();
-    
-        Button* deepCopy();
 };
 
 #endif

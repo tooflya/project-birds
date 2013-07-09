@@ -26,9 +26,13 @@ class Splash : public CCLayer
 		// ===========================================================
     
         bool mShowBackground;
+        bool mHideBackground;
     
-        float mBackgroundTime;
-        float mBackgroundTimeElapsed;
+        float mShowBackgroundTime;
+        float mShowBackgroundTimeElapsed;
+        
+        float mHideBackgroundTime;
+        float mHideBackgroundTimeElapsed;
     
         Entity* mBackground;
     
@@ -96,6 +100,9 @@ class Splash : public CCLayer
     
         void show();
         void hide();
+    
+        virtual void onShow();
+        virtual void onHide();
 		
 		// ===========================================================
 		// Virtual Methods

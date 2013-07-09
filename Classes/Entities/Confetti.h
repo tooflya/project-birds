@@ -1,14 +1,13 @@
-#ifndef CONST_BUTTON_H
-#define CONST_BUTTON_H
+#ifndef CONST_CONFETTI_H
+#define CONST_CONFETTI_H
 
 #include "cocos2d.h"
 
 #include "Entity.h"
-#include "Touchable.h"
 
 using namespace cocos2d;
 
-class Button : public Entity
+class Confetti : public Entity
 {
 	protected:
 		// ===========================================================
@@ -22,12 +21,16 @@ class Button : public Entity
 		// ===========================================================
 		// Fields
 		// ===========================================================
-
-		int mID;
-
-		CCLabelTTF* mText;
-
-		void (*mOnTouchCallback)(int, int);
+    
+        float mSpeedX;
+        float mSpeedY;
+    
+        float mWeight;
+    
+        float mRotationSpeed;
+        float mAlphaSpeed;
+    
+        bool mMoveUp;
 
 		// ===========================================================
 		// Constructors
@@ -79,31 +82,25 @@ class Button : public Entity
 		// Fields
 		// ===========================================================
 
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
-    
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
-
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        Confetti();
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-
-		void onTouch(CCTouch* touch, CCEvent* event);
-
-		void setText(const char* pString, int pSize);
-		void setString(const char* pString);
+    
+        void onCreate();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-
-		void onEnter();
-		void onExit();
     
-        Button* deepCopy();
+        void update(float pDeltaTime);
+    
+        Confetti* deepCopy();
 };
 
 #endif

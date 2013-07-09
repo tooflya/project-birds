@@ -73,7 +73,9 @@ class TouchLayer : public CCLayer
         else
         {
             float distance = (this->mStartCoordinateX - touch->getLocation().x) / 10.0;
-
+            
+            if(abs(distance) < Utils::coord(10.0)) return;
+                
             int t = distance > 0 ? 1 : -1;
 
             this->mPostUpdatePower = abs(floor(distance)) > Utils::coord(30.0) ? Utils::coord(30.0) * t : floor(distance);
@@ -138,7 +140,7 @@ class TouchLayer : public CCLayer
             {
                 int x = floor(this->getPosition().x);
 
-                if(x % (int) floor(Utils::coord(230)) != 0)
+                if(abs(x) % (int) floor(Utils::coord(230)) >= 1.0)
                 {
                     this->mPostUpdatePower = this->mPostUpdatePower < 0 ? this->mPostUpdatePower - 1.0 : this->mPostUpdatePower + 1.0;
                 }
@@ -216,7 +218,7 @@ Shop::Shop()
         this->addChild(this->mLayers[i], 2);
         
         this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i]);
-        this->mItems[i] = new BatchEntityManager(10, new Entity("shop_item_icon_test@2x.png", 5, 6), this->mLayers[i]);
+        this->mItems[i] = new BatchEntityManager(10, new Button("shop_item_icon_test@2x.png", 5, 6, Options::BUTTONS_ID_SHOP_ITEM, onTouchButtonsCallback), this->mLayers[i]);
         
         for(int j = -1; j < 3; j++)
         {
@@ -244,6 +246,7 @@ Shop::Shop()
             
             item->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
             item->setCurrentFrameIndex(10 * i + j);
+            item->mModalTouch = true;
         }
         
         y -= Utils::coord(300);
@@ -273,6 +276,11 @@ Shop::Shop()
         
         this->mWheels->create()->setCenterPosition(x, y);
     }
+    
+    this->mBuyItemPopup = new BuyItem(this);
+    this->mGetCoinsPopup = new GetCoins(this);
+    
+    m_Instance = this;
 }
 
 // ===========================================================
@@ -282,6 +290,8 @@ Shop::Shop()
 void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 {
     Shop* pSender = (Shop*) Shop::m_Instance;
+    
+    if(pSender->mBuyItemPopup->mShowed) return;
 
     switch(pAction)
     {
@@ -292,6 +302,11 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 
                     AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
 
+                break;
+                case Options::BUTTONS_ID_SHOP_ITEM:
+                    
+                    pSender->mBuyItemPopup->show();
+                    
                 break;
             }
         break;

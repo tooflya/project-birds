@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 
 #include "Screen.h"
+#include "BuyItem.h"
+#include "GetCoins.h"
 #include "EntityManager.h"
 #include "BatchEntityManager.h"
 
@@ -93,6 +95,9 @@ class Shop : public Screen
         EntityManager* mShelfs[3];
         
         TouchLayer* mLayers[3];
+    
+        Popup* mBuyItemPopup;
+        Popup* mGetCoinsPopup;
 
 		// ===========================================================
 		// Constructors
