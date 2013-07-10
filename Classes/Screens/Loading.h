@@ -7,6 +7,7 @@
 
 #include "AppDelegate.h"
 #include "ScreenManager.h"
+#include "Text.h"
 
 using namespace cocos2d;
 
@@ -21,7 +22,7 @@ class Loading : public Screen
 		// Constants
 		// ===========================================================
     
-        static const int TEXTURES_COUNT = 32;
+        static const int TEXTURES_COUNT = 38;
 
 		// ===========================================================
 		// Fields
@@ -30,7 +31,7 @@ class Loading : public Screen
         int mNumberOfSprites;
         int mNumberOfLoadedSprites;
     
-        CCLabelTTF* mLoadingText;
+        Text* mLoadingText;
     
         const char* mTexturesLibrary[TEXTURES_COUNT];
 

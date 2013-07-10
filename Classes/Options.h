@@ -1,6 +1,13 @@
 #ifndef CONST_OPTIONS_H
 #define CONST_OPTIONS_H
 
+typedef struct tagTextes {
+	const char* string;
+	const char* font;
+	int size;
+    int identifier;
+} Textes;
+
 class Options
 {
 	protected:
@@ -79,6 +86,10 @@ class Options
 
 		static bool MUSIC_ENABLE;
 		static bool SOUND_ENABLE;
+    
+        static int CURRENT_LANGUAGE;
+    
+        static Textes TEXTES_HOLDER[32];
 
 		static const int BUTTONS_ACTION_ONTOUCH = 0;
 		static const int BUTTONS_ACTION_ONBEGIN = 1;
@@ -112,6 +123,44 @@ class Options
         static const int BUTTONS_ID_GETCOINS_2 =       1302;
         static const int BUTTONS_ID_GETCOINS_3 =       1303;
         static const int BUTTONS_ID_GETCOINS_4 =       1304;
+        static const int BUTTONS_ID_PROGRESS_BACK =    1401;
+        static const int BUTTONS_ID_PROGRESS_RESET =   1402;
+        static const int BUTTONS_ID_RESET_RESET =      1501;
+        static const int BUTTONS_ID_LANGUAGE_BACK =    1601;
+        static const int BUTTONS_ID_LANGUAGE_L_EN =    1701;
+        static const int BUTTONS_ID_LANGUAGE_L_RU =    1702;
+    
+        static Textes TEXT_SETTINGS_CREDITS;
+        static Textes TEXT_SETTINGS_PROGRESS;
+        static Textes TEXT_SETTINGS_MORE;
+        static Textes TEXT_SETTINGS_LANGUAGE;
+        static Textes TEXT_BUYITEM_BUY;
+        static Textes TEXT_EXIT_YES;
+        static Textes TEXT_EXIT_STRING_1;
+        static Textes TEXT_EXIT_STRING_2;
+        static Textes TEXT_RATE_NOW;
+        static Textes TEXT_RATE_STRING_1;
+        static Textes TEXT_RATE_STRING_2;
+        static Textes TEXT_RATE_STRING_3;
+        static Textes TEXT_RATE_STRING_4;
+        static Textes TEXT_GETCOINS_STRING_1;
+        static Textes TEXT_GETCOINS_STRING_2;
+        static Textes TEXT_GETCOINS_1;
+        static Textes TEXT_GETCOINS_2;
+        static Textes TEXT_GETCOINS_3;
+        static Textes TEXT_GETCOINS_4;
+        static Textes TEXT_LOADING_1;
+        static Textes TEXT_LOADING_2;
+        static Textes TEXT_PROGRESS_STRING_1;
+        static Textes TEXT_PROGRESS_STRING_2;
+        static Textes TEXT_PROGRESS_STRING_3;
+        static Textes TEXT_PROGRESS_RESET;
+        static Textes TEXT_RESET_STRING_1;
+        static Textes TEXT_RESET_STRING_2;
+        static Textes TEXT_RESET_STRING_3;
+        static Textes TEXT_RESET_STRING_4;
+        static Textes TEXT_RESET_RESET;
+        static Textes TEXT_CREDITS_STRING_1;
 
 		// ===========================================================
 		// Fields
@@ -120,10 +169,14 @@ class Options
 		// ===========================================================
 		// Constructors
 		// ===========================================================
+    
+        Options();
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
+    
+        static void changeLanguage();
 		
 		// ===========================================================
 		// Virtual Methods

@@ -5,6 +5,7 @@
 
 #include "Entity.h"
 #include "Touchable.h"
+#include "text.h"
 
 using namespace cocos2d;
 
@@ -25,7 +26,7 @@ class Button : public Entity
 
 		int mID;
 
-		CCLabelTTF* mText;
+		Text* mText;
 
 		void (*mOnTouchCallback)(int, int);
 
@@ -93,7 +94,7 @@ class Button : public Entity
 
 		void onTouch(CCTouch* touch, CCEvent* event);
 
-		void setText(const char* pString, int pSize);
+		void setText(Textes pParams);
 		void setString(const char* pString);
 		
 		// ===========================================================

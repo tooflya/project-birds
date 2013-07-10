@@ -1,13 +1,17 @@
-#ifndef CONST_TEMPLATE_H
-#define CONST_TEMPLATE_H
+#ifndef CONST_LANGUAGE_H
+#define CONST_LANGUAGE_H
 
 #include "cocos2d.h"
 
-#include "Utils.h"
+#include "Screen.h"
+
+#include "ResetProgress.h"
+
+#include "AppDelegate.h"
 
 using namespace cocos2d;
 
-class Text : public CCLabelTTF
+class Language : public Screen
 {
 	protected:
 		// ===========================================================
@@ -16,11 +20,20 @@ class Text : public CCLabelTTF
 
 		// ===========================================================
 		// Constants
-		// ===========================================================
-
-		// ===========================================================
-		// Fields
-		// ===========================================================
+        // ===========================================================
+    
+        static Language* m_Instance;
+    
+        // ===========================================================
+        // Fields
+        // ===========================================================
+    
+        Entity* mBackground;
+        Entity* mBackButton;
+    
+        Entity* mLanguages[2];
+    
+        Entity* mLanguageIndicator;
 
 		// ===========================================================
 		// Constructors
@@ -46,8 +59,6 @@ class Text : public CCLabelTTF
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        int mId;
 
 		// ===========================================================
 		// Constructors
@@ -55,7 +66,9 @@ class Text : public CCLabelTTF
 
 		// ===========================================================
 		// Methods
-		// ===========================================================
+        // ===========================================================
+    
+        static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods
@@ -69,36 +82,27 @@ class Text : public CCLabelTTF
 		// ===========================================================
 		// Constants
 		// ===========================================================
-    
-        static int ID;
-    
-        static Text* TEXTES[32];
 
 		// ===========================================================
 		// Fields
-        // ===========================================================
-    
-        float mInitCenterX;
-        float mInitCenterY;
+		// ===========================================================
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
     
-        Text(const char* pString, float pSize, CCNode* pParent);
-        Text(Textes pParams, CCNode* pParent);
+        Language();
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-    
-    void setCenterPosition(float pCenterX, float pCenterY);
-    
-        void changeLanguage();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif

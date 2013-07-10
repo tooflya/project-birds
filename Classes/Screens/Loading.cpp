@@ -56,11 +56,15 @@ Loading::Loading()
     this->mTexturesLibrary[29] = "choose_box_locked@2x.png";
     this->mTexturesLibrary[30] = "end_lvl_star_sprite@2x.png";
     this->mTexturesLibrary[31] = "konfeti_sprite@2x.png";
+    this->mTexturesLibrary[32] = "flag_sprite_small@2x.png";
+    this->mTexturesLibrary[33] = "flag_sprite_big@2x.png";
+    this->mTexturesLibrary[34] = "settings_lang_check@2x.png";
+    this->mTexturesLibrary[35] = "about_scroll_border@2x.png";
+    this->mTexturesLibrary[36] = "about_scroll_fill@2x.png";
+    this->mTexturesLibrary[37] = "popup_quit_picture@2x.png";
     
-    this->mLoadingText = CCLabelTTF::create("Loading... 0%", "Apple Casual", Utils::coord(32));
-    this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(140), Utils::coord(50)));
-    
-    this->addChild(this->mLoadingText);
+    this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
+    this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50)));
     
     for(int i = 0; i < TEXTURES_COUNT; i++)
     {
@@ -78,7 +82,7 @@ void Loading::loadingCallBack(CCObject *obj)
 	
 	int percent = (int) (((float) mNumberOfLoadedSprites / mNumberOfSprites) * 100);
 	
-	this->mLoadingText->setString(("Loading... " + Utils::intToString(percent) + "%").c_str());
+	this->mLoadingText->setString((Options::TEXT_LOADING_2.string + Utils::intToString(percent) + "%").c_str());
     
 	if(mNumberOfLoadedSprites == mNumberOfSprites)
 	{

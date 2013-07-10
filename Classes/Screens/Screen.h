@@ -82,6 +82,8 @@ class Screen : public CCScene, public Touchable
         static const int SCREEN_CREDITS = 5;
         static const int SCREEN_LOADER = 6;
         static const int SCREEN_LEVEL = 7;
+        static const int SCREEN_PROGRESS = 8;
+        static const int SCREEN_LANGUAGE = 9;
 
 		// ===========================================================
 		// Fields

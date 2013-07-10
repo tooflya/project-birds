@@ -12,6 +12,8 @@
 #include "Levels.h"
 #include "Credits.h"
 #include "Loader.h"
+#include "Progress.h"
+#include "Language.h"
 #include "Level.h"
 
 using namespace cocos2d;
@@ -81,7 +83,7 @@ class ScreenManager
 		// Fields
 		// ===========================================================
 
-		Screen* mScreens[8];
+		Screen* mScreens[10];
 
 		int mCurrentScreenIndex;
 

@@ -1,13 +1,16 @@
-#ifndef CONST_TEMPLATE_H
-#define CONST_TEMPLATE_H
+#ifndef CONST_RESETPROGRESS_H
+#define CONST_RESETPROGRESS_H
 
 #include "cocos2d.h"
 
-#include "Utils.h"
+#include "Popup.h"
+#include "Text.h"
+
+#include "AppDelegate.h"
 
 using namespace cocos2d;
 
-class Text : public CCLabelTTF
+class ResetProgress : public Popup
 {
 	protected:
 		// ===========================================================
@@ -16,11 +19,17 @@ class Text : public CCLabelTTF
 
 		// ===========================================================
 		// Constants
-		// ===========================================================
+        // ===========================================================
+    
+        static ResetProgress* m_Instance;
 
 		// ===========================================================
 		// Fields
 		// ===========================================================
+    
+        Button* mResetButton;
+    
+        bool mAction;
 
 		// ===========================================================
 		// Constructors
@@ -46,8 +55,6 @@ class Text : public CCLabelTTF
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        int mId;
 
 		// ===========================================================
 		// Constructors
@@ -55,7 +62,9 @@ class Text : public CCLabelTTF
 
 		// ===========================================================
 		// Methods
-		// ===========================================================
+        // ===========================================================
+    
+        static void onTouchButtonsCallback(const int pAction, const int pID);
 		
 		// ===========================================================
 		// Virtual Methods
@@ -69,32 +78,23 @@ class Text : public CCLabelTTF
 		// ===========================================================
 		// Constants
 		// ===========================================================
-    
-        static int ID;
-    
-        static Text* TEXTES[32];
 
 		// ===========================================================
 		// Fields
-        // ===========================================================
-    
-        float mInitCenterX;
-        float mInitCenterY;
+		// ===========================================================
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
     
-        Text(const char* pString, float pSize, CCNode* pParent);
-        Text(Textes pParams, CCNode* pParent);
+        ResetProgress(Screen* pScreen);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
     
-    void setCenterPosition(float pCenterX, float pCenterY);
-    
-        void changeLanguage();
+        void onShow();
+        void onHide();
 		
 		// ===========================================================
 		// Virtual Methods

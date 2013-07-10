@@ -51,12 +51,10 @@ void Button::onTouch(CCTouch* touch, CCEvent* event)
     }
 }
 
-void Button::setText(const char* pString, int pSize)
+void Button::setText(Textes pParams)
 {
-	this->mText = CCLabelTTF::create(pString, "Apple casual", pSize);
+	this->mText = new Text(pParams, this);
 	this->mText->setPosition(ccp(this->getWidth() / 2, this->getHeight() / 2));
-	this->mText->enableShadow(CCSize(Utils::coord(5), -Utils::coord(5)), 255.0, 0.0, true);
-	this->addChild(this->mText);
 }
 
 void Button::setString(const char* pString)

@@ -33,7 +33,7 @@ BuyItem::BuyItem(Screen* pScreen) :
         this->mCloseButton->setCurrentFrameIndex(3);
         
         this->mBuyButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
-        this->mBuyButton->setText("buy", 64);
+        this->mBuyButton->setText(Options::TEXT_BUYITEM_BUY);
         
         this->mShouldOpenGetCoins = false;
         

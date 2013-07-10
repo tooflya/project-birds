@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 
 #include "Screen.h"
+#include "BatchEntityManager.h"
 
 #include "AppDelegate.h"
 
@@ -28,6 +29,8 @@ class Credits : public Screen
     
         Entity* mBackground;
         Entity* mBackButton;
+    
+        BatchEntityManager* mListBorders;
 
 		// ===========================================================
 		// Constructors

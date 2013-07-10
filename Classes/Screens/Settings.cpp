@@ -26,7 +26,7 @@ Settings::Settings()
     this->mBackground = new Entity("settings_bg@2x.png", this);
     this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
     this->mCreditsButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_CREDITS, onTouchButtonsCallback);
-    this->mRateButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
+    this->mProgressButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
     this->mMoreButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_MORE, onTouchButtonsCallback);
     this->mLanguageButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_LANGUAGE, onTouchButtonsCallback);
     this->mSoundButton = new Button("btn_mfx_sprite@2x.png", 2, 2, this, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
@@ -45,19 +45,23 @@ Settings::Settings()
     
     this->mCreditsButton->create()->setCurrentFrameIndex(1);
     this->mCreditsButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
-    this->mCreditsButton->setText("credits", 64);
+    this->mCreditsButton->setText(Options::TEXT_SETTINGS_CREDITS);
        
-    this->mRateButton->create()->setCurrentFrameIndex(1);
-    this->mRateButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
-    this->mRateButton->setText("rate", 64);
+    this->mProgressButton->create()->setCurrentFrameIndex(1);
+    this->mProgressButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
+    this->mProgressButton->setText(Options::TEXT_SETTINGS_PROGRESS);
     
     this->mMoreButton->create()->setCurrentFrameIndex(1);
     this->mMoreButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100));
-    this->mMoreButton->setText("more", 64);
+    this->mMoreButton->setText(Options::TEXT_SETTINGS_MORE);
     
     this->mLanguageButton->create()->setCurrentFrameIndex(1);
     this->mLanguageButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
-    this->mLanguageButton->setText("language", 64);
+    this->mLanguageButton->setText(Options::TEXT_SETTINGS_LANGUAGE);
+    
+    this->mLanguage = new Entity("flag_sprite_small@2x.png", 1, 2, this->mLanguageButton);
+    this->mLanguage->setCurrentFrameIndex(Options::CURRENT_LANGUAGE);
+    this->mLanguage->create()->setCenterPosition(this->mLanguageButton->getWidth(), this->mLanguageButton->getHeight() / 2);
 
     m_Instance = this;
 }
@@ -82,7 +86,7 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SETTINGS_RATE:
 
-                    // TODO: Open rate splash screen.
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_PROGRESS);
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_MUSIC:
@@ -125,7 +129,7 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SETTINGS_LANGUAGE:
                     
-                    //
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_LANGUAGE);
                     
                 break;
             }
@@ -142,5 +146,17 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
 // ===========================================================
 // Virtual Methods
 // ===========================================================
+
+void Settings::onEnter()
+{
+    Screen::onEnter();
+    
+    this->mLanguage->setCurrentFrameIndex(Options::CURRENT_LANGUAGE);
+}
+
+void Settings::onExit()
+{
+    Screen::onExit();
+}
 
 #endif

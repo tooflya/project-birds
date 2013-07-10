@@ -57,6 +57,8 @@ void ScreenManager::generate()
     this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
     this->mScreens[Screen::SCREEN_CREDITS] = new Credits();
     this->mScreens[Screen::SCREEN_LOADER] = new Loader();
+    this->mScreens[Screen::SCREEN_PROGRESS] = new Progress();
+    this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
     this->mScreens[Screen::SCREEN_LEVEL] = new Level();
 }
 

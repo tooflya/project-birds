@@ -29,11 +29,13 @@ class Settings : public Screen
         Entity* mBackground;
         Button* mBackButton;
         Button* mCreditsButton;
-        Button* mRateButton;
+        Button* mProgressButton;
         Button* mMoreButton;
         Button* mLanguageButton;
         Button* mSoundButton;
         Button* mMusicButton;
+    
+        Entity* mLanguage;
     
 		// ===========================================================
 		// Constructors
@@ -100,6 +102,9 @@ class Settings : public Screen
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif
