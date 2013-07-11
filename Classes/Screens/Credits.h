@@ -5,6 +5,7 @@
 
 #include "Screen.h"
 #include "BatchEntityManager.h"
+#include "CreditsList.h"
 
 #include "AppDelegate.h"
 
@@ -31,6 +32,8 @@ class Credits : public Screen
         Entity* mBackButton;
     
         BatchEntityManager* mListBorders;
+    
+        CreditsList* mList;
 
 		// ===========================================================
 		// Constructors
@@ -97,6 +100,9 @@ class Credits : public Screen
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif

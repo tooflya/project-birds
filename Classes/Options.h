@@ -89,7 +89,7 @@ class Options
     
         static int CURRENT_LANGUAGE;
     
-        static Textes TEXTES_HOLDER[32];
+        static Textes TEXTES_HOLDER[64];
 
 		static const int BUTTONS_ACTION_ONTOUCH = 0;
 		static const int BUTTONS_ACTION_ONBEGIN = 1;
@@ -161,6 +161,19 @@ class Options
         static Textes TEXT_RESET_STRING_4;
         static Textes TEXT_RESET_RESET;
         static Textes TEXT_CREDITS_STRING_1;
+        static Textes TEXT_CREDITS_STRING_2;
+        static Textes TEXT_CREDITS_STRING_3;
+        static Textes TEXT_CREDITS_STRING_4;
+        static Textes TEXT_CREDITS_STRING_5;
+        static Textes TEXT_CREDITS_STRING_6;
+        static Textes TEXT_CREDITS_STRING_7;
+        static Textes TEXT_CREDITS_STRING_8;
+        static Textes TEXT_CREDITS_STRING_9;
+        static Textes TEXT_CREDITS_STRING_10;
+        static Textes TEXT_CREDITS_STRING_11;
+        static Textes TEXT_CREDITS_STRING_12;
+        static Textes TEXT_CREDITS_STRING_13;
+        static Textes TEXT_SHOP_DESCRIPTION[3];
 
 		// ===========================================================
 		// Fields

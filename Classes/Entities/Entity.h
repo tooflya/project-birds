@@ -135,8 +135,6 @@ class Entity : public CCSprite, public Touchable
 		// ===========================================================
 		// Fields
         // ===========================================================
-    
-        bool mModalTouch;
 
 		// ===========================================================
 		// Constructors
@@ -195,6 +193,8 @@ class Entity : public CCSprite, public Touchable
 		void nextFrameIndex();
 
 		void changeTexture(Texture* pTexture);
+    
+        void setRepeatTexture(bool pRepeat);
 
 		void animate(float pAnimationTime);
 		void animate(float pAnimationTime, int pRepeatCount);

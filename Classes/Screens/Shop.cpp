@@ -74,7 +74,7 @@ class TouchLayer : public CCLayer
         {
             float distance = (this->mStartCoordinateX - touch->getLocation().x) / 10.0;
             
-            if(abs(distance) < Utils::coord(10.0)) return;
+            //if(abs(distance) < Utils::coord(10.0)) return;
                 
             int t = distance > 0 ? 1 : -1;
 
@@ -209,8 +209,6 @@ Shop::Shop()
     float x = Options::CAMERA_CENTER_X;
     float y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(330);
     
-    const char* textes[3] = { "weapons", "characters", "bonuses" };
-    
     for(int i = 0; i < 3; i++)
     {
         this->mLayers[i] = new TouchLayer(i, ITEMS_COUNT[i]);
@@ -228,9 +226,8 @@ Shop::Shop()
             
             if(j == 0)
             {
-                CCLabelTTF* text = CCLabelTTF::create(textes[i], "Apple Casual", Utils::coord(36));
-                text->setPosition(ccp(Utils::coord(160), shelf->getHeight() / 2));
-                shelf->addChild(text);
+                Text* text = new Text(Options::TEXT_SHOP_DESCRIPTION[i], shelf);
+                text->setCenterPosition(Utils::coord(160), shelf->getHeight() / 2 + Utils::coord(5));
                 
                 shelf->setCurrentFrameIndex(0);
             }
@@ -246,7 +243,7 @@ Shop::Shop()
             
             item->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
             item->setCurrentFrameIndex(10 * i + j);
-            item->mModalTouch = true;
+            item->setRegisterAsTouchable(false);
         }
         
         y -= Utils::coord(300);

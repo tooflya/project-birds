@@ -20,7 +20,7 @@
 // ===========================================================
 
 Confetti::Confetti() :
-    Entity("konfeti_sprite@2x.png", 2, 10)
+    Entity("confety_sprite@2x.png", 6, 3)
     {
         
     }
@@ -36,6 +36,8 @@ void Confetti::onCreate()
     this->setOpacity(255.0);
     this->setRotation(0.0);
     
+    this->animate(0.05);
+    
     this->mSpeedX = Utils::coord(Utils::randomf(-300.0, 300.0));
     this->mSpeedY = Utils::coord(Utils::randomf(10.0, 50.0));
     
@@ -43,6 +45,8 @@ void Confetti::onCreate()
     
     this->mRotationSpeed = Utils::coord(Utils::randomf(-10.0, 10.0));
     this->mAlphaSpeed = Utils::coord(Utils::randomf(0.1, 1.0));
+    
+    this->setColor(ccc3(Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0)));
 }
 
 // ===========================================================

@@ -33,8 +33,10 @@ bool Options::SOUND_ENABLE = true;
 
 int Options::CURRENT_LANGUAGE = 0;
 
-Textes Options::TEXTES_HOLDER[32] =
+Textes Options::TEXTES_HOLDER[64] =
 {
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 };
@@ -70,6 +72,19 @@ Textes Options::TEXT_RESET_STRING_3 = { "", "", 0, 27 };
 Textes Options::TEXT_RESET_STRING_4 = { "", "", 0, 28 };
 Textes Options::TEXT_RESET_RESET = { "", "", 0, 29 };
 Textes Options::TEXT_CREDITS_STRING_1 = { "", "", 0, 30 };
+Textes Options::TEXT_CREDITS_STRING_2 = { "", "", 0, 31 };
+Textes Options::TEXT_CREDITS_STRING_3 = { "", "", 0, 32 };
+Textes Options::TEXT_CREDITS_STRING_4 = { "", "", 0, 33 };
+Textes Options::TEXT_CREDITS_STRING_5 = { "", "", 0, 34 };
+Textes Options::TEXT_CREDITS_STRING_6 = { "", "", 0, 35 };
+Textes Options::TEXT_CREDITS_STRING_7 = { "", "", 0, 36 };
+Textes Options::TEXT_CREDITS_STRING_8 = { "", "", 0, 37 };
+Textes Options::TEXT_CREDITS_STRING_9 = { "", "", 0, 38 };
+Textes Options::TEXT_CREDITS_STRING_10 = { "", "", 0, 39 };
+Textes Options::TEXT_CREDITS_STRING_11 = { "", "", 0, 40 };
+Textes Options::TEXT_CREDITS_STRING_12 = { "", "", 0, 41 };
+Textes Options::TEXT_CREDITS_STRING_13 = { "", "", 0, 42 };
+Textes Options::TEXT_SHOP_DESCRIPTION[3] = { { "", "", 0, 43 }, { "", "", 0, 44 }, { "", "", 0, 45 } };
 
 // ===========================================================
 // Fields
@@ -215,9 +230,69 @@ void Options::changeLanguage()
             TEXT_RESET_RESET.font =  "Comic Sans MS";
             TEXT_RESET_RESET.size =  40;
             
-            TEXT_CREDITS_STRING_1.string =  "";
+            TEXT_CREDITS_STRING_1.string =  "About";
             TEXT_CREDITS_STRING_1.font =  "Comic Sans MS";
-            TEXT_CREDITS_STRING_1.size =  64;
+            TEXT_CREDITS_STRING_1.size =  48;
+            
+            TEXT_CREDITS_STRING_2.string =  "Version: 0.0.1";
+            TEXT_CREDITS_STRING_2.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_2.size =  36;
+            
+            TEXT_CREDITS_STRING_3.string =  "Build: 613";
+            TEXT_CREDITS_STRING_3.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_3.size =  36;
+            
+            TEXT_CREDITS_STRING_4.string =  "Created by:";
+            TEXT_CREDITS_STRING_4.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_4.size =  42;
+            
+            TEXT_CREDITS_STRING_5.string =  "Programming";
+            TEXT_CREDITS_STRING_5.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_5.size =  36;
+            
+            TEXT_CREDITS_STRING_6.string =  "Igor Mats";
+            TEXT_CREDITS_STRING_6.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_6.size =  32;
+            
+            TEXT_CREDITS_STRING_7.string =  "Designers";
+            TEXT_CREDITS_STRING_7.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_7.size =  36;
+            
+            TEXT_CREDITS_STRING_8.string =  "Dmitry Shane";
+            TEXT_CREDITS_STRING_8.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_8.size =  32;
+            
+            TEXT_CREDITS_STRING_9.string =  "Articsts";
+            TEXT_CREDITS_STRING_9.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_9.size =  36;
+            
+            TEXT_CREDITS_STRING_10.string =  "Maksim Petrov";
+            TEXT_CREDITS_STRING_10.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_10.size =  32;
+            
+            TEXT_CREDITS_STRING_11.string =  "Vyacheslav Shevchenko";
+            TEXT_CREDITS_STRING_11.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_11.size =  32;
+            
+            TEXT_CREDITS_STRING_12.string =  "PR & Marketing";
+            TEXT_CREDITS_STRING_12.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_12.size =  36;
+            
+            TEXT_CREDITS_STRING_13.string =  "Aleksandr Lysenko";
+            TEXT_CREDITS_STRING_13.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_13.size =  32;
+            
+            TEXT_SHOP_DESCRIPTION[0].string =  "weapons";
+            TEXT_SHOP_DESCRIPTION[0].font =  "Comic Sans MS";
+            TEXT_SHOP_DESCRIPTION[0].size =  36;
+            
+            TEXT_SHOP_DESCRIPTION[1].string =  "characters";
+            TEXT_SHOP_DESCRIPTION[1].font =  "Comic Sans MS";
+            TEXT_SHOP_DESCRIPTION[1].size =  36;
+            
+            TEXT_SHOP_DESCRIPTION[2].string =  "bonuses";
+            TEXT_SHOP_DESCRIPTION[2].font =  "Comic Sans MS";
+            TEXT_SHOP_DESCRIPTION[2].size =  36;
         break;
         case 1:
             TEXT_LOADING_1.string =  "Загрузка... 0%";
@@ -340,9 +415,69 @@ void Options::changeLanguage()
             TEXT_RESET_RESET.font =  "Comic Sans MS";
             TEXT_RESET_RESET.size =  40;
             
-            TEXT_CREDITS_STRING_1.string =  "О игре\nBubble Fun\nВерсия: 0.0.1\nСборка: 1190";
+            TEXT_CREDITS_STRING_1.string =  "Об игре";
             TEXT_CREDITS_STRING_1.font =  "Comic Sans MS";
             TEXT_CREDITS_STRING_1.size =  48;
+            
+            TEXT_CREDITS_STRING_2.string =  "Версия: 0.0.1";
+            TEXT_CREDITS_STRING_2.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_2.size =  36;
+            
+            TEXT_CREDITS_STRING_3.string =  "Сборка: 613";
+            TEXT_CREDITS_STRING_3.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_3.size =  36;
+            
+            TEXT_CREDITS_STRING_4.string =  "Над игрой работали:";
+            TEXT_CREDITS_STRING_4.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_4.size =  42;
+            
+            TEXT_CREDITS_STRING_5.string =  "Программисты";
+            TEXT_CREDITS_STRING_5.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_5.size =  36;
+            
+            TEXT_CREDITS_STRING_6.string =  "Игорь Мац";
+            TEXT_CREDITS_STRING_6.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_6.size =  32;
+            
+            TEXT_CREDITS_STRING_7.string =  "Дизайнеры";
+            TEXT_CREDITS_STRING_7.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_7.size =  36;
+            
+            TEXT_CREDITS_STRING_8.string =  "Дмитрий Шейн";
+            TEXT_CREDITS_STRING_8.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_8.size =  32;
+            
+            TEXT_CREDITS_STRING_9.string =  "Художники";
+            TEXT_CREDITS_STRING_9.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_9.size =  36;
+            
+            TEXT_CREDITS_STRING_10.string =  "Максим Петров";
+            TEXT_CREDITS_STRING_10.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_10.size =  32;
+            
+            TEXT_CREDITS_STRING_11.string =  "Вячеслав Шевченко";
+            TEXT_CREDITS_STRING_11.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_11.size =  32;
+            
+            TEXT_CREDITS_STRING_12.string =  "Маркетологи";
+            TEXT_CREDITS_STRING_12.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_12.size =  36;
+            
+            TEXT_CREDITS_STRING_13.string =  "Александр Лысенко";
+            TEXT_CREDITS_STRING_13.font =  "Comic Sans MS";
+            TEXT_CREDITS_STRING_13.size =  32;
+            
+            TEXT_SHOP_DESCRIPTION[0].string =  "оружие";
+            TEXT_SHOP_DESCRIPTION[0].font =  "Comic Sans MS";
+            TEXT_SHOP_DESCRIPTION[0].size =  36;
+            
+            TEXT_SHOP_DESCRIPTION[1].string =  "птицы";
+            TEXT_SHOP_DESCRIPTION[1].font =  "Comic Sans MS";
+            TEXT_SHOP_DESCRIPTION[1].size =  36;
+            
+            TEXT_SHOP_DESCRIPTION[2].string =  "бонусы";
+            TEXT_SHOP_DESCRIPTION[2].font =  "Comic Sans MS";
+            TEXT_SHOP_DESCRIPTION[2].size =  36;
         break;
     }
     
@@ -377,8 +512,23 @@ void Options::changeLanguage()
     TEXTES_HOLDER[28] = TEXT_RESET_STRING_4;
     TEXTES_HOLDER[29] = TEXT_RESET_RESET;
     TEXTES_HOLDER[30] = TEXT_CREDITS_STRING_1;
+    TEXTES_HOLDER[31] = TEXT_CREDITS_STRING_2;
+    TEXTES_HOLDER[32] = TEXT_CREDITS_STRING_3;
+    TEXTES_HOLDER[33] = TEXT_CREDITS_STRING_4;
+    TEXTES_HOLDER[34] = TEXT_CREDITS_STRING_5;
+    TEXTES_HOLDER[35] = TEXT_CREDITS_STRING_6;
+    TEXTES_HOLDER[36] = TEXT_CREDITS_STRING_7;
+    TEXTES_HOLDER[37] = TEXT_CREDITS_STRING_8;
+    TEXTES_HOLDER[38] = TEXT_CREDITS_STRING_9;
+    TEXTES_HOLDER[39] = TEXT_CREDITS_STRING_10;
+    TEXTES_HOLDER[40] = TEXT_CREDITS_STRING_11;
+    TEXTES_HOLDER[41] = TEXT_CREDITS_STRING_12;
+    TEXTES_HOLDER[42] = TEXT_CREDITS_STRING_13;
+    TEXTES_HOLDER[43] = TEXT_SHOP_DESCRIPTION[0];
+    TEXTES_HOLDER[44] = TEXT_SHOP_DESCRIPTION[1];
+    TEXTES_HOLDER[45] = TEXT_SHOP_DESCRIPTION[2];
     
-    for(int i = 0; i < 32; i++)
+    for(int i = 0; i < 64; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

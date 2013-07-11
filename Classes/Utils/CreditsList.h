@@ -1,15 +1,14 @@
-#ifndef CONST_POPUP_H
-#define CONST_POPUP_H
+#ifndef CONST_CREDITSLIST_H
+#define CONST_CREDITSLIST_H
 
 #include "cocos2d.h"
 
-#include "Screen.h"
 #include "Entity.h"
-#include "Button.h"
+#include "Text.h"
 
 using namespace cocos2d;
 
-class Popup : public CCLayer
+class CreditsList : public CCLayer
 {
 	protected:
 		// ===========================================================
@@ -18,31 +17,29 @@ class Popup : public CCLayer
 
 		// ===========================================================
 		// Constants
-        // ===========================================================
+		// ===========================================================
 
 		// ===========================================================
 		// Fields
 		// ===========================================================
     
-        Screen* mScreen;
+        float mMaxWidth;
     
-        Entity* mBackground;
-        Entity* mDarkness;
-        Entity* mIllustration;
+        Text* mText[16];
     
-        Button* mCloseButton;
+        Entity* mListSroll;
     
-        int mShowAnimationCount;
-        int mHideAnimationCount;
+        bool mPostUpdate;
     
-        float mShowAnimationTime;
-        float mShowAnimationTimeElapsed;
-        
-        float mHideAnimationTime;
-        float mHideAnimationTimeElapsed;
+    //
     
-        bool mShowAnimationRunning;
-        bool mHideAnimationRunning;
+    
+    float mStartCoordinateY;
+    float mStartPositionCoordinateY;
+    
+    float mStartTime; // ?
+    
+    float mPostUpdatePower;
 
 		// ===========================================================
 		// Constructors
@@ -50,7 +47,7 @@ class Popup : public CCLayer
 
 		// ===========================================================
 		// Methods
-        // ===========================================================
+		// ===========================================================
 
 		// ===========================================================
 		// Virtual Methods
@@ -92,36 +89,34 @@ class Popup : public CCLayer
 
 		// ===========================================================
 		// Fields
-        // ===========================================================
-    
-        bool mShowed;
+		// ===========================================================
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
     
-        Popup(Screen* pScreen);
+        CreditsList(CCNode* pParent);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
-    
-        void show();
-        void hide();
-    
-        virtual void onShow();
-        virtual void onHide();
-    
-        void onEnter();
-        void onExit();
-    
-        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
     
+        void onEnter();
+        void onExit();
+    
+        void visit();
+    
         void update(float pDeltaTime);
+    
+        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+        void ccTouchMoved(CCTouch* touch, CCEvent* event);
+        void ccTouchEnded(CCTouch* touch, CCEvent* event);
+    
+        bool containsTouchLocation(CCTouch* touch);
 };
 
 #endif

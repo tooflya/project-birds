@@ -55,13 +55,16 @@ Loading::Loading()
     this->mTexturesLibrary[28] = "get_coins_light@2x.png";
     this->mTexturesLibrary[29] = "choose_box_locked@2x.png";
     this->mTexturesLibrary[30] = "end_lvl_star_sprite@2x.png";
-    this->mTexturesLibrary[31] = "konfeti_sprite@2x.png";
+    this->mTexturesLibrary[31] = "confety_sprite@2x.png";
     this->mTexturesLibrary[32] = "flag_sprite_small@2x.png";
     this->mTexturesLibrary[33] = "flag_sprite_big@2x.png";
     this->mTexturesLibrary[34] = "settings_lang_check@2x.png";
     this->mTexturesLibrary[35] = "about_scroll_border@2x.png";
     this->mTexturesLibrary[36] = "about_scroll_fill@2x.png";
     this->mTexturesLibrary[37] = "popup_quit_picture@2x.png";
+    this->mTexturesLibrary[38] = "popup_quit_picture_light_main@2x.png";
+    this->mTexturesLibrary[39] = "popup_quit_picture_light_2@2x.png";
+    this->mTexturesLibrary[40] = "popup_rate_picture@2x.png";
     
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50)));

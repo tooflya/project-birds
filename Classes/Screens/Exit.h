@@ -5,6 +5,7 @@
 
 #include "Popup.h"
 #include "Text.h"
+#include "BatchEntityManager.h"
 
 using namespace cocos2d;
 
@@ -25,7 +26,13 @@ class Exit : public Popup
 		// Fields
 		// ===========================================================
     
+        bool mLightsAnimationReverse[3];
+    
         Button* mYesButton;
+    
+        Entity* mLight;
+    
+        BatchEntityManager* mLights;
 
 		// ===========================================================
 		// Constructors
@@ -92,6 +99,14 @@ class Exit : public Popup
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+    
+        void update(float pDeltaTime);
+    
+        void hide();
+        void show();
+    
+        void onShow();
+        void onHide();
 };
 
 #endif

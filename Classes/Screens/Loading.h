@@ -22,7 +22,7 @@ class Loading : public Screen
 		// Constants
 		// ===========================================================
     
-        static const int TEXTURES_COUNT = 38;
+        static const int TEXTURES_COUNT = 41;
 
 		// ===========================================================
 		// Fields

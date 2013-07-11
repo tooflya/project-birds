@@ -144,4 +144,25 @@ void Popup::update(float pDeltaTime)
     }
 }
 
+void Popup::onEnter()
+{
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+    
+    CCLayer::onEnter();
+}
+
+void Popup::onExit()
+{
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->removeDelegate(this);
+    
+    CCLayer::onExit();
+}
+
+bool Popup::ccTouchBegan(CCTouch* touch, CCEvent* event)
+{
+    return this->mShowed;
+}
+
 #endif

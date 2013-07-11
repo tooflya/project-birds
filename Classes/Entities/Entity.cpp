@@ -98,8 +98,6 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 
 	this->mIsAnimationReverse = false;
 	this->mIsAnimationReverseNeed = false;
-    
-    this->mModalTouch = false;
 
 	this->scheduleUpdate();
 
@@ -387,6 +385,13 @@ const char* Entity::getTextureFileName()
 	return this->mTextureFileName;
 }
 
+void Entity::setRepeatTexture(bool pRepeat)
+{
+    ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
+    
+    this->getTexture()->setTexParameters(&params);
+}
+
 void Entity::animate(float pAnimationTime)
 {
 	this->mAnimationFramesElapsed = 0;
@@ -485,17 +490,11 @@ bool Entity::isAnimationRunning()
 
 void Entity::onEnter()
 {
-	//CCDirector* pDirector = CCDirector::sharedDirector();
-	//pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-
 	CCSprite::onEnter();
 }
 
 void Entity::onExit()
 {
-	CCDirector* pDirector = CCDirector::sharedDirector();
-	pDirector->getTouchDispatcher()->removeDelegate(this);
-
 	CCSprite::onExit();
 }
 
@@ -515,12 +514,9 @@ bool Entity::ccTouchBegan(CCTouch* touch, CCEvent* event)
 	{
 		this->mWasTouched = true;
 
-        if(!this->mModalTouch)
-        {
-            this->runAction(CCScaleTo::create(this->mAnimationScaleDownTime, this->mAnimationScaleDownFactor));
-        }
+        this->runAction(CCScaleTo::create(this->mAnimationScaleDownTime, this->mAnimationScaleDownFactor));
 
-		return true;//!this->mModalTouch;
+		return true;
 	}
 
 	return false;
