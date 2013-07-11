@@ -243,7 +243,7 @@ Shop::Shop()
             
             item->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
             item->setCurrentFrameIndex(10 * i + j);
-            item->setRegisterAsTouchable(false);
+            //item->setRegisterAsTouchable(false);
         }
         
         y -= Utils::coord(300);

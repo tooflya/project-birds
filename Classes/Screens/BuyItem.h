@@ -7,6 +7,8 @@
 
 #include "Shop.h"
 
+#include "BuyItemList.h"
+
 using namespace cocos2d;
 
 class BuyItem : public Popup
@@ -29,6 +31,10 @@ class BuyItem : public Popup
         Button* mBuyButton;
     
         bool mShouldOpenGetCoins;
+    
+        BatchEntityManager* mListBorders;
+    
+        BuyItemList* mList;
 
 		// ===========================================================
 		// Constructors

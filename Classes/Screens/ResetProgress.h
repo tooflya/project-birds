@@ -5,6 +5,7 @@
 
 #include "Popup.h"
 #include "Text.h"
+#include "BatchEntityManager.h"
 
 #include "AppDelegate.h"
 
@@ -30,6 +31,8 @@ class ResetProgress : public Popup
         Button* mResetButton;
     
         bool mAction;
+    
+        BatchEntityManager* mLights;
 
 		// ===========================================================
 		// Constructors
@@ -93,12 +96,16 @@ class ResetProgress : public Popup
 		// Methods
 		// ===========================================================
     
+        void hide();
+    
         void onShow();
         void onHide();
 		
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
+    
+        void update(float pDeltaTime);
 };
 
 #endif

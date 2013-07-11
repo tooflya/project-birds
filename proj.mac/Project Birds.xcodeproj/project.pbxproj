@@ -46,6 +46,10 @@
 		78A02853178EC84000DF2976 /* confety_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A02852178EC84000DF2976 /* confety_sprite@2x.png */; };
 		78A02855178ECB4100DF2976 /* popup_rate_picture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A02854178ECB4100DF2976 /* popup_rate_picture@2x.png */; };
 		78A0285C178ED97900DF2976 /* CreditsList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A0285B178ED97900DF2976 /* CreditsList.cpp */; };
+		78A02861178EEB1100DF2976 /* about_scroll_border_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A02860178EEB1100DF2976 /* about_scroll_border_small@2x.png */; };
+		78A02864178EEB3300DF2976 /* BuyItemList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A02863178EEB3300DF2976 /* BuyItemList.cpp */; };
+		78A02866178EED9500DF2976 /* about_scroll_fill_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A02865178EED9500DF2976 /* about_scroll_fill_small@2x.png */; };
+		78A0286F178EF8DD00DF2976 /* popup_progress_picture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A0286E178EF8DC00DF2976 /* popup_progress_picture@2x.png */; };
 		78AEFB601787609800CD5109 /* Project Birds_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AEFB5F1787609800CD5109 /* Project Birds_Info.plist */; };
 		78AEFB6C1787652900CD5109 /* main_menu_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AEFB631787652900CD5109 /* main_menu_bg@2x.png */; };
 		78AEFB6D1787652900CD5109 /* main_menu_bg_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AEFB641787652900CD5109 /* main_menu_bg_back@2x.png */; };
@@ -192,6 +196,11 @@
 		78A02854178ECB4100DF2976 /* popup_rate_picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_rate_picture@2x.png"; sourceTree = "<group>"; };
 		78A0285A178ED97900DF2976 /* CreditsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsList.h; sourceTree = "<group>"; };
 		78A0285B178ED97900DF2976 /* CreditsList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreditsList.cpp; sourceTree = "<group>"; };
+		78A02860178EEB1100DF2976 /* about_scroll_border_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_border_small@2x.png"; sourceTree = "<group>"; };
+		78A02862178EEB3300DF2976 /* BuyItemList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyItemList.h; sourceTree = "<group>"; };
+		78A02863178EEB3300DF2976 /* BuyItemList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuyItemList.cpp; sourceTree = "<group>"; };
+		78A02865178EED9500DF2976 /* about_scroll_fill_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill_small@2x.png"; sourceTree = "<group>"; };
+		78A0286E178EF8DC00DF2976 /* popup_progress_picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_progress_picture@2x.png"; sourceTree = "<group>"; };
 		78AEFB5F1787609800CD5109 /* Project Birds_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Project Birds_Info.plist"; sourceTree = "<group>"; };
 		78AEFB631787652900CD5109 /* main_menu_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg@2x.png"; sourceTree = "<group>"; };
 		78AEFB641787652900CD5109 /* main_menu_bg_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg_back@2x.png"; sourceTree = "<group>"; };
@@ -402,6 +411,9 @@
 		78AEFB621787652900CD5109 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				78A0286E178EF8DC00DF2976 /* popup_progress_picture@2x.png */,
+				78A02865178EED9500DF2976 /* about_scroll_fill_small@2x.png */,
+				78A02860178EEB1100DF2976 /* about_scroll_border_small@2x.png */,
 				78A02854178ECB4100DF2976 /* popup_rate_picture@2x.png */,
 				78A02852178EC84000DF2976 /* confety_sprite@2x.png */,
 				78A0284E178EA78100DF2976 /* popup_quit_picture_light_main@2x.png */,
@@ -575,6 +587,8 @@
 		78B37C9A177E4A4A00773C6A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				78A02862178EEB3300DF2976 /* BuyItemList.h */,
+				78A02863178EEB3300DF2976 /* BuyItemList.cpp */,
 				78A0285B178ED97900DF2976 /* CreditsList.cpp */,
 				78A0285A178ED97900DF2976 /* CreditsList.h */,
 				78B37C9B177E4A4A00773C6A /* Touchable.cpp */,
@@ -818,6 +832,9 @@
 				78A02851178EA78100DF2976 /* popup_quit_picture_light_2@2x.png in Resources */,
 				78A02853178EC84000DF2976 /* confety_sprite@2x.png in Resources */,
 				78A02855178ECB4100DF2976 /* popup_rate_picture@2x.png in Resources */,
+				78A02861178EEB1100DF2976 /* about_scroll_border_small@2x.png in Resources */,
+				78A02866178EED9500DF2976 /* about_scroll_fill_small@2x.png in Resources */,
+				78A0286F178EF8DD00DF2976 /* popup_progress_picture@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +890,7 @@
 				78DD6359178D690700765D52 /* ResetProgress.cpp in Sources */,
 				78DD6361178D71AC00765D52 /* Language.cpp in Sources */,
 				78A0285C178ED97900DF2976 /* CreditsList.cpp in Sources */,
+				78A02864178EEB3300DF2976 /* BuyItemList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -983,7 +1001,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../CocosDenshion/third_party/blackberry/libraries/armle-v7\"",
 					"\"$(SRCROOT)/../../../CocosDenshion/third_party/blackberry/libraries/x86\"",
-					"\"$(SRCROOT)/Build/Fruit Ninja/Build/Products/Debug\"",
 					"\"$(SRCROOT)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -1025,7 +1042,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../CocosDenshion/third_party/blackberry/libraries/armle-v7\"",
 					"\"$(SRCROOT)/../../../CocosDenshion/third_party/blackberry/libraries/x86\"",
-					"\"$(SRCROOT)/Build/Fruit Ninja/Build/Products/Debug\"",
 					"\"$(SRCROOT)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;

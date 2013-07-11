@@ -1,14 +1,15 @@
-#ifndef CONST_CREDITSLIST_H
-#define CONST_CREDITSLIST_H
+#ifndef CONST_BUYITEMLIST_H
+#define CONST_BUYITEMLIST_H
 
 #include "cocos2d.h"
 
 #include "Entity.h"
 #include "Text.h"
+#include "Popup.h"
 
 using namespace cocos2d;
 
-class CreditsList : public CCLayer
+class BuyItemList : public CCLayer
 {
 	protected:
 		// ===========================================================
@@ -24,8 +25,6 @@ class CreditsList : public CCLayer
 		// ===========================================================
     
         float mMaxWidth;
-    
-        Text* mText[16];
     
         Entity* mListSroll;
     
@@ -95,7 +94,7 @@ class CreditsList : public CCLayer
 		// Constructors
 		// ===========================================================
     
-        CreditsList(CCNode* pParent);
+        BuyItemList(CCNode* pParent);
 
 		// ===========================================================
 		// Methods

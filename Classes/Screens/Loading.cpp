@@ -65,6 +65,9 @@ Loading::Loading()
     this->mTexturesLibrary[38] = "popup_quit_picture_light_main@2x.png";
     this->mTexturesLibrary[39] = "popup_quit_picture_light_2@2x.png";
     this->mTexturesLibrary[40] = "popup_rate_picture@2x.png";
+    this->mTexturesLibrary[41] = "about_scroll_border_small@2x.png";
+    this->mTexturesLibrary[42] = "about_scroll_fill_small@2x.png";
+    this->mTexturesLibrary[43] = "popup_progress_picture@2x.png";
     
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50)));
