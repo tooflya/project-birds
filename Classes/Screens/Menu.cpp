@@ -73,7 +73,7 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MENU_PLAY:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_BOXES);
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
 
                 break;
                 case Options::BUTTONS_ID_MENU_SETTINGS:

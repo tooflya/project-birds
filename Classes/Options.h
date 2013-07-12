@@ -1,7 +1,7 @@
 #ifndef CONST_OPTIONS_H
 #define CONST_OPTIONS_H
 
-typedef struct tagTextes {
+typedef struct Textes {
 	const char* string;
 	const char* font;
 	int size;
@@ -109,7 +109,10 @@ class Options
 		static const int BUTTONS_ID_MENU_FACEBOOK =    3004;
 		static const int BUTTONS_ID_MENU_SETTINGS =    3005;
 		static const int BUTTONS_ID_LEVELS_BACK =      4001;
-		static const int BUTTONS_ID_BOXES_BACK =       5001;
+		static const int BUTTONS_ID_MODE_BACK =        5001;
+		static const int BUTTONS_ID_MODE_CLASSIC =     5002;
+		static const int BUTTONS_ID_MODE_ARCADE =      5003;
+		static const int BUTTONS_ID_MODE_PROGRESS =    5004;
         static const int BUTTONS_ID_SHOP_BACK =        6001;
         static const int BUTTONS_ID_SHOP_ITEM =        6102;
 		static const int BUTTONS_ID_END_MENU =         7001;
@@ -174,6 +177,9 @@ class Options
         static Textes TEXT_CREDITS_STRING_12;
         static Textes TEXT_CREDITS_STRING_13;
         static Textes TEXT_SHOP_DESCRIPTION[3];
+        static Textes TEXT_MODE_CLASSIC;
+        static Textes TEXT_MODE_ARCADE;
+        static Textes TEXT_MODE_PROGRESS;
 
 		// ===========================================================
 		// Fields

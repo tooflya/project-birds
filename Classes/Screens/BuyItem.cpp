@@ -40,8 +40,8 @@ BuyItem::BuyItem(Screen* pScreen) :
         this->mListBorders->create();
         this->mListBorders->create();
         
-        ((Entity*) this->mListBorders->objectAtIndex(0))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(350));
-        ((Entity*) this->mListBorders->objectAtIndex(1))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(300));
+        ((Entity*) this->mListBorders->objectAtIndex(0))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(325));
+        ((Entity*) this->mListBorders->objectAtIndex(1))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(325));
         
         ((Entity*) this->mListBorders->objectAtIndex(0))->setScaleY(1);
         ((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);

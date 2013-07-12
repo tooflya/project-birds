@@ -44,24 +44,6 @@ class LevelButton : public Entity
         }
     }
     
-    void updateCurrentFrameIndex()
-    {
-        this->setId(this->mId);
-        
-        if(this->mId > 10)
-        {
-            this->setCurrentFrameIndex(12 + Boxes::BOX);
-            
-            this->mText->setVisible(false);
-        }
-        else
-        {
-            this->setCurrentFrameIndex(0 + Boxes::BOX);
-            
-            this->mText->setVisible(true);
-        }
-    }
-    
     void onTouch(CCTouch* touch, CCEvent* event)
     {
         AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
@@ -154,7 +136,7 @@ void Levels::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_LEVELS_BACK:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_BOXES);
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
 
                 break;
             }
@@ -179,8 +161,6 @@ void Levels::onEnter()
     for(int i = 0; i < 20; i++)
     {
         LevelButton* item = (LevelButton*) this->mLevels->objectAtIndex(i);
-        
-        item->updateCurrentFrameIndex();
         
         item->setScale(0.0);
         item->runAction(CCScaleTo::create(0.6, 1.0));

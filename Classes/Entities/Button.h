@@ -5,7 +5,7 @@
 
 #include "Entity.h"
 #include "Touchable.h"
-#include "text.h"
+#include "Text.h"
 
 using namespace cocos2d;
 

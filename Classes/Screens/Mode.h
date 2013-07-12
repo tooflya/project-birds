@@ -1,5 +1,5 @@
-#ifndef CONST_BOXES_H
-#define CONST_BOXES_H
+#ifndef CONST_MODE_H
+#define CONST_MODE_H
 
 #include "cocos2d.h"
 
@@ -9,9 +9,7 @@
 
 using namespace cocos2d;
 
-class BoxesTouchLayer;
-
-class Boxes : public Screen
+class Mode : public Screen
 {
 	protected:
 		// ===========================================================
@@ -22,7 +20,7 @@ class Boxes : public Screen
 		// Constants
 		// ===========================================================
 
-        static Boxes* m_Instance;
+        static Mode* m_Instance;
 
 		// ===========================================================
 		// Fields
@@ -30,13 +28,10 @@ class Boxes : public Screen
     
         Entity* mBackground;
         Entity* mBackButton;
-        Entity* mTablet;
-    
-        Entity* mBoxes[3];
-    
-        BatchEntityManager* mNavigations;
-    
-        BoxesTouchLayer* mTouchLayer;
+
+        Button* mClassicMode;
+        Button* mArcadeMode;
+        Button* mProgressMode;
 
 		// ===========================================================
 		// Constructors
@@ -92,7 +87,7 @@ class Boxes : public Screen
 		// Fields
 		// ===========================================================
     
-        Boxes();
+        Mode();
 
 		// ===========================================================
 		// Constructors

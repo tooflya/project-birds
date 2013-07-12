@@ -53,7 +53,7 @@ void ScreenManager::generate()
     this->mScreens[Screen::SCREEN_MENU] = new Menu();
     this->mScreens[Screen::SCREEN_SETTINGS] = new Settings();
     this->mScreens[Screen::SCREEN_SHOP] = new Shop();
-    this->mScreens[Screen::SCREEN_BOXES] = new Boxes();
+    this->mScreens[Screen::SCREEN_MODE] = new Mode();
     this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
     this->mScreens[Screen::SCREEN_CREDITS] = new Credits();
     this->mScreens[Screen::SCREEN_LOADER] = new Loader();

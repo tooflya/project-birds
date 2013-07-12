@@ -112,6 +112,7 @@ void PleaseRate::hide()
     
     for(int i = 0; i < 2; i++)
     {
+        ((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
         ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
     }
 }

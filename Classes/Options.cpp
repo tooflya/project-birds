@@ -85,6 +85,9 @@ Textes Options::TEXT_CREDITS_STRING_11 = { "", "", 0, 40 };
 Textes Options::TEXT_CREDITS_STRING_12 = { "", "", 0, 41 };
 Textes Options::TEXT_CREDITS_STRING_13 = { "", "", 0, 42 };
 Textes Options::TEXT_SHOP_DESCRIPTION[3] = { { "", "", 0, 43 }, { "", "", 0, 44 }, { "", "", 0, 45 } };
+Textes Options::TEXT_MODE_CLASSIC = { "", "", 0, 46 };
+Textes Options::TEXT_MODE_ARCADE = { "", "", 0, 47 };
+Textes Options::TEXT_MODE_PROGRESS = { "", "", 0, 48 };
 
 // ===========================================================
 // Fields
@@ -293,6 +296,18 @@ void Options::changeLanguage()
             TEXT_SHOP_DESCRIPTION[2].string =  "bonuses";
             TEXT_SHOP_DESCRIPTION[2].font =  "Comic Sans MS";
             TEXT_SHOP_DESCRIPTION[2].size =  36;
+            
+            TEXT_MODE_CLASSIC.string =  "Classic";
+            TEXT_MODE_CLASSIC.font =  "Comic Sans MS";
+            TEXT_MODE_CLASSIC.size =  64;
+            
+            TEXT_MODE_ARCADE.string =  "Arcade";
+            TEXT_MODE_ARCADE.font =  "Comic Sans MS";
+            TEXT_MODE_ARCADE.size =  64;
+            
+            TEXT_MODE_PROGRESS.string =  "Progress";
+            TEXT_MODE_PROGRESS.font =  "Comic Sans MS";
+            TEXT_MODE_PROGRESS.size =  64;
         break;
         case 1:
             TEXT_LOADING_1.string =  "Загрузка... 0%";
@@ -478,6 +493,18 @@ void Options::changeLanguage()
             TEXT_SHOP_DESCRIPTION[2].string =  "бонусы";
             TEXT_SHOP_DESCRIPTION[2].font =  "Comic Sans MS";
             TEXT_SHOP_DESCRIPTION[2].size =  36;
+            
+            TEXT_MODE_CLASSIC.string =  "Классический";
+            TEXT_MODE_CLASSIC.font =  "Comic Sans MS";
+            TEXT_MODE_CLASSIC.size =  64;
+            
+            TEXT_MODE_ARCADE.string =  "Аркада";
+            TEXT_MODE_ARCADE.font =  "Comic Sans MS";
+            TEXT_MODE_ARCADE.size =  64;
+            
+            TEXT_MODE_PROGRESS.string =  "Прохождение";
+            TEXT_MODE_PROGRESS.font =  "Comic Sans MS";
+            TEXT_MODE_PROGRESS.size =  64;
         break;
     }
     
@@ -527,6 +554,9 @@ void Options::changeLanguage()
     TEXTES_HOLDER[43] = TEXT_SHOP_DESCRIPTION[0];
     TEXTES_HOLDER[44] = TEXT_SHOP_DESCRIPTION[1];
     TEXTES_HOLDER[45] = TEXT_SHOP_DESCRIPTION[2];
+    TEXTES_HOLDER[46] = TEXT_MODE_CLASSIC;
+    TEXTES_HOLDER[47] = TEXT_MODE_ARCADE;
+    TEXTES_HOLDER[48] = TEXT_MODE_PROGRESS;
     
     for(int i = 0; i < 64; i++)
     {

@@ -43,7 +43,7 @@ Credits::Credits()
     ((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);
     
     this->mList = new CreditsList(this);
-    
+
     m_Instance = this;
 }
 

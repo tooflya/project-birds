@@ -8,7 +8,7 @@
 #include "Menu.h"
 #include "Settings.h"
 #include "Shop.h"
-#include "Boxes.h"
+#include "Mode.h"
 #include "Levels.h"
 #include "Credits.h"
 #include "Loader.h"

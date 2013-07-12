@@ -58,7 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	director->setAlphaBlending(false);
 	director->setDepthTest(false);
-	director->setDisplayStats(true);
+	director->setDisplayStats(false);
 
 	director->setProjection(kCCDirectorProjection2D);
 

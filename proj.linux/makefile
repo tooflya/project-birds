@@ -26,17 +26,24 @@ SOURCES = ./main.cpp \
 			../Classes/Options.cpp \
 			../Classes/AppDelegate.cpp \
 			../Classes/Utils/Utils.cpp \
+			../Classes/Utils/List.cpp \
 			../Classes/Utils/Touchable.cpp \
+			../Classes/Utils/CreditsList.cpp \
+			../Classes/Utils/BuyItemList.cpp \
 			../Classes/Entities/Entity.cpp \
 			../Classes/Entities/Button.cpp \
 			../Classes/Entities/PlayButton.cpp \
+			../Classes/Entities/Text.cpp \
+			../Classes/Entities/Confetti.cpp \
+			../Classes/Entities/Star.cpp \
 			../Classes/Managers/EntityManager.cpp \
 			../Classes/Managers/BatchEntityManager.cpp \
+			../Classes/Managers/ConfettiManager.cpp \
 			../Classes/Screens/Screen.cpp \
 			../Classes/Screens/Menu.cpp \
 			../Classes/Screens/Settings.cpp \
 			../Classes/Screens/Shop.cpp \
-			../Classes/Screens/Boxes.cpp \
+			../Classes/Screens/Mode.cpp \
 			../Classes/Screens/Levels.cpp \
 			../Classes/Screens/Credits.cpp \
 			../Classes/Screens/Loader.cpp \
@@ -44,6 +51,14 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/End.cpp \
 			../Classes/Screens/Splash.cpp \
 			../Classes/Screens/Loading.cpp \
+			../Classes/Screens/Progress.cpp \
+			../Classes/Screens/Language.cpp \
+			../Classes/Screens/Popup.cpp \
+			../Classes/Screens/Exit.cpp \
+			../Classes/Screens/BuyItem.cpp \
+			../Classes/Screens/GetCoins.cpp \
+			../Classes/Screens/PleaseRate.cpp \
+			../Classes/Screens/ResetProgress.cpp \
 			../Classes/Managers/ScreenManager.cpp \
 			../Classes/Graphics/Texture.cpp \
 

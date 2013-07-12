@@ -77,7 +77,7 @@ class Screen : public CCScene, public Touchable
         static const int SCREEN_MENU = 0;
         static const int SCREEN_SETTINGS = 1;
         static const int SCREEN_SHOP = 2;
-        static const int SCREEN_BOXES = 3;
+        static const int SCREEN_MODE = 3;
         static const int SCREEN_LEVELS = 4;
         static const int SCREEN_CREDITS = 5;
         static const int SCREEN_LOADER = 6;

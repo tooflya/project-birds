@@ -59,13 +59,11 @@ bool Screen::containsTouchLocation(CCTouch* touch)
 
 void Screen::onEnter()
 {
-	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	CCScene::onEnter();
 }
 
 void Screen::onExit()
 {
-	//CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 	CCScene::onExit();
 }
 

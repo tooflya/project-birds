@@ -3,12 +3,13 @@
 
 #include "cocos2d.h"
 
-#include "Entity.h"
+#include "List.h"
+
 #include "Text.h"
 
 using namespace cocos2d;
 
-class CreditsList : public CCLayer
+class CreditsList : public List
 {
 	protected:
 		// ===========================================================
@@ -22,24 +23,8 @@ class CreditsList : public CCLayer
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        float mMaxWidth;
-    
-        Text* mText[16];
-    
-        Entity* mListSroll;
-    
-        bool mPostUpdate;
-    
-    //
-    
-    
-    float mStartCoordinateY;
-    float mStartPositionCoordinateY;
-    
-    float mStartTime; // ?
-    
-    float mPostUpdatePower;
+
+		Text* mText[16];
 
 		// ===========================================================
 		// Constructors
@@ -104,19 +89,6 @@ class CreditsList : public CCLayer
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-    
-        void onEnter();
-        void onExit();
-    
-        void visit();
-    
-        void update(float pDeltaTime);
-    
-        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
-        void ccTouchMoved(CCTouch* touch, CCEvent* event);
-        void ccTouchEnded(CCTouch* touch, CCEvent* event);
-    
-        bool containsTouchLocation(CCTouch* touch);
 };
 
 #endif

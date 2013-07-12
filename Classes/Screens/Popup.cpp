@@ -23,6 +23,8 @@ Popup::Popup(Screen* pScreen)
 {
     this->mScreen = pScreen;
     
+    this->mScreen->addChild(this, 1000);
+    
     this->mDarkness = new Entity("popup_darkness@2x.png", this);
     this->mBackground = new Entity("popup_bg@2x.png", this);
     
@@ -30,13 +32,14 @@ Popup::Popup(Screen* pScreen)
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
     this->mShowed = false;
-    
-    this->scheduleUpdate();
+
+    this->mShowAnimationRunning = false;
+    this->mHideAnimationRunning = false;
     
     this->mBackground->setScale(0.0);
     this->mDarkness->setOpacity(0.0);
     
-    this->mScreen->addChild(this, 1000);
+    this->scheduleUpdate();
 }
 
 // ===========================================================

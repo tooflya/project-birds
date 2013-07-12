@@ -3,13 +3,13 @@
 
 #include "cocos2d.h"
 
-#include "Entity.h"
-#include "Text.h"
+#include "List.h"
+
 #include "Popup.h"
 
 using namespace cocos2d;
 
-class BuyItemList : public CCLayer
+class BuyItemList : public List
 {
 	protected:
 		// ===========================================================
@@ -23,22 +23,6 @@ class BuyItemList : public CCLayer
 		// ===========================================================
 		// Fields
 		// ===========================================================
-    
-        float mMaxWidth;
-    
-        Entity* mListSroll;
-    
-        bool mPostUpdate;
-    
-    //
-    
-    
-    float mStartCoordinateY;
-    float mStartPositionCoordinateY;
-    
-    float mStartTime; // ?
-    
-    float mPostUpdatePower;
 
 		// ===========================================================
 		// Constructors
@@ -103,19 +87,6 @@ class BuyItemList : public CCLayer
 		// ===========================================================
 		// Virtual Methods
 		// ===========================================================
-    
-        void onEnter();
-        void onExit();
-    
-        void visit();
-    
-        void update(float pDeltaTime);
-    
-        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
-        void ccTouchMoved(CCTouch* touch, CCEvent* event);
-        void ccTouchEnded(CCTouch* touch, CCEvent* event);
-    
-        bool containsTouchLocation(CCTouch* touch);
 };
 
 #endif
