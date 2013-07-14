@@ -19,11 +19,9 @@
 // Constructors
 // ===========================================================
 
-Popup::Popup(Screen* pScreen)
+Popup::Popup(CCNode* pParent)
 {
-    this->mScreen = pScreen;
-    
-    this->mScreen->addChild(this, 1000);
+    this->mParent = pParent;
     
     this->mDarkness = new Entity("popup_darkness@2x.png", this);
     this->mBackground = new Entity("popup_bg@2x.png", this);
@@ -46,18 +44,12 @@ Popup::Popup(Screen* pScreen)
 // Methods
 // ===========================================================
 
-void Popup::onShow()
-{
-}
-
-void Popup::onHide()
-{
-}
-
 void Popup::show()
 {
     if(this->mShowed) return;
     
+    this->mParent->addChild(this, 1);
+
     this->mShowed = true;
     this->mShowAnimationRunning = true;
     
@@ -84,8 +76,22 @@ void Popup::hide()
     this->mDarkness->runAction(CCFadeTo::create(0.3, 0.0));
 }
 
+bool Popup::isShowed()
+{
+    return this->mShowed;
+}
+
+void Popup::onShow()
+{
+}
+
+void Popup::onHide()
+{
+    this->removeFromParentAndCleanup(false);
+}
+
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 void Popup::update(float pDeltaTime)

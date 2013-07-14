@@ -58,7 +58,7 @@ void List::setParentType(int pType)
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 void List::update(float pDeltaTime)
@@ -203,7 +203,7 @@ bool List::containsTouchLocation(CCTouch* touch)
     }
     else if(this->mParentType == PARENT_TYPE_POPUP)
     {
-        return x > Options::CAMERA_CENTER_X - this->mWidth / 2 && x < Options::CAMERA_CENTER_X + this->mWidth / 2 && y < Options::CAMERA_CENTER_Y + this->mHeight / 2 && y > Options::CAMERA_CENTER_Y - this->mHeight / 2&& ((Popup*) this->getParent()->getParent())->mShowed;
+        return x > Options::CAMERA_CENTER_X - this->mWidth / 2 && x < Options::CAMERA_CENTER_X + this->mWidth / 2 && y < Options::CAMERA_CENTER_Y + this->mHeight / 2 && y > Options::CAMERA_CENTER_Y - this->mHeight / 2&& ((Popup*) this->getParent()->getParent())->isShowed();
     }
     
     return false;

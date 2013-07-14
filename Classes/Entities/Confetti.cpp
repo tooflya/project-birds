@@ -50,7 +50,7 @@ void Confetti::onCreate()
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 void Confetti::update(float pDeltaTime)

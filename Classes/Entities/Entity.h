@@ -16,6 +16,16 @@ using namespace CocosDenshion;
 class EntityManager;
 class BatchEntityManager;
 
+typedef struct EntityStructure {
+    const char* fileName;
+    int horizontalFramesCount;
+    int verticalFramesCount;
+    int x;
+    int y;
+    int width;
+    int height;
+} EntityStructure;
+
 class Entity : public CCSprite, public Touchable
 {
 	protected:
@@ -89,7 +99,7 @@ class Entity : public CCSprite, public Touchable
 		// ===========================================================
 
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 
 	private:
@@ -113,14 +123,14 @@ class Entity : public CCSprite, public Touchable
 		// Constructors
 		// ===========================================================
 		
-		void constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
+		void constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent);
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
 		
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 
 	public:
@@ -145,6 +155,7 @@ class Entity : public CCSprite, public Touchable
 		Entity(const char* pszFileName, CCNode* pParent);
 		Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
 		Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
+		Entity(EntityStructure pStructure, CCNode* pParent);
 
 		// ===========================================================
 		// Methods
@@ -234,7 +245,7 @@ class Entity : public CCSprite, public Touchable
 		const char* getTextureFileName();
 		
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 
 		virtual void onEnter();

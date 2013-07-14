@@ -6,7 +6,8 @@ EXECUTABLE = ProjectBirds
 INCLUDES =  -I../ \
 			-I../Classes \
 			-I../Classes/Screens \
-			-I../Classes/Enemies \
+			-I../Classes/Screens/Screens \
+			-I../Classes/Screens/Popups \
 			-I../Classes/Managers \
 			-I../Classes/Entities \
 			-I../Classes/Utils \
@@ -30,6 +31,7 @@ SOURCES = ./main.cpp \
 			../Classes/Utils/Touchable.cpp \
 			../Classes/Utils/CreditsList.cpp \
 			../Classes/Utils/BuyItemList.cpp \
+			../Classes/Utils/ModeHelpList.cpp \
 			../Classes/Entities/Entity.cpp \
 			../Classes/Entities/Button.cpp \
 			../Classes/Entities/PlayButton.cpp \
@@ -40,25 +42,26 @@ SOURCES = ./main.cpp \
 			../Classes/Managers/BatchEntityManager.cpp \
 			../Classes/Managers/ConfettiManager.cpp \
 			../Classes/Screens/Screen.cpp \
-			../Classes/Screens/Menu.cpp \
-			../Classes/Screens/Settings.cpp \
-			../Classes/Screens/Shop.cpp \
-			../Classes/Screens/Mode.cpp \
-			../Classes/Screens/Levels.cpp \
-			../Classes/Screens/Credits.cpp \
-			../Classes/Screens/Loader.cpp \
-			../Classes/Screens/Level.cpp \
-			../Classes/Screens/End.cpp \
-			../Classes/Screens/Splash.cpp \
-			../Classes/Screens/Loading.cpp \
-			../Classes/Screens/Progress.cpp \
-			../Classes/Screens/Language.cpp \
+			../Classes/Screens/Screens/Menu.cpp \
+			../Classes/Screens/Screens/Settings.cpp \
+			../Classes/Screens/Screens/Shop.cpp \
+			../Classes/Screens/Screens/Mode.cpp \
+			../Classes/Screens/Screens/Levels.cpp \
+			../Classes/Screens/Screens/Credits.cpp \
+			../Classes/Screens/Screens/Loader.cpp \
+			../Classes/Screens/Screens/Level.cpp \
+			../Classes/Screens/Screens/End.cpp \
+			../Classes/Screens/Screens/Splash.cpp \
+			../Classes/Screens/Screens/Loading.cpp \
+			../Classes/Screens/Screens/Progress.cpp \
+			../Classes/Screens/Screens/Language.cpp \
 			../Classes/Screens/Popup.cpp \
-			../Classes/Screens/Exit.cpp \
-			../Classes/Screens/BuyItem.cpp \
-			../Classes/Screens/GetCoins.cpp \
-			../Classes/Screens/PleaseRate.cpp \
-			../Classes/Screens/ResetProgress.cpp \
+			../Classes/Screens/Popups/Exit.cpp \
+			../Classes/Screens/Popups/BuyItem.cpp \
+			../Classes/Screens/Popups/GetCoins.cpp \
+			../Classes/Screens/Popups/PleaseRate.cpp \
+			../Classes/Screens/Popups/ResetProgress.cpp \
+			../Classes/Screens/Popups/ModeHelp.cpp \
 			../Classes/Managers/ScreenManager.cpp \
 			../Classes/Graphics/Texture.cpp \
 

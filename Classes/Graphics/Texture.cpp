@@ -21,35 +21,40 @@
 
 Texture::Texture(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount)
 {
-	this->mTexture = CCTextureCache::sharedTextureCache()->addImage(pszFileName);
+    this->mTexture = CCTextureCache::sharedTextureCache()->addImage(pszFileName);
 
-	this->mTextureFileName = pszFileName;
-			
-	this->mHorizontalFramesCount = pHorizontalFramesCount;
-	this->mVerticalFramesCount   = pVerticalFramesCount;
+    this->mTextureFileName = pszFileName;
+            
+    this->mHorizontalFramesCount = pHorizontalFramesCount;
+    this->mVerticalFramesCount   = pVerticalFramesCount;
 }
 
 // ===========================================================
 // Methods
 // ===========================================================
 
-int Texture::getHorizontalFramesCount()
+const char* Texture::getTextureFileName()
 {
-	return this->mHorizontalFramesCount;
-}
-
-int Texture::getVerticalFramesCount()
-{
-	return this->mVerticalFramesCount;
+    return this->mTextureFileName;
 }
 
 CCTexture2D* Texture::getTexture()
 {
-	return this->mTexture;
+    return this->mTexture;
+}
+
+int Texture::getHorizontalFramesCount()
+{
+    return this->mHorizontalFramesCount;
+}
+
+int Texture::getVerticalFramesCount()
+{
+    return this->mVerticalFramesCount;
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 #endif

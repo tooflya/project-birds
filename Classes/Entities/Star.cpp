@@ -39,7 +39,7 @@ void Star::animate()
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 void Star::update(float pDeltaTime)

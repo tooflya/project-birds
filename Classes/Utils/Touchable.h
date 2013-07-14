@@ -34,7 +34,7 @@ class Touchable : public CCTargetedTouchDelegate
 		// ===========================================================
 
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 
 		virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
@@ -65,7 +65,7 @@ class Touchable : public CCTargetedTouchDelegate
 		// ===========================================================
 		
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 
 	public:
@@ -94,7 +94,7 @@ class Touchable : public CCTargetedTouchDelegate
 		virtual void onTouch(CCTouch* touch, CCEvent* event);
 		
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 };
 

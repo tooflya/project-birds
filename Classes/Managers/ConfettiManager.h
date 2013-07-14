@@ -32,7 +32,7 @@ class ConfettiManager : public BatchEntityManager
 		// ===========================================================
 
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 
 	private:
@@ -57,7 +57,7 @@ class ConfettiManager : public BatchEntityManager
 		// ===========================================================
 		
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 
 	public:
@@ -86,7 +86,7 @@ class ConfettiManager : public BatchEntityManager
         void init(float pX, float pY);
 		
 		// ===========================================================
-		// Virtual Methods
+		// Override Methods
 		// ===========================================================
 };
 

@@ -41,7 +41,7 @@ void ConfettiManager::init(float pX, float pY)
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 #endif

@@ -19,25 +19,32 @@
 // Constructors
 // ===========================================================
 
+void Button::constructor(const int pButtonID, void (*pOnTouchCallback)(int, int))
+{
+        this->mOnTouchCallback = pOnTouchCallback;
+
+        this->mID = pButtonID;
+
+        this->setRegisterAsTouchable(true);
+}
+
 Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int)) :
-	Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent)
-	{
-		this->mOnTouchCallback = pOnTouchCallback;
-
-		this->mID = pButtonID;
-
-    	this->setRegisterAsTouchable(true);
-	}
+    Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent)
+    {
+        this->constructor(pButtonID, pOnTouchCallback);
+    }
 
 Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int)) :
-Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount)
-{
-    this->mOnTouchCallback = pOnTouchCallback;
-    
-    this->mID = pButtonID;
-    
-    this->setRegisterAsTouchable(true);
-}
+    Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount)
+    {
+        this->constructor(pButtonID, pOnTouchCallback);
+    }
+
+Button::Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int)) :
+    Entity(pEntityStructure, pParent)
+    {
+        this->constructor(pButtonID, pOnTouchCallback);
+    }
 
 // ===========================================================
 // Methods
@@ -45,7 +52,7 @@ Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount)
     
 void Button::onTouch(CCTouch* touch, CCEvent* event)
 {
-	if(this->mOnTouchCallback != 0)
+    if(this->mOnTouchCallback != 0)
     {
         this->mOnTouchCallback(Options::BUTTONS_ACTION_ONTOUCH, this->mID);
     }
@@ -53,17 +60,17 @@ void Button::onTouch(CCTouch* touch, CCEvent* event)
 
 void Button::setText(Textes pParams)
 {
-	this->mText = new Text(pParams, this);
-	this->mText->setPosition(ccp(this->getWidth() / 2, this->getHeight() / 2));
+    this->mText = new Text(pParams, this);
+    this->mText->setPosition(ccp(this->getWidth() / 2, this->getHeight() / 2));
 }
 
 void Button::setString(const char* pString)
 {
-	this->mText->setString(pString);
+    this->mText->setString(pString);
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
     
 void Button::onEnter()

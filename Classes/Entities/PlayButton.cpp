@@ -37,7 +37,7 @@ void PlayButton::onCreate()
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 void PlayButton::update(float pDeltaTime)

@@ -31,7 +31,7 @@ Text* Text::TEXTES[64] =
 
 Text::Text(const char* pString, float pSize, CCNode* pParent)
 {
-    this->initWithString(pString, "Apple casual", Utils::coord(pSize), CCSize(0, 0), kCCTextAlignmentCenter);
+    this->initWithString(pString, "Apple casual", Utils::coord(pSize), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
 	this->enableShadow(CCSize(Utils::coord(5), -Utils::coord(5)), 255.0, 0.0, true);
     
     this->mId = 0;
@@ -45,8 +45,22 @@ Text::Text(const char* pString, float pSize, CCNode* pParent)
 
 Text::Text(Textes pParams, CCNode* pParent)
 {
-    this->initWithString(pParams.string, pParams.font, pParams.size, CCSize(0, 0), kCCTextAlignmentCenter);
+    this->initWithString(pParams.string, pParams.font, pParams.size, CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
 	this->enableShadow(CCSize(Utils::coord(5), -Utils::coord(5)), 255.0, 0.0, true);
+    
+    this->mId = pParams.identifier;
+    
+    pParent->addChild(this);
+    
+    TEXTES[ID] = this;
+    
+    ID++;
+}
+
+Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent)
+{
+    this->initWithString(pParams.string, pParams.font, pParams.size, pDimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    this->enableShadow(CCSize(Utils::coord(5), -Utils::coord(5)), 255.0, 0.0, true);
     
     this->mId = pParams.identifier;
     
@@ -80,7 +94,7 @@ void Text::changeLanguage()
 }
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 #endif

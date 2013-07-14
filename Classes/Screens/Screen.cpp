@@ -24,7 +24,7 @@
 // ===========================================================
 
 // ===========================================================
-// Virtual Methods
+// Override Methods
 // ===========================================================
 
 // ===========================================================
@@ -33,7 +33,7 @@
 
 Screen::Screen()
 {
-	this->scheduleUpdate();
+    this->scheduleUpdate();
 }
 
 // ===========================================================
@@ -49,22 +49,22 @@ Screen::Screen()
 // ===========================================================
 
 // ===========================================================
-// Virtual methods
+// Override Methods
 // ===========================================================
 
 bool Screen::containsTouchLocation(CCTouch* touch)
 {
-	return true;
+    return true;
 }
 
 void Screen::onEnter()
 {
-	CCScene::onEnter();
+    CCScene::onEnter();
 }
 
 void Screen::onExit()
 {
-	CCScene::onExit();
+    CCScene::onExit();
 }
 
 #endif
