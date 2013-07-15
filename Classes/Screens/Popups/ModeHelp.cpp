@@ -82,6 +82,8 @@ void ModeHelp::onTouchButtonsCallback(const int pAction, const int pID)
 
 void ModeHelp::onHide()
 {
+    Popup::onHide();
+    
     this->mList->setPosition(ccp(0, 0));
 }
 

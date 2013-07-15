@@ -3,6 +3,20 @@
 
 #include "ScreenManager.h"
 
+#include "Screen.h"
+
+#include "Menu.h"
+#include "Settings.h"
+#include "Shop.h"
+#include "Mode.h"
+#include "Levels.h"
+#include "Credits.h"
+#include "Loader.h"
+#include "Progress.h"
+#include "Language.h"
+#include "Level.h"
+#include "Classic.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -21,7 +35,7 @@
 
 ScreenManager::ScreenManager()
 {
-	this->generate();
+    this->generate();
 }
 
 // ===========================================================
@@ -59,16 +73,22 @@ void ScreenManager::generate()
     this->mScreens[Screen::SCREEN_LOADER] = new Loader();
     this->mScreens[Screen::SCREEN_PROGRESS] = new Progress();
     this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
-    this->mScreens[Screen::SCREEN_LEVEL] = new Level();
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)
 {
-	this->mCurrentScreenIndex = pIndex;
-	
-	CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, this->mScreens[pIndex]);
+    this->mCurrentScreenIndex = pIndex;
+    
+    CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, this->mScreens[pIndex]);
 
-	CCDirector::sharedDirector()->pushScene(transition);
+    CCDirector::sharedDirector()->pushScene(transition);
+}
+
+void ScreenManager::load()
+{
+    this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
+    //this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Level();
+    //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Level();
 }
 
 // ===========================================================

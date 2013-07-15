@@ -85,7 +85,7 @@ void Text::setCenterPosition(float pCenterX, float pCenterY)
 
 void Text::changeLanguage()
 {
-    if(Options::TEXTES_HOLDER[this->mId].size != 0)
+    if(Options::TEXTES_HOLDER[this->mId].size != 0 && this->mId != -1)
     {
         this->setString(Options::TEXTES_HOLDER[this->mId].string);
         this->setFontSize(Options::TEXTES_HOLDER[this->mId].size);

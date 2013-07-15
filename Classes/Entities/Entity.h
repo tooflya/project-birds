@@ -28,231 +28,232 @@ typedef struct EntityStructure {
 
 class Entity : public CCSprite, public Touchable
 {
-	protected:
-		// ===========================================================
-		// Inner Classes
-		// ===========================================================
-
-		// ===========================================================
-		// Constants
-		// ===========================================================
-
-		// ===========================================================
-		// Fields
-		// ===========================================================
-
-		int mFramesCount;
-
-		int mHorizontalFramesCount;
-		int mVerticalFramesCount;
-
-		int mCurrentFrameIndex;
-
-		int mAnimationStartFrame;
-		int mAnimationFinishFrame;
-		int mAnimationFramesElapsed;
-
-		int mAnimationRepeatCount;
-
-		int id;
-
-		float mWidth;
-		float mHeight;
-
-		float mFrameWidth;
-		float mFrameHeight;
-
-		float* mFramesCoordinatesX;
-		float* mFramesCoordinatesY;
-
-		float mSpeed;
-
-		float mPauseBeforeNewAnimationCircleTime;
-		float mPauseBeforeNewAnimationCircleTimeElapsed;
-
-		float mAnimationTime;
-		float mAnimationTimeElapsed;
-
-		float mAnimationStartTimeout;
-
-		float mAnimationScaleDownTime;
-		float mAnimationScaleUpTime;
-
-		float mAnimationScaleDownFactor;
-		float mAnimationScaleUpFactor;
-
-		bool mIsAnimationReverse;
-		bool mIsAnimationReverseNeed;
-
-		bool mAnimationRunning;
-
-		bool mWasTouched;
-
-		const char* mTextureFileName;
-
-		// ===========================================================
-		// Constructors
-		// ===========================================================
-
-		// ===========================================================
-		// Methods
-		// ===========================================================
-
-		// ===========================================================
-		// Override Methods
-		// ===========================================================
-
-	private:
-		// ===========================================================
-		// Inner Classes
-		// ===========================================================
-
-		// ===========================================================
-		// Constants
-		// ===========================================================
-
-		// ===========================================================
-		// Fields
-		// ===========================================================
-		
-		EntityManager* mEntityManager;
-
-		BatchEntityManager* mBatchEntityManager;
-
-		// ===========================================================
-		// Constructors
-		// ===========================================================
-		
-		void constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent);
-
-		// ===========================================================
-		// Methods
-		// ===========================================================
-		
-		// ===========================================================
-		// Override Methods
-		// ===========================================================
-
-	public:
-		// ===========================================================
-		// Inner Classes
-		// ===========================================================
-
-		// ===========================================================
-		// Constants
-		// ===========================================================
-
-		// ===========================================================
-		// Fields
+    protected:
+        // ===========================================================
+        // Inner Classes
         // ===========================================================
 
-		// ===========================================================
-		// Constructors
-		// ===========================================================
+        // ===========================================================
+        // Constants
+        // ===========================================================
 
-		Entity();
-		Entity(const char* pszFileName);
-		Entity(const char* pszFileName, CCNode* pParent);
-		Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
-		Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
-		Entity(EntityStructure pStructure, CCNode* pParent);
+        // ===========================================================
+        // Fields
+        // ===========================================================
 
-		// ===========================================================
-		// Methods
-		// ===========================================================
+        int mFramesCount;
 
-		int getEntityManagerId();
-		int hasEntityManager();
+        int mHorizontalFramesCount;
+        int mVerticalFramesCount;
 
-		int getCurrentFrameIndex();
-		
-		float getWidth();
-		float getHeight();
-		
-		float getWidthScaled();
-		float getHeightScaled();
+        int mCurrentFrameIndex;
 
-		float getCenterPosition();
-		float getX();
-		float getY();
-		float getCenterX();
-		float getCenterY();
+        int mAnimationStartFrame;
+        int mAnimationFinishFrame;
+        int mAnimationFramesElapsed;
 
-		float getSpeed(float pDeltaTime);
+        int mAnimationRepeatCount;
 
-		void setPosition(float pX, float pY);
-		void setCenterPosition(float pCenterX, float pCenterY);
-		void setX(float pX);
-		void setY(float pY);
+        int id;
 
-		void setSpeed(float pSpeed);
+        float mWidth;
+        float mHeight;
 
-		bool destroy();
-		bool destroy(bool pManage);
+        float mFrameWidth;
+        float mFrameHeight;
 
-		void setEntityManager(EntityManager* pEntityManager);
-		void setEntityManager(BatchEntityManager* pBatchEntityManager);
+        float* mFramesCoordinatesX;
+        float* mFramesCoordinatesY;
+
+        float mSpeed;
+
+        float mPauseBeforeNewAnimationCircleTime;
+        float mPauseBeforeNewAnimationCircleTimeElapsed;
+
+        float mAnimationTime;
+        float mAnimationTimeElapsed;
+
+        float mAnimationStartTimeout;
+
+        float mAnimationScaleDownTime;
+        float mAnimationScaleUpTime;
+
+        float mAnimationScaleDownFactor;
+        float mAnimationScaleUpFactor;
+
+        bool mIsAnimationReverse;
+        bool mIsAnimationReverseNeed;
+
+        bool mAnimationRunning;
+
+        bool mWasTouched;
+
+        const char* mTextureFileName;
+
+        // ===========================================================
+        // Constructors
+        // ===========================================================
+
+        // ===========================================================
+        // Methods
+        // ===========================================================
+
+        // ===========================================================
+        // Override Methods
+        // ===========================================================
+
+    private:
+        // ===========================================================
+        // Inner Classes
+        // ===========================================================
+
+        // ===========================================================
+        // Constants
+        // ===========================================================
+
+        // ===========================================================
+        // Fields
+        // ===========================================================
+        
+        EntityManager* mEntityManager;
+
+        BatchEntityManager* mBatchEntityManager;
+
+        // ===========================================================
+        // Constructors
+        // ===========================================================
+        
+        void constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent);
+
+        // ===========================================================
+        // Methods
+        // ===========================================================
+        
+        // ===========================================================
+        // Override Methods
+        // ===========================================================
+
+    public:
+        // ===========================================================
+        // Inner Classes
+        // ===========================================================
+
+        // ===========================================================
+        // Constants
+        // ===========================================================
+
+        // ===========================================================
+        // Fields
+        // ===========================================================
+
+        // ===========================================================
+        // Constructors
+        // ===========================================================
+
+        Entity();
+        Entity(const char* pszFileName);
+        Entity(const char* pszFileName, CCNode* pParent);
+        Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
+        Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
+        Entity(EntityStructure pStructure, CCNode* pParent);
+
+        // ===========================================================
+        // Methods
+        // ===========================================================
+
+        int getEntityManagerId();
+        int hasEntityManager();
+
+        int getCurrentFrameIndex();
+        
+        float getWidth();
+        float getHeight();
+        
+        float getWidthScaled();
+        float getHeightScaled();
+
+        float getCenterPosition();
+        float getX();
+        float getY();
+        float getCenterX();
+        float getCenterY();
+
+        float getSpeed(float pDeltaTime);
+
+        void setPosition(float pX, float pY);
+        void setCenterPosition(float pCenterX, float pCenterY);
+        void setX(float pX);
+        void setY(float pY);
+
+        void setSpeed(float pSpeed);
+
+        bool destroy();
+        bool destroy(bool pManage);
+
+        void setEntityManager(EntityManager* pEntityManager);
+        void setEntityManager(BatchEntityManager* pBatchEntityManager);
 
         EntityManager* getEntityManager();
         BatchEntityManager* getBatchEntityManager();
     
-		void setEntityManagerId(int pId);
+        void setEntityManagerId(int pId);
 
-		virtual void setCurrentFrameIndex(int pIndex);
+        virtual void setCurrentFrameIndex(int pIndex);
 
-		void previousFrameIndex();
-		void nextFrameIndex();
+        void previousFrameIndex();
+        void nextFrameIndex();
 
-		void changeTexture(Texture* pTexture);
+        void changeTexture(Texture* pTexture);
     
         void setRepeatTexture(bool pRepeat);
 
-		void animate(float pAnimationTime);
-		void animate(float pAnimationTime, int pRepeatCount);
-		void animate(float pAnimationTime, int pRepeatCount, bool pNeedReverse);
-		void animate(float pAnimationTime, float pPauseBeforeNewAnimationCircleTime);
-		void animate(float pAnimationTime, int pRepeatCount, float pPauseBeforeNewAnimationCircleTime);
-		void animate(float pAnimationTime, int pStartFrame, int pFinishFrame, int pRepeatCount);
-		void animate(float pAnimationTime, int pStartFrame, int pFinishFrame);
+        void animate(float pAnimationTime);
+        void animate(float pAnimationTime, int pRepeatCount);
+        void animate(float pAnimationTime, int pRepeatCount, bool pNeedReverse);
+        void animate(float pAnimationTime, float pPauseBeforeNewAnimationCircleTime);
+        void animate(float pAnimationTime, int pRepeatCount, float pPauseBeforeNewAnimationCircleTime);
+        void animate(float pAnimationTime, int pStartFrame, int pFinishFrame, int pRepeatCount);
+        void animate(float pAnimationTime, int pStartFrame, int pFinishFrame, bool pReverseNeed);
+        void animate(float pAnimationTime, int pStartFrame, int pFinishFrame);
 
-		void setStartFrame(int pStartFrame);
-		void setFinishFrame(int pFinishFrame);
+        void setStartFrame(int pStartFrame);
+        void setFinishFrame(int pFinishFrame);
 
-		void setAnimationStartTimeout(float pSecodsTimeout);
+        void setAnimationStartTimeout(float pSecodsTimeout);
 
-		void onAnimationStart();
-		void onAnimationEnd();
-		void onAnimationCircleEnd();
+        void onAnimationStart();
+        void onAnimationEnd();
+        void onAnimationCircleEnd();
 
-		void ccTouchMoved(CCTouch* touch, CCEvent* event);
-		void ccTouchEnded(CCTouch* touch, CCEvent* event);
+        void ccTouchMoved(CCTouch* touch, CCEvent* event);
+        void ccTouchEnded(CCTouch* touch, CCEvent* event);
 
-		void onTouch(CCTouch* touch, CCEvent* event);
+        void onTouch(CCTouch* touch, CCEvent* event);
 
-		virtual void onCreate();
-		virtual void onDestroy();
+        virtual void onCreate();
+        virtual void onDestroy();
 
-		bool isAnimationRunning();
+        bool isAnimationRunning();
 
-		bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
 
-		bool containsTouchLocation(CCTouch* touch);
+        bool containsTouchLocation(CCTouch* touch);
 
-		virtual Entity* deepCopy();
+        virtual Entity* deepCopy();
 
-		Entity* create();
+        Entity* create();
 
-		const char* getTextureFileName();
-		
-		// ===========================================================
-		// Override Methods
-		// ===========================================================
+        const char* getTextureFileName();
+        
+        // ===========================================================
+        // Override Methods
+        // ===========================================================
 
-		virtual void onEnter();
-		virtual void onExit();
+        virtual void onEnter();
+        virtual void onExit();
 
-		virtual void update(float pDeltaTime);
-		virtual void draw();
+        virtual void update(float pDeltaTime);
+        virtual void draw();
 };
 
 #endif

@@ -48,7 +48,7 @@ void Popup::show()
 {
     if(this->mShowed) return;
     
-    this->mParent->addChild(this, 1);
+    this->mParent->addChild(this, 1000);
 
     this->mShowed = true;
     this->mShowAnimationRunning = true;

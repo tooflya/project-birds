@@ -1,13 +1,9 @@
-#ifndef CONST_PROGRESS_H
-#define CONST_PROGRESS_H
+#ifndef CONST_PAUSE_H
+#define CONST_PAUSE_H
 
-#include "Screen.h"
+#include "Popup.h"
 
-#include "ResetProgress.h"
-
-#include "AppDelegate.h"
-
-class Progress : public Screen
+class Pause : public Popup
 {
     protected:
         // ===========================================================
@@ -18,18 +14,15 @@ class Progress : public Screen
         // Constants
         // ===========================================================
     
-        static Progress* m_Instance;
-    
+        static Pause* m_Instance;
+
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Entity* mBackground;
-        Entity* mBackButton;
-    
-        Button* mResetButton;
-    
-        Popup* mResetPopup;
+
+        Button* mMenuButton;
+        Button* mRestartButton;
+        Button* mContinueButton;
 
         // ===========================================================
         // Constructors
@@ -87,7 +80,7 @@ class Progress : public Screen
         // Constructors
         // ===========================================================
     
-        Progress();
+        Pause(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -96,6 +89,14 @@ class Progress : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        virtual void update(float pDeltaTime);
+    
+        virtual void hide();
+        virtual void show();
+    
+        virtual void onShow();
+        virtual void onHide();
 };
 
 #endif

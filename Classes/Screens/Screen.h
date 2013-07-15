@@ -8,8 +8,13 @@
 #include "Entity.h"
 #include "Button.h"
 
+#include "EntityManager.h"
+#include "BatchEntityManager.h"
+
 #include "Utils.h"
 #include "Options.h"
+
+#include "AppDelegate.h"
 
 using namespace cocos2d;
 
@@ -83,9 +88,11 @@ class Screen : public CCScene, public Touchable
         static const int SCREEN_LEVELS = 4;
         static const int SCREEN_CREDITS = 5;
         static const int SCREEN_LOADER = 6;
-        static const int SCREEN_LEVEL = 7;
-        static const int SCREEN_PROGRESS = 8;
-        static const int SCREEN_LANGUAGE = 9;
+        static const int SCREEN_PROGRESS = 7;
+        static const int SCREEN_LANGUAGE = 8;
+        static const int SCREEN_CLASSIC_GAME = 9;
+        static const int SCREEN_ARCADE_GAME = 10;
+        static const int SCREEN_PROGRESS_GAME = 11;
 
         // ===========================================================
         // Fields

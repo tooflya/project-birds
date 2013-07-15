@@ -3,6 +3,8 @@
 
 #include "Mode.h"
 
+#include "Loader.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -24,8 +26,8 @@ Mode* Mode::m_Instance = NULL;
 Mode::Mode()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new Button({"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
-    this->mHelpButton = new Button({"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
+    this->mBackButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
+    this->mHelpButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
 
     this->mClassicMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_CLASSIC, onTouchButtonsCallback);
     this->mArcadeMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_ARCADE, onTouchButtonsCallback);
@@ -68,15 +70,21 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MODE_CLASSIC:
 
-                    //
+                    Loader::ACTION = 0;
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
 
                 break;
                 case Options::BUTTONS_ID_MODE_ARCADE:
 
-                    //
+                    Loader::ACTION = 1;
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
 
                 break;
                 case Options::BUTTONS_ID_MODE_PROGRESS:
+
+                    Loader::ACTION = 2;
 
                     AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
 

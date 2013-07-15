@@ -90,7 +90,7 @@ class ResetProgress : public Popup
 		// Constructors
 		// ===========================================================
     
-        ResetProgress(Screen* pScreen);
+        ResetProgress(CCNode* pParent);
 
 		// ===========================================================
 		// Methods

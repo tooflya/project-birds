@@ -5,8 +5,6 @@
 
 #include "ModeHelpList.h"
 
-using namespace cocos2d;
-
 class ModeHelp : public Popup
 {
     protected:

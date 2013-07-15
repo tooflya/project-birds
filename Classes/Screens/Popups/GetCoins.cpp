@@ -113,6 +113,8 @@ void GetCoins::update(float pDeltaTime)
 
 void GetCoins::onShow()
 {
+    Popup::onShow();
+
     for(int i = 0; i < 2; i++)
     {
         ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
@@ -121,6 +123,7 @@ void GetCoins::onShow()
 
 void GetCoins::onHide()
 {
+    Popup::onHide();
 }
 
 void GetCoins::show()

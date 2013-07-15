@@ -118,6 +118,7 @@ class Options
         static const int BUTTONS_ID_MODE_HELP  = 5005;
         static const int BUTTONS_ID_SHOP_BACK  = 6001;
         static const int BUTTONS_ID_SHOP_ITEM  = 6102;
+        static const int BUTTONS_ID_SHOP_TABLET = 6103;
         static const int BUTTONS_ID_END_MENU  = 7001;
         static const int BUTTONS_ID_END_RESTART  = 7002;
         static const int BUTTONS_ID_END_CONTINUE  = 7003;
@@ -135,6 +136,11 @@ class Options
         static const int BUTTONS_ID_LANGUAGE_BACK  = 1601;
         static const int BUTTONS_ID_LANGUAGE_L_EN  = 1701;
         static const int BUTTONS_ID_LANGUAGE_L_RU  = 1702;
+        static const int BUTTONS_ID_GAME_RESTART = 1801;
+        static const int BUTTONS_ID_GAME_PAUSE = 1802;
+        static const int BUTTONS_ID_PAUSE_MENU = 1901;
+        static const int BUTTONS_ID_PAUSE_RESTART = 1902;
+        static const int BUTTONS_ID_PAUSE_CONTINUE = 1903;
     
         static Textes TEXT_SETTINGS_CREDITS;
         static Textes TEXT_SETTINGS_PROGRESS;

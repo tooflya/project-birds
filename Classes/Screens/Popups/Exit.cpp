@@ -184,6 +184,8 @@ void Exit::show()
 
 void Exit::onShow()
 {
+    Popup::onShow();
+
     this->mLight->runAction(CCFadeTo::create(0.3, 255.0));
     
     for(int i = 0; i < 3; i++)
@@ -196,7 +198,7 @@ void Exit::onShow()
 
 void Exit::onHide()
 {
-    
+    Popup::onHide();
 }
 
 #endif

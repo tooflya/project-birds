@@ -1,13 +1,9 @@
-#ifndef CONST_PROGRESS_H
-#define CONST_PROGRESS_H
+#ifndef CONST_BIRD_H
+#define CONST_BIRD_H
 
-#include "Screen.h"
+#include "ImpulseEntity.h"
 
-#include "ResetProgress.h"
-
-#include "AppDelegate.h"
-
-class Progress : public Screen
+class Bird : public ImpulseEntity
 {
     protected:
         // ===========================================================
@@ -17,19 +13,10 @@ class Progress : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static Progress* m_Instance;
-    
+
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Entity* mBackground;
-        Entity* mBackButton;
-    
-        Button* mResetButton;
-    
-        Popup* mResetPopup;
 
         // ===========================================================
         // Constructors
@@ -40,7 +27,7 @@ class Progress : public Screen
         // ===========================================================
 
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     private:
@@ -63,11 +50,9 @@ class Progress : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     public:
@@ -87,7 +72,7 @@ class Progress : public Screen
         // Constructors
         // ===========================================================
     
-        Progress();
+        Bird();
 
         // ===========================================================
         // Methods
@@ -96,6 +81,12 @@ class Progress : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+
+        void onCreate();
+    
+        void update(float pDelta);
+
+        Bird* deepCopy();
 };
 
 #endif

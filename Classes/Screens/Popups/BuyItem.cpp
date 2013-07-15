@@ -102,6 +102,8 @@ void BuyItem::onHide()
         
         shop->mGetCoinsPopup->show();
     }
+    
+    Popup::onHide();
 }
 
 // ===========================================================

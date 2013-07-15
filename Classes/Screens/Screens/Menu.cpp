@@ -67,7 +67,7 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
             switch(pID)
             {
                 case Options::BUTTONS_ID_MENU_SHOP:
-
+                    
                     AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
 
                 break;

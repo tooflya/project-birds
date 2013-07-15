@@ -72,7 +72,6 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>casual.ttf</string>
 		<string>Comic Sans MS.ttf</string>
 	</array>
 	<key>UIPrerenderedIcon</key>

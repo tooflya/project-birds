@@ -1,13 +1,9 @@
-#ifndef CONST_PROGRESS_H
-#define CONST_PROGRESS_H
+#ifndef CONST_IMPULSEENTITY_H
+#define CONST_IMPULSEENTITY_H
 
-#include "Screen.h"
+#include "Entity.h"
 
-#include "ResetProgress.h"
-
-#include "AppDelegate.h"
-
-class Progress : public Screen
+class ImpulseEntity : public Entity
 {
     protected:
         // ===========================================================
@@ -17,19 +13,15 @@ class Progress : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static Progress* m_Instance;
-    
+
         // ===========================================================
         // Fields
         // ===========================================================
     
-        Entity* mBackground;
-        Entity* mBackButton;
-    
-        Button* mResetButton;
-    
-        Popup* mResetPopup;
+        float mImpulsePower;
+        float mSideImpulse;
+        float mRotateImpulse;
+        float mWeight;
 
         // ===========================================================
         // Constructors
@@ -40,7 +32,7 @@ class Progress : public Screen
         // ===========================================================
 
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     private:
@@ -63,11 +55,9 @@ class Progress : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     public:
@@ -87,15 +77,20 @@ class Progress : public Screen
         // Constructors
         // ===========================================================
     
-        Progress();
+        ImpulseEntity(const char* pTextureFileName);
+        ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
 
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        bool isCollideWithPoint(float pX, float pY);
         
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void update(float pDelta);
 };
 
 #endif

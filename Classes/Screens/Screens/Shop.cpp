@@ -201,8 +201,11 @@ Shop* Shop::m_Instance = NULL;
 Shop::Shop()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mTablet = new Entity("shop_money_bg@2x.png", this);
+    this->mTablet = new Button("shop_money_bg@2x.png", 1, 1, this, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
+    this->mCoin = new Entity("coins@2x.png", 5, 4, this->mTablet);
     this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
+
+    this->mCoinsCountText = new Text((Textes) {"1046", Options::FONT, Utils::coord(64), -1}, this->mTablet);
     
     this->mWheels = new BatchEntityManager(9, new Entity("shop_wheel@2x.png"), this);
     
@@ -227,7 +230,7 @@ Shop::Shop()
             if(j == 0)
             {
                 Text* text = new Text(Options::TEXT_SHOP_DESCRIPTION[i], shelf);
-                text->setCenterPosition(Utils::coord(160), shelf->getHeight() / 2 + Utils::coord(5));
+                text->setCenterPosition(Utils::coord(160), shelf->getHeight() / 2);
                 
                 shelf->setCurrentFrameIndex(0);
             }
@@ -255,6 +258,13 @@ Shop::Shop()
     this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
 
     this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(110));
+
+    this->mCoin->create()->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(100), this->mTablet->getHeight() / 2);
+    this->mCoin->setRotation(-45);
+    this->mCoin->setScale(1.3);
+    this->mCoin->animate(0.05);
+
+    this->mCoinsCountText->setCenterPosition(this->mTablet->getWidth() / 2 + Utils::coord(10), this->mTablet->getHeight() / 2);
     
     x = Options::CAMERA_CENTER_X - Utils::coord(500);
     y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(300);
@@ -301,6 +311,11 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                 case Options::BUTTONS_ID_SHOP_ITEM:
                     
                     pSender->mBuyItemPopup->show();
+                    
+                break;
+                case Options::BUTTONS_ID_SHOP_TABLET:
+                    
+                    pSender->mGetCoinsPopup->show();
                     
                 break;
             }

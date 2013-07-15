@@ -26,7 +26,7 @@ ModeHelpList::ModeHelpList(CCNode* pParent) :
         this->setParentType(List::PARENT_TYPE_POPUP);
 
         this->mText[0] = new Text(Options::TEXT_MODEHELP_HELP[0], this);
-        this->mText[1] = new Text(Options::TEXT_MODEHELP_HELP[1], CCSize(Utils::coord(480), 0), this);
+        this->mText[1] = new Text(Options::TEXT_MODEHELP_HELP[1], CCSize(Utils::coord(480), 2000), this);
 
         this->mText[0]->setCenterPosition(((Entity*) pParent)->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(100));
         this->mText[1]->setCenterPosition(((Entity*) pParent)->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2);

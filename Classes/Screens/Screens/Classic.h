@@ -1,13 +1,15 @@
-#ifndef CONST_PROGRESS_H
-#define CONST_PROGRESS_H
+#ifndef CONST_CLASSIC_H
+#define CONST_CLASSIC_H
 
 #include "Screen.h"
 
-#include "ResetProgress.h"
+#include "Pause.h"
+
+#include "Bird.h"
 
 #include "AppDelegate.h"
 
-class Progress : public Screen
+class Classic : public Screen
 {
     protected:
         // ===========================================================
@@ -17,20 +19,22 @@ class Progress : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static Progress* m_Instance;
-    
+
+        static Classic* m_Instance;
+
         // ===========================================================
         // Fields
         // ===========================================================
     
         Entity* mBackground;
-        Entity* mBackButton;
-    
-        Button* mResetButton;
-    
-        Popup* mResetPopup;
 
+        Button* mRestartButton;
+        Button* mPauseButton;
+
+        BatchEntityManager* mBirds;
+
+        Pause* mPausePopup;
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -63,7 +67,7 @@ class Progress : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
+
         static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
@@ -82,12 +86,12 @@ class Progress : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        Classic();
 
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Progress();
 
         // ===========================================================
         // Methods
@@ -96,6 +100,9 @@ class Progress : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif

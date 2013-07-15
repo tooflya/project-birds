@@ -96,6 +96,8 @@ void PleaseRate::onTouchButtonsCallback(const int pAction, const int pID)
 
 void PleaseRate::onShow()
 {
+    Popup::onShow();
+
     for(int i = 0; i < 2; i++)
     {
         ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
@@ -104,6 +106,7 @@ void PleaseRate::onShow()
 
 void PleaseRate::onHide()
 {
+    Popup::onHide();
 }
 
 void PleaseRate::show()

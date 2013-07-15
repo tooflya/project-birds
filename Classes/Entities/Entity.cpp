@@ -8,7 +8,7 @@
 
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)
 {
-    this->initWithFile(pszFileName);
+    this->initWithTexture(CCTextureCache::sharedTextureCache()->textureForKey(pszFileName));
 
     if(pParent)
     {
@@ -451,6 +451,14 @@ void Entity::animate(float pAnimationTime, int pStartFrame, int pFinishFrame)
     this->animate(pAnimationTime, pStartFrame, pFinishFrame, -1);
 }
 
+void Entity::animate(float pAnimationTime, int pStartFrame, int pFinishFrame, bool pReverseNeed)
+{
+    this->animate(pAnimationTime, pStartFrame, pFinishFrame, -1);
+
+    this->mIsAnimationReverseNeed = pReverseNeed;
+    this->mIsAnimationReverse = false;
+}
+
 void Entity::onAnimationStart()
 {
 }
@@ -656,11 +664,16 @@ void Entity::update(float pDeltaTime)
                 }
                 else
                 {
-                    if(this->getCurrentFrameIndex() < this->mAnimationFinishFrame)
+                    if(this->getCurrentFrameIndex() <= this->mAnimationFinishFrame && this->getCurrentFrameIndex() >= this->mAnimationStartFrame)
                     {
-                        this->setCurrentFrameIndex(this->mAnimationStartFrame + this->mAnimationFramesElapsed + 1);
+                        this->setCurrentFrameIndex(this->mCurrentFrameIndex + (this->mIsAnimationReverse ? -1 : 1));
 
-                        this->mAnimationFramesElapsed++;
+                        this->mAnimationFramesElapsed += this->mIsAnimationReverse ? -1 : 1;
+                        
+                        if(this->mIsAnimationReverseNeed && (this->getCurrentFrameIndex() == this->mAnimationFinishFrame || this->getCurrentFrameIndex() == this->mAnimationStartFrame))
+                        {
+                            this->mIsAnimationReverse = !this->mIsAnimationReverse;
+                        }
                     }
                     else
                     {
@@ -675,6 +688,23 @@ void Entity::update(float pDeltaTime)
                                 this->mAnimationRunning = false;
 
                                 this->onAnimationEnd();
+                            }
+                        }
+                        else
+                        {
+                            if(this->mIsAnimationReverseNeed)
+                            {
+                                this->mIsAnimationReverse = !this->mIsAnimationReverse;
+                                
+                                this->setCurrentFrameIndex(this->mAnimationStartFrame + this->mAnimationFramesElapsed + (this->mIsAnimationReverse ? -1 : 1));
+                                
+                                this->mAnimationFramesElapsed += this->mIsAnimationReverse ? -1 : 1;
+                            }
+                            else
+                            {
+                                this->setCurrentFrameIndex(this->mAnimationStartFrame);
+
+                                this->mAnimationFramesElapsed = 0;
                             }
                         }
                     }

@@ -3,20 +3,9 @@
 
 #include "cocos2d.h"
 
-#include "Screen.h"
-
-#include "Menu.h"
-#include "Settings.h"
-#include "Shop.h"
-#include "Mode.h"
-#include "Levels.h"
-#include "Credits.h"
-#include "Loader.h"
-#include "Progress.h"
-#include "Language.h"
-#include "Level.h"
-
 using namespace cocos2d;
+
+class Screen;
 
 class ScreenManager
 {
@@ -83,7 +72,7 @@ class ScreenManager
 		// Fields
 		// ===========================================================
 
-		Screen* mScreens[10];
+		Screen* mScreens[12];
 
 		int mCurrentScreenIndex;
 
@@ -98,6 +87,7 @@ class ScreenManager
 		// ===========================================================
 
 		void generate();
+		void load();
 		
 		void set(float pAnimationTime, int pIndex);
 		

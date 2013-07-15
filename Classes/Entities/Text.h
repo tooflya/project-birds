@@ -1,5 +1,5 @@
-#ifndef CONST_TEMPLATE_H
-#define CONST_TEMPLATE_H
+#ifndef CONST_TEXT_H
+#define CONST_TEXT_H
 
 #include "cocos2d.h"
 

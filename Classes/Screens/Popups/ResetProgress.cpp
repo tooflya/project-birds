@@ -21,8 +21,8 @@ ResetProgress* ResetProgress::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
-ResetProgress::ResetProgress(Screen* pScreen) :
-    Popup(pScreen)
+ResetProgress::ResetProgress(CCNode* pParent) :
+    Popup(pParent)
     {
         this->mLights = new BatchEntityManager(2, new Entity("get_coins_light@2x.png"), this->mDarkness);
     
@@ -104,6 +104,8 @@ void ResetProgress::onTouchButtonsCallback(const int pAction, const int pID)
 
 void ResetProgress::onShow()
 {
+    Popup::onShow();
+
     for(int i = 0; i < 2; i++)
     {
         ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
@@ -112,6 +114,8 @@ void ResetProgress::onShow()
 
 void ResetProgress::onHide()
 {
+    Popup::onHide();
+
     if(this->mAction)
     {
         AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);

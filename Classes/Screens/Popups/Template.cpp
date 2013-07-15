@@ -76,10 +76,12 @@ void Template::hide()
 
 void Template::onShow()
 {
+    Popup::onShow();
 }
 
 void Template::onHide()
 {
+    Popup::onHide();
 }
 
 #endif
