@@ -30,9 +30,9 @@ GetCoins::GetCoins(CCNode* pParent) :
         this->mIllustration = new Entity("popup_getcoins_picture@2x.png", this->mBackground);
         
         this->mGetCoinsButtons[0] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 36, 282, 207}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[1] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 25, 279, 201}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[2] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 243, 285, 225}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[3] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 226, 279, 242}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
+        this->mGetCoinsButtons[1] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 25, 279, 201}, this->mBackground, Options::BUTTONS_ID_GETCOINS_2, onTouchButtonsCallback);
+        this->mGetCoinsButtons[2] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 243, 285, 225}, this->mBackground, Options::BUTTONS_ID_GETCOINS_3, onTouchButtonsCallback);
+        this->mGetCoinsButtons[3] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 226, 279, 242}, this->mBackground, Options::BUTTONS_ID_GETCOINS_4, onTouchButtonsCallback);
         
         for(int i = 0; i < 2; i++)
         {
@@ -79,6 +79,34 @@ void GetCoins::onTouchButtonsCallback(const int pAction, const int pID)
         switch(pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
+                
+                pSender->hide();
+                
+            break;
+            case Options::BUTTONS_ID_GETCOINS_1:
+                
+                AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+
+                pSender->hide();
+                
+            break;
+            case Options::BUTTONS_ID_GETCOINS_2:
+                
+                AppDelegate::addCoins(5000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                
+                pSender->hide();
+                
+            break;
+            case Options::BUTTONS_ID_GETCOINS_3:
+                
+                AppDelegate::addCoins(15000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                
+                pSender->hide();
+                
+            break;
+            case Options::BUTTONS_ID_GETCOINS_4:
+                
+                AppDelegate::addCoins(50000, Options::SAVE_DATA_COINS_TYPE_GOLD);
                 
                 pSender->hide();
                 

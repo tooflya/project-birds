@@ -13,8 +13,12 @@
 
 int Text::ID = 0;
 
-Text* Text::TEXTES[64] =
+Text* Text::TEXTES[128] =
 {
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
@@ -91,6 +95,16 @@ void Text::changeLanguage()
         this->setFontSize(Options::TEXTES_HOLDER[this->mId].size);
         this->setFontName(Options::TEXTES_HOLDER[this->mId].font);
     }
+}
+
+float Text::getWidth()
+{
+    return this->getContentSize().width;
+}
+
+float Text::getHeight()
+{
+    return this->getContentSize().height;
 }
 
 // ===========================================================

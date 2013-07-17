@@ -88,6 +88,8 @@ class Entity : public CCSprite, public Touchable
 
         bool mWasTouched;
 
+        bool mAlphaParent;
+
         const char* mTextureFileName;
 
         // ===========================================================
@@ -244,6 +246,8 @@ class Entity : public CCSprite, public Touchable
         Entity* create();
 
         const char* getTextureFileName();
+
+        void setAlphaParent(bool pIsAlphaParent);
         
         // ===========================================================
         // Override Methods

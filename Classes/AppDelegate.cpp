@@ -27,6 +27,32 @@ ScreenManager* AppDelegate::screens = NULL;
 // Methods
 // ===========================================================
 
+void AppDelegate::addCoins(int pCount, int pType)
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[pType], AppDelegate::getCoins(pType) + pCount);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+void AppDelegate::removeCoins(int pCount, int pType)
+{
+    int newCoinsCount = AppDelegate::getCoins(pType) - pCount;
+
+    if(newCoinsCount < 0)
+    {
+        newCoinsCount = 0;
+    }
+    
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[pType], newCoinsCount);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+int AppDelegate::getCoins(int pType)
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_COINS_ID[pType] );
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -61,7 +87,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->setAlphaBlending(true);
     director->setDepthTest(true);
     director->setDisplayStats(false);
-
+    
     director->setProjection(kCCDirectorProjection2D);
 
     director->setAnimationInterval(1.0f / 60.0f);
@@ -69,6 +95,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     Screen* pScene = new Loading();
 
     director->runWithScene(pScene);   
+
+    AppDelegate::removeCoins(100000, 0); // TODO: Remove this;
 
     return true;
 }

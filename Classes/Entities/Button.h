@@ -93,7 +93,7 @@ class Button : public Entity
         // Methods
         // ===========================================================
 
-        void onTouch(CCTouch* touch, CCEvent* event);
+        virtual void onTouch(CCTouch* touch, CCEvent* event);
 
         void setText(Textes pParams);
         void setString(const char* pString);

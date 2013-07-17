@@ -39,8 +39,17 @@ int Loader::ACTION = -1;
 
 Loader::Loader()
 {
+    this->mBackground = new Entity("preload-lvl-bg@2x.png", this);
+    this->mAnimationSpiral = new Entity("preload-lvl-spiral@2x.png", this);
+    this->bird = new Entity("preload-lvl-bird@2x.png", this);
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
-    this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(140), Utils::coord(50));
+    
+    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mAnimationSpiral->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(50), Options::CAMERA_CENTER_Y - Utils::coord(50));
+    this->bird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
+    
+    this->mAnimationSpiral->setAnchorPoint(ccp(0.55, 0.321));
 }
 
 // ===========================================================
@@ -95,6 +104,8 @@ void Loader::loadingCallBack(CCObject *obj)
 void Loader::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
+    
+    this->mAnimationSpiral->setRotation(this->mAnimationSpiral->getRotation() - 30.0 * pDeltaTime);
 }
 
 void Loader::onEnterTransitionDidFinish()
