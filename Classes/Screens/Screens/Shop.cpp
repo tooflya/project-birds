@@ -190,6 +190,8 @@ class TouchLayer : public CCLayer
 
 Shop* Shop::m_Instance = NULL;
 
+int Shop::CLICKED_ITEM_ID = -1;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -205,13 +207,15 @@ Shop::Shop()
     this->mCoin = new Entity("coins@2x.png", 5, 4, this->mTablet);
     this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
 
-    this->mCoinsCountText = new Text((Textes) {"1046", Options::FONT, Utils::coord(64), -1}, this->mTablet);
+    this->mCoinsCountText = new Text((Textes) {"0", Options::FONT, Utils::coord(64), -1}, this->mTablet);
     
     this->mWheels = new BatchEntityManager(9, new Entity("shop_wheel@2x.png"), this);
     
     float x = Options::CAMERA_CENTER_X;
     float y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(330);
     
+    int itemID = -1;
+
     for(int i = 0; i < 3; i++)
     {
         this->mLayers[i] = new TouchLayer(i, ITEMS_COUNT[i]);
@@ -219,7 +223,7 @@ Shop::Shop()
         this->addChild(this->mLayers[i], 2);
         
         this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i]);
-        this->mItems[i] = new BatchEntityManager(10, new Button("shop_item_icon@2x.png", 10, 10, Options::BUTTONS_ID_SHOP_ITEM, onTouchButtonsCallback), this->mLayers[i]);
+        this->mItems[i] = new BatchEntityManager(10, new Item(onTouchButtonsCallback), this->mLayers[i]);
         
         for(int j = -1; j < 3; j++)
         {
@@ -230,7 +234,7 @@ Shop::Shop()
             if(j == 0)
             {
                 Text* text = new Text(Options::TEXT_SHOP_DESCRIPTION[i], shelf);
-                text->setCenterPosition(Utils::coord(160), shelf->getHeight() / 2);
+                text->setCenterPosition(Utils::coord(180), shelf->getHeight() / 2);
                 
                 shelf->setCurrentFrameIndex(0);
             }
@@ -245,8 +249,7 @@ Shop::Shop()
             Entity* item = (Entity*) this->mItems[i]->create();
             
             item->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
-            item->setCurrentFrameIndex(10 * i + j);
-            //item->setRegisterAsTouchable(false);
+            item->setCurrentFrameIndex(++itemID);
         }
         
         y -= Utils::coord(300);
@@ -264,7 +267,7 @@ Shop::Shop()
     this->mCoin->setScale(1.3);
     this->mCoin->animate(0.05);
 
-    this->mCoinsCountText->setCenterPosition(this->mTablet->getWidth() / 2 + Utils::coord(10), this->mTablet->getHeight() / 2);
+    this->mCoinsCountText->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(70) + this->mCoinsCountText->getWidth(), this->mTablet->getHeight() / 2);
     
     x = Options::CAMERA_CENTER_X - Utils::coord(500);
     y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(300);
@@ -289,9 +292,14 @@ Shop::Shop()
     this->mDarkness = new Entity("popup_darkness@2x.png");
     this->mLights = new EntityManager(2, new Entity("get_coins_light@2x.png"), this->mDarkness);
     this->mBoughtItemIcon = new Entity("shop_item_icon@2x.png", 10, 10, this->mDarkness);
+    this->mBoughtText[0] = new Text(Options::TEXT_SHOP_BOUGHT, this->mDarkness);
+    this->mBoughtText[1] = new Text(Options::TEXT_SHOP_BOUGHT, this->mDarkness);
 
     this->mDarkness->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBoughtItemIcon->create()->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2);
+
+    this->mBoughtText[0]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(300));
+    this->mBoughtText[1]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(380));
 
     this->addChild(this->mDarkness, 10);
         
@@ -301,6 +309,7 @@ Shop::Shop()
         ((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
     }
 
+    this->mDarkness->setAlphaParent(true);
     this->mDarkness->setOpacity(0.0);
 
     /** **/
@@ -320,6 +329,8 @@ Shop::Shop()
 void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 {
     Shop* pSender = (Shop*) Shop::m_Instance;
+
+    if(pSender->mIsAnimationOnItemBoughtRunning) return;
 
     switch(pAction)
     {
@@ -359,7 +370,14 @@ void Shop::onItemBought(int pItemId)
     this->mAnimationOnItemBoughtTime = 3.0;
     this->mAnimationOnItemBoughtTimeElapsed = 0;
 
+    this->mBoughtText[0]->setString(Options::TEXT_SHOP_ITEMS[pItemId].string);
+
+    this->mBoughtText[0]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(300));
+    this->mBoughtText[1]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(380));
+
     this->mDarkness->runAction(CCFadeTo::create(0.5, 230));
+
+    AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
 }
 
 // ===========================================================
@@ -377,6 +395,7 @@ void Shop::update(float pDeltaTime)
         if(this->mAnimationOnItemBoughtTimeElapsed >= this->mAnimationOnItemBoughtTime)
         {
             this->mAnimationOnItemBoughtTimeElapsed = 0;
+            this->mIsAnimationOnItemBoughtRunning = false;
 
             this->mDarkness->runAction(CCFadeTo::create(0.5, 0.0));
         }
@@ -387,6 +406,29 @@ void Shop::update(float pDeltaTime)
             
             light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
         }
+    }
+
+    /** Coins animation */
+
+    int realCoinsCount = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
+
+    if(realCoinsCount != this->mCoins)
+    {
+        int c = 1;
+
+        if(abs(realCoinsCount - this->mCoins) > 1111)
+        {
+            c = 111;
+        }
+        else if(abs(realCoinsCount - this->mCoins) > 111)
+        {
+            c = 11;
+        }
+
+        this->mCoins += realCoinsCount < this->mCoins ? -c : c;
+
+        this->mCoinsCountText->setString(Utils::intToString(this->mCoins).c_str());
+        this->mCoinsCountText->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mTablet->getHeight() / 2);
     }
 }
 
@@ -404,6 +446,8 @@ void Shop::onEnter()
             item->runAction(CCMoveTo::create(0.8 - 0.1 * i, ccp(item->getPosition().x - Utils::coord(1000), item->getPosition().y)));
         }
     }
+
+    this->mCoins = 0;
 }
 
 void Shop::onExit()

@@ -35,6 +35,8 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     this->mEntityManager = NULL;
     this->mBatchEntityManager = NULL;
 
+    this->mAlphaParent = false;
+
     /**
      *
      * We must remember all coordinates of each frame
@@ -307,6 +309,11 @@ void Entity::onCreate()
 void Entity::onDestroy()
 {
     this->setVisible(false);
+}
+
+void Entity::setAlphaParent(bool pIsAlphaParent)
+{
+    this->mAlphaParent = pIsAlphaParent;
 }
 
 /**
@@ -592,7 +599,7 @@ void Entity::update(float pDeltaTime)
 
             if(this->mAnimationTimeElapsed >= this->mAnimationTime)
             {
-                this->mAnimationTimeElapsed -= this->mAnimationTime;
+                this->mAnimationTimeElapsed = 0;
 
                 if(this->mAnimationStartFrame == -1 && this->mAnimationFinishFrame == -1)
                 {
@@ -723,7 +730,7 @@ void Entity::setOpacity(GLubyte pOpaquee)
 {
     CCSprite::setOpacity(pOpaquee);
 
-    if(true) // TODO: Insert some variable.
+    if(this->mAlphaParent) // TODO: Insert some variable.
     {
         for(int i = 0; i < this->getChildrenCount(); i++)
         {

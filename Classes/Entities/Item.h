@@ -1,32 +1,9 @@
-#ifndef CONST_APPDELEGATE_H
-#define CONST_APPDELEGATE_H
+#ifndef CONST_ITEM_H
+#define CONST_ITEM_H
 
-#include "cocos2d.h"
-#include "SimpleAudioEngine.h"
+#include "Button.h"
 
-#include <vector>
-
-#include "Options.h"
-#include "ScreenManager.h"
-
-using namespace std;
-using namespace cocos2d;
-using namespace CocosDenshion;
-
-class ScreenManager;
-
-typedef struct tagResource {
-    CCSize size;
-    char directory[100];
-} Resource;
-
-static Options options;
-
-static Resource resources480x320 = { CCSizeMake(320, 480),  "Graphics/480x320" };
-static Resource resources1280x720 = { CCSizeMake(720, 1280),  "Graphics/1280x720" };
-static CCSize designResolutionSize = CCSizeMake(720, 1280);
-
-class AppDelegate : private CCApplication
+class Item : public Button
 {
     protected:
         // ===========================================================
@@ -87,8 +64,6 @@ class AppDelegate : private CCApplication
         // Constants
         // ===========================================================
 
-        static ScreenManager* screens;
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -97,23 +72,19 @@ class AppDelegate : private CCApplication
         // Constructors
         // ===========================================================
 
+        Item(void (*pOnTouchCallback)(int, int));
+
         // ===========================================================
         // Methods
         // ===========================================================
 
-        static void addCoins(int pCount, int pType);
-        static void removeCoins(int pCount, int pType);
-
-        static int getCoins(int pType);
+        void onTouch(CCTouch* touch, CCEvent* event);
         
         // ===========================================================
         // Override Methods
         // ===========================================================
-
-        bool applicationDidFinishLaunching();
-
-        void applicationDidEnterBackground();
-        void applicationWillEnterForeground();
+    
+        Item* deepCopy();
 };
 
 #endif

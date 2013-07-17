@@ -48,7 +48,7 @@ BuyItem::BuyItem(Screen* pScreen) :
         
         this->mList = new BuyItemList(this->mBackground);
         
-        this->mShouldOpenGetCoins = false;
+        this->mYesPressed = false;
         
         m_Instance = this;
     }
@@ -72,13 +72,10 @@ void BuyItem::onTouchButtonsCallback(const int pAction, const int pID)
                 
             break;
             case Options::BUTTONS_ID_BUYITEM_BUY:
+
+                pSender->mYesPressed = true;
                 
                 pSender->hide();
-                
-                if(Utils::random(0, 1) == 1)
-                {
-                    pSender->mShouldOpenGetCoins = true;
-                }
                 
             break;
         }
@@ -96,15 +93,18 @@ void BuyItem::onHide()
 {
     Shop* shop = (Shop*) this->getParent();
 
-    if(this->mShouldOpenGetCoins)
+    if(this->mYesPressed)
     {
-        this->mShouldOpenGetCoins = false;
-        
-        shop->mGetCoinsPopup->show();
-    }
-    else if(true) // TODO: Really should by this item?
-    {
-        shop->onItemBought(0);
+        this->mYesPressed = false;
+
+        if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD) >= Options::SHOP_ITEMS_PRICES[Shop::CLICKED_ITEM_ID])
+        {
+            shop->onItemBought(Shop::CLICKED_ITEM_ID);
+        }
+        else
+        {
+            shop->mGetCoinsPopup->show();
+        }
     }
     
     Popup::onHide();

@@ -88,10 +88,17 @@ class Options
         static bool SOUND_ENABLE;
 
         static const char* FONT;
+
+        static const char* SAVE_DATA_COINS_ID[2];
+        
+        static int SAVE_DATA_COINS_TYPE_GOLD;
+        static int SAVE_DATA_COINS_TYPE_SILVER;
     
         static int CURRENT_LANGUAGE;
     
-        static Textes TEXTES_HOLDER[64];
+        static Textes TEXTES_HOLDER[200];
+
+        static int SHOP_ITEMS_PRICES[100];
 
         static const int BUTTONS_ACTION_ONTOUCH = 0;
         static const int BUTTONS_ACTION_ONBEGIN = 1;
@@ -191,6 +198,8 @@ class Options
         static Textes TEXT_MODE_PROGRESS;
         static Textes TEXT_MODEHELP_OK;
         static Textes TEXT_MODEHELP_HELP[2];
+        static Textes TEXT_SHOP_ITEMS[64];
+        static Textes TEXT_SHOP_BOUGHT;
 
         // ===========================================================
         // Fields

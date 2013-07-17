@@ -72,7 +72,7 @@ class Text : public CCLabelTTF
     
         static int ID;
     
-        static Text* TEXTES[64];
+        static Text* TEXTES[128];
 
         // ===========================================================
         // Fields
@@ -96,6 +96,9 @@ class Text : public CCLabelTTF
         void setCenterPosition(float pCenterX, float pCenterY);
     
         void changeLanguage();
+
+        float getWidth();
+        float getHeight();
         
         // ===========================================================
         // Override Methods

@@ -6,6 +6,8 @@
 #include "BuyItem.h"
 #include "GetCoins.h"
 
+#include "Item.h"
+
 #include "AppDelegate.h"
 
 class TouchLayer;
@@ -26,6 +28,8 @@ class Shop : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
+
+        int mCoins;
     
         Entity* mBackground;
         Entity* mCoin;
@@ -36,6 +40,7 @@ class Shop : public Screen
         Entity* mDarkness;
 
         Text* mCoinsCountText;
+        Text* mBoughtText[2];
 
         // ===========================================================
         // Constructors
@@ -86,6 +91,8 @@ class Shop : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
+
+        static int CLICKED_ITEM_ID;
 
         // ===========================================================
         // Fields

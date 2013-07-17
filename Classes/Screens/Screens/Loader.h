@@ -20,6 +20,9 @@ class Loader : public Screen
         // Fields
         // ===========================================================
     
+        Entity* mBackground;
+        Entity* mAnimationSpiral;Entity* bird;
+    
         int mNumberOfSprites;
         int mNumberOfLoadedSprites;
     

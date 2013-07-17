@@ -20,6 +20,10 @@
 		41CD6C9515BF7793005E6F29 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8D15BF7793005E6F29 /* OpenGL.framework */; };
 		41CD6C9615BF7793005E6F29 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8E15BF7793005E6F29 /* QuartzCore.framework */; };
 		78605304174FABF400ACE2D3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 78605303174FABF400ACE2D3 /* libz.dylib */; };
+		7860A25817969E2100D83637 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7860A25717969E2100D83637 /* Item.cpp */; };
+		7860A25E1796D35C00D83637 /* preload-lvl-spiral@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7860A25C1796D35C00D83637 /* preload-lvl-spiral@2x.png */; };
+		7860A25F1796D35C00D83637 /* preload-lvl-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7860A25D1796D35C00D83637 /* preload-lvl-bg@2x.png */; };
+		7860A2611796D8A900D83637 /* preload-lvl-bird@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7860A2601796D8A900D83637 /* preload-lvl-bird@2x.png */; };
 		787ECD8B1793E23E00E05101 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787ECD2F1793E23E00E05101 /* AppDelegate.cpp */; };
 		787ECD8C1793E23E00E05101 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787ECD321793E23E00E05101 /* Button.cpp */; };
 		787ECD8D1793E23E00E05101 /* Confetti.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787ECD341793E23E00E05101 /* Confetti.cpp */; };
@@ -176,6 +180,11 @@
 		41CD6C8D15BF7793005E6F29 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		41CD6C8E15BF7793005E6F29 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		78605303174FABF400ACE2D3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7860A25617969E2100D83637 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		7860A25717969E2100D83637 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		7860A25C1796D35C00D83637 /* preload-lvl-spiral@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preload-lvl-spiral@2x.png"; sourceTree = "<group>"; };
+		7860A25D1796D35C00D83637 /* preload-lvl-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preload-lvl-bg@2x.png"; sourceTree = "<group>"; };
+		7860A2601796D8A900D83637 /* preload-lvl-bird@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preload-lvl-bird@2x.png"; sourceTree = "<group>"; };
 		787ECD2F1793E23E00E05101 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		787ECD301793E23E00E05101 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		787ECD321793E23E00E05101 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
@@ -462,6 +471,8 @@
 		787ECD311793E23E00E05101 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				7860A25617969E2100D83637 /* Item.h */,
+				7860A25717969E2100D83637 /* Item.cpp */,
 				787ED064179425DB00E05101 /* ImpulseEntity.h */,
 				787ED065179425DB00E05101 /* ImpulseEntity.cpp */,
 				787ED066179425DB00E05101 /* Bird.h */,
@@ -642,6 +653,9 @@
 		787ECFE417941B3A00E05101 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				7860A2601796D8A900D83637 /* preload-lvl-bird@2x.png */,
+				7860A25C1796D35C00D83637 /* preload-lvl-spiral@2x.png */,
+				7860A25D1796D35C00D83637 /* preload-lvl-bg@2x.png */,
 				789C93581795956600AEF663 /* shop_item_icon@2x.png */,
 				789C935617958A7A00AEF663 /* popup_buy_coins_btn_sprite@2x.png */,
 				787ED0FA1794338D00E05101 /* coins@2x.png */,
@@ -908,6 +922,9 @@
 				787ED0FB1794338D00E05101 /* coins@2x.png in Resources */,
 				789C935717958A7A00AEF663 /* popup_buy_coins_btn_sprite@2x.png in Resources */,
 				789C93591795956600AEF663 /* shop_item_icon@2x.png in Resources */,
+				7860A25E1796D35C00D83637 /* preload-lvl-spiral@2x.png in Resources */,
+				7860A25F1796D35C00D83637 /* preload-lvl-bg@2x.png in Resources */,
+				7860A2611796D8A900D83637 /* preload-lvl-bird@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -973,6 +990,7 @@
 				787ED069179425DB00E05101 /* Bird.cpp in Sources */,
 				787ED1001794422800E05101 /* Pause.cpp in Sources */,
 				789C93521795791E00AEF663 /* Game.cpp in Sources */,
+				7860A25817969E2100D83637 /* Item.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,12 +43,40 @@ const char* Options::FONT = "Fonts/Comic Sans MS.ttf";
 
 int Options::CURRENT_LANGUAGE = 0;
 
-Textes Options::TEXTES_HOLDER[64] =
+const char* Options::SAVE_DATA_COINS_ID[2] = { "p_gold_coins_count", "p_silver_coins_count" };
+int Options::SAVE_DATA_COINS_TYPE_GOLD = 0;
+int Options::SAVE_DATA_COINS_TYPE_SILVER = 1;
+
+int Options::SHOP_ITEMS_PRICES[100] =
+{
+      999, 1499, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+Textes Options::TEXTES_HOLDER[200] =
 {
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
 };
 
 Textes Options::TEXT_LOADING_1 = { "", FONT, 0, 0 };
@@ -100,6 +128,17 @@ Textes Options::TEXT_MODEHELP_OK = { "", FONT, 0, 49 };
 Textes Options::TEXT_MODEHELP_HELP[2] = { { "", FONT, 0, 50 }, { "", FONT, 0, 51 } };
 Textes Options::TEXT_GETCOINS_STRING_3 = { "", FONT, 0, 52 };
 Textes Options::TEXT_GETCOINS_STRING_4 = { "", FONT, 0, 53 };
+Textes Options::TEXT_SHOP_ITEMS[64] =
+{
+      { "", FONT, 0, 54 }, { "", FONT, 0, 55 }, { "", FONT, 0, 56 }, { "", FONT, 0, 58 }, { "", FONT, 0, 58 }, { "", FONT, 0, 59 }, { "", FONT, 0, 60 }, { "", FONT, 0, 61 }, { "", FONT, 0, 62 }, { "", FONT, 0, 63 },
+      { "", FONT, 0, 64 }, { "", FONT, 0, 65 }, { "", FONT, 0, 66 }, { "", FONT, 0, 67 }, { "", FONT, 0, 68 }, { "", FONT, 0, 69 }, { "", FONT, 0, 70 }, { "", FONT, 0, 71 }, { "", FONT, 0, 72 }, { "", FONT, 0, 73 },
+      { "", FONT, 0, 74 }, { "", FONT, 0, 75 }, { "", FONT, 0, 76 }, { "", FONT, 0, 77 }, { "", FONT, 0, 78 }, { "", FONT, 0, 79 }, { "", FONT, 0, 80 }, { "", FONT, 0, 81 }, { "", FONT, 0, 82 }, { "", FONT, 0, 83 },
+      { "", FONT, 0, 84 }, { "", FONT, 0, 85 }, { "", FONT, 0, 86 }, { "", FONT, 0, 87 }, { "", FONT, 0, 88 }, { "", FONT, 0, 89 }, { "", FONT, 0, 90 }, { "", FONT, 0, 91 }, { "", FONT, 0, 92 }, { "", FONT, 0, 93 },
+      { "", FONT, 0, 94 }, { "", FONT, 0, 95 }, { "", FONT, 0, 96 }, { "", FONT, 0, 97 }, { "", FONT, 0, 98 }, { "", FONT, 0, 99 }, { "", FONT, 0, 100 }, { "", FONT, 0, 101 }, { "", FONT, 0, 102 }, { "", FONT, 0, 103 },
+      { "", FONT, 0, 104 }, { "", FONT, 0, 105 }, { "", FONT, 0, 106 }, { "", FONT, 0, 107 }, { "", FONT, 0, 108 }, { "", FONT, 0, 109 }, { "", FONT, 0, 110 }, { "", FONT, 0, 111 }, { "", FONT, 0, 112 }, { "", FONT, 0, 113 },
+      { "", FONT, 0, 114 }, { "", FONT, 0, 115 }, { "", FONT, 0, 116 }, { "", FONT, 0, 117 }
+};
+Textes Options::TEXT_SHOP_BOUGHT =  { "", FONT, 0, 118 };
 
 // ===========================================================
 // Fields
@@ -280,6 +319,63 @@ void Options::changeLanguage()
             
             TEXT_MODEHELP_HELP[1].string = "Classic mode - the game in which you have to compete with other players to earn coins, to increase its global ranking and use the bonus earned.\n\nArcade mode - allow you to show what you can do in one minute! As the game progresses your skills increase and you are quite able to surpass its previous record!\n\nProgress mode - a special mode. Available to you 75 levels (update soon) with a variety of tasks. As you progress through levels you will unlock new opportunities that you can get to use in other game modes.";
             TEXT_MODEHELP_HELP[1].size = 24;
+            
+            TEXT_SHOP_ITEMS[0].string = "Some weapon 1";
+            TEXT_SHOP_ITEMS[0].size = 48;
+            
+            TEXT_SHOP_ITEMS[1].string = "Some weapon 2";
+            TEXT_SHOP_ITEMS[1].size = 48;
+            
+            TEXT_SHOP_ITEMS[2].string = "Some weapon 3";
+            TEXT_SHOP_ITEMS[2].size = 48;
+            
+            TEXT_SHOP_ITEMS[3].string = "Some weapon 4";
+            TEXT_SHOP_ITEMS[3].size = 48;
+            
+            TEXT_SHOP_ITEMS[4].string = "Some weapon 5";
+            TEXT_SHOP_ITEMS[4].size = 48;
+            
+            TEXT_SHOP_ITEMS[5].string = "Some weapon 6";
+            TEXT_SHOP_ITEMS[5].size = 48;
+            
+            TEXT_SHOP_ITEMS[6].string = "Some character 1";
+            TEXT_SHOP_ITEMS[6].size = 48;
+            
+            TEXT_SHOP_ITEMS[7].string = "Some character  2";
+            TEXT_SHOP_ITEMS[7].size = 48;
+            
+            TEXT_SHOP_ITEMS[8].string = "Some character  3";
+            TEXT_SHOP_ITEMS[8].size = 48;
+            
+            TEXT_SHOP_ITEMS[9].string = "Some character  4";
+            TEXT_SHOP_ITEMS[9].size = 48;
+            
+            TEXT_SHOP_ITEMS[10].string = "Some special bonus 1";
+            TEXT_SHOP_ITEMS[10].size = 48;
+            
+            TEXT_SHOP_ITEMS[11].string = "Some special bonus 2";
+            TEXT_SHOP_ITEMS[11].size = 48;
+            
+            TEXT_SHOP_ITEMS[12].string = "Some special bonus 3";
+            TEXT_SHOP_ITEMS[12].size = 48;
+            
+            TEXT_SHOP_ITEMS[13].string = "Some special bonus 4";
+            TEXT_SHOP_ITEMS[13].size = 48;
+            
+            TEXT_SHOP_ITEMS[14].string = "Some special bonus 5";
+            TEXT_SHOP_ITEMS[14].size = 48;
+            
+            TEXT_SHOP_ITEMS[15].string = "Some special bonus 6";
+            TEXT_SHOP_ITEMS[15].size = 48;
+            
+            TEXT_SHOP_ITEMS[16].string = "Some special bonus 7";
+            TEXT_SHOP_ITEMS[16].size = 48;
+            
+            TEXT_SHOP_ITEMS[17].string = "Some special bonus 8";
+            TEXT_SHOP_ITEMS[17].size = 48;
+            
+            TEXT_SHOP_BOUGHT.string = "was unlocked";
+            TEXT_SHOP_BOUGHT.size = 48;
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -440,6 +536,63 @@ void Options::changeLanguage()
             
             TEXT_MODEHELP_HELP[1].string = "Классический режим - режим игры в котором вам предстоит соревноваться с другими игроками, зарабатывать монеты, увеличивать свой глобальный рейтинг и пользоваться заработанными бонусами.\n\nРежим аркады - позволит вам показать на что вы способны за одну минуту! По мере прохождения игры ваши навыки увеличиваются и вы вполне в силах превзойти свой предыдущий рекорд!\n\nПрохождение - это особый режим. Вам доступно 75 уровней (обновления совсем скоро) с различными заданиями. По мере прохождения уровней вам будут открываться новые возможности, которые вы можте использовать в других режимах игры.";
             TEXT_MODEHELP_HELP[1].size = 24;
+            
+            TEXT_SHOP_ITEMS[0].string = "Какое-то оружие 1";
+            TEXT_SHOP_ITEMS[0].size = 48;
+            
+            TEXT_SHOP_ITEMS[1].string = "Какое-то оружие 2";
+            TEXT_SHOP_ITEMS[1].size = 48;
+            
+            TEXT_SHOP_ITEMS[2].string = "Какое-то оружие 3";
+            TEXT_SHOP_ITEMS[2].size = 48;
+            
+            TEXT_SHOP_ITEMS[3].string = "Какое-то оружие 4";
+            TEXT_SHOP_ITEMS[3].size = 48;
+            
+            TEXT_SHOP_ITEMS[4].string = "Какое-то оружие 5";
+            TEXT_SHOP_ITEMS[4].size = 48;
+            
+            TEXT_SHOP_ITEMS[5].string = "Какое-то оружие 6";
+            TEXT_SHOP_ITEMS[5].size = 48;
+            
+            TEXT_SHOP_ITEMS[6].string = "Какая-то птица 1";
+            TEXT_SHOP_ITEMS[6].size = 48;
+            
+            TEXT_SHOP_ITEMS[7].string = "Какая-то птица 2";
+            TEXT_SHOP_ITEMS[7].size = 48;
+            
+            TEXT_SHOP_ITEMS[8].string = "Какая-то птица 3";
+            TEXT_SHOP_ITEMS[8].size = 48;
+            
+            TEXT_SHOP_ITEMS[9].string = "Какая-то птица 4";
+            TEXT_SHOP_ITEMS[9].size = 48;
+            
+            TEXT_SHOP_ITEMS[10].string = "Какой-то бонус 1";
+            TEXT_SHOP_ITEMS[10].size = 48;
+            
+            TEXT_SHOP_ITEMS[11].string = "Какой-то бонус 2";
+            TEXT_SHOP_ITEMS[11].size = 48;
+            
+            TEXT_SHOP_ITEMS[12].string = "Какой-то бонус 3";
+            TEXT_SHOP_ITEMS[12].size = 48;
+            
+            TEXT_SHOP_ITEMS[13].string = "Какой-то бонус 4";
+            TEXT_SHOP_ITEMS[13].size = 48;
+            
+            TEXT_SHOP_ITEMS[14].string = "Какой-то бонус 5";
+            TEXT_SHOP_ITEMS[14].size = 48;
+            
+            TEXT_SHOP_ITEMS[15].string = "Какой-то бонус 6";
+            TEXT_SHOP_ITEMS[15].size = 48;
+            
+            TEXT_SHOP_ITEMS[16].string = "Какой-то бонус 7";
+            TEXT_SHOP_ITEMS[16].size = 48;
+            
+            TEXT_SHOP_ITEMS[17].string = "Какой-то бонус 8";
+            TEXT_SHOP_ITEMS[17].size = 48;
+            
+            TEXT_SHOP_BOUGHT.string = "было куплено";
+            TEXT_SHOP_BOUGHT.size = 48;
         break;
     }
     
@@ -495,8 +648,73 @@ void Options::changeLanguage()
     TEXTES_HOLDER[51] = TEXT_MODEHELP_HELP[1];
     TEXTES_HOLDER[52] = TEXT_GETCOINS_STRING_3;
     TEXTES_HOLDER[53] = TEXT_GETCOINS_STRING_4;
+    TEXTES_HOLDER[54] = TEXT_SHOP_ITEMS[0];
+    TEXTES_HOLDER[55] = TEXT_SHOP_ITEMS[1];
+    TEXTES_HOLDER[56] = TEXT_SHOP_ITEMS[2];
+    TEXTES_HOLDER[57] = TEXT_SHOP_ITEMS[3];
+    TEXTES_HOLDER[58] = TEXT_SHOP_ITEMS[4];
+    TEXTES_HOLDER[59] = TEXT_SHOP_ITEMS[5];
+    TEXTES_HOLDER[60] = TEXT_SHOP_ITEMS[6];
+    TEXTES_HOLDER[61] = TEXT_SHOP_ITEMS[7];
+    TEXTES_HOLDER[62] = TEXT_SHOP_ITEMS[8];
+    TEXTES_HOLDER[63] = TEXT_SHOP_ITEMS[9];
+    TEXTES_HOLDER[64] = TEXT_SHOP_ITEMS[10];
+    TEXTES_HOLDER[65] = TEXT_SHOP_ITEMS[11];
+    TEXTES_HOLDER[66] = TEXT_SHOP_ITEMS[12];
+    TEXTES_HOLDER[67] = TEXT_SHOP_ITEMS[13];
+    TEXTES_HOLDER[68] = TEXT_SHOP_ITEMS[14];
+    TEXTES_HOLDER[69] = TEXT_SHOP_ITEMS[15];
+    TEXTES_HOLDER[70] = TEXT_SHOP_ITEMS[16];
+    TEXTES_HOLDER[71] = TEXT_SHOP_ITEMS[17];
+    TEXTES_HOLDER[72] = TEXT_SHOP_ITEMS[18];
+    TEXTES_HOLDER[73] = TEXT_SHOP_ITEMS[19];
+    TEXTES_HOLDER[74] = TEXT_SHOP_ITEMS[20];
+    TEXTES_HOLDER[75] = TEXT_SHOP_ITEMS[21];
+    TEXTES_HOLDER[76] = TEXT_SHOP_ITEMS[22];
+    TEXTES_HOLDER[77] = TEXT_SHOP_ITEMS[23];
+    TEXTES_HOLDER[78] = TEXT_SHOP_ITEMS[24];
+    TEXTES_HOLDER[79] = TEXT_SHOP_ITEMS[25];
+    TEXTES_HOLDER[80] = TEXT_SHOP_ITEMS[26];
+    TEXTES_HOLDER[81] = TEXT_SHOP_ITEMS[27];
+    TEXTES_HOLDER[82] = TEXT_SHOP_ITEMS[28];
+    TEXTES_HOLDER[83] = TEXT_SHOP_ITEMS[29];
+    TEXTES_HOLDER[84] = TEXT_SHOP_ITEMS[30];
+    TEXTES_HOLDER[85] = TEXT_SHOP_ITEMS[31];
+    TEXTES_HOLDER[86] = TEXT_SHOP_ITEMS[32];
+    TEXTES_HOLDER[87] = TEXT_SHOP_ITEMS[33];
+    TEXTES_HOLDER[88] = TEXT_SHOP_ITEMS[34];
+    TEXTES_HOLDER[89] = TEXT_SHOP_ITEMS[35];
+    TEXTES_HOLDER[90] = TEXT_SHOP_ITEMS[36];
+    TEXTES_HOLDER[91] = TEXT_SHOP_ITEMS[37];
+    TEXTES_HOLDER[92] = TEXT_SHOP_ITEMS[38];
+    TEXTES_HOLDER[93] = TEXT_SHOP_ITEMS[39];
+    TEXTES_HOLDER[94] = TEXT_SHOP_ITEMS[41];
+    TEXTES_HOLDER[95] = TEXT_SHOP_ITEMS[42];
+    TEXTES_HOLDER[96] = TEXT_SHOP_ITEMS[43];
+    TEXTES_HOLDER[97] = TEXT_SHOP_ITEMS[44];
+    TEXTES_HOLDER[98] = TEXT_SHOP_ITEMS[45];
+    TEXTES_HOLDER[99] = TEXT_SHOP_ITEMS[46];
+    TEXTES_HOLDER[100] = TEXT_SHOP_ITEMS[47];
+    TEXTES_HOLDER[101] = TEXT_SHOP_ITEMS[48];
+    TEXTES_HOLDER[102] = TEXT_SHOP_ITEMS[49];
+    TEXTES_HOLDER[103] = TEXT_SHOP_ITEMS[50];
+    TEXTES_HOLDER[104] = TEXT_SHOP_ITEMS[51];
+    TEXTES_HOLDER[105] = TEXT_SHOP_ITEMS[52];
+    TEXTES_HOLDER[106] = TEXT_SHOP_ITEMS[53];
+    TEXTES_HOLDER[107] = TEXT_SHOP_ITEMS[54];
+    TEXTES_HOLDER[108] = TEXT_SHOP_ITEMS[55];
+    TEXTES_HOLDER[109] = TEXT_SHOP_ITEMS[56];
+    TEXTES_HOLDER[110] = TEXT_SHOP_ITEMS[57];
+    TEXTES_HOLDER[111] = TEXT_SHOP_ITEMS[58];
+    TEXTES_HOLDER[112] = TEXT_SHOP_ITEMS[59];
+    TEXTES_HOLDER[113] = TEXT_SHOP_ITEMS[60];
+    TEXTES_HOLDER[114] = TEXT_SHOP_ITEMS[61];
+    TEXTES_HOLDER[115] = TEXT_SHOP_ITEMS[62];
+    TEXTES_HOLDER[116] = TEXT_SHOP_ITEMS[63];
+    TEXTES_HOLDER[117] = TEXT_SHOP_ITEMS[64];
+    TEXTES_HOLDER[118] = TEXT_SHOP_BOUGHT;
     
-    for(int i = 0; i < 64; i++)
+    for(int i = 0; i < 119; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

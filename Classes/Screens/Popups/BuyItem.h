@@ -26,7 +26,7 @@ class BuyItem : public Popup
     
         Button* mBuyButton;
     
-        bool mShouldOpenGetCoins;
+        bool mYesPressed;
     
         BatchEntityManager* mListBorders;
     
