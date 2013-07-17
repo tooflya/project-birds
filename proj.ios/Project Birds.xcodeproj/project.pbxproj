@@ -51,7 +51,6 @@
 		787ECF9C17941A7C00E05101 /* settings_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ECEFA17941A7B00E05101 /* settings_bg@2x.png */; };
 		787ECF9D17941A7C00E05101 /* settings_btn_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ECEFB17941A7B00E05101 /* settings_btn_big@2x.png */; };
 		787ECF9E17941A7C00E05101 /* settings_lang_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ECEFC17941A7B00E05101 /* settings_lang_check@2x.png */; };
-		787ECF9F17941A7C00E05101 /* shop_item_icon_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ECEFD17941A7B00E05101 /* shop_item_icon_test@2x.png */; };
 		787ECFA017941A7C00E05101 /* shop_money_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ECEFE17941A7B00E05101 /* shop_money_bg@2x.png */; };
 		787ECFA117941A7C00E05101 /* shop_shelf_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ECEFF17941A7B00E05101 /* shop_shelf_sprite@2x.png */; };
 		787ECFA217941A7C00E05101 /* shop_wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ECF0017941A7B00E05101 /* shop_wheel@2x.png */; };
@@ -120,6 +119,9 @@
 		787ED0F9179431AE00E05101 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787ED0CB179431AE00E05101 /* Utils.cpp */; };
 		787ED0FD179437B600E05101 /* coins@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787ED0FC179437B600E05101 /* coins@2x.png */; };
 		787ED103179448B500E05101 /* Pause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787ED102179448B500E05101 /* Pause.cpp */; };
+		789C935517957CC100AEF663 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789C935417957CC100AEF663 /* Game.cpp */; };
+		789C935C1795962500AEF663 /* shop_item_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789C935A1795962500AEF663 /* shop_item_icon@2x.png */; };
+		789C935D1795962500AEF663 /* popup_buy_coins_btn_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789C935B1795962500AEF663 /* popup_buy_coins_btn_sprite@2x.png */; };
 		78B38A53177E5D0600773C6A /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4D177E5D0600773C6A /* AppController.mm */; };
 		78B38A55177E5D0600773C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4F177E5D0600773C6A /* main.m */; };
 		78B38A56177E5D0600773C6A /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A52177E5D0600773C6A /* RootViewController.mm */; };
@@ -332,7 +334,6 @@
 		787ECEFA17941A7B00E05101 /* settings_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bg@2x.png"; sourceTree = "<group>"; };
 		787ECEFB17941A7B00E05101 /* settings_btn_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_btn_big@2x.png"; sourceTree = "<group>"; };
 		787ECEFC17941A7B00E05101 /* settings_lang_check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_lang_check@2x.png"; sourceTree = "<group>"; };
-		787ECEFD17941A7B00E05101 /* shop_item_icon_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_item_icon_test@2x.png"; sourceTree = "<group>"; };
 		787ECEFE17941A7B00E05101 /* shop_money_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_money_bg@2x.png"; sourceTree = "<group>"; };
 		787ECEFF17941A7B00E05101 /* shop_shelf_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_shelf_sprite@2x.png"; sourceTree = "<group>"; };
 		787ECF0017941A7B00E05101 /* shop_wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_wheel@2x.png"; sourceTree = "<group>"; };
@@ -447,6 +448,10 @@
 		787ED0FC179437B600E05101 /* coins@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coins@2x.png"; sourceTree = "<group>"; };
 		787ED101179448B500E05101 /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
 		787ED102179448B500E05101 /* Pause.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pause.cpp; sourceTree = "<group>"; };
+		789C935317957CC100AEF663 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		789C935417957CC100AEF663 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		789C935A1795962500AEF663 /* shop_item_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_item_icon@2x.png"; sourceTree = "<group>"; };
+		789C935B1795962500AEF663 /* popup_buy_coins_btn_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_buy_coins_btn_sprite@2x.png"; sourceTree = "<group>"; };
 		78B38A4C177E5D0600773C6A /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		78B38A4D177E5D0600773C6A /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		78B38A4F177E5D0600773C6A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -917,6 +922,8 @@
 		787ECED517941A7B00E05101 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				789C935A1795962500AEF663 /* shop_item_icon@2x.png */,
+				789C935B1795962500AEF663 /* popup_buy_coins_btn_sprite@2x.png */,
 				787ED0FC179437B600E05101 /* coins@2x.png */,
 				787ECED617941A7B00E05101 /* about_scroll_border@2x.png */,
 				787ECED717941A7B00E05101 /* about_scroll_border_small@2x.png */,
@@ -957,7 +964,6 @@
 				787ECEFA17941A7B00E05101 /* settings_bg@2x.png */,
 				787ECEFB17941A7B00E05101 /* settings_btn_big@2x.png */,
 				787ECEFC17941A7B00E05101 /* settings_lang_check@2x.png */,
-				787ECEFD17941A7B00E05101 /* shop_item_icon_test@2x.png */,
 				787ECEFE17941A7B00E05101 /* shop_money_bg@2x.png */,
 				787ECEFF17941A7B00E05101 /* shop_shelf_sprite@2x.png */,
 				787ECF0017941A7B00E05101 /* shop_wheel@2x.png */,
@@ -1113,6 +1119,8 @@
 		787ED0A0179431AE00E05101 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				789C935317957CC100AEF663 /* Game.h */,
+				789C935417957CC100AEF663 /* Game.cpp */,
 				787ED0A1179431AE00E05101 /* Classic.cpp */,
 				787ED0A2179431AE00E05101 /* Classic.h */,
 				787ED0A3179431AE00E05101 /* Credits.cpp */,
@@ -1984,7 +1992,6 @@
 				787ECF9C17941A7C00E05101 /* settings_bg@2x.png in Resources */,
 				787ECF9D17941A7C00E05101 /* settings_btn_big@2x.png in Resources */,
 				787ECF9E17941A7C00E05101 /* settings_lang_check@2x.png in Resources */,
-				787ECF9F17941A7C00E05101 /* shop_item_icon_test@2x.png in Resources */,
 				787ECFA017941A7C00E05101 /* shop_money_bg@2x.png in Resources */,
 				787ECFA117941A7C00E05101 /* shop_shelf_sprite@2x.png in Resources */,
 				787ECFA217941A7C00E05101 /* shop_wheel@2x.png in Resources */,
@@ -2007,6 +2014,8 @@
 				787ECFB317941A7C00E05101 /* music-3.mp3 in Resources */,
 				787ECFB417941A7C00E05101 /* level-end.mp3 in Resources */,
 				787ED0FD179437B600E05101 /* coins@2x.png in Resources */,
+				789C935C1795962500AEF663 /* shop_item_icon@2x.png in Resources */,
+				789C935D1795962500AEF663 /* popup_buy_coins_btn_sprite@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2207,6 +2216,7 @@
 				787ED0F8179431AE00E05101 /* Touchable.cpp in Sources */,
 				787ED0F9179431AE00E05101 /* Utils.cpp in Sources */,
 				787ED103179448B500E05101 /* Pause.cpp in Sources */,
+				789C935517957CC100AEF663 /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

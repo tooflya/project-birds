@@ -7,7 +7,7 @@
 // Inner Classes
 // ===========================================================
 
-const char* Loader::TEXTURE_LIBRARY[8] =
+const char* Loader::TEXTURE_LIBRARY[12] =
 {
     "game_gui_bg_summer@2x.png",
     "birds_sprite@2x.png",
@@ -16,7 +16,11 @@ const char* Loader::TEXTURE_LIBRARY[8] =
     "popup_darkness@2x.png",
     "btn_sprite@2x.png",
     "end_lvl_btn_sprite@2x.png",
-    "settings_btn_big@2x.png"
+    "settings_btn_big@2x.png",
+    "end_lvl_bg_sprite@2x.png",
+    "end_lvl_bg_popup@2x.png",
+    "confety_sprite@2x.png",
+    "end_lvl_star_sprite@2x.png"
 };
 
 // ===========================================================
@@ -53,7 +57,7 @@ void Loader::loadingCallBack(CCObject *obj)
     
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
-        AppDelegate::screens->load();
+        AppDelegate::screens->load(ACTION);
         
         switch(ACTION)
         {

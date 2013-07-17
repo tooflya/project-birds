@@ -254,6 +254,8 @@ class Entity : public CCSprite, public Touchable
 
         virtual void update(float pDeltaTime);
         virtual void draw();
+
+        void setOpacity(GLubyte pOpaquee);
 };
 
 #endif

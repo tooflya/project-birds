@@ -84,11 +84,32 @@ void ScreenManager::set(float pAnimationTime, int pIndex)
     CCDirector::sharedDirector()->pushScene(transition);
 }
 
-void ScreenManager::load()
+void ScreenManager::load(int pAction)
 {
-    this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
-    //this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Level();
-    //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Level();
+    switch(pAction)
+    {
+        case 3:
+
+            // TODO: Return the world!
+
+        break;
+        default:
+
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MENU]);
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SETTINGS]);
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MODE]);
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CREDITS]);
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS]);
+            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LANGUAGE]);
+
+            this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
+            //this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Level();
+            //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Level();
+
+        break;
+    }
 }
 
 // ===========================================================

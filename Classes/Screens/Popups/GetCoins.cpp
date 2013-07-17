@@ -29,10 +29,10 @@ GetCoins::GetCoins(CCNode* pParent) :
         this->mCloseButton = new Button("btn_sprite@2x.png", 2, 3, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         this->mIllustration = new Entity("popup_getcoins_picture@2x.png", this->mBackground);
         
-        this->mGetCoinsButtons[0] = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[1] = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[2] = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[3] = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
+        this->mGetCoinsButtons[0] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 36, 282, 207}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
+        this->mGetCoinsButtons[1] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 25, 279, 201}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
+        this->mGetCoinsButtons[2] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 243, 285, 225}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
+        this->mGetCoinsButtons[3] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 226, 279, 242}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
         
         for(int i = 0; i < 2; i++)
         {
@@ -47,21 +47,20 @@ GetCoins::GetCoins(CCNode* pParent) :
         
         Text* text1 = new Text(Options::TEXT_GETCOINS_STRING_1, this->mBackground);
         Text* text2 = new Text(Options::TEXT_GETCOINS_STRING_2, this->mBackground);
+        Text* text3 = new Text(Options::TEXT_GETCOINS_STRING_3, this->mBackground);
+        Text* text4 = new Text(Options::TEXT_GETCOINS_STRING_4, this->mBackground);
         
-        text1->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(100)));
-        text2->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(20)));
+        text1->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(190)));
+        text2->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(140)));
+        text3->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(50)));
+        text4->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(0)));
         
-        this->mGetCoinsButtons[0]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(150), this->mBackground->getHeight() / 2 - Utils::coord(130));
-        this->mGetCoinsButtons[1]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(150), this->mBackground->getHeight() / 2 - Utils::coord(130));
-        this->mGetCoinsButtons[2]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(150), this->mBackground->getHeight() / 2 - Utils::coord(300));
-        this->mGetCoinsButtons[3]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(150), this->mBackground->getHeight() / 2 - Utils::coord(300));
+        this->mGetCoinsButtons[0]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(140), this->mBackground->getHeight() / 2 - Utils::coord(155));
+        this->mGetCoinsButtons[1]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(140), this->mBackground->getHeight() / 2 - Utils::coord(140));
+        this->mGetCoinsButtons[2]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(140), this->mBackground->getHeight() / 2 - Utils::coord(350));
+        this->mGetCoinsButtons[3]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(140), this->mBackground->getHeight() / 2 - Utils::coord(345));
         
-        this->mGetCoinsButtons[0]->setText(Options::TEXT_GETCOINS_1);
-        this->mGetCoinsButtons[1]->setText(Options::TEXT_GETCOINS_2);
-        this->mGetCoinsButtons[2]->setText(Options::TEXT_GETCOINS_3);
-        this->mGetCoinsButtons[3]->setText(Options::TEXT_GETCOINS_4);
-        
-        this->mIllustration->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - Utils::coord(140));
+        this->mIllustration->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - Utils::coord(70));
         
         m_Instance = this;
     }

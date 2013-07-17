@@ -33,6 +33,8 @@ class Shop : public Screen
         Button* mBackButton;
         Button* mTablet;
 
+        Entity* mDarkness;
+
         Text* mCoinsCountText;
 
         // ===========================================================
@@ -98,6 +100,15 @@ class Shop : public Screen
         Popup* mBuyItemPopup;
         Popup* mGetCoinsPopup;
 
+        EntityManager* mLights;
+
+        Entity* mBoughtItemIcon;
+
+        float mAnimationOnItemBoughtTime;
+        float mAnimationOnItemBoughtTimeElapsed;
+
+        bool mIsAnimationOnItemBoughtRunning;
+
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -107,11 +118,15 @@ class Shop : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void onItemBought(int pItemId);
         
         // ===========================================================
         // Override Methods
         // ===========================================================
     
+        void update(float pDeltaTime);
+
         void onEnter();
         void onExit();
 };

@@ -20,7 +20,7 @@
 // ===========================================================
 
 Confetti::Confetti() :
-    Entity("confety_sprite@2x.png", 6, 3)
+    Entity("confety_sprite@2x.png", 5, 4)
     {
         
     }
@@ -66,7 +66,7 @@ void Confetti::update(float pDeltaTime)
     this->mSpeedY -= this->mWeight;
     
     this->setCenterPosition(x, y);
-    this->setRotation(this->getRotation() + this->mRotationSpeed);
+    this->setRotation(this->getRotationX() + this->mRotationSpeed);
     this->setOpacity(this->getOpacity() - this->mAlphaSpeed);
 }
 

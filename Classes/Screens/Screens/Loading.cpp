@@ -11,7 +11,7 @@
 // Constants
 // ===========================================================
 
-const char* Loading::TEXTURE_LIBRARY[35] =
+const char* Loading::TEXTURE_LIBRARY[36] =
 {
     "main_menu_bg@2x.png",
     "main_menu_bg_back@2x.png",
@@ -26,7 +26,7 @@ const char* Loading::TEXTURE_LIBRARY[35] =
     "shop_money_bg@2x.png",
     "shop_wheel@2x.png",
     "shop_shelf_sprite@2x.png",
-    "shop_item_icon_test@2x.png",
+    "shop_item_icon@2x.png",
     "choose_box_navi_sprite@2x.png",
     "choose_box_lvl_sprite@2x.png",
     "popup_bg@2x.png",
@@ -47,7 +47,8 @@ const char* Loading::TEXTURE_LIBRARY[35] =
     "about_scroll_border_small@2x.png",
     "popup_progress_picture@2x.png",
     "about_scroll_fill_small@2x.png",
-    "coins@2x.png"
+    "coins@2x.png",
+    "popup_buy_coins_btn_sprite@2x.png"
 };
 
 // ===========================================================

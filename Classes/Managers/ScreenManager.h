@@ -87,7 +87,7 @@ class ScreenManager
 		// ===========================================================
 
 		void generate();
-		void load();
+		void load(int pAction);
 		
 		void set(float pAnimationTime, int pIndex);
 		

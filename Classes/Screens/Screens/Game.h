@@ -1,9 +1,13 @@
-#ifndef CONST_LOADING_H
-#define CONST_LOADING_H
+#ifndef CONST_GAME_H
+#define CONST_GAME_H
 
 #include "Screen.h"
 
-class Loading : public Screen
+#include "End.h"
+
+#include "AppDelegate.h"
+
+class Game : public Screen
 {
     protected:
         // ===========================================================
@@ -13,18 +17,15 @@ class Loading : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static const char* TEXTURE_LIBRARY[36];
 
         // ===========================================================
         // Fields
         // ===========================================================
     
-        int mNumberOfSprites;
-        int mNumberOfLoadedSprites;
-    
-        Text* mLoadingText;
+        Entity* mBackground;
 
+        End* mFinishScreen;
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -32,8 +33,6 @@ class Loading : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void loadingCallBack(CCObject *obj);
 
         // ===========================================================
         // Override Methods
@@ -76,12 +75,12 @@ class Loading : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        Game();
 
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Loading();
 
         // ===========================================================
         // Methods
@@ -90,6 +89,9 @@ class Loading : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif

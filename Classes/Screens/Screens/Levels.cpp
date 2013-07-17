@@ -90,6 +90,9 @@ Levels::Levels()
     this->mBackground = new Entity("settings_bg@2x.png", this);
     this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_LEVELS_BACK, onTouchButtonsCallback);
     this->mTablet = new Entity("shop_money_bg@2x.png", this);
+    this->mStarsCountIcon = new Entity("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
+
+    this->mStarsCountText = new Text((Textes) {"206", Options::FONT, Utils::coord(64), -1}, this->mTablet);
     
     this->mLevels = new EntityManager(20, new LevelButton(), this);
     
@@ -97,6 +100,11 @@ Levels::Levels()
     this->mBackButton->create()->setCurrentFrameIndex(1);
     this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
     this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(110));
+    this->mStarsCountIcon->create()->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(100), this->mTablet->getHeight() / 2);
+    this->mStarsCountText->setCenterPosition(this->mTablet->getWidth() / 2 + Utils::coord(10), this->mTablet->getHeight() / 2);
+
+    this->mStarsCountIcon->setCurrentFrameIndex(1);
+    this->mStarsCountIcon->setScale(0.5);
     
     float x = 0;
     float y = Options::CAMERA_CENTER_Y + Utils::coord(180) * 2;

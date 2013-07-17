@@ -1,7 +1,7 @@
 #ifndef CONST_CLASSIC_H
 #define CONST_CLASSIC_H
 
-#include "Screen.h"
+#include "Game.h"
 
 #include "Pause.h"
 
@@ -9,7 +9,7 @@
 
 #include "AppDelegate.h"
 
-class Classic : public Screen
+class Classic : public Game
 {
     protected:
         // ===========================================================
@@ -25,8 +25,6 @@ class Classic : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Entity* mBackground;
 
         Button* mRestartButton;
         Button* mPauseButton;

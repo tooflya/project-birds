@@ -157,6 +157,8 @@ class Options
         static Textes TEXT_RATE_STRING_4;
         static Textes TEXT_GETCOINS_STRING_1;
         static Textes TEXT_GETCOINS_STRING_2;
+        static Textes TEXT_GETCOINS_STRING_3;
+        static Textes TEXT_GETCOINS_STRING_4;
         static Textes TEXT_GETCOINS_1;
         static Textes TEXT_GETCOINS_2;
         static Textes TEXT_GETCOINS_3;

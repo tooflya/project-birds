@@ -94,13 +94,17 @@ void BuyItem::onTouchButtonsCallback(const int pAction, const int pID)
 
 void BuyItem::onHide()
 {
+    Shop* shop = (Shop*) this->getParent();
+
     if(this->mShouldOpenGetCoins)
     {
         this->mShouldOpenGetCoins = false;
         
-        Shop* shop = (Shop*) this->getParent();
-        
         shop->mGetCoinsPopup->show();
+    }
+    else if(true) // TODO: Really should by this item?
+    {
+        shop->onItemBought(0);
     }
     
     Popup::onHide();

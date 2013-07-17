@@ -719,4 +719,19 @@ void Entity::draw()
     CCSprite::draw();
 }
 
+void Entity::setOpacity(GLubyte pOpaquee)
+{
+    CCSprite::setOpacity(pOpaquee);
+
+    if(true) // TODO: Insert some variable.
+    {
+        for(int i = 0; i < this->getChildrenCount(); i++)
+        {
+            Entity* child = (Entity*) this->getChildren()->objectAtIndex(i);
+
+            child->setOpacity(pOpaquee);
+        }
+    }
+}
+
 #endif

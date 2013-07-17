@@ -219,7 +219,7 @@ Shop::Shop()
         this->addChild(this->mLayers[i], 2);
         
         this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i]);
-        this->mItems[i] = new BatchEntityManager(10, new Button("shop_item_icon_test@2x.png", 5, 6, Options::BUTTONS_ID_SHOP_ITEM, onTouchButtonsCallback), this->mLayers[i]);
+        this->mItems[i] = new BatchEntityManager(10, new Button("shop_item_icon@2x.png", 10, 10, Options::BUTTONS_ID_SHOP_ITEM, onTouchButtonsCallback), this->mLayers[i]);
         
         for(int j = -1; j < 3; j++)
         {
@@ -284,9 +284,32 @@ Shop::Shop()
         this->mWheels->create()->setCenterPosition(x, y);
     }
     
+    /** Bought item animation **/
+
+    this->mDarkness = new Entity("popup_darkness@2x.png");
+    this->mLights = new EntityManager(2, new Entity("get_coins_light@2x.png"), this->mDarkness);
+    this->mBoughtItemIcon = new Entity("shop_item_icon@2x.png", 10, 10, this->mDarkness);
+
+    this->mDarkness->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mBoughtItemIcon->create()->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2);
+
+    this->addChild(this->mDarkness, 10);
+        
+    for(int i = 0; i < 2; i++)
+     {
+        this->mLights->create()->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2);
+        ((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
+    }
+
+    this->mDarkness->setOpacity(0.0);
+
+    /** **/
+
     this->mBuyItemPopup = new BuyItem(this);
     this->mGetCoinsPopup = new GetCoins(this);
     
+    this->mIsAnimationOnItemBoughtRunning = false;
+
     m_Instance = this;
 }
 
@@ -329,9 +352,43 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
     }
 }
 
+void Shop::onItemBought(int pItemId)
+{
+    this->mIsAnimationOnItemBoughtRunning = true;
+
+    this->mAnimationOnItemBoughtTime = 3.0;
+    this->mAnimationOnItemBoughtTimeElapsed = 0;
+
+    this->mDarkness->runAction(CCFadeTo::create(0.5, 230));
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Shop::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+
+    if(this->mIsAnimationOnItemBoughtRunning)
+    {
+        this->mAnimationOnItemBoughtTimeElapsed += pDeltaTime;
+
+        if(this->mAnimationOnItemBoughtTimeElapsed >= this->mAnimationOnItemBoughtTime)
+        {
+            this->mAnimationOnItemBoughtTimeElapsed = 0;
+
+            this->mDarkness->runAction(CCFadeTo::create(0.5, 0.0));
+        }
+        
+        for(int i = 0; i < 2; i++)
+        {
+            Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
+            
+            light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
+        }
+    }
+}
 
 void Shop::onEnter()
 {

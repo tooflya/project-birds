@@ -23,8 +23,11 @@ class Levels : public Screen
         Entity* mBackground;
         Entity* mBackButton;
         Entity* mTablet;
+        Entity* mStarsCountIcon;
     
         EntityManager* mLevels;
+
+        Text* mStarsCountText;
 
         // ===========================================================
         // Constructors

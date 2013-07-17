@@ -98,6 +98,8 @@ Textes Options::TEXT_MODE_ARCADE = { "", FONT, 0, 47 };
 Textes Options::TEXT_MODE_PROGRESS = { "", FONT, 0, 48 };
 Textes Options::TEXT_MODEHELP_OK = { "", FONT, 0, 49 };
 Textes Options::TEXT_MODEHELP_HELP[2] = { { "", FONT, 0, 50 }, { "", FONT, 0, 51 } };
+Textes Options::TEXT_GETCOINS_STRING_3 = { "", FONT, 0, 52 };
+Textes Options::TEXT_GETCOINS_STRING_4 = { "", FONT, 0, 53 };
 
 // ===========================================================
 // Fields
@@ -173,6 +175,12 @@ void Options::changeLanguage()
             
             TEXT_GETCOINS_STRING_2.string = "some coins!";
             TEXT_GETCOINS_STRING_2.size = 48;
+            
+            TEXT_GETCOINS_STRING_3.string = "Any purchase will";
+            TEXT_GETCOINS_STRING_3.size = 36;
+            
+            TEXT_GETCOINS_STRING_4.string = "remove the ads!";
+            TEXT_GETCOINS_STRING_4.size = 36;
             
             TEXT_GETCOINS_1.string = "$0.99";
             TEXT_GETCOINS_1.size = 64;
@@ -324,6 +332,12 @@ void Options::changeLanguage()
             
             TEXT_GETCOINS_STRING_2.string = "несколько монет?";
             TEXT_GETCOINS_STRING_2.size = 48;
+            
+            TEXT_GETCOINS_STRING_3.string = "Любая покупка";
+            TEXT_GETCOINS_STRING_3.size = 36;
+            
+            TEXT_GETCOINS_STRING_4.string = "уберет рекламу!";
+            TEXT_GETCOINS_STRING_4.size = 36;
             
             TEXT_GETCOINS_1.string = "$0.99";
             TEXT_GETCOINS_1.font = FONT;
@@ -479,6 +493,8 @@ void Options::changeLanguage()
     TEXTES_HOLDER[49] = TEXT_MODEHELP_OK;
     TEXTES_HOLDER[50] = TEXT_MODEHELP_HELP[0];
     TEXTES_HOLDER[51] = TEXT_MODEHELP_HELP[1];
+    TEXTES_HOLDER[52] = TEXT_GETCOINS_STRING_3;
+    TEXTES_HOLDER[53] = TEXT_GETCOINS_STRING_4;
     
     for(int i = 0; i < 64; i++)
     {
