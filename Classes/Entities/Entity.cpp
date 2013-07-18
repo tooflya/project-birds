@@ -100,6 +100,8 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 
     this->mIsAnimationReverse = false;
     this->mIsAnimationReverseNeed = false;
+    
+    this->autorelease();
 
     this->destroy();
 

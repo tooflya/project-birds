@@ -33,6 +33,8 @@
 
 Screen::Screen()
 {
+    this->autorelease();
+    
     this->scheduleUpdate();
 }
 

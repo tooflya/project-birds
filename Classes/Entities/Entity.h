@@ -223,9 +223,9 @@ class Entity : public CCSprite, public Touchable
 
         void setAnimationStartTimeout(float pSecodsTimeout);
 
-        void onAnimationStart();
-        void onAnimationEnd();
-        void onAnimationCircleEnd();
+        virtual void onAnimationStart();
+        virtual void onAnimationEnd();
+        virtual void onAnimationCircleEnd();
 
         void ccTouchMoved(CCTouch* touch, CCEvent* event);
         void ccTouchEnded(CCTouch* touch, CCEvent* event);

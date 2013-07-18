@@ -1,7 +1,7 @@
-#ifndef CONST_GAME
-#define CONST_GAME
+#ifndef CONST_MARK
+#define CONST_MARK
 
-#include "Game.h"
+#include "Mark.h"
 
 // ===========================================================
 // Inner Classes
@@ -19,40 +19,46 @@
 // Constructors
 // ===========================================================
 
-Game::Game()
-{
-    this->mBirdsTime = 0;
-    this->mBirdsTimeElapsed = 0;
-
-    this->addChild(TouchTrailLayer::create(), 10);
-}
+Mark::Mark() :
+    Entity("mark@2x.png")
+    {
+        
+    }
 
 // ===========================================================
 // Methods
 // ===========================================================
 
 // ===========================================================
-// Override Methods
+// Virtual Methods
 // ===========================================================
 
-void Game::update(float pDeltaTime)
+void Mark::onCreate()
 {
-    Screen::update(pDeltaTime);
-
-    if(this->mDust->getCount() < 30)
+    Entity::onCreate();
+    
+    this->setOpacity(255.0);
+    this->setScale(0.7);
+    
+    this->runAction(CCFadeTo::create(0.5, 0.0));
+    this->runAction(CCScaleTo::create(0.5, 0.3));
+}
+    
+Mark* Mark::deepCopy()
+{
+    return new Mark();
+}
+    
+void Mark::update(float pDeltaTime)
+{
+    Entity::update(pDeltaTime);
+    
+    // if(!this->isVisible()) return;
+    
+    if(this->getOpacity() <= 0.0 || this->getScaleX() <= 0.0)
     {
-        this->mDust->create();
+        this->destroy();
     }
-}
-
-void Game::onEnter()
-{
-    Screen::onEnter();
-}
-
-void Game::onExit()
-{
-    Screen::onExit();
 }
 
 #endif

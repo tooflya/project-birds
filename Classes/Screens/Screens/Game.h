@@ -5,6 +5,14 @@
 
 #include "End.h"
 
+#include "Bird.h"
+#include "Mark.h"
+#include "Feather.h"
+#include "Explosion.h"
+#include "Dust.h"
+
+#include "TouchTrailLayer.h"
+
 #include "AppDelegate.h"
 
 class Game : public Screen
@@ -22,9 +30,12 @@ class Game : public Screen
         // Fields
         // ===========================================================
     
-        Entity* mBackground;
+        int mBirdsRemaning;
 
-        End* mFinishScreen;
+        float mBirdsTime;
+        float mBirdsTimeElapsed;
+
+        Entity* mBackground;
     
         // ===========================================================
         // Constructors
@@ -75,12 +86,18 @@ class Game : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Game();
+
+        BatchEntityManager* mBirds;
+        BatchEntityManager* mMarks;
+        BatchEntityManager* mFeathers;
+        BatchEntityManager* mExplosions;
+        BatchEntityManager* mDust;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Game();
 
         // ===========================================================
         // Methods
@@ -90,6 +107,8 @@ class Game : public Screen
         // Override Methods
         // ===========================================================
     
+        void update(float pDeltaTime);
+        
         void onEnter();
         void onExit();
 };

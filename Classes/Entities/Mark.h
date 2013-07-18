@@ -1,9 +1,9 @@
-#ifndef CONST_IMPULSEENTITY_H
-#define CONST_IMPULSEENTITY_H
+#ifndef CONST_MARK_H
+#define CONST_MARK_H
 
 #include "Entity.h"
 
-class ImpulseEntity : public Entity
+class Mark : public Entity
 {
     protected:
         // ===========================================================
@@ -17,11 +17,6 @@ class ImpulseEntity : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        float mImpulsePower;
-        float mSideImpulse;
-        float mRotateImpulse;
-        float mWeight;
 
         // ===========================================================
         // Constructors
@@ -77,20 +72,21 @@ class ImpulseEntity : public Entity
         // Constructors
         // ===========================================================
     
-        ImpulseEntity(const char* pTextureFileName);
-        ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
+        Mark();
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        bool isCollideWithPoint(CCTouchInformation pInformation);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
     
-        void update(float pDelta);
+        void update(float pDeltaTime);
+    
+        void onCreate();
+    
+        Mark* deepCopy();
 };
 
 #endif

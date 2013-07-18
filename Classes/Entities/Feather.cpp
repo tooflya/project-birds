@@ -1,7 +1,7 @@
-#ifndef CONST_GAME
-#define CONST_GAME
+#ifndef CONST_FEATHER
+#define CONST_FEATHER
 
-#include "Game.h"
+#include "Feather.h"
 
 // ===========================================================
 // Inner Classes
@@ -19,40 +19,40 @@
 // Constructors
 // ===========================================================
 
-Game::Game()
-{
-    this->mBirdsTime = 0;
-    this->mBirdsTimeElapsed = 0;
-
-    this->addChild(TouchTrailLayer::create(), 10);
-}
+Feather::Feather() :
+    ImpulseEntity("birds_feather_sprite@2x.png", 2, 2)
+    {
+        
+    }
 
 // ===========================================================
 // Methods
 // ===========================================================
 
 // ===========================================================
-// Override Methods
+// Virtual Methods
 // ===========================================================
 
-void Game::update(float pDeltaTime)
+void Feather::onCreate()
 {
-    Screen::update(pDeltaTime);
+    ImpulseEntity::onCreate();
 
-    if(this->mDust->getCount() < 30)
-    {
-        this->mDust->create();
-    }
+    this->mWeight = Utils::coord(500.0f);
+    this->mImpulsePower = Utils::coord(Utils::randomf(120.0f, 500.0f));
+    this->mSideImpulse = Utils::coord(Utils::randomf(-200.0f, 200.0f));
+    this->mRotateImpulse = Utils::coord(Utils::randomf(-1000.0f, 1000.0f));
 }
-
-void Game::onEnter()
+    
+Feather* Feather::deepCopy()
 {
-    Screen::onEnter();
+    return new Feather();
 }
-
-void Game::onExit()
+    
+void Feather::update(float pDeltaTime)
 {
-    Screen::onExit();
+    ImpulseEntity::update(pDeltaTime);
+    
+    if(!this->isVisible()) return;
 }
 
 #endif

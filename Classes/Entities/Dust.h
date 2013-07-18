@@ -1,9 +1,9 @@
-#ifndef CONST_IMPULSEENTITY_H
-#define CONST_IMPULSEENTITY_H
+#ifndef CONST_DUST_H
+#define CONST_DUST_H
 
 #include "Entity.h"
 
-class ImpulseEntity : public Entity
+class Dust : public Entity
 {
     protected:
         // ===========================================================
@@ -17,11 +17,6 @@ class ImpulseEntity : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        float mImpulsePower;
-        float mSideImpulse;
-        float mRotateImpulse;
-        float mWeight;
 
         // ===========================================================
         // Constructors
@@ -47,6 +42,24 @@ class ImpulseEntity : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        float mSpeedX;
+        float mSpeedY;
+    
+        float mMustSpeedX;
+        float mMustSpeedY;
+    
+        float mSpeedTime;
+        float mSpeedTimeElapsed;
+    
+        float mAlphaTime;
+        float mAlphaTimeElapsed;
+    
+        float mScaleTime;
+        float mScaleTimeElapsed;
+    
+        bool mIsMustChangeSpeedX;
+        bool mIsMustChangeSpeedY;
 
         // ===========================================================
         // Constructors
@@ -77,20 +90,22 @@ class ImpulseEntity : public Entity
         // Constructors
         // ===========================================================
     
-        ImpulseEntity(const char* pTextureFileName);
-        ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
+        Dust();
 
         // ===========================================================
         // Methods
         // ===========================================================
     
-        bool isCollideWithPoint(CCTouchInformation pInformation);
+        void update(float pDeltaTime);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
     
-        void update(float pDelta);
+        void onCreate();
+        void onDestroy();
+    
+        Dust* deepCopy();
 };
 
 #endif

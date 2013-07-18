@@ -3,11 +3,19 @@
 
 #include "Loader.h"
 
+#include "Loading.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
 
-const char* Loader::TEXTURE_LIBRARY[12] =
+// ===========================================================
+// Constants
+// ===========================================================
+
+int Loader::ACTION = -1;
+
+const char* Loader::TEXTURE_LIBRARY[17] =
 {
     "game_gui_bg_summer@2x.png",
     "birds_sprite@2x.png",
@@ -20,14 +28,13 @@ const char* Loader::TEXTURE_LIBRARY[12] =
     "end_lvl_bg_sprite@2x.png",
     "end_lvl_bg_popup@2x.png",
     "confety_sprite@2x.png",
+    "mark@2x.png",
+    "streak0-hd.png",
+    "birds_feather_sprite@2x.png",
+    "explosion@2x.png",
+    "dust@2x.png",
     "end_lvl_star_sprite@2x.png"
 };
-
-// ===========================================================
-// Constants
-// ===========================================================
-
-int Loader::ACTION = -1;
 
 // ===========================================================
 // Fields
@@ -40,16 +47,21 @@ int Loader::ACTION = -1;
 Loader::Loader()
 {
     this->mBackground = new Entity("preload-lvl-bg@2x.png", this);
-    this->mAnimationSpiral = new Entity("preload-lvl-spiral@2x.png", this);
+    this->mCircles = new BatchEntityManager(10, new Entity("preload-lvl-wave@2x.png"), this);
     this->bird = new Entity("preload-lvl-bird@2x.png", this);
+    
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->mAnimationSpiral->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(50), Options::CAMERA_CENTER_Y - Utils::coord(50));
-    this->bird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->bird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     
-    this->mAnimationSpiral->setAnchorPoint(ccp(0.55, 0.321));
+    this->mTipText = new Text(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH, 0), this);
+    
+    this->mCircleAnimationTime = 0.5;
+    this->mCircleAnimationTimeElapsed = 0;
+    
+    this->setRegisterAsTouchable(true);
 }
 
 // ===========================================================
@@ -68,28 +80,13 @@ void Loader::loadingCallBack(CCObject *obj)
     {
         AppDelegate::screens->load(ACTION);
         
-        switch(ACTION)
-        {
-            case 0:
-                
-                AppDelegate::screens->set(0.5, Screen::SCREEN_CLASSIC_GAME);
-
-            break;
-            case 1:
-                
-                AppDelegate::screens->set(0.5, Screen::SCREEN_ARCADE_GAME);
-
-            break;
-            case 2:
-                
-                AppDelegate::screens->set(0.5, Screen::SCREEN_PROGRESS_GAME);
-
-            break;
-            case 3:
-
-
-            break;
-        }
+        this->mLoadingText->setOpacity(0.0);
+        this->mLoadingText->setString(Options::TEXT_TAP_TO_CONTINUE.string);
+        this->mLoadingText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(450));
+        
+        this->mTapToContinueAnimation = true;
+        
+        this->mIsWorkDone = true;
     }
     else
     {
@@ -101,11 +98,89 @@ void Loader::loadingCallBack(CCObject *obj)
 // Override Methods
 // ===========================================================
 
+void Loader::onTouch(CCTouch* touch, CCEvent* event)
+{
+    if(this->mIsWorkDone)
+    {
+        switch(ACTION)
+        {
+            case 0:
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_CLASSIC_GAME);
+                
+            break;
+            case 1:
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_ARCADE_GAME);
+                
+            break;
+            case 2:
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_PROGRESS_GAME);
+                
+            break;
+            case 3:
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                
+            break;
+        }
+    }
+}
+
 void Loader::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
     
-    this->mAnimationSpiral->setRotation(this->mAnimationSpiral->getRotation() - 30.0 * pDeltaTime);
+    this->mCircleAnimationTimeElapsed += pDeltaTime;
+    
+    if(this->mCircleAnimationTimeElapsed >= this->mCircleAnimationTime)
+    {
+        this->mCircleAnimationTimeElapsed = 0;
+        
+        Entity* circle = (Entity*) this->mCircles->create();
+        
+        circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+        circle->setRotation(0.0);
+        circle->setScale(0.0);
+        circle->setOpacity(255.0);
+    }
+    
+    for(int i = 0; i < this->mCircles->getChildrenCount(); i++)
+    {
+        Entity* circle = (Entity*) this->mCircles->getChildren()->objectAtIndex(i);
+        
+        circle->setRotation(circle->getRotation() + 1.0);
+        circle->setScale(circle->getScaleX() + 0.01);
+        circle->setOpacity(circle->getOpacity() - 1.0);
+        
+        if(circle->getOpacity() <= 0.0)
+        {
+            circle->destroy();
+        }
+    }
+    
+    if(this->mTapToContinueAnimation)
+    {
+        if(this->mTapToContinueAnimationReverse)
+        {
+            this->mLoadingText->setOpacity(this->mLoadingText->getOpacity() - 5.0);
+            
+            if(this->mLoadingText->getOpacity() <= 20.0)
+            {
+                this->mTapToContinueAnimationReverse = !this->mTapToContinueAnimationReverse;
+            }
+        }
+        else
+        {
+            this->mLoadingText->setOpacity(this->mLoadingText->getOpacity() + 5.0);
+            
+            if(this->mLoadingText->getOpacity() >= 245.0)
+            {
+                this->mTapToContinueAnimationReverse = !this->mTapToContinueAnimationReverse;
+            }
+        }
+    }
 }
 
 void Loader::onEnterTransitionDidFinish()
@@ -113,13 +188,14 @@ void Loader::onEnterTransitionDidFinish()
     Screen::onEnterTransitionDidFinish();
     
     this->mNumberOfLoadedSprites = -1;
-    this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
 
     CCTextureCache::sharedTextureCache()->removeAllTextures();
 
     switch(ACTION)
     {
-         default:
+        default:
+            
+            this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
     
             for(int i = 0; i < this->mNumberOfSprites + 1; i++)
             {
@@ -128,8 +204,12 @@ void Loader::onEnterTransitionDidFinish()
 
         break;
         case 3:
-
-            //
+            this->mNumberOfSprites = sizeof(Loading::TEXTURE_LIBRARY) / sizeof(const char*) - 1;
+            
+            for(int i = 0; i < this->mNumberOfSprites + 1; i++)
+            {
+                CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[i], this, callfuncO_selector(Loader::loadingCallBack));
+            }
 
         break;
     }
@@ -144,11 +224,26 @@ void Loader::onExitTransitionDidStart()
 
 void Loader::onEnter()
 {
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+    
     Screen::onEnter();
+    
+    this->mTapToContinueAnimation = false;
+    this->mIsWorkDone = false;
+    
+    this->mTipText->setString(Options::TEXT_TIP[0].string);
+    this->mTipText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(250));
+    
+    this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
+    this->mLoadingText->setOpacity(255.0);
 }
 
 void Loader::onExit()
 {
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->removeDelegate(this);
+    
     Screen::onExit();
 }
 

@@ -1,9 +1,9 @@
-#ifndef CONST_IMPULSEENTITY_H
-#define CONST_IMPULSEENTITY_H
+#ifndef CONST_FEATHER_H
+#define CONST_FEATHER_H
 
-#include "Entity.h"
+#include "ImpulseEntity.h"
 
-class ImpulseEntity : public Entity
+class Feather : public ImpulseEntity
 {
     protected:
         // ===========================================================
@@ -17,11 +17,6 @@ class ImpulseEntity : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        float mImpulsePower;
-        float mSideImpulse;
-        float mRotateImpulse;
-        float mWeight;
 
         // ===========================================================
         // Constructors
@@ -77,20 +72,21 @@ class ImpulseEntity : public Entity
         // Constructors
         // ===========================================================
     
-        ImpulseEntity(const char* pTextureFileName);
-        ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
+        Feather();
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        bool isCollideWithPoint(CCTouchInformation pInformation);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
     
-        void update(float pDelta);
+        void update(float pDeltaTime);
+    
+        void onCreate();
+    
+        Feather* deepCopy();
 };
 
 #endif

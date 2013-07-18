@@ -1,7 +1,7 @@
-#ifndef CONST_GAME
-#define CONST_GAME
+#ifndef CONST_EXPLOSION
+#define CONST_EXPLOSION
 
-#include "Game.h"
+#include "Explosion.h"
 
 // ===========================================================
 // Inner Classes
@@ -19,40 +19,42 @@
 // Constructors
 // ===========================================================
 
-Game::Game()
-{
-    this->mBirdsTime = 0;
-    this->mBirdsTimeElapsed = 0;
-
-    this->addChild(TouchTrailLayer::create(), 10);
-}
+Explosion::Explosion() :
+    Entity("explosion@2x.png", 3, 4)
+    {
+        
+    }
 
 // ===========================================================
 // Methods
 // ===========================================================
 
 // ===========================================================
-// Override Methods
+// Virtual Methods
 // ===========================================================
 
-void Game::update(float pDeltaTime)
+void Explosion::onAnimationEnd()
 {
-    Screen::update(pDeltaTime);
-
-    if(this->mDust->getCount() < 30)
-    {
-        this->mDust->create();
-    }
+    this->destroy();
 }
 
-void Game::onEnter()
+void Explosion::onCreate()
 {
-    Screen::onEnter();
+    Entity::onCreate();
+    
+    this->animate(0.05, 1);
 }
-
-void Game::onExit()
+    
+Explosion* Explosion::deepCopy()
 {
-    Screen::onExit();
+    return new Explosion();
+}
+    
+void Explosion::update(float pDeltaTime)
+{
+    Entity::update(pDeltaTime);
+    
+    if(!this->isVisible()) return;
 }
 
 #endif
