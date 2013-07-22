@@ -73,6 +73,8 @@ void ScreenManager::generate()
     this->mScreens[Screen::SCREEN_LOADER] = new Loader();
     this->mScreens[Screen::SCREEN_PROGRESS] = new Progress();
     this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
+
+    this->mScreens[Screen::SCREEN_CLASSIC_GAME] = NULL;
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)
@@ -90,26 +92,42 @@ void ScreenManager::load(int pAction)
     {
         case 3:
 
-            // TODO: Return the world!
+            /*this->mScreens[Screen::SCREEN_MENU] = new Menu();
+            this->mScreens[Screen::SCREEN_SETTINGS] = new Settings();
+            this->mScreens[Screen::SCREEN_SHOP] = new Shop();
+            this->mScreens[Screen::SCREEN_MODE] = new Mode();
+            this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
+            this->mScreens[Screen::SCREEN_CREDITS] = new Credits();
+            this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
+            
+            delete this->mScreens[Screen::SCREEN_CLASSIC_GAME];*/
+            //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
+            //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
 
         break;
         default:
 
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MENU]);
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SETTINGS]);
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MODE]);
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CREDITS]);
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS]);
-            CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LANGUAGE]);
+            if(this->mScreens[Screen::SCREEN_CLASSIC_GAME] == NULL) // TODO: Temp solution :(
+            this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
+            /*delete this->mScreens[Screen::SCREEN_MENU];
+           delete  this->mScreens[Screen::SCREEN_SETTINGS];
+            delete this->mScreens[Screen::SCREEN_SHOP];
+            delete this->mScreens[Screen::SCREEN_MODE];
+           delete  this->mScreens[Screen::SCREEN_LEVELS];
+          delete   this->mScreens[Screen::SCREEN_CREDITS];
+          delete   this->mScreens[Screen::SCREEN_PROGRESS];
+         delete    this->mScreens[Screen::SCREEN_LANGUAGE];
 
             this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
             //this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Level();
-            //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Level();
+            //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Level();*/
 
         break;
-    }
+    }       
+
+    //CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    //CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 // ===========================================================

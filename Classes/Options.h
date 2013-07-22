@@ -1,6 +1,19 @@
 #ifndef CONST_OPTIONS_H
 #define CONST_OPTIONS_H
 
+#include "cocos2d.h"
+
+using namespace cocos2d;
+
+typedef struct tagCCTouchInformation {
+    bool slice;
+    long last_sound_time;
+    long last_slice_time;
+    CCPoint last_sound_position;
+    CCPoint last_slice_position;
+    CCPoint position;
+} CCTouchInformation;
+
 typedef struct Textes {
     const char* string;
     const char* font;
@@ -90,6 +103,8 @@ class Options
         static const char* FONT;
 
         static const char* SAVE_DATA_COINS_ID[2];
+
+        static CCTouchInformation TOUCH_INFORMATION[10];
         
         static int SAVE_DATA_COINS_TYPE_GOLD;
         static int SAVE_DATA_COINS_TYPE_SILVER;
@@ -200,6 +215,8 @@ class Options
         static Textes TEXT_MODEHELP_HELP[2];
         static Textes TEXT_SHOP_ITEMS[64];
         static Textes TEXT_SHOP_BOUGHT;
+        static Textes TEXT_TAP_TO_CONTINUE;
+        static Textes TEXT_TIP[10];
 
         // ===========================================================
         // Fields

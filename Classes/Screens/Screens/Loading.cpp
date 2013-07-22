@@ -50,7 +50,7 @@ const char* Loading::TEXTURE_LIBRARY[39] =
     "coins@2x.png",
     "popup_buy_coins_btn_sprite@2x.png",
     "preload-lvl-bg@2x.png",
-    "preload-lvl-spiral@2x.png",
+    "preload-lvl-wave@2x.png",
     "preload-lvl-bird@2x.png"
 };
 

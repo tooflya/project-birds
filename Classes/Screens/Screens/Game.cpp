@@ -21,9 +21,12 @@
 
 Game::Game()
 {
-    this->mFinishScreen = new End(this);
+    this->mBirdsTime = 0;
+    this->mBirdsTimeElapsed = 0;
 
-    this->mFinishScreen->show();
+    this->addChild(TouchTrailLayer::create(), 10);
+
+    (new End(this))->show();
 }
 
 // ===========================================================
@@ -33,6 +36,16 @@ Game::Game()
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Game::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+
+    if(this->mDust->getCount() < 30)
+    {
+        this->mDust->create();
+    }
+}
 
 void Game::onEnter()
 {

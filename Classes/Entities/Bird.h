@@ -18,6 +18,18 @@ class Bird : public ImpulseEntity
         // Fields
         // ===========================================================
 
+        int mType;
+        
+        int mDestroyAnimationFrames;
+
+        float mMarkTime;
+        float mMarkTimeElapsed;
+
+        float mDestroyAnimationTime;
+        float mDestroyAnimationTimeElapsed;
+
+        bool mIsGoingToDestroy;
+
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -83,6 +95,7 @@ class Bird : public ImpulseEntity
         // ===========================================================
 
         void onCreate();
+        void onDestroy();
     
         void update(float pDelta);
 

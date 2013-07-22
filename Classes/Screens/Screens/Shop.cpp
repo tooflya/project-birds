@@ -192,6 +192,8 @@ Shop* Shop::m_Instance = NULL;
 
 int Shop::CLICKED_ITEM_ID = -1;
 
+ int Shop::ITEMS_COUNT[3] = { 6, 4, 8 };
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -448,6 +450,8 @@ void Shop::onEnter()
     }
 
     this->mCoins = 0;
+
+    CC_SAFE_DELETE(this->mTablet);
 }
 
 void Shop::onExit()

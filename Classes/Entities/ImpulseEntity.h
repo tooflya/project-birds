@@ -84,7 +84,7 @@ class ImpulseEntity : public Entity
         // Methods
         // ===========================================================
     
-        bool isCollideWithPoint(float pX, float pY);
+        bool isCollideWithPoint(CCTouchInformation pInformation);
         
         // ===========================================================
         // Override Methods

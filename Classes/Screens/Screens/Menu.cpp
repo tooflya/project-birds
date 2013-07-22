@@ -48,7 +48,7 @@ Menu::Menu()
     this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
     this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
     
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-1.mp3");
+    //SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-1.mp3");
     
     m_Instance = this;
 }

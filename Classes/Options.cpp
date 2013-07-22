@@ -31,6 +31,40 @@ int Options::CAMERA_CENTER_Y = 0;
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
+CCTouchInformation Options::TOUCH_INFORMATION[10] =
+{
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    },
+    {
+        false, 0, 0, ccp(-1000, -1000), ccp(-1000, -1000), ccp(-1000, -1000)
+    }
+};
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
 
 const char* Options::FONT = "Comic Sans MS";
@@ -139,6 +173,20 @@ Textes Options::TEXT_SHOP_ITEMS[64] =
       { "", FONT, 0, 114 }, { "", FONT, 0, 115 }, { "", FONT, 0, 116 }, { "", FONT, 0, 117 }
 };
 Textes Options::TEXT_SHOP_BOUGHT =  { "", FONT, 0, 118 };
+Textes Options::TEXT_TAP_TO_CONTINUE =  { "", FONT, 0, 119 };
+Textes Options::TEXT_TIP[10] =
+{
+    { "", FONT, 36, 120 },
+    { "", FONT, 36, 121 },
+    { "", FONT, 36, 122 },
+    { "", FONT, 36, 123 },
+    { "", FONT, 36, 124 },
+    { "", FONT, 36, 125 },
+    { "", FONT, 36, 126 },
+    { "", FONT, 36, 127 },
+    { "", FONT, 36, 128 },
+    { "", FONT, 36, 129 }
+};
 
 // ===========================================================
 // Fields
@@ -376,6 +424,11 @@ void Options::changeLanguage()
             
             TEXT_SHOP_BOUGHT.string = "was unlocked";
             TEXT_SHOP_BOUGHT.size = 48;
+            
+            TEXT_TAP_TO_CONTINUE.string = "Tap to continue";
+            TEXT_TAP_TO_CONTINUE.size = 36;
+            
+            TEXT_TIP[0].string = "Некоторые элементы в магазине могут быть вам очень полезны";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -593,6 +646,11 @@ void Options::changeLanguage()
             
             TEXT_SHOP_BOUGHT.string = "было куплено";
             TEXT_SHOP_BOUGHT.size = 48;
+            
+            TEXT_TAP_TO_CONTINUE.string = "Нажмите для продолжения";
+            TEXT_TAP_TO_CONTINUE.size = 36;
+            
+            TEXT_TIP[0].string = "Некоторые элементы в магазине могут быть вам очень полезны";
         break;
     }
     
@@ -713,8 +771,19 @@ void Options::changeLanguage()
     TEXTES_HOLDER[116] = TEXT_SHOP_ITEMS[63];
     TEXTES_HOLDER[117] = TEXT_SHOP_ITEMS[64];
     TEXTES_HOLDER[118] = TEXT_SHOP_BOUGHT;
+    TEXTES_HOLDER[119] = TEXT_TAP_TO_CONTINUE;
+    TEXTES_HOLDER[120] = TEXT_TIP[0];
+    TEXTES_HOLDER[121] = TEXT_TIP[1];
+    TEXTES_HOLDER[122] = TEXT_TIP[2];
+    TEXTES_HOLDER[123] = TEXT_TIP[3];
+    TEXTES_HOLDER[124] = TEXT_TIP[4];
+    TEXTES_HOLDER[125] = TEXT_TIP[5];
+    TEXTES_HOLDER[126] = TEXT_TIP[6];
+    TEXTES_HOLDER[127] = TEXT_TIP[7];
+    TEXTES_HOLDER[128] = TEXT_TIP[8];
+    TEXTES_HOLDER[129] = TEXT_TIP[9];
     
-    for(int i = 0; i < 119; i++)
+    for(int i = 0; i < 121; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

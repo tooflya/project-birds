@@ -5,8 +5,6 @@
 
 #include "Pause.h"
 
-#include "Bird.h"
-
 #include "AppDelegate.h"
 
 class Classic : public Game
@@ -25,13 +23,6 @@ class Classic : public Game
         // ===========================================================
         // Fields
         // ===========================================================
-
-        Button* mRestartButton;
-        Button* mPauseButton;
-
-        BatchEntityManager* mBirds;
-
-        Pause* mPausePopup;
     
         // ===========================================================
         // Constructors
@@ -99,6 +90,8 @@ class Classic : public Game
         // Override Methods
         // ===========================================================
     
+        void update(float pDeltaTime);
+
         void onEnter();
         void onExit();
 };

@@ -3,6 +3,8 @@
 
 #include "End.h"
 
+#include "Loader.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -86,8 +88,10 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             switch(pID)
             {
                 case Options::BUTTONS_ID_END_MENU:
+                    
+                    Loader::ACTION = 3;
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
 
                 break;
                 case Options::BUTTONS_ID_END_RESTART:
