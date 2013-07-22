@@ -63,7 +63,7 @@ class Shop : public Screen
         // Constants
         // ===========================================================
 
-        const int ITEMS_COUNT[3] = { 6, 4, 8 };
+        static int ITEMS_COUNT[3];
 
         // ===========================================================
         // Fields

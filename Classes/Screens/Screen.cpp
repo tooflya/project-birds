@@ -33,9 +33,11 @@
 
 Screen::Screen()
 {
-    this->autorelease();
-    
     this->scheduleUpdate();
+}
+
+Screen::~Screen(void)
+{
 }
 
 // ===========================================================

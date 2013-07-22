@@ -1,6 +1,8 @@
 COCOS2DX_PATH = /home/igor/Development/cocos2d-x-2.1.4/cocos2dx
 COCOS_PATH = /home/igor/Development/cocos2d-x-2.1.4
 
+COCOS2D_DEBUG = 2
+
 EXECUTABLE = ProjectBirds
 
 INCLUDES =  -I../ \
@@ -12,6 +14,7 @@ INCLUDES =  -I../ \
 			-I../Classes/Entities \
 			-I../Classes/Utils \
 			-I../Classes/Graphics \
+			-I../Classes/TEST \
 			-I$(COCOS2DX_PATH) \
 			-I$(COCOS2DX_PATH)/platform/third_party/linux \
 			-I$(COCOS2DX_PATH)/cocoa \
@@ -38,6 +41,13 @@ SOURCES = ./main.cpp \
 			../Classes/Entities/Text.cpp \
 			../Classes/Entities/Confetti.cpp \
 			../Classes/Entities/Star.cpp \
+			../Classes/Entities/ImpulseEntity.cpp \
+			../Classes/Entities/Bird.cpp \
+			../Classes/Entities/Mark.cpp \
+			../Classes/Entities/Explosion.cpp \
+			../Classes/Entities/Feather.cpp \
+			../Classes/Entities/Dust.cpp \
+			../Classes/Entities/Item.cpp \
 			../Classes/Managers/EntityManager.cpp \
 			../Classes/Managers/BatchEntityManager.cpp \
 			../Classes/Managers/ConfettiManager.cpp \
@@ -55,6 +65,8 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Screens/Loading.cpp \
 			../Classes/Screens/Screens/Progress.cpp \
 			../Classes/Screens/Screens/Language.cpp \
+			../Classes/Screens/Screens/Game.cpp \
+			../Classes/Screens/Screens/Classic.cpp \
 			../Classes/Screens/Popup.cpp \
 			../Classes/Screens/Popups/Exit.cpp \
 			../Classes/Screens/Popups/BuyItem.cpp \
@@ -62,8 +74,11 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Popups/PleaseRate.cpp \
 			../Classes/Screens/Popups/ResetProgress.cpp \
 			../Classes/Screens/Popups/ModeHelp.cpp \
+			../Classes/Screens/Popups/Pause.cpp \
 			../Classes/Managers/ScreenManager.cpp \
 			../Classes/Graphics/Texture.cpp \
+			../Classes/TEST/TouchTrailLayer.cpp \
+			../Classes/TEST/CCBlade.cpp \
 
 COCOS_ROOT = ../../../..
 include $(COCOS2DX_PATH)/proj.linux/cocos2dx.mk

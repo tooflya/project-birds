@@ -190,6 +190,7 @@ void Loader::onEnterTransitionDidFinish()
     this->mNumberOfLoadedSprites = -1;
 
     CCTextureCache::sharedTextureCache()->removeAllTextures();
+    CCDirector::sharedDirector()->purgeCachedData();
 
     switch(ACTION)
     {
