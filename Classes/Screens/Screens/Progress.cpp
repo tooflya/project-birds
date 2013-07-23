@@ -51,7 +51,7 @@ Progress::Progress()
 
 void Progress::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Progress* pSender = (Progress*) Progress::m_Instance;
+    Progress* pSender = static_cast<Progress*>(Progress::m_Instance);
     
     switch(pAction)
     {

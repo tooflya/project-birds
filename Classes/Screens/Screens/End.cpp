@@ -80,7 +80,7 @@ End::End(CCNode* pParent) :
 
 void End::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    End* pSender = (End*) End::m_Instance;
+    End* pSender = static_cast<End*>(End::m_Instance);
 
     switch(pAction)
     {

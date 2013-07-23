@@ -11,7 +11,7 @@
 // Constants
 // ===========================================================
 
-const char* Loading::TEXTURE_LIBRARY[39] =
+const char* Loading::TEXTURE_LIBRARY[41] =
 {
     "main_menu_bg@2x.png",
     "main_menu_bg_back@2x.png",
@@ -51,7 +51,9 @@ const char* Loading::TEXTURE_LIBRARY[39] =
     "popup_buy_coins_btn_sprite@2x.png",
     "preload-lvl-bg@2x.png",
     "preload-lvl-wave@2x.png",
-    "preload-lvl-bird@2x.png"
+    "preload-lvl-bird@2x.png",
+    "popup_item_rate_stars@2x.png",
+    "icon_properties@2x.png"
 };
 
 // ===========================================================
@@ -64,11 +66,20 @@ const char* Loading::TEXTURE_LIBRARY[39] =
 
 Loading::Loading()
 {
+    CCTextureCache::sharedTextureCache()->addImage("start_preloader_bg@2x.png");
+    CCTextureCache::sharedTextureCache()->addImage("start_preloader_bar@2x.png");
+
+    this->mBackground = new Entity("start_preloader_bg@2x.png", this);
+    this->mBar = new Entity("start_preloader_bar@2x.png", this);
+
+    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mBar->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
+
     this->mNumberOfLoadedSprites = -1;
     this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
     
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
-    this->mLoadingText->setPosition(ccp(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50)));
+    this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
     
     for(int i = 0; i < this->mNumberOfSprites + 1; i++)
     {
@@ -92,7 +103,7 @@ void Loading::loadingCallBack(CCObject *obj)
     {
         AppDelegate::screens = new ScreenManager();
         
-        AppDelegate::screens->set(1.0f, Screen::SCREEN_MENU);
+        AppDelegate::screens->set(0.5f, Screen::SCREEN_MENU);
     }
     else
     {
@@ -103,5 +114,12 @@ void Loading::loadingCallBack(CCObject *obj)
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Loading::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+
+    this->mBar->setRotation(this->mBar->getRotation() + 10.0);
+}
 
 #endif

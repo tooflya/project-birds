@@ -72,7 +72,7 @@ class Text : public CCLabelTTF
     
         static int ID;
     
-        static Text* TEXTES[128];
+        static Text* TEXTES[256];
 
         // ===========================================================
         // Fields
@@ -99,6 +99,9 @@ class Text : public CCLabelTTF
 
         float getWidth();
         float getHeight();
+
+        float getCenterX();
+        float getCenterY();
         
         // ===========================================================
         // Override Methods

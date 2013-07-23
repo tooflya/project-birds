@@ -23,6 +23,9 @@ class Loading : public Screen
     
         Text* mLoadingText;
 
+        Entity* mBackground;
+        Entity* mBar;
+
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -71,7 +74,7 @@ class Loading : public Screen
         // Constants
         // ===========================================================
     
-        static const char* TEXTURE_LIBRARY[39];
+        static const char* TEXTURE_LIBRARY[41];
 
         // ===========================================================
         // Fields
@@ -90,6 +93,8 @@ class Loading : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+
+        void update(float pDeltaTime);
 };
 
 #endif

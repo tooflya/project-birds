@@ -50,7 +50,19 @@ void AppDelegate::removeCoins(int pCount, int pType)
 
 int AppDelegate::getCoins(int pType)
 {
-    return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_COINS_ID[pType] );
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_COINS_ID[pType]);
+} 
+
+void AppDelegate::changeLanguage(int pId)
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_LANGUAGE_ID, pId);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+int AppDelegate::getSelectedLanguage()
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_LANGUAGE_ID);
 }
 
 // ===========================================================
@@ -97,6 +109,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->runWithScene(pScene);   
 
     AppDelegate::removeCoins(100000, 0); // TODO: Remove this;
+    
+    Options::changeLanguage();
 
     return true;
 }

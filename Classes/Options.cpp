@@ -5,6 +5,8 @@
 
 #include "Text.h"
 
+#include "AppDelegate.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -78,6 +80,8 @@ const char* Options::FONT = "Fonts/Comic Sans MS.ttf";
 int Options::CURRENT_LANGUAGE = 0;
 
 const char* Options::SAVE_DATA_COINS_ID[2] = { "p_gold_coins_count", "p_silver_coins_count" };
+const char* Options::SAVE_DATA_LANGUAGE_ID = "p_language_id";
+
 int Options::SAVE_DATA_COINS_TYPE_GOLD = 0;
 int Options::SAVE_DATA_COINS_TYPE_SILVER = 1;
 
@@ -93,6 +97,34 @@ int Options::SHOP_ITEMS_PRICES[100] =
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+int Options::SHOP_ITEMS_RATING_FACTOR[100] =
+{
+      10, 20, 30, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+};
+
+const char* Options::SHOP_ITEMS_PROPERTIES[100] =
+{
+    "12", "0", "0", "0", "0", "0", "0:02", "0:00", "0:00", "0:00",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", "", ""
 };
 
 Textes Options::TEXTES_HOLDER[200] =
@@ -187,6 +219,16 @@ Textes Options::TEXT_TIP[10] =
     { "", FONT, 36, 128 },
     { "", FONT, 36, 129 }
 };
+Textes Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[64] =
+{
+      { "", FONT, 24, 130 }, { "", FONT, 24, 131 }, { "", FONT, 24, 132 }, { "", FONT, 24, 133 }, { "", FONT, 24, 134 }, { "", FONT, 24, 135 }, { "", FONT, 24, 136 }, { "", FONT, 24, 137 }, { "", FONT, 24, 138 }, { "", FONT, 24, 139 },
+      { "", FONT, 24, 140 }, { "", FONT, 24, 141 }, { "", FONT, 24, 142 }, { "", FONT, 24, 143 }, { "", FONT, 24, 144 }, { "", FONT, 24, 145 }, { "", FONT, 24, 146 }, { "", FONT, 24, 147 }, { "", FONT, 24, 148 }, { "", FONT, 24, 149 },
+      { "", FONT, 24, 150 }, { "", FONT, 24, 151 }, { "", FONT, 24, 152 }, { "", FONT, 24, 153 }, { "", FONT, 24, 154 }, { "", FONT, 24, 155 }, { "", FONT, 24, 156 }, { "", FONT, 24, 157 }, { "", FONT, 24, 158 }, { "", FONT, 24, 159 },
+      { "", FONT, 24, 160 }, { "", FONT, 24, 161 }, { "", FONT, 24, 162 }, { "", FONT, 24, 163 }, { "", FONT, 24, 164 }, { "", FONT, 24, 165 }, { "", FONT, 24, 166 }, { "", FONT, 24, 167 }, { "", FONT, 24, 168 }, { "", FONT, 24, 169 },
+      { "", FONT, 24, 170 }, { "", FONT, 24, 171 }, { "", FONT, 24, 172 }, { "", FONT, 24, 173 }, { "", FONT, 24, 174 }, { "", FONT, 24, 175 }, { "", FONT, 24, 176 }, { "", FONT, 24, 177 }, { "", FONT, 24, 178 }, { "", FONT, 24, 179 },
+      { "", FONT, 24, 180 }, { "", FONT, 24, 181 }, { "", FONT, 24, 182 }, { "", FONT, 24, 183 }, { "", FONT, 24, 184 }, { "", FONT, 24, 185 }, { "", FONT, 24, 186 }, { "", FONT, 24, 187 }, { "", FONT, 24, 188 }, { "", FONT, 24, 189 },
+      { "", FONT, 24, 190 }, { "", FONT, 24, 191 }, { "", FONT, 24, 192 }, { "", FONT, 24, 193 }
+};
 
 // ===========================================================
 // Fields
@@ -198,7 +240,6 @@ Textes Options::TEXT_TIP[10] =
 
 Options::Options()
 {
-    Options::CURRENT_LANGUAGE = 0;
     
     Options::changeLanguage();
 }
@@ -209,13 +250,17 @@ Options::Options()
 
 void Options::changeLanguage()
 {
+    Options::CURRENT_LANGUAGE = AppDelegate::getSelectedLanguage();
+    
+    AppDelegate::changeLanguage(CURRENT_LANGUAGE);
+
     switch(Options::CURRENT_LANGUAGE)
     {
         case 0:
-            TEXT_LOADING_1.string = "Loading... 0%";
+            TEXT_LOADING_1.string = "0%";
             TEXT_LOADING_1.size = 32;
             
-            TEXT_LOADING_2.string = "Loading... ";
+            TEXT_LOADING_2.string = "";
             TEXT_LOADING_2.size = 32;
             
             TEXT_SETTINGS_CREDITS.string = "About";
@@ -428,13 +473,88 @@ void Options::changeLanguage()
             TEXT_TAP_TO_CONTINUE.string = "Tap to continue";
             TEXT_TAP_TO_CONTINUE.size = 36;
             
-            TEXT_TIP[0].string = "Некоторые элементы в магазине могут быть вам очень полезны";
+            TEXT_TIP[0].string = "Some items in the shop can be very useful to you";
+            TEXT_TIP[1].string = "Use the new weapons that you can buy at the store";
+            TEXT_TIP[2].string = "Avoid the bombs hit the Birds";
+            TEXT_TIP[3].string = "Some birds are special - look at what they can do";
+            TEXT_TIP[4].string = "You will enjoy more than 20 different birds with unique abilities";
+            
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[0].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[1].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[2].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[3].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[11].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[12].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[13].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[14].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[15].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[16].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[17].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[18].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[34].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[35].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[36].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[37].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[38].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[39].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[47].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[48].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[49].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[50].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[51].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[52].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[53].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[54].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[55].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[56].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[57].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[58].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[59].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[60].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[64].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[65].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[66].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[67].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[68].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[69].string = "Information not found.";
         break;
         case 1:
-            TEXT_LOADING_1.string = "Загрузка... 0%";
+            TEXT_LOADING_1.string = "0%";
             TEXT_LOADING_1.size = 32;
             
-            TEXT_LOADING_2.string = "Загрузка... ";
+            TEXT_LOADING_2.string = "";
             TEXT_LOADING_2.size = 32;
             
             TEXT_SETTINGS_CREDITS.string = "Об игре";
@@ -573,13 +693,13 @@ void Options::changeLanguage()
             TEXT_SHOP_DESCRIPTION[2].size = 36;
             
             TEXT_MODE_CLASSIC.string = "Классический";
-            TEXT_MODE_CLASSIC.size = 48;
+            TEXT_MODE_CLASSIC.size = 42;
             
             TEXT_MODE_ARCADE.string = "Аркада";
-            TEXT_MODE_ARCADE.size = 48;
+            TEXT_MODE_ARCADE.size = 42;
             
             TEXT_MODE_PROGRESS.string = "Прохождение";
-            TEXT_MODE_PROGRESS.size = 48;
+            TEXT_MODE_PROGRESS.size = 42;
             
             TEXT_MODEHELP_OK.string = "Закрыть";
             TEXT_MODEHELP_OK.size = 46;
@@ -590,10 +710,10 @@ void Options::changeLanguage()
             TEXT_MODEHELP_HELP[1].string = "Классический режим - режим игры в котором вам предстоит соревноваться с другими игроками, зарабатывать монеты, увеличивать свой глобальный рейтинг и пользоваться заработанными бонусами.\n\nРежим аркады - позволит вам показать на что вы способны за одну минуту! По мере прохождения игры ваши навыки увеличиваются и вы вполне в силах превзойти свой предыдущий рекорд!\n\nПрохождение - это особый режим. Вам доступно 75 уровней (обновления совсем скоро) с различными заданиями. По мере прохождения уровней вам будут открываться новые возможности, которые вы можте использовать в других режимах игры.";
             TEXT_MODEHELP_HELP[1].size = 24;
             
-            TEXT_SHOP_ITEMS[0].string = "Какое-то оружие 1";
+            TEXT_SHOP_ITEMS[0].string = "Доска";
             TEXT_SHOP_ITEMS[0].size = 48;
             
-            TEXT_SHOP_ITEMS[1].string = "Какое-то оружие 2";
+            TEXT_SHOP_ITEMS[1].string = "Волшебная палочка";
             TEXT_SHOP_ITEMS[1].size = 48;
             
             TEXT_SHOP_ITEMS[2].string = "Какое-то оружие 3";
@@ -651,6 +771,81 @@ void Options::changeLanguage()
             TEXT_TAP_TO_CONTINUE.size = 36;
             
             TEXT_TIP[0].string = "Некоторые элементы в магазине могут быть вам очень полезны";
+            TEXT_TIP[1].string = "Используйте новое оружие, которое вы можете купить в магазине";
+            TEXT_TIP[2].string = "Избегайте попаданий по птицам бомбочкам";
+            TEXT_TIP[3].string = "Некоторые птицы являются особенными - посмотретите на что они способны";
+            TEXT_TIP[4].string = "Вас ждет более 20-ти различных птиц  с уникальными способностями";
+
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[0].string = "Доска была оторвана от любимой будки злого бультерьера. Пока тот спал на заднем дворе. После обнаружения о пропаже он в поисках оббежал весь квартал, но так и не нашел её. Теперь вам лучше не попадаться ему на пути!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[1].string = "Волшебная палочка доброй феи, которую нашли в дупле старого огромного дуба, вблизи густого дремучего леса. Будьте осторожны, по слухам там живут неведомые чудища. По всей вероятности они отобрали волшебную палочку у доброй феи и спрятали её. Что случилось с феей никому не известно.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[2].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[3].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[11].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[12].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[13].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[14].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[15].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[16].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[17].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[18].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[34].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[35].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[36].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[37].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[38].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[39].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[47].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[48].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[49].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[50].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[51].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[52].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[53].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[54].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[55].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[56].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[57].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[58].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[59].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[60].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[64].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[65].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[66].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[67].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[68].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[69].string = "Информации не найдено.";
         break;
     }
     
@@ -782,8 +977,73 @@ void Options::changeLanguage()
     TEXTES_HOLDER[127] = TEXT_TIP[7];
     TEXTES_HOLDER[128] = TEXT_TIP[8];
     TEXTES_HOLDER[129] = TEXT_TIP[9];
+
+    TEXTES_HOLDER[130] = TEXT_SHOP_ITEMS_DESCRIPTIONS[0];
+    TEXTES_HOLDER[131] = TEXT_SHOP_ITEMS_DESCRIPTIONS[1];
+    TEXTES_HOLDER[132] = TEXT_SHOP_ITEMS_DESCRIPTIONS[2];
+    TEXTES_HOLDER[133] = TEXT_SHOP_ITEMS_DESCRIPTIONS[3];
+    TEXTES_HOLDER[134] = TEXT_SHOP_ITEMS_DESCRIPTIONS[4];
+    TEXTES_HOLDER[135] = TEXT_SHOP_ITEMS_DESCRIPTIONS[5];
+    TEXTES_HOLDER[136] = TEXT_SHOP_ITEMS_DESCRIPTIONS[6];
+    TEXTES_HOLDER[137] = TEXT_SHOP_ITEMS_DESCRIPTIONS[7];
+    TEXTES_HOLDER[138] = TEXT_SHOP_ITEMS_DESCRIPTIONS[8];
+    TEXTES_HOLDER[139] = TEXT_SHOP_ITEMS_DESCRIPTIONS[9];
+    TEXTES_HOLDER[140] = TEXT_SHOP_ITEMS_DESCRIPTIONS[10];
+    TEXTES_HOLDER[141] = TEXT_SHOP_ITEMS_DESCRIPTIONS[11];
+    TEXTES_HOLDER[142] = TEXT_SHOP_ITEMS_DESCRIPTIONS[12];
+    TEXTES_HOLDER[143] = TEXT_SHOP_ITEMS_DESCRIPTIONS[13];
+    TEXTES_HOLDER[144] = TEXT_SHOP_ITEMS_DESCRIPTIONS[14];
+    TEXTES_HOLDER[145] = TEXT_SHOP_ITEMS_DESCRIPTIONS[15];
+    TEXTES_HOLDER[146] = TEXT_SHOP_ITEMS_DESCRIPTIONS[16];
+    TEXTES_HOLDER[147] = TEXT_SHOP_ITEMS_DESCRIPTIONS[17];
+    TEXTES_HOLDER[148] = TEXT_SHOP_ITEMS_DESCRIPTIONS[18];
+    TEXTES_HOLDER[149] = TEXT_SHOP_ITEMS_DESCRIPTIONS[19];
+    TEXTES_HOLDER[150] = TEXT_SHOP_ITEMS_DESCRIPTIONS[20];
+    TEXTES_HOLDER[151] = TEXT_SHOP_ITEMS_DESCRIPTIONS[21];
+    TEXTES_HOLDER[152] = TEXT_SHOP_ITEMS_DESCRIPTIONS[22];
+    TEXTES_HOLDER[153] = TEXT_SHOP_ITEMS_DESCRIPTIONS[23];
+    TEXTES_HOLDER[154] = TEXT_SHOP_ITEMS_DESCRIPTIONS[24];
+    TEXTES_HOLDER[155] = TEXT_SHOP_ITEMS_DESCRIPTIONS[25];
+    TEXTES_HOLDER[156] = TEXT_SHOP_ITEMS_DESCRIPTIONS[26];
+    TEXTES_HOLDER[157] = TEXT_SHOP_ITEMS_DESCRIPTIONS[27];
+    TEXTES_HOLDER[158] = TEXT_SHOP_ITEMS_DESCRIPTIONS[28];
+    TEXTES_HOLDER[159] = TEXT_SHOP_ITEMS_DESCRIPTIONS[29];
+    TEXTES_HOLDER[160] = TEXT_SHOP_ITEMS_DESCRIPTIONS[30];
+    TEXTES_HOLDER[161] = TEXT_SHOP_ITEMS_DESCRIPTIONS[31];
+    TEXTES_HOLDER[162] = TEXT_SHOP_ITEMS_DESCRIPTIONS[32];
+    TEXTES_HOLDER[163] = TEXT_SHOP_ITEMS_DESCRIPTIONS[33];
+    TEXTES_HOLDER[164] = TEXT_SHOP_ITEMS_DESCRIPTIONS[34];
+    TEXTES_HOLDER[165] = TEXT_SHOP_ITEMS_DESCRIPTIONS[35];
+    TEXTES_HOLDER[166] = TEXT_SHOP_ITEMS_DESCRIPTIONS[36];
+    TEXTES_HOLDER[167] = TEXT_SHOP_ITEMS_DESCRIPTIONS[37];
+    TEXTES_HOLDER[168] = TEXT_SHOP_ITEMS_DESCRIPTIONS[38];
+    TEXTES_HOLDER[169] = TEXT_SHOP_ITEMS_DESCRIPTIONS[39];
+    TEXTES_HOLDER[170] = TEXT_SHOP_ITEMS_DESCRIPTIONS[41];
+    TEXTES_HOLDER[171] = TEXT_SHOP_ITEMS_DESCRIPTIONS[42];
+    TEXTES_HOLDER[172] = TEXT_SHOP_ITEMS_DESCRIPTIONS[43];
+    TEXTES_HOLDER[173] = TEXT_SHOP_ITEMS_DESCRIPTIONS[44];
+    TEXTES_HOLDER[174] = TEXT_SHOP_ITEMS_DESCRIPTIONS[45];
+    TEXTES_HOLDER[175] = TEXT_SHOP_ITEMS_DESCRIPTIONS[46];
+    TEXTES_HOLDER[176] = TEXT_SHOP_ITEMS_DESCRIPTIONS[47];
+    TEXTES_HOLDER[177] = TEXT_SHOP_ITEMS_DESCRIPTIONS[48];
+    TEXTES_HOLDER[178] = TEXT_SHOP_ITEMS_DESCRIPTIONS[49];
+    TEXTES_HOLDER[179] = TEXT_SHOP_ITEMS_DESCRIPTIONS[50];
+    TEXTES_HOLDER[180] = TEXT_SHOP_ITEMS_DESCRIPTIONS[51];
+    TEXTES_HOLDER[181] = TEXT_SHOP_ITEMS_DESCRIPTIONS[52];
+    TEXTES_HOLDER[182] = TEXT_SHOP_ITEMS_DESCRIPTIONS[53];
+    TEXTES_HOLDER[183] = TEXT_SHOP_ITEMS_DESCRIPTIONS[54];
+    TEXTES_HOLDER[184] = TEXT_SHOP_ITEMS_DESCRIPTIONS[55];
+    TEXTES_HOLDER[185] = TEXT_SHOP_ITEMS_DESCRIPTIONS[56];
+    TEXTES_HOLDER[186] = TEXT_SHOP_ITEMS_DESCRIPTIONS[57];
+    TEXTES_HOLDER[187] = TEXT_SHOP_ITEMS_DESCRIPTIONS[58];
+    TEXTES_HOLDER[188] = TEXT_SHOP_ITEMS_DESCRIPTIONS[59];
+    TEXTES_HOLDER[189] = TEXT_SHOP_ITEMS_DESCRIPTIONS[60];
+    TEXTES_HOLDER[190] = TEXT_SHOP_ITEMS_DESCRIPTIONS[61];
+    TEXTES_HOLDER[191] = TEXT_SHOP_ITEMS_DESCRIPTIONS[62];
+    TEXTES_HOLDER[192] = TEXT_SHOP_ITEMS_DESCRIPTIONS[63];
+    TEXTES_HOLDER[193] = TEXT_SHOP_ITEMS_DESCRIPTIONS[64];
     
-    for(int i = 0; i < 121; i++)
+    for(int i = 0; i < 193; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

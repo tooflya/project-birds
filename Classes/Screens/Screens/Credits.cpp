@@ -53,7 +53,7 @@ Credits::Credits()
 
 void Credits::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Credits* pSender = (Credits*) Credits::m_Instance;
+    Credits* pSender = static_cast<Credits*>(Credits::m_Instance);
 
     switch(pAction)
     {

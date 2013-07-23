@@ -56,7 +56,7 @@ Loader::Loader()
     this->bird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     
-    this->mTipText = new Text(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH, 0), this);
+    this->mTipText = new Text(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH - Utils::coord(50), 0), this);
     
     this->mCircleAnimationTime = 0.5;
     this->mCircleAnimationTimeElapsed = 0;
@@ -233,7 +233,7 @@ void Loader::onEnter()
     this->mTapToContinueAnimation = false;
     this->mIsWorkDone = false;
     
-    this->mTipText->setString(Options::TEXT_TIP[0].string);
+    this->mTipText->setString(Options::TEXT_TIP[Utils::random(0, 4)].string);
     this->mTipText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(250));
     
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));

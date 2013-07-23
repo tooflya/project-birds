@@ -25,8 +25,6 @@ Game::Game()
     this->mBirdsTimeElapsed = 0;
 
     this->addChild(TouchTrailLayer::create(), 10);
-
-    (new End(this))->show();
 }
 
 // ===========================================================

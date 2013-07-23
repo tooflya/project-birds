@@ -52,6 +52,8 @@ class List : public CCLayer
     
         Entity* mListSroll;
 
+        Entity* mParent;
+
         // ===========================================================
         // Constructors
         // ===========================================================

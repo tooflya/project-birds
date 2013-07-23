@@ -59,7 +59,7 @@ BuyItem::BuyItem(Screen* pScreen) :
 
 void BuyItem::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    BuyItem* pSender = (BuyItem*) BuyItem::m_Instance;
+    BuyItem* pSender = static_cast<BuyItem*>(BuyItem::m_Instance);
     
     switch(pAction)
     {

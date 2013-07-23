@@ -1,16 +1,13 @@
-#ifndef CONST_SPLASH_H
-#define CONST_SPLASH_H
+#ifndef CONST_PROGRESSES_H
+#define CONST_PROGRESSES_H
 
-#include "cocos2d.h"
+#include "Game.h"
 
-#include "Entity.h"
-#include "Button.h"
+#include "Pause.h"
 
-#include "BatchEntityManager.h"
+#include "AppDelegate.h"
 
-using namespace cocos2d;
-
-class Splash : public CCLayer
+class Progresses : public Game
 {
     protected:
         // ===========================================================
@@ -21,23 +18,12 @@ class Splash : public CCLayer
         // Constants
         // ===========================================================
 
+        static Progresses* m_Instance;
+
         // ===========================================================
         // Fields
         // ===========================================================
     
-        bool mShowBackground;
-        bool mHideBackground;
-    
-        float mShowBackgroundTime;
-        float mShowBackgroundTimeElapsed;
-        
-        float mHideBackgroundTime;
-        float mHideBackgroundTimeElapsed;
-    
-        Entity* mBackground;
-    
-        BatchEntityManager* mParts;
-
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -70,6 +56,8 @@ class Splash : public CCLayer
         // ===========================================================
         // Methods
         // ===========================================================
+
+        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -87,28 +75,25 @@ class Splash : public CCLayer
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        Progresses();
 
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Splash(CCNode* pParent);
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void show();
-        void hide();
-    
-        virtual void onShow();
-        virtual void onHide();
         
         // ===========================================================
         // Override Methods
         // ===========================================================
     
         void update(float pDeltaTime);
+
+        void onEnter();
+        void onExit();
 };
 
 #endif

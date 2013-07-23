@@ -103,6 +103,7 @@ class Options
         static const char* FONT;
 
         static const char* SAVE_DATA_COINS_ID[2];
+        static const char* SAVE_DATA_LANGUAGE_ID;
 
         static CCTouchInformation TOUCH_INFORMATION[10];
         
@@ -114,6 +115,8 @@ class Options
         static Textes TEXTES_HOLDER[200];
 
         static int SHOP_ITEMS_PRICES[100];
+        static int SHOP_ITEMS_RATING_FACTOR[100];
+        static const char* SHOP_ITEMS_PROPERTIES[100];
 
         static const int BUTTONS_ACTION_ONTOUCH = 0;
         static const int BUTTONS_ACTION_ONBEGIN = 1;
@@ -214,6 +217,7 @@ class Options
         static Textes TEXT_MODEHELP_OK;
         static Textes TEXT_MODEHELP_HELP[2];
         static Textes TEXT_SHOP_ITEMS[64];
+        static Textes TEXT_SHOP_ITEMS_DESCRIPTIONS[64];
         static Textes TEXT_SHOP_BOUGHT;
         static Textes TEXT_TAP_TO_CONTINUE;
         static Textes TEXT_TIP[10];

@@ -16,6 +16,8 @@
 #include "Language.h"
 #include "Level.h"
 #include "Classic.h"
+#include "Arcade.h"
+#include "Progresses.h"
 
 // ===========================================================
 // Inner Classes
@@ -75,6 +77,8 @@ void ScreenManager::generate()
     this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
 
     this->mScreens[Screen::SCREEN_CLASSIC_GAME] = NULL;
+    this->mScreens[Screen::SCREEN_ARCADE_GAME] = NULL;
+    this->mScreens[Screen::SCREEN_PROGRESS_GAME] = NULL;
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)
@@ -109,6 +113,8 @@ void ScreenManager::load(int pAction)
 
             if(this->mScreens[Screen::SCREEN_CLASSIC_GAME] == NULL) // TODO: Temp solution :(
             this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
+            this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Arcade();
+            this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Progresses();
             /*delete this->mScreens[Screen::SCREEN_MENU];
            delete  this->mScreens[Screen::SCREEN_SETTINGS];
             delete this->mScreens[Screen::SCREEN_SHOP];

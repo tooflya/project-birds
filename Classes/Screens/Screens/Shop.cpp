@@ -450,8 +450,6 @@ void Shop::onEnter()
     }
 
     this->mCoins = 0;
-
-    CC_SAFE_DELETE(this->mTablet);
 }
 
 void Shop::onExit()

@@ -13,8 +13,16 @@
 
 int Text::ID = 0;
 
-Text* Text::TEXTES[128] =
+Text* Text::TEXTES[256] =
 {
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
@@ -36,7 +44,7 @@ Text* Text::TEXTES[128] =
 Text::Text(const char* pString, float pSize, CCNode* pParent)
 {
     this->initWithString(pString, "Apple casual", Utils::coord(pSize), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-	this->enableShadow(CCSize(Utils::coord(5), -Utils::coord(5)), 255.0, 0.0, true);
+	this->enableShadow(CCSize(Utils::coord(2), -Utils::coord(2)), 255.0, 0.0, true);
     
     this->mId = 0;
     
@@ -50,7 +58,7 @@ Text::Text(const char* pString, float pSize, CCNode* pParent)
 Text::Text(Textes pParams, CCNode* pParent)
 {
     this->initWithString(pParams.string, pParams.font, pParams.size, CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-	this->enableShadow(CCSize(Utils::coord(5), -Utils::coord(5)), 255.0, 0.0, true);
+	this->enableShadow(CCSize(Utils::coord(2), -Utils::coord(2)), 255.0, 0.0, true);
     
     this->mId = pParams.identifier;
     
@@ -64,7 +72,7 @@ Text::Text(Textes pParams, CCNode* pParent)
 Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent)
 {
     this->initWithString(pParams.string, pParams.font, pParams.size, pDimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-    this->enableShadow(CCSize(Utils::coord(5), -Utils::coord(5)), 255.0, 0.0, true);
+    this->enableShadow(CCSize(Utils::coord(2), -Utils::coord(2)), 255.0, 0.0, true);
     
     this->mId = pParams.identifier;
     
@@ -105,6 +113,16 @@ float Text::getWidth()
 float Text::getHeight()
 {
     return this->getContentSize().height;
+}
+
+float Text::getCenterX()
+{
+    return this->getPosition().x;
+}
+
+float Text::getCenterY()
+{
+    return this->getPosition().y;
 }
 
 // ===========================================================
