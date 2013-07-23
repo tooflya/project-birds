@@ -192,7 +192,7 @@ Shop* Shop::m_Instance = NULL;
 
 int Shop::CLICKED_ITEM_ID = -1;
 
- int Shop::ITEMS_COUNT[3] = { 6, 4, 8 };
+ int Shop::ITEMS_COUNT[3] = { 11, 4, 8 };
 
 // ===========================================================
 // Fields
