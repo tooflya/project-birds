@@ -87,8 +87,8 @@ int Options::SAVE_DATA_COINS_TYPE_SILVER = 1;
 
 int Options::SHOP_ITEMS_PRICES[100] =
 {
-      999, 1499, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      999, 1499, 2939, 3420, 3850, 4400, 5100, 6800, 1100, 20000,
+      22199, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -101,8 +101,8 @@ int Options::SHOP_ITEMS_PRICES[100] =
 
 int Options::SHOP_ITEMS_RATING_FACTOR[100] =
 {
-      10, 20, 30, 1, 1, 1, 1, 1, 1, 1,
-      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+      100, 100, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -115,8 +115,8 @@ int Options::SHOP_ITEMS_RATING_FACTOR[100] =
 
 const char* Options::SHOP_ITEMS_PROPERTIES[100] =
 {
-    "12", "0", "0", "0", "0", "0", "0:02", "0:00", "0:00", "0:00",
-    "", "", "", "", "", "", "", "", "", "",
+    "12", "22", "31", "36", "42", "48", "52", "61", "68", "75",
+    "88", "91", "", "", "", "", "", "", "", "",
     "", "", "", "", "", "", "", "", "", "",
     "", "", "", "", "", "", "", "", "", "",
     "", "", "", "", "", "", "", "", "", "",
@@ -221,13 +221,13 @@ Textes Options::TEXT_TIP[10] =
 };
 Textes Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[64] =
 {
-      { "", FONT, 24, 130 }, { "", FONT, 24, 131 }, { "", FONT, 24, 132 }, { "", FONT, 24, 133 }, { "", FONT, 24, 134 }, { "", FONT, 24, 135 }, { "", FONT, 24, 136 }, { "", FONT, 24, 137 }, { "", FONT, 24, 138 }, { "", FONT, 24, 139 },
-      { "", FONT, 24, 140 }, { "", FONT, 24, 141 }, { "", FONT, 24, 142 }, { "", FONT, 24, 143 }, { "", FONT, 24, 144 }, { "", FONT, 24, 145 }, { "", FONT, 24, 146 }, { "", FONT, 24, 147 }, { "", FONT, 24, 148 }, { "", FONT, 24, 149 },
-      { "", FONT, 24, 150 }, { "", FONT, 24, 151 }, { "", FONT, 24, 152 }, { "", FONT, 24, 153 }, { "", FONT, 24, 154 }, { "", FONT, 24, 155 }, { "", FONT, 24, 156 }, { "", FONT, 24, 157 }, { "", FONT, 24, 158 }, { "", FONT, 24, 159 },
-      { "", FONT, 24, 160 }, { "", FONT, 24, 161 }, { "", FONT, 24, 162 }, { "", FONT, 24, 163 }, { "", FONT, 24, 164 }, { "", FONT, 24, 165 }, { "", FONT, 24, 166 }, { "", FONT, 24, 167 }, { "", FONT, 24, 168 }, { "", FONT, 24, 169 },
-      { "", FONT, 24, 170 }, { "", FONT, 24, 171 }, { "", FONT, 24, 172 }, { "", FONT, 24, 173 }, { "", FONT, 24, 174 }, { "", FONT, 24, 175 }, { "", FONT, 24, 176 }, { "", FONT, 24, 177 }, { "", FONT, 24, 178 }, { "", FONT, 24, 179 },
-      { "", FONT, 24, 180 }, { "", FONT, 24, 181 }, { "", FONT, 24, 182 }, { "", FONT, 24, 183 }, { "", FONT, 24, 184 }, { "", FONT, 24, 185 }, { "", FONT, 24, 186 }, { "", FONT, 24, 187 }, { "", FONT, 24, 188 }, { "", FONT, 24, 189 },
-      { "", FONT, 24, 190 }, { "", FONT, 24, 191 }, { "", FONT, 24, 192 }, { "", FONT, 24, 193 }
+      { "", FONT, 0, 130 }, { "", FONT, 0, 131 }, { "", FONT, 0, 132 }, { "", FONT, 0, 133 }, { "", FONT, 0, 134 }, { "", FONT, 0, 135 }, { "", FONT, 0, 136 }, { "", FONT, 0, 137 }, { "", FONT, 0, 138 }, { "", FONT, 0, 139 },
+      { "", FONT, 0, 140 }, { "", FONT, 0, 141 }, { "", FONT, 0, 142 }, { "", FONT, 0, 143 }, { "", FONT, 0, 144 }, { "", FONT, 0, 145 }, { "", FONT, 0, 146 }, { "", FONT, 0, 147 }, { "", FONT, 0, 148 }, { "", FONT, 0, 149 },
+      { "", FONT, 0, 150 }, { "", FONT, 0, 151 }, { "", FONT, 0, 152 }, { "", FONT, 0, 153 }, { "", FONT, 0, 154 }, { "", FONT, 0, 155 }, { "", FONT, 0, 156 }, { "", FONT, 0, 157 }, { "", FONT, 0, 158 }, { "", FONT, 0, 159 },
+      { "", FONT, 0, 160 }, { "", FONT, 0, 161 }, { "", FONT, 0, 162 }, { "", FONT, 0, 163 }, { "", FONT, 0, 164 }, { "", FONT, 0, 165 }, { "", FONT, 0, 166 }, { "", FONT, 0, 167 }, { "", FONT, 0, 168 }, { "", FONT, 0, 169 },
+      { "", FONT, 0, 170 }, { "", FONT, 0, 171 }, { "", FONT, 0, 172 }, { "", FONT, 0, 173 }, { "", FONT, 0, 174 }, { "", FONT, 0, 175 }, { "", FONT, 0, 176 }, { "", FONT, 0, 177 }, { "", FONT, 0, 178 }, { "", FONT, 0, 179 },
+      { "", FONT, 0, 180 }, { "", FONT, 0, 181 }, { "", FONT, 0, 182 }, { "", FONT, 0, 183 }, { "", FONT, 0, 184 }, { "", FONT, 0, 185 }, { "", FONT, 0, 186 }, { "", FONT, 0, 187 }, { "", FONT, 0, 188 }, { "", FONT, 0, 189 },
+      { "", FONT, 0, 190 }, { "", FONT, 0, 191 }, { "", FONT, 0, 192 }, { "", FONT, 0, 193 }
 };
 
 // ===========================================================
@@ -240,18 +240,21 @@ Textes Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[64] =
 
 Options::Options()
 {
-    
-    Options::changeLanguage();
 }
 
 // ===========================================================
 // Methods
 // ===========================================================
 
-void Options::changeLanguage()
+void Options::init()
 {
     Options::CURRENT_LANGUAGE = AppDelegate::getSelectedLanguage();
-    
+
+    Options::changeLanguage();
+}
+
+void Options::changeLanguage()
+{
     AppDelegate::changeLanguage(CURRENT_LANGUAGE);
 
     switch(Options::CURRENT_LANGUAGE)
@@ -543,12 +546,6 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[64].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[65].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[66].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[67].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[68].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[69].string = "Information not found.";
         break;
         case 1:
             TEXT_LOADING_1.string = "0%";
@@ -654,7 +651,7 @@ void Options::changeLanguage()
             TEXT_CREDITS_STRING_3.size = 36;
             
             TEXT_CREDITS_STRING_4.string = "Над игрой работали:";
-            TEXT_CREDITS_STRING_4.size = 42;
+            TEXT_CREDITS_STRING_4.size = 36;
             
             TEXT_CREDITS_STRING_5.string = "Программисты";
             TEXT_CREDITS_STRING_5.size = 36;
@@ -710,40 +707,40 @@ void Options::changeLanguage()
             TEXT_MODEHELP_HELP[1].string = "Классический режим - режим игры в котором вам предстоит соревноваться с другими игроками, зарабатывать монеты, увеличивать свой глобальный рейтинг и пользоваться заработанными бонусами.\n\nРежим аркады - позволит вам показать на что вы способны за одну минуту! По мере прохождения игры ваши навыки увеличиваются и вы вполне в силах превзойти свой предыдущий рекорд!\n\nПрохождение - это особый режим. Вам доступно 75 уровней (обновления совсем скоро) с различными заданиями. По мере прохождения уровней вам будут открываться новые возможности, которые вы можте использовать в других режимах игры.";
             TEXT_MODEHELP_HELP[1].size = 24;
             
-            TEXT_SHOP_ITEMS[0].string = "Доска";
+            TEXT_SHOP_ITEMS[0].string = "Бамбуковая палка";
             TEXT_SHOP_ITEMS[0].size = 48;
             
-            TEXT_SHOP_ITEMS[1].string = "Волшебная палочка";
+            TEXT_SHOP_ITEMS[1].string = "Доска";
             TEXT_SHOP_ITEMS[1].size = 48;
             
-            TEXT_SHOP_ITEMS[2].string = "Какое-то оружие 3";
+            TEXT_SHOP_ITEMS[2].string = "Дубина";
             TEXT_SHOP_ITEMS[2].size = 48;
             
-            TEXT_SHOP_ITEMS[3].string = "Какое-то оружие 4";
+            TEXT_SHOP_ITEMS[3].string = "Лопата";
             TEXT_SHOP_ITEMS[3].size = 48;
             
-            TEXT_SHOP_ITEMS[4].string = "Какое-то оружие 5";
+            TEXT_SHOP_ITEMS[4].string = "Молот правды";
             TEXT_SHOP_ITEMS[4].size = 48;
             
-            TEXT_SHOP_ITEMS[5].string = "Какое-то оружие 6";
+            TEXT_SHOP_ITEMS[5].string = "Топор всевластия";
             TEXT_SHOP_ITEMS[5].size = 48;
             
-            TEXT_SHOP_ITEMS[6].string = "Какая-то птица 1";
+            TEXT_SHOP_ITEMS[6].string = "Волшебная палочка";
             TEXT_SHOP_ITEMS[6].size = 48;
             
-            TEXT_SHOP_ITEMS[7].string = "Какая-то птица 2";
+            TEXT_SHOP_ITEMS[7].string = "Меч Джедая";
             TEXT_SHOP_ITEMS[7].size = 48;
             
-            TEXT_SHOP_ITEMS[8].string = "Какая-то птица 3";
+            TEXT_SHOP_ITEMS[8].string = "Механическая рука";
             TEXT_SHOP_ITEMS[8].size = 48;
             
-            TEXT_SHOP_ITEMS[9].string = "Какая-то птица 4";
+            TEXT_SHOP_ITEMS[9].string = "Рыба";
             TEXT_SHOP_ITEMS[9].size = 48;
             
-            TEXT_SHOP_ITEMS[10].string = "Какой-то бонус 1";
+            TEXT_SHOP_ITEMS[10].string = "Бита клоуна";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[11].string = "Какой-то бонус 2";
+            TEXT_SHOP_ITEMS[11].string = "Какая-то птица 1";
             TEXT_SHOP_ITEMS[11].size = 48;
             
             TEXT_SHOP_ITEMS[12].string = "Какой-то бонус 3";
@@ -776,17 +773,17 @@ void Options::changeLanguage()
             TEXT_TIP[3].string = "Некоторые птицы являются особенными - посмотретите на что они способны";
             TEXT_TIP[4].string = "Вас ждет более 20-ти различных птиц  с уникальными способностями";
 
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[0].string = "Доска была оторвана от любимой будки злого бультерьера. Пока тот спал на заднем дворе. После обнаружения о пропаже он в поисках оббежал весь квартал, но так и не нашел её. Теперь вам лучше не попадаться ему на пути!";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[1].string = "Волшебная палочка доброй феи, которую нашли в дупле старого огромного дуба, вблизи густого дремучего леса. Будьте осторожны, по слухам там живут неведомые чудища. По всей вероятности они отобрали волшебную палочку у доброй феи и спрятали её. Что случилось с феей никому не известно.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[2].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[3].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[0].string = "Эта древняя бамбуковая палица является оберегом и символом правды в доме у старого китайца. Раньше была сильным и пожалуй единственным оружием царской армии. Сейчас же палица служит как отличное средство для борьбы с мухами.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[1].string = "Доска была оторвана от любимой будки злого бультерьера. Пока тот спал на заднем дворе. После обнаружения о пропаже он в поисках оббежал весь квартал, но так и не нашел её. Теперь вам лучше не попадаться ему на пути!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[2].string = "Хитрый енот выломал её из ветки вечного дерева, возле которого собирались все звери на тихий совет. По поверью, выломанная дубина в ночь на десятую светлую луну придаст обладателю сил и долголетия.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[3].string = "Старая лопата садовника Джонни. Она не так проста, как кажется на первый взгляд. Только с её помощью можно получить огромные сокровища старика Джонни, которые зарыты под голубым камнем в Зеленой Долине.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Каменный молот правды. С его помощью древние жители забытой страны строили себе хижины и добывали еду. Собираясь толпой они ходили на охоту в поисках мамонта. Когда они находили его берлогу, окружали её и шли на смертный бой со зверем.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "Этот двух сторонний топор был символом всевластия старого индейца. Топор напоминал индейцу о былых временах, когда он ходил с ним на великих красных драконов, которые раз в 10 лет прилетали со своих высоких темных гор и сжигали деревню индейца.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Ее нашли в дупле старого огромного дуба, вблизи густого дремучего леса. Будьте осторожны, по слухам там живут неведомые чудища. По всей вероятности они отобрали волшебную палочку у доброй феи и спрятали её. Что случилось с феей никому не известно.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "Легендарный Меч Джедая, которым захватывались космические корабли, да что там корабли - целые галактики! Его владельца меч наделял необыкновенной силой и возможностями, но лишь до тех пор пока не сядут батарейки.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Железная механическая рука, результат многолетних засекреченных разработок ведущих компаний мира в наноиндустрии. Она стала началом создания сверх секретного проекта - Стальной подшипник. Сейчас же руку используют как промышленную кофеварку.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Та самая рыба из сказки, что желания деда исполняла, когда тот неводом её вытянул. Была найдена у темного берега быстрой реки кучкой маленьких гномов. Будьте внимательны и осторожны в своих желаниях, возможно ваше исполнится прямо сейчас!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "На бите изображен первый клоун старого цирка. Зрителям очень нравились его выступления с дрессированными динозаврами и летающими слонами. В результате добрые люди решили увековечить его облик на этой бите.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[11].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[12].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[13].string = "Информации не найдено.";
@@ -840,12 +837,6 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[64].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[65].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[66].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[67].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[68].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[69].string = "Информации не найдено.";
         break;
     }
     
@@ -1041,7 +1032,6 @@ void Options::changeLanguage()
     TEXTES_HOLDER[190] = TEXT_SHOP_ITEMS_DESCRIPTIONS[61];
     TEXTES_HOLDER[191] = TEXT_SHOP_ITEMS_DESCRIPTIONS[62];
     TEXTES_HOLDER[192] = TEXT_SHOP_ITEMS_DESCRIPTIONS[63];
-    TEXTES_HOLDER[193] = TEXT_SHOP_ITEMS_DESCRIPTIONS[64];
     
     for(int i = 0; i < 193; i++)
     {
