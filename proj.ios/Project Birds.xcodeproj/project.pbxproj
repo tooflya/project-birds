@@ -15,6 +15,7 @@
 		78857F59179FF01400AB657C /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F58179FF01400AB657C /* Icon-144.png */; };
 		78857F5C179FF05600AB657C /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F5A179FF05600AB657C /* Icon-114.png */; };
 		78857F5D179FF05600AB657C /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F5B179FF05600AB657C /* Icon-57.png */; };
+		78857F6017A00CFD00AB657C /* BladeParticlesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78857F5F17A00CFD00AB657C /* BladeParticlesManager.cpp */; };
 		78B38A53177E5D0600773C6A /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4D177E5D0600773C6A /* AppController.mm */; };
 		78B38A55177E5D0600773C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4F177E5D0600773C6A /* main.m */; };
 		78B38A56177E5D0600773C6A /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A52177E5D0600773C6A /* RootViewController.mm */; };
@@ -228,7 +229,6 @@
 		78D91DB9179E73FE00F4C6C3 /* shop_wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CEF179E73FA00F4C6C3 /* shop_wheel@2x.png */; };
 		78D91DBA179E73FE00F4C6C3 /* start_preloader_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CF0179E73FA00F4C6C3 /* start_preloader_bar@2x.png */; };
 		78D91DBB179E73FE00F4C6C3 /* start_preloader_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CF1179E73FA00F4C6C3 /* start_preloader_bg@2x.png */; };
-		78D91DBC179E73FE00F4C6C3 /* streak0-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CF2179E73FA00F4C6C3 /* streak0-hd.png */; };
 		78D91DBD179E73FE00F4C6C3 /* iPad-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CF4179E73FA00F4C6C3 /* iPad-landscape.png */; };
 		78D91DBE179E73FE00F4C6C3 /* iPad-landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CF5179E73FA00F4C6C3 /* iPad-landscape@2x.png */; };
 		78D91DBF179E73FE00F4C6C3 /* iPad-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CF6179E73FA00F4C6C3 /* iPad-portrait.png */; };
@@ -323,6 +323,8 @@
 		78857F58179FF01400AB657C /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
 		78857F5A179FF05600AB657C /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 		78857F5B179FF05600AB657C /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
+		78857F5E17A00CFC00AB657C /* BladeParticlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BladeParticlesManager.h; sourceTree = "<group>"; };
+		78857F5F17A00CFD00AB657C /* BladeParticlesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BladeParticlesManager.cpp; sourceTree = "<group>"; };
 		78B38A4C177E5D0600773C6A /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		78B38A4D177E5D0600773C6A /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		78B38A4F177E5D0600773C6A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -732,7 +734,6 @@
 		78D91CEF179E73FA00F4C6C3 /* shop_wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_wheel@2x.png"; sourceTree = "<group>"; };
 		78D91CF0179E73FA00F4C6C3 /* start_preloader_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_preloader_bar@2x.png"; sourceTree = "<group>"; };
 		78D91CF1179E73FA00F4C6C3 /* start_preloader_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_preloader_bg@2x.png"; sourceTree = "<group>"; };
-		78D91CF2179E73FA00F4C6C3 /* streak0-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "streak0-hd.png"; sourceTree = "<group>"; };
 		78D91CF4179E73FA00F4C6C3 /* iPad-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad-landscape.png"; sourceTree = "<group>"; };
 		78D91CF5179E73FA00F4C6C3 /* iPad-landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad-landscape@2x.png"; sourceTree = "<group>"; };
 		78D91CF6179E73FA00F4C6C3 /* iPad-portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad-portrait.png"; sourceTree = "<group>"; };
@@ -1742,7 +1743,6 @@
 				78D91CEF179E73FA00F4C6C3 /* shop_wheel@2x.png */,
 				78D91CF0179E73FA00F4C6C3 /* start_preloader_bar@2x.png */,
 				78D91CF1179E73FA00F4C6C3 /* start_preloader_bg@2x.png */,
-				78D91CF2179E73FA00F4C6C3 /* streak0-hd.png */,
 			);
 			path = 1280x720;
 			sourceTree = "<group>";
@@ -1858,6 +1858,8 @@
 		78D91D2A179E73FE00F4C6C3 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				78857F5E17A00CFC00AB657C /* BladeParticlesManager.h */,
+				78857F5F17A00CFD00AB657C /* BladeParticlesManager.cpp */,
 				78D91D2B179E73FE00F4C6C3 /* BatchEntityManager.cpp */,
 				78D91D2C179E73FE00F4C6C3 /* BatchEntityManager.h */,
 				78D91D2D179E73FE00F4C6C3 /* ConfettiManager.cpp */,
@@ -2110,7 +2112,6 @@
 				78D91DB9179E73FE00F4C6C3 /* shop_wheel@2x.png in Resources */,
 				78D91DBA179E73FE00F4C6C3 /* start_preloader_bar@2x.png in Resources */,
 				78D91DBB179E73FE00F4C6C3 /* start_preloader_bg@2x.png in Resources */,
-				78D91DBC179E73FE00F4C6C3 /* streak0-hd.png in Resources */,
 				78D91DBD179E73FE00F4C6C3 /* iPad-landscape.png in Resources */,
 				78D91DBE179E73FE00F4C6C3 /* iPad-landscape@2x.png in Resources */,
 				78D91DBF179E73FE00F4C6C3 /* iPad-portrait.png in Resources */,
@@ -2343,6 +2344,7 @@
 				78D91E04179E73FE00F4C6C3 /* ModeHelpList.cpp in Sources */,
 				78D91E05179E73FE00F4C6C3 /* Touchable.cpp in Sources */,
 				78D91E06179E73FE00F4C6C3 /* Utils.cpp in Sources */,
+				78857F6017A00CFD00AB657C /* BladeParticlesManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

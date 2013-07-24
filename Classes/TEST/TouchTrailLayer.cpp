@@ -15,6 +15,8 @@ TouchTrailLayer::TouchTrailLayer()
     this->mTimeBeforeNextBladeSound = 0.15f;
     this->mTimeBeforeNextBladeSoundElapsed = 0;
 
+    //this->mBladeParticlesManager = new BladeParticlesManager(100, new Entity(""), this);
+    
     this->scheduleUpdate();
 }
 
@@ -31,9 +33,11 @@ void TouchTrailLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 
     for (CCSetIterator it = pTouches->begin(); it != pTouches->end(); it++) {
         CCTouch *touch = (CCTouch *)*it;
-        CCBlade *blade = CCBlade::create(kFileStreak, 20, 12);
+        CCBlade *blade = CCBlade::create(kFileStreak, 30, 12);
         _map[touch] = blade;
         addChild(blade);
+        
+        
         
         blade->setDrainInterval(1.0 / 60.0);
         

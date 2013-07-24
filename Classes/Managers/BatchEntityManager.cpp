@@ -4,110 +4,110 @@
 #include "BatchEntityManager.h"
 
 BatchEntityManager::BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen) :
-	CCSpriteBatchNode()
-	{
-		this->initWithFile(pEntity->getTextureFileName(), 50);
+    CCSpriteBatchNode()
+    {
+        this->initWithFile(pEntity->getTextureFileName(), 50);
         
         this->mInitCapacity = pCreateCount;
 
-		this->mLastElementNumber = -1;
-		this->mCapacity = pCreateCount; // TODO: increase to pMaxCount
+        this->mLastElementNumber = -1;
+        this->mCapacity = pCreateCount; // TODO: increase to pMaxCount
 
-		for(int i = 0; i < pCreateCount; i++)
-		{
-			Entity* currentEntity = pEntity->deepCopy();
+        for(int i = 0; i < pCreateCount; i++)
+        {
+            Entity* currentEntity = pEntity->deepCopy();
 
-			currentEntity->setEntityManager(this);
-			currentEntity->setEntityManagerId(i);
+            currentEntity->setEntityManager(this);
+            currentEntity->setEntityManagerId(i);
 
-			this->addChild(currentEntity);
-		
-			currentEntity->destroy(false);
-		}
+            this->addChild(currentEntity);
+        
+            currentEntity->destroy(false);
+        }
 
-		if(pScreen != NULL)
-		pScreen->addChild(this, 0);
-	}
+        if(pScreen != NULL)
+        pScreen->addChild(this, 0);
+    }
 
 Entity* BatchEntityManager::create()
 {
-	if (++this->mLastElementNumber < this->mCapacity)
-	{
-		Entity* object = (Entity*) this->objectAtIndex(this->mLastElementNumber);
-		object->create();
+    if (++this->mLastElementNumber < this->mCapacity)
+    {
+        Entity* object = (Entity*) this->objectAtIndex(this->mLastElementNumber);
+        object->create();
 
-		return object;
-	}
+        return object;
+    }
 
-	// Create a new object if manager hasn't free object.
+    // Create a new object if manager hasn't free object.
 
-	Entity* object = ((Entity*) this->objectAtIndex(0))->deepCopy(); // TODO: Increase CCArray capacity? Really? I think it's works like a charm!
+    Entity* object = ((Entity*) this->objectAtIndex(0))->deepCopy(); // TODO: Increase CCArray capacity? Really? I think it's works like a charm!
 
-	object->setEntityManager(this);
-	object->setEntityManagerId(this->mCapacity);
+    object->setEntityManager(this);
+    object->setEntityManagerId(this->mCapacity);
 
-	this->addChild(object);
+    this->addChild(object);
 
-	this->mCapacity++;
+    this->mCapacity++;
 
-	return object->create();
+    return object->create();
 }
 
 void BatchEntityManager::destroy(int pIndex)
 {
-	if(this->mLastElementNumber >= 0)
-	{
-		this->getChildren()->exchangeObjectAtIndex(pIndex, this->mLastElementNumber);
+    if(this->mLastElementNumber >= 0)
+    {
+        this->getChildren()->exchangeObjectAtIndex(pIndex, this->mLastElementNumber);
 
-		((Entity*) this->objectAtIndex(pIndex))->setEntityManagerId(pIndex);
-		((Entity*) this->objectAtIndex(this->mLastElementNumber))->setEntityManagerId(this->mLastElementNumber);
+        ((Entity*) this->objectAtIndex(pIndex))->setEntityManagerId(pIndex);
+        ((Entity*) this->objectAtIndex(this->mLastElementNumber))->setEntityManagerId(this->mLastElementNumber);
 
-		this->mLastElementNumber--;
-	}
+        this->mLastElementNumber--;
+    }
 }
 
 void BatchEntityManager::clear() // Some problem in this method with elements which will change and their ID
 {
-	for(int i = 0; i < this->getCapacity(); i++)
-	{
-		((Entity*) this->objectAtIndex(i))->destroy(true);
-	}
+    for(int i = 0; i < this->getCapacity(); i++)
+    {
+        ((Entity*) this->objectAtIndex(i))->destroy(true);
+    }
 
-	for(int i = 0; i < this->getCapacity(); i++)
-	{
-		((Entity*) this->objectAtIndex(i))->destroy();
-	}
+    for(int i = 0; i < this->getCapacity(); i++)
+    {
+        ((Entity*) this->objectAtIndex(i))->destroy();
+    }
 }
 
 int BatchEntityManager::getCount()
 {
-	return this->mLastElementNumber + 1;
+    return this->mLastElementNumber + 1;
 }
 
 int BatchEntityManager::getCapacity()
 {
-	return this->mCapacity;
+    return this->mCapacity;
 }
 
 CCObject* BatchEntityManager::objectAtIndex(int pIndex)
 {
-	return this->getChildren()->objectAtIndex(pIndex);
+    return this->getChildren()->objectAtIndex(pIndex);
 }
 
 void BatchEntityManager::pauseSchedulerAndActions()
 {
-	for(int i = 0; i < this->getCapacity(); i++)
-	{
-		((Entity*) this->objectAtIndex(i))->pauseSchedulerAndActions();
-	}
+    for(int i = 0; i < this->getCapacity(); i++)
+    {
+        ((Entity*) this->objectAtIndex(i))->pauseSchedulerAndActions();
+    }
 }
 
 void BatchEntityManager::resumeSchedulerAndActions()
 {
-	for(int i = 0; i < this->getCapacity(); i++)
-	{
-		((Entity*) this->objectAtIndex(i))->resumeSchedulerAndActions();
-	}
+    for(int i = 0; i < this->getCapacity(); i++)
+    {
+        ((Entity*) this->objectAtIndex(i))->resumeSchedulerAndActions();
+    }
 }
 
 int BatchEntityManager::getInitCapacity()

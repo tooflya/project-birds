@@ -9,26 +9,26 @@ using namespace cocos2d;
 
 class BatchEntityManager : public CCSpriteBatchNode
 {
-	protected:
-		int mLastElementNumber;
-		int mCapacity;
+    protected:
+        int mLastElementNumber;
+        int mCapacity;
         int mInitCapacity;
 
-	public:
-		BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen);
-		
-		int getCount();
-		int getCapacity();
+    public:
+        BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen);
+        
+        int getCount();
+        int getCapacity();
 
-		void clear();
+        void clear();
 
-		CCObject* objectAtIndex(int pIndex);
+        CCObject* objectAtIndex(int pIndex);
 
-		Entity* create();
-		void destroy(int pIndex);
+        Entity* create();
+        void destroy(int pIndex);
 
-		void pauseSchedulerAndActions();
-		void resumeSchedulerAndActions();
+        void pauseSchedulerAndActions();
+        void resumeSchedulerAndActions();
     
         int getInitCapacity();
     
