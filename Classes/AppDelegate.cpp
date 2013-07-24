@@ -106,11 +106,11 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     Screen* pScene = new Loading();
 
+    Options::init();
+
     director->runWithScene(pScene);   
 
     AppDelegate::removeCoins(100000, 0); // TODO: Remove this;
-    
-    Options::changeLanguage();
 
     return true;
 }

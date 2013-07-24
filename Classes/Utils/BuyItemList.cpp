@@ -28,7 +28,7 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->setParentType(List::PARENT_TYPE_POPUP);
 
         this->mIcon = new Entity("shop_item_icon@2x.png", 10, 10, this);
-        this->mDescriptionText = new Text((Textes) {"", "Comic Sans MS", 24, 0}, ccp(Utils::coord(450), 0), this);
+        this->mDescriptionText = new Text((Textes) {"", "Comic Sans MS", 24, -1}, ccp(Utils::coord(450), 0), this);
 
         this->mStars = new BatchEntityManager(2, new Entity("popup_item_rate_stars@2x.png", 1, 2), this);
         this->mStars->create()->setCenterPosition(this->mParent->getWidth() / 2 - Utils::coord(5) + static_cast<Entity*>(this->mStars->objectAtIndex(0))->getWidth() / 2, Options::CAMERA_CENTER_Y - Utils::coord(70));

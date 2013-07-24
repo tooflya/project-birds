@@ -51,6 +51,26 @@ CreditsList::CreditsList(CCNode* pParent) :
         this->mText[10]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(300) - Utils::coord(500));
         this->mText[11]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(400) - Utils::coord(500));
         this->mText[12]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(450) - Utils::coord(500));
+
+        this->mText[0]->setColor(ccc3(167.0, 65.0, 7.0));
+
+        this->mText[1]->setColor(ccc3(248.0, 163.0, 73.0));
+        this->mText[2]->setColor(ccc3(248.0, 163.0, 73.0));
+
+        this->mText[3]->setColor(ccc3(167.0, 65.0, 7.0));
+
+        this->mText[4]->setColor(ccc3(167.0, 65.0, 7.0));
+        this->mText[5]->setColor(ccc3(248.0, 163.0, 73.0));
+
+        this->mText[6]->setColor(ccc3(167.0, 65.0, 7.0));
+        this->mText[7]->setColor(ccc3(248.0, 163.0, 73.0));
+
+        this->mText[8]->setColor(ccc3(167.0, 65.0, 7.0));
+        this->mText[9]->setColor(ccc3(248.0, 163.0, 73.0));
+        this->mText[10]->setColor(ccc3(248.0, 163.0, 73.0));
+
+        this->mText[11]->setColor(ccc3(167.0, 65.0, 7.0));
+        this->mText[12]->setColor(ccc3(248.0, 163.0, 73.0));
     }
 
 // ===========================================================

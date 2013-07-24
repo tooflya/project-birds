@@ -227,7 +227,7 @@ Shop::Shop()
         this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i]);
         this->mItems[i] = new BatchEntityManager(10, new Item(onTouchButtonsCallback), this->mLayers[i]);
         
-        for(int j = -1; j < 3; j++)
+        for(int j = -1; j < 4; j++)
         {
             Entity* shelf = (Entity*) this->mShelfs[i]->create();
             
@@ -330,9 +330,9 @@ Shop::Shop()
 
 void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Shop* pSender = (Shop*) Shop::m_Instance;
+    Shop* pSender = static_cast<Shop*>(Shop::m_Instance);
 
-    if(pSender->mIsAnimationOnItemBoughtRunning) return;
+    //if(pSender->mIsAnimationOnItemBoughtRunning) return;
 
     switch(pAction)
     {
@@ -371,6 +371,8 @@ void Shop::onItemBought(int pItemId)
 
     this->mAnimationOnItemBoughtTime = 3.0;
     this->mAnimationOnItemBoughtTimeElapsed = 0;
+
+    this->mBoughtItemIcon->setCurrentFrameIndex(pItemId);
 
     this->mBoughtText[0]->setString(Options::TEXT_SHOP_ITEMS[pItemId].string);
 

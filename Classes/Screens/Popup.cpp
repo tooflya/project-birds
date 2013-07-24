@@ -65,7 +65,6 @@ void Popup::hide()
 {
     if(!this->mShowed) return;
     
-    this->mShowed = false;
     this->mHideAnimationRunning = true;
     
     this->mHideAnimationCount = 0;
@@ -88,6 +87,8 @@ void Popup::onShow()
 void Popup::onHide()
 {
     this->removeFromParentAndCleanup(false);
+
+    this->mShowed = false;
 }
 
 // ===========================================================

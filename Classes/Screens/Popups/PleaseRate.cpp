@@ -66,7 +66,7 @@ PleaseRate::PleaseRate(CCNode* pParent) :
 
 void PleaseRate::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    PleaseRate* pSender = (PleaseRate*) PleaseRate::m_Instance;
+    PleaseRate* pSender = static_cast<PleaseRate*>(PleaseRate::m_Instance);
     
     switch(pAction)
     {

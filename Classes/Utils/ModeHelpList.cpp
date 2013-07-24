@@ -31,7 +31,8 @@ ModeHelpList::ModeHelpList(CCNode* pParent) :
         this->mText[0]->setCenterPosition((static_cast<Entity*>(pParent))->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(100));
         this->mText[1]->setCenterPosition((static_cast<Entity*>(pParent))->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2);
 
-        this->mText[1]->setColor(ccc3(183.0, 179.0, 179.0));
+        this->mText[0]->setColor(ccc3(167.0, 65.0, 7.0));
+        this->mText[1]->setColor(ccc3(167.0, 65.0, 7.0));
     }
 
 // ===========================================================

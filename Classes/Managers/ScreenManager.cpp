@@ -132,7 +132,7 @@ void ScreenManager::load(int pAction)
     }       
 
     //CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    //CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     //CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
