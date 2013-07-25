@@ -31,6 +31,8 @@ class Mode : public Screen
         Button* mClassicMode;
         Button* mArcadeMode;
         Button* mProgressMode;
+        Button* mAchievementsButton;
+        Button* mLeaderboardButton;
 
         ModeHelp* mHelpPopup;
 

@@ -28,7 +28,6 @@ class Menu : public Screen
         // ===========================================================
     
         Entity* mBackground;
-        Entity* mBackgroundDecoration;
         Entity* mPlayDecoration;
         Entity* mPlayButton;
         Entity* mShopButton;

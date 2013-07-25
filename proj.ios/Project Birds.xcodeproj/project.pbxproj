@@ -16,6 +16,10 @@
 		78857F5C179FF05600AB657C /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F5A179FF05600AB657C /* Icon-114.png */; };
 		78857F5D179FF05600AB657C /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F5B179FF05600AB657C /* Icon-57.png */; };
 		78857F6017A00CFD00AB657C /* BladeParticlesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78857F5F17A00CFD00AB657C /* BladeParticlesManager.cpp */; };
+		78857F6617A021D500AB657C /* wep_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F6317A021D500AB657C /* wep_1@2x.png */; };
+		78857F6717A021D500AB657C /* shop_item_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F6417A021D500AB657C /* shop_item_new@2x.png */; };
+		78857F6817A021D500AB657C /* leaf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F6517A021D500AB657C /* leaf@2x.png */; };
+		78857F6A17A0235A00AB657C /* weapon_strike_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78857F6917A0235A00AB657C /* weapon_strike_sprite@2x.png */; };
 		78B38A53177E5D0600773C6A /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4D177E5D0600773C6A /* AppController.mm */; };
 		78B38A55177E5D0600773C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4F177E5D0600773C6A /* main.m */; };
 		78B38A56177E5D0600773C6A /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A52177E5D0600773C6A /* RootViewController.mm */; };
@@ -195,12 +199,10 @@
 		78D91D97179E73FE00F4C6C3 /* explosion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CCD179E73FA00F4C6C3 /* explosion@2x.png */; };
 		78D91D98179E73FE00F4C6C3 /* flag_sprite_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CCE179E73FA00F4C6C3 /* flag_sprite_big@2x.png */; };
 		78D91D99179E73FE00F4C6C3 /* flag_sprite_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CCF179E73FA00F4C6C3 /* flag_sprite_small@2x.png */; };
-		78D91D9A179E73FE00F4C6C3 /* game_gui_bg_summer@2x copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD0179E73FA00F4C6C3 /* game_gui_bg_summer@2x copy.png */; };
 		78D91D9B179E73FE00F4C6C3 /* game_gui_bg_summer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD1179E73FA00F4C6C3 /* game_gui_bg_summer@2x.png */; };
 		78D91D9C179E73FE00F4C6C3 /* game_gui_btn_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD2179E73FA00F4C6C3 /* game_gui_btn_sprite@2x.png */; };
 		78D91D9D179E73FE00F4C6C3 /* get_coins_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD3179E73FA00F4C6C3 /* get_coins_light@2x.png */; };
 		78D91D9E179E73FE00F4C6C3 /* main_menu_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD4179E73FA00F4C6C3 /* main_menu_bg@2x.png */; };
-		78D91D9F179E73FE00F4C6C3 /* main_menu_bg_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD5179E73FA00F4C6C3 /* main_menu_bg_back@2x.png */; };
 		78D91DA0179E73FE00F4C6C3 /* main_menu_btn_bg_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD6179E73FA00F4C6C3 /* main_menu_btn_bg_play@2x.png */; };
 		78D91DA1179E73FE00F4C6C3 /* main_menu_btn_shop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD7179E73FA00F4C6C3 /* main_menu_btn_shop@2x.png */; };
 		78D91DA2179E73FE00F4C6C3 /* mark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CD8179E73FA00F4C6C3 /* mark@2x.png */; };
@@ -218,7 +220,6 @@
 		78D91DAE179E73FE00F4C6C3 /* popup_rate_picture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CE4179E73FA00F4C6C3 /* popup_rate_picture@2x.png */; };
 		78D91DAF179E73FE00F4C6C3 /* preload-lvl-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CE5179E73FA00F4C6C3 /* preload-lvl-bg@2x.png */; };
 		78D91DB0179E73FE00F4C6C3 /* preload-lvl-bird@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CE6179E73FA00F4C6C3 /* preload-lvl-bird@2x.png */; };
-		78D91DB1179E73FE00F4C6C3 /* preload-lvl-spiral@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CE7179E73FA00F4C6C3 /* preload-lvl-spiral@2x.png */; };
 		78D91DB2179E73FE00F4C6C3 /* preload-lvl-wave@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CE8179E73FA00F4C6C3 /* preload-lvl-wave@2x.png */; };
 		78D91DB3179E73FE00F4C6C3 /* settings_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CE9179E73FA00F4C6C3 /* settings_bg@2x.png */; };
 		78D91DB4179E73FE00F4C6C3 /* settings_btn_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D91CEA179E73FA00F4C6C3 /* settings_btn_big@2x.png */; };
@@ -325,6 +326,10 @@
 		78857F5B179FF05600AB657C /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		78857F5E17A00CFC00AB657C /* BladeParticlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BladeParticlesManager.h; sourceTree = "<group>"; };
 		78857F5F17A00CFD00AB657C /* BladeParticlesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BladeParticlesManager.cpp; sourceTree = "<group>"; };
+		78857F6317A021D500AB657C /* wep_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_1@2x.png"; sourceTree = "<group>"; };
+		78857F6417A021D500AB657C /* shop_item_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_item_new@2x.png"; sourceTree = "<group>"; };
+		78857F6517A021D500AB657C /* leaf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaf@2x.png"; sourceTree = "<group>"; };
+		78857F6917A0235A00AB657C /* weapon_strike_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weapon_strike_sprite@2x.png"; sourceTree = "<group>"; };
 		78B38A4C177E5D0600773C6A /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		78B38A4D177E5D0600773C6A /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		78B38A4F177E5D0600773C6A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -700,12 +705,10 @@
 		78D91CCD179E73FA00F4C6C3 /* explosion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion@2x.png"; sourceTree = "<group>"; };
 		78D91CCE179E73FA00F4C6C3 /* flag_sprite_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_sprite_big@2x.png"; sourceTree = "<group>"; };
 		78D91CCF179E73FA00F4C6C3 /* flag_sprite_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_sprite_small@2x.png"; sourceTree = "<group>"; };
-		78D91CD0179E73FA00F4C6C3 /* game_gui_bg_summer@2x copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_gui_bg_summer@2x copy.png"; sourceTree = "<group>"; };
 		78D91CD1179E73FA00F4C6C3 /* game_gui_bg_summer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_gui_bg_summer@2x.png"; sourceTree = "<group>"; };
 		78D91CD2179E73FA00F4C6C3 /* game_gui_btn_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_gui_btn_sprite@2x.png"; sourceTree = "<group>"; };
 		78D91CD3179E73FA00F4C6C3 /* get_coins_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "get_coins_light@2x.png"; sourceTree = "<group>"; };
 		78D91CD4179E73FA00F4C6C3 /* main_menu_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg@2x.png"; sourceTree = "<group>"; };
-		78D91CD5179E73FA00F4C6C3 /* main_menu_bg_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg_back@2x.png"; sourceTree = "<group>"; };
 		78D91CD6179E73FA00F4C6C3 /* main_menu_btn_bg_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_btn_bg_play@2x.png"; sourceTree = "<group>"; };
 		78D91CD7179E73FA00F4C6C3 /* main_menu_btn_shop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_btn_shop@2x.png"; sourceTree = "<group>"; };
 		78D91CD8179E73FA00F4C6C3 /* mark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark@2x.png"; sourceTree = "<group>"; };
@@ -723,7 +726,6 @@
 		78D91CE4179E73FA00F4C6C3 /* popup_rate_picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_rate_picture@2x.png"; sourceTree = "<group>"; };
 		78D91CE5179E73FA00F4C6C3 /* preload-lvl-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preload-lvl-bg@2x.png"; sourceTree = "<group>"; };
 		78D91CE6179E73FA00F4C6C3 /* preload-lvl-bird@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preload-lvl-bird@2x.png"; sourceTree = "<group>"; };
-		78D91CE7179E73FA00F4C6C3 /* preload-lvl-spiral@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preload-lvl-spiral@2x.png"; sourceTree = "<group>"; };
 		78D91CE8179E73FA00F4C6C3 /* preload-lvl-wave@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preload-lvl-wave@2x.png"; sourceTree = "<group>"; };
 		78D91CE9179E73FA00F4C6C3 /* settings_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bg@2x.png"; sourceTree = "<group>"; };
 		78D91CEA179E73FA00F4C6C3 /* settings_btn_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_btn_big@2x.png"; sourceTree = "<group>"; };
@@ -1686,6 +1688,10 @@
 		78D91CB9179E73FA00F4C6C3 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				78857F6917A0235A00AB657C /* weapon_strike_sprite@2x.png */,
+				78857F6317A021D500AB657C /* wep_1@2x.png */,
+				78857F6417A021D500AB657C /* shop_item_new@2x.png */,
+				78857F6517A021D500AB657C /* leaf@2x.png */,
 				78857F56179EC04F00AB657C /* icon_properties@2x.png */,
 				78D91CBA179E73FA00F4C6C3 /* about_scroll_border@2x.png */,
 				78D91CBB179E73FA00F4C6C3 /* about_scroll_border_small@2x.png */,
@@ -1709,12 +1715,10 @@
 				78D91CCD179E73FA00F4C6C3 /* explosion@2x.png */,
 				78D91CCE179E73FA00F4C6C3 /* flag_sprite_big@2x.png */,
 				78D91CCF179E73FA00F4C6C3 /* flag_sprite_small@2x.png */,
-				78D91CD0179E73FA00F4C6C3 /* game_gui_bg_summer@2x copy.png */,
 				78D91CD1179E73FA00F4C6C3 /* game_gui_bg_summer@2x.png */,
 				78D91CD2179E73FA00F4C6C3 /* game_gui_btn_sprite@2x.png */,
 				78D91CD3179E73FA00F4C6C3 /* get_coins_light@2x.png */,
 				78D91CD4179E73FA00F4C6C3 /* main_menu_bg@2x.png */,
-				78D91CD5179E73FA00F4C6C3 /* main_menu_bg_back@2x.png */,
 				78D91CD6179E73FA00F4C6C3 /* main_menu_btn_bg_play@2x.png */,
 				78D91CD7179E73FA00F4C6C3 /* main_menu_btn_shop@2x.png */,
 				78D91CD8179E73FA00F4C6C3 /* mark@2x.png */,
@@ -1732,7 +1736,6 @@
 				78D91CE4179E73FA00F4C6C3 /* popup_rate_picture@2x.png */,
 				78D91CE5179E73FA00F4C6C3 /* preload-lvl-bg@2x.png */,
 				78D91CE6179E73FA00F4C6C3 /* preload-lvl-bird@2x.png */,
-				78D91CE7179E73FA00F4C6C3 /* preload-lvl-spiral@2x.png */,
 				78D91CE8179E73FA00F4C6C3 /* preload-lvl-wave@2x.png */,
 				78D91CE9179E73FA00F4C6C3 /* settings_bg@2x.png */,
 				78D91CEA179E73FA00F4C6C3 /* settings_btn_big@2x.png */,
@@ -2078,12 +2081,10 @@
 				78D91D97179E73FE00F4C6C3 /* explosion@2x.png in Resources */,
 				78D91D98179E73FE00F4C6C3 /* flag_sprite_big@2x.png in Resources */,
 				78D91D99179E73FE00F4C6C3 /* flag_sprite_small@2x.png in Resources */,
-				78D91D9A179E73FE00F4C6C3 /* game_gui_bg_summer@2x copy.png in Resources */,
 				78D91D9B179E73FE00F4C6C3 /* game_gui_bg_summer@2x.png in Resources */,
 				78D91D9C179E73FE00F4C6C3 /* game_gui_btn_sprite@2x.png in Resources */,
 				78D91D9D179E73FE00F4C6C3 /* get_coins_light@2x.png in Resources */,
 				78D91D9E179E73FE00F4C6C3 /* main_menu_bg@2x.png in Resources */,
-				78D91D9F179E73FE00F4C6C3 /* main_menu_bg_back@2x.png in Resources */,
 				78D91DA0179E73FE00F4C6C3 /* main_menu_btn_bg_play@2x.png in Resources */,
 				78D91DA1179E73FE00F4C6C3 /* main_menu_btn_shop@2x.png in Resources */,
 				78D91DA2179E73FE00F4C6C3 /* mark@2x.png in Resources */,
@@ -2101,7 +2102,6 @@
 				78D91DAE179E73FE00F4C6C3 /* popup_rate_picture@2x.png in Resources */,
 				78D91DAF179E73FE00F4C6C3 /* preload-lvl-bg@2x.png in Resources */,
 				78D91DB0179E73FE00F4C6C3 /* preload-lvl-bird@2x.png in Resources */,
-				78D91DB1179E73FE00F4C6C3 /* preload-lvl-spiral@2x.png in Resources */,
 				78D91DB2179E73FE00F4C6C3 /* preload-lvl-wave@2x.png in Resources */,
 				78D91DB3179E73FE00F4C6C3 /* settings_bg@2x.png in Resources */,
 				78D91DB4179E73FE00F4C6C3 /* settings_btn_big@2x.png in Resources */,
@@ -2134,6 +2134,10 @@
 				78857F59179FF01400AB657C /* Icon-144.png in Resources */,
 				78857F5C179FF05600AB657C /* Icon-114.png in Resources */,
 				78857F5D179FF05600AB657C /* Icon-57.png in Resources */,
+				78857F6617A021D500AB657C /* wep_1@2x.png in Resources */,
+				78857F6717A021D500AB657C /* shop_item_new@2x.png in Resources */,
+				78857F6817A021D500AB657C /* leaf@2x.png in Resources */,
+				78857F6A17A0235A00AB657C /* weapon_strike_sprite@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

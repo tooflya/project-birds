@@ -8,8 +8,10 @@
 
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)
 {
-    this->initWithTexture(CCTextureCache::sharedTextureCache()->textureForKey(pszFileName));
-
+    //this->initWithTexture(CCTextureCache::sharedTextureCache()->textureForKey(pszFileName));
+    
+    this->initWithFile(pszFileName); // TODO: Something wrong with TextureCache.
+    
     if(pParent)
     {
         pParent->addChild(this);
@@ -730,7 +732,7 @@ void Entity::setOpacity(GLubyte pOpaquee)
 {
     CCSprite::setOpacity(pOpaquee);
 
-    if(this->mAlphaParent) // TODO: Insert some variable.
+    if(this->mAlphaParent)
     {
         for(int i = 0; i < this->getChildrenCount(); i++)
         {
