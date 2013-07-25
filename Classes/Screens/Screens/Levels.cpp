@@ -11,24 +11,22 @@ class LevelButton : public Entity
 {
     protected:
     int mId;
-    CCLabelTTF* mText;
+    Text* mText;
     
     public:
     LevelButton() : Entity("choose_box_lvl_sprite@2x.png", 3, 5)
     {
         this->setRegisterAsTouchable(true);
         
-        this->mText = CCLabelTTF::create("0", "Apple Casual", Utils::coord(64));
-        
-        this->addChild(this->mText);
+        this->mText = new Text((Textes) {"0", Options::FONT, 64, -1}, this);
     }
     
     void setId(int pId)
     {
         this->mId = pId;
         
-        this->mText->setString(("" + Utils::intToString(this->mId)).c_str());
-        this->mText->setPosition(ccp(this->getWidth() / 2, this->getHeight() / 2));
+        this->mText->setString(Utils::intToString(this->mId).c_str());
+        this->mText->setCenterPosition(this->getWidth() / 2, this->getHeight() / 2);
         
         if(this->mId > 10)
         {
@@ -91,8 +89,9 @@ Levels::Levels()
     this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_LEVELS_BACK, onTouchButtonsCallback);
     this->mTablet = new Entity("shop_money_bg@2x.png", this);
     this->mStarsCountIcon = new Entity("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
+    this->mSlides = new BatchEntityManager(6, new Entity("choose_box_navi_sprite@2x.png", 1, 2), this);
 
-    this->mStarsCountText = new Text((Textes) {"206", Options::FONT, Utils::coord(64), -1}, this->mTablet);
+    this->mStarsCountText = new Text((Textes) {"206", Options::FONT, 64, -1}, this->mTablet);
     
     this->mLevels = new EntityManager(20, new LevelButton(), this);
     
@@ -106,27 +105,54 @@ Levels::Levels()
     this->mStarsCountIcon->setCurrentFrameIndex(1);
     this->mStarsCountIcon->setScale(0.5);
     
-    float x = 0;
-    float y = Options::CAMERA_CENTER_Y + Utils::coord(180) * 2;
+    /** Organization of level icons */
+
+    float startX = Options::CAMERA_CENTER_X;
+    float startY = Options::CAMERA_CENTER_Y + Utils::coord(150) * 2;
+
+    float x = startX;
+    float y = startY;
     
     int id = 0;
     
-    for(int i = 0; i < 5; i++)
+    for(int o = 0; o < 6; o++)
     {
-        x = Options::CAMERA_CENTER_X - Utils::coord(120) * 2;
-        
-        for(int j = 0; j < 4; j++)
+        for(int i = 0; i < 4; i++)
         {
-            LevelButton* item = (LevelButton*) this->mLevels->create();
+            x = startX - Utils::coord(120) * 2;
             
-            item->create()->setCenterPosition(x, y);
-            item->setId(++id);
+            for(int j = 0; j < 4; j++)
+            {
+                LevelButton* item = (LevelButton*) this->mLevels->create();
+                
+                item->create()->setCenterPosition(x, y);
+                item->setId(++id);
+                
+                x += Utils::coord(160);
+            }
             
-            x += Utils::coord(160);
+            y -= Utils::coord(180);
         }
-        
-        y -= Utils::coord(180);
+
+        startX += Options::CAMERA_WIDTH;
+
+        x = startX;
+        y = startY;
     }
+
+    /** Organization of slider icons */
+
+    x = Options::CAMERA_CENTER_X;
+    y = Options::CAMERA_CENTER_Y - Utils::coord(400);
+
+    for(int i = -3; i < 3; i++)
+    {
+        x = Options::CAMERA_CENTER_X + Utils::coord(25) + Utils::coord(50) * i;
+
+        this->mSlides->create()->setCenterPosition(x, y);
+    }
+
+    static_cast<Entity*>(this->mSlides->objectAtIndex(0))->setCurrentFrameIndex(1);
 }
 
 // ===========================================================

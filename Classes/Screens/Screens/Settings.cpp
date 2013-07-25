@@ -29,8 +29,8 @@ Settings::Settings()
     this->mProgressButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
     this->mMoreButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_MORE, onTouchButtonsCallback);
     this->mLanguageButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_LANGUAGE, onTouchButtonsCallback);
-    this->mSoundButton = new Button("btn_mfx_sprite@2x.png", 2, 2, this, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
-    this->mMusicButton = new Button("btn_mfx_sprite@2x.png", 2, 2, this, Options::BUTTONS_ID_SETTINGS_MUSIC, onTouchButtonsCallback);
+    this->mSoundButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, this, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
+    this->mMusicButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, this, Options::BUTTONS_ID_SETTINGS_MUSIC, onTouchButtonsCallback);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
@@ -99,7 +99,7 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     }
                     else
                     {
-                        pSender->mMusicButton->setCurrentFrameIndex(2);
+                        pSender->mMusicButton->setCurrentFrameIndex(3);
                     }
 
                 break;
@@ -113,7 +113,7 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     }
                     else
                     {
-                        pSender->mSoundButton->setCurrentFrameIndex(3);
+                        pSender->mSoundButton->setCurrentFrameIndex(4);
                     }
 
                 break;

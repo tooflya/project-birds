@@ -27,6 +27,8 @@ class Levels : public Screen
     
         EntityManager* mLevels;
 
+        BatchEntityManager* mSlides;
+
         Text* mStarsCountText;
 
         // ===========================================================
