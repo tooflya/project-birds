@@ -690,13 +690,13 @@ void Options::changeLanguage()
             TEXT_SHOP_DESCRIPTION[2].size = 36;
             
             TEXT_MODE_CLASSIC.string = "Классический";
-            TEXT_MODE_CLASSIC.size = 42;
+            TEXT_MODE_CLASSIC.size = 48;
             
             TEXT_MODE_ARCADE.string = "Аркада";
-            TEXT_MODE_ARCADE.size = 42;
+            TEXT_MODE_ARCADE.size = 48;
             
             TEXT_MODE_PROGRESS.string = "Прохождение";
-            TEXT_MODE_PROGRESS.size = 42;
+            TEXT_MODE_PROGRESS.size = 48;
             
             TEXT_MODEHELP_OK.string = "Закрыть";
             TEXT_MODEHELP_OK.size = 46;

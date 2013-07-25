@@ -3,6 +3,8 @@
 
 #include "Screen.h"
 
+class MainList;
+
 class Levels : public Screen
 {
     protected:
@@ -25,11 +27,11 @@ class Levels : public Screen
         Entity* mTablet;
         Entity* mStarsCountIcon;
     
-        EntityManager* mLevels;
-
-        BatchEntityManager* mSlides;
+        EntityManager* mLevels[6];
 
         Text* mStarsCountText;
+
+        MainList* mMainList;
 
         // ===========================================================
         // Constructors
@@ -79,15 +81,19 @@ class Levels : public Screen
         // Constants
         // ===========================================================
 
+        static const int LEVEL_PACKS_COUNT = 6;
+
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Levels();
+
+        BatchEntityManager* mSlides;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Levels();
 
         // ===========================================================
         // Methods
