@@ -23,7 +23,6 @@ Menu* Menu::m_Instance = NULL;
 
 Menu::Menu()
 {
-    this->mBackgroundDecoration = new Entity("main_menu_bg_back@2x.png", this);
     this->mBackground = new Entity("main_menu_bg@2x.png", this);
     this->mPlayDecoration = new Entity("main_menu_btn_bg_play@2x.png", this);
     this->mPlayButton = new PlayButton("play_btn_animation@2x.png", 6, 2, this, Options::BUTTONS_ID_MENU_PLAY, onTouchButtonsCallback);
@@ -35,7 +34,6 @@ Menu::Menu()
     this->mExitPopup = new Exit(this);
     this->mRatePopup = new PleaseRate(this);
     
-    this->mBackgroundDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mShopButton->create()->setCenterPosition(Utils::coord(170), Utils::coord(270));
     this->mShopButton->setRotation(10);
@@ -45,8 +43,8 @@ Menu::Menu()
     this->mTwitterButton->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
     this->mFacebookButton->create()->setCurrentFrameIndex(2);
     this->mFacebookButton->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-    this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
-    this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(40), Options::CAMERA_CENTER_Y - Utils::coord(40));
+    this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
+    this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     
     //SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-1.mp3");
     

@@ -108,9 +108,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     Options::init();
 
-    director->runWithScene(pScene);   
-
-    AppDelegate::removeCoins(100000, 0); // TODO: Remove this;
+    director->runWithScene(pScene);
 
     return true;
 }

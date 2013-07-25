@@ -140,7 +140,9 @@ class Options
         static const int BUTTONS_ID_MODE_CLASSIC  = 5002;
         static const int BUTTONS_ID_MODE_ARCADE  = 5003;
         static const int BUTTONS_ID_MODE_PROGRESS  = 5004;
-        static const int BUTTONS_ID_MODE_HELP  = 5005;
+        static const int BUTTONS_ID_MODE_LEADERBOARD = 5005;
+        static const int BUTTONS_ID_MODE_ACHIEVEMENTS = 5006;
+        static const int BUTTONS_ID_MODE_HELP  = 5007;
         static const int BUTTONS_ID_SHOP_BACK  = 6001;
         static const int BUTTONS_ID_SHOP_ITEM  = 6102;
         static const int BUTTONS_ID_SHOP_TABLET = 6103;

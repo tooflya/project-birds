@@ -74,7 +74,7 @@ class Loading : public Screen
         // Constants
         // ===========================================================
     
-        static const char* TEXTURE_LIBRARY[41];
+        static const char* TEXTURE_LIBRARY[40];
 
         // ===========================================================
         // Fields

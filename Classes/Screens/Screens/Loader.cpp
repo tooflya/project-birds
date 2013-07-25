@@ -29,11 +29,11 @@ const char* Loader::TEXTURE_LIBRARY[17] =
     "end_lvl_bg_popup@2x.png",
     "confety_sprite@2x.png",
     "mark@2x.png",
-    "streak0-hd.png",
     "birds_feather_sprite@2x.png",
     "explosion@2x.png",
     "dust@2x.png",
-    "end_lvl_star_sprite@2x.png"
+    "end_lvl_star_sprite@2x.png",
+    "wep_1@2x.png"
 };
 
 // ===========================================================
