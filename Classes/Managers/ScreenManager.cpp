@@ -14,7 +14,6 @@
 #include "Loader.h"
 #include "Progress.h"
 #include "Language.h"
-#include "Level.h"
 #include "Classic.h"
 #include "Arcade.h"
 #include "Progresses.h"

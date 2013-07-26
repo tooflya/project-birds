@@ -20,7 +20,7 @@ const char* Loading::TEXTURE_LIBRARY[40] =
     "btn_sprite@2x.png",
     "settings_bg@2x.png",
     "settings_btn_big@2x.png",
-    "btn_mfx_sprite@2x.png",
+    "btn_sfx_mfx_ach_lead_sprite@2x.png",
     "choose_box_name@2x.png",
     "shop_money_bg@2x.png",
     "shop_wheel@2x.png",

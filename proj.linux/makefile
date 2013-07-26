@@ -59,7 +59,6 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Screens/Levels.cpp \
 			../Classes/Screens/Screens/Credits.cpp \
 			../Classes/Screens/Screens/Loader.cpp \
-			../Classes/Screens/Screens/Level.cpp \
 			../Classes/Screens/Screens/End.cpp \
 			../Classes/Screens/Screens/Splash.cpp \
 			../Classes/Screens/Screens/Loading.cpp \
@@ -67,6 +66,8 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Screens/Language.cpp \
 			../Classes/Screens/Screens/Game.cpp \
 			../Classes/Screens/Screens/Classic.cpp \
+                                                      ../Classes/Screens/Screens/Arcade.cpp \
+                                                       ../Classes/Screens/Screens/Progresses.cpp \
 			../Classes/Screens/Popup.cpp \
 			../Classes/Screens/Popups/Exit.cpp \
 			../Classes/Screens/Popups/BuyItem.cpp \

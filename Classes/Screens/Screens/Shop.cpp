@@ -209,7 +209,7 @@ Shop::Shop()
     this->mCoin = new Entity("coins@2x.png", 5, 4, this->mTablet);
     this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
 
-    this->mCoinsCountText = new Text((Textes) {"0", Options::FONT, Utils::coord(64), -1}, this->mTablet);
+    this->mCoinsCountText = new Text((Textes) {"0", Options::FONT, 64, -1}, this->mTablet);
     
     this->mWheels = new BatchEntityManager(9, new Entity("shop_wheel@2x.png"), this);
     

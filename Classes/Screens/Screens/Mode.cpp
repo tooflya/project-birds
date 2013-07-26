@@ -33,19 +33,19 @@ Mode::Mode()
     this->mArcadeMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_ARCADE, onTouchButtonsCallback);
     this->mProgressMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_PROGRESS, onTouchButtonsCallback);
 
-    this->mAchievementsButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, this, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, onTouchButtonsCallback);
-    this->mLeaderboardButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, this, Options::BUTTONS_ID_MODE_LEADERBOARD, onTouchButtonsCallback);
+    this->mAchievementsButton = new Button((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 200, 200, 200}, this, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, onTouchButtonsCallback);
+    this->mLeaderboardButton = new Button((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 0, 200, 200}, this, Options::BUTTONS_ID_MODE_LEADERBOARD, onTouchButtonsCallback);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     this->mHelpButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(65), Options::CAMERA_HEIGHT - Utils::coord(65));
     
     this->mClassicMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(350));
-    this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
-    this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
+    this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(120));
+    this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(110));
     
-    this->mAchievementsButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(100), Options::CAMERA_CENTER_Y - Utils::coord(250));
-    this->mLeaderboardButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(100), Options::CAMERA_CENTER_Y - Utils::coord(250));
+    this->mAchievementsButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(350));
+    this->mLeaderboardButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(350));
 
     this->mClassicMode->setText(Options::TEXT_MODE_CLASSIC);
     this->mArcadeMode->setText(Options::TEXT_MODE_ARCADE);
@@ -62,7 +62,7 @@ Mode::Mode()
 
 void Mode::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Mode* pSender = (Mode*) Mode::m_Instance;
+    Mode* pSender = static_cast<Mode*>(Mode::m_Instance);
 
     switch(pAction)
     {

@@ -40,11 +40,11 @@ void Bird::onCreate()
 {
     ImpulseEntity::onCreate();
 
-    this->mType = Utils::random(0, 3);
+    this->mType = 5;//Utils::random(0, 3);
     
-    this->setCurrentFrameIndex(this->mType * 4);
+    this->setCurrentFrameIndex(this->mType /** 4*/);
 
-    this->animate(0.1, this->getCurrentFrameIndex(), this->getCurrentFrameIndex() + 3, true);
+    this->animate(0.05, this->getCurrentFrameIndex(), 12, false);
 
     this->setCenterPosition(Utils::randomf(0, Options::CAMERA_WIDTH), Utils::randomf(0.0, 0.0));
 
