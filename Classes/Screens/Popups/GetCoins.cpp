@@ -26,7 +26,7 @@ GetCoins::GetCoins(CCNode* pParent) :
     {
         this->mLights = new BatchEntityManager(2, new Entity("get_coins_light@2x.png"), this->mDarkness);
         
-        this->mCloseButton = new Button("btn_sprite@2x.png", 2, 3, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         this->mIllustration = new Entity("popup_getcoins_picture@2x.png", this->mBackground);
         
         this->mGetCoinsButtons[0] = new Button((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 36, 282, 207}, this->mBackground, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
@@ -41,9 +41,7 @@ GetCoins::GetCoins(CCNode* pParent) :
             ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
         }
         
-        this->mCloseButton->create();
-        this->mCloseButton->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
-        this->mCloseButton->setCurrentFrameIndex(3);
+        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
         
         Text* text1 = new Text(Options::TEXT_GETCOINS_STRING_1, this->mBackground);
         Text* text2 = new Text(Options::TEXT_GETCOINS_STRING_2, this->mBackground);

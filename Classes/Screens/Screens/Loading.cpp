@@ -11,11 +11,18 @@
 // Constants
 // ===========================================================
 
-const char* Loading::TEXTURE_LIBRARY[40] =
+const char* Loading::TEXTURE_LIBRARY[47] =
 {
     "main_menu_bg@2x.png",
-    "main_menu_btn_shop@2x.png",
+    "bg_detail_stripe@2x.png",
+    "bg_detail_settings@2x.png",
+    "bg_detail_lamp@2x.png",
+    "about_name_logo@2x.png",
+    "about_logo@2x.png",
+    "bg_detail_dark@2x.png",
+    "more_games_list@2x.png",
     "play_btn_animation@2x.png",
+    "bg_detail_choose_bird@2x.png",
     "main_menu_btn_bg_play@2x.png",
     "btn_sprite@2x.png",
     "settings_bg@2x.png",

@@ -22,7 +22,7 @@
 // ===========================================================
 
 Bird::Bird() :
-    ImpulseEntity("birds_sprite@2x.png", 4, 4)
+    ImpulseEntity("birds_sprite@2x.png", 14, 6)
     {
         this->mMarkTime = 0.02;
         this->mMarkTimeElapsed = 0;
@@ -40,11 +40,11 @@ void Bird::onCreate()
 {
     ImpulseEntity::onCreate();
 
-    this->mType = 5;//Utils::random(0, 3);
+    this->mType = Utils::random(0, 5);
     
-    this->setCurrentFrameIndex(this->mType /** 4*/);
+    this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
-    this->animate(0.05, this->getCurrentFrameIndex(), 12, false);
+    this->animate(0.05, this->getCurrentFrameIndex() + 5, this->getCurrentFrameIndex() + 5 + 7, 1);
 
     this->setCenterPosition(Utils::randomf(0, Options::CAMERA_WIDTH), Utils::randomf(0.0, 0.0));
 
@@ -57,11 +57,37 @@ void Bird::onCreate()
     this->setScaleX(this->getCenterX() < Options::CAMERA_CENTER_X ? 1 : -1);
 
     this->mIsGoingToDestroy = false;
+    this->mSpecialAnimation = false;
 
     this->mDestroyAnimationFrames = 0;
 
     this->mDestroyAnimationTime = 0.1;
     this->mDestroyAnimationTimeElapsed = 0;
+}
+
+void Bird::onAnimationEnd()
+{
+    Entity::onAnimationEnd();
+    
+    if(this->mSpecialAnimation)
+    {
+        this->mSpecialAnimation = false;
+        
+        this->animate(0.05, this->mType * this->mHorizontalFramesCount + 5, this->mType * this->mHorizontalFramesCount + 5 + 7, 1);
+    }
+    else
+    {
+        if(Utils::probably(50))
+        {
+            this->mSpecialAnimation = true;
+            
+            this->animate(0.05, this->mType * this->mHorizontalFramesCount, this->mType * this->mHorizontalFramesCount + 5 + 7, 1);
+        }
+        else
+        {
+            this->animate(0.05, this->mType * this->mHorizontalFramesCount + 5, this->mType * this->mHorizontalFramesCount + 5 + 7, 1);
+        }
+    }
 }
 
 void Bird::onDestroy()

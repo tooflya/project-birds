@@ -41,6 +41,8 @@ class Shop : public Screen
 
         Text* mCoinsCountText;
         Text* mBoughtText[2];
+    
+        BatchEntityManager* mBackgroundDecoration;
 
         // ===========================================================
         // Constructors
@@ -93,6 +95,8 @@ class Shop : public Screen
         static int CLICKED_ITEM_ID;
 
         static int ITEMS_COUNT[3];
+
+        static int ACTION;
 
         // ===========================================================
         // Fields

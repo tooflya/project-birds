@@ -29,6 +29,8 @@ class Bird : public ImpulseEntity
         float mDestroyAnimationTimeElapsed;
 
         bool mIsGoingToDestroy;
+    
+        bool mSpecialAnimation;
 
         // ===========================================================
         // Constructors
@@ -94,6 +96,8 @@ class Bird : public ImpulseEntity
         // Override Methods
         // ===========================================================
 
+        void onAnimationEnd();
+    
         void onCreate();
         void onDestroy();
     

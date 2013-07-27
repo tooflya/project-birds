@@ -65,6 +65,9 @@ class Entity : public CCSprite, public Touchable
         float* mFramesCoordinatesX;
         float* mFramesCoordinatesY;
 
+        float mPaddingX;
+        float mPaddingY;
+
         float mSpeed;
 
         float mPauseBeforeNewAnimationCircleTime;

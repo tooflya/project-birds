@@ -24,7 +24,7 @@ Exit* Exit::m_Instance = NULL;
 Exit::Exit(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mCloseButton = new Button("btn_sprite@2x.png", 2, 3, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         this->mLight = new Entity("popup_quit_picture_light_main@2x.png", this->mBackground);
         this->mLights = new BatchEntityManager(3, new Entity("popup_quit_picture_light_2@2x.png"), this->mBackground);
         this->mIllustration = new Entity("popup_quit_picture@2x.png", this->mBackground);
@@ -34,9 +34,7 @@ Exit::Exit(CCNode* pParent) :
         this->mYesButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
         this->mYesButton->setText(Options::TEXT_EXIT_YES);
         
-        this->mCloseButton->create();
-        this->mCloseButton->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
-        this->mCloseButton->setCurrentFrameIndex(3);
+        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
         
         this->mLights->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(50), this->mBackground->getHeight() + (Options::CAMERA_HEIGHT - this->mBackground->getHeight()) / 2 + Utils::coord(30));
         this->mLights->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(50), this->mBackground->getHeight() + (Options::CAMERA_HEIGHT - this->mBackground->getHeight()) / 2 + Utils::coord(30));
@@ -56,11 +54,9 @@ Exit::Exit(CCNode* pParent) :
         this->mLight->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - this->mLight->getHeight() / 2 + (Options::CAMERA_HEIGHT - this->mBackground->getHeight()) / 2);
         this->mLight->setOpacity(0.0);
         
-        Text* text1 = new Text(Options::TEXT_EXIT_STRING_1, this->mBackground);
-        Text* text2 = new Text(Options::TEXT_EXIT_STRING_2, this->mBackground);
+        Text* text1 = new Text(Options::TEXT_EXIT_STRING_1, ccp(Utils::coord(512), 0), this->mBackground);
         
-        text1->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(50)));
-        text2->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(150)));
+        text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(100));
         
         this->mIllustration->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - Utils::coord(140));
         

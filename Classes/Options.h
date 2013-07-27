@@ -168,6 +168,7 @@ class Options
         static const int BUTTONS_ID_PAUSE_MENU = 1901;
         static const int BUTTONS_ID_PAUSE_RESTART = 1902;
         static const int BUTTONS_ID_PAUSE_CONTINUE = 1903;
+        static const int BUTTONS_ID_MORE_BACK = 2001;
     
         static Textes TEXT_SETTINGS_CREDITS;
         static Textes TEXT_SETTINGS_PROGRESS;
@@ -223,6 +224,7 @@ class Options
         static Textes TEXT_SHOP_BOUGHT;
         static Textes TEXT_TAP_TO_CONTINUE;
         static Textes TEXT_TIP[10];
+        static Textes TEXT_MORE_GAMES;
 
         // ===========================================================
         // Fields

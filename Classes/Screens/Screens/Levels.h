@@ -23,9 +23,10 @@ class Levels : public Screen
         // ===========================================================
     
         Entity* mBackground;
-        Entity* mBackButton;
         Entity* mTablet;
         Entity* mStarsCountIcon;
+        Button* mBackButton;
+        Button* mShopButton;
     
         EntityManager* mLevels[6];
 
@@ -88,6 +89,9 @@ class Levels : public Screen
         // ===========================================================
 
         BatchEntityManager* mSlides;
+        BatchEntityManager* mSlidesArrows;
+    
+        Entity* mBackgroundDecorations[5];
 
         // ===========================================================
         // Constructors

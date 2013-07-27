@@ -42,7 +42,7 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mCoinsIcon->animate(0.05);
 
         this->mPropertiesIcon = new Entity("icon_properties@2x.png", 1, 2, this);
-        this->mPropertiesIcon->create()->setCenterPosition(this->mParent->getWidth() / 2 + Utils::coord(15), Options::CAMERA_CENTER_Y - Utils::coord(10));
+        this->mPropertiesIcon->create()->setCenterPosition(this->mParent->getWidth() / 2 + Utils::coord(15), Options::CAMERA_CENTER_Y - Utils::coord(8));
 
         this->mPriceText = new Text((Textes) {"0", "Comic Sans MS", 32, 0}, this);
         this->mPriceText->setColor(ccc3(255.0, 130.0, 0.0));

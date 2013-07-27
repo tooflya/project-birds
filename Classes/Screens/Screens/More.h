@@ -1,24 +1,11 @@
-#ifndef CONST_SCREEN_H
-#define CONST_SCREEN_H
+#ifndef CONST_MORE_H
+#define CONST_MORE_H
 
-#include "cocos2d.h"
-
-#include "Touchable.h"
-
-#include "Entity.h"
-#include "Button.h"
-
-#include "EntityManager.h"
-#include "BatchEntityManager.h"
-
-#include "Utils.h"
-#include "Options.h"
+#include "Screen.h"
 
 #include "AppDelegate.h"
 
-using namespace cocos2d;
-
-class Screen : public CCScene, public Touchable
+class More : public Screen
 {
     protected:
         // ===========================================================
@@ -29,10 +16,23 @@ class Screen : public CCScene, public Touchable
         // Constants
         // ===========================================================
 
+        static More* m_Instance;
+
         // ===========================================================
         // Fields
         // ===========================================================
-
+    
+        Entity* mBackground;
+        Button* mBackButton;
+        Button* mCreditsButton;
+        Button* mProgressButton;
+        Button* mMoreButton;
+        Button* mLanguageButton;
+        Button* mSoundButton;
+        Button* mMusicButton;
+    
+        Entity* mLanguage;
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -44,8 +44,6 @@ class Screen : public CCScene, public Touchable
         // ===========================================================
         // Override Methods
         // ===========================================================
-        
-        bool containsTouchLocation(CCTouch* touch);
 
     private:
         // ===========================================================
@@ -67,6 +65,8 @@ class Screen : public CCScene, public Touchable
         // ===========================================================
         // Methods
         // ===========================================================
+
+        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -80,31 +80,16 @@ class Screen : public CCScene, public Touchable
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static const int SCREEN_MENU = 0;
-        static const int SCREEN_SETTINGS = 1;
-        static const int SCREEN_SHOP = 2;
-        static const int SCREEN_MODE = 3;
-        static const int SCREEN_LEVELS = 4;
-        static const int SCREEN_CREDITS = 5;
-        static const int SCREEN_LOADER = 6;
-        static const int SCREEN_PROGRESS = 7;
-        static const int SCREEN_LANGUAGE = 8;
-        static const int SCREEN_CLASSIC_GAME = 9;
-        static const int SCREEN_ARCADE_GAME = 10;
-        static const int SCREEN_PROGRESS_GAME = 11;
-        static const int SCREEN_MORE = 12;
 
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        More();
 
         // ===========================================================
         // Constructors
         // ===========================================================
-
-        Screen();
-        ~Screen();
 
         // ===========================================================
         // Methods
@@ -113,9 +98,9 @@ class Screen : public CCScene, public Touchable
         // ===========================================================
         // Override Methods
         // ===========================================================
-
-        virtual void onEnter();
-        virtual void onExit();
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif

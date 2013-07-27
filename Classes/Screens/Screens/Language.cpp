@@ -24,7 +24,7 @@ Language* Language::m_Instance = NULL;
 Language::Language()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_LANGUAGE_BACK, onTouchButtonsCallback);
+    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_LANGUAGE_BACK, onTouchButtonsCallback);
     
     this->mLanguages[0] = new Button("flag_sprite_big@2x.png", 1, 2, this, Options::BUTTONS_ID_LANGUAGE_L_EN, onTouchButtonsCallback);
     this->mLanguages[1] = new Button("flag_sprite_big@2x.png", 1, 2, this, Options::BUTTONS_ID_LANGUAGE_L_RU, onTouchButtonsCallback);
@@ -39,8 +39,7 @@ Language::Language()
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
-    this->mBackButton->create()->setCurrentFrameIndex(1);
-    this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     
     this->mLanguageIndicator->create();
     

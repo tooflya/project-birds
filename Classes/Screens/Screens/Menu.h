@@ -38,6 +38,8 @@ class Menu : public Screen
         Popup* mExitPopup;
         Popup* mRatePopup;
 
+        float mPlayDecorationColorUpdateTimeElapsed;
+
         // ===========================================================
         // Constructors
         // ===========================================================

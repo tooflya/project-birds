@@ -4,6 +4,7 @@
 #include "Mode.h"
 
 #include "Loader.h"
+#include "Shop.h"
 
 // ===========================================================
 // Inner Classes
@@ -26,8 +27,11 @@ Mode* Mode::m_Instance = NULL;
 Mode::Mode()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
+    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", this);
+    this->mBackgroundDecorations[1] = new Entity("bg_detail_choose_bird@2x.png", this);
     this->mBackButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
     this->mHelpButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, this, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
+    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, this, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
 
     this->mClassicMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_CLASSIC, onTouchButtonsCallback);
     this->mArcadeMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_ARCADE, onTouchButtonsCallback);
@@ -39,17 +43,21 @@ Mode::Mode()
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     this->mHelpButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(65), Options::CAMERA_HEIGHT - Utils::coord(65));
+    this->mShopButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(185), Options::CAMERA_HEIGHT - Utils::coord(65));
     
     this->mClassicMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(350));
-    this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(120));
-    this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(110));
+    this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(140));
+    this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(70));
     
-    this->mAchievementsButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(350));
-    this->mLeaderboardButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(350));
+    this->mAchievementsButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(300));
+    this->mLeaderboardButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(300));
 
     this->mClassicMode->setText(Options::TEXT_MODE_CLASSIC);
     this->mArcadeMode->setText(Options::TEXT_MODE_ARCADE);
     this->mProgressMode->setText(Options::TEXT_MODE_PROGRESS);
+    
+    this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
+    this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     
     this->mHelpPopup = new ModeHelp(this);
 
@@ -108,6 +116,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 case Options::BUTTONS_ID_MODE_LEADERBOARD:
 
                     //
+
+                break;
+                case Options::BUTTONS_ID_MENU_SHOP:
+
+                    Shop::ACTION = 1;
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
 
                 break;
 
