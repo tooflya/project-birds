@@ -13,7 +13,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "339"
          endingLineNumber = "339"
-         landmarkName = "Shop::onTouchButtonsCallback(const int pAction, const int pID)"
+         landmarkName = "Shop::Shop()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

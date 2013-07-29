@@ -7,6 +7,149 @@
 // Inner Classes
 // ===========================================================
 
+class ListLayer : public CCLayer
+{
+    public:
+    
+        int mType;
+        int mParentType;
+
+        float mWidth;
+        float mHeight;
+
+        float mMaxWidth;
+        float mMaxHeight;
+
+        float mListInitialCenterX;
+        float mListInitialCenterY;
+
+        float mStartCoordinateY;
+        float mStartCoordinateX;
+
+        float mStartPositionCoordinateY;
+        float mStartPositionCoordinateX;
+
+        float mLastDistanceX;
+        float mLastDistanceY;
+
+        float mSpeedX;
+        float mSpeedY;
+    
+        bool mPostUpdate;
+        
+        ListLayer()
+        {
+
+        }
+
+        void visit()
+        {
+            kmGLPushMatrix();
+            glEnable(GL_SCISSOR_TEST);
+
+            CCEGLView::sharedOpenGLView()->setScissorInPoints(0, Options::CAMERA_CENTER_Y - Utils::coord(295), Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y - Utils::coord(20));
+
+            CCNode::visit();
+            glDisable(GL_SCISSOR_TEST);
+            kmGLPopMatrix();
+        }
+
+        void onEnter()
+        {
+            CCDirector* pDirector = CCDirector::sharedDirector();
+            pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
+            
+            CCLayer::onEnter();
+        }
+
+        void onExit()
+        {
+            CCDirector* pDirector = CCDirector::sharedDirector();
+            pDirector->getTouchDispatcher()->removeDelegate(this);
+            
+            CCLayer::onExit();
+        }
+
+        bool ccTouchBegan(CCTouch* touch, CCEvent* event)
+        {
+            this->stopAllActions();
+
+            this->mPostUpdate = false;
+            
+            this->mStartCoordinateX = touch->getLocation().x;
+            this->mStartCoordinateY = touch->getLocation().y;
+
+            this->mStartPositionCoordinateX = this->getPosition().x;
+            this->mStartPositionCoordinateY = this->getPosition().y;
+            
+            return this->containsTouchLocation(touch);
+        }
+
+        void ccTouchMoved(CCTouch* touch, CCEvent* event)
+        {
+            if(this->containsTouchLocation(touch))
+            {
+                float x, y;
+
+                x = this->getPosition().x;
+                y = this->mStartPositionCoordinateY + touch->getLocation().y - this->mStartCoordinateY;
+                
+                this->setPosition(ccp(x, y));
+            }
+        }
+
+        void ccTouchEnded(CCTouch* touch, CCEvent* event)
+        {
+            float x = this->getPosition().x;
+            float y = this->getPosition().y;
+
+            bool kWillPostUpdate = true;
+
+            if(y < 0)
+            {
+                //this->runAction(CCMoveTo::create(0.3, ccp(x, 0)));
+
+                kWillPostUpdate = false;
+            }
+            else if(y > this->mMaxHeight)
+            {
+                //this->runAction(CCMoveTo::create(0.3, ccp(x, this->mMaxHeight)));
+
+                kWillPostUpdate = false;
+            }
+
+            if(x > 0)
+            {
+                //this->runAction(CCMoveTo::create(0.3, ccp(0, y)));
+
+                kWillPostUpdate = false;
+            }
+            else if(x < -this->mMaxWidth)
+            {
+                //this->runAction(CCMoveTo::create(0.3, ccp(this->mMaxWidth, y)));
+
+                kWillPostUpdate = false;
+            }
+
+            this->mLastDistanceX = this->mStartPositionCoordinateX - x; // TODO: Check it!
+            this->mLastDistanceY = this->mStartPositionCoordinateY - y;
+
+            this->mPostUpdate = false;//kWillPostUpdate;
+
+            this->mSpeedY = this->mLastDistanceY / 10.0;
+        }
+
+        bool containsTouchLocation(CCTouch* touch)
+        {
+            float x = touch->getLocation().x;
+            float y = touch->getLocation().y;
+            
+            //return x > this->mListInitialCenterX - this->mWidth / 2 && x < this->mListInitialCenterX + this->mWidth / 2 && y < this->mListInitialCenterY + this->mHeight / 2 && y > this->mListInitialCenterY - this->mHeight / 2;
+            
+            return true;
+        }
+};
+
 class LevelButton : public Entity
 {
     protected:
@@ -16,7 +159,7 @@ class LevelButton : public Entity
     public:
     LevelButton() : Entity("choose_box_lvl_sprite@2x.png", 3, 5)
     {
-        //this->setRegisterAsTouchable(true);
+        this->setRegisterAsTouchable(true);
         
         this->mText = new Text((Textes) {"0", Options::FONT, 64, -1}, this);
     }
@@ -28,29 +171,36 @@ class LevelButton : public Entity
         this->mText->setString(Utils::intToString(this->mId).c_str());
         this->mText->setCenterPosition(this->getWidth() / 2, this->getHeight() / 2);
         
-        /*if(this->mId > 10)
+        int stars = AppDelegate::getLevelStars(this->mId);
+
+        if(stars == -1)
         {
             this->setCurrentFrameIndex(12);
-            
+
             this->mText->setVisible(false);
         }
         else
         {
-            this->setCurrentFrameIndex(0);
-            
-            this->mText->setVisible(true);
-        }*/
+            this->setCurrentFrameIndex(stars * 3);
+        }
     }
     
     void onTouch(CCTouch* touch, CCEvent* event)
     {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+        if(this->getCurrentFrameIndex() == 12)
+        {
+            
+        }
+        else
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+        }
     }
     
     void onEnter()
     {
         CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
         
         Entity::onEnter();
     }
@@ -108,6 +258,8 @@ class MainList : public CCLayer
             this->mParent = pParent;
 
             this->mLayers[0] = CCLayer::create();
+            
+            ListLayer* a = new ListLayer();
 
             for(int i = 1; i < Levels::LEVEL_PACKS_COUNT; i++)
             {
@@ -119,7 +271,9 @@ class MainList : public CCLayer
             }
 
             this->mListBorders = new EntityManager(2, new Entity("about_scroll_border@2x.png"), this->mLayers[0]);
-            this->mElements = new EntityManager(3, new Entity("more_games_list@2x.png", 1, 3), this->mLayers[0]);
+            this->mElements = new EntityManager(3, new Entity("more_games_list@2x.png", 1, 3), a);
+            
+            this->mLayers[0]->addChild(a);
 
             this->mListBorders->create();
             this->mListBorders->create();
@@ -154,7 +308,7 @@ class MainList : public CCLayer
     void onEnter()
     {
         CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
         
         CCLayer::onEnter();
     }
@@ -311,6 +465,11 @@ class MainList : public CCLayer
                 }
                 else
                 {
+                    for(int j = 0; j < static_cast<CCLayer*>(this->mLayers[i]->getChildren()->objectAtIndex(2))->getChildrenCount(); j++)
+                    {
+                        static_cast<Entity*>(static_cast<CCLayer*>(this->mLayers[i]->getChildren()->objectAtIndex(2))->getChildren()->objectAtIndex(j))->setOpacity(alpha);
+                    }
+                    
                     for(int j = 0; j < this->mLayers[i]->getChildrenCount(); j++)
                     {
                         static_cast<Entity*>(this->mLayers[i]->getChildren()->objectAtIndex(j))->setOpacity(alpha);
@@ -399,7 +558,7 @@ Levels::Levels()
     
     this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
-    this->mBackgroundDecorations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(78));
+    this->mBackgroundDecorations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(63));
     this->mBackgroundDecorations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(192));
     this->mBackgroundDecorations[4]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 

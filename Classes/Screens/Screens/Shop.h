@@ -44,6 +44,8 @@ class Shop : public Screen
     
         BatchEntityManager* mBackgroundDecoration;
 
+        Entity* mWeaponChecker;
+
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -103,7 +105,7 @@ class Shop : public Screen
         // ===========================================================
     
         BatchEntityManager* mWheels;
-        BatchEntityManager* mItems[3];
+        EntityManager* mItems[3];
         EntityManager* mShelfs[3];
         
         TouchLayer* mLayers[3];

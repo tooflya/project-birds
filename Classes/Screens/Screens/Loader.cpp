@@ -4,6 +4,7 @@
 #include "Loader.h"
 
 #include "Loading.h"
+#include "Shop.h"
 
 // ===========================================================
 // Inner Classes
@@ -15,7 +16,7 @@
 
 int Loader::ACTION = -1;
 
-const char* Loader::TEXTURE_LIBRARY[17] =
+const char* Loader::TEXTURE_LIBRARY[21] =
 {
     "game_gui_bg_summer@2x.png",
     "birds_sprite@2x.png",
@@ -33,7 +34,11 @@ const char* Loader::TEXTURE_LIBRARY[17] =
     "explosion@2x.png",
     "dust@2x.png",
     "end_lvl_star_sprite@2x.png",
-    "wep_1@2x.png"
+    "wep_1@2x.png",
+    "pause_birds_sprite@2x.png",
+    "btn_sfx_mfx_ach_lead_sprite_pause@2x.png",
+    "pause_btn@2x.png",
+    "pause_btn_sprite@2x.png"
 };
 
 // ===========================================================
@@ -122,6 +127,18 @@ void Loader::onTouch(CCTouch* touch, CCEvent* event)
             case 3:
                 
                 AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                
+            break;
+            case 4:
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                
+            break;
+            case 5:
+
+                Shop::ACTION = 0;
+
+                AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
                 
             break;
         }
@@ -236,6 +253,7 @@ void Loader::onEnter()
     this->mTipText->setString(Options::TEXT_TIP[Utils::random(0, 4)].string);
     this->mTipText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(250));
     
+    this->mLoadingText->setString("");
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     this->mLoadingText->setOpacity(255.0);
 }

@@ -73,14 +73,18 @@ const char* Loading::TEXTURE_LIBRARY[47] =
 Loading::Loading()
 {
     CCTextureCache::sharedTextureCache()->addImage("start_preloader_bg@2x.png");
-    CCTextureCache::sharedTextureCache()->addImage("start_preloader_bar@2x.png");
+    CCTextureCache::sharedTextureCache()->addImage("start_preload_bar@2x.png");
+    CCTextureCache::sharedTextureCache()->addImage("start_preload_bar_fill@2x.png");
 
     this->mBackground = new Entity("start_preloader_bg@2x.png", this);
-    this->mBar = new Entity("start_preloader_bar@2x.png", this);
+    this->mBarBackground = new Entity("start_preload_bar@2x.png", this);
+    this->mBar = new Entity("start_preload_bar_fill@2x.png", this);
 
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->mBar->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-
+    this->mBarBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
+    this->mBar->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
+    this->mBar->setTextureRect(CCRectMake(0, 0, 0, this->mBar->getTexture()->getContentSize().height));
+    
     this->mNumberOfLoadedSprites = -1;
     this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
     
@@ -105,6 +109,9 @@ void Loading::loadingCallBack(CCObject *obj)
     
     this->mLoadingText->setString((Options::TEXT_LOADING_2.string + Utils::intToString(percent) + "%").c_str());
     
+    this->mBar->setTextureRect(CCRectMake(0, 0, this->mBar->getTexture()->getContentSize().width * percent / 100.0, this->mBar->getTexture()->getContentSize().height));
+    this->mBar->setCenterPosition(Options::CAMERA_CENTER_X + this->mBar->getContentSize().width / 2 - this->mBar->getTexture()->getContentSize().width / 2, Utils::coord(100));
+    
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
         AppDelegate::screens = new ScreenManager();
@@ -124,8 +131,6 @@ void Loading::loadingCallBack(CCObject *obj)
 void Loading::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
-
-    this->mBar->setRotation(this->mBar->getRotation() + 10.0);
 }
 
 #endif

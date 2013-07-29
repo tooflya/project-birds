@@ -47,6 +47,9 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mPriceText = new Text((Textes) {"0", "Comic Sans MS", 32, 0}, this);
         this->mPriceText->setColor(ccc3(255.0, 130.0, 0.0));
 
+        this->mBoughtText = new Text(Options::TEXT_ITEM_ALREADY_BOUGHT, this);
+        this->mBoughtText->setColor(ccc3(255.0, 130.0, 0.0));
+
         this->mPowerText = new Text((Textes) {"112", "Comic Sans MS", 32, 0}, this);
         this->mPowerText->setColor(ccc3(255.0, 130.0, 0.0));
 
@@ -81,6 +84,8 @@ void BuyItemList::onEnter()
     this->mPriceText->setString(Utils::intToString(Options::SHOP_ITEMS_PRICES[Shop::CLICKED_ITEM_ID]).c_str());
     this->mPriceText->setCenterPosition(this->mParent->getWidth() / 2 + Utils::coord(40) + this->mPriceText->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(50));
 
+    this->mBoughtText->setCenterPosition(this->mParent->getWidth() / 2 + Utils::coord(0) + this->mBoughtText->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(50));
+
     this->mPowerText->setString(Options::SHOP_ITEMS_PROPERTIES[Shop::CLICKED_ITEM_ID]);
     this->mPowerText->setCenterPosition(this->mParent->getWidth() / 2 + Utils::coord(40) + this->mPowerText->getWidth() / 2, Options::CAMERA_CENTER_Y - Utils::coord(10));
 
@@ -97,6 +102,21 @@ void BuyItemList::onEnter()
     else
     {
         this->mPropertiesIcon->setCurrentFrameIndex(0);
+    }
+
+    if(AppDelegate::isItemBought(Shop::CLICKED_ITEM_ID))
+    {
+        this->mCoinsIcon->setVisible(false);
+        this->mPriceText->setVisible(false);
+
+        this->mBoughtText->setVisible(true);
+    }
+    else
+    {
+        this->mCoinsIcon->setVisible(true);
+        this->mPriceText->setVisible(true);
+
+        this->mBoughtText->setVisible(false);
     }
 }
 

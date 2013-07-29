@@ -25,6 +25,8 @@ void Button::constructor(const int pButtonID, void (*pOnTouchCallback)(int, int)
 
         this->mID = pButtonID;
 
+        this->mText = NULL;
+
         this->setRegisterAsTouchable(true);
 }
 
@@ -60,6 +62,11 @@ void Button::onTouch(CCTouch* touch, CCEvent* event)
 
 void Button::setText(Textes pParams)
 {
+    if(this->mText != NULL)
+    {
+        this->mText->removeFromParent();
+    }
+
     this->mText = new Text(pParams, this);
     this->mText->setPosition(ccp(this->getWidth() / 2, this->getHeight() / 2));
 }
@@ -76,8 +83,8 @@ void Button::setString(const char* pString)
 void Button::onEnter()
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
-    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-        
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
+
     Entity::onEnter();
 }
     

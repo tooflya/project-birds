@@ -1,15 +1,9 @@
-#ifndef CONST_MODE_H
-#define CONST_MODE_H
+#ifndef CONST_TEMPPUBLISHERRATINGEXPLAIN_H
+#define CONST_TEMPPUBLISHERRATINGEXPLAIN_H
 
-#include "Screen.h"
+#include "Popup.h"
 
-#include "ModeHelp.h"
-#include "TempPublisherRatingExplain.h"
-#include "TempPublisherAchievementsExplain.h"
-
-#include "AppDelegate.h"
-
-class Mode : public Screen
+class TempPublisherRatingExplain : public Popup
 {
     protected:
         // ===========================================================
@@ -19,28 +13,12 @@ class Mode : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-
-        static Mode* m_Instance;
+    
+        static TempPublisherRatingExplain* m_Instance;
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Entity* mBackground;
-        Entity* mBackgroundDecorations[2];
-
-        Button* mBackButton;
-        Button* mHelpButton;
-        Button* mClassicMode;
-        Button* mArcadeMode;
-        Button* mProgressMode;
-        Button* mAchievementsButton;
-        Button* mLeaderboardButton;
-        Button* mShopButton;
-
-        Popup* mHelpPopup;
-        Popup* mTempPublisherRatingExplain;
-        Popup* mTempPublisherAchievementsExplain;
 
         // ===========================================================
         // Constructors
@@ -67,6 +45,8 @@ class Mode : public Screen
         // Fields
         // ===========================================================
 
+        Button* mOkButton;
+
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -74,7 +54,7 @@ class Mode : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-
+    
         static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
@@ -93,12 +73,12 @@ class Mode : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Mode();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        TempPublisherRatingExplain(CCNode* pParent);
 
         // ===========================================================
         // Methods

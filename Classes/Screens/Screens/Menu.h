@@ -107,6 +107,9 @@ class Menu : public Screen
         // ===========================================================
     
         void update(float pDeltaTime);
+
+        void onEnter();
+        void onExit();
 };
 
 #endif

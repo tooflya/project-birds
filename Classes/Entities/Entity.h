@@ -94,6 +94,8 @@ class Entity : public CCSprite, public Touchable
         bool mAlphaParent;
 
         const char* mTextureFileName;
+    
+        CCPoint mStartTouchPoint;
 
         // ===========================================================
         // Constructors

@@ -140,7 +140,7 @@ class TouchLayer : public CCLayer
             {
                 int x = floor(this->getPosition().x);
 
-                if(abs(x) % (int) floor(Utils::coord(230)) >= 1.0)
+                if(abs(x) % (int) floor(Utils::coord(230)) >= 5.0)
                 {
                     this->mPostUpdatePower = this->mPostUpdatePower < 0 ? this->mPostUpdatePower - 1.0 : this->mPostUpdatePower + 1.0;
                 }
@@ -192,7 +192,7 @@ Shop* Shop::m_Instance = NULL;
 
 int Shop::CLICKED_ITEM_ID = -1;
 
- int Shop::ITEMS_COUNT[3] = { 11, 3, 3 };
+ int Shop::ITEMS_COUNT[3] = { 11, 4, 4 };
 
  int Shop::ACTION = -1;
 
@@ -218,6 +218,8 @@ Shop::Shop()
     
     float x = Options::CAMERA_CENTER_X;
     float y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(330);
+    
+    this->mWeaponChecker = NULL;
 
     for(int i = 0; i < 3; i++)
     {
@@ -228,7 +230,7 @@ Shop::Shop()
         this->addChild(this->mLayers[i], 2);
         
         this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i]);
-        this->mItems[i] = new BatchEntityManager(10, new Item(onTouchButtonsCallback), this->mLayers[i]);
+        this->mItems[i] = new EntityManager(10, new Item(onTouchButtonsCallback), this->mLayers[i]);
         
         for(int j = -1; j < 4; j++)
         {
@@ -255,6 +257,16 @@ Shop::Shop()
             
             item->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
             item->setCurrentFrameIndex(++itemID);
+
+            if(i == 0)
+            {
+                if(AppDelegate::isItemSelected(j) && this->mWeaponChecker == NULL)
+                {
+                    this->mWeaponChecker = new Entity("settings_lang_check@2x.png", item);
+                    this->mWeaponChecker->retain();
+                    this->mWeaponChecker->create()->setCenterPosition(item->getWidth() / 2 + Utils::coord(64), item->getHeight() / 2 - Utils::coord(64));
+                }
+            }
         }
         
         y -= Utils::coord(300);
@@ -382,22 +394,62 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 }
 
 void Shop::onItemBought(int pItemId)
-{
-    this->mIsAnimationOnItemBoughtRunning = true;
+{  
+    if(pItemId < 30)
+    {
+        if(AppDelegate::isItemBought(pItemId))
+        {
+            AppDelegate::selectItem(pItemId);
 
-    this->mAnimationOnItemBoughtTime = 3.0;
-    this->mAnimationOnItemBoughtTimeElapsed = 0;
+            this->mWeaponChecker->removeFromParentAndCleanup(false);
 
-    this->mBoughtItemIcon->setCurrentFrameIndex(pItemId);
+            static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->addChild(this->mWeaponChecker);
+            this->mWeaponChecker->setCenterPosition(static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->getWidth() / 2 + Utils::coord(64), static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->getHeight() / 2 - Utils::coord(64));
+        }
+        else
+        {
+            this->mIsAnimationOnItemBoughtRunning = true;
 
-    this->mBoughtText[0]->setString(Options::TEXT_SHOP_ITEMS[pItemId].string);
+            this->mAnimationOnItemBoughtTime = 3.0;
+            this->mAnimationOnItemBoughtTimeElapsed = 0;
 
-    this->mBoughtText[0]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(300));
-    this->mBoughtText[1]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(380));
+            this->mBoughtItemIcon->setCurrentFrameIndex(pItemId);
 
-    this->mDarkness->runAction(CCFadeTo::create(0.5, 230));
+            this->mBoughtText[0]->setString(Options::TEXT_SHOP_ITEMS[pItemId].string);
 
-    AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
+            this->mBoughtText[0]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(300));
+            this->mBoughtText[1]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(380));
+
+            this->mDarkness->runAction(CCFadeTo::create(0.5, 230));
+
+            AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
+            AppDelegate::buyItem(pItemId);
+            
+            if(pItemId < 30)
+            {
+                this->onItemBought(pItemId);
+            }
+        }
+    }
+    else
+    {
+        this->mIsAnimationOnItemBoughtRunning = true;
+
+        this->mAnimationOnItemBoughtTime = 3.0;
+        this->mAnimationOnItemBoughtTimeElapsed = 0;
+
+        this->mBoughtItemIcon->setCurrentFrameIndex(pItemId);
+
+        this->mBoughtText[0]->setString(Options::TEXT_SHOP_ITEMS[pItemId].string);
+
+        this->mBoughtText[0]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(300));
+        this->mBoughtText[1]->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() / 2 - Utils::coord(380));
+
+        this->mDarkness->runAction(CCFadeTo::create(0.5, 230));
+
+        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
+        AppDelegate::buyItem(pItemId);
+    }
 }
 
 // ===========================================================

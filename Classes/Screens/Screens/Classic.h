@@ -3,8 +3,6 @@
 
 #include "Game.h"
 
-#include "Pause.h"
-
 #include "AppDelegate.h"
 
 class Classic : public Game

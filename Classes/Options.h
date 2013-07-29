@@ -112,7 +112,7 @@ class Options
     
         static int CURRENT_LANGUAGE;
     
-        static Textes TEXTES_HOLDER[200];
+        static Textes TEXTES_HOLDER[300];
 
         static int SHOP_ITEMS_PRICES[100];
         static int SHOP_ITEMS_RATING_FACTOR[100];
@@ -168,6 +168,10 @@ class Options
         static const int BUTTONS_ID_PAUSE_MENU = 1901;
         static const int BUTTONS_ID_PAUSE_RESTART = 1902;
         static const int BUTTONS_ID_PAUSE_CONTINUE = 1903;
+        static const int BUTTONS_ID_PAUSE_SHOP = 1904;
+        static const int BUTTONS_ID_PAUSE_ACHIEVEMENTS = 1905;
+        static const int BUTTONS_ID_PAUSE_LEADERBOARD = 1906;
+        static const int BUTTONS_ID_PAUSE_MODE = 1907;
         static const int BUTTONS_ID_MORE_BACK = 2001;
     
         static Textes TEXT_SETTINGS_CREDITS;
@@ -219,12 +223,19 @@ class Options
         static Textes TEXT_MODE_PROGRESS;
         static Textes TEXT_MODEHELP_OK;
         static Textes TEXT_MODEHELP_HELP[2];
-        static Textes TEXT_SHOP_ITEMS[64];
-        static Textes TEXT_SHOP_ITEMS_DESCRIPTIONS[64];
+        static Textes TEXT_SHOP_ITEMS[90];
+        static Textes TEXT_SHOP_ITEMS_DESCRIPTIONS[90];
         static Textes TEXT_SHOP_BOUGHT;
         static Textes TEXT_TAP_TO_CONTINUE;
         static Textes TEXT_TIP[10];
         static Textes TEXT_MORE_GAMES;
+        static Textes TEXT_PUBLISHER_STRING_1;
+        static Textes TEXT_PUBLISHER_STRING_2;
+        static Textes TEXT_PUBLISHER_STRING_3;
+        static Textes TEXT_BUYITEM_CHOOSE;
+        static Textes TEXT_ITEM_ALREADY_BOUGHT;
+        static Textes TEXT_PAUSE_CONTINUE;
+        static Textes TEXT_PAUSE_BACK_TO_SELECT_MODE;
 
         // ===========================================================
         // Fields

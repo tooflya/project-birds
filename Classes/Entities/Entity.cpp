@@ -527,6 +527,8 @@ void Entity::onTouch(CCTouch* touch, CCEvent* event)
 
 bool Entity::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
+    this->mStartTouchPoint = touch->getLocation();
+    
     if(!this->containsTouchLocation(touch) || !this->isVisible() || !this->getParent()->isVisible())
     {
         return false;
@@ -546,7 +548,7 @@ bool Entity::ccTouchBegan(CCTouch* touch, CCEvent* event)
 
 void Entity::ccTouchMoved(CCTouch* touch, CCEvent* event)
 {
-    if(!containsTouchLocation(touch))
+    if(!containsTouchLocation(touch) || abs(ccpDistance(touch->getLocation(), this->mStartTouchPoint)) >= Utils::coord(30))
     {
         if(this->mWasTouched)
         {

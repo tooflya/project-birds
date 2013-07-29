@@ -26,6 +26,8 @@ Classic::Classic() :
     {
         this->mBackground = new Entity("game_gui_bg_summer@2x.png", this);
 
+        this->mPauseButton = new Button((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+
         this->mMarks = new BatchEntityManager(200, new Mark(), this);
         this->mFeathers = new BatchEntityManager(100, new Feather(), this);
         this->mBirds = new BatchEntityManager(10, new Bird(), this);
@@ -33,6 +35,10 @@ Classic::Classic() :
         this->mDust = new BatchEntityManager(100, new Dust(), this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+
+        this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(48));
+
+        this->mPausePopup = new Pause(this);
 
         m_Instance = this;
     }
@@ -43,7 +49,7 @@ Classic::Classic() :
 
 void Classic::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Classic* pSender = (Classic*) Classic::m_Instance;
+    Classic* pSender = static_cast<Classic*>(Classic::m_Instance);
 
     switch(pAction)
     {
@@ -52,7 +58,7 @@ void Classic::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_GAME_PAUSE:
 
-                    //
+                    pSender->mPausePopup->show();
 
                 break;
                 case Options::BUTTONS_ID_GAME_RESTART:

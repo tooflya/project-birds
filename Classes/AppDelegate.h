@@ -106,6 +106,17 @@ class AppDelegate : private CCApplication
 
         static void changeLanguage(int pId);
         static int getSelectedLanguage();
+
+        static bool isInstalled();
+        static void install();
+
+        static bool isItemBought(int pItem);
+        static void buyItem(int pItem);
+
+        static bool isItemSelected(int pItem);
+        static void selectItem(int pItem);
+
+        static int getLevelStars(int pLevel);
         
         // ===========================================================
         // Override Methods
