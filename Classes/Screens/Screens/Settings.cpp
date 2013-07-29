@@ -24,7 +24,9 @@ Settings* Settings::m_Instance = NULL;
 Settings::Settings()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
+    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", this);
+    this->mBackgroundDecorations[1] = new Entity("bg_detail_settings@2x.png", this);
+    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
     this->mCreditsButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_CREDITS, onTouchButtonsCallback);
     this->mProgressButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
     this->mMoreButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_MORE, onTouchButtonsCallback);
@@ -34,14 +36,13 @@ Settings::Settings()
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
-    this->mBackButton->create()->setCurrentFrameIndex(1);
-    this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
 
     this->mSoundButton->create()->setCurrentFrameIndex(1);
-    this->mSoundButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(350));
+    this->mSoundButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
 
     this->mMusicButton->create()->setCurrentFrameIndex(0);
-    this->mMusicButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(350));
+    this->mMusicButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
     
     this->mCreditsButton->create()->setCurrentFrameIndex(1);
     this->mCreditsButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
@@ -62,6 +63,9 @@ Settings::Settings()
     this->mLanguage = new Entity("flag_sprite_small@2x.png", 1, 2, this->mLanguageButton);
     this->mLanguage->setCurrentFrameIndex(Options::CURRENT_LANGUAGE);
     this->mLanguage->create()->setCenterPosition(this->mLanguageButton->getWidth(), this->mLanguageButton->getHeight() / 2);
+    
+    this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
+    this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(165), Utils::coord(128));
 
     m_Instance = this;
 }
@@ -124,7 +128,7 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SETTINGS_MORE:
                     
-                    //
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MORE);
                     
                 break;
                 case Options::BUTTONS_ID_SETTINGS_LANGUAGE:

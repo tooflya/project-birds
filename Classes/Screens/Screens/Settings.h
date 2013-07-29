@@ -23,6 +23,9 @@ class Settings : public Screen
         // ===========================================================
     
         Entity* mBackground;
+        Entity* mLanguage;
+        Entity* mBackgroundDecorations[2];
+    
         Button* mBackButton;
         Button* mCreditsButton;
         Button* mProgressButton;
@@ -30,8 +33,6 @@ class Settings : public Screen
         Button* mLanguageButton;
         Button* mSoundButton;
         Button* mMusicButton;
-    
-        Entity* mLanguage;
     
         // ===========================================================
         // Constructors

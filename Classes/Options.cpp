@@ -90,7 +90,7 @@ int Options::SHOP_ITEMS_PRICES[100] =
       999, 1499, 2939, 3420, 3850, 4400, 5100, 6800, 1100, 20000,
       22199, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      22000, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -102,9 +102,9 @@ int Options::SHOP_ITEMS_PRICES[100] =
 int Options::SHOP_ITEMS_RATING_FACTOR[100] =
 {
       10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
-      100, 100, 1, 1, 1, 1, 1, 1, 1, 1,
+      100, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      20, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -116,15 +116,15 @@ int Options::SHOP_ITEMS_RATING_FACTOR[100] =
 const char* Options::SHOP_ITEMS_PROPERTIES[100] =
 {
     "12", "22", "31", "36", "42", "48", "52", "61", "68", "75",
-    "88", "91", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", "",
-    "", "", "", "", "", "", "", "", "", ""
+    "88", "0", "0", "0", "0", "0", "0", "0", "0", "0",
+    "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",
+    "0:02", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00",
+    "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
+    "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
+    "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
+    "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
+    "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
+    "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00"
 };
 
 Textes Options::TEXTES_HOLDER[200] =
@@ -229,6 +229,7 @@ Textes Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[64] =
       { "", FONT, 0, 180 }, { "", FONT, 0, 181 }, { "", FONT, 0, 182 }, { "", FONT, 0, 183 }, { "", FONT, 0, 184 }, { "", FONT, 0, 185 }, { "", FONT, 0, 186 }, { "", FONT, 0, 187 }, { "", FONT, 0, 188 }, { "", FONT, 0, 189 },
       { "", FONT, 0, 190 }, { "", FONT, 0, 191 }, { "", FONT, 0, 192 }, { "", FONT, 0, 193 }
 };
+Textes Options::TEXT_MORE_GAMES = {"", FONT, 48, 193};
 
 // ===========================================================
 // Fields
@@ -284,26 +285,26 @@ void Options::changeLanguage()
             TEXT_EXIT_YES.string = "Yes";
             TEXT_EXIT_YES.size = 64;
             
-            TEXT_EXIT_STRING_1.string = "Are you sure";
+            TEXT_EXIT_STRING_1.string = "Are you sure you want to quit?\n \nWe will be very sad without you!";
             TEXT_EXIT_STRING_1.size = 48;
             
-            TEXT_EXIT_STRING_2.string = "you want to quit?";
+            TEXT_EXIT_STRING_2.string = "";
             TEXT_EXIT_STRING_2.size = 48;
             
             TEXT_RATE_NOW.string = "Rate";
             TEXT_RATE_NOW.size = 46;
             
-            TEXT_RATE_STRING_1.string = "Do you like";
+            TEXT_RATE_STRING_1.string = "Do you like our awesome game?\n \nPlease rate it in the Apple Store! Thanks!";
             TEXT_RATE_STRING_1.size = 48;
             
-            TEXT_RATE_STRING_2.string = "our game?";
+            TEXT_RATE_STRING_2.string = "";
             TEXT_RATE_STRING_2.size = 48;
             
-            TEXT_RATE_STRING_3.string = "Please";
+            TEXT_RATE_STRING_3.string = "";
             TEXT_RATE_STRING_3.size = 48;
             
-            TEXT_RATE_STRING_4.string = "rate it!";
-            TEXT_RATE_STRING_4.size = 40;
+            TEXT_RATE_STRING_4.string = "";
+            TEXT_RATE_STRING_4.size = 48;
             
             TEXT_GETCOINS_STRING_1.string = "You need to buy";
             TEXT_GETCOINS_STRING_1.size = 48;
@@ -335,28 +336,28 @@ void Options::changeLanguage()
             TEXT_PROGRESS_RESET.string = "Reset";
             TEXT_PROGRESS_RESET.size = 48;
             
-            TEXT_RESET_STRING_1.string = "Are you sure that";
+            TEXT_RESET_STRING_1.string = "Are you sure that you want to reset your progress?\n \nYou will start game from the first level";
             TEXT_RESET_STRING_1.size = 48;
             
-            TEXT_RESET_STRING_2.string = "you want to reset your progress?";
-            TEXT_RESET_STRING_2.size = 32;
+            TEXT_RESET_STRING_2.string = "";
+            TEXT_RESET_STRING_2.size = 48;
             
-            TEXT_RESET_STRING_3.string = "You start game from";
+            TEXT_RESET_STRING_3.string = "";
             TEXT_RESET_STRING_3.size = 48;
             
-            TEXT_RESET_STRING_4.string = "first level!";
+            TEXT_RESET_STRING_4.string = "";
             TEXT_RESET_STRING_4.size = 48;
             
             TEXT_RESET_RESET.string = "Reset";
-            TEXT_RESET_RESET.size = 40;
+            TEXT_RESET_RESET.size = 48;
             
             TEXT_CREDITS_STRING_1.string = "About";
             TEXT_CREDITS_STRING_1.size = 48;
             
-            TEXT_CREDITS_STRING_2.string = "Version: 0.0.1";
+            TEXT_CREDITS_STRING_2.string = "Version: 0.2.1";
             TEXT_CREDITS_STRING_2.size = 36;
             
-            TEXT_CREDITS_STRING_3.string = "Build: 613";
+            TEXT_CREDITS_STRING_3.string = "Build: 2613";
             TEXT_CREDITS_STRING_3.size = 36;
             
             TEXT_CREDITS_STRING_4.string = "Created by:";
@@ -374,7 +375,7 @@ void Options::changeLanguage()
             TEXT_CREDITS_STRING_8.string = "Dmitry Shane";
             TEXT_CREDITS_STRING_8.size = 32;
             
-            TEXT_CREDITS_STRING_9.string = "Articsts";
+            TEXT_CREDITS_STRING_9.string = "Artists";
             TEXT_CREDITS_STRING_9.size = 36;
             
             TEXT_CREDITS_STRING_10.string = "Maksim Petrov";
@@ -416,59 +417,62 @@ void Options::changeLanguage()
             TEXT_MODEHELP_HELP[1].string = "Classic mode - the game in which you have to compete with other players to earn coins, to increase its global ranking and use the bonus earned.\n\nArcade mode - allow you to show what you can do in one minute! As the game progresses your skills increase and you are quite able to surpass its previous record!\n\nProgress mode - a special mode. Available to you 75 levels (update soon) with a variety of tasks. As you progress through levels you will unlock new opportunities that you can get to use in other game modes.";
             TEXT_MODEHELP_HELP[1].size = 24;
             
-            TEXT_SHOP_ITEMS[0].string = "Some weapon 1";
+            TEXT_SHOP_ITEMS[0].string = "Bamboo truth";
             TEXT_SHOP_ITEMS[0].size = 48;
             
-            TEXT_SHOP_ITEMS[1].string = "Some weapon 2";
+            TEXT_SHOP_ITEMS[1].string = "Slat";
             TEXT_SHOP_ITEMS[1].size = 48;
             
-            TEXT_SHOP_ITEMS[2].string = "Some weapon 3";
+            TEXT_SHOP_ITEMS[2].string = "Dubin";
             TEXT_SHOP_ITEMS[2].size = 48;
             
-            TEXT_SHOP_ITEMS[3].string = "Some weapon 4";
+            TEXT_SHOP_ITEMS[3].string = "Shovel";
             TEXT_SHOP_ITEMS[3].size = 48;
             
-            TEXT_SHOP_ITEMS[4].string = "Some weapon 5";
+            TEXT_SHOP_ITEMS[4].string = "Hammer of truth";
             TEXT_SHOP_ITEMS[4].size = 48;
             
-            TEXT_SHOP_ITEMS[5].string = "Some weapon 6";
+            TEXT_SHOP_ITEMS[5].string = "Axe of power";
             TEXT_SHOP_ITEMS[5].size = 48;
             
-            TEXT_SHOP_ITEMS[6].string = "Some character 1";
+            TEXT_SHOP_ITEMS[6].string = "Magic Wand";
             TEXT_SHOP_ITEMS[6].size = 48;
             
-            TEXT_SHOP_ITEMS[7].string = "Some character  2";
+            TEXT_SHOP_ITEMS[7].string = "Sword of Jedi";
             TEXT_SHOP_ITEMS[7].size = 48;
             
-            TEXT_SHOP_ITEMS[8].string = "Some character  3";
+            TEXT_SHOP_ITEMS[8].string = "The mechanical arm";
             TEXT_SHOP_ITEMS[8].size = 48;
             
-            TEXT_SHOP_ITEMS[9].string = "Some character  4";
+            TEXT_SHOP_ITEMS[9].string = "Fish";
             TEXT_SHOP_ITEMS[9].size = 48;
             
-            TEXT_SHOP_ITEMS[10].string = "Some special bonus 1";
+            TEXT_SHOP_ITEMS[10].string = "Clown head baseball bat";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[11].string = "Some special bonus 2";
+            TEXT_SHOP_ITEMS[11].string = "Information not found";
             TEXT_SHOP_ITEMS[11].size = 48;
             
-            TEXT_SHOP_ITEMS[12].string = "Some special bonus 3";
+            TEXT_SHOP_ITEMS[12].string = "Information not found";
             TEXT_SHOP_ITEMS[12].size = 48;
             
-            TEXT_SHOP_ITEMS[13].string = "Some special bonus 4";
+            TEXT_SHOP_ITEMS[13].string = "Information not found";
             TEXT_SHOP_ITEMS[13].size = 48;
             
-            TEXT_SHOP_ITEMS[14].string = "Some special bonus 5";
+            TEXT_SHOP_ITEMS[14].string = "Information not found";
             TEXT_SHOP_ITEMS[14].size = 48;
             
-            TEXT_SHOP_ITEMS[15].string = "Some special bonus 6";
+            TEXT_SHOP_ITEMS[15].string = "Information not found";
             TEXT_SHOP_ITEMS[15].size = 48;
             
-            TEXT_SHOP_ITEMS[16].string = "Some special bonus 7";
+            TEXT_SHOP_ITEMS[16].string = "Information not found";
             TEXT_SHOP_ITEMS[16].size = 48;
             
-            TEXT_SHOP_ITEMS[17].string = "Some special bonus 8";
+            TEXT_SHOP_ITEMS[17].string = "Information not found";
             TEXT_SHOP_ITEMS[17].size = 48;
+            
+            TEXT_SHOP_ITEMS[30].string = "Freeze bird";
+            TEXT_SHOP_ITEMS[30].size = 48;
             
             TEXT_SHOP_BOUGHT.string = "was unlocked";
             TEXT_SHOP_BOUGHT.size = 48;
@@ -482,17 +486,17 @@ void Options::changeLanguage()
             TEXT_TIP[3].string = "Some birds are special - look at what they can do";
             TEXT_TIP[4].string = "You will enjoy more than 20 different birds with unique abilities";
             
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[0].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[1].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[2].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[3].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[0].string = "This is ancient bamboo stick is a talisman and a symbol of truth in the house of old chinaman. Long ago was used as a strong and perhaps the only weapons the Royal Army. Now stick serves as an excellent means to combat flies.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[1].string = "Slat was tear off from favorite doghouse of angry bullterrier. While he was sleeping in the back yard. After finding out about it, he ran in search around of the entire quarter, but did not find her. Now, will be better for you, dont turn up on his way!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[2].string = "Dubin - cunning raccoon broke the this dubin from branches of eternal tree , around which all forest animals were going on the quiet advice. According to legend, was broken dubin on the tenth night moon will give the his owner strength and longevity.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[3].string = "Shovel - old gardener's shovel Johnny. It not as simple as it seems at first glance. Only with it help you can get a great treasure of old Johnny, who are buried under the blue stone which is in the Green Valley.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Hammer - Stone Hammer of truth. With it, ancient people of the Lost World, builded huts and hunted for food. In crowd, they went on a hunt in search of a mammoth. When they are found his lair, were surrounded it and walked to mortal combat with the beast.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "This two-sided ax was a symbol of the absolute power of an old Indian. Axe reminds to the Indian about pasts times, when he go on the greats reds dragons that once in 10 years, come from high dark mountains and burned the indian village.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Magic wand fairy godmother which was found in the hollow of a huge old oak tree which grows on the outskirts next to the dense forest. Be careful, rumored to live there unknown monsters. In all probability, they took the magic wand of fairy godmother and hid it. What's wrong with fairy nobody knows.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "The legendary Sword of the Jedi, which captured spacecrafts, that there spacecraft - the whole galaxy! His owner endowed unusual strength and abilities, but only until the charge battery is out.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Iron mechanical arm, the result of years of secret developments the leading companies in the world in nanotechnologies. It was the beginning of creating a top-secret project - Steel bearings. Now the hand used as an industrial coffee machine.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Dried fish, which fulfilled the wishes of the royal Family. Was found near the dark side of the fast river, of little gnomes. Be careful and cautious in their whishes, maybe your wish will come true right now!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "At Baseball bat portrayed the first clown of old circus. The audience has loved his performance with trained dinosaurs and flying elephants. As a result, good people decided to portrayed his look on this bat.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[11].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[12].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[13].string = "Information not found.";
@@ -546,6 +550,8 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Information not found.";
+
+            TEXT_MORE_GAMES.string = "More games";
         break;
         case 1:
             TEXT_LOADING_1.string = "0%";
@@ -572,26 +578,26 @@ void Options::changeLanguage()
             TEXT_EXIT_YES.string = "Да";
             TEXT_EXIT_YES.size = 64;
             
-            TEXT_EXIT_STRING_1.string = "Вы действительно";
+            TEXT_EXIT_STRING_1.string = "Вы действительно хотите выйти?\n \nНам будет очень грустно без вас!";
             TEXT_EXIT_STRING_1.size = 48;
             
-            TEXT_EXIT_STRING_2.string = "хотите выйти?";
+            TEXT_EXIT_STRING_2.string = "";
             TEXT_EXIT_STRING_2.size = 48;
             
             TEXT_RATE_NOW.string = "Оценить";
             TEXT_RATE_NOW.size = 46;
             
-            TEXT_RATE_STRING_1.string = "Вам понравилась";
+            TEXT_RATE_STRING_1.string = "Вам понравилась наша игра?\n \nПожалуйста, проголосуйте за нее в Apple Store!";
             TEXT_RATE_STRING_1.size = 48;
             
-            TEXT_RATE_STRING_2.string = "наша игра?";
+            TEXT_RATE_STRING_2.string = "";
             TEXT_RATE_STRING_2.size = 48;
             
-            TEXT_RATE_STRING_3.string = "Пожалуйста";
+            TEXT_RATE_STRING_3.string = "";
             TEXT_RATE_STRING_3.size = 48;
             
-            TEXT_RATE_STRING_4.string = "проголосуйте за нее!";
-            TEXT_RATE_STRING_4.size = 40;
+            TEXT_RATE_STRING_4.string = "";
+            TEXT_RATE_STRING_4.size = 48;
             
             TEXT_GETCOINS_STRING_1.string = "Желаете купить";
             TEXT_GETCOINS_STRING_1.size = 48;
@@ -626,16 +632,16 @@ void Options::changeLanguage()
             TEXT_PROGRESS_RESET.string = "Сбросить";
             TEXT_PROGRESS_RESET.size = 48;
             
-            TEXT_RESET_STRING_1.string = "Вы уверены что";
+            TEXT_RESET_STRING_1.string = "Вы уверены что хотите сбросить прогресс?\n \nВы начнете игру с первого уровня!";
             TEXT_RESET_STRING_1.size = 48;
             
-            TEXT_RESET_STRING_2.string = "хотите сбросить прогресс?";
-            TEXT_RESET_STRING_2.size = 32;
+            TEXT_RESET_STRING_2.string = "";
+            TEXT_RESET_STRING_2.size = 48;
             
-            TEXT_RESET_STRING_3.string = "Вы начнете игру";
+            TEXT_RESET_STRING_3.string = "";
             TEXT_RESET_STRING_3.size = 48;
             
-            TEXT_RESET_STRING_4.string = "с первого уровня!";
+            TEXT_RESET_STRING_4.string = "";
             TEXT_RESET_STRING_4.size = 48;
             
             TEXT_RESET_RESET.string = "Сбросить";
@@ -644,10 +650,10 @@ void Options::changeLanguage()
             TEXT_CREDITS_STRING_1.string = "Об игре";
             TEXT_CREDITS_STRING_1.size = 48;
             
-            TEXT_CREDITS_STRING_2.string = "Версия: 0.0.1";
+            TEXT_CREDITS_STRING_2.string = "Версия: 0.2.1";
             TEXT_CREDITS_STRING_2.size = 36;
             
-            TEXT_CREDITS_STRING_3.string = "Сборка: 613";
+            TEXT_CREDITS_STRING_3.string = "Сборка: 2613";
             TEXT_CREDITS_STRING_3.size = 36;
             
             TEXT_CREDITS_STRING_4.string = "Над игрой работали:";
@@ -761,6 +767,9 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[17].string = "Какой-то бонус 8";
             TEXT_SHOP_ITEMS[17].size = 48;
             
+            TEXT_SHOP_ITEMS[30].string = "Ледяная птица";
+            TEXT_SHOP_ITEMS[30].size = 48;
+            
             TEXT_SHOP_BOUGHT.string = "было куплено";
             TEXT_SHOP_BOUGHT.size = 48;
             
@@ -803,7 +812,7 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Информация о ледяной птице";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Информации не найдено.";
@@ -837,6 +846,8 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Информации не найдено.";
+
+            TEXT_MORE_GAMES.string = "Другие игры";
         break;
     }
     
@@ -1032,8 +1043,9 @@ void Options::changeLanguage()
     TEXTES_HOLDER[190] = TEXT_SHOP_ITEMS_DESCRIPTIONS[61];
     TEXTES_HOLDER[191] = TEXT_SHOP_ITEMS_DESCRIPTIONS[62];
     TEXTES_HOLDER[192] = TEXT_SHOP_ITEMS_DESCRIPTIONS[63];
+    TEXTES_HOLDER[193] = TEXT_MORE_GAMES;
     
-    for(int i = 0; i < 193; i++)
+    for(int i = 0; i < 194; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

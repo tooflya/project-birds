@@ -25,6 +25,7 @@ class Mode : public Screen
         // ===========================================================
     
         Entity* mBackground;
+        Entity* mBackgroundDecorations[2];
 
         Button* mBackButton;
         Button* mHelpButton;
@@ -33,6 +34,7 @@ class Mode : public Screen
         Button* mProgressMode;
         Button* mAchievementsButton;
         Button* mLeaderboardButton;
+        Button* mShopButton;
 
         ModeHelp* mHelpPopup;
 

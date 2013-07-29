@@ -72,7 +72,7 @@ class ScreenManager
 		// Fields
 		// ===========================================================
 
-		Screen* mScreens[12];
+		Screen* mScreens[13];
 
 		int mCurrentScreenIndex;
 

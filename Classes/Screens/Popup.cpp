@@ -58,7 +58,7 @@ void Popup::show()
     
     this->mShowAnimationTime = 0.3;
     this->mBackground->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.2));
-    this->mDarkness->runAction(CCFadeTo::create(0.5, 130.0));
+    this->mDarkness->runAction(CCFadeTo::create(0.5, 150.0));
 }
 
 void Popup::hide()

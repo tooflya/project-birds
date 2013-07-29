@@ -62,7 +62,7 @@ static AppDelegate s_sharedApplication;
     
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
-    [__glView setMultipleTouchEnabled:YES];
+    [__glView setMultipleTouchEnabled:NO];
     
     //[self PlayVideo:0 fullscreen:1 file:@"a" fileExtension:@"m4v"];
     cocos2d::CCApplication::sharedApplication()->run();

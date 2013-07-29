@@ -22,6 +22,9 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     this->mWidth  = pWidth  >= 0 ? Utils::coord(pWidth) : this->getTextureRect().size.width;
     this->mHeight = pHeight >= 0 ? Utils::coord(pHeight) : this->getTextureRect().size.height;
 
+    this->mPaddingX = Utils::coord(pX);
+    this->mPaddingY = Utils::coord(pY);
+
     this->mFrameWidth = this->mWidth / pHorizontalFramesCount;
     this->mFrameHeight = this->mHeight / pVerticalFramesCount; 
 
@@ -55,8 +58,8 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     {
         for(int j = 0; j < this->mHorizontalFramesCount; j++, counter++)
         {
-            this->mFramesCoordinatesX[counter] = j * (this->mWidth / this->mHorizontalFramesCount) + Utils::coord(pX);
-            this->mFramesCoordinatesY[counter] = i * (this->mHeight / this->mVerticalFramesCount) + Utils::coord(pY);
+            this->mFramesCoordinatesX[counter] = j * (this->mWidth / this->mHorizontalFramesCount) + this->mPaddingX;
+            this->mFramesCoordinatesY[counter] = i * (this->mHeight / this->mVerticalFramesCount) + this->mPaddingY;
         }
     }
 
@@ -582,7 +585,9 @@ bool Entity::containsTouchLocation(CCTouch* touch)
 
 Entity* Entity::deepCopy()
 {
-    return new Entity(this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount);
+    float s = CCDirector::sharedDirector()->getContentScaleFactor();
+
+    return new Entity((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mPaddingX*s, this->mPaddingY*s, this->mWidth*s, this->mHeight*s}, NULL);
 }
 
 void Entity::update(float pDeltaTime)

@@ -27,13 +27,11 @@ PleaseRate::PleaseRate(CCNode* pParent) :
         this->mLights = new BatchEntityManager(2, new Entity("get_coins_light@2x.png"), this->mDarkness);
     
         this->mIllustration = new Entity("popup_rate_picture@2x.png", this->mBackground);
-        this->mCloseButton = new Button("btn_sprite@2x.png", 2, 3, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
     
         this->mRateButton = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_RATE_RATE, onTouchButtonsCallback);
         
-        this->mCloseButton->create();
-        this->mCloseButton->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
-        this->mCloseButton->setCurrentFrameIndex(3);
+        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
         
         for(int i = 0; i < 2; i++)
         {
@@ -42,15 +40,9 @@ PleaseRate::PleaseRate(CCNode* pParent) :
             ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
         }
         
-        Text* text1 = new Text(Options::TEXT_RATE_STRING_1, this->mBackground);
-        Text* text2 = new Text(Options::TEXT_RATE_STRING_2, this->mBackground);
-        Text* text3 = new Text(Options::TEXT_RATE_STRING_3, this->mBackground);
-        Text* text4 = new Text(Options::TEXT_RATE_STRING_4, this->mBackground);
+        Text* text1 = new Text(Options::TEXT_RATE_STRING_1, ccp(Utils::coord(512), 0), this->mBackground);
         
-        text1->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(50)));
-        text2->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(50)));
-        text3->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(150)));
-        text4->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(250)));
+        text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(100));
         
         this->mRateButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
         this->mRateButton->setText(Options::TEXT_RATE_NOW);

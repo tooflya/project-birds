@@ -20,7 +20,7 @@
 // ===========================================================
 
 CreditsList::CreditsList(CCNode* pParent) :
-    List(Utils::coord(600), Utils::coord(890), Utils::coord(750), Utils::coord(7500), Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50), "about_scroll_fill@2x.png", pParent)
+    List(Utils::coord(600), Utils::coord(890), Utils::coord(750), Utils::coord(800), Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50), "about_scroll_fill@2x.png", pParent)
     {
         this->setListType(List::TYPE_VERTICAL);
 
@@ -71,7 +71,13 @@ CreditsList::CreditsList(CCNode* pParent) :
 
         this->mText[11]->setColor(ccc3(167.0, 65.0, 7.0));
         this->mText[12]->setColor(ccc3(248.0, 163.0, 73.0));
-    }
+
+        this->mGameLogo = new Entity("about_name_logo@2x.png", this);
+        this->mCompanyLogo = new Entity("about_logo@2x.png", this);
+
+        this->mGameLogo->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(700) - Utils::coord(500));
+        this->mCompanyLogo->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(600) - Utils::coord(500));
+}
 
 // ===========================================================
 // Methods

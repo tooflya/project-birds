@@ -192,7 +192,9 @@ Shop* Shop::m_Instance = NULL;
 
 int Shop::CLICKED_ITEM_ID = -1;
 
- int Shop::ITEMS_COUNT[3] = { 11, 4, 8 };
+ int Shop::ITEMS_COUNT[3] = { 11, 3, 3 };
+
+ int Shop::ACTION = -1;
 
 // ===========================================================
 // Fields
@@ -205,9 +207,10 @@ int Shop::CLICKED_ITEM_ID = -1;
 Shop::Shop()
 {
     this->mBackground = new Entity("settings_bg@2x.png", this);
+    this->mBackgroundDecoration = new BatchEntityManager(2, new Entity("bg_detail_stripe@2x.png"), this);
     this->mTablet = new Button("shop_money_bg@2x.png", 1, 1, this, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
     this->mCoin = new Entity("coins@2x.png", 5, 4, this->mTablet);
-    this->mBackButton = new Button("btn_sprite@2x.png", 2, 3, this, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
+    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
 
     this->mCoinsCountText = new Text((Textes) {"0", Options::FONT, 64, -1}, this->mTablet);
     
@@ -215,11 +218,11 @@ Shop::Shop()
     
     float x = Options::CAMERA_CENTER_X;
     float y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(330);
-    
-    int itemID = -1;
 
     for(int i = 0; i < 3; i++)
     {
+        int itemID = 30 * i - 1;
+
         this->mLayers[i] = new TouchLayer(i, ITEMS_COUNT[i]);
         
         this->addChild(this->mLayers[i], 2);
@@ -259,8 +262,7 @@ Shop::Shop()
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
-    this->mBackButton->create()->setCurrentFrameIndex(1);
-    this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
 
     this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(110));
 
@@ -288,6 +290,11 @@ Shop::Shop()
         
         this->mWheels->create()->setCenterPosition(x, y);
     }
+    
+    this->mBackgroundDecoration->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
+    this->mBackgroundDecoration->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
+    
+    static_cast<Entity*>(this->mBackgroundDecoration->objectAtIndex(1))->setScale(-1);
     
     /** Bought item animation **/
 
@@ -332,7 +339,7 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 {
     Shop* pSender = static_cast<Shop*>(Shop::m_Instance);
 
-    //if(pSender->mIsAnimationOnItemBoughtRunning) return;
+    if(pSender->mIsAnimationOnItemBoughtRunning) return;
 
     switch(pAction)
     {
@@ -341,7 +348,16 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_SHOP_BACK:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                    if(ACTION == 0)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                    }
+                    else if(ACTION == 1)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    }
+
+                    ACTION = -1;
 
                 break;
                 case Options::BUTTONS_ID_SHOP_ITEM:

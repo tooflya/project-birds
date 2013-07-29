@@ -96,8 +96,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     Options::CAMERA_CENTER_X  = screenSize.width / 2;
     Options::CAMERA_CENTER_Y = screenSize.height / 2;
 
-    director->setAlphaBlending(true);
-    director->setDepthTest(true);
+    director->setAlphaBlending(false);
+    director->setDepthTest(false);
     director->setDisplayStats(false);
     
     director->setProjection(kCCDirectorProjection2D);

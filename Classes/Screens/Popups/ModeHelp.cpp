@@ -24,15 +24,13 @@ ModeHelp* ModeHelp::m_Instance = NULL;
 ModeHelp::ModeHelp(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mCloseButton = new Button("btn_sprite@2x.png", 2, 3, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         
         this->mOkButton = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         
         this->mListBorders = new BatchEntityManager(2, new Entity("about_scroll_border_small@2x.png"), this->mBackground);
         
-        this->mCloseButton->create();
-        this->mCloseButton->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
-        this->mCloseButton->setCurrentFrameIndex(3);
+        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
         
         this->mOkButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
         this->mOkButton->setText(Options::TEXT_MODEHELP_OK);

@@ -17,6 +17,7 @@
 #include "Classic.h"
 #include "Arcade.h"
 #include "Progresses.h"
+#include "More.h"
 
 // ===========================================================
 // Inner Classes
@@ -67,6 +68,7 @@ void ScreenManager::generate()
 {
     this->mScreens[Screen::SCREEN_MENU] = new Menu();
     this->mScreens[Screen::SCREEN_SETTINGS] = new Settings();
+    this->mScreens[Screen::SCREEN_MORE] = new More();
     this->mScreens[Screen::SCREEN_SHOP] = new Shop();
     this->mScreens[Screen::SCREEN_MODE] = new Mode();
     this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
