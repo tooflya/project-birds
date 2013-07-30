@@ -449,6 +449,11 @@ void Shop::onItemBought(int pItemId)
 
         AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
         AppDelegate::buyItem(pItemId);
+        
+        if(Options::SOUND_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->playEffect("unlocked.wav");
+        }
     }
 }
 

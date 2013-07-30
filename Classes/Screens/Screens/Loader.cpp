@@ -92,6 +92,25 @@ void Loader::loadingCallBack(CCObject *obj)
         this->mTapToContinueAnimation = true;
         
         this->mIsWorkDone = true;
+
+        if(ACTION > 2)
+        {
+            SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-1.mp3", true); 
+
+            if(!Options::MUSIC_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+            }
+        }
+        else
+        {
+            SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-2.mp3", true); 
+
+            if(!Options::MUSIC_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+            }
+        }
     }
     else
     {
@@ -256,6 +275,8 @@ void Loader::onEnter()
     this->mLoadingText->setString("");
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     this->mLoadingText->setOpacity(255.0);
+
+    SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
 }
 
 void Loader::onExit()

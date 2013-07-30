@@ -74,6 +74,9 @@ void AppDelegate::install()
 {
     CCUserDefault::sharedUserDefault()->setIntegerForKey("installed", 1);
 
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("music_enable", 1);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("sound_enable", 1);
+
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
 
@@ -175,6 +178,30 @@ int AppDelegate::getLevelStars(int pLevel)
     return CCUserDefault::sharedUserDefault()->getIntegerForKey(text);
 }
 
+void AppDelegate::setMusicEnable(bool pValue)
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("music_enable", pValue ? 1 : 0);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+void AppDelegate::setSoundEnable(bool pValue)
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("sound_enable", pValue ? 1 : 0);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+bool AppDelegate::isMusicEnable()
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey("music_enable") == 1;
+}
+
+bool AppDelegate::isSoundEnable()
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey("sound_enable") == 1;
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -208,20 +235,21 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     director->setAlphaBlending(false);
     director->setDepthTest(false);
+
     director->setDisplayStats(false);
     
     director->setProjection(kCCDirectorProjection2D);
 
     director->setAnimationInterval(1.0f / 60.0f);
 
-    Screen* pScene = new Loading();
+    if(!AppDelegate::isInstalled()) // Tip: Insert || true if you want to reset all saved data.
+    {
+        AppDelegate::install();
+    }
 
     Options::init();
 
-    if(!isInstalled() || true)
-    {
-        install();
-    }
+    Screen* pScene = new Loading();
 
     director->runWithScene(pScene);
 

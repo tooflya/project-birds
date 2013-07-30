@@ -56,6 +56,11 @@ void Button::onTouch(CCTouch* touch, CCEvent* event)
 {
     if(this->mOnTouchCallback != 0)
     {
+        if(Options::SOUND_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->playEffect("tap.wav");
+        }
+        
         this->mOnTouchCallback(Options::BUTTONS_ACTION_ONTOUCH, this->mID);
     }
 }

@@ -110,6 +110,8 @@ void ResetProgress::onHide()
 
     if(this->mAction)
     {
+        AppDelegate::install();
+        
         AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
     }
     

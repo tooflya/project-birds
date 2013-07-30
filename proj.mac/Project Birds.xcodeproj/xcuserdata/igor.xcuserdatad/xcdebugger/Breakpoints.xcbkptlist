@@ -102,11 +102,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "395586342.271396"
+         timestampString = "396870078.706846"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "659"
-         endingLineNumber = "659"
+         startingLineNumber = "661"
+         endingLineNumber = "661"
          landmarkName = "Entity::update(float pDeltaTime)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -115,11 +115,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "395587316.801669"
+         timestampString = "396870078.706846"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "667"
-         endingLineNumber = "667"
+         startingLineNumber = "669"
+         endingLineNumber = "669"
          landmarkName = "Entity::update(float pDeltaTime)"
          landmarkType = "5">
       </FileBreakpoint>

@@ -38,10 +38,10 @@ Settings::Settings()
 
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
 
-    this->mSoundButton->create()->setCurrentFrameIndex(1);
+    this->mSoundButton->create()->setCurrentFrameIndex(Options::SOUND_ENABLE ? 1 : 4);
     this->mSoundButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
 
-    this->mMusicButton->create()->setCurrentFrameIndex(0);
+    this->mMusicButton->create()->setCurrentFrameIndex(Options::MUSIC_ENABLE ? 0 : 3);
     this->mMusicButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
     
     this->mCreditsButton->create()->setCurrentFrameIndex(1);
@@ -99,12 +99,18 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     
                     if(Options::MUSIC_ENABLE)
                     {
+                        SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+
                         pSender->mMusicButton->setCurrentFrameIndex(0);
                     }
                     else
                     {
+                        SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+
                         pSender->mMusicButton->setCurrentFrameIndex(3);
                     }
+
+                    AppDelegate::setMusicEnable(Options::MUSIC_ENABLE);
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_SOUND:
@@ -119,6 +125,8 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         pSender->mSoundButton->setCurrentFrameIndex(4);
                     }
+
+                    AppDelegate::setSoundEnable(Options::SOUND_ENABLE);
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_CREDITS:

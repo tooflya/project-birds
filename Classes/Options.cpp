@@ -263,6 +263,9 @@ void Options::init()
 {
     Options::CURRENT_LANGUAGE = AppDelegate::getSelectedLanguage();
 
+    Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
+    Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
+    
     Options::changeLanguage();
 }
 

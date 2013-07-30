@@ -117,6 +117,12 @@ class AppDelegate : private CCApplication
         static void selectItem(int pItem);
 
         static int getLevelStars(int pLevel);
+
+        static void setMusicEnable(bool pValue);
+        static void setSoundEnable(bool pValue);
+
+        static bool isMusicEnable();
+        static bool isSoundEnable();
         
         // ===========================================================
         // Override Methods
