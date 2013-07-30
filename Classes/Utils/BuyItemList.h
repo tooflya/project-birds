@@ -30,6 +30,7 @@ class BuyItemList : public List
         Text* mDescriptionText;
         Text* mPriceText;
         Text* mPowerText;
+        Text* mBoughtText;
 
         BatchEntityManager* mStars;
 

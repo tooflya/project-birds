@@ -87,6 +87,37 @@ void BuyItem::onTouchButtonsCallback(const int pAction, const int pID)
     }
 }
 
+void BuyItem::show()
+{
+    Popup::show();
+
+    this->mBuyButton->setVisible(true);
+
+    if(AppDelegate::isItemBought(Shop::CLICKED_ITEM_ID))
+    {
+        this->mBuyButton->setText(Options::TEXT_BUYITEM_CHOOSE);
+
+        if(Shop::CLICKED_ITEM_ID >= 30)
+        {
+            this->mBuyButton->setVisible(false);
+        }
+
+        if(AppDelegate::isItemSelected(Shop::CLICKED_ITEM_ID))
+        {
+            this->mBuyButton->setVisible(false);
+        }
+    }
+    else
+    {
+        this->mBuyButton->setText(Options::TEXT_BUYITEM_BUY);
+    }
+}
+
+void BuyItem::onShow()
+{
+    Popup::onShow();
+}
+
 void BuyItem::onHide()
 {
     Shop* shop = (Shop*) this->getParent();

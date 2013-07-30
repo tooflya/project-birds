@@ -127,22 +127,23 @@ const char* Options::SHOP_ITEMS_PROPERTIES[100] =
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00"
 };
 
-Textes Options::TEXTES_HOLDER[200] =
+Textes Options::TEXTES_HOLDER[300] =
 {
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 };
 
 Textes Options::TEXT_LOADING_1 = { "", FONT, 0, 0 };
@@ -194,7 +195,7 @@ Textes Options::TEXT_MODEHELP_OK = { "", FONT, 0, 49 };
 Textes Options::TEXT_MODEHELP_HELP[2] = { { "", FONT, 0, 50 }, { "", FONT, 0, 51 } };
 Textes Options::TEXT_GETCOINS_STRING_3 = { "", FONT, 0, 52 };
 Textes Options::TEXT_GETCOINS_STRING_4 = { "", FONT, 0, 53 };
-Textes Options::TEXT_SHOP_ITEMS[64] =
+Textes Options::TEXT_SHOP_ITEMS[90] =
 {
       { "", FONT, 0, 54 }, { "", FONT, 0, 55 }, { "", FONT, 0, 56 }, { "", FONT, 0, 58 }, { "", FONT, 0, 58 }, { "", FONT, 0, 59 }, { "", FONT, 0, 60 }, { "", FONT, 0, 61 }, { "", FONT, 0, 62 }, { "", FONT, 0, 63 },
       { "", FONT, 0, 64 }, { "", FONT, 0, 65 }, { "", FONT, 0, 66 }, { "", FONT, 0, 67 }, { "", FONT, 0, 68 }, { "", FONT, 0, 69 }, { "", FONT, 0, 70 }, { "", FONT, 0, 71 }, { "", FONT, 0, 72 }, { "", FONT, 0, 73 },
@@ -202,34 +203,45 @@ Textes Options::TEXT_SHOP_ITEMS[64] =
       { "", FONT, 0, 84 }, { "", FONT, 0, 85 }, { "", FONT, 0, 86 }, { "", FONT, 0, 87 }, { "", FONT, 0, 88 }, { "", FONT, 0, 89 }, { "", FONT, 0, 90 }, { "", FONT, 0, 91 }, { "", FONT, 0, 92 }, { "", FONT, 0, 93 },
       { "", FONT, 0, 94 }, { "", FONT, 0, 95 }, { "", FONT, 0, 96 }, { "", FONT, 0, 97 }, { "", FONT, 0, 98 }, { "", FONT, 0, 99 }, { "", FONT, 0, 100 }, { "", FONT, 0, 101 }, { "", FONT, 0, 102 }, { "", FONT, 0, 103 },
       { "", FONT, 0, 104 }, { "", FONT, 0, 105 }, { "", FONT, 0, 106 }, { "", FONT, 0, 107 }, { "", FONT, 0, 108 }, { "", FONT, 0, 109 }, { "", FONT, 0, 110 }, { "", FONT, 0, 111 }, { "", FONT, 0, 112 }, { "", FONT, 0, 113 },
-      { "", FONT, 0, 114 }, { "", FONT, 0, 115 }, { "", FONT, 0, 116 }, { "", FONT, 0, 117 }
+      { "", FONT, 0, 114 }, { "", FONT, 0, 115 }, { "", FONT, 0, 116 }, { "", FONT, 0, 117 }, { "", FONT, 0, 118 }, { "", FONT, 0, 119 }, { "", FONT, 0, 120 }, { "", FONT, 0, 121 }, { "", FONT, 0, 122 }, { "", FONT, 0, 123 },
+      { "", FONT, 0, 124 }, { "", FONT, 0, 125 }, { "", FONT, 0, 126 }, { "", FONT, 0, 127 }, { "", FONT, 0, 128 }, { "", FONT, 0, 129 }, { "", FONT, 0, 130 }, { "", FONT, 0, 131 }, { "", FONT, 0, 132 }, { "", FONT, 0, 133 },
+      { "", FONT, 0, 134 }, { "", FONT, 0, 135 }, { "", FONT, 0, 136 }, { "", FONT, 0, 137 }, { "", FONT, 0, 138 }, { "", FONT, 0, 139 }, { "", FONT, 0, 140 }, { "", FONT, 0, 141 }, { "", FONT, 0, 142 }, { "", FONT, 0, 143 }
 };
-Textes Options::TEXT_SHOP_BOUGHT =  { "", FONT, 0, 118 };
-Textes Options::TEXT_TAP_TO_CONTINUE =  { "", FONT, 0, 119 };
+Textes Options::TEXT_SHOP_BOUGHT =  { "", FONT, 0, 144 };
+Textes Options::TEXT_TAP_TO_CONTINUE =  { "", FONT, 0, 145 };
 Textes Options::TEXT_TIP[10] =
 {
-    { "", FONT, 36, 120 },
-    { "", FONT, 36, 121 },
-    { "", FONT, 36, 122 },
-    { "", FONT, 36, 123 },
-    { "", FONT, 36, 124 },
-    { "", FONT, 36, 125 },
-    { "", FONT, 36, 126 },
-    { "", FONT, 36, 127 },
-    { "", FONT, 36, 128 },
-    { "", FONT, 36, 129 }
+    { "", FONT, 36, 146 },
+    { "", FONT, 36, 147 },
+    { "", FONT, 36, 148 },
+    { "", FONT, 36, 149 },
+    { "", FONT, 36, 150 },
+    { "", FONT, 36, 151 },
+    { "", FONT, 36, 152 },
+    { "", FONT, 36, 153 },
+    { "", FONT, 36, 154 },
+    { "", FONT, 36, 155 }
 };
-Textes Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[64] =
+Textes Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[90] =
 {
-      { "", FONT, 0, 130 }, { "", FONT, 0, 131 }, { "", FONT, 0, 132 }, { "", FONT, 0, 133 }, { "", FONT, 0, 134 }, { "", FONT, 0, 135 }, { "", FONT, 0, 136 }, { "", FONT, 0, 137 }, { "", FONT, 0, 138 }, { "", FONT, 0, 139 },
-      { "", FONT, 0, 140 }, { "", FONT, 0, 141 }, { "", FONT, 0, 142 }, { "", FONT, 0, 143 }, { "", FONT, 0, 144 }, { "", FONT, 0, 145 }, { "", FONT, 0, 146 }, { "", FONT, 0, 147 }, { "", FONT, 0, 148 }, { "", FONT, 0, 149 },
-      { "", FONT, 0, 150 }, { "", FONT, 0, 151 }, { "", FONT, 0, 152 }, { "", FONT, 0, 153 }, { "", FONT, 0, 154 }, { "", FONT, 0, 155 }, { "", FONT, 0, 156 }, { "", FONT, 0, 157 }, { "", FONT, 0, 158 }, { "", FONT, 0, 159 },
-      { "", FONT, 0, 160 }, { "", FONT, 0, 161 }, { "", FONT, 0, 162 }, { "", FONT, 0, 163 }, { "", FONT, 0, 164 }, { "", FONT, 0, 165 }, { "", FONT, 0, 166 }, { "", FONT, 0, 167 }, { "", FONT, 0, 168 }, { "", FONT, 0, 169 },
-      { "", FONT, 0, 170 }, { "", FONT, 0, 171 }, { "", FONT, 0, 172 }, { "", FONT, 0, 173 }, { "", FONT, 0, 174 }, { "", FONT, 0, 175 }, { "", FONT, 0, 176 }, { "", FONT, 0, 177 }, { "", FONT, 0, 178 }, { "", FONT, 0, 179 },
-      { "", FONT, 0, 180 }, { "", FONT, 0, 181 }, { "", FONT, 0, 182 }, { "", FONT, 0, 183 }, { "", FONT, 0, 184 }, { "", FONT, 0, 185 }, { "", FONT, 0, 186 }, { "", FONT, 0, 187 }, { "", FONT, 0, 188 }, { "", FONT, 0, 189 },
-      { "", FONT, 0, 190 }, { "", FONT, 0, 191 }, { "", FONT, 0, 192 }, { "", FONT, 0, 193 }
+      { "", FONT, 0, 156 }, { "", FONT, 0, 157 }, { "", FONT, 0, 158 }, { "", FONT, 0, 159 }, { "", FONT, 0, 160 }, { "", FONT, 0, 161 }, { "", FONT, 0, 162 }, { "", FONT, 0, 163 }, { "", FONT, 0, 164 }, { "", FONT, 0, 165 },
+      { "", FONT, 0, 166 }, { "", FONT, 0, 167 }, { "", FONT, 0, 168 }, { "", FONT, 0, 169 }, { "", FONT, 0, 170 }, { "", FONT, 0, 171 }, { "", FONT, 0, 172 }, { "", FONT, 0, 173 }, { "", FONT, 0, 174 }, { "", FONT, 0, 175 },
+      { "", FONT, 0, 176 }, { "", FONT, 0, 177 }, { "", FONT, 0, 178 }, { "", FONT, 0, 179 }, { "", FONT, 0, 180 }, { "", FONT, 0, 181 }, { "", FONT, 0, 182 }, { "", FONT, 0, 183 }, { "", FONT, 0, 184 }, { "", FONT, 0, 185 },
+      { "", FONT, 0, 186 }, { "", FONT, 0, 187 }, { "", FONT, 0, 188 }, { "", FONT, 0, 189 }, { "", FONT, 0, 190 }, { "", FONT, 0, 191 }, { "", FONT, 0, 192 }, { "", FONT, 0, 193 }, { "", FONT, 0, 194 }, { "", FONT, 0, 195 },
+      { "", FONT, 0, 196 }, { "", FONT, 0, 197 }, { "", FONT, 0, 198 }, { "", FONT, 0, 199 }, { "", FONT, 0, 200 }, { "", FONT, 0, 201 }, { "", FONT, 0, 202 }, { "", FONT, 0, 203 }, { "", FONT, 0, 204 }, { "", FONT, 0, 205 },
+      { "", FONT, 0, 206 }, { "", FONT, 0, 207 }, { "", FONT, 0, 208 }, { "", FONT, 0, 209 }, { "", FONT, 0, 210 }, { "", FONT, 0, 211 }, { "", FONT, 0, 212 }, { "", FONT, 0, 213 }, { "", FONT, 0, 214 }, { "", FONT, 0, 215 },
+      { "", FONT, 0, 216 }, { "", FONT, 0, 217 }, { "", FONT, 0, 218 }, { "", FONT, 0, 219 }, { "", FONT, 0, 220 }, { "", FONT, 0, 221 }, { "", FONT, 0, 222 }, { "", FONT, 0, 223 }, { "", FONT, 0, 224 }, { "", FONT, 0, 225 },
+      { "", FONT, 0, 226 }, { "", FONT, 0, 227 }, { "", FONT, 0, 228 }, { "", FONT, 0, 229 }, { "", FONT, 0, 230 }, { "", FONT, 0, 231 }, { "", FONT, 0, 232 }, { "", FONT, 0, 233 }, { "", FONT, 0, 234 }, { "", FONT, 0, 235 },
+      { "", FONT, 0, 236 }, { "", FONT, 0, 237 }, { "", FONT, 0, 238 }, { "", FONT, 0, 239 }, { "", FONT, 0, 240 }, { "", FONT, 0, 241 }, { "", FONT, 0, 242 }, { "", FONT, 0, 243 }, { "", FONT, 0, 244 }, { "", FONT, 0, 245 }
 };
-Textes Options::TEXT_MORE_GAMES = {"", FONT, 48, 193};
+Textes Options::TEXT_MORE_GAMES = {"", FONT, 48, 246};
+Textes Options::TEXT_PUBLISHER_STRING_1 = {"", FONT, 48, 247};
+Textes Options::TEXT_PUBLISHER_STRING_2 = {"", FONT, 36, 248};
+Textes Options::TEXT_PUBLISHER_STRING_3 = {"", FONT, 36, 249};
+Textes Options::TEXT_BUYITEM_CHOOSE = {"", FONT, 0, 250};
+Textes Options::TEXT_ITEM_ALREADY_BOUGHT = {"", FONT, 32, 251};
+Textes Options::TEXT_PAUSE_BACK_TO_SELECT_MODE = {"", FONT, 42, 252};
+Textes Options::TEXT_PAUSE_CONTINUE = {"", FONT, 42, 253};
 
 // ===========================================================
 // Fields
@@ -261,10 +273,10 @@ void Options::changeLanguage()
     switch(Options::CURRENT_LANGUAGE)
     {
         case 0:
-            TEXT_LOADING_1.string = "0%";
+            TEXT_LOADING_1.string = "Loading... 0%";
             TEXT_LOADING_1.size = 32;
             
-            TEXT_LOADING_2.string = "";
+            TEXT_LOADING_2.string = "Loading... ";
             TEXT_LOADING_2.size = 32;
             
             TEXT_SETTINGS_CREDITS.string = "About";
@@ -414,7 +426,7 @@ void Options::changeLanguage()
             TEXT_MODEHELP_HELP[0].string = "About modes";
             TEXT_MODEHELP_HELP[0].size = 48;
             
-            TEXT_MODEHELP_HELP[1].string = "Classic mode - the game in which you have to compete with other players to earn coins, to increase its global ranking and use the bonus earned.\n\nArcade mode - allow you to show what you can do in one minute! As the game progresses your skills increase and you are quite able to surpass its previous record!\n\nProgress mode - a special mode. Available to you 75 levels (update soon) with a variety of tasks. As you progress through levels you will unlock new opportunities that you can get to use in other game modes.";
+            TEXT_MODEHELP_HELP[1].string = "Classic mode - the game in which you have to compete with other players to earn coins, to increase its global ranking and use the bonus earned.\n \nArcade mode - allow you to show what you can do in one minute! As the game progresses your skills increase and you are quite able to surpass its previous record!\n \nProgress mode - a special mode. Available to you 80 levels (update soon) with a variety of tasks. As you progress through levels you will unlock new opportunities that you can get to use in other game modes.";
             TEXT_MODEHELP_HELP[1].size = 24;
             
             TEXT_SHOP_ITEMS[0].string = "Bamboo truth";
@@ -450,29 +462,29 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[10].string = "Clown head baseball bat";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[11].string = "Information not found";
-            TEXT_SHOP_ITEMS[11].size = 48;
-            
-            TEXT_SHOP_ITEMS[12].string = "Information not found";
-            TEXT_SHOP_ITEMS[12].size = 48;
-            
-            TEXT_SHOP_ITEMS[13].string = "Information not found";
-            TEXT_SHOP_ITEMS[13].size = 48;
-            
-            TEXT_SHOP_ITEMS[14].string = "Information not found";
-            TEXT_SHOP_ITEMS[14].size = 48;
-            
-            TEXT_SHOP_ITEMS[15].string = "Information not found";
-            TEXT_SHOP_ITEMS[15].size = 48;
-            
-            TEXT_SHOP_ITEMS[16].string = "Information not found";
-            TEXT_SHOP_ITEMS[16].size = 48;
-            
-            TEXT_SHOP_ITEMS[17].string = "Information not found";
-            TEXT_SHOP_ITEMS[17].size = 48;
-            
             TEXT_SHOP_ITEMS[30].string = "Freeze bird";
             TEXT_SHOP_ITEMS[30].size = 48;
+            
+            TEXT_SHOP_ITEMS[31].string = "Information not found";
+            TEXT_SHOP_ITEMS[31].size = 48;
+            
+            TEXT_SHOP_ITEMS[32].string = "Information not found";
+            TEXT_SHOP_ITEMS[32].size = 48;
+            
+            TEXT_SHOP_ITEMS[33].string = "Information not found";
+            TEXT_SHOP_ITEMS[33].size = 48;
+            
+            TEXT_SHOP_ITEMS[60].string = "Information not found";
+            TEXT_SHOP_ITEMS[60].size = 48;
+            
+            TEXT_SHOP_ITEMS[61].string = "Information not found";
+            TEXT_SHOP_ITEMS[61].size = 48;
+            
+            TEXT_SHOP_ITEMS[62].string = "Information not found";
+            TEXT_SHOP_ITEMS[62].size = 48;
+            
+            TEXT_SHOP_ITEMS[63].string = "Information not found";
+            TEXT_SHOP_ITEMS[63].size = 48;
             
             TEXT_SHOP_BOUGHT.string = "was unlocked";
             TEXT_SHOP_BOUGHT.size = 48;
@@ -516,7 +528,7 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Information about freeze bird.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Information not found.";
@@ -550,14 +562,52 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[64].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[65].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[66].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[67].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[68].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[69].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[70].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[71].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[72].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[73].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[74].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[75].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[76].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[77].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[78].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[79].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[80].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[81].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[82].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[83].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[84].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[85].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[86].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[87].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[88].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[89].string = "Information not found.";
 
             TEXT_MORE_GAMES.string = "More games";
+
+            TEXT_PUBLISHER_STRING_1.string = "Information for Publisher";
+            TEXT_PUBLISHER_STRING_2.string = "This button should open Game Center with the table of players rating. For iOS it's Apple Game Center and for Android it's Google Play Game Services.";
+            TEXT_PUBLISHER_STRING_3.string = "This button should open Game Center with the table of players achievements. For iOS it's Apple Game Center and for Android it's Google Play Game Services.";
+            
+            TEXT_BUYITEM_CHOOSE.string = "Select";
+            TEXT_BUYITEM_CHOOSE.size = 46;
+
+            TEXT_ITEM_ALREADY_BOUGHT.string = "Already bought";
+
+            TEXT_PAUSE_BACK_TO_SELECT_MODE.string = "Mode choose";
+            TEXT_PAUSE_CONTINUE.string = "Continue";
         break;
         case 1:
-            TEXT_LOADING_1.string = "0%";
+            TEXT_LOADING_1.string = "Загрузка... 0%";
             TEXT_LOADING_1.size = 32;
             
-            TEXT_LOADING_2.string = "";
+            TEXT_LOADING_2.string = "Загрузка... ";
             TEXT_LOADING_2.size = 32;
             
             TEXT_SETTINGS_CREDITS.string = "Об игре";
@@ -710,7 +760,7 @@ void Options::changeLanguage()
             TEXT_MODEHELP_HELP[0].string = "О режимах";
             TEXT_MODEHELP_HELP[0].size = 48;
             
-            TEXT_MODEHELP_HELP[1].string = "Классический режим - режим игры в котором вам предстоит соревноваться с другими игроками, зарабатывать монеты, увеличивать свой глобальный рейтинг и пользоваться заработанными бонусами.\n\nРежим аркады - позволит вам показать на что вы способны за одну минуту! По мере прохождения игры ваши навыки увеличиваются и вы вполне в силах превзойти свой предыдущий рекорд!\n\nПрохождение - это особый режим. Вам доступно 75 уровней (обновления совсем скоро) с различными заданиями. По мере прохождения уровней вам будут открываться новые возможности, которые вы можте использовать в других режимах игры.";
+            TEXT_MODEHELP_HELP[1].string = "Классический режим - режим игры в котором вам предстоит соревноваться с другими игроками, зарабатывать монеты, увеличивать свой глобальный рейтинг и пользоваться заработанными бонусами.\n \nРежим аркады - позволит вам показать на что вы способны за одну минуту! По мере прохождения игры ваши навыки увеличиваются и вы вполне в силах превзойти свой предыдущий рекорд!\n \nПрохождение - это особый режим. Вам доступно 80 уровней (обновления совсем скоро) с различными заданиями. По мере прохождения уровней вам будут открываться новые возможности, которые вы можте использовать в других режимах игры.";
             TEXT_MODEHELP_HELP[1].size = 24;
             
             TEXT_SHOP_ITEMS[0].string = "Бамбуковая палка";
@@ -746,29 +796,29 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[10].string = "Бита клоуна";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[11].string = "Какая-то птица 1";
-            TEXT_SHOP_ITEMS[11].size = 48;
-            
-            TEXT_SHOP_ITEMS[12].string = "Какой-то бонус 3";
-            TEXT_SHOP_ITEMS[12].size = 48;
-            
-            TEXT_SHOP_ITEMS[13].string = "Какой-то бонус 4";
-            TEXT_SHOP_ITEMS[13].size = 48;
-            
-            TEXT_SHOP_ITEMS[14].string = "Какой-то бонус 5";
-            TEXT_SHOP_ITEMS[14].size = 48;
-            
-            TEXT_SHOP_ITEMS[15].string = "Какой-то бонус 6";
-            TEXT_SHOP_ITEMS[15].size = 48;
-            
-            TEXT_SHOP_ITEMS[16].string = "Какой-то бонус 7";
-            TEXT_SHOP_ITEMS[16].size = 48;
-            
-            TEXT_SHOP_ITEMS[17].string = "Какой-то бонус 8";
-            TEXT_SHOP_ITEMS[17].size = 48;
-            
             TEXT_SHOP_ITEMS[30].string = "Ледяная птица";
             TEXT_SHOP_ITEMS[30].size = 48;
+            
+            TEXT_SHOP_ITEMS[31].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[31].size = 48;
+            
+            TEXT_SHOP_ITEMS[32].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[32].size = 48;
+            
+            TEXT_SHOP_ITEMS[33].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[33].size = 48;
+            
+            TEXT_SHOP_ITEMS[60].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[60].size = 48;
+            
+            TEXT_SHOP_ITEMS[61].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[61].size = 48;
+            
+            TEXT_SHOP_ITEMS[62].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[62].size = 48;
+            
+            TEXT_SHOP_ITEMS[63].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[63].size = 48;
             
             TEXT_SHOP_BOUGHT.string = "было куплено";
             TEXT_SHOP_BOUGHT.size = 48;
@@ -846,8 +896,46 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[64].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[65].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[66].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[67].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[68].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[69].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[70].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[71].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[72].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[73].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[74].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[75].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[76].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[77].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[78].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[79].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[80].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[81].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[82].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[83].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[84].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[85].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[86].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[87].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[88].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[89].string = "Информации не найдено.";
 
             TEXT_MORE_GAMES.string = "Другие игры";
+
+            TEXT_PUBLISHER_STRING_1.string = "Информация для издателей";
+            TEXT_PUBLISHER_STRING_2.string = "Данная кнопка должна открывать Game Center с таблицей рейтинга игроков. Для iOS это Apple Game Center, для Android это Google Play Game Services.";
+            TEXT_PUBLISHER_STRING_3.string = "Данная кнопка должна открывать Game Center со списком достижений игроков. Для iOS это Apple Game Center, для Android это Google Play Game Services.";
+            
+            TEXT_BUYITEM_CHOOSE.string = "Выбрать";
+            TEXT_BUYITEM_CHOOSE.size = 46;
+
+            TEXT_ITEM_ALREADY_BOUGHT.string = "Уже куплено";
+
+            TEXT_PAUSE_BACK_TO_SELECT_MODE.string = "Выбор режима";
+            TEXT_PAUSE_CONTINUE.string = "Продолжить";
         break;
     }
     
@@ -943,109 +1031,170 @@ void Options::changeLanguage()
     TEXTES_HOLDER[91] = TEXT_SHOP_ITEMS[37];
     TEXTES_HOLDER[92] = TEXT_SHOP_ITEMS[38];
     TEXTES_HOLDER[93] = TEXT_SHOP_ITEMS[39];
-    TEXTES_HOLDER[94] = TEXT_SHOP_ITEMS[41];
-    TEXTES_HOLDER[95] = TEXT_SHOP_ITEMS[42];
-    TEXTES_HOLDER[96] = TEXT_SHOP_ITEMS[43];
-    TEXTES_HOLDER[97] = TEXT_SHOP_ITEMS[44];
-    TEXTES_HOLDER[98] = TEXT_SHOP_ITEMS[45];
-    TEXTES_HOLDER[99] = TEXT_SHOP_ITEMS[46];
-    TEXTES_HOLDER[100] = TEXT_SHOP_ITEMS[47];
-    TEXTES_HOLDER[101] = TEXT_SHOP_ITEMS[48];
-    TEXTES_HOLDER[102] = TEXT_SHOP_ITEMS[49];
-    TEXTES_HOLDER[103] = TEXT_SHOP_ITEMS[50];
-    TEXTES_HOLDER[104] = TEXT_SHOP_ITEMS[51];
-    TEXTES_HOLDER[105] = TEXT_SHOP_ITEMS[52];
-    TEXTES_HOLDER[106] = TEXT_SHOP_ITEMS[53];
-    TEXTES_HOLDER[107] = TEXT_SHOP_ITEMS[54];
-    TEXTES_HOLDER[108] = TEXT_SHOP_ITEMS[55];
-    TEXTES_HOLDER[109] = TEXT_SHOP_ITEMS[56];
-    TEXTES_HOLDER[110] = TEXT_SHOP_ITEMS[57];
-    TEXTES_HOLDER[111] = TEXT_SHOP_ITEMS[58];
-    TEXTES_HOLDER[112] = TEXT_SHOP_ITEMS[59];
-    TEXTES_HOLDER[113] = TEXT_SHOP_ITEMS[60];
-    TEXTES_HOLDER[114] = TEXT_SHOP_ITEMS[61];
-    TEXTES_HOLDER[115] = TEXT_SHOP_ITEMS[62];
-    TEXTES_HOLDER[116] = TEXT_SHOP_ITEMS[63];
-    TEXTES_HOLDER[117] = TEXT_SHOP_ITEMS[64];
-    TEXTES_HOLDER[118] = TEXT_SHOP_BOUGHT;
-    TEXTES_HOLDER[119] = TEXT_TAP_TO_CONTINUE;
-    TEXTES_HOLDER[120] = TEXT_TIP[0];
-    TEXTES_HOLDER[121] = TEXT_TIP[1];
-    TEXTES_HOLDER[122] = TEXT_TIP[2];
-    TEXTES_HOLDER[123] = TEXT_TIP[3];
-    TEXTES_HOLDER[124] = TEXT_TIP[4];
-    TEXTES_HOLDER[125] = TEXT_TIP[5];
-    TEXTES_HOLDER[126] = TEXT_TIP[6];
-    TEXTES_HOLDER[127] = TEXT_TIP[7];
-    TEXTES_HOLDER[128] = TEXT_TIP[8];
-    TEXTES_HOLDER[129] = TEXT_TIP[9];
+    TEXTES_HOLDER[94] = TEXT_SHOP_ITEMS[40];
+    TEXTES_HOLDER[95] = TEXT_SHOP_ITEMS[41];
+    TEXTES_HOLDER[96] = TEXT_SHOP_ITEMS[42];
+    TEXTES_HOLDER[97] = TEXT_SHOP_ITEMS[43];
+    TEXTES_HOLDER[98] = TEXT_SHOP_ITEMS[44];
+    TEXTES_HOLDER[99] = TEXT_SHOP_ITEMS[45];
+    TEXTES_HOLDER[100] = TEXT_SHOP_ITEMS[46];
+    TEXTES_HOLDER[101] = TEXT_SHOP_ITEMS[47];
+    TEXTES_HOLDER[102] = TEXT_SHOP_ITEMS[48];
+    TEXTES_HOLDER[103] = TEXT_SHOP_ITEMS[49];
+    TEXTES_HOLDER[104] = TEXT_SHOP_ITEMS[50];
+    TEXTES_HOLDER[105] = TEXT_SHOP_ITEMS[51];
+    TEXTES_HOLDER[106] = TEXT_SHOP_ITEMS[52];
+    TEXTES_HOLDER[107] = TEXT_SHOP_ITEMS[53];
+    TEXTES_HOLDER[108] = TEXT_SHOP_ITEMS[54];
+    TEXTES_HOLDER[109] = TEXT_SHOP_ITEMS[55];
+    TEXTES_HOLDER[110] = TEXT_SHOP_ITEMS[56];
+    TEXTES_HOLDER[111] = TEXT_SHOP_ITEMS[57];
+    TEXTES_HOLDER[112] = TEXT_SHOP_ITEMS[58];
+    TEXTES_HOLDER[113] = TEXT_SHOP_ITEMS[59];
+    TEXTES_HOLDER[114] = TEXT_SHOP_ITEMS[60];
+    TEXTES_HOLDER[115] = TEXT_SHOP_ITEMS[61];
+    TEXTES_HOLDER[116] = TEXT_SHOP_ITEMS[62];
+    TEXTES_HOLDER[117] = TEXT_SHOP_ITEMS[63];
+    TEXTES_HOLDER[118] = TEXT_SHOP_ITEMS[64];
+    TEXTES_HOLDER[119] = TEXT_SHOP_ITEMS[65];
+    TEXTES_HOLDER[120] = TEXT_SHOP_ITEMS[66];
+    TEXTES_HOLDER[121] = TEXT_SHOP_ITEMS[67];
+    TEXTES_HOLDER[122] = TEXT_SHOP_ITEMS[68];
+    TEXTES_HOLDER[123] = TEXT_SHOP_ITEMS[69];
+    TEXTES_HOLDER[124] = TEXT_SHOP_ITEMS[70];
+    TEXTES_HOLDER[125] = TEXT_SHOP_ITEMS[71];
+    TEXTES_HOLDER[126] = TEXT_SHOP_ITEMS[72];
+    TEXTES_HOLDER[127] = TEXT_SHOP_ITEMS[73];
+    TEXTES_HOLDER[128] = TEXT_SHOP_ITEMS[74];
+    TEXTES_HOLDER[129] = TEXT_SHOP_ITEMS[75];
+    TEXTES_HOLDER[130] = TEXT_SHOP_ITEMS[76];
+    TEXTES_HOLDER[131] = TEXT_SHOP_ITEMS[77];
+    TEXTES_HOLDER[132] = TEXT_SHOP_ITEMS[78];
+    TEXTES_HOLDER[133] = TEXT_SHOP_ITEMS[79];
+    TEXTES_HOLDER[134] = TEXT_SHOP_ITEMS[80];
+    TEXTES_HOLDER[135] = TEXT_SHOP_ITEMS[81];
+    TEXTES_HOLDER[136] = TEXT_SHOP_ITEMS[82];
+    TEXTES_HOLDER[137] = TEXT_SHOP_ITEMS[83];
+    TEXTES_HOLDER[138] = TEXT_SHOP_ITEMS[84];
+    TEXTES_HOLDER[139] = TEXT_SHOP_ITEMS[85];
+    TEXTES_HOLDER[140] = TEXT_SHOP_ITEMS[86];
+    TEXTES_HOLDER[141] = TEXT_SHOP_ITEMS[87];
+    TEXTES_HOLDER[142] = TEXT_SHOP_ITEMS[88];
+    TEXTES_HOLDER[143] = TEXT_SHOP_ITEMS[89];
 
-    TEXTES_HOLDER[130] = TEXT_SHOP_ITEMS_DESCRIPTIONS[0];
-    TEXTES_HOLDER[131] = TEXT_SHOP_ITEMS_DESCRIPTIONS[1];
-    TEXTES_HOLDER[132] = TEXT_SHOP_ITEMS_DESCRIPTIONS[2];
-    TEXTES_HOLDER[133] = TEXT_SHOP_ITEMS_DESCRIPTIONS[3];
-    TEXTES_HOLDER[134] = TEXT_SHOP_ITEMS_DESCRIPTIONS[4];
-    TEXTES_HOLDER[135] = TEXT_SHOP_ITEMS_DESCRIPTIONS[5];
-    TEXTES_HOLDER[136] = TEXT_SHOP_ITEMS_DESCRIPTIONS[6];
-    TEXTES_HOLDER[137] = TEXT_SHOP_ITEMS_DESCRIPTIONS[7];
-    TEXTES_HOLDER[138] = TEXT_SHOP_ITEMS_DESCRIPTIONS[8];
-    TEXTES_HOLDER[139] = TEXT_SHOP_ITEMS_DESCRIPTIONS[9];
-    TEXTES_HOLDER[140] = TEXT_SHOP_ITEMS_DESCRIPTIONS[10];
-    TEXTES_HOLDER[141] = TEXT_SHOP_ITEMS_DESCRIPTIONS[11];
-    TEXTES_HOLDER[142] = TEXT_SHOP_ITEMS_DESCRIPTIONS[12];
-    TEXTES_HOLDER[143] = TEXT_SHOP_ITEMS_DESCRIPTIONS[13];
-    TEXTES_HOLDER[144] = TEXT_SHOP_ITEMS_DESCRIPTIONS[14];
-    TEXTES_HOLDER[145] = TEXT_SHOP_ITEMS_DESCRIPTIONS[15];
-    TEXTES_HOLDER[146] = TEXT_SHOP_ITEMS_DESCRIPTIONS[16];
-    TEXTES_HOLDER[147] = TEXT_SHOP_ITEMS_DESCRIPTIONS[17];
-    TEXTES_HOLDER[148] = TEXT_SHOP_ITEMS_DESCRIPTIONS[18];
-    TEXTES_HOLDER[149] = TEXT_SHOP_ITEMS_DESCRIPTIONS[19];
-    TEXTES_HOLDER[150] = TEXT_SHOP_ITEMS_DESCRIPTIONS[20];
-    TEXTES_HOLDER[151] = TEXT_SHOP_ITEMS_DESCRIPTIONS[21];
-    TEXTES_HOLDER[152] = TEXT_SHOP_ITEMS_DESCRIPTIONS[22];
-    TEXTES_HOLDER[153] = TEXT_SHOP_ITEMS_DESCRIPTIONS[23];
-    TEXTES_HOLDER[154] = TEXT_SHOP_ITEMS_DESCRIPTIONS[24];
-    TEXTES_HOLDER[155] = TEXT_SHOP_ITEMS_DESCRIPTIONS[25];
-    TEXTES_HOLDER[156] = TEXT_SHOP_ITEMS_DESCRIPTIONS[26];
-    TEXTES_HOLDER[157] = TEXT_SHOP_ITEMS_DESCRIPTIONS[27];
-    TEXTES_HOLDER[158] = TEXT_SHOP_ITEMS_DESCRIPTIONS[28];
-    TEXTES_HOLDER[159] = TEXT_SHOP_ITEMS_DESCRIPTIONS[29];
-    TEXTES_HOLDER[160] = TEXT_SHOP_ITEMS_DESCRIPTIONS[30];
-    TEXTES_HOLDER[161] = TEXT_SHOP_ITEMS_DESCRIPTIONS[31];
-    TEXTES_HOLDER[162] = TEXT_SHOP_ITEMS_DESCRIPTIONS[32];
-    TEXTES_HOLDER[163] = TEXT_SHOP_ITEMS_DESCRIPTIONS[33];
-    TEXTES_HOLDER[164] = TEXT_SHOP_ITEMS_DESCRIPTIONS[34];
-    TEXTES_HOLDER[165] = TEXT_SHOP_ITEMS_DESCRIPTIONS[35];
-    TEXTES_HOLDER[166] = TEXT_SHOP_ITEMS_DESCRIPTIONS[36];
-    TEXTES_HOLDER[167] = TEXT_SHOP_ITEMS_DESCRIPTIONS[37];
-    TEXTES_HOLDER[168] = TEXT_SHOP_ITEMS_DESCRIPTIONS[38];
-    TEXTES_HOLDER[169] = TEXT_SHOP_ITEMS_DESCRIPTIONS[39];
-    TEXTES_HOLDER[170] = TEXT_SHOP_ITEMS_DESCRIPTIONS[41];
-    TEXTES_HOLDER[171] = TEXT_SHOP_ITEMS_DESCRIPTIONS[42];
-    TEXTES_HOLDER[172] = TEXT_SHOP_ITEMS_DESCRIPTIONS[43];
-    TEXTES_HOLDER[173] = TEXT_SHOP_ITEMS_DESCRIPTIONS[44];
-    TEXTES_HOLDER[174] = TEXT_SHOP_ITEMS_DESCRIPTIONS[45];
-    TEXTES_HOLDER[175] = TEXT_SHOP_ITEMS_DESCRIPTIONS[46];
-    TEXTES_HOLDER[176] = TEXT_SHOP_ITEMS_DESCRIPTIONS[47];
-    TEXTES_HOLDER[177] = TEXT_SHOP_ITEMS_DESCRIPTIONS[48];
-    TEXTES_HOLDER[178] = TEXT_SHOP_ITEMS_DESCRIPTIONS[49];
-    TEXTES_HOLDER[179] = TEXT_SHOP_ITEMS_DESCRIPTIONS[50];
-    TEXTES_HOLDER[180] = TEXT_SHOP_ITEMS_DESCRIPTIONS[51];
-    TEXTES_HOLDER[181] = TEXT_SHOP_ITEMS_DESCRIPTIONS[52];
-    TEXTES_HOLDER[182] = TEXT_SHOP_ITEMS_DESCRIPTIONS[53];
-    TEXTES_HOLDER[183] = TEXT_SHOP_ITEMS_DESCRIPTIONS[54];
-    TEXTES_HOLDER[184] = TEXT_SHOP_ITEMS_DESCRIPTIONS[55];
-    TEXTES_HOLDER[185] = TEXT_SHOP_ITEMS_DESCRIPTIONS[56];
-    TEXTES_HOLDER[186] = TEXT_SHOP_ITEMS_DESCRIPTIONS[57];
-    TEXTES_HOLDER[187] = TEXT_SHOP_ITEMS_DESCRIPTIONS[58];
-    TEXTES_HOLDER[188] = TEXT_SHOP_ITEMS_DESCRIPTIONS[59];
-    TEXTES_HOLDER[189] = TEXT_SHOP_ITEMS_DESCRIPTIONS[60];
-    TEXTES_HOLDER[190] = TEXT_SHOP_ITEMS_DESCRIPTIONS[61];
-    TEXTES_HOLDER[191] = TEXT_SHOP_ITEMS_DESCRIPTIONS[62];
-    TEXTES_HOLDER[192] = TEXT_SHOP_ITEMS_DESCRIPTIONS[63];
-    TEXTES_HOLDER[193] = TEXT_MORE_GAMES;
+    TEXTES_HOLDER[144] = TEXT_SHOP_BOUGHT;
+    TEXTES_HOLDER[145] = TEXT_TAP_TO_CONTINUE;
+    TEXTES_HOLDER[146] = TEXT_TIP[0];
+    TEXTES_HOLDER[147] = TEXT_TIP[1];
+    TEXTES_HOLDER[148] = TEXT_TIP[2];
+    TEXTES_HOLDER[149] = TEXT_TIP[3];
+    TEXTES_HOLDER[150] = TEXT_TIP[4];
+    TEXTES_HOLDER[151] = TEXT_TIP[5];
+    TEXTES_HOLDER[152] = TEXT_TIP[6];
+    TEXTES_HOLDER[153] = TEXT_TIP[7];
+    TEXTES_HOLDER[154] = TEXT_TIP[8];
+    TEXTES_HOLDER[155] = TEXT_TIP[9];
+
+    TEXTES_HOLDER[156] = TEXT_SHOP_ITEMS_DESCRIPTIONS[0];
+    TEXTES_HOLDER[157] = TEXT_SHOP_ITEMS_DESCRIPTIONS[1];
+    TEXTES_HOLDER[158] = TEXT_SHOP_ITEMS_DESCRIPTIONS[2];
+    TEXTES_HOLDER[159] = TEXT_SHOP_ITEMS_DESCRIPTIONS[3];
+    TEXTES_HOLDER[160] = TEXT_SHOP_ITEMS_DESCRIPTIONS[4];
+    TEXTES_HOLDER[161] = TEXT_SHOP_ITEMS_DESCRIPTIONS[5];
+    TEXTES_HOLDER[162] = TEXT_SHOP_ITEMS_DESCRIPTIONS[6];
+    TEXTES_HOLDER[163] = TEXT_SHOP_ITEMS_DESCRIPTIONS[7];
+    TEXTES_HOLDER[164] = TEXT_SHOP_ITEMS_DESCRIPTIONS[8];
+    TEXTES_HOLDER[165] = TEXT_SHOP_ITEMS_DESCRIPTIONS[9];
+    TEXTES_HOLDER[166] = TEXT_SHOP_ITEMS_DESCRIPTIONS[10];
+    TEXTES_HOLDER[167] = TEXT_SHOP_ITEMS_DESCRIPTIONS[11];
+    TEXTES_HOLDER[168] = TEXT_SHOP_ITEMS_DESCRIPTIONS[12];
+    TEXTES_HOLDER[169] = TEXT_SHOP_ITEMS_DESCRIPTIONS[13];
+    TEXTES_HOLDER[170] = TEXT_SHOP_ITEMS_DESCRIPTIONS[14];
+    TEXTES_HOLDER[171] = TEXT_SHOP_ITEMS_DESCRIPTIONS[15];
+    TEXTES_HOLDER[172] = TEXT_SHOP_ITEMS_DESCRIPTIONS[16];
+    TEXTES_HOLDER[173] = TEXT_SHOP_ITEMS_DESCRIPTIONS[17];
+    TEXTES_HOLDER[174] = TEXT_SHOP_ITEMS_DESCRIPTIONS[18];
+    TEXTES_HOLDER[175] = TEXT_SHOP_ITEMS_DESCRIPTIONS[19];
+    TEXTES_HOLDER[176] = TEXT_SHOP_ITEMS_DESCRIPTIONS[20];
+    TEXTES_HOLDER[177] = TEXT_SHOP_ITEMS_DESCRIPTIONS[21];
+    TEXTES_HOLDER[178] = TEXT_SHOP_ITEMS_DESCRIPTIONS[22];
+    TEXTES_HOLDER[179] = TEXT_SHOP_ITEMS_DESCRIPTIONS[23];
+    TEXTES_HOLDER[180] = TEXT_SHOP_ITEMS_DESCRIPTIONS[24];
+    TEXTES_HOLDER[181] = TEXT_SHOP_ITEMS_DESCRIPTIONS[25];
+    TEXTES_HOLDER[182] = TEXT_SHOP_ITEMS_DESCRIPTIONS[26];
+    TEXTES_HOLDER[183] = TEXT_SHOP_ITEMS_DESCRIPTIONS[27];
+    TEXTES_HOLDER[184] = TEXT_SHOP_ITEMS_DESCRIPTIONS[28];
+    TEXTES_HOLDER[185] = TEXT_SHOP_ITEMS_DESCRIPTIONS[29];
+    TEXTES_HOLDER[186] = TEXT_SHOP_ITEMS_DESCRIPTIONS[30];
+    TEXTES_HOLDER[187] = TEXT_SHOP_ITEMS_DESCRIPTIONS[31];
+    TEXTES_HOLDER[188] = TEXT_SHOP_ITEMS_DESCRIPTIONS[32];
+    TEXTES_HOLDER[189] = TEXT_SHOP_ITEMS_DESCRIPTIONS[33];
+    TEXTES_HOLDER[190] = TEXT_SHOP_ITEMS_DESCRIPTIONS[34];
+    TEXTES_HOLDER[191] = TEXT_SHOP_ITEMS_DESCRIPTIONS[35];
+    TEXTES_HOLDER[192] = TEXT_SHOP_ITEMS_DESCRIPTIONS[36];
+    TEXTES_HOLDER[193] = TEXT_SHOP_ITEMS_DESCRIPTIONS[37];
+    TEXTES_HOLDER[194] = TEXT_SHOP_ITEMS_DESCRIPTIONS[38];
+    TEXTES_HOLDER[195] = TEXT_SHOP_ITEMS_DESCRIPTIONS[39];
+    TEXTES_HOLDER[196] = TEXT_SHOP_ITEMS_DESCRIPTIONS[40];
+    TEXTES_HOLDER[197] = TEXT_SHOP_ITEMS_DESCRIPTIONS[41];
+    TEXTES_HOLDER[198] = TEXT_SHOP_ITEMS_DESCRIPTIONS[42];
+    TEXTES_HOLDER[199] = TEXT_SHOP_ITEMS_DESCRIPTIONS[43];
+    TEXTES_HOLDER[200] = TEXT_SHOP_ITEMS_DESCRIPTIONS[44];
+    TEXTES_HOLDER[201] = TEXT_SHOP_ITEMS_DESCRIPTIONS[45];
+    TEXTES_HOLDER[202] = TEXT_SHOP_ITEMS_DESCRIPTIONS[46];
+    TEXTES_HOLDER[203] = TEXT_SHOP_ITEMS_DESCRIPTIONS[47];
+    TEXTES_HOLDER[204] = TEXT_SHOP_ITEMS_DESCRIPTIONS[48];
+    TEXTES_HOLDER[205] = TEXT_SHOP_ITEMS_DESCRIPTIONS[49];
+    TEXTES_HOLDER[206] = TEXT_SHOP_ITEMS_DESCRIPTIONS[50];
+    TEXTES_HOLDER[207] = TEXT_SHOP_ITEMS_DESCRIPTIONS[51];
+    TEXTES_HOLDER[208] = TEXT_SHOP_ITEMS_DESCRIPTIONS[52];
+    TEXTES_HOLDER[209] = TEXT_SHOP_ITEMS_DESCRIPTIONS[53];
+    TEXTES_HOLDER[210] = TEXT_SHOP_ITEMS_DESCRIPTIONS[54];
+    TEXTES_HOLDER[211] = TEXT_SHOP_ITEMS_DESCRIPTIONS[55];
+    TEXTES_HOLDER[212] = TEXT_SHOP_ITEMS_DESCRIPTIONS[56];
+    TEXTES_HOLDER[213] = TEXT_SHOP_ITEMS_DESCRIPTIONS[57];
+    TEXTES_HOLDER[214] = TEXT_SHOP_ITEMS_DESCRIPTIONS[58];
+    TEXTES_HOLDER[215] = TEXT_SHOP_ITEMS_DESCRIPTIONS[59];
+    TEXTES_HOLDER[216] = TEXT_SHOP_ITEMS_DESCRIPTIONS[60];
+    TEXTES_HOLDER[217] = TEXT_SHOP_ITEMS_DESCRIPTIONS[61];
+    TEXTES_HOLDER[218] = TEXT_SHOP_ITEMS_DESCRIPTIONS[62];
+    TEXTES_HOLDER[219] = TEXT_SHOP_ITEMS_DESCRIPTIONS[63];
+    TEXTES_HOLDER[220] = TEXT_SHOP_ITEMS_DESCRIPTIONS[64];
+    TEXTES_HOLDER[221] = TEXT_SHOP_ITEMS_DESCRIPTIONS[65];
+    TEXTES_HOLDER[222] = TEXT_SHOP_ITEMS_DESCRIPTIONS[66];
+    TEXTES_HOLDER[223] = TEXT_SHOP_ITEMS_DESCRIPTIONS[67];
+    TEXTES_HOLDER[224] = TEXT_SHOP_ITEMS_DESCRIPTIONS[68];
+    TEXTES_HOLDER[225] = TEXT_SHOP_ITEMS_DESCRIPTIONS[69];
+    TEXTES_HOLDER[226] = TEXT_SHOP_ITEMS_DESCRIPTIONS[70];
+    TEXTES_HOLDER[227] = TEXT_SHOP_ITEMS_DESCRIPTIONS[71];
+    TEXTES_HOLDER[228] = TEXT_SHOP_ITEMS_DESCRIPTIONS[72];
+    TEXTES_HOLDER[229] = TEXT_SHOP_ITEMS_DESCRIPTIONS[73];
+    TEXTES_HOLDER[230] = TEXT_SHOP_ITEMS_DESCRIPTIONS[74];
+    TEXTES_HOLDER[231] = TEXT_SHOP_ITEMS_DESCRIPTIONS[75];
+    TEXTES_HOLDER[232] = TEXT_SHOP_ITEMS_DESCRIPTIONS[76];
+    TEXTES_HOLDER[233] = TEXT_SHOP_ITEMS_DESCRIPTIONS[77];
+    TEXTES_HOLDER[234] = TEXT_SHOP_ITEMS_DESCRIPTIONS[78];
+    TEXTES_HOLDER[235] = TEXT_SHOP_ITEMS_DESCRIPTIONS[79];
+    TEXTES_HOLDER[236] = TEXT_SHOP_ITEMS_DESCRIPTIONS[80];
+    TEXTES_HOLDER[237] = TEXT_SHOP_ITEMS_DESCRIPTIONS[81];
+    TEXTES_HOLDER[238] = TEXT_SHOP_ITEMS_DESCRIPTIONS[82];
+    TEXTES_HOLDER[239] = TEXT_SHOP_ITEMS_DESCRIPTIONS[83];
+    TEXTES_HOLDER[240] = TEXT_SHOP_ITEMS_DESCRIPTIONS[84];
+    TEXTES_HOLDER[241] = TEXT_SHOP_ITEMS_DESCRIPTIONS[85];
+    TEXTES_HOLDER[242] = TEXT_SHOP_ITEMS_DESCRIPTIONS[86];
+    TEXTES_HOLDER[243] = TEXT_SHOP_ITEMS_DESCRIPTIONS[87];
+    TEXTES_HOLDER[244] = TEXT_SHOP_ITEMS_DESCRIPTIONS[88];
+    TEXTES_HOLDER[245] = TEXT_SHOP_ITEMS_DESCRIPTIONS[89];
+    TEXTES_HOLDER[246] = TEXT_MORE_GAMES;
+    TEXTES_HOLDER[247] = TEXT_PUBLISHER_STRING_1;
+    TEXTES_HOLDER[248] = TEXT_PUBLISHER_STRING_2;
+    TEXTES_HOLDER[249] = TEXT_PUBLISHER_STRING_3;
+    TEXTES_HOLDER[250] = TEXT_BUYITEM_CHOOSE;
+    TEXTES_HOLDER[251] = TEXT_ITEM_ALREADY_BOUGHT;
+    TEXTES_HOLDER[252] = TEXT_PAUSE_BACK_TO_SELECT_MODE;
+    TEXTES_HOLDER[253] = TEXT_PAUSE_CONTINUE;
     
-    for(int i = 0; i < 194; i++)
+    for(int i = 0; i < 254; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

@@ -11,6 +11,8 @@
 #include "Explosion.h"
 #include "Dust.h"
 
+#include "Pause.h"
+
 #include "TouchTrailLayer.h"
 
 #include "AppDelegate.h"
@@ -36,6 +38,10 @@ class Game : public Screen
         float mBirdsTimeElapsed;
 
         Entity* mBackground;
+
+        Button* mPauseButton;
+
+        Popup* mPausePopup;
     
         // ===========================================================
         // Constructors

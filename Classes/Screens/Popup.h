@@ -112,8 +112,8 @@ class Popup : public CCLayer
         // Methods
         // ===========================================================
     
-        void show();
-        void hide();
+        virtual void show();
+        virtual void hide();
 
         bool isShowed();
     

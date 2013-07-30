@@ -65,6 +65,116 @@ int AppDelegate::getSelectedLanguage()
     return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_LANGUAGE_ID);
 }
 
+bool AppDelegate::isInstalled()
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey("installed") == 1;
+}
+
+void AppDelegate::install()
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("installed", 1);
+
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
+
+    for(int i = 1; i < 4; i++)
+    {
+        for(int j = 0; j < 30; j++)
+        {
+            char text[64];
+
+            sprintf(text, "item_%d_bought", i * j);
+
+            CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 0);
+
+            if(i == 1)
+            {
+                char text[64];
+
+                sprintf(text, "weapon_%d_selected", i * j);
+
+                if(j == 0)
+                {
+                    CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 1);
+                }
+                else
+                {
+                    CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 0);
+                }
+            }
+        }
+    }
+    
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("item_0_bought", 1);
+
+    for(int i = 1; i <= 80; i++)
+    {
+        char text[64];
+
+        sprintf(text, "level_%d_stars", i);
+
+        CCUserDefault::sharedUserDefault()->setIntegerForKey(text, -1);
+    }
+
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("level_1_stars", 0);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+bool AppDelegate::isItemBought(int pItem)
+{
+    char text[64];
+
+    sprintf(text, "item_%d_bought", pItem);
+
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey(text) == 1;
+}
+
+bool AppDelegate::isItemSelected(int pItem)
+{
+    char text[64];
+
+    sprintf(text, "weapon_%d_selected", pItem);
+
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey(text) == 1;
+}
+
+void AppDelegate::selectItem(int pItem)
+{
+    char text[64];
+
+    for(int i = 0; i < 30; i++)
+    {
+        sprintf(text, "weapon_%d_selected", i);
+
+        CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 0);
+    }
+
+    sprintf(text, "weapon_%d_selected", pItem);
+
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 1);
+}
+
+void AppDelegate::buyItem(int pItem)
+{
+    char text[64];
+
+    sprintf(text, "item_%d_bought", pItem);
+
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 1);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+int AppDelegate::getLevelStars(int pLevel)
+{
+    char text[64];
+
+    sprintf(text, "level_%d_stars", pLevel);
+
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey(text);
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -107,6 +217,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     Screen* pScene = new Loading();
 
     Options::init();
+
+    if(!isInstalled() || true)
+    {
+        install();
+    }
 
     director->runWithScene(pScene);
 

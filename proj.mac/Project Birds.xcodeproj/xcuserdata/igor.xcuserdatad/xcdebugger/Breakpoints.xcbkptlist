@@ -52,12 +52,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Screens/Screens/Loading.cpp"
-         timestampString = "395761821.338807"
+         timestampString = "396810479.185736"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
-         landmarkName = "Loading::loadingCallBack(CCObject *obj)"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
+         landmarkName = "Loading::Loading()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -65,12 +65,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Screens/Screens/Loading.cpp"
-         timestampString = "395761821.338807"
+         timestampString = "396810479.185736"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
-         landmarkName = "Loading::loadingCallBack(CCObject *obj)"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
+         landmarkName = "Loading::Loading()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

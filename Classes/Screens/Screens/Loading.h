@@ -24,6 +24,7 @@ class Loading : public Screen
         Text* mLoadingText;
 
         Entity* mBackground;
+        Entity* mBarBackground;
         Entity* mBar;
 
         // ===========================================================

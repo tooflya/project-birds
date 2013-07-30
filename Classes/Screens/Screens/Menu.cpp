@@ -84,13 +84,11 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
                 case Options::BUTTONS_ID_MENU_TWITTER:
 
                     // TODO: Call JNI
-                    pSender->mExitPopup->show();
 
                 break;
                 case Options::BUTTONS_ID_MENU_FACEBOOK:
 
                     // TODO: Call JNI
-                    pSender->mRatePopup->show();
 
                 break;
             }
@@ -122,6 +120,18 @@ void Menu::update(float pDeltaTime)
 
         this->mPlayDecoration->runAction(CCTintTo::create(1.0, Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0)));
     }
+}
+
+void Menu::onEnter()
+{
+    Screen::onEnter();
+
+    // TODO: Open rate window.
+}
+
+void Menu::onExit()
+{
+    Screen::onExit();
 }
 
 #endif

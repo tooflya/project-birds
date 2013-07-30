@@ -20,9 +20,21 @@ class Pause : public Popup
         // Fields
         // ===========================================================
 
-        Button* mMenuButton;
-        Button* mRestartButton;
+        float mIllustrationAnimationTime;
+        float mIllustrationAnimationTimeElapsed;
+
         Button* mContinueButton;
+        Button* mBackButton;
+        Button* mSoundButton;
+        Button* mMusicButton;
+        Button* mLeaderBoardButton;
+        Button* mAchievementsButton;
+        Button* mShopButton;
+        Button* mMenuButton;
+
+        Entity* mBirdsIllustrations[4];
+        
+        CCSpriteBatchNode* mBirdsIllustrationsBatch;
 
         // ===========================================================
         // Constructors

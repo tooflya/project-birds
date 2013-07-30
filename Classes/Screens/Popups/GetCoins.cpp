@@ -128,6 +128,7 @@ void GetCoins::update(float pDeltaTime)
 {
     Popup::update(pDeltaTime);
     
+    
     for(int i = 0; i < 2; i++)
     {
         Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
