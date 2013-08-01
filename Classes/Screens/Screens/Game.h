@@ -9,6 +9,7 @@
 #include "Mark.h"
 #include "Feather.h"
 #include "Explosion.h"
+#include "ExplosionBasic.h"
 #include "Dust.h"
 
 #include "Pause.h"
@@ -33,13 +34,21 @@ class Game : public Screen
         // ===========================================================
     
         int mBirdsRemaning;
+        int mStartGameAnimationIndex;
 
         float mBirdsTime;
         float mBirdsTimeElapsed;
 
+        float mStartGameAnimation;
+        float mStartGameAnimationElapsed;
+
+        bool mGameRunning;
+
         Entity* mBackground;
 
         Button* mPauseButton;
+
+        Text* mGameStartText;
 
         Popup* mPausePopup;
     
@@ -96,6 +105,7 @@ class Game : public Screen
         BatchEntityManager* mBirds;
         BatchEntityManager* mMarks;
         BatchEntityManager* mFeathers;
+        BatchEntityManager* mExplosionsBasic;
         BatchEntityManager* mExplosions;
         BatchEntityManager* mDust;
 

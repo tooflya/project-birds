@@ -72,6 +72,8 @@ void PleaseRate::onTouchButtonsCallback(const int pAction, const int pID)
             break;
             case Options::BUTTONS_ID_RATE_RATE:
                 
+                AppDelegate::setRate();
+
                 pSender->hide();
                 
             break;

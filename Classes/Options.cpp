@@ -1,6 +1,8 @@
 #ifndef CONST_OPTIONS
 #define CONST_OPTIONS
 
+#define ccsf(...) CCString::createWithFormat(__VA_ARGS__)->getCString()
+
 #include "Options.h"
 
 #include "Text.h"
@@ -32,6 +34,9 @@ int Options::CAMERA_CENTER_Y = 0;
 
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
+
+const char* Options::VERSION = "0.2.1";
+int Options::BUILD = 1;
 
 CCTouchInformation Options::TOUCH_INFORMATION[10] =
 {
@@ -90,7 +95,7 @@ int Options::SHOP_ITEMS_PRICES[100] =
       999, 1499, 2939, 3420, 3850, 4400, 5100, 6800, 1100, 20000,
       22199, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      22000, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      22000, 36000, 42000, 58000, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -104,10 +109,10 @@ int Options::SHOP_ITEMS_RATING_FACTOR[100] =
       10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
       100, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      20, 30, 40, 50, 60, 70, 80, 90, 100, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       20, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1
@@ -118,7 +123,7 @@ const char* Options::SHOP_ITEMS_PROPERTIES[100] =
     "12", "22", "31", "36", "42", "48", "52", "61", "68", "75",
     "88", "0", "0", "0", "0", "0", "0", "0", "0", "0",
     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",
-    "0:02", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00",
+    "0:02", "0:05", "0:12", "0:20", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
@@ -242,6 +247,9 @@ Textes Options::TEXT_BUYITEM_CHOOSE = {"", FONT, 0, 250};
 Textes Options::TEXT_ITEM_ALREADY_BOUGHT = {"", FONT, 32, 251};
 Textes Options::TEXT_PAUSE_BACK_TO_SELECT_MODE = {"", FONT, 42, 252};
 Textes Options::TEXT_PAUSE_CONTINUE = {"", FONT, 42, 253};
+Textes Options::TEXT_LANGUAGE_NOT_AVAILABLE = {"", Options::FONT, 24, 254};
+Textes Options::TEXT_GAME_START_STRING_1 = {"", Options::FONT, 100, 255};
+Textes Options::TEXT_GAME_START_STRING_2 = {"", Options::FONT, 100, 256};
 
 // ===========================================================
 // Fields
@@ -265,7 +273,14 @@ void Options::init()
 
     Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
     Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
-    
+
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+
+    CCDictionary* pConfInfo = CCDictionary::createWithContentsOfFile("Info.plist");
+    Options::BUILD = pConfInfo->valueForKey("CFBundleVersion")->intValue();
+
+    #endif
+
     Options::changeLanguage();
 }
 
@@ -368,11 +383,11 @@ void Options::changeLanguage()
             
             TEXT_CREDITS_STRING_1.string = "About";
             TEXT_CREDITS_STRING_1.size = 48;
-            
-            TEXT_CREDITS_STRING_2.string = "Version: 0.2.1";
+
+            TEXT_CREDITS_STRING_2.string = ccsf("Version: %s", Options::VERSION);
             TEXT_CREDITS_STRING_2.size = 36;
-            
-            TEXT_CREDITS_STRING_3.string = "Build: 2613";
+
+            TEXT_CREDITS_STRING_3.string = ccsf("Build: %d", Options::BUILD);
             TEXT_CREDITS_STRING_3.size = 36;
             
             TEXT_CREDITS_STRING_4.string = "Created by:";
@@ -465,16 +480,16 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[10].string = "Clown head baseball bat";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[30].string = "Freeze bird";
+            TEXT_SHOP_ITEMS[30].string = "Freeze Bird";
             TEXT_SHOP_ITEMS[30].size = 48;
             
-            TEXT_SHOP_ITEMS[31].string = "Information not found";
+            TEXT_SHOP_ITEMS[31].string = "Comanche Bird";
             TEXT_SHOP_ITEMS[31].size = 48;
             
-            TEXT_SHOP_ITEMS[32].string = "Information not found";
+            TEXT_SHOP_ITEMS[32].string = "Robo Bird";
             TEXT_SHOP_ITEMS[32].size = 48;
             
-            TEXT_SHOP_ITEMS[33].string = "Information not found";
+            TEXT_SHOP_ITEMS[33].string = "Pirat Bird";
             TEXT_SHOP_ITEMS[33].size = 48;
             
             TEXT_SHOP_ITEMS[60].string = "Information not found";
@@ -605,6 +620,11 @@ void Options::changeLanguage()
 
             TEXT_PAUSE_BACK_TO_SELECT_MODE.string = "Mode choose";
             TEXT_PAUSE_CONTINUE.string = "Continue";
+
+            TEXT_LANGUAGE_NOT_AVAILABLE.string = "Not available now";
+
+            TEXT_GAME_START_STRING_1.string = "Ready?";
+            TEXT_GAME_START_STRING_2.string = "Go!";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -703,10 +723,10 @@ void Options::changeLanguage()
             TEXT_CREDITS_STRING_1.string = "Об игре";
             TEXT_CREDITS_STRING_1.size = 48;
             
-            TEXT_CREDITS_STRING_2.string = "Версия: 0.2.1";
+            TEXT_CREDITS_STRING_2.string = ccsf("Версия: %s", Options::VERSION);
             TEXT_CREDITS_STRING_2.size = 36;
             
-            TEXT_CREDITS_STRING_3.string = "Сборка: 2613";
+            TEXT_CREDITS_STRING_3.string = ccsf("Сборка: %d", Options::BUILD);
             TEXT_CREDITS_STRING_3.size = 36;
             
             TEXT_CREDITS_STRING_4.string = "Над игрой работали:";
@@ -802,16 +822,16 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[30].string = "Ледяная птица";
             TEXT_SHOP_ITEMS[30].size = 48;
             
-            TEXT_SHOP_ITEMS[31].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[31].string = "Птица команч";
             TEXT_SHOP_ITEMS[31].size = 48;
             
-            TEXT_SHOP_ITEMS[32].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[32].string = "Птица робот";
             TEXT_SHOP_ITEMS[32].size = 48;
             
-            TEXT_SHOP_ITEMS[33].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[33].string = "Птица пират";
             TEXT_SHOP_ITEMS[33].size = 48;
             
-            TEXT_SHOP_ITEMS[60].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[60].string = "Бомба на руку";
             TEXT_SHOP_ITEMS[60].size = 48;
             
             TEXT_SHOP_ITEMS[61].string = "Информации не найдено";
@@ -865,10 +885,10 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Информация о ледяной птице";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Ледяная птица обладает уникальной способностью заморажевать время. Она поможет вам быстро среагировать в нужный момент и получить как можно больше монет в тяжелые моменты.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Информация о птице индейце.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Информация о птице роботе.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Информация о птице пирате.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[34].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[35].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[36].string = "Информации не найдено.";
@@ -895,7 +915,7 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[57].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[58].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[59].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[60].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[60].string = "Информация о бонусе вероятность взрыва.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Информации не найдено.";
@@ -939,6 +959,11 @@ void Options::changeLanguage()
 
             TEXT_PAUSE_BACK_TO_SELECT_MODE.string = "Выбор режима";
             TEXT_PAUSE_CONTINUE.string = "Продолжить";
+
+            TEXT_LANGUAGE_NOT_AVAILABLE.string = "Не доступно";
+
+            TEXT_GAME_START_STRING_1.string = "Готовы?";
+            TEXT_GAME_START_STRING_2.string = "Вперед!";
         break;
     }
     
@@ -1196,8 +1221,11 @@ void Options::changeLanguage()
     TEXTES_HOLDER[251] = TEXT_ITEM_ALREADY_BOUGHT;
     TEXTES_HOLDER[252] = TEXT_PAUSE_BACK_TO_SELECT_MODE;
     TEXTES_HOLDER[253] = TEXT_PAUSE_CONTINUE;
+    TEXTES_HOLDER[254] = TEXT_LANGUAGE_NOT_AVAILABLE;
+    TEXTES_HOLDER[255] = TEXT_GAME_START_STRING_1;
+    TEXTES_HOLDER[256] = TEXT_GAME_START_STRING_2;
     
-    for(int i = 0; i < 254; i++)
+    for(int i = 0; i < 257; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

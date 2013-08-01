@@ -229,8 +229,8 @@ Shop::Shop()
         
         this->addChild(this->mLayers[i], 2);
         
-        this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i]);
-        this->mItems[i] = new EntityManager(10, new Item(onTouchButtonsCallback), this->mLayers[i]);
+        this->mShelfs[i] = new EntityManager(2, new Entity("shop_shelf_sprite@2x.png", 1, 2), this->mLayers[i], 2);
+        this->mItems[i] = new EntityManager(10, new Item(onTouchButtonsCallback), this->mLayers[i], 3);
         
         for(int j = -1; j < 4; j++)
         {
@@ -278,7 +278,7 @@ Shop::Shop()
 
     this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(110));
 
-    this->mCoin->create()->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(100), this->mTablet->getHeight() / 2);
+    this->mCoin->create()->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(105), this->mTablet->getHeight() / 2);
     this->mCoin->setRotation(-45);
     this->mCoin->setScale(1.3);
     this->mCoin->animate(0.05);
@@ -404,7 +404,7 @@ void Shop::onItemBought(int pItemId)
             this->mWeaponChecker->removeFromParentAndCleanup(false);
 
             static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->addChild(this->mWeaponChecker);
-            this->mWeaponChecker->setCenterPosition(static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->getWidth() / 2 + Utils::coord(64), static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->getHeight() / 2 - Utils::coord(64));
+            this->mWeaponChecker->setCenterPosition(static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->getWidth() / 2 + Utils::coord(72), static_cast<Entity*>(this->mItems[0]->objectAtIndex(pItemId))->getHeight() / 2 - Utils::coord(72));
         }
         else
         {
@@ -428,6 +428,11 @@ void Shop::onItemBought(int pItemId)
             if(pItemId < 30)
             {
                 this->onItemBought(pItemId);
+            }
+            
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect("unlocked.wav");
             }
         }
     }

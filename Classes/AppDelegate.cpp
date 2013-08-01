@@ -15,6 +15,8 @@
 
 ScreenManager* AppDelegate::screens = NULL;
 
+bool AppDelegate::IS_ALREADY_PLAYED = false;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -77,16 +79,19 @@ void AppDelegate::install()
     CCUserDefault::sharedUserDefault()->setIntegerForKey("music_enable", 1);
     CCUserDefault::sharedUserDefault()->setIntegerForKey("sound_enable", 1);
 
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("rate", 0);
+
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
 
+    int id = -1;
     for(int i = 1; i < 4; i++)
     {
         for(int j = 0; j < 30; j++)
         {
             char text[64];
 
-            sprintf(text, "item_%d_bought", i * j);
+            sprintf(text, "item_%d_bought", ++id);
 
             CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 0);
 
@@ -202,6 +207,16 @@ bool AppDelegate::isSoundEnable()
     return CCUserDefault::sharedUserDefault()->getIntegerForKey("sound_enable") == 1;
 }
 
+void AppDelegate::setRate()
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("rate", 1);
+}
+
+bool AppDelegate::isRate()
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey("rate") == 1;
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -269,7 +284,10 @@ void AppDelegate::applicationWillEnterForeground()
     CCDirector::sharedDirector()->startAnimation();
     CCDirector::sharedDirector()->resume();
 
-    SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    if(Options::MUSIC_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    }
 }
 
 #endif

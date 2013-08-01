@@ -26,17 +26,22 @@ Classic::Classic() :
     {
         this->mBackground = new Entity("game_gui_bg_summer@2x.png", this);
 
+        this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
+
         this->mPauseButton = new Button((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
 
         this->mMarks = new BatchEntityManager(200, new Mark(), this);
         this->mFeathers = new BatchEntityManager(100, new Feather(), this);
         this->mBirds = new BatchEntityManager(10, new Bird(), this);
         this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
+        this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
         this->mDust = new BatchEntityManager(100, new Dust(), this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
         this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(48));
+
+        this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
         this->mPausePopup = new Pause(this);
 
@@ -85,7 +90,7 @@ void Classic::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
 
-    if(true)
+    if(this->mGameRunning)
     {
         this->mBirdsTimeElapsed += pDeltaTime;
 
@@ -110,16 +115,20 @@ void Classic::update(float pDeltaTime)
             }
         }
     }
+    else
+    {
+
+    }
 }
 
 void Classic::onEnter()
 {
-    Screen::onEnter();
+    Game::onEnter();
 }
 
 void Classic::onExit()
 {
-    Screen::onExit();
+    Game::onExit();
 }
 
 #endif

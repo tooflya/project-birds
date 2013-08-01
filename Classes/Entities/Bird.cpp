@@ -22,7 +22,7 @@
 // ===========================================================
 
 Bird::Bird() :
-    ImpulseEntity("birds_sprite@2x.png", 14, 6)
+    ImpulseEntity("birds_sprite@2x.png", 14, 8)
     {
         this->mMarkTime = 0.02;
         this->mMarkTimeElapsed = 0;
@@ -40,7 +40,7 @@ void Bird::onCreate()
 {
     ImpulseEntity::onCreate();
 
-    this->mType = Utils::random(0, 5);
+    this->mType = Utils::random(0, 8);
     
     this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -146,6 +146,7 @@ void Bird::update(float pDeltaTime)
             }*/
             else
             {
+                game->mExplosionsBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
                 game->mExplosions->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
 
                 for(int i = 0; i < 10; i++)

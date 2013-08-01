@@ -38,11 +38,8 @@ Settings::Settings()
 
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
 
-    this->mSoundButton->create()->setCurrentFrameIndex(Options::SOUND_ENABLE ? 1 : 4);
-    this->mSoundButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
-
-    this->mMusicButton->create()->setCurrentFrameIndex(Options::MUSIC_ENABLE ? 0 : 3);
-    this->mMusicButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
+    this->mSoundButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
+    this->mMusicButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
     
     this->mCreditsButton->create()->setCurrentFrameIndex(1);
     this->mCreditsButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
@@ -60,7 +57,7 @@ Settings::Settings()
     this->mLanguageButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
     this->mLanguageButton->setText(Options::TEXT_SETTINGS_LANGUAGE);
     
-    this->mLanguage = new Entity("flag_sprite_small@2x.png", 1, 2, this->mLanguageButton);
+    this->mLanguage = new Entity("flag_sprite_small@2x.png", 2, 5, this->mLanguageButton);
     this->mLanguage->setCurrentFrameIndex(Options::CURRENT_LANGUAGE);
     this->mLanguage->create()->setCenterPosition(this->mLanguageButton->getWidth(), this->mLanguageButton->getHeight() / 2);
     
@@ -164,6 +161,9 @@ void Settings::onEnter()
     Screen::onEnter();
     
     this->mLanguage->setCurrentFrameIndex(Options::CURRENT_LANGUAGE);
+
+    this->mSoundButton->setCurrentFrameIndex(Options::SOUND_ENABLE ? 1 : 4);
+    this->mMusicButton->setCurrentFrameIndex(Options::MUSIC_ENABLE ? 0 : 3);
 }
 
 void Settings::onExit()

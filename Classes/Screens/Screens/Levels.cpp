@@ -259,43 +259,43 @@ class MainList : public CCLayer
 
             this->mLayers[0] = CCLayer::create();
             
-            ListLayer* a = new ListLayer();
+            //ListLayer* a = new ListLayer();
 
             for(int i = 1; i < Levels::LEVEL_PACKS_COUNT; i++)
             {
                 this->mLayers[i] = CCLayer::create();
 
-                this->mLayers[i]->setPosition(ccp(Options::CAMERA_WIDTH/1.2 * i, 0));
+                this->mLayers[i]->setPosition(ccp(Options::CAMERA_WIDTH/1.2 * (i-1), 0)); // TODO: Return * i
 
                 this->addChild(this->mLayers[i]);
             }
 
-            this->mListBorders = new EntityManager(2, new Entity("about_scroll_border@2x.png"), this->mLayers[0]);
-            this->mElements = new EntityManager(3, new Entity("more_games_list@2x.png", 1, 3), a);
+            //this->mListBorders = new EntityManager(2, new Entity("about_scroll_border@2x.png"), this->mLayers[0]);
+            //this->mElements = new EntityManager(3, new Entity("more_games_list@2x.png", 1, 3), a);
             
-            this->mLayers[0]->addChild(a);
+            //this->mLayers[0]->addChild(a);
 
-            this->mListBorders->create();
-            this->mListBorders->create();
+            //this->mListBorders->create();
+            //this->mListBorders->create();
             
-            ((Entity*) this->mListBorders->objectAtIndex(0))->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(330));
-            ((Entity*) this->mListBorders->objectAtIndex(1))->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(300));
+            //((Entity*) this->mListBorders->objectAtIndex(0))->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(330));
+            //((Entity*) this->mListBorders->objectAtIndex(1))->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(300));
             
-            ((Entity*) this->mListBorders->objectAtIndex(0))->setScaleY(1);
-            ((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);
+            //((Entity*) this->mListBorders->objectAtIndex(0))->setScaleY(1);
+            //((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);
 
             int f = 0;
-            for(int i = 1; i > -2; i--)
+            /*for(int i = 1; i > -2; i--)
             {
                 Entity* element = static_cast<Entity*>(this->mElements->create());
 
                 element->setCurrentFrameIndex(f++);
                 element->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(220) * i);
-            }
+            }*/
 
-            Text* text1 = new Text(Options::TEXT_MORE_GAMES, this->mLayers[0]);
+            //Text* text1 = new Text(Options::TEXT_MORE_GAMES, this->mLayers[0]);
 
-            text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(390));
+            //text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(390));
 
             this->mMinWidth = Options::CAMERA_CENTER_X / 2;
             this->mMaxWidth = -Options::CAMERA_WIDTH * Levels::LEVEL_PACKS_COUNT + Options::CAMERA_WIDTH * 1.5;
@@ -458,12 +458,12 @@ class MainList : public CCLayer
                 alpha = alpha > 255.0 ? 255.0 : alpha;
                 alpha = alpha < 0.0 ? 0.0 : alpha;
 
-                if(i > 0)
+                //if(i > 0)
                 {
                     this->mLayers[i]->setScale(scale);
                     this->mLayers[i]->setRotation(rotation);
                 }
-                else
+                /*else
                 {
                     for(int j = 0; j < static_cast<CCLayer*>(this->mLayers[i]->getChildren()->objectAtIndex(2))->getChildrenCount(); j++)
                     {
@@ -474,7 +474,7 @@ class MainList : public CCLayer
                     {
                         static_cast<Entity*>(this->mLayers[i]->getChildren()->objectAtIndex(j))->setOpacity(alpha);
                     }
-                }
+                }*/
             }
 
             if(this->mPostUpdate)
@@ -659,16 +659,16 @@ void Levels::onEnter()
 {
     Screen::onEnter();
 
-    this->mMainList->setPosition(ccp(-Options::CAMERA_CENTER_X * 1.66, 0));
+    this->mMainList->setPosition(ccp(0, 0)); // this->mMainList->setPosition(ccp(-Options::CAMERA_CENTER_X * 1.66, 0));
 
     for(int i = 0; i < LEVEL_PACKS_COUNT; i++)
     {
         static_cast<Entity*>(this->mSlides->objectAtIndex(i))->setCurrentFrameIndex(0);
     }
     
-    static_cast<Entity*>(this->mSlides->objectAtIndex(1))->setCurrentFrameIndex(1);
+    static_cast<Entity*>(this->mSlides->objectAtIndex(0))->setCurrentFrameIndex(1); // TODO: Return index 1.
 
-    static_cast<Entity*>(this->mSlidesArrows->objectAtIndex(0))->setOpacity(255.0);
+    static_cast<Entity*>(this->mSlidesArrows->objectAtIndex(0))->setOpacity(0.0); // TODO: Return full opacity.
     static_cast<Entity*>(this->mSlidesArrows->objectAtIndex(1))->setOpacity(255.0);
     
     this->mBackgroundDecorations[2]->setCurrentFrameIndex(0);

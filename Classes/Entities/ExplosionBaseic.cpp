@@ -1,7 +1,7 @@
-#ifndef CONST_EXPLOSION
-#define CONST_EXPLOSION
+#ifndef CONST_EXPLOSIONBASIC
+#define CONST_EXPLOSIONBASIC
 
-#include "Explosion.h"
+#include "ExplosionBasic.h"
 
 // ===========================================================
 // Inner Classes
@@ -19,8 +19,8 @@
 // Constructors
 // ===========================================================
 
-Explosion::Explosion() :
-    Entity("explosion@2x.png", 3, 4)
+ExplosionBasic::ExplosionBasic() :
+    Entity("explosion_basic@2x.png", 3, 4)
     {
         
     }
@@ -33,26 +33,24 @@ Explosion::Explosion() :
 // Virtual Methods
 // ===========================================================
 
-void Explosion::onAnimationEnd()
+void ExplosionBasic::onAnimationEnd()
 {
     this->destroy();
 }
 
-void Explosion::onCreate()
+void ExplosionBasic::onCreate()
 {
     Entity::onCreate();
-
-    this->setColor(ccc3(Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0)));
     
     this->animate(0.05, 1);
 }
     
-Explosion* Explosion::deepCopy()
+ExplosionBasic* ExplosionBasic::deepCopy()
 {
-    return new Explosion();
+    return new ExplosionBasic();
 }
     
-void Explosion::update(float pDeltaTime)
+void ExplosionBasic::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
     

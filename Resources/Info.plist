@@ -8,6 +8,8 @@
 	<string>Project Birds</string>
 	<key>CFBundleExecutable</key>
 	<string>Project Birds</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIconFiles</key>
@@ -61,11 +63,11 @@
 	<key>CFBundlePackageType</key>
 	<string>AAPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1</string>
+	<string>0.2.1</string>
 	<key>CFBundleSignature</key>
 	<string>AAPL</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>2202</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>

@@ -19,11 +19,13 @@ class Language : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-    
+
         Entity* mBackground;
         Entity* mBackButton;
     
-        Entity* mLanguages[2];
+        Entity* mLanguages[10];
+        BatchEntityManager* mBackgroundDecoration;
+        EntityManager* mNotAvailableBackgrounds;
     
         Entity* mLanguageIndicator;
 

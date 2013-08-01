@@ -55,18 +55,16 @@ Pause::Pause(CCNode* pParent) :
         this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
         this->mSoundButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 - Utils::coord(235), this->mBackground->getHeight()  / 2 - Utils::coord(390));
         this->mMusicButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 - Utils::coord(130), this->mBackground->getHeight()  / 2 - Utils::coord(390));
-        this->mContinueButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2, this->mBackground->getHeight()  / 2 + Utils::coord(170));
-        this->mBackButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2, this->mBackground->getHeight()  / 2 + Utils::coord(0));
-        this->mShopButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 - Utils::coord(100), this->mBackground->getHeight()  / 2 - Utils::coord(200));
-        this->mMenuButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 + Utils::coord(100), this->mBackground->getHeight()  / 2 - Utils::coord(200));
+        this->mContinueButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2, this->mBackground->getHeight()  / 2 + Utils::coord(150));
+        this->mBackButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2, this->mBackground->getHeight()  / 2 - Utils::coord(20));
+        this->mShopButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 + Utils::coord(90), this->mBackground->getHeight()  / 2 - Utils::coord(200));
+        this->mMenuButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 - Utils::coord(90), this->mBackground->getHeight()  / 2 - Utils::coord(200));
         this->mLeaderBoardButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 + Utils::coord(130), this->mBackground->getHeight()  / 2 - Utils::coord(390));
         this->mAchievementsButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 + Utils::coord(235), this->mBackground->getHeight()  / 2 - Utils::coord(390));
 
         this->mContinueButton->setText(Options::TEXT_PAUSE_CONTINUE);
         this->mBackButton->setText(Options::TEXT_PAUSE_BACK_TO_SELECT_MODE);
 
-        this->mMusicButton->setCurrentFrameIndex(0);
-        this->mSoundButton->setCurrentFrameIndex(1);
         this->mAchievementsButton->setCurrentFrameIndex(2);
         this->mLeaderBoardButton->setCurrentFrameIndex(5);
         this->mShopButton->setCurrentFrameIndex(1);
@@ -126,27 +124,35 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 Options::MUSIC_ENABLE = !Options::MUSIC_ENABLE;
                     
                 if(Options::MUSIC_ENABLE)
-                 {
+                {
+                    SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+
                     pSender->mMusicButton->setCurrentFrameIndex(0);
                 }
                 else
                 {
+                    SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+
                     pSender->mMusicButton->setCurrentFrameIndex(3);
                 }
+
+                AppDelegate::setMusicEnable(Options::MUSIC_ENABLE);
 
             break;
             case Options::BUTTONS_ID_SETTINGS_SOUND:
         
                 Options::SOUND_ENABLE = !Options::SOUND_ENABLE;
                     
-                 if(Options::SOUND_ENABLE)
+                if(Options::SOUND_ENABLE)
                 {
                      pSender->mSoundButton->setCurrentFrameIndex(1);
                 }
-                 else
+                else
                 {
                     pSender->mSoundButton->setCurrentFrameIndex(4);
                 }
+
+                AppDelegate::setSoundEnable(Options::SOUND_ENABLE);
 
             break;
             case Options::BUTTONS_ID_PAUSE_LEADERBOARD:
@@ -200,6 +206,9 @@ void Pause::update(float pDeltaTime)
 void Pause::show()
 {
     Popup::show();
+
+    this->mSoundButton->setCurrentFrameIndex(Options::SOUND_ENABLE ? 1 : 4);
+    this->mMusicButton->setCurrentFrameIndex(Options::MUSIC_ENABLE ? 0 : 3);
 }
 
 void Pause::hide()

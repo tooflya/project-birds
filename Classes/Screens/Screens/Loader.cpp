@@ -16,10 +16,11 @@
 
 int Loader::ACTION = -1;
 
-const char* Loader::TEXTURE_LIBRARY[21] =
+const char* Loader::TEXTURE_LIBRARY[22] =
 {
     "game_gui_bg_summer@2x.png",
     "birds_sprite@2x.png",
+    "explosion_basic@2x.png",
     "game_gui_btn_sprite@2x.png",
     "popup_bg@2x.png",
     "popup_darkness@2x.png",
@@ -110,6 +111,8 @@ void Loader::loadingCallBack(CCObject *obj)
             {
                 SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
             }
+
+            AppDelegate::IS_ALREADY_PLAYED = true;
         }
     }
     else

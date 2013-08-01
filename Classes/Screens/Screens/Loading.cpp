@@ -11,12 +11,13 @@
 // Constants
 // ===========================================================
 
-const char* Loading::TEXTURE_LIBRARY[47] =
+const char* Loading::TEXTURE_LIBRARY[48] =
 {
     "main_menu_bg@2x.png",
     "bg_detail_stripe@2x.png",
     "bg_detail_settings@2x.png",
     "bg_detail_lamp@2x.png",
+    "flag_not_avaliable_bg@2x.png",
     "about_name_logo@2x.png",
     "about_logo@2x.png",
     "bg_detail_dark@2x.png",
@@ -115,6 +116,12 @@ void Loading::loadingCallBack(CCObject *obj)
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
         AppDelegate::screens = new ScreenManager();
+        
+        { // TODO: Something goes wrong.
+            Options::changeLanguage(); 
+    
+            this->mLoadingText->setString((Options::TEXT_LOADING_2.string + Utils::intToString(percent) + "%").c_str());
+        }
         
         AppDelegate::screens->set(0.5f, Screen::SCREEN_MENU);
     }

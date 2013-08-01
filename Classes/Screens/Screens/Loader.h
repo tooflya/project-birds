@@ -14,7 +14,7 @@ class Loader : public Screen
         // Constants
         // ===========================================================
     
-        static const char* TEXTURE_LIBRARY[21];
+        static const char* TEXTURE_LIBRARY[22];
 
         // ===========================================================
         // Fields

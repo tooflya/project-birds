@@ -28,7 +28,7 @@ class Levels : public Screen
         Button* mBackButton;
         Button* mShopButton;
     
-        EntityManager* mLevels[6];
+        EntityManager* mLevels[5]; // TODO: return 6.
 
         Text* mStarsCountText;
 

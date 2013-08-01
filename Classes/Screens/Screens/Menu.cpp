@@ -130,13 +130,28 @@ void Menu::update(float pDeltaTime)
 void Menu::onEnter()
 {
     Screen::onEnter();
-
-    // TODO: Open rate window.
 }
 
 void Menu::onExit()
 {
     Screen::onExit();
+}
+
+void Menu::onEnterTransitionDidFinish()
+{
+    Screen::onEnterTransitionDidFinish();
+
+    if(!AppDelegate::isRate() && AppDelegate::IS_ALREADY_PLAYED)
+    {
+        this->mRatePopup->show();
+
+        AppDelegate::IS_ALREADY_PLAYED = false;
+    }
+}
+
+void Menu::onExitTransitionDidStart()
+{
+    Screen::onExitTransitionDidStart();
 }
 
 #endif

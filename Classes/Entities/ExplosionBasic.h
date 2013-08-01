@@ -1,30 +1,9 @@
-#ifndef CONST_APPDELEGATE_H
-#define CONST_APPDELEGATE_H
+#ifndef CONST_EXPLOSIONBASIC_H
+#define CONST_EXPLOSIONBASIC_H
 
-#include "cocos2d.h"
-#include "SimpleAudioEngine.h"
+#include "Entity.h"
 
-#include <vector>
-
-#include "Options.h"
-#include "ScreenManager.h"
-
-using namespace std;
-using namespace cocos2d;
-using namespace CocosDenshion;
-
-class ScreenManager;
-
-typedef struct tagResource {
-    CCSize size;
-    char directory[100];
-} Resource;
-
-static Resource resources480x320 = { CCSizeMake(320, 480),  "Graphics/480x320" };
-static Resource resources1280x720 = { CCSizeMake(720, 1280),  "Graphics/1280x720" };
-static CCSize designResolutionSize = CCSizeMake(720, 1280);
-
-class AppDelegate : private CCApplication
+class ExplosionBasic : public Entity
 {
     protected:
         // ===========================================================
@@ -48,7 +27,7 @@ class AppDelegate : private CCApplication
         // ===========================================================
 
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     private:
@@ -73,7 +52,7 @@ class AppDelegate : private CCApplication
         // ===========================================================
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     public:
@@ -85,10 +64,6 @@ class AppDelegate : private CCApplication
         // Constants
         // ===========================================================
 
-        static ScreenManager* screens;
-
-        static bool IS_ALREADY_PLAYED;
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -96,48 +71,23 @@ class AppDelegate : private CCApplication
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ExplosionBasic();
 
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void addCoins(int pCount, int pType);
-        static void removeCoins(int pCount, int pType);
-
-        static int getCoins(int pType);
-
-        static void changeLanguage(int pId);
-        static int getSelectedLanguage();
-
-        static bool isInstalled();
-        static void install();
-
-        static bool isItemBought(int pItem);
-        static void buyItem(int pItem);
-
-        static bool isItemSelected(int pItem);
-        static void selectItem(int pItem);
-
-        static int getLevelStars(int pLevel);
-
-        static void setMusicEnable(bool pValue);
-        static void setSoundEnable(bool pValue);
-
-        static bool isMusicEnable();
-        static bool isSoundEnable();
-
-        static void setRate();
-
-        static bool isRate();
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
-
-        bool applicationDidFinishLaunching();
-
-        void applicationDidEnterBackground();
-        void applicationWillEnterForeground();
+    
+        void update(float pDeltaTime);
+    
+        void onAnimationEnd();
+        void onCreate();
+    
+        ExplosionBasic* deepCopy();
 };
 
 #endif

@@ -100,6 +100,9 @@ class Options
         static bool MUSIC_ENABLE;
         static bool SOUND_ENABLE;
 
+        static const char* VERSION;
+        static int BUILD;
+
         static const char* FONT;
 
         static const char* SAVE_DATA_COINS_ID[2];
@@ -163,6 +166,14 @@ class Options
         static const int BUTTONS_ID_LANGUAGE_BACK  = 1601;
         static const int BUTTONS_ID_LANGUAGE_L_EN  = 1701;
         static const int BUTTONS_ID_LANGUAGE_L_RU  = 1702;
+        static const int BUTTONS_ID_LANGUAGE_L_DE  = 1703;
+        static const int BUTTONS_ID_LANGUAGE_L_ES  = 1704;
+        static const int BUTTONS_ID_LANGUAGE_L_FR  = 1705;
+        static const int BUTTONS_ID_LANGUAGE_L_NL  = 1706;
+        static const int BUTTONS_ID_LANGUAGE_L_IT  = 1707;
+        static const int BUTTONS_ID_LANGUAGE_L_JP  = 1708;
+        static const int BUTTONS_ID_LANGUAGE_L_KR  = 1709;
+        static const int BUTTONS_ID_LANGUAGE_L_CN  = 1710;
         static const int BUTTONS_ID_GAME_RESTART = 1801;
         static const int BUTTONS_ID_GAME_PAUSE = 1802;
         static const int BUTTONS_ID_PAUSE_MENU = 1901;
@@ -236,6 +247,9 @@ class Options
         static Textes TEXT_ITEM_ALREADY_BOUGHT;
         static Textes TEXT_PAUSE_CONTINUE;
         static Textes TEXT_PAUSE_BACK_TO_SELECT_MODE;
+        static Textes TEXT_LANGUAGE_NOT_AVAILABLE;
+        static Textes TEXT_GAME_START_STRING_1;
+        static Textes TEXT_GAME_START_STRING_2;
 
         // ===========================================================
         // Fields

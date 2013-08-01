@@ -110,6 +110,9 @@ class Menu : public Screen
 
         void onEnter();
         void onExit();
+
+        void onExitTransitionDidStart();
+        void onEnterTransitionDidFinish();
 };
 
 #endif
