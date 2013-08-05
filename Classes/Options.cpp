@@ -38,6 +38,28 @@ bool Options::SOUND_ENABLE = true;
 const char* Options::VERSION = "0.2.1";
 int Options::BUILD = 1;
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+
+const char* Options::MUSIC_1 = "Music/music-1.ogg";
+const char* Options::MUSIC_2 = "Music/music-2.ogg";
+
+const char* Options::SOUND_TAP = "Sound/tap.ogg";
+const char* Options::SOUND_UNLOCKED = "Sound/unlocked.ogg";
+const char* Options::SOUND_BIRD_BLOW = "Sound/bird-blow.ogg";
+const char* Options::SOUND_DANGER_EXPLOSION = "Sound/explosion.ogg";
+const char* Options::SOUND_THROW = "Sound/throw-bird.ogg";
+
+#else
+
+const char* Options::MUSIC_1 = "music-1.mp3";
+const char* Options::MUSIC_2 = "music-2.mp3";
+
+const char* Options::SOUND_TAP = "tap.wav";
+const char* Options::SOUND_UNLOCKED = "unlocked.wav";
+const char* Options::BIRD_BLOW = "bird-blow.mp3"; // TODO: Check it!
+
+#endif
+
 CCTouchInformation Options::TOUCH_INFORMATION[10] =
 {
     {

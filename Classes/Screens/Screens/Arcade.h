@@ -7,6 +7,8 @@
 
 #include "AppDelegate.h"
 
+#include "Clock.h"
+
 class Arcade : public Game
 {
     protected:
@@ -23,6 +25,14 @@ class Arcade : public Game
         // ===========================================================
         // Fields
         // ===========================================================
+
+        Entity* mCountIcon;
+        
+        Clock* mTimeIcon;
+
+        Text* mCountText;
+        Text* mBestCountText;
+        Text* mTimeText;
     
         // ===========================================================
         // Constructors

@@ -192,7 +192,7 @@ Shop* Shop::m_Instance = NULL;
 
 int Shop::CLICKED_ITEM_ID = -1;
 
- int Shop::ITEMS_COUNT[3] = { 11, 4, 4 };
+ int Shop::ITEMS_COUNT[3] = { 11, 6, 4 };
 
  int Shop::ACTION = -1;
 
@@ -432,7 +432,7 @@ void Shop::onItemBought(int pItemId)
             
             if(Options::SOUND_ENABLE)
             {
-                SimpleAudioEngine::sharedEngine()->playEffect("unlocked.wav");
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_UNLOCKED);
             }
         }
     }
@@ -457,7 +457,7 @@ void Shop::onItemBought(int pItemId)
         
         if(Options::SOUND_ENABLE)
         {
-            SimpleAudioEngine::sharedEngine()->playEffect("unlocked.wav");
+            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_UNLOCKED);
         }
     }
 }

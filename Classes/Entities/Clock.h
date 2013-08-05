@@ -1,9 +1,9 @@
-#ifndef CONST_LOADER_H
-#define CONST_LOADER_H
+#ifndef CONST_CLOCK_H
+#define CONST_CLOCK_H
 
-#include "Screen.h"
+#include "Entity.h"
 
-class Loader : public Screen
+class Clock : public Entity
 {
     protected:
         // ===========================================================
@@ -13,31 +13,16 @@ class Loader : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static const char* TEXTURE_LIBRARY[25];
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        float mCircleAnimationTime;
-        float mCircleAnimationTimeElapsed;
-    
-        Entity* mBackground;
-        Entity* bird;
-    
-        int mNumberOfSprites;
-        int mNumberOfLoadedSprites;
-    
-        Text* mLoadingText;
-        Text* mTipText;
-    
-        BatchEntityManager* mCircles;
-    
-        bool mTapToContinueAnimation;
-        bool mTapToContinueAnimationReverse;
-    
-        bool mIsWorkDone;
+
+        float mTimeElapsed;
+
+        Entity* mArrow;
+        
+        CCProgressTimer* mArea;
 
         // ===========================================================
         // Constructors
@@ -46,8 +31,6 @@ class Loader : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void loadingCallBack(CCObject *obj);
 
         // ===========================================================
         // Override Methods
@@ -87,8 +70,6 @@ class Loader : public Screen
         // Constants
         // ===========================================================
 
-        static int ACTION;
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -96,26 +77,20 @@ class Loader : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Loader();
+
+        Clock(CCNode* pParent);
 
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void start();
         
         // ===========================================================
         // Override Methods
         // ===========================================================
-    
-        void update(float pDeltaTime);
-    
-        void onEnterTransitionDidFinish();
-        void onExitTransitionDidStart();
 
-        void onEnter();
-        void onExit();
-    
-        void onTouch(CCTouch* touch, CCEvent* event);
+        void update(float pDeltaTime);
 };
 
 #endif

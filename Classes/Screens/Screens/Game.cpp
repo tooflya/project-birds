@@ -11,6 +11,8 @@
 // Constants
 // ===========================================================
 
+int Game::CURRENT_COUNT = 0;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -46,7 +48,33 @@ void Game::update(float pDeltaTime)
 
     if(this->mGameRunning)
     {
+        this->mBirdsTimeElapsed += pDeltaTime;
 
+        if(this->mBirdsTimeElapsed >= this->mBirdsTime)
+        {
+            this->mBirdsTimeElapsed = 0;
+
+            if(this->mBirdsRemaning == 0)
+            {
+                this->mBirdsRemaning = Utils::random(1, 6);
+            }
+
+            this->mBirdsTime = Utils::randomf(0.0, 1.5);
+
+            this->mBirds->create();
+
+            this->mBirdsRemaning--;
+
+            if(this->mBirdsRemaning == 0)
+            {
+                this->mBirdsTime = Utils::randomf(2.0, 7.0);
+            }
+
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
+            }
+        }
     }
     else
     {
@@ -59,14 +87,14 @@ void Game::update(float pDeltaTime)
             switch(++this->mStartGameAnimationIndex)
             {
                 case 0:
-                this->mGameStartText->runAction(CCScaleTo::create(this->mStartGameAnimation, 2.0));
+                this->mGameStartText->runAction(CCScaleTo::create(this->mStartGameAnimation, 1.6));
                 this->mGameStartText->runAction(CCFadeTo::create(this->mStartGameAnimation, 0.0));
                 break;
                 case 1:
                 this->mGameStartText->setString(Options::TEXT_GAME_START_STRING_2.string);
                 this->mGameStartText->setScale(1.0);
                 this->mGameStartText->setOpacity(255.0);
-                this->mGameStartText->runAction(CCScaleTo::create(this->mStartGameAnimation, 2.0));
+                this->mGameStartText->runAction(CCScaleTo::create(this->mStartGameAnimation, 1.6));
                 this->mGameStartText->runAction(CCFadeTo::create(this->mStartGameAnimation, 0.0));
                 break;
                 case 2:
@@ -81,6 +109,8 @@ void Game::update(float pDeltaTime)
 void Game::onEnter()
 {
     Screen::onEnter();
+
+    CURRENT_COUNT = 0;
 
     this->mGameRunning = false;
 

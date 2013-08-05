@@ -45,7 +45,7 @@ void Dust::onCreate()
     
     this->setCenterPosition(Utils::random(0, Options::CAMERA_WIDTH), Utils::random(0, Options::CAMERA_HEIGHT));
     
-    this->setOpacity(Utils::random(100, 255));
+    this->setOpacity(Utils::randomf(0.0, 255.0));
     this->setScale(Utils::randomf(0.1f, 1.0f));
     
     this->mSpeedX = Utils::randomf(0.1f, 100.0f);
@@ -114,7 +114,7 @@ void Dust::update(float pDeltaTime)
         
         this->mAlphaTime = Utils::randomf(1.0f, 5.0f);
         
-        this->runAction(CCFadeTo::create(3.0f, Utils::random(50, 255)));
+        this->runAction(CCFadeTo::create(3.0f, Utils::randomf(0.0, 255.0)));
     }
     
     this->mScaleTimeElapsed += pDeltaTime;
@@ -131,7 +131,7 @@ void Dust::update(float pDeltaTime)
     this->setCenterPosition(this->getCenterX() - this->mSpeedX * pDeltaTime, this->getCenterY() - this->mSpeedY * pDeltaTime);
     
     if(
-       this->getOpacity() <= 50.0f ||
+       this->getOpacity() <= 0.0f ||
        this->getCenterX() < -Utils::coord(100.0f) ||
        this->getCenterX() > Options::CAMERA_WIDTH + Utils::coord(100.0f) ||
        this->getCenterY() < -Utils::coord(100.0f) ||

@@ -13,6 +13,16 @@
 // Constants
 // ===========================================================
 
+ccColor3B Bird::COLORS[COUNT] =
+ {
+    ccc3(246.0, 143.0, 41.0),
+    ccc3(224.0, 0.0, 55.0),
+    ccc3(204.0, 51.0, 204.0),
+    ccc3(51.0, 102.0, 255.0),
+    ccc3(145.0, 193.0, 236.0),
+    ccc3(64.0, 70.0, 98.0)
+};
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -22,7 +32,7 @@
 // ===========================================================
 
 Bird::Bird() :
-    ImpulseEntity("birds_sprite@2x.png", 14, 8)
+    ImpulseEntity("birds_sprite@2x.png", 14, 12)
     {
         this->mMarkTime = 0.02;
         this->mMarkTimeElapsed = 0;
@@ -40,7 +50,7 @@ void Bird::onCreate()
 {
     ImpulseEntity::onCreate();
 
-    this->mType = Utils::random(0, 8);
+    this->mType = Utils::random(0, 5);
     
     this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -112,6 +122,7 @@ void Bird::update(float pDeltaTime)
         Entity* entity = game->mMarks->create();
         
         entity->setCenterPosition(this->getCenterX(), this->getCenterY());
+        entity->setColor(COLORS[this->mType]);
     }
 
     /** Collisions and destroy animation **/
@@ -123,8 +134,6 @@ void Bird::update(float pDeltaTime)
             if(this->isCollideWithPoint(Options::TOUCH_INFORMATION[i]))
             {
                 this->mIsGoingToDestroy = true;
-
-                // TODO: Play some sound.
             }
         }
     }
@@ -146,8 +155,17 @@ void Bird::update(float pDeltaTime)
             }*/
             else
             {
-                game->mExplosionsBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
-                game->mExplosions->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                float rotation = Utils::randomf(0.0, 720.0);
+                
+                Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
+                Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
+
+                explosionBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                explosionBasic->setRotation(rotation);
+
+                explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
+                explosion ->setColor(COLORS[this->mType]);
+                explosion->setRotation(rotation);
 
                 for(int i = 0; i < 10; i++)
                 {
@@ -156,6 +174,20 @@ void Bird::update(float pDeltaTime)
                     feather->setCenterPosition(this->getCenterX(), this->getCenterY());
                     feather->setCurrentFrameIndex(this->mType);
                 }
+                
+                if(Options::SOUND_ENABLE)
+                {
+                    if(this->mType == TYPE_DANGER)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_DANGER_EXPLOSION);
+                    }
+                    else
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BIRD_BLOW);
+                    }
+                }
+
+                Game::CURRENT_COUNT++;
 
                 this->destroy();
             }

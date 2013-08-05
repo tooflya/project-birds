@@ -100,6 +100,15 @@ class Options
         static bool MUSIC_ENABLE;
         static bool SOUND_ENABLE;
 
+        static const char* MUSIC_1;
+        static const char* MUSIC_2;
+
+        static const char* SOUND_TAP;
+        static const char* SOUND_UNLOCKED;
+        static const char* SOUND_BIRD_BLOW;
+        static const char* SOUND_DANGER_EXPLOSION;
+        static const char* SOUND_THROW;
+
         static const char* VERSION;
         static int BUILD;
 

@@ -78,6 +78,17 @@ class Bird : public ImpulseEntity
         // Constants
         // ===========================================================
 
+        static const int COUNT = 6;
+
+        static const int TYPE_YELLOW = 0;
+        static const int TYPE_RED = 1;
+        static const int TYPE_PURPLE = 2;
+        static const int TYPE_BLUE = 3;
+        static const int TYPE_FREEZEE = 4;
+        static const int TYPE_DANGER = 5;
+
+        static ccColor3B COLORS[COUNT];
+
         // ===========================================================
         // Fields
         // ===========================================================

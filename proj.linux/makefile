@@ -45,6 +45,8 @@ SOURCES = ./main.cpp \
 			../Classes/Entities/Bird.cpp \
 			../Classes/Entities/Mark.cpp \
 			../Classes/Entities/Explosion.cpp \
+			../Classes/Entities/ExplosionBasic.cpp \
+			../Classes/Entities/Clock.cpp \
 			../Classes/Entities/Feather.cpp \
 			../Classes/Entities/Dust.cpp \
 			../Classes/Entities/Item.cpp \
@@ -68,6 +70,7 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Screens/Classic.cpp \
                                                       ../Classes/Screens/Screens/Arcade.cpp \
                                                        ../Classes/Screens/Screens/Progresses.cpp \
+                                                       ../Classes/Screens/Screens/More.cpp \
 			../Classes/Screens/Popup.cpp \
 			../Classes/Screens/Popups/Exit.cpp \
 			../Classes/Screens/Popups/BuyItem.cpp \
@@ -76,6 +79,8 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Popups/ResetProgress.cpp \
 			../Classes/Screens/Popups/ModeHelp.cpp \
 			../Classes/Screens/Popups/Pause.cpp \
+			../Classes/Screens/Popups/TempPublisherRatingExplain.cpp \
+			../Classes/Screens/Popups/TempPublisherAchievementsExplain.cpp \
 			../Classes/Managers/ScreenManager.cpp \
 			../Classes/Graphics/Texture.cpp \
 			../Classes/TEST/TouchTrailLayer.cpp \

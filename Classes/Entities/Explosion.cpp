@@ -41,8 +41,6 @@ void Explosion::onAnimationEnd()
 void Explosion::onCreate()
 {
     Entity::onCreate();
-
-    this->setColor(ccc3(Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0)));
     
     this->animate(0.05, 1);
 }

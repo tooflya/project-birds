@@ -46,7 +46,7 @@ Menu::Menu()
     
     this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-1.mp3", true); 
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
 
     if(!Options::MUSIC_ENABLE)
     {

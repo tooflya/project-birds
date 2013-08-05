@@ -16,7 +16,7 @@
 
 int Loader::ACTION = -1;
 
-const char* Loader::TEXTURE_LIBRARY[22] =
+const char* Loader::TEXTURE_LIBRARY[25] =
 {
     "game_gui_bg_summer@2x.png",
     "birds_sprite@2x.png",
@@ -39,7 +39,10 @@ const char* Loader::TEXTURE_LIBRARY[22] =
     "pause_birds_sprite@2x.png",
     "btn_sfx_mfx_ach_lead_sprite_pause@2x.png",
     "pause_btn@2x.png",
-    "pause_btn_sprite@2x.png"
+    "pause_btn_sprite@2x.png",
+    "game_gui_count_pic@2x.png",
+    "game_time_clock@2x.png",
+    "game_time_arrow@2x.png"
 };
 
 // ===========================================================
@@ -96,7 +99,7 @@ void Loader::loadingCallBack(CCObject *obj)
 
         if(ACTION > 2)
         {
-            SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-1.mp3", true); 
+            SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
 
             if(!Options::MUSIC_ENABLE)
             {
@@ -105,7 +108,7 @@ void Loader::loadingCallBack(CCObject *obj)
         }
         else
         {
-            SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music-2.mp3", true); 
+            SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_2, true); 
 
             if(!Options::MUSIC_ENABLE)
             {
