@@ -27,8 +27,7 @@ Clock::Clock(CCNode* pParent) :
         this->mArrow = new Entity("game_time_arrow@2x.png", this);
 
         this->mArea->setType(kCCProgressTimerTypeRadial);
-        this->mArea->setReverseProgress (true);
-        this->mArea->getSprite()->setScaleX(-1);
+        this->mArea->setReverseProgress(true);
 
         this->mArrow->setAnchorPoint(ccp(0.5, 0.18));
 

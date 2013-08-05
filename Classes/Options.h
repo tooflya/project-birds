@@ -259,6 +259,9 @@ class Options
         static Textes TEXT_LANGUAGE_NOT_AVAILABLE;
         static Textes TEXT_GAME_START_STRING_1;
         static Textes TEXT_GAME_START_STRING_2;
+        static Textes TEXT_GAME_CLASSIC_LEVEL_UP;
+        static Textes TEXT_GAME_SOMETHING_WAS_UNLOCKED;
+        static Textes TEXT_GAME_BEST;
 
         // ===========================================================
         // Fields

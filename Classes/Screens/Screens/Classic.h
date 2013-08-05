@@ -22,10 +22,21 @@ class Classic : public Game
         // Fields
         // ===========================================================
 
+        float mLevelUpTime;
+        float mLevelUpTimeElaspsed;
+
+        float mLevelUpAnimationTime;
+        float mLevelUpAnimationTimeElapsed;
+
+        bool mIsLevelUpAnimation;
+
         Entity* mCountIcon;
+
+        BatchEntityManager* mConfetti;
 
         Text* mCountText;
         Text* mBestCountText;
+        Text* mLevelUpText;
     
         // ===========================================================
         // Constructors
@@ -61,6 +72,10 @@ class Classic : public Game
         // ===========================================================
 
         static void onTouchButtonsCallback(const int pAction, const int pID);
+
+        void levelUp();
+
+        void throwConfetti();
         
         // ===========================================================
         // Override Methods

@@ -68,7 +68,7 @@ Pause::Pause(CCNode* pParent) :
         this->mAchievementsButton->setCurrentFrameIndex(2);
         this->mLeaderBoardButton->setCurrentFrameIndex(5);
         this->mShopButton->setCurrentFrameIndex(1);
-        this->mMenuButton ->setCurrentFrameIndex(0);
+        this->mMenuButton->setCurrentFrameIndex(0);
         
         m_Instance = this;
     }

@@ -1,25 +1,9 @@
-#ifndef CONST_GAME_H
-#define CONST_GAME_H
+#ifndef CONST_EVENTPANEL_H
+#define CONST_EVENTPANEL_H
 
 #include "Screen.h"
 
-#include "End.h"
-
-#include "Bird.h"
-#include "Mark.h"
-#include "Feather.h"
-#include "Explosion.h"
-#include "ExplosionBasic.h"
-#include "Dust.h"
-#include "EventPanel.h"
-
-#include "Pause.h"
-
-#include "TouchTrailLayer.h"
-
-#include "AppDelegate.h"
-
-class Game : public Screen
+class EventPanel : public Entity
 {
     protected:
         // ===========================================================
@@ -33,28 +17,27 @@ class Game : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        int mBirdsRemaning;
-        int mStartGameAnimationIndex;
 
-        float mBirdsTime;
-        float mBirdsTimeElapsed;
+        float mShowAnimationTime;
+        float mHideAnimationTime;
 
-        float mStartGameAnimation;
-        float mStartGameAnimationElapsed;
+        float mShowAnimationTimeElapsed;
+        float mHideAnimationTimeElapsed;
 
-        bool mGameRunning;
+        float mLiveTime;
+        float mLiveTimeElapsed;
 
-        Entity* mBackground;
+        bool mShowed;
 
-        EventPanel* mEventPanel;
+        bool mIsShowAnimationRunning;
+        bool mIsHideAnimationRunning;
 
-        Button* mPauseButton;
+        bool mLive;
 
-        Text* mGameStartText;
+        Screen* mParent;
 
-        Popup* mPausePopup;
-    
+        Text* mText;
+
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -101,37 +84,31 @@ class Game : public Screen
         // Constants
         // ===========================================================
 
-        static int CURRENT_COUNT;
-
         // ===========================================================
         // Fields
         // ===========================================================
 
-        BatchEntityManager* mBirds;
-        BatchEntityManager* mMarks;
-        BatchEntityManager* mFeathers;
-        BatchEntityManager* mExplosionsBasic;
-        BatchEntityManager* mExplosions;
-        BatchEntityManager* mDust;
-
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Game();
+
+        EventPanel(Screen* pParent);
 
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void show();
+        void hide();
+
+        void onShow();
+        void onHide();
         
         // ===========================================================
         // Override Methods
         // ===========================================================
-    
+
         void update(float pDeltaTime);
-        
-        void onEnter();
-        void onExit();
 };
 
 #endif

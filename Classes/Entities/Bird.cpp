@@ -20,7 +20,13 @@ ccColor3B Bird::COLORS[COUNT] =
     ccc3(204.0, 51.0, 204.0),
     ccc3(51.0, 102.0, 255.0),
     ccc3(145.0, 193.0, 236.0),
-    ccc3(64.0, 70.0, 98.0)
+    ccc3(64.0, 70.0, 98.0),
+    ccc3(172.0, 221.0, 43.0),
+    ccc3(36.0, 200.0, 206.0),
+    ccc3(223.0, 182.0, 60.0),
+    ccc3(36.0, 178.0, 27.0),
+    ccc3(196.0, 227.0, 238.0),
+    ccc3(62.0, 49.0, 176.0)
 };
 
 // ===========================================================
@@ -36,6 +42,11 @@ Bird::Bird() :
     {
         this->mMarkTime = 0.02;
         this->mMarkTimeElapsed = 0;
+        
+        this->mLife = new CCProgressTimer();
+        this->mLife->initWithSprite(CCSprite::create("birds_life@2x.png"));
+        this->mLife->setType(kCCProgressTimerTypeRadial);
+        this->mLife->setReverseProgress(true);
     }
 
 // ===========================================================
@@ -50,7 +61,7 @@ void Bird::onCreate()
 {
     ImpulseEntity::onCreate();
 
-    this->mType = Utils::random(0, 5);
+    this->mType = Utils::random(0, COUNT - 1);
     
     this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -73,6 +84,17 @@ void Bird::onCreate()
 
     this->mDestroyAnimationTime = 0.1;
     this->mDestroyAnimationTimeElapsed = 0;
+    
+    if(!this->mLife->getParent())
+    {
+        this->getParent()->getParent()->addChild(this->mLife);
+    }
+    
+    this->mLife->setVisible(true);
+    this->mLife->setPercentage(0);
+
+    this->mInitLifeCount = 100.0;
+    this->mLifeCount = this->mInitLifeCount;
 }
 
 void Bird::onAnimationEnd()
@@ -103,6 +125,8 @@ void Bird::onAnimationEnd()
 void Bird::onDestroy()
 {
     ImpulseEntity::onDestroy();
+
+    this->mLife->setVisible(false);
 }
 
 void Bird::update(float pDeltaTime)
@@ -137,7 +161,8 @@ void Bird::update(float pDeltaTime)
             }
         }
     }
-    else
+    
+    if(this->mIsGoingToDestroy)
     {
         this->mDestroyAnimationTimeElapsed += pDeltaTime;
 
@@ -145,56 +170,68 @@ void Bird::update(float pDeltaTime)
         {
             this->mDestroyAnimationTimeElapsed = 0;
 
-            if(this->mDestroyAnimationFrames == 0)
+            if(this->mDestroyAnimationFrames == 0 && false)
             {
                 this->runAction(CCScaleTo::create(this->mDestroyAnimationTime, 1.3 * this->getScaleX(), 1.3));
+
+                this->mDestroyAnimationFrames++;
             }
-            /*else if(this->mDestroyAnimationFrames == 1)
-            {
-                this->runAction(CCScaleTo::create(this->mDestroyAnimationTime, 0.0, 0.0));
-            }*/
             else
             {
-                float rotation = Utils::randomf(0.0, 720.0);
-                
-                Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
-                Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
-
-                explosionBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
-                explosionBasic->setRotation(rotation);
-
-                explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
-                explosion ->setColor(COLORS[this->mType]);
-                explosion->setRotation(rotation);
-
-                for(int i = 0; i < 10; i++)
+                if(this->mLifeCount > 0)
                 {
-                    Entity* feather = (Entity*) game->mFeathers->create();
+                    this->setScaleX(1.3 * (this->getScaleX() > 0 ? 1.0 : -1.0));
+                    this->setScaleY(1.3);
 
-                    feather->setCenterPosition(this->getCenterX(), this->getCenterY());
-                    feather->setCurrentFrameIndex(this->mType);
-                }
-                
-                if(Options::SOUND_ENABLE)
-                {
-                    if(this->mType == TYPE_DANGER)
-                    {
-                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_DANGER_EXPLOSION);
-                    }
-                    else
-                    {
-                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BIRD_BLOW);
-                    }
+                    this->runAction(CCScaleTo::create(this->mDestroyAnimationTime, this->getScaleX() > 0 ? 1.0 : -1.0, 1.0));
+
+                    this->mIsGoingToDestroy = false;
+                    this->mDestroyAnimationFrames = 0;
+
+                    this->mLifeCount -= 33.0; // TODO: Adjust weapon power.
+
+                    this->mLife->setPercentage((this->mLifeCount / this->mInitLifeCount * 100.0));
                 }
 
-                Game::CURRENT_COUNT++;
+                if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER)
+                {
+                    Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
+                    Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 
-                this->destroy();
+                    explosionBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
+
+                    explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
+                    explosion->setColor(COLORS[this->mType]);
+
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Entity* feather = (Entity*) game->mFeathers->create();
+
+                        feather->setCenterPosition(this->getCenterX(), this->getCenterY());
+                        feather->setCurrentFrameIndex(this->mType);
+                    }
+                    
+                    if(Options::SOUND_ENABLE)
+                    {
+                        if(this->mType == TYPE_DANGER)
+                        {
+                            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_DANGER_EXPLOSION);
+                        }
+                        else
+                        {
+                            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BIRD_BLOW);
+                        }
+                    }
+
+                    Game::CURRENT_COUNT++;
+
+                    this->destroy();
+                }
             }
-
-            this->mDestroyAnimationFrames++;
         }
     }
+    
+    this->mLife->setPosition(ccp(this->getCenterX() + Utils::coord(5) * (this->getScaleX() > 0.0 ? 1.0 : - 1.0), this->getCenterY()));
 }
 
 Bird* Bird::deepCopy()

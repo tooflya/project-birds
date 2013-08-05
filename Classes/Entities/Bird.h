@@ -22,6 +22,9 @@ class Bird : public ImpulseEntity
         
         int mDestroyAnimationFrames;
 
+        float mLifeCount;
+        float mInitLifeCount;
+
         float mMarkTime;
         float mMarkTimeElapsed;
 
@@ -31,6 +34,8 @@ class Bird : public ImpulseEntity
         bool mIsGoingToDestroy;
     
         bool mSpecialAnimation;
+
+        CCProgressTimer* mLife;
 
         // ===========================================================
         // Constructors
@@ -78,7 +83,7 @@ class Bird : public ImpulseEntity
         // Constants
         // ===========================================================
 
-        static const int COUNT = 6;
+        static const int COUNT = 12;
 
         static const int TYPE_YELLOW = 0;
         static const int TYPE_RED = 1;
@@ -86,6 +91,12 @@ class Bird : public ImpulseEntity
         static const int TYPE_BLUE = 3;
         static const int TYPE_FREEZEE = 4;
         static const int TYPE_DANGER = 5;
+        static const int TYPE_COMANCHE = 6;
+        static const int TYPE_ROBOT = 7;
+        static const int TYPE_MEXICO = 8;
+        static const int TYPE_PIRATE = 9;
+        static const int TYPE_FLAYER = 10;
+        static const int TYPE_NINJA = 11;
 
         static ccColor3B COLORS[COUNT];
 

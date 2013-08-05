@@ -56,7 +56,9 @@ const char* Options::MUSIC_2 = "music-2.mp3";
 
 const char* Options::SOUND_TAP = "tap.wav";
 const char* Options::SOUND_UNLOCKED = "unlocked.wav";
-const char* Options::BIRD_BLOW = "bird-blow.mp3"; // TODO: Check it!
+const char* Options::SOUND_BIRD_BLOW = "bird-blow.mp3";
+const char* Options::SOUND_DANGER_EXPLOSION = "explosion.mp3";
+const char* Options::SOUND_THROW = "throw-bird.mp3";
 
 #endif
 
@@ -272,6 +274,9 @@ Textes Options::TEXT_PAUSE_CONTINUE = {"", FONT, 42, 253};
 Textes Options::TEXT_LANGUAGE_NOT_AVAILABLE = {"", Options::FONT, 24, 254};
 Textes Options::TEXT_GAME_START_STRING_1 = {"", Options::FONT, 100, 255};
 Textes Options::TEXT_GAME_START_STRING_2 = {"", Options::FONT, 100, 256};
+Textes Options::TEXT_GAME_CLASSIC_LEVEL_UP = {"", Options::FONT, 72, 257};
+Textes Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED = {"", Options::FONT, 42, 258};
+Textes Options::TEXT_GAME_BEST = {"", Options::FONT, 42, 259};
 
 // ===========================================================
 // Fields
@@ -647,6 +652,10 @@ void Options::changeLanguage()
 
             TEXT_GAME_START_STRING_1.string = "Ready?";
             TEXT_GAME_START_STRING_2.string = "Go!";
+
+            TEXT_GAME_CLASSIC_LEVEL_UP.string = "Level up!";
+            TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Something was unclocked!";
+            TEXT_GAME_BEST.string = "Best: 1024";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -986,6 +995,10 @@ void Options::changeLanguage()
 
             TEXT_GAME_START_STRING_1.string = "Готовы?";
             TEXT_GAME_START_STRING_2.string = "Вперед!";
+
+            TEXT_GAME_CLASSIC_LEVEL_UP.string = "Уровень пройден!";
+            TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Что-то было открыто";
+            TEXT_GAME_BEST.string = "Лучший: 1024";
         break;
     }
     
@@ -1246,8 +1259,11 @@ void Options::changeLanguage()
     TEXTES_HOLDER[254] = TEXT_LANGUAGE_NOT_AVAILABLE;
     TEXTES_HOLDER[255] = TEXT_GAME_START_STRING_1;
     TEXTES_HOLDER[256] = TEXT_GAME_START_STRING_2;
+    TEXTES_HOLDER[257] = TEXT_GAME_CLASSIC_LEVEL_UP;
+    TEXTES_HOLDER[258] = TEXT_GAME_SOMETHING_WAS_UNLOCKED;
+    TEXTES_HOLDER[259] = TEXT_GAME_BEST;
     
-    for(int i = 0; i < 257; i++)
+    for(int i = 0; i < 260; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

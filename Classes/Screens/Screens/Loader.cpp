@@ -16,7 +16,7 @@
 
 int Loader::ACTION = -1;
 
-const char* Loader::TEXTURE_LIBRARY[25] =
+const char* Loader::TEXTURE_LIBRARY[27] =
 {
     "game_gui_bg_summer@2x.png",
     "birds_sprite@2x.png",
@@ -42,7 +42,9 @@ const char* Loader::TEXTURE_LIBRARY[25] =
     "pause_btn_sprite@2x.png",
     "game_gui_count_pic@2x.png",
     "game_time_clock@2x.png",
-    "game_time_arrow@2x.png"
+    "game_time_arrow@2x.png",
+    "birds_life@2x.png",
+    "event_panel@2x.png"
 };
 
 // ===========================================================
