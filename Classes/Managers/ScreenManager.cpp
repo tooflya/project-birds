@@ -112,10 +112,10 @@ void ScreenManager::load(int pAction)
         break;
         default:
 
-            if(this->mScreens[Screen::SCREEN_CLASSIC_GAME] == NULL) // TODO: Temp solution :(
+            if(this->mScreens[Screen::SCREEN_CLASSIC_GAME] == NULL) {// TODO: Temp solution :(
             this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
             this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Arcade();
-            this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Progresses();
+            this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Progresses(); }
             /*delete this->mScreens[Screen::SCREEN_MENU];
            delete  this->mScreens[Screen::SCREEN_SETTINGS];
             delete this->mScreens[Screen::SCREEN_SHOP];

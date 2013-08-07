@@ -93,6 +93,7 @@ class Text : public CCLabelTTF
         // Methods
         // ===========================================================
     
+        void setPosition(float pX, float pY);
         void setCenterPosition(float pCenterX, float pCenterY);
     
         void changeLanguage();

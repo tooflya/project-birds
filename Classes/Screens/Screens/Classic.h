@@ -3,6 +3,8 @@
 
 #include "Game.h"
 
+#include "Confetti.h"
+
 #include "AppDelegate.h"
 
 class Classic : public Game

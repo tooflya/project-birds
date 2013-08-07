@@ -1,14 +1,12 @@
 #ifndef CONST_SPLASH_H
 #define CONST_SPLASH_H
 
-#include "cocos2d.h"
+#include "Screen.h"
 
 #include "Entity.h"
 #include "Button.h"
 
 #include "BatchEntityManager.h"
-
-using namespace cocos2d;
 
 class Splash : public CCLayer
 {
@@ -25,15 +23,21 @@ class Splash : public CCLayer
         // Fields
         // ===========================================================
     
-        bool mShowBackground;
-        bool mHideBackground;
+        int mType;
     
         float mShowBackgroundTime;
         float mShowBackgroundTimeElapsed;
         
         float mHideBackgroundTime;
         float mHideBackgroundTimeElapsed;
+        
+        bool mShowBackground;
+        bool mHideBackground;
+
+        bool mShowed;
     
+        Screen* mParent;
+
         Entity* mBackground;
     
         BatchEntityManager* mParts;
@@ -84,6 +88,10 @@ class Splash : public CCLayer
         // Constants
         // ===========================================================
 
+        static const int TYPE_CLASSIC = 0;
+        static const int TYPE_ARCADE = 1;
+        static const int TYPE_PROGRESS = 2;
+
         // ===========================================================
         // Fields
         // ===========================================================
@@ -92,14 +100,21 @@ class Splash : public CCLayer
         // Constructors
         // ===========================================================
     
-        Splash(CCNode* pParent);
+        Splash(Screen* pParent);
 
         // ===========================================================
         // Methods
         // ===========================================================
     
+        void setType(int pType);
+
         void show();
         void hide();
+
+        bool isShowed();
+
+        virtual void onStartShow();
+        virtual void onStartHide();
     
         virtual void onShow();
         virtual void onHide();

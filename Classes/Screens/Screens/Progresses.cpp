@@ -34,7 +34,7 @@ Progresses::Progresses() :
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
-        (new End(this))->show();
+        //(new End(this))->show();
 
         m_Instance = this;
     }

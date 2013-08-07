@@ -103,6 +103,8 @@ class EventPanel : public Entity
 
         void onShow();
         void onHide();
+
+        EventPanel* setEvent(int pEvent);
         
         // ===========================================================
         // Override Methods

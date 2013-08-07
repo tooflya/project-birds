@@ -214,6 +214,8 @@ class Entity : public CCSprite, public Touchable
     
         void setRepeatTexture(bool pRepeat);
 
+        void stopAnimation();
+
         void animate(float pAnimationTime);
         void animate(float pAnimationTime, int pRepeatCount);
         void animate(float pAnimationTime, int pRepeatCount, bool pNeedReverse);

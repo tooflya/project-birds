@@ -504,6 +504,13 @@ bool Entity::isAnimationRunning()
     return this->mAnimationRunning;
 }
 
+void Entity::stopAnimation()
+{
+    this->setCurrentFrameIndex(0);
+
+    this->mAnimationRunning = false;
+}
+
 /**
  *
  * Checing for touch detector
@@ -680,7 +687,7 @@ void Entity::update(float pDeltaTime)
                 }
                 else
                 {
-                    if(this->getCurrentFrameIndex() <= this->mAnimationFinishFrame && this->getCurrentFrameIndex() >= this->mAnimationStartFrame)
+                    if(this->getCurrentFrameIndex() < this->mAnimationFinishFrame && this->getCurrentFrameIndex() >= this->mAnimationStartFrame)
                     {
                         this->setCurrentFrameIndex(this->mCurrentFrameIndex + (this->mIsAnimationReverse ? -1 : 1));
 

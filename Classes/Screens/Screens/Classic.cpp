@@ -37,12 +37,12 @@ Classic::Classic() :
 
         this->mPauseButton = new Button((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
 
+        this->mDust = new BatchEntityManager(100, new Dust(), this);
         this->mMarks = new BatchEntityManager(200, new Mark(), this);
         this->mFeathers = new BatchEntityManager(100, new Feather(), this);
         this->mBirds = new BatchEntityManager(10, new Bird(), this);
         this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
         this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
-        this->mDust = new BatchEntityManager(100, new Dust(), this);
 
         this->mEventPanel = new EventPanel(this);
         

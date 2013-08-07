@@ -85,6 +85,8 @@ class Clock : public Entity
         // ===========================================================
 
         void start();
+
+        float getTimeElapsed();
         
         // ===========================================================
         // Override Methods

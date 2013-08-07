@@ -39,7 +39,7 @@ Progress::Progress()
     
     Text* text1 = new Text(Options::TEXT_PROGRESS_STRING_1, CCSize(Utils::coord(700), 0), this);
     
-    text1->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300)));
+    text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
     
     m_Instance = this;
 }

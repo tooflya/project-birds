@@ -19,13 +19,14 @@
 // Constructors
 // ===========================================================
 
-Splash::Splash(CCNode* pParent)
+Splash::Splash(Screen* pParent)
 {
-    pParent->addChild(this, 500);
+    this->mParent = pParent;
     
     this->scheduleUpdate();
     
     this->mShowBackground = false;
+    this->mShowed = false;
 }
 
 // ===========================================================
@@ -34,6 +35,8 @@ Splash::Splash(CCNode* pParent)
 
 void Splash::show()
 {
+    this->mParent->addChild(this, 500);
+
     Entity* part;
     part = (Entity*) this->mParts->objectAtIndex(0);
     part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT - part->getContentSize().height / 2)));
@@ -48,6 +51,8 @@ void Splash::show()
     this->mShowBackgroundTimeElapsed = 0;
     
     this->setVisible(true);
+
+    this->onStartShow();
 }
 
 void Splash::hide()
@@ -64,16 +69,37 @@ void Splash::hide()
     this->mHideBackground = true;
     this->mHideBackgroundTime = 0.3;
     this->mHideBackgroundTimeElapsed = 0;
+
+    this->onStartHide();
 }
 
 void Splash::onShow()
 {
-    
 }
 
 void Splash::onHide()
 {
-    
+    this->removeFromParentAndCleanup(false);
+}
+
+void Splash::onStartShow()
+{
+    this->mShowed = true;
+}
+
+void Splash::onStartHide()
+{
+    this->mShowed = false;
+}
+
+void Splash::setType(int pType)
+{
+    this->mType = pType;
+}
+
+bool Splash::isShowed()
+{
+    return this->mShowed;
 }
 
 // ===========================================================

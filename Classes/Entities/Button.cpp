@@ -73,7 +73,7 @@ void Button::setText(Textes pParams)
     }
 
     this->mText = new Text(pParams, this);
-    this->mText->setPosition(ccp(this->getWidth() / 2, this->getHeight() / 2));
+    this->mText->setCenterPosition(this->getWidth() / 2, this->getHeight() / 2);
 }
 
 void Button::setString(const char* pString)

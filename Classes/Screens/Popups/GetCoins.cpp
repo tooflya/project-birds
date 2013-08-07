@@ -48,10 +48,10 @@ GetCoins::GetCoins(CCNode* pParent) :
         Text* text3 = new Text(Options::TEXT_GETCOINS_STRING_3, this->mBackground);
         Text* text4 = new Text(Options::TEXT_GETCOINS_STRING_4, this->mBackground);
         
-        text1->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(190)));
-        text2->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(140)));
-        text3->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(50)));
-        text4->setPosition(ccp(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(0)));
+        text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(190));
+        text2->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(140));
+        text3->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(50));
+        text4->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(0));
         
         this->mGetCoinsButtons[0]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(140), this->mBackground->getHeight() / 2 - Utils::coord(155));
         this->mGetCoinsButtons[1]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(140), this->mBackground->getHeight() / 2 - Utils::coord(140));

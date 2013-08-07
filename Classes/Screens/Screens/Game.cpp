@@ -33,6 +33,26 @@ Game::Game()
 // Methods
 // ===========================================================
 
+void Game::startGame()
+{
+    CURRENT_COUNT = 0;
+
+    this->mGameRunning = false;
+    this->mGamePaused = false;
+
+    this->mStartGameAnimationIndex = -2;
+    
+    this->mStartGameAnimation = 1.0;
+    this->mStartGameAnimationElapsed = this->mStartGameAnimation;
+    
+    this->mGameStartText->setOpacity(0.0);
+}
+
+void Game::onGameStarted()
+{
+
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -46,7 +66,7 @@ void Game::update(float pDeltaTime)
         this->mDust->create();
     }
 
-    if(this->mGameRunning)
+    if(this->mGameRunning && !this->mGamePaused)
     {
         this->mBirdsTimeElapsed += pDeltaTime;
 
@@ -76,7 +96,7 @@ void Game::update(float pDeltaTime)
             }
         }
     }
-    else
+    else if(!this->mGamePaused)
     {
         this->mStartGameAnimationElapsed += pDeltaTime;
 
@@ -86,7 +106,12 @@ void Game::update(float pDeltaTime)
 
             switch(++this->mStartGameAnimationIndex)
             {
+                case -1:
+                break;
                 case 0:
+                this->mGameStartText->setString(Options::TEXT_GAME_START_STRING_1.string);
+                this->mGameStartText->setScale(1.0);
+                this->mGameStartText->setOpacity(255.0);
                 this->mGameStartText->runAction(CCScaleTo::create(this->mStartGameAnimation, 1.6));
                 this->mGameStartText->runAction(CCFadeTo::create(this->mStartGameAnimation, 0.0));
                 break;
@@ -100,9 +125,16 @@ void Game::update(float pDeltaTime)
                 case 2:
                 this->mStartGameAnimationIndex = -1;
                 this->mGameRunning = true;
+
+                this->onGameStarted();
                 break;
             }
         }
+    }
+
+    if(this->mEventLayer)
+    {
+        this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));
     }
 }
 
@@ -110,18 +142,7 @@ void Game::onEnter()
 {
     Screen::onEnter();
 
-    CURRENT_COUNT = 0;
-
-    this->mGameRunning = false;
-
-    this->mStartGameAnimationIndex = -1;
-    
-    this->mStartGameAnimation = 1.0;
-    this->mStartGameAnimationElapsed = this->mStartGameAnimation;
-                
-    this->mGameStartText->setString(Options::TEXT_GAME_START_STRING_1.string);
-    this->mGameStartText->setScale(1.0);
-    this->mGameStartText->setOpacity(255.0);
+    this->startGame();
 }
 
 void Game::onExit()

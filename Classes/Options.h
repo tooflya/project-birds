@@ -161,6 +161,7 @@ class Options
         static const int BUTTONS_ID_END_MENU  = 7001;
         static const int BUTTONS_ID_END_RESTART  = 7002;
         static const int BUTTONS_ID_END_CONTINUE  = 7003;
+        static const int BUTTONS_ID_END_SHOP  = 7004;
         static const int BUTTONS_ID_POPUP_CLOSE  = 8001;
         static const int BUTTONS_ID_BUYITEM_BUY  = 9001;
         static const int BUTTONS_ID_EXIT_YES  = 1101;
@@ -262,6 +263,7 @@ class Options
         static Textes TEXT_GAME_CLASSIC_LEVEL_UP;
         static Textes TEXT_GAME_SOMETHING_WAS_UNLOCKED;
         static Textes TEXT_GAME_BEST;
+        static Textes TEXT_GAME_ARCADE_TIME_REMAINING;
 
         // ===========================================================
         // Fields

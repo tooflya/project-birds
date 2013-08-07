@@ -82,6 +82,11 @@ void EventPanel::onHide()
     this->removeFromParentAndCleanup(false);
 }
 
+EventPanel* EventPanel::setEvent(int pEvent)
+{
+    return this;
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================

@@ -32,7 +32,7 @@ class Arcade : public Game
 
         Text* mCountText;
         Text* mBestCountText;
-        Text* mTimeText;
+        Text* mTimeText[3];
     
         // ===========================================================
         // Constructors
@@ -95,6 +95,8 @@ class Arcade : public Game
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void startGame();
         
         // ===========================================================
         // Override Methods
@@ -104,6 +106,8 @@ class Arcade : public Game
 
         void onEnter();
         void onExit();
+
+        void onGameStarted();
 };
 
 #endif

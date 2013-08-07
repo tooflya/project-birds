@@ -108,7 +108,15 @@ void Text::setCenterPosition(float pCenterX, float pCenterY)
     this->mInitCenterX = pCenterX;
     this->mInitCenterY = pCenterY;
     
-    this->setPosition(ccp(pCenterX, pCenterY));
+    CCLabelTTF::setPosition(ccp(pCenterX, pCenterY));
+}
+
+void Text::setPosition(float pX, float pY)
+{
+    this->mInitCenterX = pX + this->getWidth() / 2;
+    this->mInitCenterY = pY - this->getHeight() / 2;
+    
+    CCLabelTTF::setPosition(ccp(pX - this->getWidth() / 2, pY + this->getHeight() / 2));
 }
 
 void Text::changeLanguage()

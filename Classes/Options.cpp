@@ -277,6 +277,7 @@ Textes Options::TEXT_GAME_START_STRING_2 = {"", Options::FONT, 100, 256};
 Textes Options::TEXT_GAME_CLASSIC_LEVEL_UP = {"", Options::FONT, 72, 257};
 Textes Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED = {"", Options::FONT, 42, 258};
 Textes Options::TEXT_GAME_BEST = {"", Options::FONT, 42, 259};
+Textes Options::TEXT_GAME_ARCADE_TIME_REMAINING = {"", Options::FONT, 32, 260};
 
 // ===========================================================
 // Fields
@@ -656,6 +657,7 @@ void Options::changeLanguage()
             TEXT_GAME_CLASSIC_LEVEL_UP.string = "Level up!";
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Something was unclocked!";
             TEXT_GAME_BEST.string = "Best: 1024";
+            TEXT_GAME_ARCADE_TIME_REMAINING.string = "Time remaining:";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -999,6 +1001,7 @@ void Options::changeLanguage()
             TEXT_GAME_CLASSIC_LEVEL_UP.string = "Уровень пройден!";
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Что-то было открыто";
             TEXT_GAME_BEST.string = "Лучший: 1024";
+            TEXT_GAME_ARCADE_TIME_REMAINING.string = "Времени осталось:";
         break;
     }
     
@@ -1262,8 +1265,9 @@ void Options::changeLanguage()
     TEXTES_HOLDER[257] = TEXT_GAME_CLASSIC_LEVEL_UP;
     TEXTES_HOLDER[258] = TEXT_GAME_SOMETHING_WAS_UNLOCKED;
     TEXTES_HOLDER[259] = TEXT_GAME_BEST;
+    TEXTES_HOLDER[260] = TEXT_GAME_ARCADE_TIME_REMAINING;
     
-    for(int i = 0; i < 260; i++)
+    for(int i = 0; i <= 260; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

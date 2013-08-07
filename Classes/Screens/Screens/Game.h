@@ -44,6 +44,7 @@ class Game : public Screen
         float mStartGameAnimationElapsed;
 
         bool mGameRunning;
+        bool mGamePaused;
 
         Entity* mBackground;
 
@@ -54,6 +55,10 @@ class Game : public Screen
         Text* mGameStartText;
 
         Popup* mPausePopup;
+
+        End* mEndScreen;
+
+        CCLayer* mEventLayer;
     
         // ===========================================================
         // Constructors
@@ -123,6 +128,9 @@ class Game : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+
+        virtual void startGame();
+        virtual void onGameStarted();
         
         // ===========================================================
         // Override Methods

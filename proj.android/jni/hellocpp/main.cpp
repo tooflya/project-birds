@@ -54,6 +54,7 @@
 #include "Explosion.cpp"
 #include "Feather.cpp"
 #include "Dust.cpp"
+#include "EventPanel.cpp"
 #include "CCBlade.cpp"
 #include "Mark.cpp"
 #include "Item.cpp"

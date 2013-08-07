@@ -1,17 +1,13 @@
 #ifndef CONST_END_H
 #define CONST_END_H
 
-#include "cocos2d.h"
-
-#include "Splash.h"
 #include "Screen.h"
+#include "Splash.h"
 #include "Star.h"
+#include "Confetti.h"
 #include "BatchEntityManager.h"
-#include "ConfettiManager.h"
 
 #include "AppDelegate.h"
-
-using namespace cocos2d;
 
 class End : public Splash
 {
@@ -29,14 +25,14 @@ class End : public Splash
         // ===========================================================
         // Fields
         // ===========================================================
-    
+
+        Button* mShopButton;
         Button* mMenuButton;
         Button* mRestartButton;
         Button* mContinueButton;
     
         BatchEntityManager* mStars;
-    
-        ConfettiManager* mConfetti;
+        BatchEntityManager* mConfetti;
     
         int mAnimationCounter;
     
@@ -101,14 +97,19 @@ class End : public Splash
         // Constructors
         // ===========================================================
     
-        End(CCNode* pParent);
+        End(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
+
         void onShow();
         void onHide();
+
+        void onStartShow();
+        void onStartHide();
+
+        void throwConfetti();
         
         // ===========================================================
         // Override Methods

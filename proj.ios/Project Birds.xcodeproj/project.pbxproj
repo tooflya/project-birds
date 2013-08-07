@@ -145,7 +145,6 @@
 		7827834117AFA4E2001CFC6D /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7827825C17AFA4E2001CFC6D /* Texture.cpp */; };
 		7827834217AFA4E2001CFC6D /* BatchEntityManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7827825F17AFA4E2001CFC6D /* BatchEntityManager.cpp */; };
 		7827834317AFA4E2001CFC6D /* BladeParticlesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7827826117AFA4E2001CFC6D /* BladeParticlesManager.cpp */; };
-		7827834417AFA4E2001CFC6D /* ConfettiManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7827826317AFA4E2001CFC6D /* ConfettiManager.cpp */; };
 		7827834517AFA4E2001CFC6D /* EntityManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7827826517AFA4E2001CFC6D /* EntityManager.cpp */; };
 		7827834617AFA4E2001CFC6D /* ScreenManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7827826717AFA4E2001CFC6D /* ScreenManager.cpp */; };
 		7827834717AFA4E2001CFC6D /* Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7827826917AFA4E2001CFC6D /* Options.cpp */; };
@@ -513,8 +512,6 @@
 		7827826017AFA4E2001CFC6D /* BatchEntityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchEntityManager.h; sourceTree = "<group>"; };
 		7827826117AFA4E2001CFC6D /* BladeParticlesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BladeParticlesManager.cpp; sourceTree = "<group>"; };
 		7827826217AFA4E2001CFC6D /* BladeParticlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BladeParticlesManager.h; sourceTree = "<group>"; };
-		7827826317AFA4E2001CFC6D /* ConfettiManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfettiManager.cpp; sourceTree = "<group>"; };
-		7827826417AFA4E2001CFC6D /* ConfettiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfettiManager.h; sourceTree = "<group>"; };
 		7827826517AFA4E2001CFC6D /* EntityManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EntityManager.cpp; sourceTree = "<group>"; };
 		7827826617AFA4E2001CFC6D /* EntityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityManager.h; sourceTree = "<group>"; };
 		7827826717AFA4E2001CFC6D /* ScreenManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenManager.cpp; sourceTree = "<group>"; };
@@ -1300,8 +1297,6 @@
 				7827826017AFA4E2001CFC6D /* BatchEntityManager.h */,
 				7827826117AFA4E2001CFC6D /* BladeParticlesManager.cpp */,
 				7827826217AFA4E2001CFC6D /* BladeParticlesManager.h */,
-				7827826317AFA4E2001CFC6D /* ConfettiManager.cpp */,
-				7827826417AFA4E2001CFC6D /* ConfettiManager.h */,
 				7827826517AFA4E2001CFC6D /* EntityManager.cpp */,
 				7827826617AFA4E2001CFC6D /* EntityManager.h */,
 				7827826717AFA4E2001CFC6D /* ScreenManager.cpp */,
@@ -2488,7 +2483,6 @@
 				7827834117AFA4E2001CFC6D /* Texture.cpp in Sources */,
 				7827834217AFA4E2001CFC6D /* BatchEntityManager.cpp in Sources */,
 				7827834317AFA4E2001CFC6D /* BladeParticlesManager.cpp in Sources */,
-				7827834417AFA4E2001CFC6D /* ConfettiManager.cpp in Sources */,
 				7827834517AFA4E2001CFC6D /* EntityManager.cpp in Sources */,
 				7827834617AFA4E2001CFC6D /* ScreenManager.cpp in Sources */,
 				7827834717AFA4E2001CFC6D /* Options.cpp in Sources */,
