@@ -34,6 +34,8 @@ class EventPanel : public Entity
 
         bool mLive;
 
+        Entity* mIcon;
+
         Screen* mParent;
 
         Text* mText;

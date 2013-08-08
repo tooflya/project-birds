@@ -24,10 +24,13 @@ Classic* Classic::m_Instance = NULL;
 Classic::Classic() :
     Game()
     {
+        this->mEventLayer = CCLayer::create();
+
         this->mBackground = new Entity("game_gui_bg_summer@2x.png", this);
         this->mCountIcon = new Entity("game_gui_count_pic@2x.png", this);
 
         this->mConfetti = new BatchEntityManager(300, new Confetti(), this);
+        this->mStars = new BatchEntityManager(1000, new StarParticle(), this);
 
         this->mCountText = new Text((Textes) {"0", Options::FONT, 80, -1}, this);
         this->mBestCountText = new Text(Options::TEXT_GAME_BEST, this);
@@ -43,6 +46,7 @@ Classic::Classic() :
         this->mBirds = new BatchEntityManager(10, new Bird(), this);
         this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
         this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
+        this->mLifes = new BatchEntityManager(3, new Entity("lifes@2x.png", 1, 2), this->mEventLayer);
 
         this->mEventPanel = new EventPanel(this);
         
@@ -57,7 +61,8 @@ Classic::Classic() :
         this->mLevelUpText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
         this->mLevelUpText->setOpacity(0);
 
-        this->mPausePopup = new Pause(this);
+        this->mPausePopup = new ClassicPause(this);
+        this->mEndScreen = new ClassicEnd(Splash::TYPE_CLASSIC, this);
 
         this->mLevelUpTime = 30.0;
         this->mLevelUpTimeElaspsed = 0;
@@ -65,7 +70,38 @@ Classic::Classic() :
         this->mLevelUpAnimationTime = 4.0;
         this->mLevelUpAnimationTimeElapsed = 0;
 
+        this->mChalangeTime = 110.0;
+        this->mChalangeTimeElapsed = 0;
+
         this->mIsLevelUpAnimation = false;
+
+        for(int i = 0; i < 3; i++)
+        {
+            Entity* entity = static_cast<Entity*>(this->mLifes->create());
+
+            float x, y;
+
+            switch(i)
+            {
+                default:
+                    x = 80;
+                    y = 45;
+                break;
+                case 1:
+                    x = 80;
+                    y = 41;
+                break;
+                case 2:
+                    x = 75;
+                    y = 36;
+                break;
+            }
+
+            entity->setScale(1.0 - Utils::coord(0.15) * i);
+            entity->setCenterPosition(Utils::coord(45) + Utils::coord(x) * i, Utils::coord(y));
+        }
+
+        this->addChild(this->mEventLayer);
 
         m_Instance = this;
     }
@@ -104,6 +140,23 @@ void Classic::onTouchButtonsCallback(const int pAction, const int pID)
     }
 }
 
+void Classic::startGame()
+{
+    Game::startGame();
+
+    this->mLevelUpTimeElaspsed = 0;
+    this->mChalangeTimeElapsed = 0;
+
+    this->mConfetti->clear();
+
+    for(int i = 0; i < 3; i++)
+    {
+        Entity* entity = static_cast<Entity*>(this->mLifes->objectAtIndex(i));
+
+        entity->setCurrentFrameIndex(0);
+    }
+}
+
 void Classic::levelUp()
 {
     this->throwConfetti();
@@ -112,7 +165,12 @@ void Classic::levelUp()
 
     this->mIsLevelUpAnimation = true;
 
-    this->mEventPanel->show();
+    if(Options::SOUND_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BONUS_GONG);
+    }
+
+    Game::HEALTH += 10;
 }
 
 void Classic::throwConfetti()
@@ -135,6 +193,18 @@ void Classic::throwConfetti()
     }
 }
 
+void Classic::runChalange()
+{
+    this->mChalange = true;
+}
+
+void Classic::stopChalange()
+{
+    this->mChalange = false;
+
+    this->mLevelUpTime = 0;
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -145,15 +215,6 @@ void Classic::update(float pDeltaTime)
 
     this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
     this->mCountText->setCenterPosition(Utils::coord(120) + this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(64));
-
-    this->mLevelUpTimeElaspsed += pDeltaTime;
-
-    if(this->mLevelUpTimeElaspsed >= this->mLevelUpTime)
-    {
-        this->mLevelUpTimeElaspsed = 0;
-
-        this->levelUp();
-    }
 
     if(this->mIsLevelUpAnimation)
     {
@@ -167,11 +228,119 @@ void Classic::update(float pDeltaTime)
             this->mLevelUpText->runAction(CCFadeOut::create(1.0));
         }
     }
+
+    if(this->mGamePaused)
+    {
+        if(!this->mEndScreen->isShowed())
+        {
+            this->startGame();
+        }
+    }
+    else if(this->mGameRunning && !this->mGamePaused)
+    {
+        if(this->mChalange)
+        {
+            this->mChalangeTimeElapsed += pDeltaTime;
+
+            if(this->mChalangeTimeElapsed >= 10.0) // TODO: Adjust chalange time.
+            {
+                this->mChalangeTimeElapsed = 0;
+
+                this->stopChalange();
+            }
+
+            for(int i = 0; i < 2; i++)
+            {
+                this->mStars->create();
+            }
+        }
+        else
+        {
+            this->mLevelUpTimeElaspsed += pDeltaTime;
+            this->mChalangeTimeElapsed += pDeltaTime;
+
+            if(this->mLevelUpTimeElaspsed >= this->mLevelUpTime)
+            {
+                this->mLevelUpTimeElaspsed = 0;
+
+                this->levelUp();
+            }
+
+            if(this->mChalangeTimeElapsed >= this->mChalangeTime)
+            {
+                this->mChalangeTimeElapsed = 0;
+
+                this->runChalange();
+            }
+        }
+    }
+
+    this->mBestCountText->setString((Options::TEXT_GAME_BEST.string + Utils::intToString(BEST_COUNT)).c_str());
+    this->mBestCountText->setCenterPosition(Utils::coord(10) + this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(128));
+    
+    this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
+    this->mCountText->setCenterPosition(Utils::coord(120) + this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(64));
+}
+
+void Classic::onGameStarted()
+{
+    LIFES = -1;
+    BEST_COUNT = AppDelegate::getBestResult(0);
+
+    this->mLevelUpTimeElaspsed = 0;
+    this->mChalangeTimeElapsed = 0;
+}
+
+void Classic::onGameEnd()
+{
+    this->mGamePaused = true;
+    this->mChalange = false;
+
+    this->mLevelUpTimeElaspsed = 0;
+    this->mChalangeTimeElapsed = 0;
+
+    this->mEndScreen->show();
+
+    if(BEST_COUNT > AppDelegate::getBestResult(0))
+    {
+        AppDelegate::setBestResult(BEST_COUNT, 0);
+    }
 }
 
 void Classic::onEnter()
 {
     Game::onEnter();
+
+    LIFES = -1;
+    BEST_COUNT = AppDelegate::getBestResult(0);
+
+    for(int i = 0; i < 3; i++)
+    {
+        Entity* entity = static_cast<Entity*>(this->mLifes->objectAtIndex(i));
+
+        entity->setCurrentFrameIndex(0);
+    }
+}
+
+void Classic::removeLife()
+{
+    if(LIFES < 3 && !this->mGamePaused && this->mGameRunning)
+    {
+        Game::removeLife();
+
+        Entity* entity = static_cast<Entity*>(this->mLifes->objectAtIndex(++LIFES));
+
+        float scale = entity->getScale();
+
+        entity->setCurrentFrameIndex(1);
+        entity->setScale(1.3);
+        entity->runAction(CCScaleTo::create(0.5, scale));
+
+        if(LIFES >= 2)
+        {
+            this->onGameEnd();
+        }
+    }
 }
 
 void Classic::onExit()

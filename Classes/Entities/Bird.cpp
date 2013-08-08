@@ -19,14 +19,10 @@ ccColor3B Bird::COLORS[COUNT] =
     ccc3(224.0, 0.0, 55.0),
     ccc3(204.0, 51.0, 204.0),
     ccc3(51.0, 102.0, 255.0),
-    ccc3(145.0, 193.0, 236.0),
-    ccc3(64.0, 70.0, 98.0),
-    ccc3(172.0, 221.0, 43.0),
-    ccc3(36.0, 200.0, 206.0),
-    ccc3(223.0, 182.0, 60.0),
-    ccc3(36.0, 178.0, 27.0),
-    ccc3(196.0, 227.0, 238.0),
-    ccc3(62.0, 49.0, 176.0)
+    ccc3(0.0, 255.0, 255.0),
+    ccc3(255.0, 255.0, 51.0),
+    ccc3(0.0, 236.0, 47.0),
+    ccc3(64.0, 70.0, 98.0)
 };
 
 // ===========================================================
@@ -47,11 +43,18 @@ Bird::Bird() :
         this->mLife->initWithSprite(CCSprite::create("birds_life@2x.png"));
         this->mLife->setType(kCCProgressTimerTypeRadial);
         this->mLife->setReverseProgress(true);
+
+        this->mSoundEffect = 0;
     }
 
 // ===========================================================
 // Methods
 // ===========================================================
+
+int Bird::getType()
+{
+    return this->mType;
+}
 
 // ===========================================================
 // Override Methods
@@ -60,19 +63,37 @@ Bird::Bird() :
 void Bird::onCreate()
 {
     ImpulseEntity::onCreate();
-
-    this->mType = Utils::random(0, COUNT - 1);
     
-    this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
+    Game* game = static_cast<Game*>(this->getParent()->getParent());
+
+    if(game->mChalange)
+    {
+        this->mType = Utils::random(0, COUNT - 2);
+        
+        this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
+
+        this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(300));
+
+        this->mWeight = Utils::coord(1000.0f);
+        this->mImpulsePower = Utils::coord(Utils::randomf(200.0f, 700.0f));
+        this->mSideImpulse = Utils::coord(250.0f);
+        this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+    }
+    else
+    {
+        this->mType = Utils::random(0, COUNT - 1);
+        
+        this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
+
+        this->setCenterPosition(Utils::randomf(0, Options::CAMERA_WIDTH), 0.0);
+
+        this->mWeight = Utils::coord(1500.0f);
+        this->mImpulsePower = Utils::coord(Utils::randomf(1200.0f, 1900.0f));
+        this->mSideImpulse = Utils::coord(Utils::randomf(100.0f, 300.0f));
+        this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+    }
 
     this->animate(0.05, this->getCurrentFrameIndex() + 5, this->getCurrentFrameIndex() + 5 + 7, 1);
-
-    this->setCenterPosition(Utils::randomf(0, Options::CAMERA_WIDTH), Utils::randomf(0.0, 0.0));
-
-    this->mWeight = Utils::coord(2000.0f);
-    this->mImpulsePower = Utils::coord(Utils::randomf(1200.0f, 2200.0f));
-    this->mSideImpulse = Utils::coord(Utils::randomf(100.0f, 300.0f));
-    this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
 
     this->setScale(1.0);
     this->setScaleX(this->getCenterX() < Options::CAMERA_CENTER_X ? 1 : -1);
@@ -93,8 +114,16 @@ void Bird::onCreate()
     this->mLife->setVisible(true);
     this->mLife->setPercentage(0);
 
-    this->mInitLifeCount = 100.0;
+    this->mInitLifeCount = Game::HEALTH;
     this->mLifeCount = this->mInitLifeCount;
+    
+    if(this->mType == TYPE_DANGER)
+    {
+        if(Options::SOUND_ENABLE)
+        {
+            this->mSoundEffect = SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BOMB_FUSE);
+        }
+    }
 }
 
 void Bird::onAnimationEnd()
@@ -125,8 +154,26 @@ void Bird::onAnimationEnd()
 void Bird::onDestroy()
 {
     ImpulseEntity::onDestroy();
+    
+    Game* game = static_cast<Game*>(this->getParent()->getParent());
 
     this->mLife->setVisible(false);
+
+    if(game)
+    {
+        if(this->mLifeCount > 0 && this->mType != TYPE_DANGER)
+        {
+            game->removeLife();
+        }
+    }
+
+    if(this->mType == TYPE_DANGER)
+    {
+        if(this->mSoundEffect != 0)
+        {
+            SimpleAudioEngine::sharedEngine()->stopEffect(this->mSoundEffect);
+        }
+    }
 }
 
 void Bird::update(float pDeltaTime)
@@ -135,7 +182,7 @@ void Bird::update(float pDeltaTime)
     
     if(!this->isVisible()) return;
     
-    Game* game = (Game*) this->getParent()->getParent();
+    Game* game = static_cast<Game*>(this->getParent()->getParent());
 
     this->mMarkTimeElapsed += pDeltaTime;
     
@@ -188,7 +235,7 @@ void Bird::update(float pDeltaTime)
                     this->mIsGoingToDestroy = false;
                     this->mDestroyAnimationFrames = 0;
 
-                    this->mLifeCount -= 33.0; // TODO: Adjust weapon power.
+                    this->mLifeCount -= 12.0; // TODO: Adjust weapon power.
 
                     this->mLife->setPercentage((this->mLifeCount / this->mInitLifeCount * 100.0));
                 }
@@ -224,8 +271,25 @@ void Bird::update(float pDeltaTime)
                     }
 
                     Game::CURRENT_COUNT++;
+                    
+                    if(Game::CURRENT_COUNT > Game::BEST_COUNT)
+                    {
+                        Game::BEST_COUNT = Game::CURRENT_COUNT;
+                    }
 
                     this->destroy();
+
+                    if(this->mType == TYPE_DANGER)
+                    {
+                        game->removeLife();
+                    }
+                }
+                else
+                {
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_HIT);
+                    }
                 }
             }
         }

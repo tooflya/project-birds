@@ -103,6 +103,8 @@ class Text : public CCLabelTTF
 
         float getCenterX();
         float getCenterY();
+
+        void setText(Textes pParams);
         
         // ===========================================================
         // Override Methods

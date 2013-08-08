@@ -129,6 +129,10 @@ class AppDelegate : private CCApplication
         static void setRate();
 
         static bool isRate();
+
+        static void setBestResult(int pResult, int pType);
+
+        static int getBestResult(int pType);
         
         // ===========================================================
         // Override Methods

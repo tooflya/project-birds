@@ -84,6 +84,9 @@ void AppDelegate::install()
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
 
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[0], 0);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[1], 0);
+
     int id = -1;
     for(int i = 1; i < 4; i++)
     {
@@ -215,6 +218,18 @@ void AppDelegate::setRate()
 bool AppDelegate::isRate()
 {
     return CCUserDefault::sharedUserDefault()->getIntegerForKey("rate") == 1;
+}
+
+void AppDelegate::setBestResult(int pResult, int pType)
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[pType], pResult);
+
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+int AppDelegate::getBestResult(int pType)
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_BEST_RESULT[pType]);
 }
 
 // ===========================================================

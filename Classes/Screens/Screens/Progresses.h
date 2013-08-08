@@ -2,6 +2,8 @@
 #define CONST_PROGRESSES_H
 
 #include "Game.h"
+#include "ProgressPause.h"
+#include "ProgressEnd.h"
 
 #include "Pause.h"
 
@@ -94,6 +96,9 @@ class Progresses : public Game
 
         void onEnter();
         void onExit();
+
+        void onGameStarted();
+        void onGameEnd();
 };
 
 #endif

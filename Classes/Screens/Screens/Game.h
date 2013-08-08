@@ -47,6 +47,7 @@ class Game : public Screen
         bool mGamePaused;
 
         Entity* mBackground;
+        Entity* mCountIcon;
 
         EventPanel* mEventPanel;
 
@@ -107,10 +108,15 @@ class Game : public Screen
         // ===========================================================
 
         static int CURRENT_COUNT;
+        static int BEST_COUNT;
+        static int LIFES;
+        static int HEALTH;
 
         // ===========================================================
         // Fields
         // ===========================================================
+
+        bool mChalange;
 
         BatchEntityManager* mBirds;
         BatchEntityManager* mMarks;
@@ -131,6 +137,8 @@ class Game : public Screen
 
         virtual void startGame();
         virtual void onGameStarted();
+        virtual void onGameEnd();
+        virtual void removeLife();
         
         // ===========================================================
         // Override Methods

@@ -12,6 +12,9 @@
 // ===========================================================
 
 int Game::CURRENT_COUNT = 0;
+int Game::BEST_COUNT = 0;
+int Game::LIFES = 0;
+int Game::HEALTH = 0;
 
 // ===========================================================
 // Fields
@@ -25,6 +28,8 @@ Game::Game()
 {
     this->mBirdsTime = 0;
     this->mBirdsTimeElapsed = 0;
+    
+    this->mChalange = false;
 
     this->addChild(TouchTrailLayer::create(), 10);
 }
@@ -46,11 +51,32 @@ void Game::startGame()
     this->mStartGameAnimationElapsed = this->mStartGameAnimation;
     
     this->mGameStartText->setOpacity(0.0);
+
+    this->mBirds->clear();
+    this->mFeathers->clear();
+    this->mMarks->clear();
+    this->mExplosions->clear();
+    this->mExplosionsBasic->clear();
+
+    HEALTH = 12;
 }
 
 void Game::onGameStarted()
 {
 
+}
+
+void Game::onGameEnd()
+{
+
+}
+
+void Game::removeLife()
+{
+    if(Options::SOUND_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LOSE_LIFE);
+    }
 }
 
 // ===========================================================
@@ -70,29 +96,60 @@ void Game::update(float pDeltaTime)
     {
         this->mBirdsTimeElapsed += pDeltaTime;
 
-        if(this->mBirdsTimeElapsed >= this->mBirdsTime)
+        if(this->mChalange)
         {
-            this->mBirdsTimeElapsed = 0;
-
-            if(this->mBirdsRemaning == 0)
+            if(this->mBirdsTimeElapsed >= 0.5)
             {
-                this->mBirdsRemaning = Utils::random(1, 6);
+                this->mBirdsTimeElapsed = 0;
+                
+                Bird* bird = static_cast<Bird*>(this->mBirds->create());
+
+                if(Options::SOUND_ENABLE)
+                {
+                    if(bird->getType() == Bird::TYPE_DANGER)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW_BOMB);
+                    }
+                    else
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
+                    }
+                }
             }
-
-            this->mBirdsTime = Utils::randomf(0.0, 1.5);
-
-            this->mBirds->create();
-
-            this->mBirdsRemaning--;
-
-            if(this->mBirdsRemaning == 0)
+        }
+        else
+        {
+            if(this->mBirdsTimeElapsed >= this->mBirdsTime)
             {
-                this->mBirdsTime = Utils::randomf(2.0, 7.0);
-            }
+                this->mBirdsTimeElapsed = 0;
 
-            if(Options::SOUND_ENABLE)
-            {
-                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
+                if(this->mBirdsRemaning == 0)
+                {
+                    this->mBirdsRemaning = Utils::random(1, 6);
+                }
+
+                this->mBirdsTime = Utils::randomf(0.0, 1.5);
+
+                this->mBirdsRemaning--;
+
+                if(this->mBirdsRemaning == 0)
+                {
+                    this->mBirdsTime = Utils::randomf(2.0, 7.0);
+                }
+                
+                Bird* bird = static_cast<Bird*>(this->mBirds->create());
+
+                if(Options::SOUND_ENABLE)
+                {
+                    if(bird->getType() == Bird::TYPE_DANGER)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW_BOMB);
+                    }
+                    else
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
+                    }
+                }
             }
         }
     }

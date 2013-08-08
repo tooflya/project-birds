@@ -13,8 +13,6 @@
 // Constants
 // ===========================================================
 
-End* End::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,10 +21,11 @@ End* End::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
-End::End(int pType, Screen* pParent) :
+End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
     Splash(pParent)
     {
         this->mType = pType;
+        this->mOnTouchCallback = pOnTouchCallback;
 
         this->mParts = new BatchEntityManager(2, new Entity("end_lvl_bg_sprite@2x.png", 2, 1), this);
         
@@ -45,10 +44,10 @@ End::End(int pType, Screen* pParent) :
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         this->mBackground->setVisible(false);
         
-        this->mShopButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_SHOP, onTouchButtonsCallback);
-        this->mMenuButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_MENU, onTouchButtonsCallback);
-        this->mRestartButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_RESTART, onTouchButtonsCallback);
-        this->mContinueButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_CONTINUE, onTouchButtonsCallback);
+        this->mShopButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_SHOP, this->mOnTouchCallback);
+        this->mMenuButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_MENU, this->mOnTouchCallback);
+        this->mRestartButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_RESTART, this->mOnTouchCallback);
+        this->mContinueButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_CONTINUE, this->mOnTouchCallback);
 
         if(this->mType == TYPE_PROGRESS)
         {
@@ -59,7 +58,7 @@ End::End(int pType, Screen* pParent) :
             this->mRestartButton->setCenterPosition(this->mBackground->getContentSize().width / 2, this->mBackground->getContentSize().height / 2 - Utils::coord(340));
 
             this->mMenuButton->create()->setCurrentFrameIndex(0);
-            this->mMenuButton->setCenterPosition(this->mBackground->getContentSize().width / 2 - Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(300));
+            this->mMenuButton->setCenterPosition(this->mBackground->getContentSize().width / 2 - Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(320));
         }
         else
         {
@@ -70,10 +69,8 @@ End::End(int pType, Screen* pParent) :
             this->mMenuButton->setCenterPosition(this->mBackground->getContentSize().width / 2, this->mBackground->getContentSize().height / 2 - Utils::coord(340));
 
             this->mContinueButton->create()->setCurrentFrameIndex(2);
-            this->mContinueButton->setCenterPosition(this->mBackground->getContentSize().width / 2 + Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(300));
+            this->mContinueButton->setCenterPosition(this->mBackground->getContentSize().width / 2 + Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(320));
         }
-        
-        this->mConfetti = new BatchEntityManager(300, new Confetti(), this->mBackground);
 
         if(this->mType == Splash::TYPE_PROGRESS)
         {
@@ -91,57 +88,25 @@ End::End(int pType, Screen* pParent) :
         this->setVisible(false);
         
         this->mIsAnimationRunning = false;
+
+        Text* text1 = new Text((Textes) {"Результаты", Options::FONT, 64, -1}, this->mBackground);
+        Text* text2 = new Text((Textes) {"Результат: 114", Options::FONT, 42, -1}, this->mBackground);
+        Text* text3 = new Text((Textes) {"Рекорд: 114", Options::FONT, 42, -1}, this->mBackground);
+        Text* text4 = new Text((Textes) {"Комбо ударов: 5", Options::FONT, 42, -1}, this->mBackground);
+        Text* text5 = new Text((Textes) {"Заработано монет: 228", Options::FONT, 42, -1}, this->mBackground);
+
+        text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(300));
+        text2->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(200));
+        text3->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(150));
+        text4->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(100));
+        text5->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(50));
         
-        m_Instance = this;
+        this->mConfetti = new BatchEntityManager(300, new Confetti(), this->mBackground);
     }
 
 // ===========================================================
 // Methods
 // ===========================================================
-
-void End::onTouchButtonsCallback(const int pAction, const int pID)
-{
-    End* pSender = static_cast<End*>(End::m_Instance);
-
-    switch(pAction)
-    {
-        case Options::BUTTONS_ACTION_ONTOUCH:
-            switch(pID)
-            {
-                case Options::BUTTONS_ID_END_MENU:
-                    
-                    pSender->hide();
-                    
-                    Loader::ACTION = 3;
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
-
-                break;
-                case Options::BUTTONS_ID_END_RESTART:
-
-                    pSender->hide();
-
-                break;
-                case Options::BUTTONS_ID_END_CONTINUE:
-                    
-                    pSender->hide();
-
-                break;
-                case Options::BUTTONS_ID_END_SHOP:
-                    
-                    pSender->hide(); // TODO: Open shop screen.
-
-                break;
-            }
-        break;
-
-        case Options::BUTTONS_ACTION_ONBEGIN:
-        break;
-
-        case Options::BUTTONS_ACTION_ONEND:
-        break;
-    }
-}
 
 void End::onShow()
 {

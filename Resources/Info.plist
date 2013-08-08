@@ -63,11 +63,11 @@
 	<key>CFBundlePackageType</key>
 	<string>AAPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.1</string>
+	<string>0.6.1</string>
 	<key>CFBundleSignature</key>
 	<string>AAPL</string>
 	<key>CFBundleVersion</key>
-	<string>2475</string>
+	<string>2639</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>

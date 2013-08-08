@@ -108,6 +108,11 @@ class Options
         static const char* SOUND_BIRD_BLOW;
         static const char* SOUND_DANGER_EXPLOSION;
         static const char* SOUND_THROW;
+        static const char* SOUND_THROW_BOMB;
+        static const char* SOUND_LOSE_LIFE;
+        static const char* SOUND_HIT;
+        static const char* SOUND_BONUS_GONG;
+        static const char* SOUND_BOMB_FUSE;
 
         static const char* VERSION;
         static int BUILD;
@@ -115,6 +120,7 @@ class Options
         static const char* FONT;
 
         static const char* SAVE_DATA_COINS_ID[2];
+        static const char* SAVE_DATA_BEST_RESULT[2];
         static const char* SAVE_DATA_LANGUAGE_ID;
 
         static CCTouchInformation TOUCH_INFORMATION[10];
@@ -124,7 +130,7 @@ class Options
     
         static int CURRENT_LANGUAGE;
     
-        static Textes TEXTES_HOLDER[300];
+        static Textes TEXTES_HOLDER[600];
 
         static int SHOP_ITEMS_PRICES[100];
         static int SHOP_ITEMS_RATING_FACTOR[100];
@@ -264,6 +270,7 @@ class Options
         static Textes TEXT_GAME_SOMETHING_WAS_UNLOCKED;
         static Textes TEXT_GAME_BEST;
         static Textes TEXT_GAME_ARCADE_TIME_REMAINING;
+        static Textes TEXT_EVENTS[90];
 
         // ===========================================================
         // Fields

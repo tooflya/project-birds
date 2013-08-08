@@ -149,6 +149,13 @@ float Text::getCenterY()
     return this->getPosition().y;
 }
 
+void Text::setText(Textes pParams)
+{
+    this->setString(pParams.string);
+    this->setFontSize(Utils::coord(pParams.size));
+    this->setFontName(pParams.font);
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================

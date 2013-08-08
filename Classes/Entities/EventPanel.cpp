@@ -38,9 +38,13 @@ EventPanel::EventPanel(Screen* pParent) :
         this->mLiveTime = 2.0;
         this->mLiveTimeElapsed = 0;
 
+        this->mIcon = new Entity("info_panel_btn_sprite@2x.png", 3, 1, this);
+
         this->mText = new Text(Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED, this);
 
-        this->mText->setCenterPosition(this->getWidth() / 2, this->getHeight() / 2);
+        this->mIcon->create()->setCenterPosition(Utils::coord(64), this->getHeight() / 2 + Utils::coord(32));
+
+        this->mText->setCenterPosition(this->getWidth() / 2 + Utils::coord(16), this->getHeight() / 2);
     }
 
 // ===========================================================
@@ -84,6 +88,21 @@ void EventPanel::onHide()
 
 EventPanel* EventPanel::setEvent(int pEvent)
 {
+    if(pEvent < 30)
+    {
+        this->mIcon->setCurrentFrameIndex(0);
+    }
+    else if(pEvent < 60)
+    {
+        this->mIcon->setCurrentFrameIndex(1);
+    }
+    else
+    {
+        this->mIcon->setCurrentFrameIndex(2);
+    }
+
+    this->mText->setText(Options::TEXT_EVENTS[pEvent]);
+
     return this;
 }
 

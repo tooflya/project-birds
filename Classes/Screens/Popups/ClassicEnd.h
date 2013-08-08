@@ -1,9 +1,9 @@
-#ifndef CONST_TEMPLATE_H
-#define CONST_TEMPLATE_H
+#ifndef CONST_CLASSICEND_H
+#define CONST_CLASSICEND_H
 
-#include "Popup.h"
+#include "End.h"
 
-class Template : public Popup
+class ClassicEnd : public End
 {
     protected:
         // ===========================================================
@@ -14,7 +14,7 @@ class Template : public Popup
         // Constants
         // ===========================================================
     
-        static Template* m_Instance;
+        static ClassicEnd* m_Instance;
 
         // ===========================================================
         // Fields
@@ -54,7 +54,7 @@ class Template : public Popup
         // ===========================================================
     
         static void onTouchButtonsCallback(const int pAction, const int pID);
-        
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
@@ -76,7 +76,7 @@ class Template : public Popup
         // Constructors
         // ===========================================================
     
-        Template(CCNode* pParent);
+        ClassicEnd(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods
@@ -85,14 +85,6 @@ class Template : public Popup
         // ===========================================================
         // Override Methods
         // ===========================================================
-    
-        virtual void update(float pDeltaTime);
-    
-        virtual void hide();
-        virtual void show();
-    
-        virtual void onShow();
-        virtual void onHide();
 };
 
 #endif
