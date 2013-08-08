@@ -28,7 +28,7 @@ class Classic : public Game
         // ===========================================================
 
         float mLevelUpTime;
-        float mLevelUpTimeElaspsed;
+        float mLevelUpTimeElapsed;
 
         float mLevelUpAnimationTime;
         float mLevelUpAnimationTimeElapsed;

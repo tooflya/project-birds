@@ -33,6 +33,7 @@
 #include "Utils.h"
 #include "BatchEntityManager.h"
 #include "BladeParticlesManager.h"
+#include "WeaponParticle.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -44,7 +45,9 @@ class TouchTrailLayer : public CCLayer {
 private:
     std::map< cocos2d::CCTouch *, CCBlade * >  _map;
 private:
+    
     BladeParticlesManager* mBladeParticlesManager;
+    BatchEntityManager* mWeaponParticles;
     
 	CCPoint mBladeLastCoordinates;
 	

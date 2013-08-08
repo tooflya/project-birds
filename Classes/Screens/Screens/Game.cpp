@@ -98,7 +98,7 @@ void Game::update(float pDeltaTime)
 
         if(this->mChalange)
         {
-            if(this->mBirdsTimeElapsed >= 0.5)
+            if(this->mBirdsTimeElapsed >= 0.2)
             {
                 this->mBirdsTimeElapsed = 0;
                 

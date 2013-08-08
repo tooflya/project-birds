@@ -65,12 +65,12 @@ Classic::Classic() :
         this->mEndScreen = new ClassicEnd(Splash::TYPE_CLASSIC, this);
 
         this->mLevelUpTime = 30.0;
-        this->mLevelUpTimeElaspsed = 0;
+        this->mLevelUpTimeElapsed = 0;
 
         this->mLevelUpAnimationTime = 4.0;
         this->mLevelUpAnimationTimeElapsed = 0;
 
-        this->mChalangeTime = 110.0;
+        this->mChalangeTime = 90.0 - 1.0;
         this->mChalangeTimeElapsed = 0;
 
         this->mIsLevelUpAnimation = false;
@@ -144,10 +144,12 @@ void Classic::startGame()
 {
     Game::startGame();
 
-    this->mLevelUpTimeElaspsed = 0;
+    this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;
 
     this->mConfetti->clear();
+
+    this->mLevelUpText->setOpacity(0);
 
     for(int i = 0; i < 3; i++)
     {
@@ -201,8 +203,6 @@ void Classic::runChalange()
 void Classic::stopChalange()
 {
     this->mChalange = false;
-
-    this->mLevelUpTime = 0;
 }
 
 // ===========================================================
@@ -245,6 +245,7 @@ void Classic::update(float pDeltaTime)
             if(this->mChalangeTimeElapsed >= 10.0) // TODO: Adjust chalange time.
             {
                 this->mChalangeTimeElapsed = 0;
+                this->mLevelUpTimeElapsed = 0;
 
                 this->stopChalange();
             }
@@ -256,12 +257,12 @@ void Classic::update(float pDeltaTime)
         }
         else
         {
-            this->mLevelUpTimeElaspsed += pDeltaTime;
+            this->mLevelUpTimeElapsed += pDeltaTime;
             this->mChalangeTimeElapsed += pDeltaTime;
 
-            if(this->mLevelUpTimeElaspsed >= this->mLevelUpTime)
+            if(this->mLevelUpTimeElapsed >= this->mLevelUpTime)
             {
-                this->mLevelUpTimeElaspsed = 0;
+                this->mLevelUpTimeElapsed = 0;
 
                 this->levelUp();
             }
@@ -269,6 +270,7 @@ void Classic::update(float pDeltaTime)
             if(this->mChalangeTimeElapsed >= this->mChalangeTime)
             {
                 this->mChalangeTimeElapsed = 0;
+                this->mLevelUpTimeElapsed = 0;
 
                 this->runChalange();
             }
@@ -287,7 +289,7 @@ void Classic::onGameStarted()
     LIFES = -1;
     BEST_COUNT = AppDelegate::getBestResult(0);
 
-    this->mLevelUpTimeElaspsed = 0;
+    this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;
 }
 
@@ -296,7 +298,7 @@ void Classic::onGameEnd()
     this->mGamePaused = true;
     this->mChalange = false;
 
-    this->mLevelUpTimeElaspsed = 0;
+    this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;
 
     this->mEndScreen->show();

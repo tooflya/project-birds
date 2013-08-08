@@ -15,7 +15,7 @@ TouchTrailLayer::TouchTrailLayer()
     this->mTimeBeforeNextBladeSound = 0.15f;
     this->mTimeBeforeNextBladeSoundElapsed = 0;
 
-    //this->mBladeParticlesManager = new BladeParticlesManager(100, new Entity(""), this);
+    this->mWeaponParticles = new BatchEntityManager(100, new WeaponParticle(), this);
     
     this->scheduleUpdate();
 }
@@ -92,6 +92,14 @@ void TouchTrailLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
         
         Options::TOUCH_INFORMATION[touch->getID()].last_slice_position = point;
         Options::TOUCH_INFORMATION[touch->getID()].position = point;
+
+        for(int i = 0; i < 3; i++)
+        {
+            WeaponParticle* entity = static_cast<WeaponParticle*>(this->mWeaponParticles->create());
+
+            entity->setCenterPosition(point.x, point.y);
+            entity->setType(i);
+        }
     }
 }
 

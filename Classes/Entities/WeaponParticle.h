@@ -1,9 +1,9 @@
-#ifndef CONST_LOADER_H
-#define CONST_LOADER_H
+#ifndef CONST_WEAPONPARTICLE_H
+#define CONST_WEAPONPARTICLE_H
 
-#include "Screen.h"
+#include "Entity.h"
 
-class Loader : public Screen
+class WeaponParticle : public Entity
 {
     protected:
         // ===========================================================
@@ -13,31 +13,19 @@ class Loader : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static const char* TEXTURE_LIBRARY[31];
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        float mCircleAnimationTime;
-        float mCircleAnimationTimeElapsed;
-    
-        Entity* mBackground;
-        Entity* bird;
-    
-        int mNumberOfSprites;
-        int mNumberOfLoadedSprites;
-    
-        Text* mLoadingText;
-        Text* mTipText;
-    
-        BatchEntityManager* mCircles;
-    
-        bool mTapToContinueAnimation;
-        bool mTapToContinueAnimationReverse;
-    
-        bool mIsWorkDone;
+
+        int mType;
+
+        float mAlphaSpeed;
+        float mScaleSpeed;
+        float mRotationSpeed;
+
+        float mVectorX;
+        float mVectorY;
 
         // ===========================================================
         // Constructors
@@ -46,8 +34,6 @@ class Loader : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void loadingCallBack(CCObject *obj);
 
         // ===========================================================
         // Override Methods
@@ -61,6 +47,8 @@ class Loader : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
+
+        static long LAST_TIME;
 
         // ===========================================================
         // Fields
@@ -87,8 +75,6 @@ class Loader : public Screen
         // Constants
         // ===========================================================
 
-        static int ACTION;
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -96,26 +82,25 @@ class Loader : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Loader();
+
+        WeaponParticle();
 
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void setType(int pType);
         
         // ===========================================================
         // Override Methods
         // ===========================================================
-    
-        void update(float pDeltaTime);
-    
-        void onEnterTransitionDidFinish();
-        void onExitTransitionDidStart();
 
-        void onEnter();
-        void onExit();
-    
-        void onTouch(CCTouch* touch, CCEvent* event);
+        void onCreate();
+        void onDestroy();
+
+        void update(float pDeltaTime);
+
+        WeaponParticle* deepCopy();
 };
 
 #endif

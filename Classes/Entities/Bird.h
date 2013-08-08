@@ -33,8 +33,8 @@ class Bird : public ImpulseEntity
         float mDestroyAnimationTimeElapsed;
 
         bool mIsGoingToDestroy;
-    
         bool mSpecialAnimation;
+        bool mChalange;
 
         CCProgressTimer* mLife;
 

@@ -45,6 +45,8 @@ Bird::Bird() :
         this->mLife->setReverseProgress(true);
 
         this->mSoundEffect = 0;
+
+        this->mChalange = false;
     }
 
 // ===========================================================
@@ -72,7 +74,7 @@ void Bird::onCreate()
         
         this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
-        this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(300));
+        this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(Utils::randomf(0.0f, 300.0f)));
 
         this->mWeight = Utils::coord(1000.0f);
         this->mImpulsePower = Utils::coord(Utils::randomf(200.0f, 700.0f));
@@ -85,13 +87,15 @@ void Bird::onCreate()
         
         this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
-        this->setCenterPosition(Utils::randomf(0, Options::CAMERA_WIDTH), 0.0);
+        this->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
 
         this->mWeight = Utils::coord(1500.0f);
         this->mImpulsePower = Utils::coord(Utils::randomf(1200.0f, 1900.0f));
         this->mSideImpulse = Utils::coord(Utils::randomf(100.0f, 300.0f));
         this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
     }
+
+    this->mChalange = game->mChalange;
 
     this->animate(0.05, this->getCurrentFrameIndex() + 5, this->getCurrentFrameIndex() + 5 + 7, 1);
 
@@ -161,7 +165,7 @@ void Bird::onDestroy()
 
     if(game)
     {
-        if(this->mLifeCount > 0 && this->mType != TYPE_DANGER)
+        if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange)
         {
             game->removeLife();
         }
