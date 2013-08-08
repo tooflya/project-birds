@@ -50,18 +50,12 @@ void Clock::start()
 
 float Clock::getTimeElapsed()
 {
-    return this->mTimeElapsed;
+    return this->mTimeElapsed <= 0 ? 0 : this->mTimeElapsed;
 }
 
-// ===========================================================
-// Override Methods
-// ===========================================================
-
-void Clock::update(float pDeltaTime)
+void Clock::updateTime(float pDeltaTime)
 {
-    Entity::update(pDeltaTime);
-
-    if(this->mTimeElapsed >= 0 && this->mTimeElapsed <= 60.0)
+    if(this->mTimeElapsed >= 0 && this->mTimeElapsed <= 61.0)
     {
         this->mTimeElapsed += pDeltaTime;
 
@@ -74,5 +68,9 @@ void Clock::update(float pDeltaTime)
         }
     }
 }
+
+// ===========================================================
+// Override Methods
+// ===========================================================
 
 #endif

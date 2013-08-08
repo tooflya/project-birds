@@ -20,7 +20,7 @@
 // ===========================================================
 
 Feather::Feather() :
-    ImpulseEntity("birds_feather_sprite@2x.png", 2, 2)
+    ImpulseEntity("birds_feather_sprite@2x.png", 4, 2)
     {
         
     }

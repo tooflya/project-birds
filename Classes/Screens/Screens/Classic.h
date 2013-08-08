@@ -2,8 +2,11 @@
 #define CONST_CLASSIC_H
 
 #include "Game.h"
+#include "ClassicPause.h"
+#include "ClassicEnd.h"
 
 #include "Confetti.h"
+#include "StarParticle.h"
 
 #include "AppDelegate.h"
 
@@ -30,11 +33,14 @@ class Classic : public Game
         float mLevelUpAnimationTime;
         float mLevelUpAnimationTimeElapsed;
 
+        float mChalangeTime;
+        float mChalangeTimeElapsed;
+
         bool mIsLevelUpAnimation;
 
-        Entity* mCountIcon;
-
         BatchEntityManager* mConfetti;
+        BatchEntityManager* mStars;
+        BatchEntityManager* mLifes;
 
         Text* mCountText;
         Text* mBestCountText;
@@ -105,6 +111,10 @@ class Classic : public Game
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void startGame();
+        void runChalange();
+        void stopChalange();
         
         // ===========================================================
         // Override Methods
@@ -114,6 +124,11 @@ class Classic : public Game
 
         void onEnter();
         void onExit();
+
+        void onGameStarted();
+        void onGameEnd();
+
+        void removeLife();
 };
 
 #endif

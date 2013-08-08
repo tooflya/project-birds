@@ -19,6 +19,7 @@ class Bird : public ImpulseEntity
         // ===========================================================
 
         int mType;
+        int mSoundEffect;
         
         int mDestroyAnimationFrames;
 
@@ -83,20 +84,16 @@ class Bird : public ImpulseEntity
         // Constants
         // ===========================================================
 
-        static const int COUNT = 12;
+        static const int COUNT = 8;
 
-        static const int TYPE_YELLOW = 0;
+        static const int TYPE_ORANGE = 0;
         static const int TYPE_RED = 1;
         static const int TYPE_PURPLE = 2;
         static const int TYPE_BLUE = 3;
-        static const int TYPE_FREEZEE = 4;
-        static const int TYPE_DANGER = 5;
-        static const int TYPE_COMANCHE = 6;
-        static const int TYPE_ROBOT = 7;
-        static const int TYPE_MEXICO = 8;
-        static const int TYPE_PIRATE = 9;
-        static const int TYPE_FLAYER = 10;
-        static const int TYPE_NINJA = 11;
+        static const int TYPE_CYAN = 4;
+        static const int TYPE_YELLOW = 5;
+        static const int TYPE_GREEN = 6;
+        static const int TYPE_DANGER = 7;
 
         static ccColor3B COLORS[COUNT];
 
@@ -113,6 +110,8 @@ class Bird : public ImpulseEntity
         // ===========================================================
         // Methods
         // ===========================================================
+
+        int getType();
         
         // ===========================================================
         // Override Methods

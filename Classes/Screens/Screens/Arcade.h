@@ -2,8 +2,8 @@
 #define CONST_ARCADE_H
 
 #include "Game.h"
-
-#include "Pause.h"
+#include "ArcadePause.h"
+#include "ArcadeEnd.h"
 
 #include "AppDelegate.h"
 
@@ -25,8 +25,6 @@ class Arcade : public Game
         // ===========================================================
         // Fields
         // ===========================================================
-
-        Entity* mCountIcon;
         
         Clock* mTimeIcon;
 
@@ -108,6 +106,7 @@ class Arcade : public Game
         void onExit();
 
         void onGameStarted();
+        void onGameEnd();
 };
 
 #endif

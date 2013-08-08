@@ -35,7 +35,7 @@ int Options::CAMERA_CENTER_Y = 0;
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.2.1";
+const char* Options::VERSION = "0.6.1";
 int Options::BUILD = 1;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
@@ -48,6 +48,11 @@ const char* Options::SOUND_UNLOCKED = "Sound/unlocked.ogg";
 const char* Options::SOUND_BIRD_BLOW = "Sound/bird-blow.ogg";
 const char* Options::SOUND_DANGER_EXPLOSION = "Sound/explosion.ogg";
 const char* Options::SOUND_THROW = "Sound/throw-bird.ogg";
+const char* Options::SOUND_THROW_BOMB = "Sound/throw-bomb.ogg";
+const char* Options::SOUND_LOSE_LIFE = "Sound/lose_life.ogg";
+const char* Options::SOUND_HIT = "Sound/hit.ogg";
+const char* Options::SOUND_BONUS_GONG = "Sound/bonus-gong.ogg";
+const char* Options::SOUND_BOMB_FUSE = "Sound/bomb-fuse.ogg";
 
 #else
 
@@ -59,6 +64,11 @@ const char* Options::SOUND_UNLOCKED = "unlocked.wav";
 const char* Options::SOUND_BIRD_BLOW = "bird-blow.mp3";
 const char* Options::SOUND_DANGER_EXPLOSION = "explosion.mp3";
 const char* Options::SOUND_THROW = "throw-bird.mp3";
+const char* Options::SOUND_THROW_BOMB = "Sound/throw-bomb.mp3";
+const char* Options::SOUND_LOSE_LIFE = "lose_life.mp3";
+const char* Options::SOUND_HIT = "hit.mp3";
+const char* Options::SOUND_BONUS_GONG = "bonus-gong.mp3";
+const char* Options::SOUND_BOMB_FUSE = "bomb-fuse.mp3";
 
 #endif
 
@@ -109,6 +119,7 @@ const char* Options::FONT = "Fonts/Comic Sans MS.ttf";
 int Options::CURRENT_LANGUAGE = 0;
 
 const char* Options::SAVE_DATA_COINS_ID[2] = { "p_gold_coins_count", "p_silver_coins_count" };
+const char* Options::SAVE_DATA_BEST_RESULT[2] = { "p_best_result_classic", "p_best_result_arcade" };
 const char* Options::SAVE_DATA_LANGUAGE_ID = "p_language_id";
 
 int Options::SAVE_DATA_COINS_TYPE_GOLD = 0;
@@ -156,8 +167,23 @@ const char* Options::SHOP_ITEMS_PROPERTIES[100] =
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00"
 };
 
-Textes Options::TEXTES_HOLDER[300] =
+Textes Options::TEXTES_HOLDER[600] =
 {
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
@@ -278,6 +304,18 @@ Textes Options::TEXT_GAME_CLASSIC_LEVEL_UP = {"", Options::FONT, 72, 257};
 Textes Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED = {"", Options::FONT, 42, 258};
 Textes Options::TEXT_GAME_BEST = {"", Options::FONT, 42, 259};
 Textes Options::TEXT_GAME_ARCADE_TIME_REMAINING = {"", Options::FONT, 32, 260};
+Textes Options::TEXT_EVENTS[90] =
+{
+      { "", FONT, 0, 261 }, { "", FONT, 0, 262 }, { "", FONT, 0, 263 }, { "", FONT, 0, 264 }, { "", FONT, 0, 265 }, { "", FONT, 0, 266 }, { "", FONT, 0, 267 }, { "", FONT, 0, 268 }, { "", FONT, 0, 269 }, { "", FONT, 0, 270 },
+      { "", FONT, 0, 271 }, { "", FONT, 0, 272 }, { "", FONT, 0, 273 }, { "", FONT, 0, 274 }, { "", FONT, 0, 275 }, { "", FONT, 0, 276 }, { "", FONT, 0, 277 }, { "", FONT, 0, 278 }, { "", FONT, 0, 279 }, { "", FONT, 0, 280 },
+      { "", FONT, 0, 281 }, { "", FONT, 0, 282 }, { "", FONT, 0, 283 }, { "", FONT, 0, 284 }, { "", FONT, 0, 285 }, { "", FONT, 0, 286 }, { "", FONT, 0, 287 }, { "", FONT, 0, 288 }, { "", FONT, 0, 289 }, { "", FONT, 0, 290 },
+      { "", FONT, 0, 291 }, { "", FONT, 0, 292 }, { "", FONT, 0, 293 }, { "", FONT, 0, 294 }, { "", FONT, 0, 295 }, { "", FONT, 0, 296 }, { "", FONT, 0, 297 }, { "", FONT, 0, 298 }, { "", FONT, 0, 299 }, { "", FONT, 0, 300 },
+      { "", FONT, 0, 301 }, { "", FONT, 0, 302 }, { "", FONT, 0, 303 }, { "", FONT, 0, 304 }, { "", FONT, 0, 305 }, { "", FONT, 0, 306 }, { "", FONT, 0, 307 }, { "", FONT, 0, 308 }, { "", FONT, 0, 309 }, { "", FONT, 0, 310 },
+      { "", FONT, 0, 311 }, { "", FONT, 0, 312 }, { "", FONT, 0, 313 }, { "", FONT, 0, 314 }, { "", FONT, 0, 315 }, { "", FONT, 0, 316 }, { "", FONT, 0, 317 }, { "", FONT, 0, 318 }, { "", FONT, 0, 319 }, { "", FONT, 0, 320 },
+      { "", FONT, 0, 321 }, { "", FONT, 0, 322 }, { "", FONT, 0, 323 }, { "", FONT, 0, 324 }, { "", FONT, 0, 325 }, { "", FONT, 0, 326 }, { "", FONT, 0, 327 }, { "", FONT, 0, 328 }, { "", FONT, 0, 329 }, { "", FONT, 0, 330 },
+      { "", FONT, 0, 331 }, { "", FONT, 0, 332 }, { "", FONT, 0, 333 }, { "", FONT, 0, 334 }, { "", FONT, 0, 335 }, { "", FONT, 0, 336 }, { "", FONT, 0, 337 }, { "", FONT, 0, 338 }, { "", FONT, 0, 339 }, { "", FONT, 0, 340 },
+      { "", FONT, 0, 341 }, { "", FONT, 0, 342 }, { "", FONT, 0, 343 }, { "", FONT, 0, 344 }, { "", FONT, 0, 345 }, { "", FONT, 0, 346 }, { "", FONT, 0, 347 }, { "", FONT, 0, 348 }, { "", FONT, 0, 349 }, { "", FONT, 0, 350 }
+};
 
 // ===========================================================
 // Fields
@@ -352,8 +390,17 @@ void Options::changeLanguage()
             TEXT_RATE_NOW.string = "Rate";
             TEXT_RATE_NOW.size = 46;
             
+            #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+
+            TEXT_RATE_STRING_1.string = "Do you like our awesome game?\n \nPlease rate it in the Google Play! Thanks!";
+            TEXT_RATE_STRING_1.size = 48;
+
+            #else
+
             TEXT_RATE_STRING_1.string = "Do you like our awesome game?\n \nPlease rate it in the Apple Store! Thanks!";
             TEXT_RATE_STRING_1.size = 48;
+
+            #endif
             
             TEXT_RATE_STRING_2.string = "";
             TEXT_RATE_STRING_2.size = 48;
@@ -656,8 +703,11 @@ void Options::changeLanguage()
 
             TEXT_GAME_CLASSIC_LEVEL_UP.string = "Level up!";
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Something was unclocked!";
-            TEXT_GAME_BEST.string = "Best: 1024";
+            TEXT_GAME_BEST.string = "Best:";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Time remaining:";
+
+            TEXT_EVENTS[30].string = "You have one minute!";
+            TEXT_EVENTS[30].size = 42;
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -693,8 +743,17 @@ void Options::changeLanguage()
             TEXT_RATE_NOW.string = "Оценить";
             TEXT_RATE_NOW.size = 46;
             
+            #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+
+            TEXT_RATE_STRING_1.string = "Вам понравилась наша игра?\n \nПожалуйста, проголосуйте за нее в Google Play!";
+            TEXT_RATE_STRING_1.size = 48;
+
+            #else
+
             TEXT_RATE_STRING_1.string = "Вам понравилась наша игра?\n \nПожалуйста, проголосуйте за нее в Apple Store!";
             TEXT_RATE_STRING_1.size = 48;
+
+            #endif
             
             TEXT_RATE_STRING_2.string = "";
             TEXT_RATE_STRING_2.size = 48;
@@ -1000,8 +1059,11 @@ void Options::changeLanguage()
 
             TEXT_GAME_CLASSIC_LEVEL_UP.string = "Уровень пройден!";
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Что-то было открыто";
-            TEXT_GAME_BEST.string = "Лучший: 1024";
+            TEXT_GAME_BEST.string = "Лучший:";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Времени осталось:";
+
+            TEXT_EVENTS[30].string = "У вас есть минута!";
+            TEXT_EVENTS[30].size = 42;
         break;
     }
     
@@ -1266,8 +1328,98 @@ void Options::changeLanguage()
     TEXTES_HOLDER[258] = TEXT_GAME_SOMETHING_WAS_UNLOCKED;
     TEXTES_HOLDER[259] = TEXT_GAME_BEST;
     TEXTES_HOLDER[260] = TEXT_GAME_ARCADE_TIME_REMAINING;
+    TEXTES_HOLDER[261] = TEXT_EVENTS[0];
+    TEXTES_HOLDER[262] = TEXT_EVENTS[1];
+    TEXTES_HOLDER[263] = TEXT_EVENTS[2];
+    TEXTES_HOLDER[264] = TEXT_EVENTS[3];
+    TEXTES_HOLDER[265] = TEXT_EVENTS[4];
+    TEXTES_HOLDER[266] = TEXT_EVENTS[5];
+    TEXTES_HOLDER[267] = TEXT_EVENTS[6];
+    TEXTES_HOLDER[268] = TEXT_EVENTS[7];
+    TEXTES_HOLDER[269] = TEXT_EVENTS[8];
+    TEXTES_HOLDER[270] = TEXT_EVENTS[9];
+    TEXTES_HOLDER[271] = TEXT_EVENTS[10];
+    TEXTES_HOLDER[272] = TEXT_EVENTS[11];
+    TEXTES_HOLDER[273] = TEXT_EVENTS[12];
+    TEXTES_HOLDER[274] = TEXT_EVENTS[13];
+    TEXTES_HOLDER[275] = TEXT_EVENTS[14];
+    TEXTES_HOLDER[276] = TEXT_EVENTS[15];
+    TEXTES_HOLDER[277] = TEXT_EVENTS[16];
+    TEXTES_HOLDER[278] = TEXT_EVENTS[17];
+    TEXTES_HOLDER[279] = TEXT_EVENTS[18];
+    TEXTES_HOLDER[280] = TEXT_EVENTS[19];
+    TEXTES_HOLDER[281] = TEXT_EVENTS[20];
+    TEXTES_HOLDER[282] = TEXT_EVENTS[21];
+    TEXTES_HOLDER[283] = TEXT_EVENTS[22];
+    TEXTES_HOLDER[284] = TEXT_EVENTS[23];
+    TEXTES_HOLDER[285] = TEXT_EVENTS[24];
+    TEXTES_HOLDER[286] = TEXT_EVENTS[25];
+    TEXTES_HOLDER[287] = TEXT_EVENTS[26];
+    TEXTES_HOLDER[288] = TEXT_EVENTS[27];
+    TEXTES_HOLDER[289] = TEXT_EVENTS[28];
+    TEXTES_HOLDER[290] = TEXT_EVENTS[29];
+    TEXTES_HOLDER[291] = TEXT_EVENTS[30];
+    TEXTES_HOLDER[292] = TEXT_EVENTS[31];
+    TEXTES_HOLDER[293] = TEXT_EVENTS[32];
+    TEXTES_HOLDER[294] = TEXT_EVENTS[33];
+    TEXTES_HOLDER[295] = TEXT_EVENTS[34];
+    TEXTES_HOLDER[296] = TEXT_EVENTS[35];
+    TEXTES_HOLDER[297] = TEXT_EVENTS[36];
+    TEXTES_HOLDER[298] = TEXT_EVENTS[37];
+    TEXTES_HOLDER[299] = TEXT_EVENTS[38];
+    TEXTES_HOLDER[300] = TEXT_EVENTS[39];
+    TEXTES_HOLDER[301] = TEXT_EVENTS[40];
+    TEXTES_HOLDER[302] = TEXT_EVENTS[41];
+    TEXTES_HOLDER[303] = TEXT_EVENTS[42];
+    TEXTES_HOLDER[304] = TEXT_EVENTS[43];
+    TEXTES_HOLDER[305] = TEXT_EVENTS[44];
+    TEXTES_HOLDER[306] = TEXT_EVENTS[45];
+    TEXTES_HOLDER[307] = TEXT_EVENTS[46];
+    TEXTES_HOLDER[308] = TEXT_EVENTS[47];
+    TEXTES_HOLDER[309] = TEXT_EVENTS[48];
+    TEXTES_HOLDER[310] = TEXT_EVENTS[49];
+    TEXTES_HOLDER[311] = TEXT_EVENTS[50];
+    TEXTES_HOLDER[312] = TEXT_EVENTS[51];
+    TEXTES_HOLDER[313] = TEXT_EVENTS[52];
+    TEXTES_HOLDER[314] = TEXT_EVENTS[53];
+    TEXTES_HOLDER[315] = TEXT_EVENTS[54];
+    TEXTES_HOLDER[316] = TEXT_EVENTS[55];
+    TEXTES_HOLDER[317] = TEXT_EVENTS[56];
+    TEXTES_HOLDER[318] = TEXT_EVENTS[57];
+    TEXTES_HOLDER[319] = TEXT_EVENTS[58];
+    TEXTES_HOLDER[320] = TEXT_EVENTS[59];
+    TEXTES_HOLDER[321] = TEXT_EVENTS[60];
+    TEXTES_HOLDER[322] = TEXT_EVENTS[61];
+    TEXTES_HOLDER[323] = TEXT_EVENTS[62];
+    TEXTES_HOLDER[324] = TEXT_EVENTS[63];
+    TEXTES_HOLDER[325] = TEXT_EVENTS[64];
+    TEXTES_HOLDER[326] = TEXT_EVENTS[65];
+    TEXTES_HOLDER[327] = TEXT_EVENTS[66];
+    TEXTES_HOLDER[328] = TEXT_EVENTS[67];
+    TEXTES_HOLDER[329] = TEXT_EVENTS[68];
+    TEXTES_HOLDER[330] = TEXT_EVENTS[69];
+    TEXTES_HOLDER[331] = TEXT_EVENTS[70];
+    TEXTES_HOLDER[332] = TEXT_EVENTS[71];
+    TEXTES_HOLDER[333] = TEXT_EVENTS[72];
+    TEXTES_HOLDER[334] = TEXT_EVENTS[73];
+    TEXTES_HOLDER[335] = TEXT_EVENTS[74];
+    TEXTES_HOLDER[336] = TEXT_EVENTS[75];
+    TEXTES_HOLDER[337] = TEXT_EVENTS[76];
+    TEXTES_HOLDER[338] = TEXT_EVENTS[77];
+    TEXTES_HOLDER[339] = TEXT_EVENTS[78];
+    TEXTES_HOLDER[340] = TEXT_EVENTS[79];
+    TEXTES_HOLDER[341] = TEXT_EVENTS[80];
+    TEXTES_HOLDER[342] = TEXT_EVENTS[81];
+    TEXTES_HOLDER[343] = TEXT_EVENTS[82];
+    TEXTES_HOLDER[344] = TEXT_EVENTS[83];
+    TEXTES_HOLDER[345] = TEXT_EVENTS[84];
+    TEXTES_HOLDER[346] = TEXT_EVENTS[85];
+    TEXTES_HOLDER[347] = TEXT_EVENTS[86];
+    TEXTES_HOLDER[348] = TEXT_EVENTS[87];
+    TEXTES_HOLDER[349] = TEXT_EVENTS[88];
+    TEXTES_HOLDER[350] = TEXT_EVENTS[89];
     
-    for(int i = 0; i <= 260; i++)
+    for(int i = 0; i <= 350; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

@@ -57,7 +57,7 @@ void ImpulseEntity::update(float pDeltaTime)
     {
         this->setCenterPosition(this->getCenterX(), this->getCenterY() - abs(this->mImpulsePower) * pDeltaTime);
         
-        this->mImpulsePower -= Utils::coord(500.0f) * pDeltaTime;
+        this->mImpulsePower -= this->mWeight * pDeltaTime;
     }
     
     this->setCenterPosition(this->getCenterX() - this->mSideImpulse * pDeltaTime, this->getCenterY());

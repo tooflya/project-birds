@@ -60,8 +60,8 @@ Arcade::Arcade() :
         this->mTimeText[1]->setCenterPosition(Utils::coord(120) + this->mTimeText[1]->getWidth() / 2, Utils::coord(45));
         this->mTimeText[2]->setCenterPosition(Utils::coord(255) + this->mTimeText[2]->getWidth() / 2, Utils::coord(28));
 
-        this->mPausePopup = new Pause(this);
-        this->mEndScreen = new End(Splash::TYPE_ARCADE, this);
+        this->mPausePopup = new ArcadePause(this);
+        this->mEndScreen = new ArcadeEnd(Splash::TYPE_ARCADE, this);
 
         this->addChild(this->mEventLayer);
 
@@ -124,34 +124,49 @@ void Arcade::update(float pDeltaTime)
             this->startGame();
         }
     }
-    else
+    else if(this->mGameRunning && !this->mGamePaused)
     {
-        this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
-        this->mCountText->setCenterPosition(Utils::coord(120) + this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(64));
+        this->mTimeIcon->updateTime(pDeltaTime);
 
         if(this->mTimeIcon->getTimeElapsed() >= 60.0)
         {
-            this->mGamePaused = true;
-
-            this->mEndScreen->show();
-        }
-        else
-        {
-            int timer = 60.0 - this->mTimeIcon->getTimeElapsed();
-            int last_timer = 1000.0 - (this->mTimeIcon->getTimeElapsed() - floor(this->mTimeIcon->getTimeElapsed())) * 1000.0;
-
-            this->mTimeText[1]->setString(((timer >= 10 ? "0:" : "0:0") + Utils::intToString(timer)).c_str());
-            this->mTimeText[2]->setString(("." + Utils::intToString(last_timer)).c_str());
-    
-            this->mTimeText[1]->setCenterPosition(Utils::coord(120) + this->mTimeText[1]->getWidth() / 2, Utils::coord(45));
-            this->mTimeText[2]->setCenterPosition(this->mTimeText[1]->getCenterX() +  this->mTimeText[1]->getWidth() / 2 + this->mTimeText[2]->getWidth() / 2 - Utils::coord(5), Utils::coord(30));
+            this->onGameEnd();
         }
     }
+        
+    int timer = 60.0 - this->mTimeIcon->getTimeElapsed();
+    int last_timer = 1000.0 - (this->mTimeIcon->getTimeElapsed() - floor(this->mTimeIcon->getTimeElapsed())) * 1000.0;
+
+    this->mTimeText[1]->setString(((timer >= 10 ? "0:" : "0:0") + Utils::intToString(timer)).c_str());
+    this->mTimeText[2]->setString(("." + Utils::intToString(last_timer)).c_str());
+    
+    this->mTimeText[1]->setCenterPosition(Utils::coord(120) + this->mTimeText[1]->getWidth() / 2, Utils::coord(45));
+    this->mTimeText[2]->setCenterPosition(this->mTimeText[1]->getCenterX() +  this->mTimeText[1]->getWidth() / 2 + this->mTimeText[2]->getWidth() / 2 - Utils::coord(5), Utils::coord(30));
+
+    this->mBestCountText->setString((Options::TEXT_GAME_BEST.string + Utils::intToString(BEST_COUNT)).c_str());
+    this->mBestCountText->setCenterPosition(Utils::coord(10) + this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(128));
+    
+    this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
+    this->mCountText->setCenterPosition(Utils::coord(120) + this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(64));
 }
 
 void Arcade::onGameStarted()
 {
-    this->mEventPanel->setEvent(1)->show();
+    this->mEventPanel->setEvent(30)->show();
+
+    BEST_COUNT = AppDelegate::getBestResult(1);
+}
+
+void Arcade::onGameEnd()
+{
+    this->mGamePaused = true;
+
+    this->mEndScreen->show();
+
+    if(BEST_COUNT > AppDelegate::getBestResult(1))
+    {
+        AppDelegate::setBestResult(BEST_COUNT, 1);
+    }
 }
 
 void Arcade::onEnter()
@@ -159,7 +174,10 @@ void Arcade::onEnter()
     Game::onEnter();
 
     this->mTimeText[0]->setCenterPosition(Utils::coord(120) + this->mTimeText[0]->getWidth() / 2, Utils::coord(100));
-    this->mBestCountText->setCenterPosition(Utils::coord(10) + this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(128));
+
+    BEST_COUNT = AppDelegate::getBestResult(1);
+
+    this->mTimeIcon->start();
 }
 
 void Arcade::onExit()

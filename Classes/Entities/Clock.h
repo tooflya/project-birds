@@ -87,12 +87,12 @@ class Clock : public Entity
         void start();
 
         float getTimeElapsed();
+
+        void updateTime(float pDeltaTime);
         
         // ===========================================================
         // Override Methods
         // ===========================================================
-
-        void update(float pDeltaTime);
 };
 
 #endif
