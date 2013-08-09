@@ -52,7 +52,6 @@
 		782782E317AFA4E2001CFC6D /* game_time_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782781E617AFA4E2001CFC6D /* game_time_mask@2x.png */; };
 		782782E417AFA4E2001CFC6D /* get_coins_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782781E717AFA4E2001CFC6D /* get_coins_light@2x.png */; };
 		782782E517AFA4E2001CFC6D /* icon_properties@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782781E817AFA4E2001CFC6D /* icon_properties@2x.png */; };
-		782782E617AFA4E2001CFC6D /* leaf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782781E917AFA4E2001CFC6D /* leaf@2x.png */; };
 		782782E717AFA4E2001CFC6D /* main_menu_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782781EA17AFA4E2001CFC6D /* main_menu_bg@2x.png */; };
 		782782E817AFA4E2001CFC6D /* main_menu_btn_bg_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782781EB17AFA4E2001CFC6D /* main_menu_btn_bg_play@2x.png */; };
 		782782E917AFA4E2001CFC6D /* mark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782781EC17AFA4E2001CFC6D /* mark@2x.png */; };
@@ -84,9 +83,6 @@
 		7827830317AFA4E2001CFC6D /* shop_money_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820617AFA4E2001CFC6D /* shop_money_bg@2x.png */; };
 		7827830417AFA4E2001CFC6D /* shop_shelf_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820717AFA4E2001CFC6D /* shop_shelf_sprite@2x.png */; };
 		7827830517AFA4E2001CFC6D /* shop_wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820817AFA4E2001CFC6D /* shop_wheel@2x.png */; };
-		7827830617AFA4E2001CFC6D /* start_preload_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820917AFA4E2001CFC6D /* start_preload_bar@2x.png */; };
-		7827830717AFA4E2001CFC6D /* start_preload_bar_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820A17AFA4E2001CFC6D /* start_preload_bar_fill@2x.png */; };
-		7827830817AFA4E2001CFC6D /* start_preloader_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820B17AFA4E2001CFC6D /* start_preloader_bg@2x.png */; };
 		7827830917AFA4E2001CFC6D /* weapon_strike_sprite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820C17AFA4E2001CFC6D /* weapon_strike_sprite@2x.png */; };
 		7827830A17AFA4E2001CFC6D /* wep_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820D17AFA4E2001CFC6D /* wep_1@2x.png */; };
 		7827830B17AFA4E2001CFC6D /* iPad-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 7827820F17AFA4E2001CFC6D /* iPad-landscape.png */; };
@@ -376,6 +372,9 @@
 		78DA491D17B3BB99002CB7E2 /* ProgressEnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DA491917B3BB98002CB7E2 /* ProgressEnd.cpp */; };
 		78DA491E17B3BB99002CB7E2 /* ProgressPause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DA491B17B3BB99002CB7E2 /* ProgressPause.cpp */; };
 		78DA4B2017B3D984002CB7E2 /* WeaponParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DA4B1E17B3D983002CB7E2 /* WeaponParticle.cpp */; };
+		78DA4D2417B503A3002CB7E2 /* start_preloader_atlas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DA4D2317B503A3002CB7E2 /* start_preloader_atlas@2x.png */; };
+		78DA4D2617B50D9B002CB7E2 /* colors@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DA4D2517B50D9B002CB7E2 /* colors@2x.png */; };
+		78DA4D2917B529AB002CB7E2 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DA4D2717B529A9002CB7E2 /* Color.cpp */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -433,7 +432,6 @@
 		782781E617AFA4E2001CFC6D /* game_time_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_time_mask@2x.png"; sourceTree = "<group>"; };
 		782781E717AFA4E2001CFC6D /* get_coins_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "get_coins_light@2x.png"; sourceTree = "<group>"; };
 		782781E817AFA4E2001CFC6D /* icon_properties@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_properties@2x.png"; sourceTree = "<group>"; };
-		782781E917AFA4E2001CFC6D /* leaf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaf@2x.png"; sourceTree = "<group>"; };
 		782781EA17AFA4E2001CFC6D /* main_menu_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg@2x.png"; sourceTree = "<group>"; };
 		782781EB17AFA4E2001CFC6D /* main_menu_btn_bg_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_btn_bg_play@2x.png"; sourceTree = "<group>"; };
 		782781EC17AFA4E2001CFC6D /* mark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark@2x.png"; sourceTree = "<group>"; };
@@ -465,9 +463,6 @@
 		7827820617AFA4E2001CFC6D /* shop_money_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_money_bg@2x.png"; sourceTree = "<group>"; };
 		7827820717AFA4E2001CFC6D /* shop_shelf_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_shelf_sprite@2x.png"; sourceTree = "<group>"; };
 		7827820817AFA4E2001CFC6D /* shop_wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_wheel@2x.png"; sourceTree = "<group>"; };
-		7827820917AFA4E2001CFC6D /* start_preload_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_preload_bar@2x.png"; sourceTree = "<group>"; };
-		7827820A17AFA4E2001CFC6D /* start_preload_bar_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_preload_bar_fill@2x.png"; sourceTree = "<group>"; };
-		7827820B17AFA4E2001CFC6D /* start_preloader_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_preloader_bg@2x.png"; sourceTree = "<group>"; };
 		7827820C17AFA4E2001CFC6D /* weapon_strike_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weapon_strike_sprite@2x.png"; sourceTree = "<group>"; };
 		7827820D17AFA4E2001CFC6D /* wep_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_1@2x.png"; sourceTree = "<group>"; };
 		7827820F17AFA4E2001CFC6D /* iPad-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad-landscape.png"; sourceTree = "<group>"; };
@@ -1025,6 +1020,10 @@
 		78DA491C17B3BB99002CB7E2 /* ProgressPause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressPause.h; sourceTree = "<group>"; };
 		78DA4B1E17B3D983002CB7E2 /* WeaponParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WeaponParticle.cpp; sourceTree = "<group>"; };
 		78DA4B1F17B3D984002CB7E2 /* WeaponParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponParticle.h; sourceTree = "<group>"; };
+		78DA4D2317B503A3002CB7E2 /* start_preloader_atlas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_preloader_atlas@2x.png"; sourceTree = "<group>"; };
+		78DA4D2517B50D9B002CB7E2 /* colors@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colors@2x.png"; sourceTree = "<group>"; };
+		78DA4D2717B529A9002CB7E2 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		78DA4D2817B529AA002CB7E2 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1144,6 +1143,8 @@
 		782781C017AFA4E2001CFC6D /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				78DA4D2517B50D9B002CB7E2 /* colors@2x.png */,
+				78DA4D2317B503A3002CB7E2 /* start_preloader_atlas@2x.png */,
 				78DA491717B2975A002CB7E2 /* star_particle@2x.png */,
 				78DA48D017B258C1002CB7E2 /* lifes@2x.png */,
 				78DA48C817B24177002CB7E2 /* info_panel_btn_sprite@2x.png */,
@@ -1189,7 +1190,6 @@
 				782781E617AFA4E2001CFC6D /* game_time_mask@2x.png */,
 				782781E717AFA4E2001CFC6D /* get_coins_light@2x.png */,
 				782781E817AFA4E2001CFC6D /* icon_properties@2x.png */,
-				782781E917AFA4E2001CFC6D /* leaf@2x.png */,
 				782781EA17AFA4E2001CFC6D /* main_menu_bg@2x.png */,
 				782781EB17AFA4E2001CFC6D /* main_menu_btn_bg_play@2x.png */,
 				782781EC17AFA4E2001CFC6D /* mark@2x.png */,
@@ -1221,9 +1221,6 @@
 				7827820617AFA4E2001CFC6D /* shop_money_bg@2x.png */,
 				7827820717AFA4E2001CFC6D /* shop_shelf_sprite@2x.png */,
 				7827820817AFA4E2001CFC6D /* shop_wheel@2x.png */,
-				7827820917AFA4E2001CFC6D /* start_preload_bar@2x.png */,
-				7827820A17AFA4E2001CFC6D /* start_preload_bar_fill@2x.png */,
-				7827820B17AFA4E2001CFC6D /* start_preloader_bg@2x.png */,
 				7827820C17AFA4E2001CFC6D /* weapon_strike_sprite@2x.png */,
 				7827820D17AFA4E2001CFC6D /* wep_1@2x.png */,
 			);
@@ -1347,6 +1344,8 @@
 		7827823C17AFA4E2001CFC6D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78DA4D2717B529A9002CB7E2 /* Color.cpp */,
+				78DA4D2817B529AA002CB7E2 /* Color.h */,
 				78DA4B1E17B3D983002CB7E2 /* WeaponParticle.cpp */,
 				78DA4B1F17B3D984002CB7E2 /* WeaponParticle.h */,
 				78DA491417B2956D002CB7E2 /* StarParticle.cpp */,
@@ -2350,7 +2349,6 @@
 				782782E317AFA4E2001CFC6D /* game_time_mask@2x.png in Resources */,
 				782782E417AFA4E2001CFC6D /* get_coins_light@2x.png in Resources */,
 				782782E517AFA4E2001CFC6D /* icon_properties@2x.png in Resources */,
-				782782E617AFA4E2001CFC6D /* leaf@2x.png in Resources */,
 				782782E717AFA4E2001CFC6D /* main_menu_bg@2x.png in Resources */,
 				782782E817AFA4E2001CFC6D /* main_menu_btn_bg_play@2x.png in Resources */,
 				782782E917AFA4E2001CFC6D /* mark@2x.png in Resources */,
@@ -2382,9 +2380,6 @@
 				7827830317AFA4E2001CFC6D /* shop_money_bg@2x.png in Resources */,
 				7827830417AFA4E2001CFC6D /* shop_shelf_sprite@2x.png in Resources */,
 				7827830517AFA4E2001CFC6D /* shop_wheel@2x.png in Resources */,
-				7827830617AFA4E2001CFC6D /* start_preload_bar@2x.png in Resources */,
-				7827830717AFA4E2001CFC6D /* start_preload_bar_fill@2x.png in Resources */,
-				7827830817AFA4E2001CFC6D /* start_preloader_bg@2x.png in Resources */,
 				7827830917AFA4E2001CFC6D /* weapon_strike_sprite@2x.png in Resources */,
 				7827830A17AFA4E2001CFC6D /* wep_1@2x.png in Resources */,
 				7827830B17AFA4E2001CFC6D /* iPad-landscape.png in Resources */,
@@ -2453,6 +2448,8 @@
 				78DA491217B2722D002CB7E2 /* bomb-fuse.mp3 in Resources */,
 				78DA491317B2722D002CB7E2 /* bomb-fuse.ogg in Resources */,
 				78DA491817B2975A002CB7E2 /* star_particle@2x.png in Resources */,
+				78DA4D2417B503A3002CB7E2 /* start_preloader_atlas@2x.png in Resources */,
+				78DA4D2617B50D9B002CB7E2 /* colors@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2675,6 +2672,7 @@
 				78DA491D17B3BB99002CB7E2 /* ProgressEnd.cpp in Sources */,
 				78DA491E17B3BB99002CB7E2 /* ProgressPause.cpp in Sources */,
 				78DA4B2017B3D984002CB7E2 /* WeaponParticle.cpp in Sources */,
+				78DA4D2917B529AB002CB7E2 /* Color.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -63,6 +63,8 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
         }
     }
 
+    this->mPercentage = 100;
+    
     /**
      *
      * Setting zero frame
@@ -336,7 +338,7 @@ void Entity::setCurrentFrameIndex(int pIndex)
 {
     if(pIndex < this->mHorizontalFramesCount * this->mVerticalFramesCount && pIndex >= 0)
     {
-        this->setTextureRect(CCRectMake(this->mFramesCoordinatesX[pIndex], this->mFramesCoordinatesY[pIndex], this->mWidth / this->mHorizontalFramesCount, this->mHeight / this->mVerticalFramesCount));
+        this->setTextureRect(CCRectMake(this->mFramesCoordinatesX[pIndex], this->mFramesCoordinatesY[pIndex], (this->mWidth / this->mHorizontalFramesCount) * this->mPercentage / 100.0, this->mHeight / this->mVerticalFramesCount));
 
         this->mCurrentFrameIndex = pIndex;
     }
@@ -404,6 +406,13 @@ void Entity::setRepeatTexture(bool pRepeat)
     ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
     
     this->getTexture()->setTexParameters(&params);
+}
+
+void Entity::showPercentage(int pPercentage)
+{
+    this->mPercentage = pPercentage;
+    
+    this->setCurrentFrameIndex(this->getCurrentFrameIndex());
 }
 
 void Entity::animate(float pAnimationTime)

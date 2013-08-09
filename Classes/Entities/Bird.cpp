@@ -169,13 +169,17 @@ void Bird::onDestroy()
         {
             game->removeLife();
         }
-    }
-
-    if(this->mType == TYPE_DANGER)
-    {
-        if(this->mSoundEffect != 0)
+        else
         {
-            SimpleAudioEngine::sharedEngine()->stopEffect(this->mSoundEffect);
+            game->onBirBlow(this->mType);
+
+            if(this->mType == TYPE_DANGER)
+            {
+                if(this->mSoundEffect != 0)
+                {
+                    SimpleAudioEngine::sharedEngine()->stopEffect(this->mSoundEffect);
+                }
+            }
         }
     }
 }
@@ -272,13 +276,6 @@ void Bird::update(float pDeltaTime)
                         {
                             SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BIRD_BLOW);
                         }
-                    }
-
-                    Game::CURRENT_COUNT++;
-                    
-                    if(Game::CURRENT_COUNT > Game::BEST_COUNT)
-                    {
-                        Game::BEST_COUNT = Game::CURRENT_COUNT;
                     }
 
                     this->destroy();

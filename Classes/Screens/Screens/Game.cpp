@@ -79,6 +79,22 @@ void Game::removeLife()
     }
 }
 
+void Game::onBirBlow(int pType)
+{
+    if(this->mGameRunning)
+    {
+        if(pType != Bird::TYPE_DANGER)
+        {
+            CURRENT_COUNT++;
+
+            if(CURRENT_COUNT > BEST_COUNT)
+            {
+                BEST_COUNT = CURRENT_COUNT;
+            }
+        }
+    }
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================

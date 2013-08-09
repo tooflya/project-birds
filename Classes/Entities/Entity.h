@@ -53,6 +53,8 @@ class Entity : public CCSprite, public Touchable
         int mAnimationFramesElapsed;
 
         int mAnimationRepeatCount;
+    
+        int mPercentage;
 
         int id;
 
@@ -213,6 +215,8 @@ class Entity : public CCSprite, public Touchable
         void changeTexture(Texture* pTexture);
     
         void setRepeatTexture(bool pRepeat);
+    
+        void showPercentage(int pPercentage);
 
         void stopAnimation();
 

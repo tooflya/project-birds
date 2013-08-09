@@ -13,6 +13,20 @@
 
 Progresses* Progresses::m_Instance = NULL;
 
+int Progresses::TASK[10][50] =
+{
+    {0, 0, 0, 1, 1, 1, 2, 2, 3, 3, 3, 3, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
+};
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -47,6 +61,8 @@ Progresses::Progresses() :
         this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(48));
 
         this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+
+        this->mColors = new BatchEntityManager(50, new Color(), this->mEventLayer);
 
         this->mPausePopup = new ProgressPause(this);
         this->mEndScreen = new ProgressEnd(Splash::TYPE_PROGRESS, this);
@@ -102,6 +118,22 @@ void Progresses::update(float pDeltaTime)
 void Progresses::onGameStarted()
 {
     BEST_COUNT = AppDelegate::getBestResult(0);
+
+    this->mColors->clear();
+
+    for(int i = 0; i < 50; i++)
+    {
+        int task = TASK[0][i];
+
+        if(task >= 0)
+        {
+            Color* entity = static_cast<Color*>(this->mColors->create());
+
+            entity->setCurrentFrameIndex(task);
+            entity->setType(i);
+            entity->setCenterPosition(Utils::coord(64) * (i + 1), Utils::coord(64));
+        }
+    }
 }
 
 void Progresses::onGameEnd()
@@ -116,14 +148,38 @@ void Progresses::onGameEnd()
     }
 }
 
+void Progresses::onBirBlow(int pType)
+{
+    if(this->mGameRunning)
+    {
+        if(pType == TASK[0][CURRENT_COUNT])
+        {
+            Color* entity = static_cast<Color*>(this->mColors->objectAtIndex(CURRENT_COUNT));
+
+            entity->destroy();
+
+            Game::onBirBlow(pType);
+
+            this->mColors->runAction(CCMoveTo::create(0.2, ccp(this->mColors->getPosition().x - Utils::coord(64), this->mColors->getPosition().y)));
+        }
+        else
+        {
+
+        }
+    }
+}
+
 void Progresses::onEnter()
 {
-    Screen::onEnter();
+    Game::onEnter();
+
+    this->mColors->clear();
+    this->mColors->setPosition(ccp(0, 0));
 }
 
 void Progresses::onExit()
 {
-    Screen::onExit();
+    Game::onExit();
 }
 
 #endif

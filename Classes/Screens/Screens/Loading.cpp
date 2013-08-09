@@ -73,22 +73,24 @@ const char* Loading::TEXTURE_LIBRARY[48] =
 
 Loading::Loading()
 {
-    CCTextureCache::sharedTextureCache()->addImage("start_preloader_bg@2x.png");
-    CCTextureCache::sharedTextureCache()->addImage("start_preload_bar@2x.png");
-    CCTextureCache::sharedTextureCache()->addImage("start_preload_bar_fill@2x.png");
+    CCTextureCache::sharedTextureCache()->addImage("start_preloader_atlas@2x.png");
 
-    this->mBackground = new Entity("start_preloader_bg@2x.png", this);
-    this->mBarBackground = new Entity("start_preload_bar@2x.png", this);
-    this->mBar = new Entity("start_preload_bar_fill@2x.png", this);
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("start_preloader_atlas@2x.png");
+
+    this->mBackground = new Entity((EntityStructure) {"start_preloader_atlas@2x.png", 1, 1, 0, 0, 1000, 1280}, spriteBatch);
+    this->mBarBackground = new Entity((EntityStructure) {"start_preloader_atlas@2x.png", 1, 1, 2, 1287, 631, 88}, spriteBatch);
+    this->mBar = new Entity((EntityStructure) {"start_preloader_atlas@2x.png", 1, 1, 2, 1394, 577, 38}, spriteBatch);
 
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBarBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
     this->mBar->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
-    this->mBar->setTextureRect(CCRectMake(0, 0, 0, this->mBar->getTexture()->getContentSize().height));
+    this->mBar->showPercentage(0);
     
     this->mNumberOfLoadedSprites = -1;
     this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
     
+    this->addChild(spriteBatch);
+
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
     
@@ -110,8 +112,8 @@ void Loading::loadingCallBack(CCObject *obj)
     
     this->mLoadingText->setString((Options::TEXT_LOADING_2.string + Utils::intToString(percent) + "%").c_str());
     
-    this->mBar->setTextureRect(CCRectMake(0, 0, this->mBar->getTexture()->getContentSize().width * percent / 100.0, this->mBar->getTexture()->getContentSize().height));
-    this->mBar->setCenterPosition(Options::CAMERA_CENTER_X + this->mBar->getContentSize().width / 2 - this->mBar->getTexture()->getContentSize().width / 2, Utils::coord(100));
+    this->mBar->showPercentage(percent);
+    this->mBar->setCenterPosition(Options::CAMERA_CENTER_X + this->mBar->getWidth() / 2 - Utils::coord(577.0) / 2, Utils::coord(100));
     
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {

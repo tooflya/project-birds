@@ -272,7 +272,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     director->setAnimationInterval(1.0f / 60.0f);
 
-    if(!AppDelegate::isInstalled()) // Tip: Insert || true if you want to reset all saved data.
+    if(!AppDelegate::isInstalled())
     {
         AppDelegate::install();
     }

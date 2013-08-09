@@ -139,6 +139,7 @@ class Game : public Screen
         virtual void onGameStarted();
         virtual void onGameEnd();
         virtual void removeLife();
+        virtual void onBirBlow(int pType);
         
         // ===========================================================
         // Override Methods
