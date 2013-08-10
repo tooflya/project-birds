@@ -50,9 +50,12 @@ SOURCES = ./main.cpp \
 			../Classes/Entities/Feather.cpp \
 			../Classes/Entities/Dust.cpp \
 			../Classes/Entities/Item.cpp \
+            ../Classes/Entities/StarParticle.cpp \
+            ../Classes/Entities/EventPanel.cpp \
+                                        ../Classes/Entities/WeaponParticle.cpp \
+                                        ../Classes/Entities/Color.cpp \
 			../Classes/Managers/EntityManager.cpp \
 			../Classes/Managers/BatchEntityManager.cpp \
-			../Classes/Managers/ConfettiManager.cpp \
 			../Classes/Screens/Screen.cpp \
 			../Classes/Screens/Screens/Menu.cpp \
 			../Classes/Screens/Screens/Settings.cpp \
@@ -79,6 +82,12 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Popups/ResetProgress.cpp \
 			../Classes/Screens/Popups/ModeHelp.cpp \
 			../Classes/Screens/Popups/Pause.cpp \
+            ../Classes/Screens/Popups/ClassicPause.cpp \
+            ../Classes/Screens/Popups/ArcadePause.cpp \
+            ../Classes/Screens/Popups/ProgressPause.cpp \
+            ../Classes/Screens/Popups/ClassicEnd.cpp \
+            ../Classes/Screens/Popups/ArcadeEnd.cpp \
+            ../Classes/Screens/Popups/ProgressEnd.cpp \
 			../Classes/Screens/Popups/TempPublisherRatingExplain.cpp \
 			../Classes/Screens/Popups/TempPublisherAchievementsExplain.cpp \
 			../Classes/Managers/ScreenManager.cpp \

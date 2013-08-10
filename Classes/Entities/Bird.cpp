@@ -171,7 +171,17 @@ void Bird::onDestroy()
         }
         else
         {
-            game->onBirBlow(this->mType);
+            if(this->mChalange)
+            {
+                if(this->mLifeCount <= 0)
+                {
+                    game->onBirBlow(this->mType);
+                }
+            }
+            else
+            {
+              game->onBirBlow(this->mType);
+            }
 
             if(this->mType == TYPE_DANGER)
             {

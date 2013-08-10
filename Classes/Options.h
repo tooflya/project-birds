@@ -113,6 +113,8 @@ class Options
         static const char* SOUND_HIT;
         static const char* SOUND_BONUS_GONG;
         static const char* SOUND_BOMB_FUSE;
+        static const char* SOUND_EQUIP_SWORD;
+        static const char* SOUND_BONUS_TIME[3];
 
         static const char* VERSION;
         static int BUILD;

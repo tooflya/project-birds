@@ -15,6 +15,7 @@ int Game::CURRENT_COUNT = 0;
 int Game::BEST_COUNT = 0;
 int Game::LIFES = 0;
 int Game::HEALTH = 0;
+int Game::RECORD_BEATEAN = 0;
 
 // ===========================================================
 // Fields
@@ -41,6 +42,7 @@ Game::Game()
 void Game::startGame()
 {
     CURRENT_COUNT = 0;
+    RECORD_BEATEAN = 0;
 
     this->mGameRunning = false;
     this->mGamePaused = false;
@@ -86,6 +88,18 @@ void Game::onBirBlow(int pType)
         if(pType != Bird::TYPE_DANGER)
         {
             CURRENT_COUNT++;
+
+            if(CURRENT_COUNT - 1 == BEST_COUNT && RECORD_BEATEAN == 0 && BEST_COUNT >= 10)
+            {
+                this->mEventPanel->setEvent(0)->show();
+
+                RECORD_BEATEAN = 1;
+
+                for(int i = 0; i < 100; i++)
+                {
+                    static_cast<StarParticle*>(this->mStars->create())->setType(2)->onCreate();
+                }
+            }
 
             if(CURRENT_COUNT > BEST_COUNT)
             {

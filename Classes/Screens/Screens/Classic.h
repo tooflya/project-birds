@@ -35,11 +35,11 @@ class Classic : public Game
 
         float mChalangeTime;
         float mChalangeTimeElapsed;
+        float mSoundChalangeTimeElapsed;
 
         bool mIsLevelUpAnimation;
 
         BatchEntityManager* mConfetti;
-        BatchEntityManager* mStars;
         BatchEntityManager* mLifes;
 
         Text* mCountText;

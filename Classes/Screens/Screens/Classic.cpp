@@ -198,11 +198,23 @@ void Classic::throwConfetti()
 void Classic::runChalange()
 {
     this->mChalange = true;
+
+    this->mSoundChalangeTimeElapsed = 2.95;
+            
+    if(Options::SOUND_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BONUS_TIME[0]);
+    }
 }
 
 void Classic::stopChalange()
 {
     this->mChalange = false;
+            
+    if(Options::SOUND_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BONUS_TIME[2]);
+    }
 }
 
 // ===========================================================
@@ -242,7 +254,7 @@ void Classic::update(float pDeltaTime)
         {
             this->mChalangeTimeElapsed += pDeltaTime;
 
-            if(this->mChalangeTimeElapsed >= 10.0) // TODO: Adjust chalange time.
+            if(this->mChalangeTimeElapsed >= 13.6) // TODO: Adjust chalange time.
             {
                 this->mChalangeTimeElapsed = 0;
                 this->mLevelUpTimeElapsed = 0;
@@ -252,10 +264,25 @@ void Classic::update(float pDeltaTime)
 
             for(int i = 0; i < 2; i++)
             {
-                this->mStars->create();
+                static_cast<StarParticle*>(this->mStars->create())->setType(1)->onCreate();
+            }
+
+            if(this->mChalangeTimeElapsed >= 3.0) // TODO: Adjust chalange time.
+            {
+                this->mSoundChalangeTimeElapsed += pDeltaTime;
+
+                if(this->mSoundChalangeTimeElapsed >= 3.39)
+                {
+                    this->mSoundChalangeTimeElapsed = 0;
+
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BONUS_TIME[1]);
+                    }
+                }
             }
         }
-        else
+        else if(!this->mChalange)
         {
             this->mLevelUpTimeElapsed += pDeltaTime;
             this->mChalangeTimeElapsed += pDeltaTime;

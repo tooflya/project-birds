@@ -400,6 +400,11 @@ void Shop::onItemBought(int pItemId)
         if(AppDelegate::isItemBought(pItemId))
         {
             AppDelegate::selectItem(pItemId);
+            
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_EQUIP_SWORD);
+            }
 
             this->mWeaponChecker->removeFromParentAndCleanup(false);
 

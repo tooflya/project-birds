@@ -10,6 +10,7 @@
 #include "Feather.h"
 #include "Explosion.h"
 #include "ExplosionBasic.h"
+#include "StarParticle.h"
 #include "Dust.h"
 #include "EventPanel.h"
 
@@ -111,6 +112,7 @@ class Game : public Screen
         static int BEST_COUNT;
         static int LIFES;
         static int HEALTH;
+        static int RECORD_BEATEAN;
 
         // ===========================================================
         // Fields
@@ -124,6 +126,7 @@ class Game : public Screen
         BatchEntityManager* mExplosionsBasic;
         BatchEntityManager* mExplosions;
         BatchEntityManager* mDust;
+        BatchEntityManager* mStars;
 
         // ===========================================================
         // Constructors

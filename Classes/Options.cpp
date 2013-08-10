@@ -44,7 +44,8 @@ const char* Options::MUSIC_1 = "Music/music-1.ogg";
 const char* Options::MUSIC_2 = "Music/music-2.ogg";
 
 const char* Options::SOUND_TAP = "Sound/tap.ogg";
-const char* Options::SOUND_UNLOCKED = "Sound/unlocked.ogg";
+const char* Options::SOUND_UNLOCKED = "Sound/equip-unlock.ogg";
+const char* Options::SOUND_EQUIP_SWORD = "Sound/equip-new-sword.ogg";
 const char* Options::SOUND_BIRD_BLOW = "Sound/bird-blow.ogg";
 const char* Options::SOUND_DANGER_EXPLOSION = "Sound/explosion.ogg";
 const char* Options::SOUND_THROW = "Sound/throw-bird.ogg";
@@ -53,6 +54,7 @@ const char* Options::SOUND_LOSE_LIFE = "Sound/lose_life.ogg";
 const char* Options::SOUND_HIT = "Sound/hit.ogg";
 const char* Options::SOUND_BONUS_GONG = "Sound/bonus-gong.ogg";
 const char* Options::SOUND_BOMB_FUSE = "Sound/bomb-fuse.ogg";
+const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.ogg", "Sound/combo-blitz-backing.ogg", "Sound/combo-blitz-backing-end.ogg" };
 
 #else
 
@@ -60,7 +62,8 @@ const char* Options::MUSIC_1 = "music-1.mp3";
 const char* Options::MUSIC_2 = "music-2.mp3";
 
 const char* Options::SOUND_TAP = "tap.wav";
-const char* Options::SOUND_UNLOCKED = "unlocked.wav";
+const char* Options::SOUND_UNLOCKED = "equip-unlock.wav";
+const char* Options::SOUND_EQUIP_SWORD = "equip-new-sword.mp3";
 const char* Options::SOUND_BIRD_BLOW = "bird-blow.mp3";
 const char* Options::SOUND_DANGER_EXPLOSION = "explosion.mp3";
 const char* Options::SOUND_THROW = "throw-bird.mp3";
@@ -69,6 +72,7 @@ const char* Options::SOUND_LOSE_LIFE = "lose_life.mp3";
 const char* Options::SOUND_HIT = "hit.mp3";
 const char* Options::SOUND_BONUS_GONG = "bonus-gong.mp3";
 const char* Options::SOUND_BOMB_FUSE = "bomb-fuse.mp3";
+const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.mp3", "Sound/combo-blitz-backing.mp3", "Sound/combo-blitz-backing-end.mp3" };
 
 #endif
 
@@ -706,6 +710,9 @@ void Options::changeLanguage()
             TEXT_GAME_BEST.string = "Best:";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Time remaining:";
 
+            TEXT_EVENTS[0].string = "New record!";
+            TEXT_EVENTS[0].size = 42;
+
             TEXT_EVENTS[30].string = "You have one minute!";
             TEXT_EVENTS[30].size = 42;
         break;
@@ -1061,6 +1068,9 @@ void Options::changeLanguage()
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Что-то было открыто";
             TEXT_GAME_BEST.string = "Лучший:";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Времени осталось:";
+
+            TEXT_EVENTS[0].string = "Новый рекорд!";
+            TEXT_EVENTS[0].size = 42;
 
             TEXT_EVENTS[30].string = "У вас есть минута!";
             TEXT_EVENTS[30].size = 42;
