@@ -72,7 +72,7 @@ const char* Options::SOUND_LOSE_LIFE = "lose_life.mp3";
 const char* Options::SOUND_HIT = "hit.mp3";
 const char* Options::SOUND_BONUS_GONG = "bonus-gong.mp3";
 const char* Options::SOUND_BOMB_FUSE = "bomb-fuse.mp3";
-const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.mp3", "Sound/combo-blitz-backing.mp3", "Sound/combo-blitz-backing-end.mp3" };
+const char* Options::SOUND_BONUS_TIME[3] = { "combo-blitz-backing-light.mp3", "combo-blitz-backing.mp3", "combo-blitz-backing-end.mp3" };
 
 #endif
 

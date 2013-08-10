@@ -70,7 +70,7 @@ Classic::Classic() :
         this->mLevelUpAnimationTime = 4.0;
         this->mLevelUpAnimationTimeElapsed = 0;
 
-        this->mChalangeTime = 90.0 - 1.0;
+        this->mChalangeTime = 10.0 - 1.0;
         this->mChalangeTimeElapsed = 0;
 
         this->mIsLevelUpAnimation = false;
@@ -157,6 +157,8 @@ void Classic::startGame()
 
         entity->setCurrentFrameIndex(0);
     }
+    
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
 }
 
 void Classic::levelUp()
@@ -205,6 +207,8 @@ void Classic::runChalange()
     {
         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BONUS_TIME[0]);
     }
+    
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.3);
 }
 
 void Classic::stopChalange()
@@ -215,6 +219,8 @@ void Classic::stopChalange()
     {
         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BONUS_TIME[2]);
     }
+    
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
 }
 
 // ===========================================================
