@@ -35,8 +35,8 @@ int Options::CAMERA_CENTER_Y = 0;
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.6.2";
-int Options::BUILD = 1;
+const char* Options::VERSION = "0.6.3";
+int Options::BUILD = 2730;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
