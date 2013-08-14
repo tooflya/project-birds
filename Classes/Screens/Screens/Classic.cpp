@@ -34,7 +34,6 @@ Classic::Classic() :
 
         this->mCountText = new Text((Textes) {"0", Options::FONT, 80, -1}, this);
         this->mBestCountText = new Text(Options::TEXT_GAME_BEST, this);
-        this->mLevelUpText = new Text(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
 
         this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
 
@@ -44,9 +43,13 @@ Classic::Classic() :
         this->mMarks = new BatchEntityManager(200, new Mark(), this);
         this->mFeathers = new BatchEntityManager(100, new Feather(), this);
         this->mBirds = new BatchEntityManager(10, new Bird(), this);
+        this->mSpecialBirds = new BatchEntityManager(10, new SpecialBird(), this);
         this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
         this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
         this->mLifes = new BatchEntityManager(3, new Entity("lifes@2x.png", 1, 2), this->mEventLayer);
+
+        this->mLevelUpText = new Text(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
+        this->mBonusTimeText = new Text(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
 
         this->mEventPanel = new EventPanel(this);
         
@@ -60,6 +63,8 @@ Classic::Classic() :
         this->mBestCountText->setCenterPosition(Utils::coord(10) + this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(128));
         this->mLevelUpText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
         this->mLevelUpText->setOpacity(0);
+        this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
+        this->mBonusTimeText->setOpacity(0);
 
         this->mPausePopup = new ClassicPause(this);
         this->mEndScreen = new ClassicEnd(Splash::TYPE_CLASSIC, this);
@@ -70,8 +75,14 @@ Classic::Classic() :
         this->mLevelUpAnimationTime = 4.0;
         this->mLevelUpAnimationTimeElapsed = 0;
 
-        this->mChalangeTime = 10.0 - 1.0;
+        this->mChalangeTime = 90.0 - 1.0;
         this->mChalangeTimeElapsed = 0;
+
+        this->mAlgorithmBirdsRemainig = 6;
+        this->mAlgorithmBirdsTime = 1.5;
+
+        this->mAlgorithmBirdsTime1 = 2.0;
+        this->mAlgorithmBirdsTime2 = 7.0;
 
         this->mIsLevelUpAnimation = false;
 
@@ -150,6 +161,7 @@ void Classic::startGame()
     this->mConfetti->clear();
 
     this->mLevelUpText->setOpacity(0);
+    this->mBonusTimeText->setOpacity(0);
 
     for(int i = 0; i < 3; i++)
     {
@@ -202,6 +214,8 @@ void Classic::runChalange()
     this->mChalange = true;
 
     this->mSoundChalangeTimeElapsed = 2.95;
+
+    this->mBonusTimeText->runAction(CCFadeIn::create(1.0));
             
     if(Options::SOUND_ENABLE)
     {
@@ -276,6 +290,12 @@ void Classic::update(float pDeltaTime)
             if(this->mChalangeTimeElapsed >= 3.0) // TODO: Adjust chalange time.
             {
                 this->mSoundChalangeTimeElapsed += pDeltaTime;
+
+                if(this->mBonusTimeText->getOpacity() == 255.0)
+                {
+                    this->mBonusTimeText->setOpacity(250.0);
+                    this->mBonusTimeText->runAction(CCFadeTo::create(1.0, 0.0));
+                }
 
                 if(this->mSoundChalangeTimeElapsed >= 3.39)
                 {

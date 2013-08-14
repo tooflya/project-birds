@@ -64,7 +64,10 @@ void TouchTrailLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
             
             if(Utils::millisecondNow() - Options::TOUCH_INFORMATION[touch->getID()].last_sound_time < dtime && this->mTimeBeforeNextBladeSoundElapsed > 0.1)
             {
-                //SimpleAudioEngine::sharedEngine()->playEffect(Options::SWOOSH);
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_SWOOSH);
+                }
                 
                 this->mTimeBeforeNextBladeSoundElapsed = 0;
             }

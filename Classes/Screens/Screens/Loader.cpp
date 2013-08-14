@@ -16,7 +16,7 @@
 
 int Loader::ACTION = -1;
 
-const char* Loader::TEXTURE_LIBRARY[32] =
+const char* Loader::TEXTURE_LIBRARY[33] =
 {
     "game_gui_bg_summer@2x.png",
     "birds_sprite@2x.png",
@@ -49,7 +49,8 @@ const char* Loader::TEXTURE_LIBRARY[32] =
     "lifes@2x.png",
     "star_particle@2x.png",
     "weapon_strike_sprite@2x.png",
-    "colors@2x.png"
+    "colors@2x.png",
+    "game_shelf@2x.png"
 };
 
 // ===========================================================
@@ -62,14 +63,18 @@ const char* Loader::TEXTURE_LIBRARY[32] =
 
 Loader::Loader()
 {
-    this->mBackground = new Entity("preload-lvl-bg@2x.png", this);
-    this->mCircles = new BatchEntityManager(10, new Entity("preload-lvl-wave@2x.png"), this);
-    this->bird = new Entity("preload-lvl-bird@2x.png", this);
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr");
+
+    this->mBackground = new Entity("preload-lvl-bg@2x.png", spriteBatch);
+    this->mCircles = new EntityManager(10, new Entity("preload-lvl-wave@2x.png"), spriteBatch);
+    this->mBird = new Entity("preload-lvl-bird@2x.png", spriteBatch);
+
+    this->addChild(spriteBatch);
     
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->bird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+    this->mBird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     
     this->mTipText = new Text(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH - Utils::coord(50), 0), this);
@@ -195,9 +200,9 @@ void Loader::update(float pDeltaTime)
         circle->setOpacity(255.0);
     }
     
-    for(int i = 0; i < this->mCircles->getChildrenCount(); i++)
+    for(int i = 0; i < this->mCircles->getCount(); i++)
     {
-        Entity* circle = (Entity*) this->mCircles->getChildren()->objectAtIndex(i);
+        Entity* circle = (Entity*) this->mCircles->objectAtIndex(i);
         
         circle->setRotation(circle->getRotation() + 1.0);
         circle->setScale(circle->getScaleX() + 0.01);
@@ -290,6 +295,7 @@ void Loader::onEnter()
     this->mLoadingText->setOpacity(255.0);
 
     SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+    SimpleAudioEngine::sharedEngine()->stopAllEffects();
 }
 
 void Loader::onExit()

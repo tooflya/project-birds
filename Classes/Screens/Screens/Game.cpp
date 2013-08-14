@@ -55,6 +55,7 @@ void Game::startGame()
     this->mGameStartText->setOpacity(0.0);
 
     this->mBirds->clear();
+    this->mSpecialBirds->clear();
     this->mFeathers->clear();
     this->mMarks->clear();
     this->mExplosions->clear();
@@ -155,19 +156,20 @@ void Game::update(float pDeltaTime)
 
                 if(this->mBirdsRemaning == 0)
                 {
-                    this->mBirdsRemaning = Utils::random(1, 6);
+                    this->mBirdsRemaning = Utils::random(1, this->mAlgorithmBirdsRemainig);
                 }
 
-                this->mBirdsTime = Utils::randomf(0.0, 1.5);
+                this->mBirdsTime = Utils::randomf(0.0, this->mAlgorithmBirdsTime);
 
                 this->mBirdsRemaning--;
 
                 if(this->mBirdsRemaning == 0)
                 {
-                    this->mBirdsTime = Utils::randomf(2.0, 7.0);
+                    this->mBirdsTime = Utils::randomf(this->mAlgorithmBirdsTime1, this->mAlgorithmBirdsTime2);
                 }
                 
                 Bird* bird = static_cast<Bird*>(this->mBirds->create());
+                //SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
 
                 if(Options::SOUND_ENABLE)
                 {

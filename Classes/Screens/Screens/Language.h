@@ -24,11 +24,11 @@ class Language : public Screen
         Entity* mBackButton;
     
         Entity* mLanguages[10];
-        BatchEntityManager* mBackgroundDecoration;
+        Entity* mLanguageIndicator;
+        Entity* mBackgroundDecorations[2];
+
         EntityManager* mNotAvailableBackgrounds;
     
-        Entity* mLanguageIndicator;
-
         // ===========================================================
         // Constructors
         // ===========================================================

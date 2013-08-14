@@ -31,20 +31,17 @@ class Shop : public Screen
 
         int mCoins;
     
+        Entity* mBackgroundDecorations[2];
+        Entity* mWeaponChecker;
         Entity* mBackground;
+        Entity* mDarkness;
         Entity* mCoin;
         
         Button* mBackButton;
         Button* mTablet;
 
-        Entity* mDarkness;
-
         Text* mCoinsCountText;
         Text* mBoughtText[2];
-    
-        BatchEntityManager* mBackgroundDecoration;
-
-        Entity* mWeaponChecker;
 
         // ===========================================================
         // Constructors

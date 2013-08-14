@@ -68,14 +68,14 @@ void ScreenManager::generate()
 {
     this->mScreens[Screen::SCREEN_MENU] = new Menu();
     this->mScreens[Screen::SCREEN_SETTINGS] = new Settings();
-    this->mScreens[Screen::SCREEN_MORE] = new More();
-    this->mScreens[Screen::SCREEN_SHOP] = new Shop();
-    this->mScreens[Screen::SCREEN_MODE] = new Mode();
-    this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
     this->mScreens[Screen::SCREEN_CREDITS] = new Credits();
-    this->mScreens[Screen::SCREEN_LOADER] = new Loader();
     this->mScreens[Screen::SCREEN_PROGRESS] = new Progress();
+    this->mScreens[Screen::SCREEN_MORE] = new More();
     this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
+    this->mScreens[Screen::SCREEN_MODE] = new Mode();
+    this->mScreens[Screen::SCREEN_SHOP] = new Shop();
+    this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
+    this->mScreens[Screen::SCREEN_LOADER] = new Loader();
 
     this->mScreens[Screen::SCREEN_CLASSIC_GAME] = NULL;
     this->mScreens[Screen::SCREEN_ARCADE_GAME] = NULL;

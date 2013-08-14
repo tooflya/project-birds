@@ -18,6 +18,16 @@ class Feather : public ImpulseEntity
         // Fields
         // ===========================================================
 
+        float mVectorX;
+        float mVectorY;
+
+        float mPower;
+
+        float mWaitingTime;
+        float mWaitingTimeElapsed;
+        
+        bool bWaitingTime;
+
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -77,6 +87,8 @@ class Feather : public ImpulseEntity
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void init(int pIndex, float pSpeed);
         
         // ===========================================================
         // Virtual Methods

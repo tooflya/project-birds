@@ -25,7 +25,7 @@ class Credits : public Screen
         Entity* mBackground;
         Entity* mBackButton;
     
-        BatchEntityManager* mListBorders;
+        EntityManager* mListBorders;
     
         CreditsList* mList;
 

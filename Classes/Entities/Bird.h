@@ -35,6 +35,7 @@ class Bird : public ImpulseEntity
         bool mIsGoingToDestroy;
         bool mSpecialAnimation;
         bool mChalange;
+        bool mSpecial;
 
         CCProgressTimer* mLife;
 
@@ -94,6 +95,15 @@ class Bird : public ImpulseEntity
         static const int TYPE_YELLOW = 5;
         static const int TYPE_GREEN = 6;
         static const int TYPE_DANGER = 7;
+        static const int TYPE_GENERAL = 8;
+        static const int TYPE_FREEZEE = 9;
+        static const int TYPE_ZOMBIE = 10;
+        static const int TYPE_INDIE = 11;
+        static const int TYPE_ROBOTO = 12;
+        static const int TYPE_MEXICAN = 13;
+        static const int TYPE_PIRATE = 14;
+        static const int TYPE_FLAYER = 15;
+        static const int TYPE_NINJA = 16;
 
         static ccColor3B COLORS[COUNT];
 
@@ -106,6 +116,7 @@ class Bird : public ImpulseEntity
         // ===========================================================
     
         Bird();
+        Bird(bool pSpecial);
 
         // ===========================================================
         // Methods

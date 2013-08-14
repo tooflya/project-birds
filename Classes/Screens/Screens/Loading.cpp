@@ -11,56 +11,32 @@
 // Constants
 // ===========================================================
 
-const char* Loading::TEXTURE_LIBRARY[48] =
+const char* Loading::TEXTURE_LIBRARY[24] =
 {
-    "main_menu_bg@2x.png",
-    "bg_detail_stripe@2x.png",
-    "bg_detail_settings@2x.png",
-    "bg_detail_lamp@2x.png",
+    "TextureAtlas2.pvr",
+    "TextureAtlas3.pvr",
+    "TextureAtlas4.pvr",
     "flag_not_avaliable_bg@2x.png",
     "about_name_logo@2x.png",
+    "flag_sprite_small@2x.png",
     "about_logo@2x.png",
-    "bg_detail_dark@2x.png",
     "more_games_list@2x.png",
-    "play_btn_animation@2x.png",
-    "bg_detail_choose_bird@2x.png",
-    "main_menu_btn_bg_play@2x.png",
-    "btn_sprite@2x.png",
-    "settings_bg@2x.png",
     "settings_btn_big@2x.png",
-    "btn_sfx_mfx_ach_lead_sprite@2x.png",
-    "choose_box_name@2x.png",
     "shop_money_bg@2x.png",
+    "flag_sprite_big@2x.png",
     "shop_wheel@2x.png",
     "shop_shelf_sprite@2x.png",
-    "shop_item_icon@2x.png",
-    "choose_box_navi_sprite@2x.png",
     "choose_box_lvl_sprite@2x.png",
-    "popup_bg@2x.png",
-    "popup_darkness@2x.png",
     "popup_btn@2x.png",
-    "popup_getcoins_picture@2x.png",
-    "get_coins_light@2x.png",
     "end_lvl_star_sprite@2x.png",
-    "flag_sprite_small@2x.png",
-    "flag_sprite_big@2x.png",
     "settings_lang_check@2x.png",
-    "about_scroll_border@2x.png",
     "about_scroll_fill@2x.png",
-    "popup_quit_picture@2x.png",
-    "popup_quit_picture_light_main@2x.png",
-    "popup_quit_picture_light_2@2x.png",
     "popup_rate_picture@2x.png",
-    "about_scroll_border_small@2x.png",
     "popup_progress_picture@2x.png",
     "about_scroll_fill_small@2x.png",
     "coins@2x.png",
-    "popup_buy_coins_btn_sprite@2x.png",
-    "preload-lvl-bg@2x.png",
-    "preload-lvl-wave@2x.png",
-    "preload-lvl-bird@2x.png",
-    "popup_item_rate_stars@2x.png",
-    "icon_properties@2x.png"
+    "icon_properties@2x.png",
+    "shop_item_icon@2x.png"
 };
 
 // ===========================================================
@@ -73,13 +49,16 @@ const char* Loading::TEXTURE_LIBRARY[48] =
 
 Loading::Loading()
 {
-    CCTextureCache::sharedTextureCache()->addImage("start_preloader_atlas@2x.png");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas2.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas4.plist");
 
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("start_preloader_atlas@2x.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas1.pvr");
 
-    this->mBackground = new Entity((EntityStructure) {"start_preloader_atlas@2x.png", 1, 1, 0, 0, 1000, 1280}, spriteBatch);
-    this->mBarBackground = new Entity((EntityStructure) {"start_preloader_atlas@2x.png", 1, 1, 2, 1287, 631, 88}, spriteBatch);
-    this->mBar = new Entity((EntityStructure) {"start_preloader_atlas@2x.png", 1, 1, 2, 1394, 577, 38}, spriteBatch);
+    this->mBackground = new Entity("start_preloader_bg@2x.png", spriteBatch);
+    this->mBarBackground = new Entity("start_preload_bar@2x.png", spriteBatch);
+    this->mBar = new Entity("start_preload_bar_fill@2x.png", spriteBatch);
 
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBarBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
@@ -94,7 +73,7 @@ Loading::Loading()
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
     
-    for(int i = 0; i < this->mNumberOfSprites + 1; i++)
+    for(int i = 0; i < this->mNumberOfSprites + 0; i++)
     {
         CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i], this, callfuncO_selector(Loading::loadingCallBack));
     }
@@ -120,7 +99,7 @@ void Loading::loadingCallBack(CCObject *obj)
         AppDelegate::screens = new ScreenManager();
         
         { // TODO: Something goes wrong.
-            Options::changeLanguage(); 
+            Options::changeLanguage();
     
             this->mLoadingText->setString((Options::TEXT_LOADING_2.string + Utils::intToString(percent) + "%").c_str());
         }

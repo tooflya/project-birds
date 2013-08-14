@@ -25,16 +25,25 @@ Menu* Menu::m_Instance = NULL;
 
 Menu::Menu()
 {
-    this->mBackground = new Entity("main_menu_bg@2x.png", this);
-    this->mPlayDecoration = new Entity("main_menu_btn_bg_play@2x.png", this);
-    this->mPlayButton = new PlayButton("play_btn_animation@2x.png", 6, 2, this, Options::BUTTONS_ID_MENU_PLAY, onTouchButtonsCallback);
-    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, this, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
-    this->mTwitterButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, this, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
-    this->mFacebookButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, this, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
-    this->mSettingsButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, this, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+
+    this->mBackground = new Entity("main_menu_bg@2x.png", spriteBatch);
+    this->mPlayDecoration = new Entity("main_menu_btn_bg_play@2x.png", spriteBatch);
+    this->mPlayButton = new PlayButton("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, onTouchButtonsCallback);
+    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mTwitterButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
+    this->mFacebookButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
+    this->mSettingsButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
     
+    this->addChild(spriteBatch);
+
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+
     this->mExitPopup = new Exit(this);
-    this->mRatePopup = new PleaseRate(this);
+
+    #endif
+
+    //this->mRatePopup = new PleaseRate(this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mShopButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(270));

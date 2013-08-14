@@ -26,12 +26,17 @@ Mode* Mode::m_Instance = NULL;
 
 Mode::Mode()
 {
-    this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", this);
-    this->mBackgroundDecorations[1] = new Entity("bg_detail_choose_bird@2x.png", this);
-    this->mBackButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
-    this->mHelpButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, this, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
-    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, this, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+
+    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = new Entity("bg_detail_choose_bird@2x.png", spriteBatch);
+
+    this->mBackButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
+    this->mHelpButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
+    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+
+    this->addChild(spriteBatch);
 
     this->mClassicMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_CLASSIC, onTouchButtonsCallback);
     this->mArcadeMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_ARCADE, onTouchButtonsCallback);

@@ -53,7 +53,7 @@ void Mark::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
     
-    // if(!this->isVisible()) return;
+    if(!this->isVisible()) return;
     
     if(this->getOpacity() <= 0.0 || this->getScaleX() <= 0.0)
     {

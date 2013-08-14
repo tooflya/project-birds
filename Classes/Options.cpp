@@ -35,8 +35,8 @@ int Options::CAMERA_CENTER_Y = 0;
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.6.3";
-int Options::BUILD = 2730;
+const char* Options::VERSION = "0.6.4";
+int Options::BUILD = 2755;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -55,6 +55,7 @@ const char* Options::SOUND_HIT = "Sound/hit.ogg";
 const char* Options::SOUND_BONUS_GONG = "Sound/bonus-gong.ogg";
 const char* Options::SOUND_BOMB_FUSE = "Sound/bomb-fuse.ogg";
 const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.ogg", "Sound/combo-blitz-backing.ogg", "Sound/combo-blitz-backing-end.ogg" };
+const char* Options::SOUND_SWOOSH= "swoosh.mp3";
 
 #else
 
@@ -62,17 +63,18 @@ const char* Options::MUSIC_1 = "music-1.mp3";
 const char* Options::MUSIC_2 = "music-2.mp3";
 
 const char* Options::SOUND_TAP = "tap.wav";
-const char* Options::SOUND_UNLOCKED = "equip-unlock.wav";
+const char* Options::SOUND_UNLOCKED = "equip-unlock.mp3";
 const char* Options::SOUND_EQUIP_SWORD = "equip-new-sword.mp3";
 const char* Options::SOUND_BIRD_BLOW = "bird-blow.mp3";
 const char* Options::SOUND_DANGER_EXPLOSION = "explosion.mp3";
 const char* Options::SOUND_THROW = "throw-bird.mp3";
-const char* Options::SOUND_THROW_BOMB = "Sound/throw-bomb.mp3";
+const char* Options::SOUND_THROW_BOMB = "throw-bomb.mp3";
 const char* Options::SOUND_LOSE_LIFE = "lose_life.mp3";
 const char* Options::SOUND_HIT = "hit.mp3";
 const char* Options::SOUND_BONUS_GONG = "bonus-gong.mp3";
 const char* Options::SOUND_BOMB_FUSE = "bomb-fuse.mp3";
 const char* Options::SOUND_BONUS_TIME[3] = { "combo-blitz-backing-light.mp3", "combo-blitz-backing.mp3", "combo-blitz-backing-end.mp3" };
+const char* Options::SOUND_SWOOSH= "swoosh.mp3";
 
 #endif
 
@@ -320,6 +322,7 @@ Textes Options::TEXT_EVENTS[90] =
       { "", FONT, 0, 331 }, { "", FONT, 0, 332 }, { "", FONT, 0, 333 }, { "", FONT, 0, 334 }, { "", FONT, 0, 335 }, { "", FONT, 0, 336 }, { "", FONT, 0, 337 }, { "", FONT, 0, 338 }, { "", FONT, 0, 339 }, { "", FONT, 0, 340 },
       { "", FONT, 0, 341 }, { "", FONT, 0, 342 }, { "", FONT, 0, 343 }, { "", FONT, 0, 344 }, { "", FONT, 0, 345 }, { "", FONT, 0, 346 }, { "", FONT, 0, 347 }, { "", FONT, 0, 348 }, { "", FONT, 0, 349 }, { "", FONT, 0, 350 }
 };
+Textes Options::TEXT_GAME_CLASSIC_BONUS_TIME = { "", FONT, 72, 351 };
 
 // ===========================================================
 // Fields
@@ -709,6 +712,7 @@ void Options::changeLanguage()
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Something was unclocked!";
             TEXT_GAME_BEST.string = "Best:";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Time remaining:";
+            TEXT_GAME_CLASSIC_BONUS_TIME.string = "Bonus time";
 
             TEXT_EVENTS[0].string = "New record!";
             TEXT_EVENTS[0].size = 42;
@@ -1068,6 +1072,7 @@ void Options::changeLanguage()
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Что-то было открыто";
             TEXT_GAME_BEST.string = "Лучший:";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Времени осталось:";
+            TEXT_GAME_CLASSIC_BONUS_TIME.string = "Бонусное время";
 
             TEXT_EVENTS[0].string = "Новый рекорд!";
             TEXT_EVENTS[0].size = 42;
@@ -1428,8 +1433,9 @@ void Options::changeLanguage()
     TEXTES_HOLDER[348] = TEXT_EVENTS[87];
     TEXTES_HOLDER[349] = TEXT_EVENTS[88];
     TEXTES_HOLDER[350] = TEXT_EVENTS[89];
+    TEXTES_HOLDER[351] = TEXT_GAME_CLASSIC_BONUS_TIME;
     
-    for(int i = 0; i <= 350; i++)
+    for(int i = 0; i <= 351; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

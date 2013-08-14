@@ -8,9 +8,16 @@
 
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)
 {
-    //this->initWithTexture(CCTextureCache::sharedTextureCache()->textureForKey(pszFileName));
-    
-    this->initWithFile(pszFileName); // TODO: Something wrong with TextureCache.
+    CCSpriteFrame *pFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(pszFileName);
+
+    if(pFrame == NULL)
+    {
+        this->initWithFile(pszFileName);
+    }
+    else
+    {
+        this->initWithSpriteFrame(pFrame);
+    }
     
     if(pParent)
     {
@@ -19,14 +26,14 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 
     this->mTextureFileName = pszFileName;
 
-    this->mWidth  = pWidth  >= 0 ? Utils::coord(pWidth) : this->getTextureRect().size.width;
-    this->mHeight = pHeight >= 0 ? Utils::coord(pHeight) : this->getTextureRect().size.height;
+    this->mWidth = pWidth >= 0 ? Utils::coord(pWidth) : (pFrame == NULL ? this->getTextureRect().size.width : pFrame->getRect().size.width);
+    this->mHeight = pHeight >= 0 ? Utils::coord(pHeight) : (pFrame == NULL ? this->getTextureRect().size.height : pFrame->getRect().size.height);
 
-    this->mPaddingX = Utils::coord(pX);
-    this->mPaddingY = Utils::coord(pY);
+    this->mPaddingX = (pFrame == NULL ? 0 : pFrame->getRect().origin.x) + Utils::coord(pX);
+    this->mPaddingY = (pFrame == NULL ? 0 : pFrame->getRect().origin.y) + Utils::coord(pY);
 
     this->mFrameWidth = this->mWidth / pHorizontalFramesCount;
-    this->mFrameHeight = this->mHeight / pVerticalFramesCount; 
+    this->mFrameHeight = this->mHeight / pVerticalFramesCount;
 
     this->mFramesCount = pHorizontalFramesCount * pVerticalFramesCount;
 
@@ -605,7 +612,8 @@ Entity* Entity::deepCopy()
 {
     float s = CCDirector::sharedDirector()->getContentScaleFactor();
 
-    return new Entity((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mPaddingX*s, this->mPaddingY*s, this->mWidth*s, this->mHeight*s}, NULL);
+    //return new Entity((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mPaddingX*s, this->mPaddingY*s, this->mWidth*s, this->mHeight*s}, NULL);
+    return new Entity((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, 0, 0, -1, -1}, NULL);
 }
 
 void Entity::update(float pDeltaTime)

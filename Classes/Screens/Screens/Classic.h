@@ -45,6 +45,7 @@ class Classic : public Game
         Text* mCountText;
         Text* mBestCountText;
         Text* mLevelUpText;
+        Text* mBonusTimeText;
     
         // ===========================================================
         // Constructors

@@ -23,20 +23,28 @@ Language* Language::m_Instance = NULL;
 
 Language::Language()
 {
-    this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackgroundDecoration = new BatchEntityManager(2, new Entity("bg_detail_stripe@2x.png"), this);
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_LANGUAGE_BACK, onTouchButtonsCallback);
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+    CCSpriteBatchNode* spriteBatchLanguage = CCSpriteBatchNode::create("flag_sprite_big@2x.png");
+
+    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
+
+    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LANGUAGE_BACK, onTouchButtonsCallback);
+
+    this->addChild(spriteBatch);
+    this->addChild(spriteBatchLanguage);
     
-    this->mLanguages[0] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_EN, onTouchButtonsCallback);
-    this->mLanguages[1] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_RU, onTouchButtonsCallback);
-    this->mLanguages[2] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_DE, onTouchButtonsCallback);
-    this->mLanguages[3] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_ES, onTouchButtonsCallback);
-    this->mLanguages[4] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_FR, onTouchButtonsCallback);
-    this->mLanguages[5] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_NL, onTouchButtonsCallback);
-    this->mLanguages[6] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_IT, onTouchButtonsCallback);
-    this->mLanguages[7] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_JP, onTouchButtonsCallback);
-    this->mLanguages[8] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_KR, onTouchButtonsCallback);
-    this->mLanguages[9] = new Button("flag_sprite_big@2x.png", 2, 5, this, Options::BUTTONS_ID_LANGUAGE_L_CN, onTouchButtonsCallback);
+    this->mLanguages[0] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_EN, onTouchButtonsCallback);
+    this->mLanguages[1] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_RU, onTouchButtonsCallback);
+    this->mLanguages[2] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_DE, onTouchButtonsCallback);
+    this->mLanguages[3] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_ES, onTouchButtonsCallback);
+    this->mLanguages[4] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_FR, onTouchButtonsCallback);
+    this->mLanguages[5] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_NL, onTouchButtonsCallback);
+    this->mLanguages[6] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_IT, onTouchButtonsCallback);
+    this->mLanguages[7] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_JP, onTouchButtonsCallback);
+    this->mLanguages[8] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_KR, onTouchButtonsCallback);
+    this->mLanguages[9] = new Button("flag_sprite_big@2x.png", 2, 5, spriteBatchLanguage, Options::BUTTONS_ID_LANGUAGE_L_CN, onTouchButtonsCallback);
     
     this->mLanguageIndicator = new Entity("settings_lang_check@2x.png", this);
 
@@ -70,10 +78,10 @@ Language::Language()
     
     this->mLanguageIndicator->create();
     
-    this->mBackgroundDecoration->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
-    this->mBackgroundDecoration->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
+    this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
+    this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
     
-    static_cast<Entity*>(this->mBackgroundDecoration->objectAtIndex(1))->setScale(-1);
+    this->mBackgroundDecorations[1]->setScale(-1);
 
     for(int i = 2; i < 10; i++)
     {

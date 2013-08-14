@@ -88,8 +88,8 @@ class Levels : public Screen
         // Fields
         // ===========================================================
 
-        BatchEntityManager* mSlides;
-        BatchEntityManager* mSlidesArrows;
+        EntityManager* mSlides;
+        EntityManager* mSlidesArrows;
     
         Entity* mBackgroundDecorations[5];
 

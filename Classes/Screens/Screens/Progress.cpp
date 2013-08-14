@@ -23,10 +23,14 @@ Progress* Progress::m_Instance = NULL;
 
 Progress::Progress()
 {
-    this->mResetPopup = new ResetProgress(this);
-    
-    this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_PROGRESS_BACK, onTouchButtonsCallback);
+    //this->mResetPopup = new ResetProgress(this);
+
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+
+    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
+    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_PROGRESS_BACK, onTouchButtonsCallback);
+
+    this->addChild(spriteBatch);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     

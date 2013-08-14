@@ -23,16 +23,21 @@ Settings* Settings::m_Instance = NULL;
 
 Settings::Settings()
 {
-    this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", this);
-    this->mBackgroundDecorations[1] = new Entity("bg_detail_settings@2x.png", this);
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+
+    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = new Entity("bg_detail_settings@2x.png", spriteBatch);
+
+    this->addChild(spriteBatch);
+
+    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
     this->mCreditsButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_CREDITS, onTouchButtonsCallback);
     this->mProgressButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
     this->mMoreButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_MORE, onTouchButtonsCallback);
     this->mLanguageButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_LANGUAGE, onTouchButtonsCallback);
-    this->mSoundButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, this, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
-    this->mMusicButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, this, Options::BUTTONS_ID_SETTINGS_MUSIC, onTouchButtonsCallback);
+    this->mSoundButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
+    this->mMusicButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, onTouchButtonsCallback);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 

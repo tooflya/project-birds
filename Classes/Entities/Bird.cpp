@@ -3,6 +3,8 @@
 
 #include "Bird.h"
 
+#include "Feather.h"
+
 #include "Game.h"
 
 // ===========================================================
@@ -34,7 +36,7 @@ ccColor3B Bird::COLORS[COUNT] =
 // ===========================================================
 
 Bird::Bird() :
-    ImpulseEntity("birds_sprite@2x.png", 14, 12)
+    ImpulseEntity("birds_sprite@2x.png", 14, 8)
     {
         this->mMarkTime = 0.02;
         this->mMarkTimeElapsed = 0;
@@ -47,6 +49,11 @@ Bird::Bird() :
         this->mSoundEffect = 0;
 
         this->mChalange = false;
+    }
+
+Bird::Bird(bool pSpecial) :
+    ImpulseEntity("special_birds_sprite@2x.png", 14, 9)
+    {
     }
 
 // ===========================================================
@@ -268,12 +275,15 @@ void Bird::update(float pDeltaTime)
                     explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
                     explosion->setColor(COLORS[this->mType]);
 
-                    for(int i = 0; i < 10; i++)
                     {
-                        Entity* feather = (Entity*) game->mFeathers->create();
+                        for(int i = 0; i < 10; i++)
+                        {
+                            Feather* feather = (Feather*) game->mFeathers->create();
 
-                        feather->setCenterPosition(this->getCenterX(), this->getCenterY());
-                        feather->setCurrentFrameIndex(this->mType);
+                            feather->setCenterPosition(this->getCenterX(), this->getCenterY());
+                            feather->setCurrentFrameIndex(this->mType);
+                            feather->init(i, 15.0);
+                        }
                     }
                     
                     if(Options::SOUND_ENABLE)

@@ -206,8 +206,14 @@ int Shop::CLICKED_ITEM_ID = -1;
 
 Shop::Shop()
 {
-    this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackgroundDecoration = new BatchEntityManager(2, new Entity("bg_detail_stripe@2x.png"), this);
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+
+    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
+
+    this->addChild(spriteBatch);
+    
     this->mTablet = new Button("shop_money_bg@2x.png", 1, 1, this, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
     this->mCoin = new Entity("coins@2x.png", 5, 4, this->mTablet);
     this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
@@ -303,10 +309,10 @@ Shop::Shop()
         this->mWheels->create()->setCenterPosition(x, y);
     }
     
-    this->mBackgroundDecoration->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
-    this->mBackgroundDecoration->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
+    this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
+    this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
     
-    static_cast<Entity*>(this->mBackgroundDecoration->objectAtIndex(1))->setScale(-1);
+    this->mBackgroundDecorations[1]->setScale(-1);
     
     /** Bought item animation **/
 
@@ -336,7 +342,7 @@ Shop::Shop()
     /** **/
 
     this->mBuyItemPopup = new BuyItem(this);
-    this->mGetCoinsPopup = new GetCoins(this);
+    //this->mGetCoinsPopup = new GetCoins(this);
     
     this->mIsAnimationOnItemBoughtRunning = false;
 

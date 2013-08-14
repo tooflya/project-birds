@@ -29,6 +29,7 @@ Arcade::Arcade() :
         this->mBackground = new Entity("game_gui_bg_summer@2x.png", this);
         this->mCountIcon = new Entity("game_gui_count_pic@2x.png", this);
         this->mTimeIcon = new Clock(this->mEventLayer);
+        this->mStars = new BatchEntityManager(1000, new StarParticle(), this);
 
         this->mCountText = new Text((Textes) {"0", Options::FONT, 80, -1}, this);
         this->mBestCountText = new Text(Options::TEXT_GAME_BEST, this);
@@ -44,6 +45,7 @@ Arcade::Arcade() :
         this->mMarks = new BatchEntityManager(200, new Mark(), this);
         this->mFeathers = new BatchEntityManager(100, new Feather(), this);
         this->mBirds = new BatchEntityManager(10, new Bird(), this);
+        this->mSpecialBirds = new BatchEntityManager(10, new SpecialBird(), this);
         this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
         this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
 
@@ -62,6 +64,12 @@ Arcade::Arcade() :
 
         this->mPausePopup = new ArcadePause(this);
         this->mEndScreen = new ArcadeEnd(Splash::TYPE_ARCADE, this);
+
+        this->mAlgorithmBirdsRemainig = 6;
+        this->mAlgorithmBirdsTime = 1.5;
+
+        this->mAlgorithmBirdsTime1 = 2.0;
+        this->mAlgorithmBirdsTime2 = 7.0;
 
         this->addChild(this->mEventLayer);
 

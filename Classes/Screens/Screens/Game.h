@@ -6,6 +6,7 @@
 #include "End.h"
 
 #include "Bird.h"
+#include "SpecialBird.h"
 #include "Mark.h"
 #include "Feather.h"
 #include "Explosion.h"
@@ -38,11 +39,18 @@ class Game : public Screen
         int mBirdsRemaning;
         int mStartGameAnimationIndex;
 
+        int mAlgorithmBirdsRemainig;
+
         float mBirdsTime;
         float mBirdsTimeElapsed;
 
         float mStartGameAnimation;
         float mStartGameAnimationElapsed;
+
+        float mAlgorithmBirdsTime;
+
+        float mAlgorithmBirdsTime1;
+        float mAlgorithmBirdsTime2;
 
         bool mGameRunning;
         bool mGamePaused;
@@ -121,6 +129,7 @@ class Game : public Screen
         bool mChalange;
 
         BatchEntityManager* mBirds;
+        BatchEntityManager* mSpecialBirds;
         BatchEntityManager* mMarks;
         BatchEntityManager* mFeathers;
         BatchEntityManager* mExplosionsBasic;

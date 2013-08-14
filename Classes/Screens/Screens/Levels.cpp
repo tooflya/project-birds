@@ -525,24 +525,29 @@ Levels* Levels::m_Instance = NULL;
 Levels::Levels()
 {
     this->mMainList = new MainList(this);
+    
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
 
-    this->mBackground = new Entity("settings_bg@2x.png", this);
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this, Options::BUTTONS_ID_LEVELS_BACK, onTouchButtonsCallback);
-    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, this, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = new Entity("bg_detail_choose_bird@2x.png", spriteBatch);
+
+    this->addChild(spriteBatch);
+    
+    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, onTouchButtonsCallback);
+    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
     this->mTablet = new Entity("shop_money_bg@2x.png", this);
-    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", this);
-    this->mBackgroundDecorations[1] = new Entity("bg_detail_choose_bird@2x.png", this);
     this->mStarsCountIcon = new Entity("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
-    this->mSlides = new BatchEntityManager(6, new Entity("choose_box_navi_sprite@2x.png", 1, 2), this);
+    this->mSlides = new EntityManager(6, new Entity("choose_box_navi_sprite@2x.png", 1, 2), spriteBatch);
 
     this->mStarsCountText = new Text((Textes) {"206", Options::FONT, 64, -1}, this->mTablet);
 
     this->addChild(this->mMainList->mLayers[0]);
     this->addChild(this->mMainList);
 
-    this->mSlidesArrows = new BatchEntityManager(2, new Entity((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, NULL), this);
+    this->mSlidesArrows = new EntityManager(2, new Entity((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, NULL), spriteBatch);
     
-    this->mBackgroundDecorations[2] = new Entity("bg_detail_lamp@2x.png", 1, 2, this);
+    this->mBackgroundDecorations[2] = new Entity("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
     this->mBackgroundDecorations[3] = new Entity("bg_detail_dark@2x.png", this);
     this->mBackgroundDecorations[4] = new Entity("popup_darkness@2x.png", this);
     

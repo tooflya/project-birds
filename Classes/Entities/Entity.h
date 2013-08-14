@@ -95,6 +95,8 @@ class Entity : public CCSprite, public Touchable
 
         bool mAlphaParent;
 
+        bool mCreatedFromAtlas;
+
         const char* mTextureFileName;
     
         CCPoint mStartTouchPoint;

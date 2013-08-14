@@ -115,6 +115,7 @@ class Options
         static const char* SOUND_BOMB_FUSE;
         static const char* SOUND_EQUIP_SWORD;
         static const char* SOUND_BONUS_TIME[3];
+        static const char* SOUND_SWOOSH;
 
         static const char* VERSION;
         static int BUILD;
@@ -273,6 +274,7 @@ class Options
         static Textes TEXT_GAME_BEST;
         static Textes TEXT_GAME_ARCADE_TIME_REMAINING;
         static Textes TEXT_EVENTS[90];
+        static Textes TEXT_GAME_CLASSIC_BONUS_TIME;
 
         // ===========================================================
         // Fields

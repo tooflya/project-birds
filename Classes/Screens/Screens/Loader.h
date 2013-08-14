@@ -14,30 +14,30 @@ class Loader : public Screen
         // Constants
         // ===========================================================
     
-        static const char* TEXTURE_LIBRARY[32];
+        static const char* TEXTURE_LIBRARY[33];
 
         // ===========================================================
         // Fields
         // ===========================================================
     
-        float mCircleAnimationTime;
-        float mCircleAnimationTimeElapsed;
-    
-        Entity* mBackground;
-        Entity* bird;
-    
         int mNumberOfSprites;
         int mNumberOfLoadedSprites;
     
-        Text* mLoadingText;
-        Text* mTipText;
-    
-        BatchEntityManager* mCircles;
+        float mCircleAnimationTime;
+        float mCircleAnimationTimeElapsed;
     
         bool mTapToContinueAnimation;
         bool mTapToContinueAnimationReverse;
     
         bool mIsWorkDone;
+    
+        Entity* mBackground;
+        Entity* mBird;
+    
+        Text* mLoadingText;
+        Text* mTipText;
+    
+        EntityManager* mCircles;
 
         // ===========================================================
         // Constructors
