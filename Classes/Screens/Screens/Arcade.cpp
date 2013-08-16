@@ -24,10 +24,10 @@ Arcade* Arcade::m_Instance = NULL;
 Arcade::Arcade() :
     Game()
     {
-        this->mEventLayer = CCLayer::create();
+        /*this->mEventLayer = CCLayer::create();
 
-        this->mBackground = new Entity("game_gui_bg_summer@2x.png", this);
-        this->mCountIcon = new Entity("game_gui_count_pic@2x.png", this);
+        this->mBackground = Entity::create("game_gui_bg_summer@2x.png", this);
+        this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", this);
         this->mTimeIcon = new Clock(this->mEventLayer);
         this->mStars = new BatchEntityManager(1000, new StarParticle(), this);
 
@@ -39,7 +39,7 @@ Arcade::Arcade() :
 
         this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mPauseButton = new Button((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
 
         this->mDust = new BatchEntityManager(100, new Dust(), this);
         this->mMarks = new BatchEntityManager(200, new Mark(), this);
@@ -62,7 +62,7 @@ Arcade::Arcade() :
         this->mTimeText[1]->setCenterPosition(Utils::coord(120) + this->mTimeText[1]->getWidth() / 2, Utils::coord(45));
         this->mTimeText[2]->setCenterPosition(Utils::coord(255) + this->mTimeText[2]->getWidth() / 2, Utils::coord(28));
 
-        this->mPausePopup = new ArcadePause(this);
+        //this->mPausePopup = new ArcadePause(this);
         this->mEndScreen = new ArcadeEnd(Splash::TYPE_ARCADE, this);
 
         this->mAlgorithmBirdsRemainig = 6;
@@ -71,7 +71,7 @@ Arcade::Arcade() :
         this->mAlgorithmBirdsTime1 = 2.0;
         this->mAlgorithmBirdsTime2 = 7.0;
 
-        this->addChild(this->mEventLayer);
+        this->addChild(this->mEventLayer);*/
 
         m_Instance = this;
     }

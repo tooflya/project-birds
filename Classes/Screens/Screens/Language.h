@@ -26,12 +26,15 @@ class Language : public Screen
         Entity* mLanguages[10];
         Entity* mLanguageIndicator;
         Entity* mBackgroundDecorations[2];
+        Entity* mNotAvailableBackgrounds[8];
 
-        EntityManager* mNotAvailableBackgrounds;
+        Text* mTextes[8];
     
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Language();
 
         // ===========================================================
         // Methods
@@ -85,7 +88,7 @@ class Language : public Screen
         // Constructors
         // ===========================================================
     
-        Language();
+        static Language* create();
 
         // ===========================================================
         // Methods
@@ -95,6 +98,8 @@ class Language : public Screen
         // Override Methods
         // ===========================================================
     
+        void update(float pDeltaTime);
+
         void onEnter();
         void onExit();
 };

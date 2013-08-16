@@ -27,7 +27,9 @@ class PlayButton : public Button
 
 		// ===========================================================
 		// Constructors
-		// ===========================================================
+        // ===========================================================
+    
+        PlayButton(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
 
 		// ===========================================================
 		// Methods
@@ -79,7 +81,7 @@ class PlayButton : public Button
 		// Constructors
 		// ===========================================================
 
-		PlayButton(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+		static PlayButton* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
 
 		// ===========================================================
 		// Methods

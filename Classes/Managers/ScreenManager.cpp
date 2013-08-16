@@ -14,6 +14,7 @@
 #include "Loader.h"
 #include "Progress.h"
 #include "Language.h"
+#include "Game.h"
 #include "Classic.h"
 #include "Arcade.h"
 #include "Progresses.h"
@@ -38,6 +39,14 @@
 ScreenManager::ScreenManager()
 {
     this->generate();
+}
+
+ScreenManager* ScreenManager::create()
+{
+    ScreenManager* manager = new ScreenManager();
+    //manager->autorelease();
+    
+    return manager;
 }
 
 // ===========================================================
@@ -66,24 +75,13 @@ ScreenManager::ScreenManager()
 
 void ScreenManager::generate()
 {
-    this->mScreens[Screen::SCREEN_MENU] = new Menu();
-    this->mScreens[Screen::SCREEN_SETTINGS] = new Settings();
-    this->mScreens[Screen::SCREEN_CREDITS] = new Credits();
-    this->mScreens[Screen::SCREEN_PROGRESS] = new Progress();
-    this->mScreens[Screen::SCREEN_MORE] = new More();
-    this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
-    this->mScreens[Screen::SCREEN_MODE] = new Mode();
-    this->mScreens[Screen::SCREEN_SHOP] = new Shop();
-    this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
-    this->mScreens[Screen::SCREEN_LOADER] = new Loader();
-
-    this->mScreens[Screen::SCREEN_CLASSIC_GAME] = NULL;
-    this->mScreens[Screen::SCREEN_ARCADE_GAME] = NULL;
-    this->mScreens[Screen::SCREEN_PROGRESS_GAME] = NULL;
+    this->load(3, 1);
+    this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)
 {
+    pAnimationTime = 0.3;
     this->mCurrentScreenIndex = pIndex;
     
     CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, this->mScreens[pIndex]);
@@ -91,50 +89,64 @@ void ScreenManager::set(float pAnimationTime, int pIndex)
     CCDirector::sharedDirector()->pushScene(transition);
 }
 
-void ScreenManager::load(int pAction)
+void ScreenManager::load(int pAction, int pDo)
 {
     switch(pAction)
     {
         case 3:
-
-            /*this->mScreens[Screen::SCREEN_MENU] = new Menu();
-            this->mScreens[Screen::SCREEN_SETTINGS] = new Settings();
-            this->mScreens[Screen::SCREEN_SHOP] = new Shop();
-            this->mScreens[Screen::SCREEN_MODE] = new Mode();
-            this->mScreens[Screen::SCREEN_LEVELS] = new Levels();
-            this->mScreens[Screen::SCREEN_CREDITS] = new Credits();
-            this->mScreens[Screen::SCREEN_LANGUAGE] = new Language();
             
-            delete this->mScreens[Screen::SCREEN_CLASSIC_GAME];*/
-            //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
-            //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
-
+            switch(pDo)
+            {
+                case 0:
+                
+                delete(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
+                
+                break;
+                
+                default:
+                
+                this->mScreens[Screen::SCREEN_MENU] = Menu::create();
+                this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
+                this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();
+                this->mScreens[Screen::SCREEN_PROGRESS] = Progress::create();
+                this->mScreens[Screen::SCREEN_MORE] = More::create();
+                this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
+                this->mScreens[Screen::SCREEN_MODE] = Mode::create();
+                this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
+                this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
+                
+                break;
+            }
+            
         break;
+            
         default:
+            
+            switch(pDo)
+            {
+                case 0:
+                    
+                delete(this->mScreens[Screen::SCREEN_MENU]);
+                delete(this->mScreens[Screen::SCREEN_SETTINGS]);
+                delete(this->mScreens[Screen::SCREEN_CREDITS]);
+                delete(this->mScreens[Screen::SCREEN_PROGRESS]);
+                delete(this->mScreens[Screen::SCREEN_MORE]);
+                delete(this->mScreens[Screen::SCREEN_LANGUAGE]);
+                delete(this->mScreens[Screen::SCREEN_MODE]);
+                delete(this->mScreens[Screen::SCREEN_SHOP]);
+                delete(this->mScreens[Screen::SCREEN_LEVELS]);
+                    
+                break;
+                    
+                default:
 
-            if(this->mScreens[Screen::SCREEN_CLASSIC_GAME] == NULL) {// TODO: Temp solution :(
-            this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
-            this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Arcade();
-            this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Progresses(); }
-            /*delete this->mScreens[Screen::SCREEN_MENU];
-           delete  this->mScreens[Screen::SCREEN_SETTINGS];
-            delete this->mScreens[Screen::SCREEN_SHOP];
-            delete this->mScreens[Screen::SCREEN_MODE];
-           delete  this->mScreens[Screen::SCREEN_LEVELS];
-          delete   this->mScreens[Screen::SCREEN_CREDITS];
-          delete   this->mScreens[Screen::SCREEN_PROGRESS];
-         delete    this->mScreens[Screen::SCREEN_LANGUAGE];
-
-            this->mScreens[Screen::SCREEN_CLASSIC_GAME] = new Classic();
-            //this->mScreens[Screen::SCREEN_ARCADE_GAME] = new Level();
-            //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = new Level();*/
+                this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
+                
+                break;
+            }
 
         break;
-    }       
-
-    //CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
-    //CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    //CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+    }
 }
 
 // ===========================================================

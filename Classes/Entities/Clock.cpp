@@ -24,7 +24,7 @@ Clock::Clock(CCNode* pParent) :
     {
         this->mArea = CCProgressTimer::create(CCSprite::create("game_time_mask@2x.png"));
         this->addChild(this->mArea);
-        this->mArrow = new Entity("game_time_arrow@2x.png", this);
+        this->mArrow = Entity::create("game_time_arrow@2x.png", this);
 
         this->mArea->setType(kCCProgressTimerTypeRadial);
         this->mArea->setReverseProgress(true);

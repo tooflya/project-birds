@@ -215,10 +215,10 @@ void Bird::update(float pDeltaTime)
     {
         this->mMarkTimeElapsed = 0;
         
-        Entity* entity = game->mMarks->create();
+        //Entity* entity = game->mMarks->create();
         
-        entity->setCenterPosition(this->getCenterX(), this->getCenterY());
-        entity->setColor(COLORS[this->mType]);
+        //entity->setCenterPosition(this->getCenterX(), this->getCenterY());
+        //entity->setColor(COLORS[this->mType]);
     }
 
     /** Collisions and destroy animation **/
@@ -267,7 +267,7 @@ void Bird::update(float pDeltaTime)
 
                 if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER)
                 {
-                    Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
+                    /*Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
                     Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 
                     explosionBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
@@ -284,7 +284,7 @@ void Bird::update(float pDeltaTime)
                             feather->setCurrentFrameIndex(this->mType);
                             feather->init(i, 15.0);
                         }
-                    }
+                    }*/
                     
                     if(Options::SOUND_ENABLE)
                     {

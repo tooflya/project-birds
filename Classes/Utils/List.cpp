@@ -25,7 +25,7 @@ List::List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float
 
     this->mParent->addChild(this);
     
-    this->mListSroll = new Entity(pListTextureFileName, this);
+    this->mListSroll = Entity::create(pListTextureFileName, this);
     this->mListSroll->create()->setRepeatTexture(true);
 
     this->mWidth = pWidth;
@@ -205,18 +205,20 @@ bool List::containsTouchLocation(CCTouch* touch)
     }
     else if(this->mParentType == PARENT_TYPE_POPUP)
     {
-        return x > Options::CAMERA_CENTER_X - this->mWidth / 2 && x < Options::CAMERA_CENTER_X + this->mWidth / 2 && y < Options::CAMERA_CENTER_Y + this->mHeight / 2 && y > Options::CAMERA_CENTER_Y - this->mHeight / 2&& ((Popup*) this->getParent()->getParent())->isShowed();
+        return x > Options::CAMERA_CENTER_X - this->mWidth / 2 && x < Options::CAMERA_CENTER_X + this->mWidth / 2 && y < Options::CAMERA_CENTER_Y + this->mHeight / 2 && y > Options::CAMERA_CENTER_Y - this->mHeight / 2 && ((Popup*) this->getParent())->isShowed();
     }
     
-    return false;
+    return true;
 }
 
 void List::onEnter()
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
-    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
     
     CCLayer::onEnter();
+
+    this->setPosition(ccp(this->getPosition().x, 0)); // TODO: Check it for horizontal list.
 }
 
 void List::onExit()
@@ -225,6 +227,9 @@ void List::onExit()
     pDirector->getTouchDispatcher()->removeDelegate(this);
     
     CCLayer::onExit();
+
+    this->mPostUpdate = false;
+    this->stopAllActions();
 }
 
 void List::visit()

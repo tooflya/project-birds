@@ -22,10 +22,18 @@
 // ===========================================================
 
 Item::Item(void (*pOnTouchCallback)(int, int)) :
-    Button("shop_item_icon@2x.png", 10, 10, Options::BUTTONS_ID_SHOP_ITEM, pOnTouchCallback)
+    Button("shop_item_icon@2x.png", 10, 6, Options::BUTTONS_ID_SHOP_ITEM, pOnTouchCallback)
     {
 
     }
+
+Item* Item::create(void (*pOnTouchCallback)(int, int))
+{
+    Item* item = new Item(pOnTouchCallback);
+    item->autorelease();
+    
+    return item;
+}
 
 // ===========================================================
 // Methods

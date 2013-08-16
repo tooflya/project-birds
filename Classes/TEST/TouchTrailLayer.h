@@ -47,7 +47,7 @@ private:
 private:
     
     BladeParticlesManager* mBladeParticlesManager;
-    BatchEntityManager* mWeaponParticles;
+    EntityManager* mWeaponParticles;
     
 	CCPoint mBladeLastCoordinates;
 	

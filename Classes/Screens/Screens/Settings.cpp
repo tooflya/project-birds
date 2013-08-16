@@ -21,23 +21,27 @@ Settings* Settings::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+Settings::~Settings()
+{
+}
+
 Settings::Settings()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
-    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
-    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
-    this->mBackgroundDecorations[1] = new Entity("bg_detail_settings@2x.png", spriteBatch);
+    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = Entity::create("bg_detail_settings@2x.png", spriteBatch);
 
     this->addChild(spriteBatch);
 
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
-    this->mCreditsButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_CREDITS, onTouchButtonsCallback);
-    this->mProgressButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
-    this->mMoreButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_MORE, onTouchButtonsCallback);
-    this->mLanguageButton = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_SETTINGS_LANGUAGE, onTouchButtonsCallback);
-    this->mSoundButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
-    this->mMusicButton = new Button("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, onTouchButtonsCallback);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
+    this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_CREDITS, onTouchButtonsCallback);
+    this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
+    this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_MORE, onTouchButtonsCallback);
+    this->mLanguageButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_LANGUAGE, onTouchButtonsCallback);
+    this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
+    this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, onTouchButtonsCallback);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
@@ -62,14 +66,23 @@ Settings::Settings()
     this->mLanguageButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
     this->mLanguageButton->setText(Options::TEXT_SETTINGS_LANGUAGE);
     
-    this->mLanguage = new Entity("flag_sprite_small@2x.png", 2, 5, this->mLanguageButton);
+    this->mLanguage = Entity::create("flag_sprite_small@2x.png", 2, 5, this);
     this->mLanguage->setCurrentFrameIndex(Options::CURRENT_LANGUAGE);
-    this->mLanguage->create()->setCenterPosition(this->mLanguageButton->getWidth(), this->mLanguageButton->getHeight() / 2);
+    this->mLanguage->setAnchorPoint(ccp(0.0, 0.5));
     
     this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(165), Utils::coord(128));
 
     m_Instance = this;
+}
+
+Settings* Settings::create()
+{
+    Settings* screen = new Settings();
+    screen->autorelease();
+    //screen->retain();
+    
+    return screen;
 }
 
 // ===========================================================
@@ -160,6 +173,14 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Settings::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+
+    this->mLanguage->setScale(this->mLanguageButton->getScaleX());
+    this->mLanguage->create()->setCenterPosition(this->mLanguageButton->getCenterX() + this->mLanguageButton->getWidthScaled() / 2 - this->mLanguage->getWidthScaled() / 2, this->mLanguageButton->getCenterY());
+}
 
 void Settings::onEnter()
 {

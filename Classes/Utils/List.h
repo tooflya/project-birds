@@ -54,6 +54,8 @@ class List : public CCLayer
 
         Entity* mParent;
 
+        CCSpriteBatchNode* mSpriteBatch;
+
         // ===========================================================
         // Constructors
         // ===========================================================

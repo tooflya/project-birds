@@ -23,17 +23,28 @@ Menu* Menu::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+Menu::~Menu()
+{
+    delete(this->mRatePopup);
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    
+    delete(this->mExitPopup);
+    
+    #endif
+}
+
 Menu::Menu()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
-    this->mBackground = new Entity("main_menu_bg@2x.png", spriteBatch);
-    this->mPlayDecoration = new Entity("main_menu_btn_bg_play@2x.png", spriteBatch);
-    this->mPlayButton = new PlayButton("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, onTouchButtonsCallback);
-    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
-    this->mTwitterButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
-    this->mFacebookButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
-    this->mSettingsButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
+    this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
+    this->mPlayDecoration = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
+    this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, onTouchButtonsCallback);
+    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mTwitterButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
+    this->mFacebookButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
+    this->mSettingsButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
     
     this->addChild(spriteBatch);
 
@@ -43,7 +54,7 @@ Menu::Menu()
 
     #endif
 
-    //this->mRatePopup = new PleaseRate(this);
+    this->mRatePopup = PleaseRate::create(this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mShopButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(270));
@@ -65,13 +76,21 @@ Menu::Menu()
     m_Instance = this;
 }
 
+Menu* Menu::create()
+{
+    Menu* screen = new Menu();
+    screen->autorelease();
+    
+    return screen;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
 
 void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Menu* pSender = (Menu*) Menu::m_Instance;
+    Menu* pSender = static_cast<Menu*>(Menu::m_Instance);
 
     switch(pAction)
     {

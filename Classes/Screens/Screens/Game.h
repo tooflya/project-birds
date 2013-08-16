@@ -73,6 +73,8 @@ class Game : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Game();
 
         // ===========================================================
         // Methods
@@ -128,20 +130,22 @@ class Game : public Screen
 
         bool mChalange;
 
-        BatchEntityManager* mBirds;
-        BatchEntityManager* mSpecialBirds;
-        BatchEntityManager* mMarks;
-        BatchEntityManager* mFeathers;
-        BatchEntityManager* mExplosionsBasic;
-        BatchEntityManager* mExplosions;
-        BatchEntityManager* mDust;
-        BatchEntityManager* mStars;
+        EntityManager* mBirds;
+        EntityManager* mSpecialBirds;
+        EntityManager* mMarks;
+        EntityManager* mFeathers;
+        EntityManager* mExplosionsBasic;
+        EntityManager* mExplosions;
+        EntityManager* mDust;
+        EntityManager* mStars;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Game();
+        static Game* create();
+    
+        ~Game();
 
         // ===========================================================
         // Methods

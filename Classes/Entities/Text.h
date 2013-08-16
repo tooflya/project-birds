@@ -105,6 +105,9 @@ class Text : public CCLabelTTF
         float getCenterY();
 
         void setText(Textes pParams);
+
+        void enableShadow();
+        void disableShadow();
         
         // ===========================================================
         // Override Methods

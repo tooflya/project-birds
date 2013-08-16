@@ -25,14 +25,13 @@ class BuyItemList : public List
         Entity* mIcon;
         Entity* mCoinsIcon;
         Entity* mPropertiesIcon;
+        Entity* mStars[2];
 
         Text* mNameText;
         Text* mDescriptionText;
         Text* mPriceText;
         Text* mPowerText;
         Text* mBoughtText;
-
-        BatchEntityManager* mStars;
 
         // ===========================================================
         // Constructors

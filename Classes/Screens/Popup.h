@@ -30,6 +30,8 @@ class Popup : public CCLayer
         // Fields
         // ===========================================================
     
+        CCSpriteBatchNode* mSpriteBatch;
+
         CCNode* mParent;
 
         Entity* mBackground;
@@ -107,6 +109,7 @@ class Popup : public CCLayer
         // ===========================================================
     
         Popup(CCNode* pParent);
+        ~Popup();
 
         // ===========================================================
         // Methods

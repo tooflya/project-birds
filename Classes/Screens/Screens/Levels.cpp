@@ -164,6 +164,14 @@ class LevelButton : public Entity
         this->mText = new Text((Textes) {"0", Options::FONT, 64, -1}, this);
     }
     
+    static LevelButton* create()
+    {
+        LevelButton* button = new LevelButton();
+        button->autorelease();
+        
+        return button;
+    }
+    
     void setId(int pId)
     {
         this->mId = pId;
@@ -270,8 +278,8 @@ class MainList : public CCLayer
                 this->addChild(this->mLayers[i]);
             }
 
-            //this->mListBorders = new EntityManager(2, new Entity("about_scroll_border@2x.png"), this->mLayers[0]);
-            //this->mElements = new EntityManager(3, new Entity("more_games_list@2x.png", 1, 3), a);
+            //this->mListBorders = new EntityManager(2, Entity::create("about_scroll_border@2x.png"), this->mLayers[0]);
+            //this->mElements = new EntityManager(3, Entity::create("more_games_list@2x.png", 1, 3), a);
             
             //this->mLayers[0]->addChild(a);
 
@@ -304,6 +312,14 @@ class MainList : public CCLayer
 
             this->scheduleUpdate();
         }
+    
+    static MainList* create(Levels* pParent)
+    {
+        MainList* list = new MainList(pParent);
+        list->autorelease();
+        
+        return list;
+    }
 
     void onEnter()
     {
@@ -345,7 +361,7 @@ class MainList : public CCLayer
         
             this->mParent->mBackgroundDecorations[2]->setCurrentFrameIndex(1);
             this->mParent->mBackgroundDecorations[3]->setVisible(false);
-            this->mParent->mBackgroundDecorations[4]->setVisible(true);
+            //this->mParent->mBackgroundDecorations[4]->setVisible(true);
 
             return true;
         }
@@ -416,29 +432,29 @@ class MainList : public CCLayer
 
         for(int i = 0; i < Levels::LEVEL_PACKS_COUNT; i++)
         {
-            static_cast<Entity*>(this->mParent->mSlides->objectAtIndex(i))->setCurrentFrameIndex(0);
+            this->mParent->mSlides[i]->setCurrentFrameIndex(0);
         }
         
         int index = abs((int)n / (int)(Options::CAMERA_CENTER_X* 1.66));
 
-        static_cast<Entity*>(this->mParent->mSlides->objectAtIndex(index))->setCurrentFrameIndex(1);
+        this->mParent->mSlides[index]->setCurrentFrameIndex(1);
 
         if(index == 0)
         {
-            static_cast<Entity*>(this->mParent->mSlidesArrows->objectAtIndex(0))->runAction(CCFadeTo::create(0.5, 0.0));
+            this->mParent->mSlidesArrows[0]->runAction(CCFadeTo::create(0.5, 0.0));
         }
         else
         {
-            static_cast<Entity*>(this->mParent->mSlidesArrows->objectAtIndex(0))->runAction(CCFadeTo::create(0.5, 255.0));
+            this->mParent->mSlidesArrows[0]->runAction(CCFadeTo::create(0.5, 255.0));
         }
 
         if(index == Levels::LEVEL_PACKS_COUNT-1)
         {
-            static_cast<Entity*>(this->mParent->mSlidesArrows->objectAtIndex(1))->runAction(CCFadeTo::create(0.5, 0.0));
+            this->mParent->mSlidesArrows[1]->runAction(CCFadeTo::create(0.5, 0.0));
         }
         else
         {
-            static_cast<Entity*>(this->mParent->mSlidesArrows->objectAtIndex(1))->runAction(CCFadeTo::create(0.5, 255.0));
+            this->mParent->mSlidesArrows[1]->runAction(CCFadeTo::create(0.5, 255.0));
         }
         t= 0;
         this->runAction(CCMoveTo::create(this->mSpeedX, ccp(n, 0)));
@@ -500,7 +516,7 @@ class MainList : public CCLayer
                 {
                     this->mParent->mBackgroundDecorations[2]->setCurrentFrameIndex(0);
                     this->mParent->mBackgroundDecorations[3]->setVisible(true);
-                    this->mParent->mBackgroundDecorations[4]->setVisible(false);
+                    //this->mParent->mBackgroundDecorations[4]->setVisible(false);
 
                     this->mPostUpdate = false;
                 }
@@ -524,32 +540,37 @@ Levels* Levels::m_Instance = NULL;
 
 Levels::Levels()
 {
-    this->mMainList = new MainList(this);
+    this->mMainList = MainList::create(this);
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
-    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
-    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
-    this->mBackgroundDecorations[1] = new Entity("bg_detail_choose_bird@2x.png", spriteBatch);
+    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
 
     this->addChild(spriteBatch);
     
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, onTouchButtonsCallback);
-    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
-    this->mTablet = new Entity("shop_money_bg@2x.png", this);
-    this->mStarsCountIcon = new Entity("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
-    this->mSlides = new EntityManager(6, new Entity("choose_box_navi_sprite@2x.png", 1, 2), spriteBatch);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, onTouchButtonsCallback);
+    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mTablet = Entity::create("shop_money_bg@2x.png", this);
+    this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
+    
+    for(int i = 0; i < 6; i++)
+    {
+        this->mSlides[i] = Entity::create("choose_box_navi_sprite@2x.png", 1, 2, spriteBatch);
+    }
 
     this->mStarsCountText = new Text((Textes) {"206", Options::FONT, 64, -1}, this->mTablet);
 
     this->addChild(this->mMainList->mLayers[0]);
     this->addChild(this->mMainList);
 
-    this->mSlidesArrows = new EntityManager(2, new Entity((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, NULL), spriteBatch);
+    this->mSlidesArrows[0] = Entity::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, spriteBatch);
+    this->mSlidesArrows[1] = Entity::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, spriteBatch);
     
-    this->mBackgroundDecorations[2] = new Entity("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
-    this->mBackgroundDecorations[3] = new Entity("bg_detail_dark@2x.png", this);
-    this->mBackgroundDecorations[4] = new Entity("popup_darkness@2x.png", this);
+    this->mBackgroundDecorations[2] = Entity::create("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
+    this->mBackgroundDecorations[3] = Entity::create("bg_detail_dark@2x.png", this);
+    //this->mBackgroundDecorations[4] = Entity::create("popup_darkness@2x.png", this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
@@ -565,10 +586,10 @@ Levels::Levels()
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     this->mBackgroundDecorations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(63));
     this->mBackgroundDecorations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(192));
-    this->mBackgroundDecorations[4]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    //this->mBackgroundDecorations[4]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
     this->mBackgroundDecorations[3]->setOpacity(50);
-    this->mBackgroundDecorations[4]->setOpacity(50);
+    //this->mBackgroundDecorations[4]->setOpacity(50);
     
     /** Organization of level icons */
 
@@ -580,20 +601,20 @@ Levels::Levels()
     
     int id = 0;
     
+    int t = 0;
     for(int o = 1; o < LEVEL_PACKS_COUNT; o++)
     {
-        this->mLevels[o] = new EntityManager(16, new LevelButton(), this->mMainList->mLayers[o]);
-
         for(int i = 0; i < 4; i++)
         {
             x = startX - Utils::coord(116) * 2;
             
             for(int j = 0; j < 4; j++)
             {
-                LevelButton* item = (LevelButton*) this->mLevels[o]->create();
+                this->mLevels[t] = LevelButton::create();
+                this->mMainList->mLayers[o]->addChild(this->mLevels[t]);
                 
-                item->create()->setCenterPosition(x, y);
-                item->setId(++id);
+                this->mLevels[t]->create()->setCenterPosition(x, y);
+                ((LevelButton*) this->mLevels[t])->setId(++id);
                 
                 x += Utils::coord(150);
             }
@@ -610,21 +631,30 @@ Levels::Levels()
     x = Options::CAMERA_CENTER_X;
     y = Options::CAMERA_CENTER_Y - Utils::coord(400);
 
+    t = 0;
     for(int i = -LEVEL_PACKS_COUNT / 2; i < LEVEL_PACKS_COUNT / 2; i++)
     {
         x = Options::CAMERA_CENTER_X + Utils::coord(25) + Utils::coord(50) * i;
 
-        this->mSlides->create()->setCenterPosition(x, y);
+        this->mSlides[t++]->create()->setCenterPosition(x, y);
     }
 
-    static_cast<Entity*>(this->mSlides->objectAtIndex(0))->setCurrentFrameIndex(1);
+    this->mSlides[0]->setCurrentFrameIndex(1);
 
-    this->mSlidesArrows->create()->setCenterPosition(Utils::coord(48), Options::CAMERA_CENTER_Y);
-    this->mSlidesArrows->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(48), Options::CAMERA_CENTER_Y);
+    this->mSlidesArrows[0]->create()->setCenterPosition(Utils::coord(48), Options::CAMERA_CENTER_Y);
+    this->mSlidesArrows[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(48), Options::CAMERA_CENTER_Y);
 
-    static_cast<Entity*>(this->mSlidesArrows->objectAtIndex(1))->setScaleX(-1);
+    this->mSlidesArrows[1]->setScaleX(-1);
 
     /** Experiments */
+}
+
+Levels* Levels::create()
+{
+    Levels* screen = new Levels();
+    screen->autorelease();
+    
+    return screen;
 }
 
 // ===========================================================
@@ -633,7 +663,7 @@ Levels::Levels()
 
 void Levels::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Levels* pSender = (Levels*) Levels::m_Instance;
+    Levels* pSender = static_cast<Levels*>(Levels::m_Instance);
 
     switch(pAction)
     {
@@ -668,17 +698,17 @@ void Levels::onEnter()
 
     for(int i = 0; i < LEVEL_PACKS_COUNT; i++)
     {
-        static_cast<Entity*>(this->mSlides->objectAtIndex(i))->setCurrentFrameIndex(0);
+        this->mSlides[i]->setCurrentFrameIndex(0);
     }
     
-    static_cast<Entity*>(this->mSlides->objectAtIndex(0))->setCurrentFrameIndex(1); // TODO: Return index 1.
+    this->mSlides[0]->setCurrentFrameIndex(1); // TODO: Return index 1.
 
-    static_cast<Entity*>(this->mSlidesArrows->objectAtIndex(0))->setOpacity(0.0); // TODO: Return full opacity.
-    static_cast<Entity*>(this->mSlidesArrows->objectAtIndex(1))->setOpacity(255.0);
+    this->mSlidesArrows[0]->setOpacity(0.0); // TODO: Return full opacity.
+    this->mSlidesArrows[1]->setOpacity(255.0);
     
     this->mBackgroundDecorations[2]->setCurrentFrameIndex(0);
     this->mBackgroundDecorations[3]->setVisible(true);
-    this->mBackgroundDecorations[4]->setVisible(false);
+    //this->mBackgroundDecorations[4]->setVisible(false);
 }
 
 void Levels::onExit()

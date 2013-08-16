@@ -17,7 +17,7 @@ class Loading : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-    
+
         int mNumberOfSprites;
         int mNumberOfLoadedSprites;
     
@@ -57,6 +57,9 @@ class Loading : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Loading();
+        ~Loading();
 
         // ===========================================================
         // Methods
@@ -75,7 +78,7 @@ class Loading : public Screen
         // Constants
         // ===========================================================
     
-        static const char* TEXTURE_LIBRARY[24];
+        static const char* TEXTURE_LIBRARY[8];
 
         // ===========================================================
         // Fields
@@ -84,8 +87,8 @@ class Loading : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Loading();
+
+        static Loading* create();
 
         // ===========================================================
         // Methods
@@ -95,7 +98,8 @@ class Loading : public Screen
         // Override Methods
         // ===========================================================
 
-        void update(float pDeltaTime);
+        void onEnter();
+        void onExit();
 };
 
 #endif

@@ -32,11 +32,13 @@ class ResetProgress : public Popup
     
         bool mAction;
     
-        BatchEntityManager* mLights;
+        EntityManager* mLights;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ResetProgress(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -90,7 +92,7 @@ class ResetProgress : public Popup
         // Constructors
         // ===========================================================
     
-        ResetProgress(CCNode* pParent);
+        static ResetProgress* create(CCNode* pParent);
 
         // ===========================================================
         // Methods

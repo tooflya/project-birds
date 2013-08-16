@@ -48,6 +48,32 @@ Button::Button(const EntityStructure pEntityStructure, CCNode* pParent, const in
         this->constructor(pButtonID, pOnTouchCallback);
     }
 
+
+
+Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int))
+{
+    Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pOnTouchCallback);
+    button->autorelease();
+    
+    return button;
+}
+
+Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int))
+{
+    Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pButtonID, pOnTouchCallback);
+    button->autorelease();
+    
+    return button;
+}
+
+Button* Button::create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int))
+{
+    Button* button = new Button(pEntityStructure, pParent, pButtonID, pOnTouchCallback);
+    button->autorelease();
+    
+    return button;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -72,8 +98,19 @@ void Button::setText(Textes pParams)
         this->mText->removeFromParent();
     }
 
-    this->mText = new Text(pParams, this);
-    this->mText->setCenterPosition(this->getWidth() / 2, this->getHeight() / 2);
+    CCNode* parent;
+    
+    if(this->getParent()->getParent())
+    {
+        parent = this->getParent()->getParent();
+    }
+    else
+    {
+        parent = this->getParent();
+    }
+    
+    this->mText = new Text(pParams, parent);
+    this->mText->setCenterPosition(this->getCenterX(), this->getCenterY());
 }
 
 void Button::setString(const char* pString)
@@ -84,7 +121,17 @@ void Button::setString(const char* pString)
 // ===========================================================
 // Override Methods
 // ===========================================================
-    
+
+void Button::update(float pDeltaTime)
+{
+    Entity::update(pDeltaTime);
+
+    if(this->mText)
+    {
+        this->mText->setScale(this->getScaleX());
+        this->mText->setVisible(this->isVisible());
+    }
+}
 void Button::onEnter()
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
@@ -99,6 +146,11 @@ void Button::onExit()
     pDirector->getTouchDispatcher()->removeDelegate(this);
         
     Entity::onExit();
+}
+
+Entity* Button::create()
+{
+    return Entity::create();
 }
 
 Button* Button::deepCopy()

@@ -24,26 +24,33 @@ Mode* Mode::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+Mode::~Mode()
+{
+    delete(this->mHelpPopup);
+    delete(this->mTempPublisherRatingExplain);
+    delete(this->mTempPublisherAchievementsExplain);
+}
+
 Mode::Mode()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
-    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
-    this->mBackgroundDecorations[0] = new Entity("bg_detail_stripe@2x.png", spriteBatch);
-    this->mBackgroundDecorations[1] = new Entity("bg_detail_choose_bird@2x.png", spriteBatch);
+    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+    this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
+    this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
 
-    this->mBackButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
-    this->mHelpButton = new Button((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
-    this->mShopButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mBackButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
+    this->mHelpButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
+    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
 
     this->addChild(spriteBatch);
 
-    this->mClassicMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_CLASSIC, onTouchButtonsCallback);
-    this->mArcadeMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_ARCADE, onTouchButtonsCallback);
-    this->mProgressMode = new Button("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_MODE_PROGRESS, onTouchButtonsCallback);
+    this->mClassicMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_CLASSIC, onTouchButtonsCallback);
+    this->mArcadeMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_ARCADE, onTouchButtonsCallback);
+    this->mProgressMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_PROGRESS, onTouchButtonsCallback);
 
-    this->mAchievementsButton = new Button((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 0, 200, 200}, this, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, onTouchButtonsCallback);
-    this->mLeaderboardButton = new Button((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 200, 200, 200}, this, Options::BUTTONS_ID_MODE_LEADERBOARD, onTouchButtonsCallback);
+    this->mAchievementsButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 0, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, onTouchButtonsCallback);
+    this->mLeaderboardButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 200, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_LEADERBOARD, onTouchButtonsCallback);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
@@ -64,11 +71,19 @@ Mode::Mode()
     this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     
-    this->mHelpPopup = new ModeHelp(this);
-    this->mTempPublisherRatingExplain = new TempPublisherRatingExplain(this);
-    this->mTempPublisherAchievementsExplain = new TempPublisherAchievementsExplain(this);
+    this->mHelpPopup = ModeHelp::create(this);
+    this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
+    this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
 
     m_Instance = this;
+}
+
+Mode* Mode::create()
+{
+    Mode* screen = new Mode();
+    screen->autorelease();
+    
+    return screen;
 }
 
 // ===========================================================

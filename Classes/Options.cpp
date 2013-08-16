@@ -32,11 +32,13 @@ int Options::CAMERA_HEIGHT = 0;
 int Options::CAMERA_CENTER_X = 0;
 int Options::CAMERA_CENTER_Y = 0;
 
+int Options::SELECTED_WEAPON_ID = 0;
+
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.6.4";
-int Options::BUILD = 2755;
+const char* Options::VERSION = "0.7.0";
+int Options::BUILD = 3703;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -418,17 +420,17 @@ void Options::changeLanguage()
             TEXT_RATE_STRING_4.string = "";
             TEXT_RATE_STRING_4.size = 48;
             
-            TEXT_GETCOINS_STRING_1.string = "You need to buy";
+            TEXT_GETCOINS_STRING_1.string = "You need to buy\nsome coins!";
             TEXT_GETCOINS_STRING_1.size = 48;
             
-            TEXT_GETCOINS_STRING_2.string = "some coins!";
-            TEXT_GETCOINS_STRING_2.size = 48;
+            TEXT_GETCOINS_STRING_2.string = "Any purchase will\nremove the ads!";
+            TEXT_GETCOINS_STRING_2.size = 36;
             
-            TEXT_GETCOINS_STRING_3.string = "Any purchase will";
-            TEXT_GETCOINS_STRING_3.size = 36;
+            TEXT_GETCOINS_STRING_3.string = "";
+            TEXT_GETCOINS_STRING_3.size = 0;
             
-            TEXT_GETCOINS_STRING_4.string = "remove the ads!";
-            TEXT_GETCOINS_STRING_4.size = 36;
+            TEXT_GETCOINS_STRING_4.string = "";
+            TEXT_GETCOINS_STRING_4.size = 0;
             
             TEXT_GETCOINS_1.string = "$0.99";
             TEXT_GETCOINS_1.size = 64;
@@ -775,17 +777,17 @@ void Options::changeLanguage()
             TEXT_RATE_STRING_4.string = "";
             TEXT_RATE_STRING_4.size = 48;
             
-            TEXT_GETCOINS_STRING_1.string = "Желаете купить";
+            TEXT_GETCOINS_STRING_1.string = "Желаете купить\nнесколько монет?";
             TEXT_GETCOINS_STRING_1.size = 48;
             
-            TEXT_GETCOINS_STRING_2.string = "несколько монет?";
-            TEXT_GETCOINS_STRING_2.size = 48;
+            TEXT_GETCOINS_STRING_2.string = "Любая покупка\nуберет рекламу!";
+            TEXT_GETCOINS_STRING_2.size = 36;
             
-            TEXT_GETCOINS_STRING_3.string = "Любая покупка";
-            TEXT_GETCOINS_STRING_3.size = 36;
+            TEXT_GETCOINS_STRING_3.string = "";
+            TEXT_GETCOINS_STRING_3.size = 0;
             
-            TEXT_GETCOINS_STRING_4.string = "уберет рекламу!";
-            TEXT_GETCOINS_STRING_4.size = 36;
+            TEXT_GETCOINS_STRING_4.string = "";
+            TEXT_GETCOINS_STRING_4.size = 0;
             
             TEXT_GETCOINS_1.string = "$0.99";
             TEXT_GETCOINS_1.font = FONT;

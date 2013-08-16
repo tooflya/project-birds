@@ -19,14 +19,23 @@
 // Constructors
 // ===========================================================
 
+Popup::~Popup()
+{
+    this->removeAllChildrenWithCleanup(true);
+}
+
 Popup::Popup(CCNode* pParent)
 {
+    this->init();
+    
+    this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
+    
     this->mParent = pParent;
+
+    this->mSpriteBatch = CCSpriteBatchNode::create("TextureAtlas4.pvr.ccz");
     
-    this->mDarkness = new Entity("popup_darkness@2x.png", this);
-    this->mBackground = new Entity("popup_bg@2x.png", this);
+    this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);
     
-    this->mDarkness->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
     this->mShowed = false;
@@ -34,9 +43,12 @@ Popup::Popup(CCNode* pParent)
     this->mShowAnimationRunning = false;
     this->mHideAnimationRunning = false;
     
-    this->mBackground->setScale(0.0);
-    this->mDarkness->setOpacity(0.0);
+    this->ignoreAnchorPointForPosition(false);
+    this->setAnchorPoint(ccp(0.5, 0.5));
+    this->setScale(0.0);
     
+    this->addChild(this->mSpriteBatch);
+
     this->scheduleUpdate();
 }
 
@@ -57,8 +69,7 @@ void Popup::show()
     this->mShowAnimationTimeElapsed = 0;
     
     this->mShowAnimationTime = 0.3;
-    this->mBackground->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.2));
-    this->mDarkness->runAction(CCFadeTo::create(0.5, 150.0));
+    this->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.2));
 }
 
 void Popup::hide()
@@ -71,8 +82,7 @@ void Popup::hide()
     this->mHideAnimationTimeElapsed = 0;
     
     this->mHideAnimationTime = 0.1;
-    this->mBackground->runAction(CCScaleTo::create(this->mHideAnimationTime, 1.2));
-    this->mDarkness->runAction(CCFadeTo::create(0.3, 0.0));
+    this->runAction(CCScaleTo::create(this->mHideAnimationTime, 1.2));
 }
 
 bool Popup::isShowed()
@@ -111,11 +121,11 @@ void Popup::update(float pDeltaTime)
             {
                 case 0:
                     this->mShowAnimationTime = 0.2;
-                    this->mBackground->runAction(CCScaleTo::create(this->mShowAnimationTime, 0.8));
+                    this->runAction(CCScaleTo::create(this->mShowAnimationTime, 0.8));
                 break;
                 case 1:
                     this->mShowAnimationTime = 0.2;
-                    this->mBackground->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.0));
+                    this->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.0));
                 break;
                 case 2:
                     this->mShowAnimationRunning = false;
@@ -140,7 +150,7 @@ void Popup::update(float pDeltaTime)
             {
                 case 0:
                     this->mHideAnimationTime = 0.2;
-                    this->mBackground->runAction(CCScaleTo::create(this->mHideAnimationTime, 0.0));
+                    this->runAction(CCScaleTo::create(this->mHideAnimationTime, 0.0));
                 break;
                 case 1:
                     this->mHideAnimationRunning = false;

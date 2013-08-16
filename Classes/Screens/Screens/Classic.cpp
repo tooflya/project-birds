@@ -21,32 +21,47 @@ Classic* Classic::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+Classic::~Classic()
+{
+    
+}
+
 Classic::Classic() :
     Game()
     {
         this->mEventLayer = CCLayer::create();
+        
+        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("birds_sprite@2x.png");
+        
+        this->addChild(spriteBatch1);
+        this->addChild(spriteBatch2);
+        this->addChild(spriteBatch3);
+        this->addChild(spriteBatch4);
 
-        this->mBackground = new Entity("game_gui_bg_summer@2x.png", this);
-        this->mCountIcon = new Entity("game_gui_count_pic@2x.png", this);
+        this->mBackground = Entity::create("game_gui_bg_summer@2x.png", spriteBatch1);
+        this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", spriteBatch1);
 
-        this->mConfetti = new BatchEntityManager(300, new Confetti(), this);
-        this->mStars = new BatchEntityManager(1000, new StarParticle(), this);
+        //this->mConfetti = new EntityManager(300, new Confetti(), spriteBatch1);
+        //this->mStars = new EntityManager(1000, new StarParticle(), spriteBatch1);
 
         this->mCountText = new Text((Textes) {"0", Options::FONT, 80, -1}, this);
         this->mBestCountText = new Text(Options::TEXT_GAME_BEST, this);
 
         this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mPauseButton = new Button((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
 
-        this->mDust = new BatchEntityManager(100, new Dust(), this);
-        this->mMarks = new BatchEntityManager(200, new Mark(), this);
-        this->mFeathers = new BatchEntityManager(100, new Feather(), this);
-        this->mBirds = new BatchEntityManager(10, new Bird(), this);
-        this->mSpecialBirds = new BatchEntityManager(10, new SpecialBird(), this);
-        this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
-        this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
-        this->mLifes = new BatchEntityManager(3, new Entity("lifes@2x.png", 1, 2), this->mEventLayer);
+        //this->mDust = new EntityManager(100, new Dust(), spriteBatch1);
+        this->mMarks = new EntityManager(200, new Mark(), spriteBatch1);
+        this->mFeathers = new EntityManager(100, new Feather(), spriteBatch1);
+        //this->mBirds = new EntityManager(10, new Bird(), spriteBatch4);
+        //this->mSpecialBirds = new EntityManager(10, new SpecialBird(), this);
+        this->mExplosions = new EntityManager(10, new Explosion(), spriteBatch2);
+        this->mExplosionsBasic = new EntityManager(10, new ExplosionBasic(), spriteBatch2);
+        this->mLifes = new EntityManager(3, Entity::create("lifes@2x.png", 1, 2), spriteBatch1);
 
         this->mLevelUpText = new Text(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
         this->mBonusTimeText = new Text(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
@@ -66,8 +81,8 @@ Classic::Classic() :
         this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
         this->mBonusTimeText->setOpacity(0);
 
-        this->mPausePopup = new ClassicPause(this);
-        this->mEndScreen = new ClassicEnd(Splash::TYPE_CLASSIC, this);
+        //this->mPausePopup = new ClassicPause(this);
+        //this->mEndScreen = new ClassicEnd(Splash::TYPE_CLASSIC, this);
 
         this->mLevelUpTime = 30.0;
         this->mLevelUpTimeElapsed = 0;
@@ -117,6 +132,14 @@ Classic::Classic() :
         m_Instance = this;
     }
 
+Classic* Classic::create()
+{
+    Classic* screen = new Classic();
+    screen->autorelease();
+    
+    return screen;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -158,7 +181,7 @@ void Classic::startGame()
     this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;
 
-    this->mConfetti->clear();
+    //this->mConfetti->clear();
 
     this->mLevelUpText->setOpacity(0);
     this->mBonusTimeText->setOpacity(0);
@@ -190,7 +213,7 @@ void Classic::levelUp()
 }
 
 void Classic::throwConfetti()
-{
+{return;
     this->mConfetti->clear();
 
     float x = 0;
@@ -244,7 +267,7 @@ void Classic::stopChalange()
 void Classic::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
-
+    
     this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
     this->mCountText->setCenterPosition(Utils::coord(120) + this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(64));
 

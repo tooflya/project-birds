@@ -23,19 +23,14 @@ class More : public Screen
         // ===========================================================
     
         Entity* mBackground;
-        Button* mBackButton;
-        Button* mCreditsButton;
-        Button* mProgressButton;
-        Button* mMoreButton;
-        Button* mLanguageButton;
-        Button* mSoundButton;
-        Button* mMusicButton;
     
-        Entity* mLanguage;
+        Button* mBackButton;
     
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        More();
 
         // ===========================================================
         // Methods
@@ -84,12 +79,12 @@ class More : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        More();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static More* create();
 
         // ===========================================================
         // Methods

@@ -24,14 +24,15 @@ class Credits : public Screen
     
         Entity* mBackground;
         Entity* mBackButton;
-    
-        EntityManager* mListBorders;
+        Entity* mListBorders[2];
     
         CreditsList* mList;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Credits();
 
         // ===========================================================
         // Methods
@@ -84,8 +85,10 @@ class Credits : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
+
+        static Credits* create();
     
-        Credits();
+        ~Credits();
 
         // ===========================================================
         // Methods

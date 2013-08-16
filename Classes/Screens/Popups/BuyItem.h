@@ -28,13 +28,15 @@ class BuyItem : public Popup
     
         bool mYesPressed;
     
-        BatchEntityManager* mListBorders;
+        Entity* mListBorders[2];
     
         BuyItemList* mList;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        BuyItem(Screen* pScreen);
 
         // ===========================================================
         // Methods
@@ -88,7 +90,9 @@ class BuyItem : public Popup
         // Constructors
         // ===========================================================
     
-        BuyItem(Screen* pScreen);
+        static BuyItem* create(Screen* pScreen);
+    
+        ~BuyItem();
 
         // ===========================================================
         // Methods

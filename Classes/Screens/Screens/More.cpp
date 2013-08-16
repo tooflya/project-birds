@@ -23,10 +23,10 @@ More* More::m_Instance = NULL;
 
 More::More()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
-    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MORE_BACK, onTouchButtonsCallback);
+    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MORE_BACK, onTouchButtonsCallback);
 
     this->addChild(spriteBatch);
     
@@ -37,13 +37,22 @@ More::More()
     m_Instance = this;
 }
 
+More* More::create()
+{
+    More* screen = new More();
+    screen->autorelease();
+    //screen->retain();
+    
+    return screen;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
 
 void More::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    More* pSender = (More*) More::m_Instance;
+    More* pSender = static_cast<More*>(More::m_Instance);
 
     switch(pAction)
     {

@@ -7,7 +7,7 @@ using namespace cocos2d;
 
 class Screen;
 
-class ScreenManager
+class ScreenManager : CCObject
 {
 	protected:
 		// ===========================================================
@@ -24,7 +24,9 @@ class ScreenManager
 
 		// ===========================================================
 		// Constructors
-		// ===========================================================
+        // ===========================================================
+    
+        ScreenManager();
 
 		// ===========================================================
 		// Methods
@@ -72,22 +74,22 @@ class ScreenManager
 		// Fields
 		// ===========================================================
 
-		Screen* mScreens[13];
+		Screen* mScreens[14];
 
 		int mCurrentScreenIndex;
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
-
-		ScreenManager();
+    
+        static ScreenManager* create();
 
 		// ===========================================================
 		// Methods
 		// ===========================================================
 
 		void generate();
-		void load(int pAction);
+		void load(int pAction, int pDo);
 		
 		void set(float pAnimationTime, int pIndex);
 		

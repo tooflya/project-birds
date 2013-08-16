@@ -108,19 +108,6 @@
                 <key>sourceSize</key>
                 <string>{486,486}</string>
             </dict>
-            <key>choose_box_name@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1410,1770},{510,204}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{510,204}}</string>
-                <key>sourceSize</key>
-                <string>{510,204}</string>
-            </dict>
             <key>choose_box_navi_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
@@ -186,19 +173,32 @@
                 <key>sourceSize</key>
                 <string>{1000,1280}</string>
             </dict>
+            <key>settings_btn_big@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1410,1770},{435,187}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{435,187}}</string>
+                <key>sourceSize</key>
+                <string>{435,187}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>TextureAtlas2.pvr</string>
+            <string>TextureAtlas2.pvr.ccz</string>
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2a68a9358042132f18fdd236e83321a0:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:2d779427959131dedaf93a70d49c112b:1/1$</string>
             <key>textureFileName</key>
-            <string>TextureAtlas2.pvr</string>
+            <string>TextureAtlas2.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

@@ -69,13 +69,13 @@ CCArray* Progresses::TASK[10] =
 Progresses::Progresses() :
     Game()
     {
-        this->mEventLayer = CCLayer::create();
+       /* this->mEventLayer = CCLayer::create();
 
-        this->mBackground = new Entity("game_gui_bg_summer@2x.png", this);
+        this->mBackground = Entity::create("game_gui_bg_summer@2x.png", this);
 
         this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mPauseButton = new Button((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
 
         this->mDust = new BatchEntityManager(100, new Dust(), this);
         this->mMarks = new BatchEntityManager(500, new Mark(), this);
@@ -94,7 +94,7 @@ Progresses::Progresses() :
 
         this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
-        this->mShelfes = new BatchEntityManager(10, new Entity("game_shelf@2x.png"), this->mEventLayer);
+        this->mShelfes = new BatchEntityManager(10, Entity::create("game_shelf@2x.png"), this->mEventLayer);
         this->mColors = new BatchEntityManager(50, new Color(), this->mEventLayer);
 
         this->mPausePopup = new ProgressPause(this);
@@ -108,7 +108,7 @@ Progresses::Progresses() :
 
         this->addChild(this->mEventLayer);
 
-        m_Instance = this;
+        m_Instance = this;*/
     }
 
 // ===========================================================

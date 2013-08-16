@@ -22,7 +22,7 @@
 BladeParticlesManager::BladeParticlesManager(int pCreateCount, Entity* pEntity, CCNode* pScreen) :
     BatchEntityManager(pCreateCount, pEntity, pScreen)
     {
-        
+        this->autorelease();
     }
 
 // ===========================================================

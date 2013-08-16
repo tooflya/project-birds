@@ -72,8 +72,8 @@ CreditsList::CreditsList(CCNode* pParent) :
         this->mText[11]->setColor(ccc3(167.0, 65.0, 7.0));
         this->mText[12]->setColor(ccc3(248.0, 163.0, 73.0));
 
-        this->mGameLogo = new Entity("about_name_logo@2x.png", this);
-        this->mCompanyLogo = new Entity("about_logo@2x.png", this);
+        this->mGameLogo = Entity::create("about_name_logo@2x.png", this);
+        this->mCompanyLogo = Entity::create("about_logo@2x.png", this);
 
         this->mGameLogo->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(700) - Utils::coord(500));
         this->mCompanyLogo->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(600) - Utils::coord(500));

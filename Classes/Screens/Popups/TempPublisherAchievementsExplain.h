@@ -23,6 +23,8 @@ class TempPublisherAchievementsExplain : public Popup
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        TempPublisherAchievementsExplain(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -78,7 +80,9 @@ class TempPublisherAchievementsExplain : public Popup
         // Constructors
         // ===========================================================
     
-        TempPublisherAchievementsExplain(CCNode* pParent);
+        static TempPublisherAchievementsExplain* create(CCNode* pParent);
+    
+        ~TempPublisherAchievementsExplain();
 
         // ===========================================================
         // Methods

@@ -25,10 +25,9 @@ class Levels : public Screen
         Entity* mBackground;
         Entity* mTablet;
         Entity* mStarsCountIcon;
+        Entity* mLevels[80]; // TODO: return 6.
         Button* mBackButton;
         Button* mShopButton;
-    
-        EntityManager* mLevels[5]; // TODO: return 6.
 
         Text* mStarsCountText;
 
@@ -37,6 +36,8 @@ class Levels : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Levels();
 
         // ===========================================================
         // Methods
@@ -88,16 +89,15 @@ class Levels : public Screen
         // Fields
         // ===========================================================
 
-        EntityManager* mSlides;
-        EntityManager* mSlidesArrows;
-    
+        Entity* mSlides[6];
+        Entity* mSlidesArrows[2];
         Entity* mBackgroundDecorations[5];
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Levels();
+        static Levels* create();
 
         // ===========================================================
         // Methods

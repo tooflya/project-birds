@@ -38,7 +38,7 @@ EventPanel::EventPanel(Screen* pParent) :
         this->mLiveTime = 2.0;
         this->mLiveTimeElapsed = 0;
 
-        this->mIcon = new Entity("info_panel_btn_sprite@2x.png", 3, 1, this);
+        this->mIcon = Entity::create("info_panel_btn_sprite@2x.png", 3, 1, this);
 
         this->mText = new Text(Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED, this);
 

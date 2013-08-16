@@ -23,6 +23,8 @@ class TempPublisherRatingExplain : public Popup
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        TempPublisherRatingExplain(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -78,7 +80,9 @@ class TempPublisherRatingExplain : public Popup
         // Constructors
         // ===========================================================
     
-        TempPublisherRatingExplain(CCNode* pParent);
+        static TempPublisherRatingExplain* create(CCNode* pParent);
+    
+        ~TempPublisherRatingExplain();
 
         // ===========================================================
         // Methods

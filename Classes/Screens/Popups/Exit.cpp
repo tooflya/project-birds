@@ -24,21 +24,21 @@ Exit* Exit::m_Instance = NULL;
 Exit::Exit(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
-        this->mLight = new Entity("popup_quit_picture_light_main@2x.png", this->mBackground);
-        this->mLights = new BatchEntityManager(3, new Entity("popup_quit_picture_light_2@2x.png"), this->mBackground);
-        this->mIllustration = new Entity("popup_quit_picture@2x.png", this->mBackground);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mLight = Entity::create("popup_quit_picture_light_main@2x.png", this->mSpriteBatch);
+        this->mLights = new EntityManager(3, Entity::create("popup_quit_picture_light_2@2x.png"), this->mSpriteBatch);
+        this->mIllustration = Entity::create("popup_quit_picture@2x.png", this->mSpriteBatch);
     
-        this->mYesButton = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_EXIT_YES, onTouchButtonsCallback);
+        this->mYesButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_EXIT_YES, onTouchButtonsCallback);
         
-        this->mYesButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
+        this->mYesButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mYesButton->setText(Options::TEXT_EXIT_YES);
         
-        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
+        this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
-        this->mLights->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(50), this->mBackground->getHeight() + (Options::CAMERA_HEIGHT - this->mBackground->getHeight()) / 2 + Utils::coord(30));
-        this->mLights->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(50), this->mBackground->getHeight() + (Options::CAMERA_HEIGHT - this->mBackground->getHeight()) / 2 + Utils::coord(30));
-        this->mLights->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() + (Options::CAMERA_HEIGHT - this->mBackground->getHeight()) / 2 + Utils::coord(30));
+        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(70), Options::CAMERA_HEIGHT);
+        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(70), Options::CAMERA_HEIGHT);
+        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT);
         
         ((Entity*) this->mLights->objectAtIndex(0))->setOpacity(0.0);
         ((Entity*) this->mLights->objectAtIndex(1))->setOpacity(0.0);
@@ -51,14 +51,14 @@ Exit::Exit(CCNode* pParent) :
         ((Entity*) this->mLights->objectAtIndex(0))->setRotation(-8.0);
         ((Entity*) this->mLights->objectAtIndex(1))->setRotation(+8.0);
         
-        this->mLight->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - this->mLight->getHeight() / 2 + (Options::CAMERA_HEIGHT - this->mBackground->getHeight()) / 2);
+        this->mLight->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(50));
         this->mLight->setOpacity(0.0);
         
-        Text* text1 = new Text(Options::TEXT_EXIT_STRING_1, ccp(Utils::coord(512), 0), this->mBackground);
+        Text* text1 = new Text(Options::TEXT_EXIT_STRING_1, ccp(Utils::coord(512), 0), this);
         
-        text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(100));
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
         
-        this->mIllustration->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - Utils::coord(140));
+        this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(340));
         
         for(int i = 0; i < 3; i++)
         {

@@ -21,14 +21,20 @@ Credits* Credits::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+Credits::~Credits()
+{
+    CC_SAFE_RELEASE(this->mList);
+}
+
 Credits::Credits()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
-    this->mBackground = new Entity("settings_bg@2x.png", spriteBatch);
-    this->mBackButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_CREDITS_BACK, onTouchButtonsCallback);
+    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_CREDITS_BACK, onTouchButtonsCallback);
     
-    this->mListBorders = new EntityManager(2, new Entity("about_scroll_border@2x.png"), spriteBatch);
+    this->mListBorders[0] = Entity::create("about_scroll_border@2x.png", spriteBatch);
+    this->mListBorders[1] = Entity::create("about_scroll_border@2x.png", spriteBatch);
 
     this->addChild(spriteBatch);
     
@@ -36,18 +42,23 @@ Credits::Credits()
     
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     
-    this->mListBorders->create();
-    this->mListBorders->create();
+    this->mListBorders[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
+    this->mListBorders[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(400));
     
-    ((Entity*) this->mListBorders->objectAtIndex(0))->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
-    ((Entity*) this->mListBorders->objectAtIndex(1))->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(400));
-    
-    ((Entity*) this->mListBorders->objectAtIndex(0))->setScaleY(1);
-    ((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);
+    this->mListBorders[0]->setScaleY(1);
+    this->mListBorders[1]->setScaleY(-1);
     
     this->mList = new CreditsList(this);
 
     m_Instance = this;
+}
+
+Credits* Credits::create()
+{
+    Credits* screen = new Credits();
+    screen->autorelease();
+    
+    return screen;
 }
 
 // ===========================================================

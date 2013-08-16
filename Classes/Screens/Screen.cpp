@@ -31,13 +31,16 @@
 // Constructors
 // ===========================================================
 
-Screen::Screen()
+Screen::~Screen()
 {
-    this->scheduleUpdate();
+    this->removeAllChildrenWithCleanup(true);
 }
 
-Screen::~Screen(void)
+Screen::Screen()
 {
+    this->unscheduleUpdate();
+    
+    this->scheduleUpdate();
 }
 
 // ===========================================================

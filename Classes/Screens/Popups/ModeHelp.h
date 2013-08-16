@@ -24,13 +24,15 @@ class ModeHelp : public Popup
     
         Button* mOkButton;
     
-        BatchEntityManager* mListBorders;
+        Entity* mListBorders[2];
     
         ModeHelpList* mList;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ModeHelp(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -84,7 +86,9 @@ class ModeHelp : public Popup
         // Constructors
         // ===========================================================
     
-        ModeHelp(CCNode* pParent);
+        static ModeHelp* create(CCNode* pParent);
+    
+        ~ModeHelp();
 
         // ===========================================================
         // Methods

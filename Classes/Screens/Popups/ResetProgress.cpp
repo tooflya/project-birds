@@ -24,35 +24,43 @@ ResetProgress* ResetProgress::m_Instance = NULL;
 ResetProgress::ResetProgress(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mLights = new BatchEntityManager(2, new Entity("get_coins_light@2x.png"), this->mDarkness);
+        //this->mLights = new EntityManager(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
     
-        this->mIllustration = new Entity("popup_progress_picture@2x.png", this->mBackground);
-        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mIllustration = Entity::create("popup_progress_picture@2x.png", this->mSpriteBatch);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
     
-        this->mResetButton = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_RESET_RESET, onTouchButtonsCallback);
+        this->mResetButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_RESET_RESET, onTouchButtonsCallback);
         
-        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
+        this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
         for(int i = 0; i < 2; i++)
         {
-            this->mLights->create()->setCenterPosition(this->mDarkness->getWidth() / 2, this->mDarkness->getHeight() - Utils::coord(340));
-            ((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
-            ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
+            //this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(340));
+            //((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
+           // ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
         }
         
-        Text* text1 = new Text(Options::TEXT_RESET_STRING_1, ccp(Utils::coord(512), 0), this->mBackground);
+        Text* text1 = new Text(Options::TEXT_RESET_STRING_1, ccp(Utils::coord(512), 0), this);
         
-        text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(100));
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
         
-        this->mResetButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
+        this->mResetButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mResetButton->setText(Options::TEXT_RESET_RESET);
         
-        this->mIllustration->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - Utils::coord(140));
+        this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(340));
         
         this->mAction = false;
         
         m_Instance = this;
     }
+
+ResetProgress* ResetProgress::create(CCNode* pParent)
+{
+    ResetProgress* popup = new ResetProgress(pParent);
+    popup->autorelease();
+    
+    return popup;
+}
 
 // ===========================================================
 // Methods
@@ -100,7 +108,7 @@ void ResetProgress::onShow()
 
     for(int i = 0; i < 2; i++)
     {
-        ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
+        //((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
     }
 }
 
@@ -124,8 +132,8 @@ void ResetProgress::hide()
     
     for(int i = 0; i < 2; i++)
     {
-        ((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
-        ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
+        //((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
+        //((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
     }
 }
 
@@ -135,9 +143,9 @@ void ResetProgress::update(float pDeltaTime)
     
     for(int i = 0; i < 2; i++)
     {
-        Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
+        //Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
         
-        light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
+        //light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
     }
 }
 

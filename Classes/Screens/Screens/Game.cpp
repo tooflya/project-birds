@@ -25,14 +25,28 @@ int Game::RECORD_BEATEAN = 0;
 // Constructors
 // ===========================================================
 
-Game::Game()
+Game::~Game()
 {
-    this->mBirdsTime = 0;
-    this->mBirdsTimeElapsed = 0;
     
-    this->mChalange = false;
+}
 
-    this->addChild(TouchTrailLayer::create(), 10);
+Game::Game() :
+    Screen()
+    {
+        this->mBirdsTime = 0;
+        this->mBirdsTimeElapsed = 0;
+    
+        this->mChalange = false;
+
+        this->addChild(TouchTrailLayer::create(), 10);
+    }
+
+Game* Game::create()
+{
+    Game* screen = new Game();
+    screen->autorelease();
+    
+    return screen;
 }
 
 // ===========================================================
@@ -54,8 +68,8 @@ void Game::startGame()
     
     this->mGameStartText->setOpacity(0.0);
 
-    this->mBirds->clear();
-    this->mSpecialBirds->clear();
+    //this->mBirds->clear();
+    //this->mSpecialBirds->clear();
     this->mFeathers->clear();
     this->mMarks->clear();
     this->mExplosions->clear();
@@ -117,11 +131,11 @@ void Game::onBirBlow(int pType)
 void Game::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
-
-    if(this->mDust->getCount() < 30)
+    
+    /*if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
-    }
+    }*/
 
     if(this->mGameRunning && !this->mGamePaused)
     {
@@ -133,7 +147,7 @@ void Game::update(float pDeltaTime)
             {
                 this->mBirdsTimeElapsed = 0;
                 
-                Bird* bird = static_cast<Bird*>(this->mBirds->create());
+                /*Bird* bird = static_cast<Bird*>(this->mBirds->create());
 
                 if(Options::SOUND_ENABLE)
                 {
@@ -145,7 +159,7 @@ void Game::update(float pDeltaTime)
                     {
                         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
                     }
-                }
+                }*/
             }
         }
         else
@@ -168,10 +182,10 @@ void Game::update(float pDeltaTime)
                     this->mBirdsTime = Utils::randomf(this->mAlgorithmBirdsTime1, this->mAlgorithmBirdsTime2);
                 }
                 
-                Bird* bird = static_cast<Bird*>(this->mBirds->create());
+                //Bird* bird = static_cast<Bird*>(this->mBirds->create());
                 //SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
 
-                if(Options::SOUND_ENABLE)
+                /*if(Options::SOUND_ENABLE)
                 {
                     if(bird->getType() == Bird::TYPE_DANGER)
                     {
@@ -181,7 +195,7 @@ void Game::update(float pDeltaTime)
                     {
                         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
                     }
-                }
+                }*/
             }
         }
     }

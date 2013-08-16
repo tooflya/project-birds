@@ -105,6 +105,13 @@ class Entity : public CCSprite, public Touchable
         // Constructors
         // ===========================================================
 
+        Entity();
+        Entity(const char* pszFileName);
+        Entity(const char* pszFileName, CCNode* pParent);
+        Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
+        Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
+        Entity(EntityStructure pStructure, CCNode* pParent);
+
         // ===========================================================
         // Methods
         // ===========================================================
@@ -161,12 +168,11 @@ class Entity : public CCSprite, public Touchable
         // Constructors
         // ===========================================================
 
-        Entity();
-        Entity(const char* pszFileName);
-        Entity(const char* pszFileName, CCNode* pParent);
-        Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
-        Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
-        Entity(EntityStructure pStructure, CCNode* pParent);
+        static Entity* create(const char* pszFileName);
+        static Entity* create(const char* pszFileName, CCNode* pParent);
+        static Entity* create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
+        static Entity* create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
+        static Entity* create(EntityStructure pStructure, CCNode* pParent);
 
         // ===========================================================
         // Methods

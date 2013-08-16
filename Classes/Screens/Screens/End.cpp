@@ -27,7 +27,8 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mType = pType;
         this->mOnTouchCallback = pOnTouchCallback;
 
-        this->mParts = new BatchEntityManager(2, new Entity("end_lvl_bg_sprite@2x.png", 2, 1), this);
+        this->mParts = new BatchEntityManager(2, Entity::create
+("end_lvl_bg_sprite@2x.png", 2, 1), this);
         
         Entity* part;
         
@@ -39,15 +40,15 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         part->setCenterPosition(Options::CAMERA_CENTER_X, -part->getHeight() / 2);
         part->setCurrentFrameIndex(1);
         
-        this->mBackground = new Entity("end_lvl_bg_popup@2x.png", this);
+        this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         this->mBackground->setVisible(false);
         
-        this->mShopButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_SHOP, this->mOnTouchCallback);
-        this->mMenuButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_MENU, this->mOnTouchCallback);
-        this->mRestartButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_RESTART, this->mOnTouchCallback);
-        this->mContinueButton = new Button("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_CONTINUE, this->mOnTouchCallback);
+        this->mShopButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_SHOP, this->mOnTouchCallback);
+        this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_MENU, this->mOnTouchCallback);
+        this->mRestartButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_RESTART, this->mOnTouchCallback);
+        this->mContinueButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, this->mBackground, Options::BUTTONS_ID_END_CONTINUE, this->mOnTouchCallback);
 
         if(this->mType == TYPE_PROGRESS)
         {

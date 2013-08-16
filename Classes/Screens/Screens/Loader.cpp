@@ -16,41 +16,13 @@
 
 int Loader::ACTION = -1;
 
-const char* Loader::TEXTURE_LIBRARY[33] =
+const char* Loader::TEXTURE_LIBRARY[3] =
 {
-    "game_gui_bg_summer@2x.png",
-    "birds_sprite@2x.png",
-    "explosion_basic@2x.png",
-    "game_gui_btn_sprite@2x.png",
-    "popup_bg@2x.png",
-    "popup_darkness@2x.png",
-    "btn_sprite@2x.png",
-    "end_lvl_btn_sprite@2x.png",
-    "settings_btn_big@2x.png",
-    "end_lvl_bg_sprite@2x.png",
-    "end_lvl_bg_popup@2x.png",
-    "confety_sprite@2x.png",
-    "mark@2x.png",
-    "birds_feather_sprite@2x.png",
-    "explosion@2x.png",
-    "dust@2x.png",
-    "end_lvl_star_sprite@2x.png",
-    "wep_1@2x.png",
-    "pause_birds_sprite@2x.png",
-    "btn_sfx_mfx_ach_lead_sprite_pause@2x.png",
-    "pause_btn@2x.png",
-    "pause_btn_sprite@2x.png",
-    "game_gui_count_pic@2x.png",
-    "game_time_clock@2x.png",
-    "game_time_arrow@2x.png",
-    "birds_life@2x.png",
-    "event_panel@2x.png",
-    "info_panel_btn_sprite@2x.png",
-    "lifes@2x.png",
-    "star_particle@2x.png",
-    "weapon_strike_sprite@2x.png",
-    "colors@2x.png",
-    "game_shelf@2x.png"
+    "TextureAtlas6.pvr.ccz",
+    "TextureAtlas7.pvr.ccz",
+    "TextureAtlas8.pvr.ccz",
+    //"birds_sprite@2x.png",
+    //"special_birds_sprite@2x.png"
 };
 
 // ===========================================================
@@ -63,11 +35,11 @@ const char* Loader::TEXTURE_LIBRARY[33] =
 
 Loader::Loader()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
 
-    this->mBackground = new Entity("preload-lvl-bg@2x.png", spriteBatch);
-    this->mCircles = new EntityManager(10, new Entity("preload-lvl-wave@2x.png"), spriteBatch);
-    this->mBird = new Entity("preload-lvl-bird@2x.png", spriteBatch);
+    this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);
+    this->mCircles = new EntityManager(10, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
+    this->mBird = Entity::create("preload-lvl-bird@2x.png", spriteBatch);
 
     this->addChild(spriteBatch);
     
@@ -85,6 +57,14 @@ Loader::Loader()
     this->setRegisterAsTouchable(true);
 }
 
+Loader* Loader::create()
+{
+    Loader* screen = new Loader();
+    screen->autorelease();
+    
+    return screen;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -99,7 +79,7 @@ void Loader::loadingCallBack(CCObject *obj)
     
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
-        AppDelegate::screens->load(ACTION);
+        AppDelegate::screens->load(ACTION, 1);
         
         this->mLoadingText->setOpacity(0.0);
         this->mLoadingText->setString(Options::TEXT_TAP_TO_CONTINUE.string);
@@ -129,6 +109,11 @@ void Loader::loadingCallBack(CCObject *obj)
 
             AppDelegate::IS_ALREADY_PLAYED = true;
         }
+        
+        CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+        CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+
+        CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
     }
     else
     {
@@ -188,7 +173,7 @@ void Loader::update(float pDeltaTime)
     
     this->mCircleAnimationTimeElapsed += pDeltaTime;
     
-    if(this->mCircleAnimationTimeElapsed >= this->mCircleAnimationTime)
+    /*if(this->mCircleAnimationTimeElapsed >= this->mCircleAnimationTime)
     {
         this->mCircleAnimationTimeElapsed = 0;
         
@@ -212,7 +197,7 @@ void Loader::update(float pDeltaTime)
         {
             circle->destroy();
         }
-    }
+    }*/
     
     if(this->mTapToContinueAnimation)
     {
@@ -241,14 +226,22 @@ void Loader::onEnterTransitionDidFinish()
 {
     Screen::onEnterTransitionDidFinish();
     
+    AppDelegate::screens->load(ACTION, 0);
+    
+    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+    
     this->mNumberOfLoadedSprites = -1;
-
-    CCTextureCache::sharedTextureCache()->removeAllTextures();
-    CCDirector::sharedDirector()->purgeCachedData();
 
     switch(ACTION)
     {
         default:
+            
+            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas6.plist");
+            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas7.plist");
+            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas8.plist");
             
             this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
     

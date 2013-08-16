@@ -25,6 +25,14 @@ WeaponParticle::WeaponParticle() :
         this->mRotationSpeed = 0;
     }
 
+WeaponParticle* WeaponParticle::create()
+{
+    WeaponParticle* entity = new WeaponParticle();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Constructors
 // ===========================================================
@@ -35,7 +43,7 @@ WeaponParticle::WeaponParticle() :
 
 void WeaponParticle::setType(int pType)
 {
-    if(this->mType == 2 * 1) // TODO: Adjust weapon number.
+    if(this->mType == 2)
     {
         if(Utils::millisecondNow() - LAST_TIME >= 100)
         {
@@ -54,7 +62,7 @@ void WeaponParticle::setType(int pType)
     this->mScaleSpeed = Utils::randomf(0.01, 0.05);
     this->mRotationSpeed = Utils::randomf(-10.0, 10.0);
 
-    if(this->mType < 2 * 1) // TODO: Adjust weapon number.
+    if(this->mType < 2)
     {
         this->mVectorX = Utils::coord(Utils::randomf(-3.0, 3.0));
         this->mVectorY = Utils::coord(Utils::randomf(-3.0, 3.0));
@@ -67,7 +75,7 @@ void WeaponParticle::setType(int pType)
         LAST_TIME = Utils::millisecondNow();
     }
 
-    this->setCurrentFrameIndex(this->mType * 1); // TODO: Adjust weapon number.
+    this->setCurrentFrameIndex(Options::SELECTED_WEAPON_ID * 3 + pType);
 }
 
 // ===========================================================
@@ -113,7 +121,7 @@ void WeaponParticle::update(float pDeltaTime)
 
 WeaponParticle* WeaponParticle::deepCopy()
 {
-    return new WeaponParticle();
+    return WeaponParticle::create();
 }
 
 #endif

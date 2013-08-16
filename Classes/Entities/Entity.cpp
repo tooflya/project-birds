@@ -13,18 +13,20 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     if(pFrame == NULL)
     {
         this->initWithFile(pszFileName);
+
+        this->mTextureFileName = pszFileName;
     }
     else
     {
         this->initWithSpriteFrame(pFrame);
+
+        this->mTextureFileName = pszFileName;
     }
     
     if(pParent)
     {
         pParent->addChild(this);
     }
-
-    this->mTextureFileName = pszFileName;
 
     this->mWidth = pWidth >= 0 ? Utils::coord(pWidth) : (pFrame == NULL ? this->getTextureRect().size.width : pFrame->getRect().size.width);
     this->mHeight = pHeight >= 0 ? Utils::coord(pHeight) : (pFrame == NULL ? this->getTextureRect().size.height : pFrame->getRect().size.height);
@@ -117,6 +119,8 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 
     this->destroy();
 
+    this->unscheduleUpdate();
+    
     this->scheduleUpdate();
 }
 
@@ -147,6 +151,46 @@ Entity::Entity(const char* pszFileName, int pHorizontalFramesCount, int pVertica
 Entity::Entity(EntityStructure pStructure, CCNode* pParent)
 {
     this->constructor(pStructure.fileName, pStructure.horizontalFramesCount, pStructure.verticalFramesCount, pStructure.x, pStructure.y, pStructure.width, pStructure.height, pParent);
+}
+
+Entity* Entity::create(const char* pszFileName)
+{
+    Entity* entity = new Entity(pszFileName);
+    entity->autorelease();
+    
+    return entity;
+}
+
+Entity* Entity::create(const char* pszFileName, CCNode* pParent)
+{
+    Entity* entity = new Entity(pszFileName, pParent);
+    entity->autorelease();
+    
+    return entity;
+}
+
+Entity* Entity::create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount)
+{
+    Entity* entity = new Entity(pszFileName, pHorizontalFramesCount, pVerticalFramesCount);
+    entity->autorelease();
+    
+    return entity;
+}
+
+Entity* Entity::create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent)
+{
+    Entity* entity = new Entity(pszFileName, pHorizontalFramesCount, pVerticalFramesCount, pParent);
+    entity->autorelease();
+    
+    return entity;
+}
+
+Entity* Entity::create(EntityStructure pStructure, CCNode* pParent)
+{
+    Entity* entity = new Entity(pStructure, pParent);
+    entity->autorelease();
+    
+    return entity;
 }
 
 float Entity::getWidth()
@@ -610,10 +654,7 @@ bool Entity::containsTouchLocation(CCTouch* touch)
 
 Entity* Entity::deepCopy()
 {
-    float s = CCDirector::sharedDirector()->getContentScaleFactor();
-
-    //return new Entity((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mPaddingX*s, this->mPaddingY*s, this->mWidth*s, this->mHeight*s}, NULL);
-    return new Entity((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, 0, 0, -1, -1}, NULL);
+    return Entity::create((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, 0, 0, -1, -1}, NULL);
 }
 
 void Entity::update(float pDeltaTime)
@@ -756,6 +797,9 @@ void Entity::update(float pDeltaTime)
 
 void Entity::draw()
 {
+    /*this->glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    this->glBlendEquation(GL_FUNC_ADD);*/
+
     CCSprite::draw();
 }
 

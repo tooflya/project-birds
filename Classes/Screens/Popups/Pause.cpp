@@ -30,10 +30,10 @@ Pause::Pause(CCNode* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mIllustrationAnimationTimeElapsed = 0;
 
         this->mBirdsIllustrationsBatch = CCSpriteBatchNode::create("pause_birds_sprite@2x.png");
-        this->mBirdsIllustrations[1] = new Entity((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 0, 0, 200, 600}, this->mBirdsIllustrationsBatch);
-        this->mBirdsIllustrations[2] = new Entity((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 200, 0, 200, 600}, this->mBirdsIllustrationsBatch);
-        this->mBirdsIllustrations[3] = new Entity((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 400, 0, 200, 600}, this->mBirdsIllustrationsBatch);
-        this->mBirdsIllustrations[0] = new Entity((EntityStructure) {"pause_birds_sprite@2x.png", 1, 1, 0, 600, 600, 107}, this->mBirdsIllustrationsBatch);
+        this->mBirdsIllustrations[1] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 0, 0, 200, 600}, this->mBirdsIllustrationsBatch);
+        this->mBirdsIllustrations[2] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 200, 0, 200, 600}, this->mBirdsIllustrationsBatch);
+        this->mBirdsIllustrations[3] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 400, 0, 200, 600}, this->mBirdsIllustrationsBatch);
+        this->mBirdsIllustrations[0] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 1, 0, 600, 600, 107}, this->mBirdsIllustrationsBatch);
 
         this->mBackground->addChild(this->mBirdsIllustrationsBatch);
 
@@ -42,15 +42,15 @@ Pause::Pause(CCNode* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mBirdsIllustrations[2]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(0), this->mBackground->getHeight() / 2 + Utils::coord(480));
         this->mBirdsIllustrations[3]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(160), this->mBackground->getHeight() / 2 + Utils::coord(480));
 
-        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, this->mOnTouchCallback);
-        this->mSoundButton = new Button("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_SETTINGS_SOUND, this->mOnTouchCallback);
-        this->mMusicButton = new Button("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_SETTINGS_MUSIC, this->mOnTouchCallback);
-        this->mLeaderBoardButton = new Button("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_PAUSE_LEADERBOARD, this->mOnTouchCallback);
-        this->mAchievementsButton = new Button("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_PAUSE_ACHIEVEMENTS, this->mOnTouchCallback);
-        this->mContinueButton = new Button("pause_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_CONTINUE, this->mOnTouchCallback);
-        this->mBackButton = new Button("pause_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_MODE, this->mOnTouchCallback);
-        this->mShopButton = new Button("pause_btn_sprite@2x.png", 2, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_SHOP, this->mOnTouchCallback);
-        this->mMenuButton = new Button("pause_btn_sprite@2x.png", 2, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_MENU, this->mOnTouchCallback);
+        this->mCloseButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, this->mOnTouchCallback);
+        this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_SETTINGS_SOUND, this->mOnTouchCallback);
+        this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_SETTINGS_MUSIC, this->mOnTouchCallback);
+        this->mLeaderBoardButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_PAUSE_LEADERBOARD, this->mOnTouchCallback);
+        this->mAchievementsButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mBackground, Options::BUTTONS_ID_PAUSE_ACHIEVEMENTS, this->mOnTouchCallback);
+        this->mContinueButton = Button::create("pause_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_CONTINUE, this->mOnTouchCallback);
+        this->mBackButton = Button::create("pause_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_MODE, this->mOnTouchCallback);
+        this->mShopButton = Button::create("pause_btn_sprite@2x.png", 2, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_SHOP, this->mOnTouchCallback);
+        this->mMenuButton = Button::create("pause_btn_sprite@2x.png", 2, 1, this->mBackground, Options::BUTTONS_ID_PAUSE_MENU, this->mOnTouchCallback);
 
         this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
         this->mSoundButton->create()->setCenterPosition(this->mBackground->getWidth()  / 2 - Utils::coord(235), this->mBackground->getHeight()  / 2 - Utils::coord(390));

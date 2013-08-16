@@ -39,8 +39,8 @@ class Classic : public Game
 
         bool mIsLevelUpAnimation;
 
-        BatchEntityManager* mConfetti;
-        BatchEntityManager* mLifes;
+        EntityManager* mConfetti;
+        EntityManager* mLifes;
 
         Text* mCountText;
         Text* mBestCountText;
@@ -50,6 +50,8 @@ class Classic : public Game
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Classic();
 
         // ===========================================================
         // Methods
@@ -102,12 +104,14 @@ class Classic : public Game
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Classic();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static Classic* create();
+    
+        ~Classic();
 
         // ===========================================================
         // Methods

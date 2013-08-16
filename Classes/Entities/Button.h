@@ -32,6 +32,10 @@ class Button : public Entity
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
 
         // ===========================================================
         // Methods
@@ -81,9 +85,9 @@ class Button : public Entity
         // Fields
         // ===========================================================
 
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
-        Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        static Button* create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
        
         // ===========================================================
         // Constructors
@@ -102,10 +106,14 @@ class Button : public Entity
         // Override Methods
         // ===========================================================
 
+        void update(float pDeltTime);
+    
         void onEnter();
         void onExit();
     
         Button* deepCopy();
+    
+        Entity* create();
 };
 
 #endif

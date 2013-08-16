@@ -19,10 +19,18 @@ class EntityManager : public CCArray
 	public:
 		void init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
 		
+        ~EntityManager();
 		EntityManager(int pCreateCount, Entity* pEntity);
 		EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen);
 		EntityManager(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen);
-		EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
+        EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
+        EntityManager();
+    
+        static EntityManager* create(int pCreateCount, Entity* pEntity);
+        static EntityManager* create(int pCreateCount, Entity* pEntity, CCNode* pScreen);
+        static EntityManager* create(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen);
+        static EntityManager* create(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
+        static EntityManager* create(int a);
 
 		Entity* create();
 		void destroy(int pIndex);
@@ -38,6 +46,8 @@ class EntityManager : public CCArray
 		void clear();
 
 		void update(float pDeltaTime);
+    
+        void release();
 };
 
 #endif

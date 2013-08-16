@@ -14,12 +14,17 @@ typedef struct tagCCTouchInformation {
     CCPoint position;
 } CCTouchInformation;
 
-typedef struct Textes {
+typedef struct tagTextes {
     const char* string;
     const char* font;
     int size;
     int identifier;
 } Textes;
+
+typedef struct tagTextureStructure {
+    const char* string;
+    bool isAtlas;
+} TextureStructure;
 
 class Options
 {
@@ -99,6 +104,8 @@ class Options
 
         static bool MUSIC_ENABLE;
         static bool SOUND_ENABLE;
+    
+        static int SELECTED_WEAPON_ID;
 
         static const char* MUSIC_1;
         static const char* MUSIC_2;

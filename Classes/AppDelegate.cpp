@@ -279,7 +279,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     Options::init();
 
-    Screen* pScene = new Loading();
+    Screen* pScene = Loading::create();
 
     director->runWithScene(pScene);
 

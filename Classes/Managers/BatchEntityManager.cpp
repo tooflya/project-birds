@@ -27,6 +27,8 @@ BatchEntityManager::BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode
 
         if(pScreen != NULL)
         pScreen->addChild(this, 0);
+        
+        //this->autorelease();
     }
 
 Entity* BatchEntityManager::create()

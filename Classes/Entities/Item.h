@@ -21,6 +21,8 @@ class Item : public Button
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Item(void (*pOnTouchCallback)(int, int));
 
         // ===========================================================
         // Methods
@@ -72,7 +74,7 @@ class Item : public Button
         // Constructors
         // ===========================================================
 
-        Item(void (*pOnTouchCallback)(int, int));
+        static Item* create(void (*pOnTouchCallback)(int, int));
 
         // ===========================================================
         // Methods

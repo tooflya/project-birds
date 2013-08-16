@@ -21,35 +21,46 @@ BuyItem* BuyItem::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+BuyItem::~BuyItem()
+{
+    CC_SAFE_RELEASE(this->mList);
+}
+
 BuyItem::BuyItem(Screen* pScreen) :
     Popup(pScreen)
     {
-        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         
-        this->mBuyButton = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_BUYITEM_BUY, onTouchButtonsCallback);
+        this->mBuyButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_BUYITEM_BUY, onTouchButtonsCallback);
         
-        this->mListBorders = new BatchEntityManager(2, new Entity("about_scroll_border_small@2x.png"), this->mBackground);
+        this->mListBorders[0] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);
+        this->mListBorders[1] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);
         
-        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
+        this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
-        this->mBuyButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
+        this->mBuyButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mBuyButton->setText(Options::TEXT_BUYITEM_BUY);
         
-        this->mListBorders->create();
-        this->mListBorders->create();
+        this->mListBorders[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(325));
+        this->mListBorders[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(325));
         
-        ((Entity*) this->mListBorders->objectAtIndex(0))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(325));
-        ((Entity*) this->mListBorders->objectAtIndex(1))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(325));
+        this->mListBorders[0]->setScaleY(1);
+        this->mListBorders[1]->setScaleY(-1);
         
-        ((Entity*) this->mListBorders->objectAtIndex(0))->setScaleY(1);
-        ((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);
-        
-        this->mList = new BuyItemList(this->mBackground);
+        this->mList = new BuyItemList(this);
         
         this->mYesPressed = false;
         
         m_Instance = this;
     }
+
+BuyItem* BuyItem::create(Screen* pScreen)
+{
+    BuyItem* popup = new BuyItem(pScreen);
+    popup->autorelease();
+    
+    return popup;
+}
 
 // ===========================================================
 // Methods
@@ -97,7 +108,7 @@ void BuyItem::show()
     {
         this->mBuyButton->setText(Options::TEXT_BUYITEM_CHOOSE);
 
-        if(Shop::CLICKED_ITEM_ID >= 30)
+        if(Shop::CLICKED_ITEM_ID >= 20)
         {
             this->mBuyButton->setVisible(false);
         }

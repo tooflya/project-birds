@@ -60,12 +60,7 @@ Text* Text::TEXTES[512] =
 Text::Text(const char* pString, float pSize, CCNode* pParent)
 {
     this->initWithString(pString, Options::FONT, Utils::coord(pSize), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-
-    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-
-    this->enableShadow(CCSize(Utils::coord(2), -Utils::coord(2)), 255.0, 0.0, true);
-
-    #endif
+    this->enableShadow();
     
     this->mId = 0;
     
@@ -79,12 +74,7 @@ Text::Text(const char* pString, float pSize, CCNode* pParent)
 Text::Text(Textes pParams, CCNode* pParent)
 {
     this->initWithString(pParams.string, pParams.font, Utils::coord(pParams.size), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-
-    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-
-    this->enableShadow(CCSize(Utils::coord(2), -Utils::coord(2)), 255.0, 0.0, true);
-
-    #endif
+    this->enableShadow();
     
     this->mId = pParams.identifier;
     
@@ -98,12 +88,7 @@ Text::Text(Textes pParams, CCNode* pParent)
 Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent)
 {
     this->initWithString(pParams.string, pParams.font, Utils::coord(pParams.size), pDimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-
-    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-
-    this->enableShadow(CCSize(Utils::coord(2), -Utils::coord(2)), 255.0, 0.0, true);
-
-    #endif
+    this->enableShadow();
     
     this->mId = pParams.identifier;
     
@@ -169,6 +154,24 @@ void Text::setText(Textes pParams)
     this->setString(pParams.string);
     this->setFontSize(Utils::coord(pParams.size));
     this->setFontName(pParams.font);
+}
+
+void Text::enableShadow()
+{
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+
+    CCLabelTTF::enableShadow(CCSize(Utils::coord(2), -Utils::coord(2)), 255.0, 0.0, true);
+
+    #endif
+}
+
+void Text::disableShadow()
+{
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+
+    CCLabelTTF::disableShadow();
+
+    #endif
 }
 
 // ===========================================================

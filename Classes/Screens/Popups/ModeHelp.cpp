@@ -21,33 +21,44 @@ ModeHelp* ModeHelp::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+ModeHelp::~ModeHelp()
+{
+    CC_SAFE_RELEASE(this->mList);
+}
+
 ModeHelp::ModeHelp(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         
-        this->mOkButton = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mOkButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         
-        this->mListBorders = new BatchEntityManager(2, new Entity("about_scroll_border_small@2x.png"), this->mBackground);
+        this->mListBorders[0] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);
+        this->mListBorders[1] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);
         
-        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
+        this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
-        this->mOkButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
+        this->mOkButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mOkButton->setText(Options::TEXT_MODEHELP_OK);
         
-        this->mListBorders->create();
-        this->mListBorders->create();
+        this->mListBorders[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(325));
+        this->mListBorders[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(325));
         
-        ((Entity*) this->mListBorders->objectAtIndex(0))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(325));
-        ((Entity*) this->mListBorders->objectAtIndex(1))->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 - Utils::coord(325));
+        this->mListBorders[0]->setScaleY(1);
+        this->mListBorders[1]->setScaleY(-1);
         
-        ((Entity*) this->mListBorders->objectAtIndex(0))->setScaleY(1);
-        ((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);
-        
-        this->mList = new ModeHelpList(this->mBackground);
+        this->mList = new ModeHelpList(this);
         
         m_Instance = this;
     }
+
+ModeHelp* ModeHelp::create(CCNode* pParent)
+{
+    ModeHelp* popup = new ModeHelp(pParent);
+    popup->autorelease();
+    
+    return popup;
+}
 
 // ===========================================================
 // Methods

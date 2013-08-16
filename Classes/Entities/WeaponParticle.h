@@ -30,6 +30,8 @@ class WeaponParticle : public Entity
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        WeaponParticle();
 
         // ===========================================================
         // Methods
@@ -83,7 +85,7 @@ class WeaponParticle : public Entity
         // Constructors
         // ===========================================================
 
-        WeaponParticle();
+        static WeaponParticle* create();
 
         // ===========================================================
         // Methods

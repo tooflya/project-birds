@@ -37,6 +37,8 @@ class Screen : public CCScene, public Touchable
         // Constructors
         // ===========================================================
 
+        Screen();
+
         // ===========================================================
         // Methods
         // ===========================================================
@@ -102,8 +104,7 @@ class Screen : public CCScene, public Touchable
         // ===========================================================
         // Constructors
         // ===========================================================
-
-        Screen();
+    
         ~Screen();
 
         // ===========================================================
@@ -114,8 +115,8 @@ class Screen : public CCScene, public Touchable
         // Override Methods
         // ===========================================================
 
-        virtual void onEnter();
-        virtual void onExit();
+        void onEnter();
+        void onExit();
 };
 
 #endif

@@ -26,7 +26,7 @@ class Exit : public Popup
     
         Entity* mLight;
     
-        BatchEntityManager* mLights;
+        EntityManager* mLights;
 
         // ===========================================================
         // Constructors

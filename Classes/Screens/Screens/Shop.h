@@ -5,6 +5,7 @@
 
 #include "BuyItem.h"
 #include "GetCoins.h"
+#include "BoughtItem.h"
 
 #include "Item.h"
 
@@ -32,20 +33,19 @@ class Shop : public Screen
         int mCoins;
     
         Entity* mBackgroundDecorations[2];
-        Entity* mWeaponChecker;
         Entity* mBackground;
-        Entity* mDarkness;
         Entity* mCoin;
         
         Button* mBackButton;
         Button* mTablet;
 
         Text* mCoinsCountText;
-        Text* mBoughtText[2];
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Shop();
 
         // ===========================================================
         // Methods
@@ -101,18 +101,18 @@ class Shop : public Screen
         // Fields
         // ===========================================================
     
-        BatchEntityManager* mWheels;
-        EntityManager* mItems[3];
-        EntityManager* mShelfs[3];
+        Entity* mWheels[9];
+        Entity* mItems[60];
+        Entity* mShelfs[15];
         
-        TouchLayer* mLayers[3];
+        TouchLayer* mLayersA[4];
     
         Popup* mBuyItemPopup;
         Popup* mGetCoinsPopup;
+        
+        BoughtItem* mBoughtItem;
 
-        EntityManager* mLights;
-
-        Entity* mBoughtItemIcon;
+        Entity* mWeaponChecker;
 
         float mAnimationOnItemBoughtTime;
         float mAnimationOnItemBoughtTimeElapsed;
@@ -123,7 +123,9 @@ class Shop : public Screen
         // Constructors
         // ===========================================================
     
-        Shop();
+        static Shop* create();
+    
+        ~Shop();
 
         // ===========================================================
         // Methods

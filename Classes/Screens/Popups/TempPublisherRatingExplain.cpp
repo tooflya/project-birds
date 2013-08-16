@@ -21,25 +21,38 @@ TempPublisherRatingExplain* TempPublisherRatingExplain::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+TempPublisherRatingExplain::~TempPublisherRatingExplain()
+{
+    
+}
+
 TempPublisherRatingExplain::TempPublisherRatingExplain(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mCloseButton = new Button((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 162, 162, 162}, this->mBackground, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
-        this->mOkButton = new Button("popup_btn@2x.png", 1, 1, this->mBackground, Options::BUTTONS_ID_BUYITEM_BUY, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mOkButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_BUYITEM_BUY, onTouchButtonsCallback);
         
-        this->mCloseButton->create()->setCenterPosition(this->mBackground->getWidth() - Utils::coord(40), this->mBackground->getHeight() - Utils::coord(40));
+        this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
-        this->mOkButton->create()->setCenterPosition(this->mBackground->getWidth() / 2, Utils::coord(40));
+        this->mOkButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mOkButton->setText(Options::TEXT_MODEHELP_OK);
 
-        Text* text1 = new Text(Options::TEXT_PUBLISHER_STRING_1, ccp(Utils::coord(500), 0), this->mBackground);
-        Text* text2 = new Text(Options::TEXT_PUBLISHER_STRING_2, ccp(Utils::coord(500), 0), this->mBackground);
+        Text* text1 = new Text(Options::TEXT_PUBLISHER_STRING_1, ccp(Utils::coord(500), 0), this);
+        Text* text2 = new Text(Options::TEXT_PUBLISHER_STRING_2, ccp(Utils::coord(500), 0), this);
 
-        text1->setCenterPosition(this->mBackground->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(100));
-        text2->setCenterPosition(this->mBackground->getWidth() / 2, Options::CAMERA_CENTER_Y - Utils::coord(250));
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(250));
+        text2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
         
         m_Instance = this;
     }
+
+TempPublisherRatingExplain* TempPublisherRatingExplain::create(CCNode* pParent)
+{
+    TempPublisherRatingExplain* popup = new TempPublisherRatingExplain(pParent);
+    popup->autorelease();
+    
+    return popup;
+}
 
 // ===========================================================
 // Methods

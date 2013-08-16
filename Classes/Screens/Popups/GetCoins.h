@@ -22,11 +22,13 @@ class GetCoins : public Popup
     
         Button* mGetCoinsButtons[4];
     
-        BatchEntityManager* mLights;
+        EntityManager* mLights;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        GetCoins(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -80,7 +82,7 @@ class GetCoins : public Popup
         // Constructors
         // ===========================================================
     
-        GetCoins(CCNode* pParent);
+        static GetCoins* create(CCNode* pParent);
 
         // ===========================================================
         // Methods

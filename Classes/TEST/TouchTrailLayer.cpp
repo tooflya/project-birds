@@ -15,7 +15,9 @@ TouchTrailLayer::TouchTrailLayer()
     this->mTimeBeforeNextBladeSound = 0.15f;
     this->mTimeBeforeNextBladeSoundElapsed = 0;
 
-    this->mWeaponParticles = new BatchEntityManager(100, new WeaponParticle(), this);
+    CCSpriteBatchNode* a = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
+    this->addChild(a);
+    this->mWeaponParticles = EntityManager::create(300, WeaponParticle::create(), a);
     
     this->scheduleUpdate();
 }

@@ -24,6 +24,14 @@ PlayButton::PlayButton(const char* pTextureFileName, int pHorizontalFramesCount,
 	{
 	}
 
+PlayButton* PlayButton::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int))
+{
+    PlayButton* button = new PlayButton(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pOnTouchCallback);
+    button->autorelease();
+    
+    return button;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

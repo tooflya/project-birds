@@ -22,11 +22,14 @@ class PleaseRate : public Popup
     
         Button* mRateButton;
     
-        BatchEntityManager* mLights;
+        EntityManager* mLights;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        PleaseRate(CCNode* pParentn);
+        ~PleaseRate();
 
         // ===========================================================
         // Methods
@@ -80,7 +83,7 @@ class PleaseRate : public Popup
         // Constructors
         // ===========================================================
     
-        PleaseRate(CCNode* pParentn);
+        static PleaseRate* create(CCNode* pParentn);
 
         // ===========================================================
         // Methods
