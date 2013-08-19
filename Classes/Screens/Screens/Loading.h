@@ -20,12 +20,17 @@ class Loading : public Screen
 
         int mNumberOfSprites;
         int mNumberOfLoadedSprites;
-    
-        Text* mLoadingText;
+
+        float mLoadingPauseTime;
+        float mLoadingPauseTimeElapsed;
 
         Entity* mBackground;
         Entity* mBarBackground;
         Entity* mBar;
+    
+        Text* mLoadingText;
+
+        bool mLoading;
 
         // ===========================================================
         // Constructors
@@ -78,7 +83,7 @@ class Loading : public Screen
         // Constants
         // ===========================================================
     
-        static const char* TEXTURE_LIBRARY[8];
+        static TextureStructure TEXTURE_LIBRARY[8];
 
         // ===========================================================
         // Fields
@@ -93,10 +98,14 @@ class Loading : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void startLoading();
         
         // ===========================================================
         // Override Methods
         // ===========================================================
+
+        void update(float pDeltaTime);
 
         void onEnter();
         void onExit();

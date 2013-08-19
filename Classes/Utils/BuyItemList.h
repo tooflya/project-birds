@@ -88,6 +88,7 @@ class BuyItemList : public List
         // ===========================================================
     
         BuyItemList(CCNode* pParent);
+        ~BuyItemList();
 
         // ===========================================================
         // Methods

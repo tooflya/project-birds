@@ -41,7 +41,7 @@ More* More::create()
 {
     More* screen = new More();
     screen->autorelease();
-    //screen->retain();
+    screen->retain();
     
     return screen;
 }

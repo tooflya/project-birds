@@ -7,6 +7,32 @@
 // Inner Classes
 // ===========================================================
 
+class Background : public CCNodeRGBA
+{
+    public:
+        Background()
+        {
+            this->setOpacity(0);
+        }
+
+        static Background* create()
+        {
+            Background* background = new Background();
+            background->autorelease();
+
+            return background;
+        }
+
+        void draw()
+        {
+            if(this->getOpacity() <= 0) return;
+
+            glLineWidth(1);
+            CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
+            ccDrawSolidPoly(filledVertices, 4, ccc4f(0.0f, 0.0f, 0, this->getOpacity() / 255.0) );
+        }
+};
+
 // ===========================================================
 // Constants
 // ===========================================================
@@ -35,6 +61,7 @@ Popup::Popup(CCNode* pParent)
     this->mSpriteBatch = CCSpriteBatchNode::create("TextureAtlas4.pvr.ccz");
     
     this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);
+    this->mSquare = Background::create();
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
@@ -49,7 +76,7 @@ Popup::Popup(CCNode* pParent)
     
     this->addChild(this->mSpriteBatch);
 
-    this->scheduleUpdate();
+    this->mParent->addChild(this->mSquare);
 }
 
 // ===========================================================
@@ -70,6 +97,7 @@ void Popup::show()
     
     this->mShowAnimationTime = 0.3;
     this->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.2));
+    this->mSquare->runAction(CCFadeTo::create(0.5, 230));
 }
 
 void Popup::hide()
@@ -83,6 +111,7 @@ void Popup::hide()
     
     this->mHideAnimationTime = 0.1;
     this->runAction(CCScaleTo::create(this->mHideAnimationTime, 1.2));
+    this->mSquare->runAction(CCFadeTo::create(0.5, 0));
 }
 
 bool Popup::isShowed()
@@ -164,12 +193,19 @@ void Popup::update(float pDeltaTime)
     }
 }
 
+void Popup::draw()
+{
+    CCLayer::draw();
+};
+
 void Popup::onEnter()
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
     pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     
     CCLayer::onEnter();
+
+    this->scheduleUpdate();
 }
 
 void Popup::onExit()
@@ -178,6 +214,9 @@ void Popup::onExit()
     pDirector->getTouchDispatcher()->removeDelegate(this);
     
     CCLayer::onExit();
+
+    this->stopAllActions();
+    this->unscheduleAllSelectors();
 }
 
 bool Popup::ccTouchBegan(CCTouch* touch, CCEvent* event)

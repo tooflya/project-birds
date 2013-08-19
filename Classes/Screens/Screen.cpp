@@ -38,9 +38,6 @@ Screen::~Screen()
 
 Screen::Screen()
 {
-    this->unscheduleUpdate();
-    
-    this->scheduleUpdate();
 }
 
 // ===========================================================
@@ -67,11 +64,18 @@ bool Screen::containsTouchLocation(CCTouch* touch)
 void Screen::onEnter()
 {
     CCScene::onEnter();
+    
+    this->scheduleUpdate();
 }
 
 void Screen::onExit()
 {
     CCScene::onExit();
+
+    this->stopAllActions();
+    this->unscheduleAllSelectors();
+
+    this->release();
 }
 
 #endif

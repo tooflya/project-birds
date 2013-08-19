@@ -261,6 +261,11 @@ class MainList : public CCLayer
         EntityManager* mListBorders;
         EntityManager* mElements;
 
+        ~MainList()
+        {
+            this->removeAllChildrenWithCleanup(true);
+        }
+
         MainList(Levels* pParent)
         {
             this->mParent = pParent;
@@ -538,6 +543,11 @@ Levels* Levels::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+Levels::~Levels()
+{
+    this->mMainList->release();
+}
+
 Levels::Levels()
 {
     this->mMainList = MainList::create(this);
@@ -653,6 +663,7 @@ Levels* Levels::create()
 {
     Levels* screen = new Levels();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }

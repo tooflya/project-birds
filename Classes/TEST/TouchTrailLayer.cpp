@@ -19,13 +19,14 @@ TouchTrailLayer::TouchTrailLayer()
     this->addChild(a);
     this->mWeaponParticles = EntityManager::create(300, WeaponParticle::create(), a);
     
-    this->scheduleUpdate();
+    //this->scheduleUpdate();
 }
 
 TouchTrailLayer* TouchTrailLayer::create()
 {
     TouchTrailLayer *pRet = new TouchTrailLayer();
     pRet->autorelease();
+
     return pRet;
 }
 

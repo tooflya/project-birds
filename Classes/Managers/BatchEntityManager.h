@@ -16,7 +16,6 @@ class BatchEntityManager : public CCSpriteBatchNode
 
     public:
         BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen);
-        
         int getCount();
         int getCapacity();
 
@@ -31,6 +30,8 @@ class BatchEntityManager : public CCSpriteBatchNode
         void resumeSchedulerAndActions();
     
         int getInitCapacity();
+
+        void setOpacity(GLbyte pOpacity);
     
         void update(float pDeltaTime);
         void draw();

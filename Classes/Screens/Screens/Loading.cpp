@@ -11,16 +11,16 @@
 // Constants
 // ===========================================================
 
-const char* Loading::TEXTURE_LIBRARY[8] =
+TextureStructure Loading::TEXTURE_LIBRARY[8] =
 {
-    "more_games_list@2x.png",
-    "about_scroll_fill@2x.png",
-    "about_scroll_fill_small@2x.png",
-    "TextureAtlas1.pvr.ccz",
-    "TextureAtlas2.pvr.ccz",
-    "TextureAtlas3.pvr.ccz",
-    "TextureAtlas4.pvr.ccz",
-    "TextureAtlas5.pvr.ccz"
+    {"TextureAtlas1.pvr.ccz", "TextureAtlas1.plist"},
+    {"TextureAtlas2.pvr.ccz", "TextureAtlas2.plist"},
+    {"TextureAtlas3.pvr.ccz", "TextureAtlas3.plist"},
+    {"TextureAtlas4.pvr.ccz", "TextureAtlas4.plist"},
+    {"TextureAtlas5.pvr.ccz", "TextureAtlas5.plist"},
+    {"more_games_list@2x.png", NULL},
+    {"about_scroll_fill@2x.png", NULL},
+    {"about_scroll_fill_small@2x.png", NULL}
 };
 
 // ===========================================================
@@ -33,10 +33,6 @@ const char* Loading::TEXTURE_LIBRARY[8] =
 
 Loading::~Loading()
 {
-    this->removeAllChildrenWithCleanup(true);
-    
-    this->release();
-    
     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
     CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 }
@@ -57,12 +53,17 @@ Loading::Loading()
     this->mBar->showPercentage(0);
     
     this->mNumberOfLoadedSprites = -1;
-    this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
+    this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
     
     this->addChild(spriteBatch);
 
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
+
+    this->mLoading = false;
+
+    this->mLoadingPauseTime = 0.3;
+    this->mLoadingPauseTimeElapsed = 0.0;
 }
 
 Loading* Loading::create()
@@ -106,30 +107,52 @@ void Loading::loadingCallBack(CCObject *obj)
     }
 }
 
+void Loading::startLoading()
+{
+    for(int i = 0; i < this->mNumberOfSprites + 1; i++)
+    {
+        if(TEXTURE_LIBRARY[i].frames == NULL)
+        {
+            CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loading::loadingCallBack));
+        }
+        else
+        {
+            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(TEXTURE_LIBRARY[i].frames);
+            
+            CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loading::loadingCallBack));
+        }
+    }
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
 
+void Loading::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+
+    if(!this->mLoading)
+    {
+        this->mLoadingPauseTimeElapsed += pDeltaTime;
+
+        if(this->mLoadingPauseTimeElapsed >= this->mLoadingPauseTime)
+        {
+            this->mLoading = true;
+
+            this->startLoading();
+        }
+    }
+}
+
 void Loading::onEnter()
 {
     Screen::onEnter();
-    
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas2.plist");
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas4.plist");
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas5.plist");
-    
-    for(int i = 0; i < this->mNumberOfSprites + 1; i++)
-    {
-        CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i], this, callfuncO_selector(Loading::loadingCallBack));
-    }
 }
 
 void Loading::onExit()
 {
     Screen::onExit();
-    
-    delete this;
 }
 
 #endif

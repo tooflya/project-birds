@@ -22,8 +22,8 @@ typedef struct tagTextes {
 } Textes;
 
 typedef struct tagTextureStructure {
-    const char* string;
-    bool isAtlas;
+    const char* texture;
+    const char* frames;
 } TextureStructure;
 
 class Options
@@ -282,6 +282,7 @@ class Options
         static Textes TEXT_GAME_ARCADE_TIME_REMAINING;
         static Textes TEXT_EVENTS[90];
         static Textes TEXT_GAME_CLASSIC_BONUS_TIME;
+        static Textes TEXT_PAYMENT_STRING[6];
 
         // ===========================================================
         // Fields

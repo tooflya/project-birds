@@ -25,11 +25,11 @@ Menu* Menu::m_Instance = NULL;
 
 Menu::~Menu()
 {
-    delete(this->mRatePopup);
+    this->mRatePopup->release();
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
-    delete(this->mExitPopup);
+    this->mExitPopup->release();
     
     #endif
 }
@@ -80,6 +80,7 @@ Menu* Menu::create()
 {
     Menu* screen = new Menu();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }

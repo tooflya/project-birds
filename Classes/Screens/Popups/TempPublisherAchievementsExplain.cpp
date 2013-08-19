@@ -49,6 +49,7 @@ TempPublisherAchievementsExplain* TempPublisherAchievementsExplain::create(CCNod
 {
     TempPublisherAchievementsExplain* popup = new TempPublisherAchievementsExplain(pParent);
     popup->autorelease();
+    popup->retain();
     
     return popup;
 }

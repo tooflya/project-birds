@@ -33,6 +33,7 @@ class Popup : public CCLayer
         CCSpriteBatchNode* mSpriteBatch;
 
         CCNode* mParent;
+        CCNodeRGBA* mSquare;
 
         Entity* mBackground;
         Entity* mDarkness;
@@ -128,6 +129,8 @@ class Popup : public CCLayer
         // ===========================================================
     
         void update(float pDeltaTime);
+
+        void draw();
     
         void onEnter();
         void onExit();

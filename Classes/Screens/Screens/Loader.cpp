@@ -16,13 +16,13 @@
 
 int Loader::ACTION = -1;
 
-const char* Loader::TEXTURE_LIBRARY[3] =
+TextureStructure Loader::TEXTURE_LIBRARY[3] =
 {
-    "TextureAtlas6.pvr.ccz",
-    "TextureAtlas7.pvr.ccz",
-    "TextureAtlas8.pvr.ccz",
-    //"birds_sprite@2x.png",
-    //"special_birds_sprite@2x.png"
+    {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
+    {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
+    {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
+    //{"birds_sprite@2x.png", NULL},
+    //{"special_birds_sprite@2x.png", NULL}
 };
 
 // ===========================================================
@@ -36,12 +36,12 @@ const char* Loader::TEXTURE_LIBRARY[3] =
 Loader::Loader()
 {
     CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
+    this->addChild(spriteBatch);
 
     this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);
-    this->mCircles = new EntityManager(10, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
+    this->mCircles = new EntityManager(15, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
     this->mBird = Entity::create("preload-lvl-bird@2x.png", spriteBatch);
 
-    this->addChild(spriteBatch);
     
     this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
     
@@ -50,9 +50,39 @@ Loader::Loader()
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     
     this->mTipText = new Text(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH - Utils::coord(50), 0), this);
+
+    for(int i = 0; i < 5; i++)
+    {
+            
+            Entity* circle = (Entity*) this->mCircles->create();
+            
+            circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+            circle->setRotation(0.0);
+            circle->setScale(0.0);
+            circle->setOpacity(255.0);
+        
+        for(int i = 0; i < this->mCircles->getCount(); i++)
+        {
+            Entity* circle = static_cast<Entity*>(this->mCircles->objectAtIndex(i));
+            
+            circle->setRotation(circle->getRotation() + 1.0 * 30.0);
+            circle->setScale(circle->getScaleX() + 0.01 * 30.0);
+            circle->setOpacity(circle->getOpacity() - 1.0 * 30.0);
+            
+            if(circle->getOpacity() <= 0.0)
+            {
+                circle->destroy();
+            }
+        }
+    }
     
     this->mCircleAnimationTime = 0.5;
     this->mCircleAnimationTimeElapsed = 0;
+
+    this->mLoadingTime = 1.0;
+    this->mLoadingTimeElapsed = 0;
+
+    this->mLoading = false;
     
     this->setRegisterAsTouchable(true);
 }
@@ -61,6 +91,7 @@ Loader* Loader::create()
 {
     Loader* screen = new Loader();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }
@@ -121,6 +152,57 @@ void Loader::loadingCallBack(CCObject *obj)
     }
 }
 
+void Loader::startLoading()
+{
+    AppDelegate::screens->load(ACTION, 0);
+        
+    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    
+    this->mNumberOfLoadedSprites = -1;
+
+    switch(ACTION)
+    {
+        default:
+            
+            this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
+    
+            for(int i = 0; i < this->mNumberOfSprites + 1; i++)
+            {
+                if(TEXTURE_LIBRARY[i].frames == NULL)
+                {
+                    CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                }
+                else
+                {
+                    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(TEXTURE_LIBRARY[i].frames);
+
+                    CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                }
+            }
+
+        break;
+        case 3:
+            this->mNumberOfSprites = sizeof(Loading::TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
+            
+            for(int i = 0; i < this->mNumberOfSprites + 1; i++)
+            {
+                if(Loading::TEXTURE_LIBRARY[i].frames == NULL)
+                {
+                    CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                }
+                else
+                {
+                    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(Loading::TEXTURE_LIBRARY[i].frames);
+
+                    CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                }
+            }
+
+        break;
+    }
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -173,7 +255,7 @@ void Loader::update(float pDeltaTime)
     
     this->mCircleAnimationTimeElapsed += pDeltaTime;
     
-    /*if(this->mCircleAnimationTimeElapsed >= this->mCircleAnimationTime)
+    if(this->mCircleAnimationTimeElapsed >= this->mCircleAnimationTime)
     {
         this->mCircleAnimationTimeElapsed = 0;
         
@@ -187,7 +269,7 @@ void Loader::update(float pDeltaTime)
     
     for(int i = 0; i < this->mCircles->getCount(); i++)
     {
-        Entity* circle = (Entity*) this->mCircles->objectAtIndex(i);
+        Entity* circle = static_cast<Entity*>(this->mCircles->objectAtIndex(i));
         
         circle->setRotation(circle->getRotation() + 1.0);
         circle->setScale(circle->getScaleX() + 0.01);
@@ -197,7 +279,7 @@ void Loader::update(float pDeltaTime)
         {
             circle->destroy();
         }
-    }*/
+    }
     
     if(this->mTapToContinueAnimation)
     {
@@ -220,47 +302,24 @@ void Loader::update(float pDeltaTime)
             }
         }
     }
+
+    if(!this->mLoading)
+    {
+        this->mLoadingTimeElapsed += pDeltaTime;
+
+        if(this->mLoadingTimeElapsed >= this->mLoadingTime)
+        {
+            this->mLoadingTimeElapsed = 0;
+            this->mLoading = true;
+
+            this->startLoading();
+        }
+    }
 }
 
 void Loader::onEnterTransitionDidFinish()
 {
     Screen::onEnterTransitionDidFinish();
-    
-    AppDelegate::screens->load(ACTION, 0);
-    
-    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    
-    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
-    
-    this->mNumberOfLoadedSprites = -1;
-
-    switch(ACTION)
-    {
-        default:
-            
-            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas6.plist");
-            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas7.plist");
-            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas8.plist");
-            
-            this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(const char*) - 1;
-    
-            for(int i = 0; i < this->mNumberOfSprites + 1; i++)
-            {
-                CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i], this, callfuncO_selector(Loader::loadingCallBack));
-            }
-
-        break;
-        case 3:
-            this->mNumberOfSprites = sizeof(Loading::TEXTURE_LIBRARY) / sizeof(const char*) - 1;
-            
-            for(int i = 0; i < this->mNumberOfSprites + 1; i++)
-            {
-                CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[i], this, callfuncO_selector(Loader::loadingCallBack));
-            }
-
-        break;
-    }
 }
 
 void Loader::onExitTransitionDidStart()
@@ -272,6 +331,8 @@ void Loader::onExitTransitionDidStart()
 
 void Loader::onEnter()
 {
+    this->mLoading = false;
+
     CCDirector* pDirector = CCDirector::sharedDirector();
     pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     

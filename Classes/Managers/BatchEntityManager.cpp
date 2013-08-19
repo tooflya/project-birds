@@ -6,7 +6,7 @@
 BatchEntityManager::BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen) :
     CCSpriteBatchNode()
     {
-        this->initWithFile(pEntity->getTextureFileName(), 50);
+        this->initWithTexture(pEntity->getTexture(), 50);
         
         this->mInitCapacity = pCreateCount;
 
@@ -14,21 +14,44 @@ BatchEntityManager::BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode
         this->mCapacity = pCreateCount; // TODO: increase to pMaxCount
 
         for(int i = 0; i < pCreateCount; i++)
-        {
-            Entity* currentEntity = pEntity->deepCopy();
+        {Entity* currentEntity;
+            if(i == 0)
+                 currentEntity = pEntity;
+                else
+                 currentEntity = pEntity->deepCopy();
 
             currentEntity->setEntityManager(this);
             currentEntity->setEntityManagerId(i);
 
-            this->addChild(currentEntity);
+          
         
             currentEntity->destroy(false);
+
+
+            if(dynamic_cast<CCSpriteBatchNode*>(pScreen) != NULL)
+            {
+                pScreen->addChild(currentEntity); 
+            }
+            else
+            {
+                  this->addChild(currentEntity);
+            }
+        
         }
 
         if(pScreen != NULL)
-        pScreen->addChild(this, 0);
-        
-        //this->autorelease();
+        {
+            if(dynamic_cast<CCSpriteBatchNode*>(pScreen) == NULL)
+            {
+                pScreen->addChild(this, 0); 
+            }
+            else
+            {
+                pScreen->getParent()->addChild(this);
+            }
+        }
+
+        this->autorelease();
     }
 
 Entity* BatchEntityManager::create()
@@ -115,6 +138,14 @@ void BatchEntityManager::resumeSchedulerAndActions()
 int BatchEntityManager::getInitCapacity()
 {
     return this->mInitCapacity;
+}
+
+void BatchEntityManager::setOpacity(GLbyte pOpacity)
+{
+    for(int i = 0; i < this->getCapacity(); i++)
+    {
+        static_cast<Entity*>(this->objectAtIndex(i))->setOpacity(pOpacity);
+    }
 }
 
 void BatchEntityManager::draw()

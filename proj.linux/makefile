@@ -41,6 +41,7 @@ SOURCES = ./main.cpp \
 			../Classes/Entities/Text.cpp \
 			../Classes/Entities/Confetti.cpp \
 			../Classes/Entities/Star.cpp \
+			../Classes/Entities/AnimatedCoin.cpp \
 			../Classes/Entities/ImpulseEntity.cpp \
 			../Classes/Entities/Bird.cpp \
 			../Classes/Entities/Mark.cpp \
@@ -80,8 +81,10 @@ SOURCES = ./main.cpp \
 			../Classes/Screens/Popups/GetCoins.cpp \
 			../Classes/Screens/Popups/PleaseRate.cpp \
 			../Classes/Screens/Popups/ResetProgress.cpp \
+			../Classes/Screens/Popups/PaymentProceed.cpp \
 			../Classes/Screens/Popups/ModeHelp.cpp \
 			../Classes/Screens/Popups/Pause.cpp \
+			../Classes/Screens/Popups/BoughtItem.cpp \
             ../Classes/Screens/Popups/ClassicPause.cpp \
             ../Classes/Screens/Popups/ArcadePause.cpp \
             ../Classes/Screens/Popups/ProgressPause.cpp \

@@ -1,15 +1,9 @@
-#ifndef CONST_LIST_H
-#define CONST_LIST_H
-
-#include "cocos2d.h"
-
-#include "Entity.h"
+#ifndef CONST_PAYMENTPROCEED_H
+#define CONST_PAYMENTPROCEED_H
 
 #include "Popup.h"
 
-using namespace cocos2d;
-
-class List : public CCLayer
+class PaymentProceed : public Popup
 {
     protected:
         // ===========================================================
@@ -19,46 +13,31 @@ class List : public CCLayer
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static PaymentProceed* m_Instance;
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        int mType;
-        int mParentType;
 
-        float mWidth;
-        float mHeight;
+        int mUpdateTimes;
 
-        float mMaxWidth;
-        float mMaxHeight;
+        float mUpdateTime;
+        float mUpdateTimeElapsed;
 
-        float mListInitialCenterX;
-        float mListInitialCenterY;
+        float mUpdateTimeTotal;
 
-        float mStartCoordinateY;
-        float mStartCoordinateX;
+        bool mWaitingPurchase;
 
-        float mStartPositionCoordinateY;
-        float mStartPositionCoordinateX;
+        Button* mCancelButton;
 
-        float mLastDistanceX;
-        float mLastDistanceY;
-
-        float mSpeedX;
-        float mSpeedY;
-    
-        bool mPostUpdate;
-    
-        Entity* mListSroll;
-
-        Entity* mParent;
-
-        CCSpriteBatchNode* mSpriteBatch;
+        Text* mTextes[3];
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        PaymentProceed(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -88,6 +67,8 @@ class List : public CCLayer
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -102,13 +83,6 @@ class List : public CCLayer
         // Constants
         // ===========================================================
 
-        static const int TYPE_HORIZONTAL = 0;
-        static const int TYPE_VERTICAL = 1;
-        static const int TYPE_BOTH = 2;
-
-        static const int PARENT_TYPE_SIMPLE = 0;
-        static const int PARENT_TYPE_POPUP = 1;
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -117,34 +91,23 @@ class List : public CCLayer
         // Constructors
         // ===========================================================
     
-        List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float pListInitialCenterX, float pListInitialCenterY, const char* pListTextureFileName, CCNode* pParent);
-        ~List();
+        static PaymentProceed* create(CCNode* pParent);
 
         // ===========================================================
         // Methods
         // ===========================================================
-
-        void setListType(int pType);
-        void setParentType(int pType);
         
         // ===========================================================
         // Override Methods
         // ===========================================================
     
-        virtual void onEnter();
-        virtual void onExit();
-    
-        virtual void visit();
-    
         virtual void update(float pDeltaTime);
     
-        virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
-        virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
-        virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
+        virtual void hide();
+        virtual void show();
     
-        virtual bool containsTouchLocation(CCTouch* touch);
-
-        virtual void draw();
+        virtual void onShow();
+        virtual void onHide();
 };
 
 #endif

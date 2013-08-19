@@ -23,7 +23,7 @@ BuyItem* BuyItem::m_Instance = NULL;
 
 BuyItem::~BuyItem()
 {
-    CC_SAFE_RELEASE(this->mList);
+    this->mList->release();
 }
 
 BuyItem::BuyItem(Screen* pScreen) :
@@ -58,6 +58,7 @@ BuyItem* BuyItem::create(Screen* pScreen)
 {
     BuyItem* popup = new BuyItem(pScreen);
     popup->autorelease();
+    popup->retain();
     
     return popup;
 }

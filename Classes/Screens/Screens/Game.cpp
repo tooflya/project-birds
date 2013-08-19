@@ -45,6 +45,7 @@ Game* Game::create()
 {
     Game* screen = new Game();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }
@@ -70,10 +71,10 @@ void Game::startGame()
 
     //this->mBirds->clear();
     //this->mSpecialBirds->clear();
-    this->mFeathers->clear();
-    this->mMarks->clear();
-    this->mExplosions->clear();
-    this->mExplosionsBasic->clear();
+    //this->mFeathers->clear();
+    //this->mMarks->clear();
+    //this->mExplosions->clear();
+    //this->mExplosionsBasic->clear();
 
     HEALTH = 12;
 }
@@ -131,7 +132,7 @@ void Game::onBirBlow(int pType)
 void Game::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
-    
+    return;
     /*if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
@@ -245,7 +246,7 @@ void Game::onEnter()
 {
     Screen::onEnter();
 
-    this->startGame();
+    //this->startGame();
 }
 
 void Game::onExit()

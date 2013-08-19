@@ -26,9 +26,9 @@ Mode* Mode::m_Instance = NULL;
 
 Mode::~Mode()
 {
-    delete(this->mHelpPopup);
-    delete(this->mTempPublisherRatingExplain);
-    delete(this->mTempPublisherAchievementsExplain);
+    this->mHelpPopup->release();
+    this->mTempPublisherRatingExplain->release();
+    this->mTempPublisherAchievementsExplain->release();
 }
 
 Mode::Mode()
@@ -82,6 +82,7 @@ Mode* Mode::create()
 {
     Mode* screen = new Mode();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }

@@ -1,15 +1,9 @@
-#ifndef CONST_LIST_H
-#define CONST_LIST_H
+#ifndef CONST_ANIMATEDCOIN_H
+#define CONST_ANIMATEDCOIN_H
 
-#include "cocos2d.h"
+#include "ImpulseEntity.h"
 
-#include "Entity.h"
-
-#include "Popup.h"
-
-using namespace cocos2d;
-
-class List : public CCLayer
+class AnimatedCoin : public ImpulseEntity
 {
     protected:
         // ===========================================================
@@ -23,38 +17,6 @@ class List : public CCLayer
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        int mType;
-        int mParentType;
-
-        float mWidth;
-        float mHeight;
-
-        float mMaxWidth;
-        float mMaxHeight;
-
-        float mListInitialCenterX;
-        float mListInitialCenterY;
-
-        float mStartCoordinateY;
-        float mStartCoordinateX;
-
-        float mStartPositionCoordinateY;
-        float mStartPositionCoordinateX;
-
-        float mLastDistanceX;
-        float mLastDistanceY;
-
-        float mSpeedX;
-        float mSpeedY;
-    
-        bool mPostUpdate;
-    
-        Entity* mListSroll;
-
-        Entity* mParent;
-
-        CCSpriteBatchNode* mSpriteBatch;
 
         // ===========================================================
         // Constructors
@@ -63,6 +25,8 @@ class List : public CCLayer
         // ===========================================================
         // Methods
         // ===========================================================
+
+        AnimatedCoin();
 
         // ===========================================================
         // Override Methods
@@ -102,13 +66,6 @@ class List : public CCLayer
         // Constants
         // ===========================================================
 
-        static const int TYPE_HORIZONTAL = 0;
-        static const int TYPE_VERTICAL = 1;
-        static const int TYPE_BOTH = 2;
-
-        static const int PARENT_TYPE_SIMPLE = 0;
-        static const int PARENT_TYPE_POPUP = 1;
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -116,35 +73,23 @@ class List : public CCLayer
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float pListInitialCenterX, float pListInitialCenterY, const char* pListTextureFileName, CCNode* pParent);
-        ~List();
+
+        static AnimatedCoin* create();
 
         // ===========================================================
         // Methods
         // ===========================================================
-
-        void setListType(int pType);
-        void setParentType(int pType);
         
         // ===========================================================
         // Override Methods
         // ===========================================================
-    
-        virtual void onEnter();
-        virtual void onExit();
-    
-        virtual void visit();
-    
-        virtual void update(float pDeltaTime);
-    
-        virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
-        virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
-        virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
-    
-        virtual bool containsTouchLocation(CCTouch* touch);
 
-        virtual void draw();
+        void update(float pDeltaTime);
+
+        void onCreate();
+        void onDestroy();
+
+        AnimatedCoin* deepCopy();
 };
 
 #endif

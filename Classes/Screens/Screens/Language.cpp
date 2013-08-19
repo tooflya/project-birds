@@ -108,6 +108,7 @@ Language* Language::create()
 {
     Language* screen = new Language();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }

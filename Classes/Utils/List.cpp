@@ -19,6 +19,11 @@
 // Constructors
 // ===========================================================
 
+List::~List()
+{
+    this->removeAllChildrenWithCleanup(true);
+}
+
 List::List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float pListInitialCenterX, float pListInitialCenterY, const char* pListTextureFileName, CCNode* pParent)
 {
     this->mParent = static_cast<Entity*>(pParent);
@@ -41,8 +46,6 @@ List::List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float
     this->mParentType = PARENT_TYPE_SIMPLE;
 
     this->mPostUpdate = false;
-
-    this->scheduleUpdate();
 }
 
 // ===========================================================
@@ -218,6 +221,8 @@ void List::onEnter()
     
     CCLayer::onEnter();
 
+    this->scheduleUpdate();
+
     this->setPosition(ccp(this->getPosition().x, 0)); // TODO: Check it for horizontal list.
 }
 
@@ -227,6 +232,8 @@ void List::onExit()
     pDirector->getTouchDispatcher()->removeDelegate(this);
     
     CCLayer::onExit();
+
+    this->unscheduleAllSelectors();
 
     this->mPostUpdate = false;
     this->stopAllActions();

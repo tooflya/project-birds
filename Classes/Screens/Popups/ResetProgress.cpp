@@ -24,7 +24,7 @@ ResetProgress* ResetProgress::m_Instance = NULL;
 ResetProgress::ResetProgress(CCNode* pParent) :
     Popup(pParent)
     {
-        //this->mLights = new EntityManager(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
+        this->mLights = new EntityManager(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
     
         this->mIllustration = Entity::create("popup_progress_picture@2x.png", this->mSpriteBatch);
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
@@ -35,9 +35,9 @@ ResetProgress::ResetProgress(CCNode* pParent) :
         
         for(int i = 0; i < 2; i++)
         {
-            //this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(340));
-            //((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
-           // ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
+            this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(340));
+            ((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
+            ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
         }
         
         Text* text1 = new Text(Options::TEXT_RESET_STRING_1, ccp(Utils::coord(512), 0), this);
@@ -58,6 +58,7 @@ ResetProgress* ResetProgress::create(CCNode* pParent)
 {
     ResetProgress* popup = new ResetProgress(pParent);
     popup->autorelease();
+    popup->retain();
     
     return popup;
 }
@@ -108,7 +109,7 @@ void ResetProgress::onShow()
 
     for(int i = 0; i < 2; i++)
     {
-        //((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
+        ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
     }
 }
 
@@ -132,8 +133,8 @@ void ResetProgress::hide()
     
     for(int i = 0; i < 2; i++)
     {
-        //((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
-        //((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
+        ((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
+        ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
     }
 }
 
@@ -143,9 +144,9 @@ void ResetProgress::update(float pDeltaTime)
     
     for(int i = 0; i < 2; i++)
     {
-        //Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
+        Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
         
-        //light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
+        light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
     }
 }
 

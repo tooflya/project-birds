@@ -2,7 +2,8 @@
 #define CONST_BOUGHTITEM_H
 
 #include "Entity.h"
-#include "EntityManager.h"
+#include "Button.h"
+#include "BatchEntityManager.h"
 #include "Text.h"
 
 class BoughtItem : public CCLayerColor
@@ -26,13 +27,17 @@ class BoughtItem : public CCLayerColor
 
         Entity* mIcon;
 
-        EntityManager* mLights;
+        Button* mTwitterButton;
+        Button* mFacebookButton;
 
-        Text* mTextes[2];
+        BatchEntityManager* mLights;
+
+        Text* mTextes[3];
 
         float mHideAnimationTimeElapsed;
 
         bool mHideAnimation;
+        bool mTapToContinueAnimationReverse;
 
         // ===========================================================
         // Constructors

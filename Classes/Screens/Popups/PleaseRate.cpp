@@ -60,6 +60,7 @@ PleaseRate* PleaseRate::create(CCNode* pParent)
 {
     PleaseRate* popup = new PleaseRate(pParent);
     popup->autorelease();
+    popup->retain();
     
     return popup;
 }

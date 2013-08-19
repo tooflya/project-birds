@@ -50,6 +50,7 @@ TempPublisherRatingExplain* TempPublisherRatingExplain::create(CCNode* pParent)
 {
     TempPublisherRatingExplain* popup = new TempPublisherRatingExplain(pParent);
     popup->autorelease();
+    popup->retain();
     
     return popup;
 }

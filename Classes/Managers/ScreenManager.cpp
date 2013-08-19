@@ -126,15 +126,15 @@ void ScreenManager::load(int pAction, int pDo)
             {
                 case 0:
                     
-                delete(this->mScreens[Screen::SCREEN_MENU]);
-                delete(this->mScreens[Screen::SCREEN_SETTINGS]);
-                delete(this->mScreens[Screen::SCREEN_CREDITS]);
-                delete(this->mScreens[Screen::SCREEN_PROGRESS]);
-                delete(this->mScreens[Screen::SCREEN_MORE]);
-                delete(this->mScreens[Screen::SCREEN_LANGUAGE]);
-                delete(this->mScreens[Screen::SCREEN_MODE]);
-                delete(this->mScreens[Screen::SCREEN_SHOP]);
-                delete(this->mScreens[Screen::SCREEN_LEVELS]);
+                this->mScreens[Screen::SCREEN_MENU]->release();
+                this->mScreens[Screen::SCREEN_SETTINGS]->release();
+                this->mScreens[Screen::SCREEN_CREDITS]->release();
+                this->mScreens[Screen::SCREEN_PROGRESS]->release();
+                this->mScreens[Screen::SCREEN_MORE]->release();
+                this->mScreens[Screen::SCREEN_LANGUAGE]->release();
+                this->mScreens[Screen::SCREEN_MODE]->release();
+                this->mScreens[Screen::SCREEN_SHOP]->release();
+                this->mScreens[Screen::SCREEN_LEVELS]->release();
                     
                 break;
                     

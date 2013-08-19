@@ -23,7 +23,7 @@ ModeHelp* ModeHelp::m_Instance = NULL;
 
 ModeHelp::~ModeHelp()
 {
-    CC_SAFE_RELEASE(this->mList);
+    this->mList->release();
 }
 
 ModeHelp::ModeHelp(CCNode* pParent) :
@@ -56,6 +56,7 @@ ModeHelp* ModeHelp::create(CCNode* pParent)
 {
     ModeHelp* popup = new ModeHelp(pParent);
     popup->autorelease();
+    popup->retain();
     
     return popup;
 }

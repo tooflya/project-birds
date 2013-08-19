@@ -34,32 +34,40 @@ BoughtItem::BoughtItem(CCNode* pParent)
 
     this->setCascadeOpacityEnabled(true);
 
-    //this->mLights = new EntityManager(2, Entity::create("get_coins_light@2x.png"), this);
+    this->mLights = new BatchEntityManager(2, Entity::create("get_coins_light@2x.png"), this);
     this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this);
+
+  //  this->mTwitterButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, this, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
+   // this->mFacebookButton = Button::create("share.png", 1, 1, this, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
 
     this->mTextes[0] = new Text(Options::TEXT_SHOP_BOUGHT, this);
     this->mTextes[1] = new Text(Options::TEXT_SHOP_BOUGHT, this);
+    this->mTextes[2] = new Text(Options::TEXT_TAP_TO_CONTINUE, this);
 
     this->mIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+
+ //   this->mTwitterButton->create()->setCenterPosition(Utils::coord(270), Utils::coord(100));
+    //this->mFacebookButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
         
     for(int i = 0; i < 2; i++)
      {
-        //this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        //static_cast<Entity*>(this->mLights->objectAtIndex(i))->setScale(3.0);
+        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+        static_cast<Entity*>(this->mLights->objectAtIndex(i))->setScale(3.0);
     }
 
     this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(300));
     this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(380));
+    this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(450));
     
+    this->mTapToContinueAnimationReverse = false;
     this->mHideAnimation = false;
-    
-    this->scheduleUpdate();
 }
 
 BoughtItem* BoughtItem::create(CCNode* pParent)
 {
     BoughtItem* popup = new BoughtItem(pParent);
     popup->autorelease();
+    popup->retain();
     
     return popup;
 }
@@ -105,6 +113,7 @@ void BoughtItem::show(int pItemId)
     this->mIcon->setCurrentFrameIndex(pItemId);
 
     this->setOpacity(0.0);
+    this->mLights->setOpacity(0.0);
     this->runAction(CCFadeTo::create(0.5, 230.0));
 }
 
@@ -138,9 +147,9 @@ void BoughtItem::update(float pDeltaTime)
     
     for(int i = 0; i < 2; i++)
     {
-        //Entity* light = static_cast<Entity*>(this->mLights->objectAtIndex(i));
+        Entity* light = static_cast<Entity*>(this->mLights->objectAtIndex(i));
             
-        //light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
+        light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
     }
 
     if(this->mHideAnimation)
@@ -154,6 +163,30 @@ void BoughtItem::update(float pDeltaTime)
             this->onHide();
         }
     }
+
+    this->mLights->setOpacity(this->getOpacity());
+    
+    if(true)
+    {
+        if(this->mTapToContinueAnimationReverse)
+        {
+            this->mTextes[2]->setOpacity(this->mTextes[2]->getOpacity() - 5.0);
+            
+            if(this->mTextes[2]->getOpacity() <= 20.0)
+            {
+                this->mTapToContinueAnimationReverse = !this->mTapToContinueAnimationReverse;
+            }
+        }
+        else
+        {
+            this->mTextes[2]->setOpacity(this->mTextes[2]->getOpacity() + 5.0);
+            
+            if(this->mTextes[2]->getOpacity() >= 245.0)
+            {
+                this->mTapToContinueAnimationReverse = !this->mTapToContinueAnimationReverse;
+            }
+        }
+    }
 }
     
 void BoughtItem::onEnter()
@@ -162,6 +195,8 @@ void BoughtItem::onEnter()
     pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
        
     CCLayer::onEnter();
+    
+    this->scheduleUpdate();
 }
     
 void BoughtItem::onExit()
@@ -170,6 +205,9 @@ void BoughtItem::onExit()
     pDirector->getTouchDispatcher()->removeDelegate(this);
       
     CCLayer::onExit();
+
+    this->stopAllActions();
+    this->unscheduleAllSelectors();
 }
     
 bool BoughtItem::ccTouchBegan(CCTouch* touch, CCEvent* event)

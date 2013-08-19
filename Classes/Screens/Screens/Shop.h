@@ -6,8 +6,10 @@
 #include "BuyItem.h"
 #include "GetCoins.h"
 #include "BoughtItem.h"
+#include "PaymentProceed.h"
 
 #include "Item.h"
+#include "AnimatedCoin.h"
 
 #include "AppDelegate.h"
 
@@ -35,6 +37,8 @@ class Shop : public Screen
         Entity* mBackgroundDecorations[2];
         Entity* mBackground;
         Entity* mCoin;
+
+        EntityManager* mPurchaseCoins;
         
         Button* mBackButton;
         Button* mTablet;
@@ -92,10 +96,9 @@ class Shop : public Screen
         // ===========================================================
 
         static int CLICKED_ITEM_ID;
-
         static int ITEMS_COUNT[3];
-
         static int ACTION;
+        static int PURCHASE_ID;
 
         // ===========================================================
         // Fields
@@ -109,6 +112,7 @@ class Shop : public Screen
     
         Popup* mBuyItemPopup;
         Popup* mGetCoinsPopup;
+        Popup* mPaymentProceed;
         
         BoughtItem* mBoughtItem;
 
@@ -117,7 +121,14 @@ class Shop : public Screen
         float mAnimationOnItemBoughtTime;
         float mAnimationOnItemBoughtTimeElapsed;
 
+        float mIsAnimationPurchaseTime;
+        float mIsAnimationPurchaseTimeElapsed;
+
+        float mIsAnimationPurchaseTimeEpisode;
+        float mIsAnimationPurchaseTimeEpisodeElapsed;
+
         bool mIsAnimationOnItemBoughtRunning;
+        bool mIsAnimationPurchaseRunning;
 
         // ===========================================================
         // Constructors
@@ -132,6 +143,7 @@ class Shop : public Screen
         // ===========================================================
 
         void onItemBought(int pItemId);
+        void onPurchase(bool mProceed);
         
         // ===========================================================
         // Override Methods

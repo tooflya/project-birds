@@ -174,6 +174,8 @@ class Entity : public CCSprite, public Touchable
         static Entity* create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
         static Entity* create(EntityStructure pStructure, CCNode* pParent);
 
+        ~Entity();
+
         // ===========================================================
         // Methods
         // ===========================================================

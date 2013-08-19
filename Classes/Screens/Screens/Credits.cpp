@@ -57,6 +57,7 @@ Credits* Credits::create()
 {
     Credits* screen = new Credits();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }

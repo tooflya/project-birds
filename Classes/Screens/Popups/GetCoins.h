@@ -20,6 +20,8 @@ class GetCoins : public Popup
         // Fields
         // ===========================================================
     
+        int mPurchaseId;
+
         Button* mGetCoinsButtons[4];
     
         EntityManager* mLights;

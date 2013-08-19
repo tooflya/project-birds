@@ -57,7 +57,7 @@ const char* Options::SOUND_HIT = "Sound/hit.ogg";
 const char* Options::SOUND_BONUS_GONG = "Sound/bonus-gong.ogg";
 const char* Options::SOUND_BOMB_FUSE = "Sound/bomb-fuse.ogg";
 const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.ogg", "Sound/combo-blitz-backing.ogg", "Sound/combo-blitz-backing-end.ogg" };
-const char* Options::SOUND_SWOOSH= "swoosh.mp3";
+const char* Options::SOUND_SWOOSH= "Sound/swoosh.mp3";
 
 #else
 
@@ -325,6 +325,15 @@ Textes Options::TEXT_EVENTS[90] =
       { "", FONT, 0, 341 }, { "", FONT, 0, 342 }, { "", FONT, 0, 343 }, { "", FONT, 0, 344 }, { "", FONT, 0, 345 }, { "", FONT, 0, 346 }, { "", FONT, 0, 347 }, { "", FONT, 0, 348 }, { "", FONT, 0, 349 }, { "", FONT, 0, 350 }
 };
 Textes Options::TEXT_GAME_CLASSIC_BONUS_TIME = { "", FONT, 72, 351 };
+Textes Options::TEXT_PAYMENT_STRING[6] =
+  {
+    {"", FONT, 48, 352},
+    {"", FONT, 36, 353}, 
+    {"", FONT, 36, 354}, 
+    {"", FONT, 36, 355}, 
+    {"", FONT, 36, 356},
+    {"", FONT, 46, 357}
+  };
 
 // ===========================================================
 // Fields
@@ -721,6 +730,23 @@ void Options::changeLanguage()
 
             TEXT_EVENTS[30].string = "You have one minute!";
             TEXT_EVENTS[30].size = 42;
+
+            TEXT_PAYMENT_STRING[0].string = "Request processing...";
+
+            #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+
+            TEXT_PAYMENT_STRING[1].string = "Your request is being processed by Google Play payment system. This may take some time.";
+
+            #else
+
+            TEXT_PAYMENT_STRING[1].string = "Your request is being processed by Apple Store payment system. This may take some time.";
+
+            #endif
+
+            TEXT_PAYMENT_STRING[2].string = "Your request is \n being processed.";
+            TEXT_PAYMENT_STRING[3].string = "Your request is \n being processed..";
+            TEXT_PAYMENT_STRING[4].string = "Your request is \n being processed...";
+            TEXT_PAYMENT_STRING[5].string = "Cancel";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1081,6 +1107,22 @@ void Options::changeLanguage()
 
             TEXT_EVENTS[30].string = "У вас есть минута!";
             TEXT_EVENTS[30].size = 42;
+
+            TEXT_PAYMENT_STRING[0].string = "Обработка запроса...";
+
+            #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+
+            TEXT_PAYMENT_STRING[1].string = "Ваш запрос обрабатывается системой платежей Apple Store. Это может занять некоторое время.";
+
+            #else
+
+            TEXT_PAYMENT_STRING[1].string = "Ваш запрос обрабатывается системой платежей Google Play. Это может занять некоторое время.";
+
+            #endif
+            TEXT_PAYMENT_STRING[2].string = "Ваш запрос \n обрабатывается.";
+            TEXT_PAYMENT_STRING[3].string = "Ваш запрос \n обрабатывается..";
+            TEXT_PAYMENT_STRING[4].string = "Ваш запрос \n обрабатывается...";
+            TEXT_PAYMENT_STRING[5].string = "Отмена";
         break;
     }
     
@@ -1436,8 +1478,15 @@ void Options::changeLanguage()
     TEXTES_HOLDER[349] = TEXT_EVENTS[88];
     TEXTES_HOLDER[350] = TEXT_EVENTS[89];
     TEXTES_HOLDER[351] = TEXT_GAME_CLASSIC_BONUS_TIME;
+    TEXTES_HOLDER[352] = TEXT_PAYMENT_STRING[0];
+    TEXTES_HOLDER[353] = TEXT_PAYMENT_STRING[1];
+    TEXTES_HOLDER[354] = TEXT_PAYMENT_STRING[2];
+    TEXTES_HOLDER[355] = TEXT_PAYMENT_STRING[3];
+    TEXTES_HOLDER[356] = TEXT_PAYMENT_STRING[4];
+    TEXTES_HOLDER[357] = TEXT_PAYMENT_STRING[5];
+  
     
-    for(int i = 0; i <= 351; i++)
+    for(int i = 0; i <= 357; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

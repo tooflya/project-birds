@@ -6,6 +6,11 @@
 #include "EntityManager.h"
 #include "BatchEntityManager.h"
 
+Entity::~Entity()
+{
+    //this->removeAllChildrenWithCleanup(true);
+}
+
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)
 {
     CCSpriteFrame *pFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(pszFileName);
@@ -13,20 +18,18 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     if(pFrame == NULL)
     {
         this->initWithFile(pszFileName);
-
-        this->mTextureFileName = pszFileName;
     }
     else
     {
         this->initWithSpriteFrame(pFrame);
-
-        this->mTextureFileName = pszFileName;
     }
     
     if(pParent)
     {
         pParent->addChild(this);
     }
+
+    this->mTextureFileName = pszFileName;
 
     this->mWidth = pWidth >= 0 ? Utils::coord(pWidth) : (pFrame == NULL ? this->getTextureRect().size.width : pFrame->getRect().size.width);
     this->mHeight = pHeight >= 0 ? Utils::coord(pHeight) : (pFrame == NULL ? this->getTextureRect().size.height : pFrame->getRect().size.height);
@@ -118,10 +121,6 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     this->mIsAnimationReverseNeed = false;
 
     this->destroy();
-
-    this->unscheduleUpdate();
-    
-    this->scheduleUpdate();
 }
 
 Entity::Entity()
@@ -580,11 +579,15 @@ void Entity::stopAnimation()
 void Entity::onEnter()
 {
     CCSprite::onEnter();
+
+    this->scheduleUpdate();
 }
 
 void Entity::onExit()
 {
     CCSprite::onExit();
+
+    this->unscheduleAllSelectors();
 }
 
 void Entity::onTouch(CCTouch* touch, CCEvent* event)
@@ -797,9 +800,6 @@ void Entity::update(float pDeltaTime)
 
 void Entity::draw()
 {
-    /*this->glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    this->glBlendEquation(GL_FUNC_ADD);*/
-
     CCSprite::draw();
 }
 

@@ -14,7 +14,7 @@ class Loader : public Screen
         // Constants
         // ===========================================================
     
-        static const char* TEXTURE_LIBRARY[3];
+        static TextureStructure TEXTURE_LIBRARY[3];
 
         // ===========================================================
         // Fields
@@ -25,11 +25,15 @@ class Loader : public Screen
     
         float mCircleAnimationTime;
         float mCircleAnimationTimeElapsed;
+
+        float mLoadingTime;
+        float mLoadingTimeElapsed;
     
         bool mTapToContinueAnimation;
         bool mTapToContinueAnimationReverse;
     
         bool mIsWorkDone;
+        bool mLoading;
     
         Entity* mBackground;
         Entity* mBird;
@@ -104,6 +108,8 @@ class Loader : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+
+        void startLoading();
         
         // ===========================================================
         // Override Methods

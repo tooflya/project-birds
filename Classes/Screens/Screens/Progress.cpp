@@ -23,13 +23,11 @@ Progress* Progress::m_Instance = NULL;
 
 Progress::~Progress()
 {
-    CC_SAFE_RELEASE(this->mResetPopup);
+    this->mResetPopup->release();
 }
 
 Progress::Progress()
 {
-    this->mResetPopup = ResetProgress::create(this);
-
     CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
@@ -50,6 +48,8 @@ Progress::Progress()
     
     text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
     
+    this->mResetPopup = ResetProgress::create(this);
+    
     m_Instance = this;
 }
 
@@ -57,6 +57,7 @@ Progress* Progress::create()
 {
     Progress* screen = new Progress();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }

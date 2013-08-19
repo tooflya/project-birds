@@ -243,10 +243,9 @@ class TouchLayer : public CCLayer
 Shop* Shop::m_Instance = NULL;
 
 int Shop::CLICKED_ITEM_ID = -1;
-
 int Shop::ITEMS_COUNT[3] = { 11, 9, 5 };
-
- int Shop::ACTION = -1;
+int Shop::ACTION = -1;
+int Shop::PURCHASE_ID = -1;
 
 // ===========================================================
 // Fields
@@ -258,9 +257,10 @@ int Shop::ITEMS_COUNT[3] = { 11, 9, 5 };
 
 Shop::~Shop()
 {
-    delete(this->mBuyItemPopup);
-    delete(this->mGetCoinsPopup);
-    delete(this->mBoughtItem);
+    this->mBuyItemPopup->release();
+    this->mGetCoinsPopup->release();
+    this->mBoughtItem->release();
+    this->mPaymentProceed->release();
 }
 
 Shop::Shop()
@@ -275,6 +275,8 @@ Shop::Shop()
     this->addChild(spriteBatch);
     this->addChild(spriteBatch2);
     
+    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create(), spriteBatch2, 3);
+
     this->mTablet = Button::create("shop_money_bg@2x.png", 1, 1, spriteBatch2, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
     this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
     this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
@@ -383,8 +385,10 @@ Shop::Shop()
     this->mBuyItemPopup = BuyItem::create(this);
     this->mGetCoinsPopup = GetCoins::create(this);
     this->mBoughtItem = BoughtItem::create(this);
+    this->mPaymentProceed = PaymentProceed::create(this);
     
     this->mIsAnimationOnItemBoughtRunning = false;
+    this->mIsAnimationPurchaseRunning = false;
 
     m_Instance = this;
 }
@@ -393,6 +397,7 @@ Shop* Shop::create()
 {
     Shop* screen = new Shop();
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }
@@ -509,6 +514,49 @@ void Shop::onItemBought(int pItemId)
     }
 }
 
+void Shop::onPurchase(bool pProceed)
+{
+    if(pProceed)
+    {
+        this->mPaymentProceed->hide();
+
+        switch(PURCHASE_ID)
+        {
+            case 0:
+                this->mIsAnimationPurchaseTime = 5.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.2;
+                
+                AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+            break;
+            case 1:
+                this->mIsAnimationPurchaseTime = 7.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.15;
+                
+                AppDelegate::addCoins(5000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+            break;
+            case 2:
+                this->mIsAnimationPurchaseTime = 10.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.1;
+                
+                AppDelegate::addCoins(15000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+            break;
+            case 3:
+                this->mIsAnimationPurchaseTime = 15.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.05;
+                
+                AppDelegate::addCoins(50000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+            break;
+        }
+
+        this->mIsAnimationPurchaseRunning = true;
+        this->mIsAnimationPurchaseTimeElapsed = 0;
+    }
+    else
+    {
+        this->mPaymentProceed->show();
+    }
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -526,7 +574,7 @@ void Shop::update(float pDeltaTime)
             this->mAnimationOnItemBoughtTimeElapsed = 0;
             this->mIsAnimationOnItemBoughtRunning = false;
 
-            this->mBoughtItem->hide();
+            //this->mBoughtItem->hide();
         }
     }
 
@@ -546,11 +594,45 @@ void Shop::update(float pDeltaTime)
         {
             c = 11;
         }
+        else if(abs(realCoinsCount - this->mCoins) > 1111)
+        {
+            c = 111;
+        }
+        else if(abs(realCoinsCount - this->mCoins) > 11111)
+        {
+            c = 1111;
+        }
+        else if(abs(realCoinsCount - this->mCoins) > 111111)
+        {
+            c = 11111;
+        }
 
         this->mCoins += realCoinsCount < this->mCoins ? -c : c;
 
         this->mCoinsCountText->setString(Utils::intToString(this->mCoins).c_str());
         this->mCoinsCountText->setCenterPosition(this->mTablet->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mTablet->getCenterY());
+    }
+
+    /** Purchase animation **/
+
+    if(this->mIsAnimationPurchaseRunning)
+    {
+        this->mIsAnimationPurchaseTimeElapsed += pDeltaTime;
+        this->mIsAnimationPurchaseTimeEpisodeElapsed += pDeltaTime;
+
+        if(this->mIsAnimationPurchaseTimeElapsed >= this->mIsAnimationPurchaseTime)
+        {
+            this->mIsAnimationPurchaseTimeElapsed = 0;
+
+            this->mIsAnimationPurchaseRunning = false;
+        }
+
+        if(this->mIsAnimationPurchaseTimeEpisodeElapsed >= this->mIsAnimationPurchaseTimeEpisode)
+        {
+            this->mIsAnimationPurchaseTimeEpisodeElapsed = 0;
+
+            this->mPurchaseCoins->create();
+        }
     }
 
     this->mCoinsCountText->setScale(this->mTablet->getScaleX());

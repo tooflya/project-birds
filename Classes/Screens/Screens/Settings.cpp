@@ -80,7 +80,7 @@ Settings* Settings::create()
 {
     Settings* screen = new Settings();
     screen->autorelease();
-    //screen->retain();
+    screen->retain();
     
     return screen;
 }
