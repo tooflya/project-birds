@@ -34,9 +34,9 @@ PaymentProceed::PaymentProceed(CCNode* pParent) :
         this->mCancelButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mCancelButton->setText(Options::TEXT_PAYMENT_STRING[5]);
 
-        this->mTextes[0] = new Text(Options::TEXT_PAYMENT_STRING[0], ccp(Utils::coord(500), 0), this);
-        this->mTextes[1] = new Text(Options::TEXT_PAYMENT_STRING[1], ccp(Utils::coord(500), 0), this);
-        this->mTextes[2] = new Text(Options::TEXT_PAYMENT_STRING[4], ccp(Utils::coord(500), 0), this);
+        this->mTextes[0] = Text::create(Options::TEXT_PAYMENT_STRING[0], ccp(Utils::coord(500), 0), this);
+        this->mTextes[1] = Text::create(Options::TEXT_PAYMENT_STRING[1], ccp(Utils::coord(500), 0), this);
+        this->mTextes[2] = Text::create(Options::TEXT_PAYMENT_STRING[4], ccp(Utils::coord(500), 0), this);
 
         this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(250));
         this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(0));

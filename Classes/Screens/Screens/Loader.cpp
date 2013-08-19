@@ -18,9 +18,9 @@ int Loader::ACTION = -1;
 
 TextureStructure Loader::TEXTURE_LIBRARY[3] =
 {
-    {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
-    {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
-    {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
+    {"TextureAtlas6.png", "TextureAtlas6.plist"},
+    {"TextureAtlas7.png", "TextureAtlas7.plist"},
+    {"TextureAtlas8.png", "TextureAtlas8.plist"},
     //{"birds_sprite@2x.png", NULL},
     //{"special_birds_sprite@2x.png", NULL}
 };
@@ -33,23 +33,28 @@ TextureStructure Loader::TEXTURE_LIBRARY[3] =
 // Constructors
 // ===========================================================
 
+Loader::~Loader()
+{
+    this->mCircles->release();
+}
+
 Loader::Loader()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.png");
     this->addChild(spriteBatch);
 
     this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);
-    this->mCircles = new EntityManager(15, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
+    this->mCircles = EntityManager::create(15, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
     this->mBird = Entity::create("preload-lvl-bird@2x.png", spriteBatch);
 
     
-    this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
+    this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     
-    this->mTipText = new Text(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH - Utils::coord(50), 0), this);
+    this->mTipText = Text::create(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH - Utils::coord(50), 0), this);
 
     for(int i = 0; i < 5; i++)
     {
@@ -79,7 +84,7 @@ Loader::Loader()
     this->mCircleAnimationTime = 0.5;
     this->mCircleAnimationTimeElapsed = 0;
 
-    this->mLoadingTime = 1.0;
+    this->mLoadingTime = 3.5;
     this->mLoadingTimeElapsed = 0;
 
     this->mLoading = false;
@@ -164,7 +169,6 @@ void Loader::startLoading()
     switch(ACTION)
     {
         default:
-            
             this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
     
             for(int i = 0; i < this->mNumberOfSprites + 1; i++)

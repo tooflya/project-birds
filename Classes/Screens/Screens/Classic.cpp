@@ -3,6 +3,8 @@
 
 #include "Classic.h"
 
+#include "Loader.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -29,7 +31,7 @@ Classic::~Classic()
 Classic::Classic() :
     Game()
     {
-        //this->mEventLayer = CCLayer::create();
+        /*this->mEventLayer = CCLayer::create();
         
         CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
         CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
@@ -44,15 +46,15 @@ Classic::Classic() :
         this->mBackground = Entity::create("game_gui_bg_summer@2x.png", spriteBatch1);
         this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", spriteBatch1);
 
-        /*/this->mConfetti = new EntityManager(300, new Confetti(), spriteBatch1);
+        /this->mConfetti = new EntityManager(300, new Confetti(), spriteBatch1);
         //this->mStars = new EntityManager(1000, new StarParticle(), spriteBatch1);
 
-        /*this->mCountText = new Text((Textes) {"0", Options::FONT, 80, -1}, this);
+        this->mCountText = new Text((Textes) {"0", Options::FONT, 80, -1}, this);
         this->mBestCountText = new Text(Options::TEXT_GAME_BEST, this);
 
         this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);*/
+        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
 
         //this->mDust = new EntityManager(100, new Dust(), spriteBatch1);
         //this->mMarks = new EntityManager(200, new Mark(), spriteBatch1);
@@ -63,7 +65,7 @@ Classic::Classic() :
         //this->mExplosionsBasic = new EntityManager(10, new ExplosionBasic(), spriteBatch2);
        // this->mLifes = new EntityManager(3, Entity::create("lifes@2x.png", 1, 2), spriteBatch1);
 
-        /*this->mLevelUpText = new Text(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
+        this->mLevelUpText = new Text(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
         this->mBonusTimeText = new Text(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
 
         this->mEventPanel = new EventPanel(this);
@@ -79,7 +81,7 @@ Classic::Classic() :
         this->mLevelUpText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
         this->mLevelUpText->setOpacity(0);
         this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
-        this->mBonusTimeText->setOpacity(0);*/
+        this->mBonusTimeText->setOpacity(0);
 
         //this->mPausePopup = new ClassicPause(this);
         //this->mEndScreen = new ClassicEnd(Splash::TYPE_CLASSIC, this);
@@ -99,7 +101,7 @@ Classic::Classic() :
         this->mAlgorithmBirdsTime1 = 2.0;
         this->mAlgorithmBirdsTime2 = 7.0;
 
-        this->mIsLevelUpAnimation = false;
+        this->mIsLevelUpAnimation = false;*/
 
         /*for(int i = 0; i < 3; i++)
         {
@@ -178,7 +180,7 @@ void Classic::onTouchButtonsCallback(const int pAction, const int pID)
 void Classic::startGame()
 {
     Game::startGame();
-
+    return;
     this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;
 
@@ -187,12 +189,12 @@ void Classic::startGame()
     this->mLevelUpText->setOpacity(0);
     this->mBonusTimeText->setOpacity(0);
 
-    for(int i = 0; i < 3; i++)
+    /*for(int i = 0; i < 3; i++)
     {
         Entity* entity = static_cast<Entity*>(this->mLifes->objectAtIndex(i));
 
         entity->setCurrentFrameIndex(0);
-    }
+    }*/
     
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
 }
@@ -215,7 +217,7 @@ void Classic::levelUp()
 
 void Classic::throwConfetti()
 {return;
-    this->mConfetti->clear();
+    //this->mConfetti->clear();
 
     float x = 0;
     float y = Utils::coord(200);
@@ -226,7 +228,7 @@ void Classic::throwConfetti()
         {
             x = Utils::coord(Utils::randomf(40.0, 40.0)) * j;
 
-            this->mConfetti->create()->setCenterPosition(Options::CAMERA_CENTER_X + x, Options::CAMERA_HEIGHT + y);
+            //this->mConfetti->create()->setCenterPosition(Options::CAMERA_CENTER_X + x, Options::CAMERA_HEIGHT + y);
         }
 
         y -= Utils::coord(Utils::randomf(5.0, 10.0));
@@ -308,7 +310,7 @@ void Classic::update(float pDeltaTime)
 
             for(int i = 0; i < 2; i++)
             {
-                static_cast<StarParticle*>(this->mStars->create())->setType(1)->onCreate();
+                //static_cast<StarParticle*>(this->mStars->create())->setType(1)->onCreate();
             }
 
             if(this->mChalangeTimeElapsed >= 3.0) // TODO: Adjust chalange time.
@@ -401,13 +403,18 @@ void Classic::onEnter()
     }*/
 }
 
+void Classic::onEnterTransitionDidFinish()
+{
+    Game::onEnterTransitionDidFinish();
+}
+
 void Classic::removeLife()
 {
     if(LIFES < 3 && !this->mGamePaused && this->mGameRunning)
     {
         Game::removeLife();
 
-        Entity* entity = static_cast<Entity*>(this->mLifes->objectAtIndex(++LIFES));
+        /*Entity* entity = static_cast<Entity*>(this->mLifes->objectAtIndex(++LIFES));
 
         float scale = entity->getScale();
 
@@ -418,7 +425,7 @@ void Classic::removeLife()
         if(LIFES >= 2)
         {
             this->onGameEnd();
-        }
+        }*/
     }
 }
 

@@ -36,7 +36,7 @@ Menu::~Menu()
 
 Menu::Menu()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
 
     this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
     this->mPlayDecoration = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
@@ -44,6 +44,7 @@ Menu::Menu()
     this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
     this->mTwitterButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
     this->mFacebookButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
+    this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, onTouchButtonsCallback);
     this->mSettingsButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
     
     this->addChild(spriteBatch);
@@ -61,6 +62,7 @@ Menu::Menu()
     this->mSettingsButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
     this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
+    this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
     this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     
@@ -125,6 +127,11 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
                     // TODO: Call JNI
 
                 break;
+                case Options::BUTTONS_ID_MENU_VK:
+                    
+                    // TODO: Call JNI
+                    
+                break;
             }
         break;
 
@@ -159,6 +166,17 @@ void Menu::update(float pDeltaTime)
 void Menu::onEnter()
 {
     Screen::onEnter();
+    
+    if(Options::CURRENT_LANGUAGE == 1)
+    {
+        this->mVkButton->setVisible(true);
+        this->mFacebookButton->setVisible(false);
+    }
+    else
+    {
+        this->mVkButton->setVisible(false);
+        this->mFacebookButton->setVisible(true);
+    }
 }
 
 void Menu::onExit()

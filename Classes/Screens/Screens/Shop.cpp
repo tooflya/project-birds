@@ -261,12 +261,16 @@ Shop::~Shop()
     this->mGetCoinsPopup->release();
     this->mBoughtItem->release();
     this->mPaymentProceed->release();
+    
+    this->mPurchaseCoins->release();
+    
+    this->mWeaponChecker->release();
 }
 
 Shop::Shop()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
-    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas5.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
+    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas5.png");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
@@ -281,7 +285,7 @@ Shop::Shop()
     this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
     this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
 
-    this->mCoinsCountText = new Text((Textes) {"0", Options::FONT, 64, -1}, this);
+    this->mCoinsCountText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this);
     
     for(int i = 0; i < 9; i++)
     {
@@ -311,7 +315,7 @@ Shop::Shop()
             
             if(j == 0)
             {
-                Text* text = new Text(Options::TEXT_SHOP_DESCRIPTION[i], this->mLayersA[i + 1]);
+                Text* text = Text::create(Options::TEXT_SHOP_DESCRIPTION[i], this->mLayersA[i + 1]);
                 text->setCenterPosition(shelf->getCenterX() - shelf->getWidth() / 2 + Utils::coord(180), shelf->getCenterY());
                 
                 shelf->setCurrentFrameIndex(0);
@@ -335,7 +339,7 @@ Shop::Shop()
             {
                 if(AppDelegate::isItemSelected(j) && this->mWeaponChecker == NULL)
                 {
-                    this->mWeaponChecker = Entity::create("shop_weapon_check@2x.png", item);
+                    this->mWeaponChecker = Entity::create("shop_weapon_check@2x.png", item);this->mWeaponChecker->retain();
                     this->mWeaponChecker->create()->setCenterPosition(item->getWidth() / 2 + Utils::coord(64), item->getHeight() / 2 - Utils::coord(64));
                     
                     Options::SELECTED_WEAPON_ID = itemID;
@@ -656,6 +660,17 @@ void Shop::onEnter()
     }
 
     this->mCoins = 0;
+    this->mCoins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
+    
+    this->mWeaponChecker->removeFromParentAndCleanup(false);
+    
+    int id = AppDelegate::getSelectedWeaponId();
+    this->mItems[id]->addChild(this->mWeaponChecker);
+    this->mWeaponChecker->setCenterPosition(this->mItems[id]->getWidth() / 2 + Utils::coord(72), this->mItems[id]->getHeight() / 2 - Utils::coord(72));
+    
+    this->mCoinsCountText->setString(Utils::intToString(this->mCoins).c_str());
+    this->mCoinsCountText->setCenterPosition(this->mTablet->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mTablet->getCenterY());
+    
 }
 
 void Shop::onExit()
@@ -666,6 +681,9 @@ void Shop::onExit()
     {
         this->mLayersA[i]->setPosition(ccp(0, this->mLayersA[i]->getPosition().y));
     }
+    
+    this->mIsAnimationPurchaseRunning = false;
+    this->mPurchaseCoins->clear();
 }
 
 #endif

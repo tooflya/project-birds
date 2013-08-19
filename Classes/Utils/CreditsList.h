@@ -84,6 +84,7 @@ class CreditsList : public List
         // ===========================================================
     
         CreditsList(CCNode* pParent);
+        ~CreditsList();
 
         // ===========================================================
         // Methods

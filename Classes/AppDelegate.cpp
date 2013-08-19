@@ -154,7 +154,7 @@ void AppDelegate::selectItem(int pItem)
 {
     char text[64];
 
-    for(int i = 0; i < 30; i++)
+    for(int i = 0; i < 20; i++)
     {
         sprintf(text, "weapon_%d_selected", i);
 
@@ -164,6 +164,23 @@ void AppDelegate::selectItem(int pItem)
     sprintf(text, "weapon_%d_selected", pItem);
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 1);
+}
+
+int AppDelegate::getSelectedWeaponId()
+{
+    char text[64];
+    
+    for(int i = 0; i < 20; i++)
+    {
+        sprintf(text, "weapon_%d_selected", i);
+        
+        if(CCUserDefault::sharedUserDefault()->getIntegerForKey(text) == 1)
+        {
+            return i;
+        }
+    }
+    
+    return 0;
 }
 
 void AppDelegate::buyItem(int pItem)

@@ -23,12 +23,13 @@ PleaseRate* PleaseRate::m_Instance = NULL;
 
 PleaseRate::~PleaseRate()
 {
+    this->mLights->release();
 }
 
 PleaseRate::PleaseRate(CCNode* pParent) :
     Popup(pParent)
     {
-        //this->mLights = new EntityManager(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
+        this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
     
         this->mIllustration = Entity::create("popup_rate_picture@2x.png", this->mSpriteBatch);
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
@@ -39,12 +40,12 @@ PleaseRate::PleaseRate(CCNode* pParent) :
         
         for(int i = 0; i < 2; i++)
         {
-            //this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(340));
-            //((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
-            //((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
+            this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(340));
+            ((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
+            ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
         }
         
-        Text* text1 = new Text(Options::TEXT_RATE_STRING_1, ccp(Utils::coord(512), 0), this);
+        Text* text1 = Text::create(Options::TEXT_RATE_STRING_1, ccp(Utils::coord(512), 0), this);
         
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
         
@@ -107,7 +108,7 @@ void PleaseRate::onShow()
 
     for(int i = 0; i < 2; i++)
     {
-        //((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
+        ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(1.0, 255.0));
     }
 }
 
@@ -127,8 +128,8 @@ void PleaseRate::hide()
     
     for(int i = 0; i < 2; i++)
     {
-        //((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
-        //((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
+        ((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
+        ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
     }
 }
 
@@ -142,9 +143,9 @@ void PleaseRate::update(float pDeltaTime)
     
     for(int i = 0; i < 2; i++)
     {
-        //Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
+        Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
         
-        //light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
+        light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
     }
 }
 

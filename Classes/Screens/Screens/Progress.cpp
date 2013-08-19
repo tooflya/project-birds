@@ -28,7 +28,7 @@ Progress::~Progress()
 
 Progress::Progress()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_PROGRESS_BACK, onTouchButtonsCallback);
@@ -44,7 +44,7 @@ Progress::Progress()
     this->mResetButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(200));
     this->mResetButton->setText(Options::TEXT_PROGRESS_RESET);
     
-    Text* text1 = new Text(Options::TEXT_PROGRESS_STRING_1, CCSize(Utils::coord(700), 0), this);
+    Text* text1 = Text::create(Options::TEXT_PROGRESS_STRING_1, CCSize(Utils::coord(700), 0), this);
     
     text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
     

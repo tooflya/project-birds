@@ -30,8 +30,8 @@ ModeHelpList::ModeHelpList(CCNode* pParent) :
         this->setListType(List::TYPE_VERTICAL);
         this->setParentType(List::PARENT_TYPE_POPUP);
 
-        this->mText[0] = new Text(Options::TEXT_MODEHELP_HELP[0], this);
-        this->mText[1] = new Text(Options::TEXT_MODEHELP_HELP[1], CCSize(Utils::coord(450), 0), this);
+        this->mText[0] = Text::create(Options::TEXT_MODEHELP_HELP[0], this);
+        this->mText[1] = Text::create(Options::TEXT_MODEHELP_HELP[1], CCSize(Utils::coord(450), 0), this);
 
         this->mText[0]->setCenterPosition((static_cast<Entity*>(pParent))->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(250));
         this->mText[1]->setCenterPosition((static_cast<Entity*>(pParent))->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2 + Utils::coord(140));
@@ -47,5 +47,12 @@ ModeHelpList::ModeHelpList(CCNode* pParent) :
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void ModeHelpList::onEnter()
+{
+    List::onEnter();
+    
+    this->mText[1]->setCenterPosition((static_cast<Entity*>(this->mParent))->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2 + Utils::coord(140));
+}
 
 #endif

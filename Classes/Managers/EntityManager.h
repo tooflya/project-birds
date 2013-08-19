@@ -14,17 +14,18 @@ class EntityManager : public CCArray
 
 		int mLastElementNumber;
 		int mCapacity;
-		int mZOrder;
+    int mZOrder;
+    
+    EntityManager(int pCreateCount, Entity* pEntity);
+    EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen);
+    EntityManager(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen);
+    EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
+    EntityManager();
 
 	public:
 		void init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
 		
         ~EntityManager();
-		EntityManager(int pCreateCount, Entity* pEntity);
-		EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen);
-		EntityManager(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen);
-        EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
-        EntityManager();
     
         static EntityManager* create(int pCreateCount, Entity* pEntity);
         static EntityManager* create(int pCreateCount, Entity* pEntity, CCNode* pScreen);
@@ -48,6 +49,8 @@ class EntityManager : public CCArray
 		void update(float pDeltaTime);
     
         void release();
+    
+        void setOpacity(GLubyte opacity);
 };
 
 #endif

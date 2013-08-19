@@ -40,7 +40,7 @@ EventPanel::EventPanel(Screen* pParent) :
 
         this->mIcon = Entity::create("info_panel_btn_sprite@2x.png", 3, 1, this);
 
-        this->mText = new Text(Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED, this);
+        this->mText = Text::create(Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED, this);
 
         this->mIcon->create()->setCenterPosition(Utils::coord(64), this->getHeight() / 2 + Utils::coord(32));
 

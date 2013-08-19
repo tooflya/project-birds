@@ -130,14 +130,14 @@ class Game : public Screen
 
         bool mChalange;
 
-        EntityManager* mBirds;
+        /*EntityManager* mBirds;
         EntityManager* mSpecialBirds;
         EntityManager* mMarks;
         EntityManager* mFeathers;
         EntityManager* mExplosionsBasic;
         EntityManager* mExplosions;
         EntityManager* mDust;
-        EntityManager* mStars;
+        EntityManager* mStars;*/
 
         // ===========================================================
         // Constructors

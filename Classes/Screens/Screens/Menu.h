@@ -33,6 +33,7 @@ class Menu : public Screen
         Entity* mShopButton;
         Entity* mTwitterButton;
         Entity* mFacebookButton;
+        Entity* mVkButton;
         Entity* mSettingsButton;
     
         Popup* mExitPopup;

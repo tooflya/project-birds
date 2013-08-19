@@ -5,11 +5,11 @@
 
 EntityManager::~EntityManager()
 {
-    //CC_SAFE_RELEASE(this->mParent);
+    
 }
 
 void EntityManager::init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen, int pZOrder)
-{this->retain();
+{
     this->initWithCapacity(pCreateCount);
 
     this->mZOrder = pZOrder;
@@ -21,7 +21,8 @@ void EntityManager::init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNod
     {
         Entity* currentEntity = pEntity->deepCopy();
         currentEntity->autorelease();
-
+        currentEntity->retain();
+        
         currentEntity->setEntityManager(this);
         currentEntity->setEntityManagerId(i);
 
@@ -63,7 +64,8 @@ EntityManager::EntityManager()
 EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pEntity);
-    //manager->autorelease();
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -71,7 +73,8 @@ EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity)
 EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* pScreen)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pEntity, pScreen);
-    //manager->autorelease();
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -79,7 +82,8 @@ EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* 
 EntityManager* EntityManager::create(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pMaxCount, pEntity, pScreen);
-    //manager->autorelease();
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -87,7 +91,8 @@ EntityManager* EntityManager::create(int pCreateCount, int pMaxCount, Entity* pE
 EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pEntity, pScreen, pZOrder);
-    //manager->autorelease();
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -95,7 +100,8 @@ EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* 
 EntityManager* EntityManager::create(int a)
 {
     EntityManager* manager = new EntityManager();
-    //manager->autorelease();
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -197,6 +203,14 @@ void EntityManager::update(float pDeltaTime)
 void EntityManager::release()
 {
     CCArray::release();
+}
+
+void EntityManager::setOpacity(GLubyte opacity)
+{
+    for(int i = 0; i < this->mParent->getChildrenCount(); i++)
+    {
+        static_cast<Entity*>(this->mParent->getChildren()->objectAtIndex(i))->setOpacity(opacity);
+    }
 }
 
 #endif

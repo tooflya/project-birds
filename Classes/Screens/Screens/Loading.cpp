@@ -13,11 +13,11 @@
 
 TextureStructure Loading::TEXTURE_LIBRARY[8] =
 {
-    {"TextureAtlas1.pvr.ccz", "TextureAtlas1.plist"},
-    {"TextureAtlas2.pvr.ccz", "TextureAtlas2.plist"},
-    {"TextureAtlas3.pvr.ccz", "TextureAtlas3.plist"},
-    {"TextureAtlas4.pvr.ccz", "TextureAtlas4.plist"},
-    {"TextureAtlas5.pvr.ccz", "TextureAtlas5.plist"},
+    {"TextureAtlas1.png", "TextureAtlas1.plist"},
+    {"TextureAtlas2.png", "TextureAtlas2.plist"},
+    {"TextureAtlas3.png", "TextureAtlas3.plist"},
+    {"TextureAtlas4.png", "TextureAtlas4.plist"},
+    {"TextureAtlas5.png", "TextureAtlas5.plist"},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},
     {"about_scroll_fill_small@2x.png", NULL}
@@ -41,7 +41,7 @@ Loading::Loading()
 {
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
 
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas1.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas1.png");
 
     this->mBackground = Entity::create("start_preloader_bg@2x.png", spriteBatch);
     this->mBarBackground = Entity::create("start_preload_bar@2x.png", spriteBatch);
@@ -57,7 +57,7 @@ Loading::Loading()
     
     this->addChild(spriteBatch);
 
-    this->mLoadingText = new Text(Options::TEXT_LOADING_1, this);
+    this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
     this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
 
     this->mLoading = false;

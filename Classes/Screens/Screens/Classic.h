@@ -39,8 +39,8 @@ class Classic : public Game
 
         bool mIsLevelUpAnimation;
 
-        EntityManager* mConfetti;
-        EntityManager* mLifes;
+        //EntityManager* mConfetti;
+        //EntityManager* mLifes;
 
         Text* mCountText;
         Text* mBestCountText;
@@ -129,6 +129,8 @@ class Classic : public Game
 
         void onEnter();
         void onExit();
+    
+        void onEnterTransitionDidFinish();
 
         void onGameStarted();
         void onGameEnd();

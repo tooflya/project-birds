@@ -161,7 +161,7 @@ class LevelButton : public Entity
     {
         this->setRegisterAsTouchable(true);
         
-        this->mText = new Text((Textes) {"0", Options::FONT, 64, -1}, this);
+        this->mText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this);
     }
     
     static LevelButton* create()
@@ -552,7 +552,7 @@ Levels::Levels()
 {
     this->mMainList = MainList::create(this);
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
@@ -570,7 +570,7 @@ Levels::Levels()
         this->mSlides[i] = Entity::create("choose_box_navi_sprite@2x.png", 1, 2, spriteBatch);
     }
 
-    this->mStarsCountText = new Text((Textes) {"206", Options::FONT, 64, -1}, this->mTablet);
+    this->mStarsCountText = Text::create((Textes) {"206", Options::FONT, 64, -1}, this->mTablet);
 
     this->addChild(this->mMainList->mLayers[0]);
     this->addChild(this->mMainList);

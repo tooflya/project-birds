@@ -44,7 +44,8 @@ ScreenManager::ScreenManager()
 ScreenManager* ScreenManager::create()
 {
     ScreenManager* manager = new ScreenManager();
-    //manager->autorelease();
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -98,8 +99,8 @@ void ScreenManager::load(int pAction, int pDo)
             switch(pDo)
             {
                 case 0:
-                
-                delete(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
+                    
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
                 
                 break;
                 
@@ -113,7 +114,7 @@ void ScreenManager::load(int pAction, int pDo)
                 this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
                 this->mScreens[Screen::SCREEN_MODE] = Mode::create();
                 this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
-                this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
+                //this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 
                 break;
             }
@@ -126,15 +127,15 @@ void ScreenManager::load(int pAction, int pDo)
             {
                 case 0:
                     
-                this->mScreens[Screen::SCREEN_MENU]->release();
-                this->mScreens[Screen::SCREEN_SETTINGS]->release();
-                this->mScreens[Screen::SCREEN_CREDITS]->release();
-                this->mScreens[Screen::SCREEN_PROGRESS]->release();
-                this->mScreens[Screen::SCREEN_MORE]->release();
-                this->mScreens[Screen::SCREEN_LANGUAGE]->release();
-                this->mScreens[Screen::SCREEN_MODE]->release();
-                this->mScreens[Screen::SCREEN_SHOP]->release();
-                this->mScreens[Screen::SCREEN_LEVELS]->release();
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MENU]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SETTINGS]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CREDITS]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MORE]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LANGUAGE]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MODE]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
+                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
                     
                 break;
                     

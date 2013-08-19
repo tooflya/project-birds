@@ -354,6 +354,16 @@ Options::Options()
 void Options::init()
 {
     Options::CURRENT_LANGUAGE = AppDelegate::getSelectedLanguage();
+    
+    if(CURRENT_LANGUAGE <= 0)
+    {
+        switch(CCApplication::sharedApplication()->getCurrentLanguage())
+        {
+            case kLanguageRussian:
+                CURRENT_LANGUAGE = 1;
+                break;
+        }
+    }
 
     Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
     Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
@@ -731,7 +741,7 @@ void Options::changeLanguage()
             TEXT_EVENTS[30].string = "You have one minute!";
             TEXT_EVENTS[30].size = 42;
 
-            TEXT_PAYMENT_STRING[0].string = "Request processing...";
+            TEXT_PAYMENT_STRING[0].string = "Request processing";
 
             #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
@@ -1108,15 +1118,15 @@ void Options::changeLanguage()
             TEXT_EVENTS[30].string = "У вас есть минута!";
             TEXT_EVENTS[30].size = 42;
 
-            TEXT_PAYMENT_STRING[0].string = "Обработка запроса...";
+            TEXT_PAYMENT_STRING[0].string = "Обработка запроса";
 
             #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
-            TEXT_PAYMENT_STRING[1].string = "Ваш запрос обрабатывается системой платежей Apple Store. Это может занять некоторое время.";
+            TEXT_PAYMENT_STRING[1].string = "Ваш запрос обрабатывается системой платежей Google Play. Это может занять некоторое время.";
 
             #else
 
-            TEXT_PAYMENT_STRING[1].string = "Ваш запрос обрабатывается системой платежей Google Play. Это может занять некоторое время.";
+            TEXT_PAYMENT_STRING[1].string = "Ваш запрос обрабатывается системой платежей Apple Store. Это может занять некоторое время.";
 
             #endif
             TEXT_PAYMENT_STRING[2].string = "Ваш запрос \n обрабатывается.";
@@ -1484,7 +1494,6 @@ void Options::changeLanguage()
     TEXTES_HOLDER[355] = TEXT_PAYMENT_STRING[3];
     TEXTES_HOLDER[356] = TEXT_PAYMENT_STRING[4];
     TEXTES_HOLDER[357] = TEXT_PAYMENT_STRING[5];
-  
     
     for(int i = 0; i <= 357; i++)
     {

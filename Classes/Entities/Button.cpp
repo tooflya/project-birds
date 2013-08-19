@@ -26,6 +26,7 @@ void Button::constructor(const int pButtonID, void (*pOnTouchCallback)(int, int)
         this->mID = pButtonID;
 
         this->mText = NULL;
+        this->mIsModal = false;
 
         this->setRegisterAsTouchable(true);
 }
@@ -109,13 +110,18 @@ void Button::setText(Textes pParams)
         parent = this->getParent();
     }
     
-    this->mText = new Text(pParams, parent);
+    this->mText = Text::create(pParams, parent);
     this->mText->setCenterPosition(this->getCenterX(), this->getCenterY());
 }
 
 void Button::setString(const char* pString)
 {
     this->mText->setString(pString);
+}
+
+void Button::setModal(bool pIsModal)
+{
+    this->mIsModal = pIsModal;
 }
 
 // ===========================================================
@@ -135,7 +141,7 @@ void Button::update(float pDeltaTime)
 void Button::onEnter()
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
-    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, this->mIsModal);
 
     Entity::onEnter();
 }
@@ -144,7 +150,7 @@ void Button::onExit()
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
     pDirector->getTouchDispatcher()->removeDelegate(this);
-        
+    
     Entity::onExit();
 }
 

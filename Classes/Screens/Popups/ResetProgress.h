@@ -39,6 +39,8 @@ class ResetProgress : public Popup
         // ===========================================================
     
         ResetProgress(CCNode* pParent);
+    
+        ~ResetProgress();
 
         // ===========================================================
         // Methods

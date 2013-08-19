@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Screens/Screens/Shop.cpp"
-         timestampString = "398315494.332026"
+         timestampString = "398630142.070965"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "368"
-         endingLineNumber = "368"
+         startingLineNumber = "372"
+         endingLineNumber = "372"
          landmarkName = "Shop::Shop()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "398321126.810979"
+         timestampString = "398607349.821505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "626"
-         endingLineNumber = "626"
+         startingLineNumber = "627"
+         endingLineNumber = "627"
          landmarkName = "Entity::ccTouchMoved(CCTouch* touch, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -45,11 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "398321126.810979"
+         timestampString = "398607349.821505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "627"
-         endingLineNumber = "627"
+         startingLineNumber = "628"
+         endingLineNumber = "628"
          landmarkName = "Entity::ccTouchMoved(CCTouch* touch, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -58,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "398321126.810979"
+         timestampString = "398607349.821505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "706"
-         endingLineNumber = "706"
+         startingLineNumber = "707"
+         endingLineNumber = "707"
          landmarkName = "Entity::update(float pDeltaTime)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -84,11 +84,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Managers/EntityManager.cpp"
-         timestampString = "398318500.925219"
+         timestampString = "398603340.821709"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "172"
-         endingLineNumber = "172">
+         startingLineNumber = "178"
+         endingLineNumber = "178">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Classes/Entities/Text.cpp"
+         timestampString = "398624097.344699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "222"
+         endingLineNumber = "222"
+         landmarkName = "Text::onExit()"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

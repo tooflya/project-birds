@@ -176,7 +176,7 @@
             <key>settings_btn_big@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1410,1770},{435,187}}</string>
+                <string>{{1583,1770},{435,187}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -186,19 +186,32 @@
                 <key>sourceSize</key>
                 <string>{435,187}</string>
             </dict>
+            <key>vk@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1410,1607},{169,182}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{169,182}}</string>
+                <key>sourceSize</key>
+                <string>{169,182}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>TextureAtlas2.pvr.ccz</string>
+            <string>TextureAtlas2.png</string>
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2d779427959131dedaf93a70d49c112b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:864dba2be8dad5dfe2b84ce3dd0d65f2:1/1$</string>
             <key>textureFileName</key>
-            <string>TextureAtlas2.pvr.ccz</string>
+            <string>TextureAtlas2.png</string>
         </dict>
     </dict>
 </plist>

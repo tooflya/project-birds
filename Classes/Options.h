@@ -162,7 +162,8 @@ class Options
         static const int BUTTONS_ID_MENU_SHOP  = 3002;
         static const int BUTTONS_ID_MENU_TWITTER  = 3003;
         static const int BUTTONS_ID_MENU_FACEBOOK  = 3004;
-        static const int BUTTONS_ID_MENU_SETTINGS  = 3005;
+        static const int BUTTONS_ID_MENU_VK = 3005;
+        static const int BUTTONS_ID_MENU_SETTINGS  = 3006;
         static const int BUTTONS_ID_LEVELS_BACK  = 4001;
         static const int BUTTONS_ID_MODE_BACK  = 5001;
         static const int BUTTONS_ID_MODE_CLASSIC  = 5002;
@@ -210,6 +211,10 @@ class Options
         static const int BUTTONS_ID_PAUSE_LEADERBOARD = 1906;
         static const int BUTTONS_ID_PAUSE_MODE = 1907;
         static const int BUTTONS_ID_MORE_BACK = 2001;
+        static const int BUTTONS_ID_SHARE = 2101;
+        static const int BUTTONS_ID_SHARE_TWITTER = 2102;
+        static const int BUTTONS_ID_SHARE_FACEBOOK = 2103;
+        static const int BUTTONS_ID_SHARE_VK = 2104;
     
         static Textes TEXT_SETTINGS_CREDITS;
         static Textes TEXT_SETTINGS_PROGRESS;

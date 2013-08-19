@@ -28,6 +28,8 @@ class Button : public Entity
         Text* mText;
 
         void (*mOnTouchCallback)(int, int);
+    
+        bool mIsModal;
 
         // ===========================================================
         // Constructors
@@ -101,6 +103,7 @@ class Button : public Entity
 
         void setText(Textes pParams);
         void setString(const char* pString);
+        void setModal(bool pIsModal);
         
         // ===========================================================
         // Override Methods

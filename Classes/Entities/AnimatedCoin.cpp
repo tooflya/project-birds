@@ -22,7 +22,7 @@
 AnimatedCoin::AnimatedCoin() :
     ImpulseEntity("coins@2x.png", 5, 4)
     {
-        this->animate(0.02);
+        this->animate(0.01);
     }
 
 AnimatedCoin* AnimatedCoin::create()
@@ -62,7 +62,7 @@ void AnimatedCoin::onCreate()
 
     if(Options::SOUND_ENABLE)
     {
-        const char* a[] = {"Sound/berry_count_ind_a.mp3", "Sound/berry_count_ind_b.mp3", "Sound/berry_count_ind_c.mp3", "Sound/berry_count_ind_d.mp3"};
+        const char* a[] = {"berry_count_ind_a.mp3", "berry_count_ind_b.mp3", "berry_count_ind_c.mp3", "berry_count_ind_d.mp3"};
         SimpleAudioEngine::sharedEngine()->playEffect(a[Utils::random(0, 3)]);
     }
 }

@@ -3,6 +3,8 @@
 
 #include "Game.h"
 
+#include "Loader.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -38,7 +40,7 @@ Game::Game() :
     
         this->mChalange = false;
 
-        this->addChild(TouchTrailLayer::create(), 10);
+        //this->addChild(TouchTrailLayer::create(), 10);
     }
 
 Game* Game::create()
@@ -67,7 +69,7 @@ void Game::startGame()
     this->mStartGameAnimation = 1.0;
     this->mStartGameAnimationElapsed = this->mStartGameAnimation;
     
-    this->mGameStartText->setOpacity(0.0);
+    //this->mGameStartText->setOpacity(0.0);
 
     //this->mBirds->clear();
     //this->mSpecialBirds->clear();
@@ -113,7 +115,7 @@ void Game::onBirBlow(int pType)
 
                 for(int i = 0; i < 100; i++)
                 {
-                    static_cast<StarParticle*>(this->mStars->create())->setType(2)->onCreate();
+                    //static_cast<StarParticle*>(this->mStars->create())->setType(2)->onCreate();
                 }
             }
 
@@ -132,7 +134,7 @@ void Game::onBirBlow(int pType)
 void Game::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
-    return;
+    
     /*if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
@@ -208,7 +210,7 @@ void Game::update(float pDeltaTime)
         {
             this->mStartGameAnimationElapsed = 0;
 
-            switch(++this->mStartGameAnimationIndex)
+            /*switch(++this->mStartGameAnimationIndex)
             {
                 case -1:
                 break;
@@ -232,13 +234,17 @@ void Game::update(float pDeltaTime)
 
                 this->onGameStarted();
                 break;
-            }
+             }*/
+            
+            Loader::ACTION = 3;
+            
+            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
         }
     }
 
     if(this->mEventLayer)
     {
-        this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));
+        //this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));
     }
 }
 
@@ -246,7 +252,7 @@ void Game::onEnter()
 {
     Screen::onEnter();
 
-    //this->startGame();
+    this->startGame();
 }
 
 void Game::onExit()

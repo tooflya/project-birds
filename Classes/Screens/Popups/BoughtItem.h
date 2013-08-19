@@ -3,10 +3,12 @@
 
 #include "Entity.h"
 #include "Button.h"
-#include "BatchEntityManager.h"
+#include "EntityManager.h"
 #include "Text.h"
+#include "Touchable.h"
+#include "Confetti.h"
 
-class BoughtItem : public CCLayerColor
+class BoughtItem : public CCLayerColor, public Touchable
 {
     protected:
         // ===========================================================
@@ -29,15 +31,22 @@ class BoughtItem : public CCLayerColor
 
         Button* mTwitterButton;
         Button* mFacebookButton;
-
-        BatchEntityManager* mLights;
+        Button* mVkButton;
+        Button* mShareButton;
+    
+        EntityManager* mLights;
+        EntityManager* mConfetti;
 
         Text* mTextes[3];
 
+        float mShowAnimationTimeElapsed;
         float mHideAnimationTimeElapsed;
-
+    
+        bool mShowAnimation;
         bool mHideAnimation;
         bool mTapToContinueAnimationReverse;
+        
+        bool mShare;
 
         // ===========================================================
         // Constructors
@@ -110,6 +119,8 @@ class BoughtItem : public CCLayerColor
 
         void onShow();
         void onHide();
+    
+        void throwConfetti();
         
         // ===========================================================
         // Override Methods
@@ -119,8 +130,8 @@ class BoughtItem : public CCLayerColor
 
         void onEnter();
         void onExit();
-
-        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+    
+        void onTouch(CCTouch* touch, CCEvent* event);
 };
 
 #endif

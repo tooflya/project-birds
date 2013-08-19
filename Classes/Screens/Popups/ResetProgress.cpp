@@ -21,10 +21,15 @@ ResetProgress* ResetProgress::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+ResetProgress::~ResetProgress()
+{
+    this->mLights->release();
+}
+
 ResetProgress::ResetProgress(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mLights = new EntityManager(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
+        this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
     
         this->mIllustration = Entity::create("popup_progress_picture@2x.png", this->mSpriteBatch);
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
@@ -40,7 +45,7 @@ ResetProgress::ResetProgress(CCNode* pParent) :
             ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
         }
         
-        Text* text1 = new Text(Options::TEXT_RESET_STRING_1, ccp(Utils::coord(512), 0), this);
+        Text* text1 = Text::create(Options::TEXT_RESET_STRING_1, ccp(Utils::coord(512), 0), this);
         
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
         

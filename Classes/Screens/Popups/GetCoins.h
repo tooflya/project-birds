@@ -85,6 +85,8 @@ class GetCoins : public Popup
         // ===========================================================
     
         static GetCoins* create(CCNode* pParent);
+    
+        ~GetCoins();
 
         // ===========================================================
         // Methods

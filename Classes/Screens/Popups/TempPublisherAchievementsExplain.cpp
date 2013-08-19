@@ -36,8 +36,8 @@ TempPublisherAchievementsExplain::TempPublisherAchievementsExplain(CCNode* pPare
         this->mOkButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mOkButton->setText(Options::TEXT_MODEHELP_OK);
 
-        Text* text1 = new Text(Options::TEXT_PUBLISHER_STRING_1, ccp(Utils::coord(500), 0), this);
-        Text* text2 = new Text(Options::TEXT_PUBLISHER_STRING_3, ccp(Utils::coord(500), 0), this);
+        Text* text1 = Text::create(Options::TEXT_PUBLISHER_STRING_1, ccp(Utils::coord(500), 0), this);
+        Text* text2 = Text::create(Options::TEXT_PUBLISHER_STRING_3, ccp(Utils::coord(500), 0), this);
 
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(250));
         text2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));

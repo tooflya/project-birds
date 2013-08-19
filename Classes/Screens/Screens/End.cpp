@@ -90,11 +90,11 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         
         this->mIsAnimationRunning = false;
 
-        Text* text1 = new Text((Textes) {"Результаты", Options::FONT, 64, -1}, this->mBackground);
-        Text* text2 = new Text((Textes) {"Результат: 114", Options::FONT, 42, -1}, this->mBackground);
-        Text* text3 = new Text((Textes) {"Рекорд: 114", Options::FONT, 42, -1}, this->mBackground);
-        Text* text4 = new Text((Textes) {"Комбо ударов: 5", Options::FONT, 42, -1}, this->mBackground);
-        Text* text5 = new Text((Textes) {"Заработано монет: 228", Options::FONT, 42, -1}, this->mBackground);
+        Text* text1 = Text::create((Textes) {"Результаты", Options::FONT, 64, -1}, this->mBackground);
+        Text* text2 = Text::create((Textes) {"Результат: 114", Options::FONT, 42, -1}, this->mBackground);
+        Text* text3 = Text::create((Textes) {"Рекорд: 114", Options::FONT, 42, -1}, this->mBackground);
+        Text* text4 = Text::create((Textes) {"Комбо ударов: 5", Options::FONT, 42, -1}, this->mBackground);
+        Text* text5 = Text::create((Textes) {"Заработано монет: 228", Options::FONT, 42, -1}, this->mBackground);
 
         text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(300));
         text2->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(200));

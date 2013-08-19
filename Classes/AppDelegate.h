@@ -133,6 +133,8 @@ class AppDelegate : private CCApplication
         static void setBestResult(int pResult, int pType);
 
         static int getBestResult(int pType);
+    
+        static int getSelectedWeaponId();
         
         // ===========================================================
         // Override Methods

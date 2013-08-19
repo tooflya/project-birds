@@ -25,6 +25,10 @@ class Text : public CCLabelTTF
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Text(Textes pParams, const CCSize pDimensions, CCNode* pParent);
+        Text(const char* pString, float pSize, CCNode* pParent);
+        Text(Textes pParams, CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -46,8 +50,6 @@ class Text : public CCLabelTTF
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        int mId;
 
         // ===========================================================
         // Constructors
@@ -78,6 +80,8 @@ class Text : public CCLabelTTF
         // Fields
         // ===========================================================
     
+        int mId;
+    
         float mInitCenterX;
         float mInitCenterY;
 
@@ -85,9 +89,10 @@ class Text : public CCLabelTTF
         // Constructors
         // ===========================================================
     
-        Text(Textes pParams, const CCSize pDimensions, CCNode* pParent);
-        Text(const char* pString, float pSize, CCNode* pParent);
-        Text(Textes pParams, CCNode* pParent);
+        static Text* create(Textes pParams, const CCSize pDimensions, CCNode* pParent);
+        static Text* create(const char* pString, float pSize, CCNode* pParent);
+        static Text* create(Textes pParams, CCNode* pParent);
+        ~Text();
 
         // ===========================================================
         // Methods
@@ -112,6 +117,9 @@ class Text : public CCLabelTTF
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif

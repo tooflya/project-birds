@@ -57,6 +57,10 @@ Text* Text::TEXTES[512] =
 // Constructors
 // ===========================================================
 
+Text::~Text()
+{
+}
+
 Text::Text(const char* pString, float pSize, CCNode* pParent)
 {
     this->initWithString(pString, Options::FONT, Utils::coord(pSize), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
@@ -97,6 +101,30 @@ Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent)
     TEXTES[ID] = this;
     
     ID++;
+}
+
+Text* Text::create(const char* pString, float pSize, CCNode* pParent)
+{
+    Text* text = new Text(pString, pSize, pParent);
+    text->autorelease();
+    
+    return text;
+}
+
+Text* Text::create(Textes pParams, CCNode* pParent)
+{
+    Text* text = new Text(pParams, pParent);
+    text->autorelease();
+    
+    return text;
+}
+
+Text* Text::create(Textes pParams, const CCSize pDimensions, CCNode* pParent)
+{
+    Text* text = new Text(pParams, pDimensions, pParent);
+    text->autorelease();
+    
+    return text;
 }
 
 // ===========================================================
@@ -177,5 +205,23 @@ void Text::disableShadow()
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Text::onEnter()
+{
+    CCLabelTTF::onEnter();
+    
+    this->retain();
+}
+
+void Text::onExit()
+{
+    CCLabelTTF::onExit();
+    
+    /** Some leaks here */
+    
+    //TEXTES[this->mId] = NULL;
+    
+    //this->release();
+}
 
 #endif

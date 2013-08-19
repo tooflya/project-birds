@@ -23,8 +23,8 @@ Language* Language::m_Instance = NULL;
 
 Language::Language()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
-    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas4.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
+    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas4.png");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
@@ -95,7 +95,7 @@ Language::Language()
     {
         this->mNotAvailableBackgrounds[i - 2]->create()->setCenterPosition(this->mLanguages[i]->getCenterX(), this->mLanguages[i]->getCenterY() - this->mLanguages[i]->getHeight() / 2 + Utils::coord(50));
 
-        this->mTextes[i - 2] = new Text(Options::TEXT_LANGUAGE_NOT_AVAILABLE,  this);
+        this->mTextes[i - 2] = Text::create(Options::TEXT_LANGUAGE_NOT_AVAILABLE,  this);
         this->mTextes[i - 2]->setColor(ccc3(0.0, 0.0, 0.0));
         this->mTextes[i - 2]->disableShadow();
         this->mTextes[i - 2]->setCenterPosition(this->mNotAvailableBackgrounds[i - 2]->getCenterX(), this->mNotAvailableBackgrounds[i - 2]->getCenterY());

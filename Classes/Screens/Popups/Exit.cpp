@@ -26,7 +26,7 @@ Exit::Exit(CCNode* pParent) :
     {
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         this->mLight = Entity::create("popup_quit_picture_light_main@2x.png", this->mSpriteBatch);
-        this->mLights = new EntityManager(3, Entity::create("popup_quit_picture_light_2@2x.png"), this->mSpriteBatch);
+        this->mLights = EntityManager::create(3, Entity::create("popup_quit_picture_light_2@2x.png"), this->mSpriteBatch);
         this->mIllustration = Entity::create("popup_quit_picture@2x.png", this->mSpriteBatch);
     
         this->mYesButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_EXIT_YES, onTouchButtonsCallback);
@@ -54,7 +54,7 @@ Exit::Exit(CCNode* pParent) :
         this->mLight->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(50));
         this->mLight->setOpacity(0.0);
         
-        Text* text1 = new Text(Options::TEXT_EXIT_STRING_1, ccp(Utils::coord(512), 0), this);
+        Text* text1 = Text::create(Options::TEXT_EXIT_STRING_1, ccp(Utils::coord(512), 0), this);
         
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
         
