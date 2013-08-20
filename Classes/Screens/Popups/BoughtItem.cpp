@@ -57,7 +57,7 @@ BoughtItem::BoughtItem(CCNode* pParent)
     this->mIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         
     for(int i = 0; i < 2; i++)
-     {
+    {
         this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         static_cast<Entity*>(this->mLights->objectAtIndex(i))->setScale(3.0);
     }

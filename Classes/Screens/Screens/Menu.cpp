@@ -66,6 +66,8 @@ Menu::Menu()
     this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     
+    this->mPlayDecoration->setColor(ccc3(255.0, 0.0, 0.0));
+    
     this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
@@ -158,8 +160,6 @@ void Menu::update(float pDeltaTime)
     if(this->mPlayDecorationColorUpdateTimeElapsed >= 1.0)
     {
         this->mPlayDecorationColorUpdateTimeElapsed = 0;
-
-        this->mPlayDecoration->runAction(CCTintTo::create(1.0, Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0), Utils::randomf(0.0, 255.0)));
     }
 }
 
