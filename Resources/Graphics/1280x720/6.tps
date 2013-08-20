@@ -147,26 +147,7 @@
             <false/>
         </struct>
         <key>fileList</key>
-        <array>
-            <filename>src/birds_feather_sprite@2x.png</filename>
-            <filename>src/colors@2x.png</filename>
-            <filename>src/confety_sprite@2x.png</filename>
-            <filename>src/dust@2x.png</filename>
-            <filename>src/event_panel@2x.png</filename>
-            <filename>src/game_gui_bg_summer@2x.png</filename>
-            <filename>src/game_gui_btn_sprite@2x.png</filename>
-            <filename>src/game_gui_count_pic@2x.png</filename>
-            <filename>src/game_shelf@2x.png</filename>
-            <filename>src/game_time_arrow@2x.png</filename>
-            <filename>src/game_time_clock@2x.png</filename>
-            <filename>src/game_time_mask@2x.png</filename>
-            <filename>src/info_panel_btn_sprite@2x.png</filename>
-            <filename>src/lifes@2x.png</filename>
-            <filename>src/mark@2x.png</filename>
-            <filename>src/star_particle@2x.png</filename>
-            <filename>src/weapon_strike_sprite@2x.png</filename>
-            <filename>src/coins@2x.png</filename>
-        </array>
+        <array/>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
