@@ -101,13 +101,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>TextureAtlas8.png</string>
+            <string>TextureAtlas8.pvr.ccz</string>
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c8ab9aa280913de4c97bf17a08c3eb58:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:d10a1f869737e6c44494d369a814507a:1/1$</string>
             <key>textureFileName</key>
-            <string>TextureAtlas8.png</string>
+            <string>TextureAtlas8.pvr.ccz</string>
         </dict>
     </dict>
 </plist>
