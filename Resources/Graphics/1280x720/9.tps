@@ -22,11 +22,11 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TextureAtlas4.pvr.ccz</filename>
+        <filename>TextureAtlas9.pvr.ccz</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">AtkinsonAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>TextureAtlas4.plist</filename>
+        <filename>TextureAtlas9.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -147,26 +147,7 @@
             <false/>
         </struct>
         <key>fileList</key>
-        <array>
-            <filename>src/popup_bg@2x.png</filename>
-            <filename>src/popup_getcoins_picture@2x.png</filename>
-            <filename>src/popup_progress_picture@2x.png</filename>
-            <filename>src/popup_quit_picture@2x.png</filename>
-            <filename>src/popup_rate_picture@2x.png</filename>
-            <filename>src/popup_buy_coins_btn_sprite@2x.png</filename>
-            <filename>src/popup_btn@2x.png</filename>
-            <filename>src/btn_sprite_close@2x.png</filename>
-            <filename>src/flag_sprite_big@2x.png</filename>
-            <filename>src/choose_box_lvl_sprite@2x.png</filename>
-            <filename>src/about_scroll_border_small@2x.png</filename>
-            <filename>src/flag_not_avaliable_bg@2x.png</filename>
-            <filename>src/settings_lang_check@2x.png</filename>
-            <filename>src/facebook_icon@2x.png</filename>
-            <filename>src/twitter_icon@2x.png</filename>
-            <filename>src/vk_icon@2x.png</filename>
-            <filename>src/share@2x.png</filename>
-            <filename>src/confety_sprite@2x.png</filename>
-        </array>
+        <array/>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

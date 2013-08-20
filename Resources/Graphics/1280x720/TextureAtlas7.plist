@@ -33,7 +33,7 @@
             <key>colors@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{910,1421},{512,64}}</string>
+                <string>{{910,1432},{512,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,10 +108,23 @@
                 <key>sourceSize</key>
                 <string>{1071,1252}</string>
             </dict>
+            <key>game_gui_btn_sprite@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{964,1258},{232,78}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{232,78}}</string>
+                <key>sourceSize</key>
+                <string>{232,78}</string>
+            </dict>
             <key>game_gui_count_pic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{910,1329},{111,88}}</string>
+                <string>{{910,1340},{111,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>game_time_arrow@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{910,1258},{22,45}}</string>
+                <string>{{1200,1258},{22,45}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +228,7 @@
             <key>star_particle@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{936,1258},{32,31}}</string>
+                <string>{{910,1258},{32,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -248,7 +261,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2f5f9a399313dfd70e241bf1ff5e271d:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:9f9674810c7c9486fb8a5f59fd41e802:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas7.pvr.ccz</string>
         </dict>
