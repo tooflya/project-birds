@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">PVRTC2</enum>
+        <enum type="SettingsBase::OutputFormat">PVRTC4</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
