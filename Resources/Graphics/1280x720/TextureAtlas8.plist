@@ -7,7 +7,7 @@
             <key>bar_remove@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{134,1927},{738,49}}</string>
+                <string>{{311,1887},{738,49}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -16,32 +16,6 @@
                 <string>{{0,0},{738,49}}</string>
                 <key>sourceSize</key>
                 <string>{738,49}</string>
-            </dict>
-            <key>coins@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,1683},{300,240}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{300,240}}</string>
-                <key>sourceSize</key>
-                <string>{300,240}</string>
-            </dict>
-            <key>confety_sprite@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,1927},{128,102}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{128,102}}</string>
-                <key>sourceSize</key>
-                <string>{128,102}</string>
             </dict>
             <key>end_lvl_bg_popup@2x.png</key>
             <dict>
@@ -72,7 +46,7 @@
             <key>end_lvl_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,1683},{800,200}}</string>
+                <string>{{2,1683},{800,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +59,7 @@
             <key>end_lvl_star_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1185,749},{600,400}}</string>
+                <string>{{1053,749},{600,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +72,7 @@
             <key>shop_money_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{876,1887},{305,125}}</string>
+                <string>{{2,1887},{305,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -131,7 +105,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:49e01b88ac6cd3926b0e086c56d6bd70:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:88b4479d28016b115900afe62676e8f8:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas8.png</string>
         </dict>

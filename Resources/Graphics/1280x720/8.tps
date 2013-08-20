@@ -151,8 +151,6 @@
             <filename>src/end_lvl_bg_sprite@2x.png</filename>
             <filename>src/end_lvl_bg_popup@2x.png</filename>
             <filename>src/end_lvl_star_sprite@2x.png</filename>
-            <filename>src/confety_sprite@2x.png</filename>
-            <filename>src/coins@2x.png</filename>
             <filename>src/star_particle@2x.png</filename>
             <filename>src/shop_money_bg@2x.png</filename>
             <filename>src/bar_remove@2x.png</filename>

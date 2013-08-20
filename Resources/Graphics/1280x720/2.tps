@@ -14,7 +14,7 @@
         <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
-        <true/>
+        <false/>
         <key>shapeDebug</key>
         <false/>
         <key>dpi</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA5551</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
