@@ -147,7 +147,11 @@
             <false/>
         </struct>
         <key>fileList</key>
-        <array/>
+        <array>
+            <filename>src/get_coins_light@2x.png</filename>
+            <filename>src/popup_quit_picture_light_main@2x.png</filename>
+            <filename>src/popup_quit_picture_light_2@2x.png</filename>
+        </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
