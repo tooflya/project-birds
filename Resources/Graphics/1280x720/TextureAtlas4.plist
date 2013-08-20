@@ -59,15 +59,15 @@
             <key>facebook_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1703,1952},{79,80}}</string>
+                <string>{{1703,1954},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{79,80}}</string>
+                <string>{{0,0},{84,84}}</string>
                 <key>sourceSize</key>
-                <string>{79,80}</string>
+                <string>{84,84}</string>
             </dict>
             <key>flag_not_avaliable_bg@2x.png</key>
             <dict>
@@ -254,7 +254,7 @@
             <key>twitter_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1095,1614},{84,84}}</string>
+                <string>{{1703,1866},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,15 +267,15 @@
             <key>vk_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1703,1866},{82,82}}</string>
+                <string>{{1095,1614},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{82,82}}</string>
+                <string>{{0,0},{84,84}}</string>
                 <key>sourceSize</key>
-                <string>{82,82}</string>
+                <string>{84,84}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -287,7 +287,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9d56d0125789397f41a9670806fa4335:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:8888139fd1ef3ea0a03a94fe3bc317a1:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas4.png</string>
         </dict>
