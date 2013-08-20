@@ -164,6 +164,8 @@
             <filename>src/game_gui_count_pic@2x.png</filename>
             <filename>src/game_shelf@2x.png</filename>
             <filename>src/event_panel@2x.png</filename>
+            <filename>src/dust@2x.png</filename>
+            <filename>src/mark@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
