@@ -148,7 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>src/temp-level-bg@2x.png</filename>
+            <filename>src/temp_level_bg@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
