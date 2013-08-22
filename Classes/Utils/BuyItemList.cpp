@@ -32,7 +32,7 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->setListType(List::TYPE_VERTICAL);
         this->setParentType(List::PARENT_TYPE_POPUP);
 
-        this->mSpriteBatch = CCSpriteBatchNode::create("TextureAtlas5.png");
+        this->mSpriteBatch = CCSpriteBatchNode::create("TextureAtlas5.pvr.ccz");
 
         this->addChild(this->mSpriteBatch);
 

@@ -29,6 +29,15 @@ ArcadeEnd::ArcadeEnd(int pType, Screen* pParent) :
         m_Instance = this;
     }
 
+ArcadeEnd* ArcadeEnd::create(int pType, Screen* pParent)
+{
+    ArcadeEnd* screen = new ArcadeEnd(pType, pParent);
+    screen->autorelease();
+    screen->retain();
+    
+    return screen;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

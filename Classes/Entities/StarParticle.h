@@ -25,6 +25,8 @@ class StarParticle : public ImpulseEntity
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        StarParticle();
 
         // ===========================================================
         // Methods
@@ -76,7 +78,7 @@ class StarParticle : public ImpulseEntity
         // Constructors
         // ===========================================================
 
-        StarParticle();
+        static StarParticle* create();
 
         // ===========================================================
         // Methods

@@ -8,6 +8,11 @@
 
 #define kFileStreak "wep_1@2x.png"
 
+TouchTrailLayer::~TouchTrailLayer()
+{
+    this->mWeaponParticles->release();
+}
+
 TouchTrailLayer::TouchTrailLayer()
 {
     setTouchEnabled(true);
@@ -15,11 +20,9 @@ TouchTrailLayer::TouchTrailLayer()
     this->mTimeBeforeNextBladeSound = 0.15f;
     this->mTimeBeforeNextBladeSoundElapsed = 0;
 
-    CCSpriteBatchNode* a = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
+    CCSpriteBatchNode* a = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
     this->addChild(a);
     this->mWeaponParticles = EntityManager::create(300, WeaponParticle::create(), a);
-    
-    //this->scheduleUpdate();
 }
 
 TouchTrailLayer* TouchTrailLayer::create()
@@ -146,6 +149,21 @@ void TouchTrailLayer::update(float pDeltaTime)
             Options::TOUCH_INFORMATION[i].slice = false;
         }
     }*/
+}
+
+void TouchTrailLayer::onEnter()
+{
+    CCLayer::onEnter();
+    
+    this->scheduleUpdate();
+}
+
+void TouchTrailLayer::onExit()
+{
+    CCLayer::onExit();
+    
+    this->stopAllActions();
+    this->unscheduleAllSelectors();
 }
 
 #endif

@@ -35,14 +35,21 @@ ccColor3B Bird::COLORS[COUNT] =
 // Constructors
 // ===========================================================
 
+Bird::~Bird()
+{
+    this->mLife->release();
+    
+    this->removeAllChildrenWithCleanup(true);
+}
+
 Bird::Bird() :
     ImpulseEntity("birds_sprite@2x.png", 14, 8)
     {
         this->mMarkTime = 0.02;
         this->mMarkTimeElapsed = 0;
         
-        this->mLife = new CCProgressTimer();
-        this->mLife->initWithSprite(CCSprite::create("birds_life@2x.png"));
+        this->mLife = CCProgressTimer::create(CCSprite::create("birds_life@2x.png"));
+        this->mLife->retain();
         this->mLife->setType(kCCProgressTimerTypeRadial);
         this->mLife->setReverseProgress(true);
 
@@ -55,6 +62,22 @@ Bird::Bird(bool pSpecial) :
     ImpulseEntity("special_birds_sprite@2x.png", 14, 9)
     {
     }
+
+Bird* Bird::create()
+{
+    Bird* entity = new Bird();
+    entity->autorelease();
+    
+    return entity;
+}
+
+Bird* Bird::create(bool pSpecial)
+{
+    Bird* entity = new Bird(pSpecial);
+    entity->autorelease();
+    
+    return entity;
+}
 
 // ===========================================================
 // Methods
@@ -172,6 +195,8 @@ void Bird::onDestroy()
 
     if(game)
     {
+        if(game->mGameRunning)
+        {
         if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange)
         {
             game->removeLife();
@@ -198,6 +223,7 @@ void Bird::onDestroy()
                 }
             }
         }
+        }
     }
 }
 
@@ -215,9 +241,9 @@ void Bird::update(float pDeltaTime)
     {
         this->mMarkTimeElapsed = 0;
         
-        //Entity* entity = game->mMarks->create();
+        Entity* entity = game->mMarks->create();
         
-        //entity->setCenterPosition(this->getCenterX(), this->getCenterY());
+        entity->setCenterPosition(this->getCenterX(), this->getCenterY());
         //entity->setColor(COLORS[this->mType]);
     }
 
@@ -267,7 +293,7 @@ void Bird::update(float pDeltaTime)
 
                 if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER)
                 {
-                    /*Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
+                    Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
                     Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 
                     explosionBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
@@ -284,7 +310,7 @@ void Bird::update(float pDeltaTime)
                             feather->setCurrentFrameIndex(this->mType);
                             feather->init(i, 15.0);
                         }
-                    }*/
+                    }
                     
                     if(Options::SOUND_ENABLE)
                     {
@@ -321,7 +347,7 @@ void Bird::update(float pDeltaTime)
 
 Bird* Bird::deepCopy()
 {
-    return new Bird();
+    return Bird::create();
 }
 
 #endif

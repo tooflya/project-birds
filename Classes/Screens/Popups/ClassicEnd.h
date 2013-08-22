@@ -23,6 +23,8 @@ class ClassicEnd : public End
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ClassicEnd(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods
@@ -76,7 +78,7 @@ class ClassicEnd : public End
         // Constructors
         // ===========================================================
     
-        ClassicEnd(int pType, Screen* pParent);
+        static ClassicEnd* create(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods

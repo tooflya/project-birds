@@ -32,6 +32,14 @@ Confetti::Confetti() :
         this->mAppear = false;
     }
 
+Confetti* Confetti::create()
+{
+    Confetti* entity = new Confetti();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -103,7 +111,7 @@ void Confetti::update(float pDeltaTime)
 
 Confetti* Confetti::deepCopy()
 {
-    return new Confetti();
+    return Confetti::create();
 }
 
 #endif

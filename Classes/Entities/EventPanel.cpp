@@ -47,6 +47,15 @@ EventPanel::EventPanel(Screen* pParent) :
         this->mText->setCenterPosition(this->getWidth() / 2 + Utils::coord(16), this->getHeight() / 2);
     }
 
+EventPanel* EventPanel::create(Screen *pParent)
+{
+    EventPanel* panel = new EventPanel(pParent);
+    panel->autorelease();
+    panel->retain();
+    
+    return panel;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

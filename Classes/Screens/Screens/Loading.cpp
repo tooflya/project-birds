@@ -11,13 +11,14 @@
 // Constants
 // ===========================================================
 
-TextureStructure Loading::TEXTURE_LIBRARY[8] =
+TextureStructure Loading::TEXTURE_LIBRARY[9] =
 {
-    {"TextureAtlas1.png", "TextureAtlas1.plist"},
-    {"TextureAtlas2.png", "TextureAtlas2.plist"},
-    {"TextureAtlas3.png", "TextureAtlas3.plist"},
-    {"TextureAtlas4.png", "TextureAtlas4.plist"},
-    {"TextureAtlas5.png", "TextureAtlas5.plist"},
+    {"TextureAtlas1.pvr.ccz", "TextureAtlas1.plist"},
+    {"TextureAtlas2.pvr.ccz", "TextureAtlas2.plist"},
+    {"TextureAtlas3.pvr.ccz", "TextureAtlas3.plist"},
+    {"TextureAtlas4.pvr.ccz", "TextureAtlas4.plist"},
+    {"TextureAtlas5.pvr.ccz", "TextureAtlas5.plist"},
+    {"TextureAtlas9.pvr.ccz", "TextureAtlas9.plist"},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},
     {"about_scroll_fill_small@2x.png", NULL}
@@ -41,7 +42,7 @@ Loading::Loading()
 {
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
 
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas1.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas1.pvr.ccz");
 
     this->mBackground = Entity::create("start_preloader_bg@2x.png", spriteBatch);
     this->mBarBackground = Entity::create("start_preload_bar@2x.png", spriteBatch);

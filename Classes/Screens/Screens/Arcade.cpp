@@ -21,38 +21,55 @@ Arcade* Arcade::m_Instance = NULL;
 // Constructors
 // ===========================================================
 
+Arcade::~Arcade()
+{
+    
+}
+
 Arcade::Arcade() :
     Game()
     {
-        /*this->mEventLayer = CCLayer::create();
+        this->mEventLayer = CCLayer::create();
+        
+        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
+        
+        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("birds_sprite@2x.png");
+        
+        this->addChild(spriteBatch1);
+        this->addChild(spriteBatch2);
+        this->addChild(spriteBatch3);
+        this->addChild(spriteBatch4);
 
-        this->mBackground = Entity::create("game_gui_bg_summer@2x.png", this);
-        this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", this);
+        this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch1);
+        this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", spriteBatch2);
         this->mTimeIcon = new Clock(this->mEventLayer);
-        this->mStars = new BatchEntityManager(1000, new StarParticle(), this);
+        this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
 
-        this->mCountText = new Text((Textes) {"0", Options::FONT, 80, -1}, this);
-        this->mBestCountText = new Text(Options::TEXT_GAME_BEST, this);
-        this->mTimeText[0] = new Text(Options::TEXT_GAME_ARCADE_TIME_REMAINING, this->mEventLayer);
-        this->mTimeText[1] = new Text((Textes) {"0:00", Options::FONT, 64, -1}, this->mEventLayer);
-        this->mTimeText[2] = new Text((Textes) {".0000", Options::FONT, 28, -1}, this->mEventLayer);
+        this->mCountText = Text::create((Textes) {"0", Options::FONT, 80, -1}, this);
+        this->mBestCountText = Text::create(Options::TEXT_GAME_BEST, this);
+        this->mTimeText[0] = Text::create(Options::TEXT_GAME_ARCADE_TIME_REMAINING, this->mEventLayer);
+        this->mTimeText[1] = Text::create((Textes) {"0:00", Options::FONT, 64, -1}, this->mEventLayer);
+        this->mTimeText[2] = Text::create((Textes) {".0000", Options::FONT, 28, -1}, this->mEventLayer);
 
-        this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
+        this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, spriteBatch2, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        
+        this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
+        this->mMarks = EntityManager::create(200, Mark::create(), spriteBatch2);
+        this->mFeathers = EntityManager::create(100, Feather::create(), spriteBatch2);
+        this->mBirds = EntityManager::create(20, Bird::create(), spriteBatch4);
+        //this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), this);
+        this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
+        this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
 
-        this->mDust = new BatchEntityManager(100, new Dust(), this);
-        this->mMarks = new BatchEntityManager(200, new Mark(), this);
-        this->mFeathers = new BatchEntityManager(100, new Feather(), this);
-        this->mBirds = new BatchEntityManager(10, new Bird(), this);
-        this->mSpecialBirds = new BatchEntityManager(10, new SpecialBird(), this);
-        this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
-        this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
-
-        this->mEventPanel = new EventPanel(this);
+        this->mEventPanel = EventPanel::create(this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        this->mEventPanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
+        ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
         this->mCountIcon->create()->setCenterPosition(Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(64));
         this->mTimeIcon->create()->setCenterPosition(Utils::coord(64), Utils::coord(80));
 
@@ -63,7 +80,7 @@ Arcade::Arcade() :
         this->mTimeText[2]->setCenterPosition(Utils::coord(255) + this->mTimeText[2]->getWidth() / 2, Utils::coord(28));
 
         //this->mPausePopup = new ArcadePause(this);
-        this->mEndScreen = new ArcadeEnd(Splash::TYPE_ARCADE, this);
+        this->mEndScreen = ArcadeEnd::create(Splash::TYPE_ARCADE, this);
 
         this->mAlgorithmBirdsRemainig = 6;
         this->mAlgorithmBirdsTime = 1.5;
@@ -71,10 +88,19 @@ Arcade::Arcade() :
         this->mAlgorithmBirdsTime1 = 2.0;
         this->mAlgorithmBirdsTime2 = 7.0;
 
-        this->addChild(this->mEventLayer);*/
+        this->addChild(this->mEventLayer);
 
         m_Instance = this;
     }
+
+Arcade* Arcade::create()
+{
+    Arcade* screen = new Arcade();
+    screen->autorelease();
+    screen->retain();
+    
+    return screen;
+}
 
 // ===========================================================
 // Methods

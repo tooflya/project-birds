@@ -25,6 +25,14 @@ ExplosionBasic::ExplosionBasic() :
         
     }
 
+ExplosionBasic* ExplosionBasic::create()
+{
+    ExplosionBasic* entity = new ExplosionBasic();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -47,7 +55,7 @@ void ExplosionBasic::onCreate()
     
 ExplosionBasic* ExplosionBasic::deepCopy()
 {
-    return new ExplosionBasic();
+    return ExplosionBasic::create();
 }
     
 void ExplosionBasic::update(float pDeltaTime)

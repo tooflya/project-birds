@@ -101,6 +101,8 @@ void ScreenManager::load(int pAction, int pDo)
                 case 0:
                     
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
+                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
                 
                 break;
                 
@@ -114,7 +116,7 @@ void ScreenManager::load(int pAction, int pDo)
                 this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
                 this->mScreens[Screen::SCREEN_MODE] = Mode::create();
                 this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
-                //this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
+                this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 
                 break;
             }
@@ -135,13 +137,15 @@ void ScreenManager::load(int pAction, int pDo)
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LANGUAGE]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MODE]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
-                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
                     
                 break;
                     
                 default:
 
                 this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
+                this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
+                //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progress::create();
                 
                 break;
             }

@@ -31,6 +31,7 @@ class Popup : public CCLayer
         // ===========================================================
     
         CCSpriteBatchNode* mSpriteBatch;
+        CCSpriteBatchNode* mSpriteBatch2;
 
         CCNode* mParent;
         CCNodeRGBA* mSquare;

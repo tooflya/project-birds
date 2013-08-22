@@ -35,6 +35,14 @@ Dust::Dust() :
         this->mIsMustChangeSpeedY = false;
     }
 
+Dust* Dust::create()
+{
+    Dust* entity = new Dust();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -148,7 +156,7 @@ void Dust::update(float pDeltaTime)
 
 Dust* Dust::deepCopy()
 {
-    return new Dust();
+    return Dust::create();
 }
 
 #endif

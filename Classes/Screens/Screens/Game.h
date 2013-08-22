@@ -52,9 +52,6 @@ class Game : public Screen
         float mAlgorithmBirdsTime1;
         float mAlgorithmBirdsTime2;
 
-        bool mGameRunning;
-        bool mGamePaused;
-
         Entity* mBackground;
         Entity* mCountIcon;
 
@@ -129,15 +126,18 @@ class Game : public Screen
         // ===========================================================
 
         bool mChalange;
+    
+        bool mGameRunning;
+        bool mGamePaused;
 
-        /*EntityManager* mBirds;
+        EntityManager* mBirds;
         EntityManager* mSpecialBirds;
         EntityManager* mMarks;
         EntityManager* mFeathers;
         EntityManager* mExplosionsBasic;
         EntityManager* mExplosions;
         EntityManager* mDust;
-        EntityManager* mStars;*/
+        EntityManager* mStars;
 
         // ===========================================================
         // Constructors

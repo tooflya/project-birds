@@ -7,6 +7,8 @@
 
 #include "Popup.h"
 
+#include "Utils.h"
+
 using namespace cocos2d;
 
 class List : public CCLayer

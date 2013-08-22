@@ -42,6 +42,9 @@ class Bird : public ImpulseEntity
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Bird();
+        Bird(bool pSpecial);
 
         // ===========================================================
         // Methods
@@ -115,8 +118,10 @@ class Bird : public ImpulseEntity
         // Constructors
         // ===========================================================
     
-        Bird();
-        Bird(bool pSpecial);
+        static Bird* create();
+        static Bird* create(bool pSpecial);
+    
+        ~Bird();
 
         // ===========================================================
         // Methods

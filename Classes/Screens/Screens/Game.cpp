@@ -29,7 +29,17 @@ int Game::RECORD_BEATEAN = 0;
 
 Game::~Game()
 {
+    this->mEventPanel->release();
+    this->mEndScreen->release();
     
+    this->mBirds->release();
+    //this->mSpecialBirds->release();
+    this->mMarks->release();
+    this->mFeathers->release();
+    this->mExplosionsBasic->release();
+    this->mExplosions->release();
+    this->mDust->release();
+    this->mStars->release();
 }
 
 Game::Game() :
@@ -39,8 +49,9 @@ Game::Game() :
         this->mBirdsTimeElapsed = 0;
     
         this->mChalange = false;
+        this->mGameRunning = false;
 
-        //this->addChild(TouchTrailLayer::create(), 10);
+        this->addChild(TouchTrailLayer::create(), 10);
     }
 
 Game* Game::create()
@@ -69,14 +80,14 @@ void Game::startGame()
     this->mStartGameAnimation = 1.0;
     this->mStartGameAnimationElapsed = this->mStartGameAnimation;
     
-    //this->mGameStartText->setOpacity(0.0);
+    this->mGameStartText->setOpacity(0.0);
 
-    //this->mBirds->clear();
+    this->mBirds->clear();
     //this->mSpecialBirds->clear();
-    //this->mFeathers->clear();
-    //this->mMarks->clear();
-    //this->mExplosions->clear();
-    //this->mExplosionsBasic->clear();
+    this->mFeathers->clear();
+    this->mMarks->clear();
+    this->mExplosions->clear();
+    this->mExplosionsBasic->clear();
 
     HEALTH = 12;
 }
@@ -115,7 +126,7 @@ void Game::onBirBlow(int pType)
 
                 for(int i = 0; i < 100; i++)
                 {
-                    //static_cast<StarParticle*>(this->mStars->create())->setType(2)->onCreate();
+                    static_cast<StarParticle*>(this->mStars->create())->setType(2)->onCreate();
                 }
             }
 
@@ -135,10 +146,10 @@ void Game::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
     
-    /*if(this->mDust->getCount() < 30)
+    if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
-    }*/
+    }
 
     if(this->mGameRunning && !this->mGamePaused)
     {
@@ -150,7 +161,7 @@ void Game::update(float pDeltaTime)
             {
                 this->mBirdsTimeElapsed = 0;
                 
-                /*Bird* bird = static_cast<Bird*>(this->mBirds->create());
+                Bird* bird = static_cast<Bird*>(this->mBirds->create());
 
                 if(Options::SOUND_ENABLE)
                 {
@@ -162,7 +173,7 @@ void Game::update(float pDeltaTime)
                     {
                         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
                     }
-                }*/
+                }
             }
         }
         else
@@ -185,10 +196,10 @@ void Game::update(float pDeltaTime)
                     this->mBirdsTime = Utils::randomf(this->mAlgorithmBirdsTime1, this->mAlgorithmBirdsTime2);
                 }
                 
-                //Bird* bird = static_cast<Bird*>(this->mBirds->create());
+                Bird* bird = static_cast<Bird*>(this->mBirds->create());
                 //SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
 
-                /*if(Options::SOUND_ENABLE)
+                if(Options::SOUND_ENABLE)
                 {
                     if(bird->getType() == Bird::TYPE_DANGER)
                     {
@@ -198,7 +209,7 @@ void Game::update(float pDeltaTime)
                     {
                         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
                     }
-                }*/
+                }
             }
         }
     }
@@ -210,7 +221,7 @@ void Game::update(float pDeltaTime)
         {
             this->mStartGameAnimationElapsed = 0;
 
-            /*switch(++this->mStartGameAnimationIndex)
+            switch(++this->mStartGameAnimationIndex)
             {
                 case -1:
                 break;
@@ -234,11 +245,7 @@ void Game::update(float pDeltaTime)
 
                 this->onGameStarted();
                 break;
-             }*/
-            
-            Loader::ACTION = 3;
-            
-            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+             }
         }
     }
 

@@ -25,6 +25,14 @@ Explosion::Explosion() :
         
     }
 
+Explosion* Explosion::create()
+{
+    Explosion* entity = new Explosion();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -47,7 +55,7 @@ void Explosion::onCreate()
     
 Explosion* Explosion::deepCopy()
 {
-    return new Explosion();
+    return Explosion::create();
 }
     
 void Explosion::update(float pDeltaTime)

@@ -37,11 +37,12 @@ BoughtItem::BoughtItem(CCNode* pParent)
 
     this->setCascadeOpacityEnabled(true);
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas4.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas4.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.pvr.ccz");
     
-    this->mConfetti = EntityManager::create(210, new Confetti(), spriteBatch);
+    this->mConfetti = EntityManager::create(210, Confetti::create(), spriteBatch);
     
-    this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), spriteBatch);
+    this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), spriteBatch2);
     this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this);
     this->mIcon->setZOrder(2);
     
@@ -80,6 +81,7 @@ BoughtItem::BoughtItem(CCNode* pParent)
     this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(380));
     this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(450));
     
+    this->addChild(spriteBatch2);
     this->addChild(spriteBatch);
     
     this->mTapToContinueAnimationReverse = false;

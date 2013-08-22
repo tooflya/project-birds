@@ -314,14 +314,13 @@ class MainList : public CCLayer
             this->mMaxWidth = -Options::CAMERA_WIDTH * Levels::LEVEL_PACKS_COUNT + Options::CAMERA_WIDTH * 1.5;
 
             this->mPostUpdate = false;
-
-            this->scheduleUpdate();
         }
     
     static MainList* create(Levels* pParent)
     {
         MainList* list = new MainList(pParent);
         list->autorelease();
+        list->retain();
         
         return list;
     }
@@ -332,6 +331,8 @@ class MainList : public CCLayer
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
         
         CCLayer::onEnter();
+        
+        this->scheduleUpdate();
     }
 
     void onExit()
@@ -340,6 +341,9 @@ class MainList : public CCLayer
         pDirector->getTouchDispatcher()->removeDelegate(this);
         
         CCLayer::onExit();
+        
+        this->stopAllActions();
+        this->unscheduleAllSelectors();
     }
 
     bool containsTouchLocation(CCTouch* touch)
@@ -552,7 +556,7 @@ Levels::Levels()
 {
     this->mMainList = MainList::create(this);
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);

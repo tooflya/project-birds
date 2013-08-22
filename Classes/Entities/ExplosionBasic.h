@@ -21,6 +21,8 @@ class ExplosionBasic : public Entity
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ExplosionBasic();
 
         // ===========================================================
         // Methods
@@ -72,7 +74,7 @@ class ExplosionBasic : public Entity
         // Constructors
         // ===========================================================
     
-        ExplosionBasic();
+        static ExplosionBasic* create();
 
         // ===========================================================
         // Methods

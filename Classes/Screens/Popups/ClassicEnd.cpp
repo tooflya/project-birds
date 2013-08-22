@@ -29,6 +29,15 @@ ClassicEnd::ClassicEnd(int pType, Screen* pParent) :
         m_Instance = this;
     }
 
+ClassicEnd* ClassicEnd::create(int pType, Screen* pParent)
+{
+    ClassicEnd* screen = new ClassicEnd(pType, pParent);
+    screen->autorelease();
+    screen->retain();
+    
+    return screen;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

@@ -26,6 +26,14 @@ Feather::Feather() :
         this->mWaitingTime = 0.02;
     }
 
+Feather* Feather::create()
+{
+    Feather* entity = new Feather();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -64,7 +72,7 @@ void Feather::init(int pIndex, float pSpeed)
     
 Feather* Feather::deepCopy()
 {
-    return new Feather();
+    return Feather::create();
 }
     
 void Feather::update(float pDeltaTime)

@@ -25,6 +25,14 @@ Mark::Mark() :
         
     }
 
+Mark* Mark::create()
+{
+    Mark* entity = new Mark();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -46,7 +54,7 @@ void Mark::onCreate()
     
 Mark* Mark::deepCopy()
 {
-    return new Mark();
+    return Mark::create();
 }
     
 void Mark::update(float pDeltaTime)

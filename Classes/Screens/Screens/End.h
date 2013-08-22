@@ -29,8 +29,8 @@ class End : public Splash
         Button* mRestartButton;
         Button* mContinueButton;
     
-        BatchEntityManager* mStars;
-        BatchEntityManager* mConfetti;
+        EntityManager* mStars;
+        EntityManager* mConfetti;
     
         int mAnimationCounter;
     
@@ -42,6 +42,8 @@ class End : public Splash
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int));
 
         // ===========================================================
         // Methods
@@ -95,7 +97,8 @@ class End : public Splash
         // Constructors
         // ===========================================================
     
-        End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int));
+        static End* create(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int));
+        ~End();
 
         // ===========================================================
         // Methods

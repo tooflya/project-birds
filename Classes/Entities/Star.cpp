@@ -25,6 +25,14 @@ Star::Star() :
         
     }
 
+Star* Star::create()
+{
+    Star* entity = new Star();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -61,7 +69,7 @@ void Star::update(float pDeltaTime)
 
 Star* Star::deepCopy()
 {
-    return new Star();
+    return Star::create();
 }
 
 #endif

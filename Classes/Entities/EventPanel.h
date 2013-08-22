@@ -43,6 +43,8 @@ class EventPanel : public Entity
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        EventPanel(Screen* pParent);
 
         // ===========================================================
         // Methods
@@ -94,7 +96,7 @@ class EventPanel : public Entity
         // Constructors
         // ===========================================================
 
-        EventPanel(Screen* pParent);
+        static EventPanel* create(Screen* pParent);
 
         // ===========================================================
         // Methods

@@ -261,7 +261,6 @@ Shop::~Shop()
     this->mGetCoinsPopup->release();
     this->mBoughtItem->release();
     this->mPaymentProceed->release();
-    
     this->mPurchaseCoins->release();
     
     this->mWeaponChecker->release();
@@ -269,8 +268,8 @@ Shop::~Shop()
 
 Shop::Shop()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
-    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas5.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas5.pvr.ccz");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);

@@ -19,11 +19,14 @@
 // Constructors
 // ===========================================================
 
+Splash::~Splash()
+{
+    this->mParts->release();
+}
+
 Splash::Splash(Screen* pParent)
 {
     this->mParent = pParent;
-    
-    this->scheduleUpdate();
     
     this->mShowBackground = false;
     this->mHideBackground = false;
@@ -143,6 +146,21 @@ void Splash::update(float pDeltaTime)
             this->onHide();
         }
     }
+}
+
+void Splash::onEnter()
+{
+    CCLayer::onEnter();
+    
+    this->scheduleUpdate();
+}
+
+void Splash::onExit()
+{
+    CCLayer::onExit();
+    
+    this->stopAllActions();
+    this->unscheduleAllSelectors();
 }
 
 #endif

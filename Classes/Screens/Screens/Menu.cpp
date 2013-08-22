@@ -36,7 +36,7 @@ Menu::~Menu()
 
 Menu::Menu()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.pvr.ccz");
 
     this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
     this->mPlayDecoration = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);

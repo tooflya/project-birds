@@ -152,14 +152,15 @@
 		783E899217C20CEC00FD49C1 /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 783E888D17C20CEC00FD49C1 /* tap.wav */; };
 		783E899317C20CEC00FD49C1 /* throw-bird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 783E888E17C20CEC00FD49C1 /* throw-bird.mp3 */; };
 		783E899517C20CEC00FD49C1 /* throw-bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 783E889017C20CEC00FD49C1 /* throw-bomb.mp3 */; };
-		783E899F17C2619900FD49C1 /* TextureAtlas1.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899717C2619600FD49C1 /* TextureAtlas1.png */; };
-		783E89A017C2619900FD49C1 /* TextureAtlas2.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899817C2619700FD49C1 /* TextureAtlas2.png */; };
-		783E89A117C2619900FD49C1 /* TextureAtlas3.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899917C2619700FD49C1 /* TextureAtlas3.png */; };
-		783E89A217C2619900FD49C1 /* TextureAtlas4.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899A17C2619700FD49C1 /* TextureAtlas4.png */; };
-		783E89A317C2619900FD49C1 /* TextureAtlas5.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899B17C2619800FD49C1 /* TextureAtlas5.png */; };
-		783E89A417C2619900FD49C1 /* TextureAtlas6.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899C17C2619800FD49C1 /* TextureAtlas6.png */; };
-		783E89A517C2619900FD49C1 /* TextureAtlas7.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899D17C2619800FD49C1 /* TextureAtlas7.png */; };
-		783E89A617C2619900FD49C1 /* TextureAtlas8.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E899E17C2619900FD49C1 /* TextureAtlas8.png */; };
+		784FDEE517C3C016007FDE33 /* TextureAtlas1.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEE417C3C016007FDE33 /* TextureAtlas1.pvr.ccz */; };
+		784FDEEC17C3C79E007FDE33 /* TextureAtlas2.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEE617C3C798007FDE33 /* TextureAtlas2.pvr.ccz */; };
+		784FDEED17C3C79E007FDE33 /* TextureAtlas3.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEE717C3C799007FDE33 /* TextureAtlas3.pvr.ccz */; };
+		784FDEEE17C3C79E007FDE33 /* TextureAtlas4.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEE817C3C79A007FDE33 /* TextureAtlas4.pvr.ccz */; };
+		784FDEEF17C3C79E007FDE33 /* TextureAtlas5.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEE917C3C79B007FDE33 /* TextureAtlas5.pvr.ccz */; };
+		784FDEF017C3C79E007FDE33 /* TextureAtlas7.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEEA17C3C79D007FDE33 /* TextureAtlas7.pvr.ccz */; };
+		784FDEF117C3C79E007FDE33 /* TextureAtlas8.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEEB17C3C79D007FDE33 /* TextureAtlas8.pvr.ccz */; };
+		784FDEF417C3CF35007FDE33 /* TextureAtlas9.plist in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEF217C3CF33007FDE33 /* TextureAtlas9.plist */; };
+		784FDEF517C3CF35007FDE33 /* TextureAtlas9.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 784FDEF317C3CF34007FDE33 /* TextureAtlas9.pvr.ccz */; };
 		78582AE117BBD91A00C96267 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78582AE017BBD91900C96267 /* Default.png */; };
 		78582AE317BBD92400C96267 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78582AE217BBD92300C96267 /* Default@2x.png */; };
 		78582AE517BBD92D00C96267 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78582AE417BBD92D00C96267 /* Default-568h@2x.png */; };
@@ -544,14 +545,15 @@
 		783E888D17C20CEC00FD49C1 /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap.wav; sourceTree = "<group>"; };
 		783E888E17C20CEC00FD49C1 /* throw-bird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "throw-bird.mp3"; sourceTree = "<group>"; };
 		783E889017C20CEC00FD49C1 /* throw-bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "throw-bomb.mp3"; sourceTree = "<group>"; };
-		783E899717C2619600FD49C1 /* TextureAtlas1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas1.png; sourceTree = "<group>"; };
-		783E899817C2619700FD49C1 /* TextureAtlas2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas2.png; sourceTree = "<group>"; };
-		783E899917C2619700FD49C1 /* TextureAtlas3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas3.png; sourceTree = "<group>"; };
-		783E899A17C2619700FD49C1 /* TextureAtlas4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas4.png; sourceTree = "<group>"; };
-		783E899B17C2619800FD49C1 /* TextureAtlas5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas5.png; sourceTree = "<group>"; };
-		783E899C17C2619800FD49C1 /* TextureAtlas6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas6.png; sourceTree = "<group>"; };
-		783E899D17C2619800FD49C1 /* TextureAtlas7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas7.png; sourceTree = "<group>"; };
-		783E899E17C2619900FD49C1 /* TextureAtlas8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas8.png; sourceTree = "<group>"; };
+		784FDEE417C3C016007FDE33 /* TextureAtlas1.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas1.pvr.ccz; sourceTree = "<group>"; };
+		784FDEE617C3C798007FDE33 /* TextureAtlas2.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas2.pvr.ccz; sourceTree = "<group>"; };
+		784FDEE717C3C799007FDE33 /* TextureAtlas3.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas3.pvr.ccz; sourceTree = "<group>"; };
+		784FDEE817C3C79A007FDE33 /* TextureAtlas4.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas4.pvr.ccz; sourceTree = "<group>"; };
+		784FDEE917C3C79B007FDE33 /* TextureAtlas5.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas5.pvr.ccz; sourceTree = "<group>"; };
+		784FDEEA17C3C79D007FDE33 /* TextureAtlas7.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas7.pvr.ccz; sourceTree = "<group>"; };
+		784FDEEB17C3C79D007FDE33 /* TextureAtlas8.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas8.pvr.ccz; sourceTree = "<group>"; };
+		784FDEF217C3CF33007FDE33 /* TextureAtlas9.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas9.plist; sourceTree = "<group>"; };
+		784FDEF317C3CF34007FDE33 /* TextureAtlas9.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas9.pvr.ccz; sourceTree = "<group>"; };
 		78582AE017BBD91900C96267 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		78582AE217BBD92300C96267 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		78582AE417BBD92D00C96267 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1242,14 +1244,15 @@
 		783E87CE17C20CEB00FD49C1 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
-				783E899717C2619600FD49C1 /* TextureAtlas1.png */,
-				783E899817C2619700FD49C1 /* TextureAtlas2.png */,
-				783E899917C2619700FD49C1 /* TextureAtlas3.png */,
-				783E899A17C2619700FD49C1 /* TextureAtlas4.png */,
-				783E899B17C2619800FD49C1 /* TextureAtlas5.png */,
-				783E899C17C2619800FD49C1 /* TextureAtlas6.png */,
-				783E899D17C2619800FD49C1 /* TextureAtlas7.png */,
-				783E899E17C2619900FD49C1 /* TextureAtlas8.png */,
+				784FDEF217C3CF33007FDE33 /* TextureAtlas9.plist */,
+				784FDEF317C3CF34007FDE33 /* TextureAtlas9.pvr.ccz */,
+				784FDEE617C3C798007FDE33 /* TextureAtlas2.pvr.ccz */,
+				784FDEE717C3C799007FDE33 /* TextureAtlas3.pvr.ccz */,
+				784FDEE817C3C79A007FDE33 /* TextureAtlas4.pvr.ccz */,
+				784FDEE917C3C79B007FDE33 /* TextureAtlas5.pvr.ccz */,
+				784FDEEA17C3C79D007FDE33 /* TextureAtlas7.pvr.ccz */,
+				784FDEEB17C3C79D007FDE33 /* TextureAtlas8.pvr.ccz */,
+				784FDEE417C3C016007FDE33 /* TextureAtlas1.pvr.ccz */,
 				783E87CF17C20CEB00FD49C1 /* about_scroll_fill@2x.png */,
 				783E87D017C20CEB00FD49C1 /* about_scroll_fill_small@2x.png */,
 				783E87D117C20CEB00FD49C1 /* birds_life@2x.png */,
@@ -1271,16 +1274,8 @@
 				783E884017C20CEB00FD49C1 /* TextureAtlas8.plist */,
 				783E884217C20CEB00FD49C1 /* wep_1@2x.png */,
 				783E884317C20CEB00FD49C1 /* wep_2@2x.png */,
-				783E884417C20CEB00FD49C1 /* xml */,
 			);
 			path = 1280x720;
-			sourceTree = "<group>";
-		};
-		783E884417C20CEB00FD49C1 /* xml */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = xml;
 			sourceTree = "<group>";
 		};
 		783E884517C20CEB00FD49C1 /* Resources */ = {
@@ -2206,14 +2201,15 @@
 				783E899217C20CEC00FD49C1 /* tap.wav in Resources */,
 				783E899317C20CEC00FD49C1 /* throw-bird.mp3 in Resources */,
 				783E899517C20CEC00FD49C1 /* throw-bomb.mp3 in Resources */,
-				783E899F17C2619900FD49C1 /* TextureAtlas1.png in Resources */,
-				783E89A017C2619900FD49C1 /* TextureAtlas2.png in Resources */,
-				783E89A117C2619900FD49C1 /* TextureAtlas3.png in Resources */,
-				783E89A217C2619900FD49C1 /* TextureAtlas4.png in Resources */,
-				783E89A317C2619900FD49C1 /* TextureAtlas5.png in Resources */,
-				783E89A417C2619900FD49C1 /* TextureAtlas6.png in Resources */,
-				783E89A517C2619900FD49C1 /* TextureAtlas7.png in Resources */,
-				783E89A617C2619900FD49C1 /* TextureAtlas8.png in Resources */,
+				784FDEE517C3C016007FDE33 /* TextureAtlas1.pvr.ccz in Resources */,
+				784FDEEC17C3C79E007FDE33 /* TextureAtlas2.pvr.ccz in Resources */,
+				784FDEED17C3C79E007FDE33 /* TextureAtlas3.pvr.ccz in Resources */,
+				784FDEEE17C3C79E007FDE33 /* TextureAtlas4.pvr.ccz in Resources */,
+				784FDEEF17C3C79E007FDE33 /* TextureAtlas5.pvr.ccz in Resources */,
+				784FDEF017C3C79E007FDE33 /* TextureAtlas7.pvr.ccz in Resources */,
+				784FDEF117C3C79E007FDE33 /* TextureAtlas8.pvr.ccz in Resources */,
+				784FDEF417C3CF35007FDE33 /* TextureAtlas9.plist in Resources */,
+				784FDEF517C3CF35007FDE33 /* TextureAtlas9.pvr.ccz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,10 +18,10 @@ int Loader::ACTION = -1;
 
 TextureStructure Loader::TEXTURE_LIBRARY[3] =
 {
-    {"TextureAtlas6.png", "TextureAtlas6.plist"},
-    {"TextureAtlas7.png", "TextureAtlas7.plist"},
-    {"TextureAtlas8.png", "TextureAtlas8.plist"},
-    //{"birds_sprite@2x.png", NULL},
+    //{"TextureAtlas6.png", "TextureAtlas6.plist"},
+    {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
+    {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
+    {"birds_sprite@2x.png", NULL},
     //{"special_birds_sprite@2x.png", NULL}
 };
 
@@ -40,13 +40,12 @@ Loader::~Loader()
 
 Loader::Loader()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
     this->addChild(spriteBatch);
 
     this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);
     this->mCircles = EntityManager::create(15, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
     this->mBird = Entity::create("preload-lvl-bird@2x.png", spriteBatch);
-
     
     this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
     
@@ -84,7 +83,7 @@ Loader::Loader()
     this->mCircleAnimationTime = 0.5;
     this->mCircleAnimationTimeElapsed = 0;
 
-    this->mLoadingTime = 3.5;
+    this->mLoadingTime = 0.5;
     this->mLoadingTimeElapsed = 0;
 
     this->mLoading = false;
@@ -348,7 +347,7 @@ void Loader::onEnter()
     this->mTipText->setString(Options::TEXT_TIP[Utils::random(0, 4)].string);
     this->mTipText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(250));
     
-    this->mLoadingText->setString("");
+    this->mLoadingText->setString(Options::TEXT_LOADING_1.string);
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     this->mLoadingText->setOpacity(255.0);
 

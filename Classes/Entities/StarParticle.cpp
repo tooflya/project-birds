@@ -32,6 +32,14 @@ StarParticle::StarParticle() :
         this->mType = -1;
     }
 
+StarParticle* StarParticle::create()
+{
+    StarParticle* entity = new StarParticle();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -88,7 +96,7 @@ void StarParticle::onCreate()
 
 StarParticle* StarParticle::deepCopy()
 {
-    return new StarParticle();
+    return StarParticle::create();
 }
 
 #endif

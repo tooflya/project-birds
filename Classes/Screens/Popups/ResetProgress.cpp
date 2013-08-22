@@ -29,7 +29,7 @@ ResetProgress::~ResetProgress()
 ResetProgress::ResetProgress(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch, -1);
+        this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
     
         this->mIllustration = Entity::create("popup_progress_picture@2x.png", this->mSpriteBatch);
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);

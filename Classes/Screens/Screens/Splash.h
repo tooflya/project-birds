@@ -40,7 +40,7 @@ class Splash : public CCLayer
 
         Entity* mBackground;
     
-        BatchEntityManager* mParts;
+        EntityManager* mParts;
 
         // ===========================================================
         // Constructors
@@ -101,6 +101,7 @@ class Splash : public CCLayer
         // ===========================================================
     
         Splash(Screen* pParent);
+        ~Splash();
 
         // ===========================================================
         // Methods
@@ -124,6 +125,9 @@ class Splash : public CCLayer
         // ===========================================================
     
         void update(float pDeltaTime);
+    
+        void onEnter();
+        void onExit();
 };
 
 #endif

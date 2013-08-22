@@ -34,7 +34,7 @@ ModeHelpList::ModeHelpList(CCNode* pParent) :
         this->mText[1] = Text::create(Options::TEXT_MODEHELP_HELP[1], CCSize(Utils::coord(450), 0), this);
 
         this->mText[0]->setCenterPosition((static_cast<Entity*>(pParent))->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(250));
-        this->mText[1]->setCenterPosition((static_cast<Entity*>(pParent))->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2 + Utils::coord(140));
+        this->mText[1]->setCenterPosition((static_cast<Entity*>(pParent))->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2 + Utils::coord(180));
 
         this->mText[0]->setColor(ccc3(167.0, 65.0, 7.0));
         this->mText[1]->setColor(ccc3(167.0, 65.0, 7.0));
@@ -52,7 +52,16 @@ void ModeHelpList::onEnter()
 {
     List::onEnter();
     
-    this->mText[1]->setCenterPosition((static_cast<Entity*>(this->mParent))->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2 + Utils::coord(140));
+    this->mText[1]->setCenterPosition((static_cast<Entity*>(this->mParent))->getWidth() / 2, Options::CAMERA_CENTER_Y - this->mText[1]->getContentSize().height / 2 + Utils::coord(180));
+    
+    if(Options::CURRENT_LANGUAGE == 1)
+    {
+        this->mMaxHeight = Utils::coord(300);
+    }
+    else
+    {
+        this->mMaxHeight = Utils::coord(150);
+    }
 }
 
 #endif

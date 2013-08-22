@@ -58,7 +58,8 @@ Popup::Popup(CCNode* pParent)
     
     this->mParent = pParent;
 
-    this->mSpriteBatch = CCSpriteBatchNode::create("TextureAtlas4.png");
+    this->mSpriteBatch = CCSpriteBatchNode::create("TextureAtlas4.pvr.ccz");
+    this->mSpriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.pvr.ccz");
     
     this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);
     this->mSquare = Background::create();
@@ -74,6 +75,7 @@ Popup::Popup(CCNode* pParent)
     this->setAnchorPoint(ccp(0.5, 0.5));
     this->setScale(0.0);
     
+    this->addChild(this->mSpriteBatch2);
     this->addChild(this->mSpriteBatch);
 
     this->mParent->addChild(this->mSquare);
@@ -196,7 +198,7 @@ void Popup::update(float pDeltaTime)
 void Popup::draw()
 {
     CCLayer::draw();
-};
+}
 
 void Popup::onEnter()
 {

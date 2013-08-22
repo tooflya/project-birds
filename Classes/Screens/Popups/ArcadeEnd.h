@@ -23,6 +23,8 @@ class ArcadeEnd : public End
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ArcadeEnd(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods
@@ -76,7 +78,7 @@ class ArcadeEnd : public End
         // Constructors
         // ===========================================================
     
-        ArcadeEnd(int pType, Screen* pParent);
+        static ArcadeEnd* create(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods

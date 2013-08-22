@@ -61,9 +61,13 @@ private:
     void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
     void ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
 public:
+    ~TouchTrailLayer();
     static TouchTrailLayer* create();
 
     void update(float pDeltaTime);
+    
+    void onEnter();
+    void onExit();
 };
 
 #endif
