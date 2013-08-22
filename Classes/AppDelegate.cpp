@@ -16,6 +16,7 @@
 ScreenManager* AppDelegate::screens = NULL;
 
 bool AppDelegate::IS_ALREADY_PLAYED = false;
+bool AppDelegate::IS_IPOD = true;
 
 // ===========================================================
 // Fields
@@ -264,7 +265,18 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     vector <string> searchPath;
     
-    searchPath.push_back(resources1280x720.directory);
+    if(AppDelegate::IS_IPOD)
+    {
+        searchPath.push_back(resources1280x720.directory);
+        
+        CCLog("IPOD DETECTED!");
+    }
+    else
+    {
+        searchPath.push_back(resources2048x1536.directory);
+        
+        CCLog("NOT IPOD DETECTED!");
+    }
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 
@@ -283,7 +295,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->setAlphaBlending(false);
     director->setDepthTest(false);
 
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
     
     director->setProjection(kCCDirectorProjection2D);
 

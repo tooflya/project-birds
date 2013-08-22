@@ -66,39 +66,63 @@ CCArray* Progresses::TASK[10] =
 // Constructors
 // ===========================================================
 
+Progresses::~Progresses()
+{
+    this->mColors->release();
+    this->mShelfes->release();
+}
+
 Progresses::Progresses() :
     Game()
     {
-       /* this->mEventLayer = CCLayer::create();
+        this->mEventLayer = CCLayer::create();
+        
+        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
+        
+        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
+        
+        this->addChild(spriteBatch6);
+        this->addChild(spriteBatch1);
+        this->addChild(spriteBatch2);
+        this->addChild(spriteBatch3);
+        this->addChild(spriteBatch4);
+        this->addChild(spriteBatch5);
+        this->addChild(spriteBatch7);
+        
+        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
 
-        this->mBackground = Entity::create("game_gui_bg_summer@2x.png", this);
+        this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mGameStartText = new Text(Options::TEXT_GAME_START_STRING_1, this);
+        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, spriteBatch2, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        
+        this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
+        this->mMarks = EntityManager::create(200, Mark::create(), spriteBatch2);
+        this->mFeathers = EntityManager::create(100, Feather::create(), spriteBatch2);
+        this->mBirds = EntityManager::create(20, Bird::create(), spriteBatch4);
+        this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
+        this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
+        this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
 
-        this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, this, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
-
-        this->mDust = new BatchEntityManager(100, new Dust(), this);
-        this->mMarks = new BatchEntityManager(500, new Mark(), this);
-        this->mFeathers = new BatchEntityManager(100, new Feather(), this);
-        this->mBirds = new BatchEntityManager(20, new Bird(), this);
-        this->mSpecialBirds = new BatchEntityManager(10, new SpecialBird(), this);
-        this->mExplosions = new BatchEntityManager(10, new Explosion(), this);
-        this->mExplosionsBasic = new BatchEntityManager(10, new ExplosionBasic(), this);
-
-        this->mEventPanel = new EventPanel(this);
+        this->mEventPanel = EventPanel::create(this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        this->mEventPanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
+        ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
 
         this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(48));
 
         this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
-        this->mShelfes = new BatchEntityManager(10, Entity::create("game_shelf@2x.png"), this->mEventLayer);
-        this->mColors = new BatchEntityManager(50, new Color(), this->mEventLayer);
+        this->mShelfes = EntityManager::create(10, Entity::create("game_shelf@2x.png"), spriteBatch7);
+        this->mColors = EntityManager::create(50, Color::create(), spriteBatch7);
 
-        this->mPausePopup = new ProgressPause(this);
-        this->mEndScreen = new ProgressEnd(Splash::TYPE_PROGRESS, this);
+        //this->mPausePopup = new ProgressPause(this);
+        this->mEndScreen = ProgressEnd::create(Splash::TYPE_PROGRESS, this);
 
         this->mAlgorithmBirdsRemainig = 20;
         this->mAlgorithmBirdsTime = 0.5;
@@ -108,8 +132,17 @@ Progresses::Progresses() :
 
         this->addChild(this->mEventLayer);
 
-        m_Instance = this;*/
+        m_Instance = this;
     }
+
+Progresses* Progresses::create()
+{
+    Progresses* screen = new Progresses();
+    screen->autorelease();
+    screen->retain();
+    
+    return screen;
+}
 
 // ===========================================================
 // Methods
@@ -264,11 +297,11 @@ void Progresses::onBirBlow(int pType)
                     }
                 }
 
-                this->mColors->stopAllActions();
-                this->mShelfes->stopAllActions();
+                this->mColors->getParent()->stopAllActions();
+                this->mShelfes->getParent()->stopAllActions();
 
-                this->mColors->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mColors->getPosition().y)));
-                this->mShelfes->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mShelfes->getPosition().y)));
+                this->mColors->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mColors->getParent()->getPosition().y)));
+                this->mShelfes->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mShelfes->getParent()->getPosition().y)));
 
                 TASK[0]->removeObjectAtIndex(0);
             }
@@ -300,11 +333,11 @@ void Progresses::onBirBlow(int pType)
                 entity->setCurrentFrameIndex(pType);
                 entity->setCenterPosition(entity1->getCenterX() - Utils::coord(64), Utils::coord(64));
 
-                this->mColors->stopAllActions();
-                this->mShelfes->stopAllActions();
+                this->mColors->getParent()->stopAllActions();
+                this->mShelfes->getParent()->stopAllActions();
                 
-                this->mColors->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mColors->getPosition().y)));
-                this->mShelfes->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mShelfes->getPosition().y)));
+                this->mColors->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mColors->getParent()->getPosition().y)));
+                this->mShelfes->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mShelfes->getParent()->getPosition().y)));
             }
         }
     }
@@ -315,7 +348,7 @@ void Progresses::onEnter()
     Game::onEnter();
 
     this->mColors->clear();
-    this->mColors->setPosition(ccp(0, 0));
+    this->mColors->getParent()->setPosition(ccp(0, 0));
 }
 
 void Progresses::onExit()

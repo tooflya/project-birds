@@ -27,6 +27,7 @@ Classic::~Classic()
 {
     this->mConfetti->release();
     this->mLifes->release();
+    this->mStars->release();
 }
 
 Classic::Classic() :
@@ -39,14 +40,18 @@ Classic::Classic() :
         CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
         CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
         CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("birds_sprite@2x.png");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
         
+        this->addChild(spriteBatch6);
         this->addChild(spriteBatch1);
         this->addChild(spriteBatch2);
         this->addChild(spriteBatch3);
         this->addChild(spriteBatch4);
-
-        this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch1);
+        this->addChild(spriteBatch5);
+        
+        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
         this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", spriteBatch2);
 
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
@@ -63,7 +68,7 @@ Classic::Classic() :
         this->mMarks = EntityManager::create(200, Mark::create(), spriteBatch2);
         this->mFeathers = EntityManager::create(100, Feather::create(), spriteBatch2);
         this->mBirds = EntityManager::create(20, Bird::create(), spriteBatch4);
-        //this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), this);
+        this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
         this->mLifes = EntityManager::create(3, Entity::create("lifes@2x.png", 1, 2), spriteBatch2);

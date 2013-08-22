@@ -35,6 +35,14 @@ SpecialBird::SpecialBird() :
         this->mChalange = false;
     }
 
+SpecialBird* SpecialBird::create()
+{
+    SpecialBird* entity = new SpecialBird();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -45,7 +53,7 @@ SpecialBird::SpecialBird() :
 
 SpecialBird* SpecialBird::deepCopy()
 {
-    return new SpecialBird();
+    return SpecialBird::create();
 }
 
 #endif

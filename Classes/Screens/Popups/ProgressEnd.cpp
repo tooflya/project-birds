@@ -29,6 +29,15 @@ ProgressEnd::ProgressEnd(int pType, Screen* pParent) :
         m_Instance = this;
     }
 
+ProgressEnd* ProgressEnd::create(int pType, Screen* pParent)
+{
+    ProgressEnd* screen = new ProgressEnd(pType, pParent);
+    screen->autorelease();
+    screen->retain();
+    
+    return screen;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

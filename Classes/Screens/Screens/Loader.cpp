@@ -16,13 +16,13 @@
 
 int Loader::ACTION = -1;
 
-TextureStructure Loader::TEXTURE_LIBRARY[3] =
+TextureStructure Loader::TEXTURE_LIBRARY[5] =
 {
-    //{"TextureAtlas6.png", "TextureAtlas6.plist"},
+    {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
     {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
     {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
-    {"birds_sprite@2x.png", NULL},
-    //{"special_birds_sprite@2x.png", NULL}
+    {"TextureAtlas10.pvr.ccz", "TextureAtlas10.plist"},
+    {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"}
 };
 
 // ===========================================================

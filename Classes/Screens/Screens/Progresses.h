@@ -28,12 +28,14 @@ class Progresses : public Game
         // Fields
         // ===========================================================
 
-        BatchEntityManager* mColors;
-        BatchEntityManager* mShelfes;
+        EntityManager* mColors;
+        EntityManager* mShelfes;
     
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Progresses();
 
         // ===========================================================
         // Methods
@@ -87,7 +89,9 @@ class Progresses : public Game
         // Fields
         // ===========================================================
     
-        Progresses();
+        static Progresses* create();
+    
+        ~Progresses();
 
         // ===========================================================
         // Constructors

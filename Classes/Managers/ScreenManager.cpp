@@ -102,7 +102,7 @@ void ScreenManager::load(int pAction, int pDo)
                     
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
-                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
                 
                 break;
                 
@@ -145,7 +145,7 @@ void ScreenManager::load(int pAction, int pDo)
 
                 this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
                 this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
-                //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progress::create();
+                this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progresses::create();
                 
                 break;
             }

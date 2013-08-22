@@ -37,6 +37,14 @@ Clock::Clock(CCNode* pParent) :
         this->mTimeElapsed = 1;
     }
 
+Clock* Clock::create(CCNode *pParent)
+{
+    Clock* entity = new Clock(pParent);
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

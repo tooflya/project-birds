@@ -213,4 +213,9 @@ void EntityManager::setOpacity(GLubyte opacity)
     }
 }
 
+CCNode* EntityManager::getParent()
+{
+    return this->mParent;
+}
+
 #endif

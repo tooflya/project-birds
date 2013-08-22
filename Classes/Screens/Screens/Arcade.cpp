@@ -23,7 +23,7 @@ Arcade* Arcade::m_Instance = NULL;
 
 Arcade::~Arcade()
 {
-    
+    this->mStars->release();
 }
 
 Arcade::Arcade() :
@@ -33,19 +33,25 @@ Arcade::Arcade() :
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
         
+        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
+        
         CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
         CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
         CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("birds_sprite@2x.png");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
         
+        this->addChild(spriteBatch6);
         this->addChild(spriteBatch1);
         this->addChild(spriteBatch2);
         this->addChild(spriteBatch3);
         this->addChild(spriteBatch4);
+        this->addChild(spriteBatch5);
 
-        this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch1);
+        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
         this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", spriteBatch2);
-        this->mTimeIcon = new Clock(this->mEventLayer);
+        this->mTimeIcon = Clock::create(this->mEventLayer);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
 
         this->mCountText = Text::create((Textes) {"0", Options::FONT, 80, -1}, this);
@@ -62,7 +68,7 @@ Arcade::Arcade() :
         this->mMarks = EntityManager::create(200, Mark::create(), spriteBatch2);
         this->mFeathers = EntityManager::create(100, Feather::create(), spriteBatch2);
         this->mBirds = EntityManager::create(20, Bird::create(), spriteBatch4);
-        //this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), this);
+        this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
 
@@ -71,7 +77,7 @@ Arcade::Arcade() :
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
         this->mCountIcon->create()->setCenterPosition(Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(64));
-        this->mTimeIcon->create()->setCenterPosition(Utils::coord(64), Utils::coord(80));
+        ((Entity*) this->mTimeIcon)->create()->setCenterPosition(Utils::coord(64), Utils::coord(80));
 
         this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(48));
 

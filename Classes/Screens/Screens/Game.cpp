@@ -33,13 +33,12 @@ Game::~Game()
     this->mEndScreen->release();
     
     this->mBirds->release();
-    //this->mSpecialBirds->release();
+    this->mSpecialBirds->release();
     this->mMarks->release();
     this->mFeathers->release();
     this->mExplosionsBasic->release();
     this->mExplosions->release();
     this->mDust->release();
-    this->mStars->release();
 }
 
 Game::Game() :

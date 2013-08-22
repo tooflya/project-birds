@@ -23,6 +23,8 @@ class ProgressEnd : public End
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ProgressEnd(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods
@@ -76,7 +78,7 @@ class ProgressEnd : public End
         // Constructors
         // ===========================================================
     
-        ProgressEnd(int pType, Screen* pParent);
+        static ProgressEnd* create(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods

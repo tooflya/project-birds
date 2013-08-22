@@ -14,7 +14,7 @@ class Loader : public Screen
         // Constants
         // ===========================================================
     
-        static TextureStructure TEXTURE_LIBRARY[3];
+        static TextureStructure TEXTURE_LIBRARY[5];
 
         // ===========================================================
         // Fields

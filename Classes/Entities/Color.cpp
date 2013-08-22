@@ -25,6 +25,14 @@ Color::Color() :
 
     }
 
+Color* Color::create()
+{
+    Color* entity = new Color();
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -42,7 +50,7 @@ Color::Color() :
 
 Color* Color::deepCopy()
 {
-    return new Color();
+    return Color::create();
 }
 
 #endif
