@@ -74,7 +74,7 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
             <true/>
             <key>forceWordAligned</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">PVRTC4</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
