@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../1280x720/TextureAtlas10.pvr.ccz</filename>
+        <filename>TextureAtlas10.pvr.ccz</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../1280x720/TextureAtlas10plist</filename>
+        <filename>TextureAtlas10plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
