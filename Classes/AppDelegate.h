@@ -139,6 +139,10 @@ class AppDelegate : private CCApplication
     
         static bool IS_IPOD;
     
+        static CCArray* getArrayOfBoughtBirds();
+    
+        static int getRandomBonusBird();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

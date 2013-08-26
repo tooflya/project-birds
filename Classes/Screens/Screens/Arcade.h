@@ -111,6 +111,8 @@ class Arcade : public Game
 
         void onGameStarted();
         void onGameEnd();
+    
+        void pause();
 };
 
 #endif

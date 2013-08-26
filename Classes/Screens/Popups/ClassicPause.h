@@ -23,6 +23,8 @@ class ClassicPause : public Pause
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ClassicPause(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -76,7 +78,7 @@ class ClassicPause : public Pause
         // Constructors
         // ===========================================================
     
-        ClassicPause(CCNode* pParent);
+        static ClassicPause* create(CCNode* pParent);
 
         // ===========================================================
         // Methods

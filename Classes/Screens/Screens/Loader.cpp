@@ -16,13 +16,30 @@
 
 int Loader::ACTION = -1;
 
-TextureStructure Loader::TEXTURE_LIBRARY[5] =
+const char* Loader::WEAPON_TEXTURE[11] =
+{
+    "wep_1@2x.png",
+    "wep_2@2x.png",
+    "wep_3@2x.png",
+    "wep_4@2x.png",
+    "wep_5@2x.png",
+    "wep_6@2x.png",
+    "wep_7@2x.png",
+    "wep_8@2x.png",
+    "wep_9@2x.png",
+    "wep_10@2x.png",
+    "wep_11@2x.png"
+};
+
+TextureStructure Loader::TEXTURE_LIBRARY[7] =
 {
     {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
     {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
     {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
     {"TextureAtlas10.pvr.ccz", "TextureAtlas10.plist"},
-    {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"}
+    {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"},
+    {"TextureAtlas12.pvr.ccz", "TextureAtlas12.plist"},
+    {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
 
 // ===========================================================
@@ -126,22 +143,9 @@ void Loader::loadingCallBack(CCObject *obj)
 
         if(ACTION > 2)
         {
-            SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
-
-            if(!Options::MUSIC_ENABLE)
-            {
-                SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
-            }
         }
         else
         {
-            SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_2, true); 
-
-            if(!Options::MUSIC_ENABLE)
-            {
-                SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
-            }
-
             AppDelegate::IS_ALREADY_PLAYED = true;
         }
         
@@ -352,7 +356,6 @@ void Loader::onEnter()
     this->mLoadingText->setOpacity(255.0);
 
     SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
-    SimpleAudioEngine::sharedEngine()->stopAllEffects();
 }
 
 void Loader::onExit()

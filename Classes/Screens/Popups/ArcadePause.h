@@ -23,6 +23,8 @@ class ArcadePause : public Pause
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ArcadePause(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -76,7 +78,7 @@ class ArcadePause : public Pause
         // Constructors
         // ===========================================================
     
-        ArcadePause(CCNode* pParent);
+        static ArcadePause* create(CCNode* pParent);
 
         // ===========================================================
         // Methods

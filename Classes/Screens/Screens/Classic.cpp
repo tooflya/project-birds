@@ -66,7 +66,7 @@ Classic::Classic() :
 
         this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
         this->mMarks = EntityManager::create(200, Mark::create(), spriteBatch2);
-        this->mFeathers = EntityManager::create(100, Feather::create(), spriteBatch2);
+        this->mFeathers = EntityManager::create(200, Feather::create(), spriteBatch2);
         this->mBirds = EntityManager::create(20, Bird::create(), spriteBatch4);
         this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
@@ -91,7 +91,7 @@ Classic::Classic() :
         this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
         this->mBonusTimeText->setOpacity(0);
 
-        //this->mPausePopup = new ClassicPause(this);
+        this->mPausePopup = ClassicPause::create(this);
         this->mEndScreen = ClassicEnd::create(Splash::TYPE_CLASSIC, this);
 
         this->mLevelUpTime = 30.0;

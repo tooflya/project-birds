@@ -13,8 +13,6 @@ class Loader : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static TextureStructure TEXTURE_LIBRARY[5];
 
         // ===========================================================
         // Fields
@@ -94,6 +92,9 @@ class Loader : public Screen
         // ===========================================================
 
         static int ACTION;
+    
+        static TextureStructure TEXTURE_LIBRARY[7];
+        static const char* WEAPON_TEXTURE[11];
 
         // ===========================================================
         // Fields

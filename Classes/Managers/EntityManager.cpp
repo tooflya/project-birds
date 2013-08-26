@@ -218,4 +218,22 @@ CCNode* EntityManager::getParent()
     return this->mParent;
 }
 
+void EntityManager::pauseSchedulerAndActions()
+{
+    for(int i = 0; i < this->getCapacity(); i++)
+    {
+        ((Entity*) this->objectAtIndex(i))->retain();
+        ((Entity*) this->objectAtIndex(i))->pauseSchedulerAndActions();
+    }
+}
+
+void EntityManager::resumeSchedulerAndActions()
+{
+    for(int i = 0; i < this->getCapacity(); i++)
+    {
+        ((Entity*) this->objectAtIndex(i))->release();
+        ((Entity*) this->objectAtIndex(i))->resumeSchedulerAndActions();
+    }
+}
+
 #endif

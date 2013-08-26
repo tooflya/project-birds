@@ -29,6 +29,15 @@ ArcadePause::ArcadePause(CCNode* pParent) :
         m_Instance = this;
     }
 
+ArcadePause* ArcadePause::create(CCNode* pParent)
+{
+    ArcadePause* popup = new ArcadePause(pParent);
+    popup->autorelease();
+    popup->retain();
+    
+    return popup;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

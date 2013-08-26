@@ -36,6 +36,8 @@ Loading::~Loading()
 {
     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
     CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 Loading::Loading()

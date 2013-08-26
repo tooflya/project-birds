@@ -22,6 +22,7 @@
 Splash::~Splash()
 {
     this->mParts->release();
+    this->mScaleLayer->release();
 }
 
 Splash::Splash(Screen* pParent)
@@ -48,7 +49,7 @@ void Splash::show()
     part = (Entity*) this->mParts->objectAtIndex(1);
     part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, part->getContentSize().height / 2)));
                                               
-    this->mBackground->setScale(3.0);
+    this->mScaleLayer->setScale(3.0);
     
     this->mShowBackground = true;
     this->mShowBackgroundTime = 0.3;
@@ -68,7 +69,7 @@ void Splash::hide()
     part = (Entity*) this->mParts->objectAtIndex(1);
     part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, -part->getContentSize().height / 2)));
     
-    this->mBackground->runAction(CCScaleTo::create(0.1, 0.0));
+    this->mScaleLayer->runAction(CCScaleTo::create(0.1, 0.0));
     
     this->mHideBackground = true;
     this->mHideBackgroundTime = 0.3;
@@ -122,8 +123,8 @@ void Splash::update(float pDeltaTime)
         {
             this->mShowBackgroundTimeElapsed = 0;
             
-            this->mBackground->setVisible(true);
-            this->mBackground->runAction(CCScaleTo::create(0.1, 1.0));
+            this->mScaleLayer->setVisible(true);
+            this->mScaleLayer->runAction(CCScaleTo::create(0.1, 1.0));
             
             this->mShowBackground = false;
             
@@ -139,7 +140,7 @@ void Splash::update(float pDeltaTime)
         {
             this->mHideBackgroundTimeElapsed = 0;
             
-            this->mBackground->setVisible(false);
+            this->mScaleLayer->setVisible(false);
             
             this->mHideBackground = false;
             

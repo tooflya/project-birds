@@ -41,6 +41,8 @@ class Splash : public CCLayer
         Entity* mBackground;
     
         EntityManager* mParts;
+    
+        CCLayer* mScaleLayer;
 
         // ===========================================================
         // Constructors

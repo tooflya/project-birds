@@ -137,8 +137,8 @@ int Options::SHOP_ITEMS_PRICES[100] =
 {
       999, 1499, 2939, 3420, 3850, 4400, 5100, 6800, 1100, 20000,
       22199, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      10000, 15200, 18760, 21780, 33110, 37600, 40050, 44220, 50670, 60200,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      22000, 36000, 42000, 58000, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -151,11 +151,11 @@ int Options::SHOP_ITEMS_RATING_FACTOR[100] =
 {
       10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
       100, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      90, 90, 90, 90, 90, 90, 90, 90, 90, 90,
+      90, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      20, 30, 40, 50, 60, 70, 80, 90, 100, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      20, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1
@@ -165,7 +165,7 @@ const char* Options::SHOP_ITEMS_PROPERTIES[100] =
 {
     "12", "22", "31", "36", "42", "48", "52", "61", "68", "75",
     "88", "0", "0", "0", "0", "0", "0", "0", "0", "0",
-    "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",
+    "0:10", "0:30", "0:00", "0:00", "0:23", "0:00", "0:45", "0:00", "0:20", "0",
     "0:02", "0:05", "0:12", "0:20", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
@@ -571,41 +571,62 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[6].string = "Magic Wand";
             TEXT_SHOP_ITEMS[6].size = 48;
             
-            TEXT_SHOP_ITEMS[7].string = "Sword of Jedi";
+            TEXT_SHOP_ITEMS[7].string = "Clown head baseball bat";
             TEXT_SHOP_ITEMS[7].size = 48;
             
-            TEXT_SHOP_ITEMS[8].string = "The mechanical arm";
+            TEXT_SHOP_ITEMS[8].string = "Fish";
             TEXT_SHOP_ITEMS[8].size = 48;
             
-            TEXT_SHOP_ITEMS[9].string = "Fish";
+            TEXT_SHOP_ITEMS[9].string = "The mechanical arm";
             TEXT_SHOP_ITEMS[9].size = 48;
             
-            TEXT_SHOP_ITEMS[10].string = "Clown head baseball bat";
+            TEXT_SHOP_ITEMS[10].string = "Sword of Jedi";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[30].string = "Freeze Bird";
-            TEXT_SHOP_ITEMS[30].size = 48;
+            TEXT_SHOP_ITEMS[20].string = "Freeze Bird";
+            TEXT_SHOP_ITEMS[20].size = 48;
             
-            TEXT_SHOP_ITEMS[31].string = "Comanche Bird";
-            TEXT_SHOP_ITEMS[31].size = 48;
+            TEXT_SHOP_ITEMS[21].string = "Comanche Bird";
+            TEXT_SHOP_ITEMS[21].size = 48;
             
-            TEXT_SHOP_ITEMS[32].string = "Robo Bird";
-            TEXT_SHOP_ITEMS[32].size = 48;
+            TEXT_SHOP_ITEMS[22].string = "Robo Bird";
+            TEXT_SHOP_ITEMS[22].size = 48;
             
-            TEXT_SHOP_ITEMS[33].string = "Pirat Bird";
-            TEXT_SHOP_ITEMS[33].size = 48;
+            TEXT_SHOP_ITEMS[23].string = "Pirat Bird";
+            TEXT_SHOP_ITEMS[23].size = 48;
             
-            TEXT_SHOP_ITEMS[60].string = "Information not found";
-            TEXT_SHOP_ITEMS[60].size = 48;
+            TEXT_SHOP_ITEMS[24].string = "Mexico Bird";
+            TEXT_SHOP_ITEMS[24].size = 48;
             
-            TEXT_SHOP_ITEMS[61].string = "Information not found";
-            TEXT_SHOP_ITEMS[61].size = 48;
+            TEXT_SHOP_ITEMS[25].string = "Commandor";
+            TEXT_SHOP_ITEMS[25].size = 48;
             
-            TEXT_SHOP_ITEMS[62].string = "Information not found";
-            TEXT_SHOP_ITEMS[62].size = 48;
+            TEXT_SHOP_ITEMS[26].string = "Zombie";
+            TEXT_SHOP_ITEMS[26].size = 48;
             
-            TEXT_SHOP_ITEMS[63].string = "Information not found";
-            TEXT_SHOP_ITEMS[63].size = 48;
+            TEXT_SHOP_ITEMS[27].string = "Monster";
+            TEXT_SHOP_ITEMS[27].size = 48;
+            
+            TEXT_SHOP_ITEMS[28].string = "Ninja";
+            TEXT_SHOP_ITEMS[28].size = 48;
+            
+            TEXT_SHOP_ITEMS[40].string = "Information not found.";
+            TEXT_SHOP_ITEMS[40].size = 48;
+            
+            TEXT_SHOP_ITEMS[41].string = "Information not found.";
+            TEXT_SHOP_ITEMS[41].size = 48;
+            
+            TEXT_SHOP_ITEMS[42].string = "Information not found.";
+            TEXT_SHOP_ITEMS[42].size = 48;
+            
+            TEXT_SHOP_ITEMS[43].string = "Information not found.";
+            TEXT_SHOP_ITEMS[43].size = 48;
+            
+            TEXT_SHOP_ITEMS[44].string = "Information not found.";
+            TEXT_SHOP_ITEMS[44].size = 48;
+            
+            TEXT_SHOP_ITEMS[45].string = "Information not found.";
+            TEXT_SHOP_ITEMS[45].size = 48;
             
             TEXT_SHOP_BOUGHT.string = "was unlocked";
             TEXT_SHOP_BOUGHT.size = 48;
@@ -626,10 +647,10 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Hammer - Stone Hammer of truth. With it, ancient people of the Lost World, builded huts and hunted for food. In crowd, they went on a hunt in search of a mammoth. When they are found his lair, were surrounded it and walked to mortal combat with the beast.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "This two-sided ax was a symbol of the absolute power of an old Indian. Axe reminds to the Indian about pasts times, when he go on the greats reds dragons that once in 10 years, come from high dark mountains and burned the indian village.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Magic wand fairy godmother which was found in the hollow of a huge old oak tree which grows on the outskirts next to the dense forest. Be careful, rumored to live there unknown monsters. In all probability, they took the magic wand of fairy godmother and hid it. What's wrong with fairy nobody knows.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "The legendary Sword of the Jedi, which captured spacecrafts, that there spacecraft - the whole galaxy! His owner endowed unusual strength and abilities, but only until the charge battery is out.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Iron mechanical arm, the result of years of secret developments the leading companies in the world in nanotechnologies. It was the beginning of creating a top-secret project - Steel bearings. Now the hand used as an industrial coffee machine.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Dried fish, which fulfilled the wishes of the royal Family. Was found near the dark side of the fast river, of little gnomes. Be careful and cautious in their whishes, maybe your wish will come true right now!";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "At Baseball bat portrayed the first clown of old circus. The audience has loved his performance with trained dinosaurs and flying elephants. As a result, good people decided to portrayed his look on this bat.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "At Baseball bat portrayed the first clown of old circus. The audience has loved his performance with trained dinosaurs and flying elephants. As a result, good people decided to portrayed his look on this bat.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Dried fish, which fulfilled the wishes of the royal Family. Was found near the dark side of the fast river, of little gnomes. Be careful and cautious in their whishes, maybe your wish will come true right now!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Iron mechanical arm, the result of years of secret developments the leading companies in the world in nanotechnologies. It was the beginning of creating a top-secret project - Steel bearings. Now the hand used as an industrial coffee machine.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "The legendary Sword of the Jedi, which captured spacecrafts, that there spacecraft - the whole galaxy! His owner endowed unusual strength and abilities, but only until the charge battery is out.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[11].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[12].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[13].string = "Information not found.";
@@ -639,17 +660,17 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[17].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[18].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Ice bird has a unique ability to freeze time. It will help you to react quickly at the right time and get as many coins as you can.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "When this bird will break the spirit of an Indian will show you where these birds will fly.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "By killing the bird appears chest full of coins or other valuable prize.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Break it and you will fall on the blessed rain of birds.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Infected birds rest, which leads to a decrease in their health.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "This bird here, to slow down the time. You can easily straightened with a mass of other birds.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Information about freeze bird.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Information not found.";
@@ -948,41 +969,62 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[6].string = "Волшебная палочка";
             TEXT_SHOP_ITEMS[6].size = 48;
             
-            TEXT_SHOP_ITEMS[7].string = "Меч Джедая";
+            TEXT_SHOP_ITEMS[7].string = "Бита клоуна";
             TEXT_SHOP_ITEMS[7].size = 48;
             
-            TEXT_SHOP_ITEMS[8].string = "Механическая рука";
+            TEXT_SHOP_ITEMS[8].string = "Рыба";
             TEXT_SHOP_ITEMS[8].size = 48;
             
-            TEXT_SHOP_ITEMS[9].string = "Рыба";
+            TEXT_SHOP_ITEMS[9].string = "Механическая рука";
             TEXT_SHOP_ITEMS[9].size = 48;
             
-            TEXT_SHOP_ITEMS[10].string = "Бита клоуна";
+            TEXT_SHOP_ITEMS[10].string = "Меч Джедая";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[30].string = "Ледяная птица";
-            TEXT_SHOP_ITEMS[30].size = 48;
+            TEXT_SHOP_ITEMS[20].string = "Ледяная птица";
+            TEXT_SHOP_ITEMS[20].size = 48;
             
-            TEXT_SHOP_ITEMS[31].string = "Птица команч";
-            TEXT_SHOP_ITEMS[31].size = 48;
+            TEXT_SHOP_ITEMS[21].string = "Птица команч";
+            TEXT_SHOP_ITEMS[21].size = 48;
             
-            TEXT_SHOP_ITEMS[32].string = "Птица робот";
-            TEXT_SHOP_ITEMS[32].size = 48;
+            TEXT_SHOP_ITEMS[22].string = "Птица робот";
+            TEXT_SHOP_ITEMS[22].size = 48;
             
-            TEXT_SHOP_ITEMS[33].string = "Птица пират";
-            TEXT_SHOP_ITEMS[33].size = 48;
+            TEXT_SHOP_ITEMS[23].string = "Птица пират";
+            TEXT_SHOP_ITEMS[23].size = 48;
             
-            TEXT_SHOP_ITEMS[60].string = "Бомба на руку";
-            TEXT_SHOP_ITEMS[60].size = 48;
+            TEXT_SHOP_ITEMS[24].string = "Птица мексиканец";
+            TEXT_SHOP_ITEMS[24].size = 48;
             
-            TEXT_SHOP_ITEMS[61].string = "Информации не найдено";
-            TEXT_SHOP_ITEMS[61].size = 48;
+            TEXT_SHOP_ITEMS[25].string = "Птица командор";
+            TEXT_SHOP_ITEMS[25].size = 48;
             
-            TEXT_SHOP_ITEMS[62].string = "Информации не найдено";
-            TEXT_SHOP_ITEMS[62].size = 48;
+            TEXT_SHOP_ITEMS[26].string = "Птица зомби";
+            TEXT_SHOP_ITEMS[26].size = 48;
             
-            TEXT_SHOP_ITEMS[63].string = "Информации не найдено";
-            TEXT_SHOP_ITEMS[63].size = 48;
+            TEXT_SHOP_ITEMS[27].string = "Леший";
+            TEXT_SHOP_ITEMS[27].size = 48;
+            
+            TEXT_SHOP_ITEMS[28].string = "Ниндзя";
+            TEXT_SHOP_ITEMS[28].size = 48;
+            
+            TEXT_SHOP_ITEMS[40].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[40].size = 48;
+            
+            TEXT_SHOP_ITEMS[41].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[41].size = 48;
+            
+            TEXT_SHOP_ITEMS[42].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[42].size = 48;
+            
+            TEXT_SHOP_ITEMS[43].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[43].size = 48;
+            
+            TEXT_SHOP_ITEMS[44].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[44].size = 48;
+            
+            TEXT_SHOP_ITEMS[45].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[45].size = 48;
             
             TEXT_SHOP_BOUGHT.string = "было куплено";
             TEXT_SHOP_BOUGHT.size = 48;
@@ -1003,10 +1045,10 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[4].string = "Каменный молот правды. С его помощью древние жители забытой страны строили себе хижины и добывали еду. Собираясь толпой они ходили на охоту в поисках мамонта. Когда они находили его берлогу, окружали её и шли на смертный бой со зверем.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[5].string = "Этот двух сторонний топор был символом всевластия старого индейца. Топор напоминал индейцу о былых временах, когда он ходил с ним на великих красных драконов, которые раз в 10 лет прилетали со своих высоких темных гор и сжигали деревню индейца.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[6].string = "Ее нашли в дупле старого огромного дуба, вблизи густого дремучего леса. Будьте осторожны, по слухам там живут неведомые чудища. По всей вероятности они отобрали волшебную палочку у доброй феи и спрятали её. Что случилось с феей никому не известно.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "Легендарный Меч Джедая, которым захватывались космические корабли, да что там корабли - целые галактики! Его владельца меч наделял необыкновенной силой и возможностями, но лишь до тех пор пока не сядут батарейки.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Железная механическая рука, результат многолетних засекреченных разработок ведущих компаний мира в наноиндустрии. Она стала началом создания сверх секретного проекта - Стальной подшипник. Сейчас же руку используют как промышленную кофеварку.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Та самая рыба из сказки, что желания деда исполняла, когда тот неводом её вытянул. Была найдена у темного берега быстрой реки кучкой маленьких гномов. Будьте внимательны и осторожны в своих желаниях, возможно ваше исполнится прямо сейчас!";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "На бите изображен первый клоун старого цирка. Зрителям очень нравились его выступления с дрессированными динозаврами и летающими слонами. В результате добрые люди решили увековечить его облик на этой бите.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[7].string = "На бите изображен первый клоун старого цирка. Зрителям очень нравились его выступления с дрессированными динозаврами и летающими слонами. В результате добрые люди решили увековечить его облик на этой бите.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[8].string = "Та самая рыба из сказки, что желания деда исполняла, когда тот неводом её вытянул. Была найдена у темного берега быстрой реки кучкой маленьких гномов. Будьте внимательны и осторожны в своих желаниях, возможно ваше исполнится прямо сейчас!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[9].string = "Железная механическая рука, результат многолетних засекреченных разработок ведущих компаний мира в наноиндустрии. Она стала началом создания сверх секретного проекта - Стальной подшипник. Сейчас же руку используют как промышленную кофеварку.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[10].string = "Легендарный Меч Джедая, которым захватывались космические корабли, да что там корабли - целые галактики! Его владельца меч наделял необыкновенной силой и возможностями, но лишь до тех пор пока не сядут батарейки.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[11].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[12].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[13].string = "Информации не найдено.";
@@ -1016,20 +1058,20 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[17].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[18].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Ледяная птица обладает уникальной способностью заморажевать время. Она поможет вам быстро среагировать в нужный момент и получить как можно больше монет.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Когда разобьете эту птицу, дух индейца покажет вам откуда будут вылетать следующие птицы.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "При убийстве этой птицы появляется сундук набитый монетами, либо другой ценный приз.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Разбейте её и на вас обрушится благословенный дождь из птиц.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Заражает остальных птиц, что приводит к уменьшению их здоровья.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Эта птица здесь, для того чтобы замедлить время. Вы с легкостью расправитесь с массой остальных птиц.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Ледяная птица обладает уникальной способностью заморажевать время. Она поможет вам быстро среагировать в нужный момент и получить как можно больше монет в тяжелые моменты.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Информация о птице индейце.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Информация о птице роботе.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Информация о птице пирате.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[32].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[33].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[34].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[35].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[36].string = "Информации не найдено.";
@@ -1056,7 +1098,7 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[57].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[58].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[59].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[60].string = "Информация о бонусе вероятность взрыва.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[60].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[61].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[62].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[63].string = "Информации не найдено.";

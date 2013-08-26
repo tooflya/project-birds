@@ -48,19 +48,24 @@ Bird::Bird() :
         this->mMarkTime = 0.02;
         this->mMarkTimeElapsed = 0;
         
-        this->mLife = CCProgressTimer::create(CCSprite::create("birds_life@2x.png"));
+        this->mLife = CCProgressTimer::create(Entity::create("birds_life@2x.png"));
         this->mLife->retain();
         this->mLife->setType(kCCProgressTimerTypeRadial);
         this->mLife->setReverseProgress(true);
 
         this->mSoundEffect = 0;
+        
+        this->count = COUNT;
 
         this->mChalange = false;
+        this->mBonus = false;
     }
 
 Bird::Bird(bool pSpecial) :
-    ImpulseEntity("special_birds_sprite@2x.png", 14, 9)
+    ImpulseEntity("special_birds_sprite@2x.png", 14, 8)
     {
+        this->count = SPECIAL_COUNT;
+        this->mBonus = true;
     }
 
 Bird* Bird::create()
@@ -100,7 +105,7 @@ void Bird::onCreate()
 
     if(game->mChalange)
     {
-        this->mType = Utils::random(0, COUNT - 2);
+        this->mType = Utils::random(0, this->count - 2);
         
         this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -113,7 +118,7 @@ void Bird::onCreate()
     }
     else
     {
-        this->mType = Utils::random(0, COUNT - 1);
+        this->mType = Utils::random(0, this->count - 1);
         
         this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -276,7 +281,7 @@ void Bird::update(float pDeltaTime)
             }
             else
             {
-                if(this->mLifeCount > 0)
+                if(this->mLifeCount > 0 && !this->mBonus)
                 {
                     this->setScaleX(1.3 * (this->getScaleX() > 0 ? 1.0 : -1.0));
                     this->setScaleY(1.3);
@@ -286,12 +291,12 @@ void Bird::update(float pDeltaTime)
                     this->mIsGoingToDestroy = false;
                     this->mDestroyAnimationFrames = 0;
 
-                    this->mLifeCount -= 12.0; // TODO: Adjust weapon power.
+                    this->mLifeCount -= atoi(Options::SHOP_ITEMS_PROPERTIES[Options::SELECTED_WEAPON_ID]);
 
                     this->mLife->setPercentage((this->mLifeCount / this->mInitLifeCount * 100.0));
                 }
 
-                if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER)
+                if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER || this->mBonus)
                 {
                     Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
                     Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
@@ -302,12 +307,12 @@ void Bird::update(float pDeltaTime)
                     explosion->setColor(COLORS[this->mType]);
 
                     {
-                        for(int i = 0; i < 10; i++)
+                        for(int i = 0; i < 15; i++)
                         {
                             Feather* feather = (Feather*) game->mFeathers->create();
 
                             feather->setCenterPosition(this->getCenterX(), this->getCenterY());
-                            feather->setCurrentFrameIndex(this->mType);
+                            feather->setCurrentFrameIndex(Utils::random(2 * this->mType, 2 * this->mType + 1));
                             feather->init(i, 15.0);
                         }
                     }

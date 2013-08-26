@@ -36,6 +36,7 @@ class Bird : public ImpulseEntity
         bool mSpecialAnimation;
         bool mChalange;
         bool mSpecial;
+        bool mBonus;
 
         CCProgressTimer* mLife;
 
@@ -89,6 +90,7 @@ class Bird : public ImpulseEntity
         // ===========================================================
 
         static const int COUNT = 8;
+        static const int SPECIAL_COUNT = 9;
 
         static const int TYPE_ORANGE = 0;
         static const int TYPE_RED = 1;
@@ -113,6 +115,8 @@ class Bird : public ImpulseEntity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        int count;
 
         // ===========================================================
         // Constructors

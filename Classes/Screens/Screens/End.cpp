@@ -33,11 +33,19 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mType = pType;
         this->mOnTouchCallback = pOnTouchCallback;
         
+        this->mScaleLayer = CCLayer::create();
+        this->mScaleLayer->retain();
+        
         CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
         CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
         
         this->addChild(spriteBatch1);
-        this->addChild(spriteBatch2);
+        this->mScaleLayer->addChild(spriteBatch3);
+        this->mScaleLayer->addChild(spriteBatch2, 2);
+        
+        this->addChild(this->mScaleLayer);
+        this->mScaleLayer->setVisible(false);
         
         this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 2, 1), spriteBatch1);
         
@@ -51,37 +59,36 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         part->setCenterPosition(Options::CAMERA_CENTER_X, -part->getHeight() / 2);
         part->setCurrentFrameIndex(1);
         
-        this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", spriteBatch1);
+        this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", spriteBatch3);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        this->mBackground->setVisible(false);
         
-        this->mShopButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch1, Options::BUTTONS_ID_END_SHOP, this->mOnTouchCallback);
-        this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch1, Options::BUTTONS_ID_END_MENU, this->mOnTouchCallback);
-        this->mRestartButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch1, Options::BUTTONS_ID_END_RESTART, this->mOnTouchCallback);
-        this->mContinueButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch1, Options::BUTTONS_ID_END_CONTINUE, this->mOnTouchCallback);
+        this->mShopButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_SHOP, this->mOnTouchCallback);
+        this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_MENU, this->mOnTouchCallback);
+        this->mRestartButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_RESTART, this->mOnTouchCallback);
+        this->mContinueButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_CONTINUE, this->mOnTouchCallback);
 
         if(this->mType == TYPE_PROGRESS)
         {
             this->mContinueButton->create()->setCurrentFrameIndex(2);
-            this->mContinueButton->setCenterPosition(this->mBackground->getContentSize().width / 2 + Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(320));
+            this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
                 
             this->mRestartButton->create()->setCurrentFrameIndex(1);
-            this->mRestartButton->setCenterPosition(this->mBackground->getContentSize().width / 2, this->mBackground->getContentSize().height / 2 - Utils::coord(340));
+            this->mRestartButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(340));
 
             this->mMenuButton->create()->setCurrentFrameIndex(0);
-            this->mMenuButton->setCenterPosition(this->mBackground->getContentSize().width / 2 - Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(320));
+            this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
         }
         else
         {
             this->mShopButton->create()->setCurrentFrameIndex(3);
-            this->mShopButton->setCenterPosition(this->mBackground->getContentSize().width / 2 - Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(320));
+            this->mShopButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
                 
             this->mMenuButton->create()->setCurrentFrameIndex(0);
-            this->mMenuButton->setCenterPosition(this->mBackground->getContentSize().width / 2, this->mBackground->getContentSize().height / 2 - Utils::coord(340));
+            this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(340));
 
             this->mContinueButton->create()->setCurrentFrameIndex(2);
-            this->mContinueButton->setCenterPosition(this->mBackground->getContentSize().width / 2 + Utils::coord(200), this->mBackground->getContentSize().height / 2 - Utils::coord(320));
+            this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
         }
 
         if(this->mType == Splash::TYPE_PROGRESS)
@@ -93,7 +100,7 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
                 Entity* star = ((Entity*) this->mStars->create());
                 
                 star->setCurrentFrameIndex(i + 3);
-                star->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(180) * (i - 1), this->mBackground->getHeight() - Utils::coord(100) - Utils::coord(40) * abs(i - 1));
+                star->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180) * (i - 1), this->mBackground->getHeight() - Utils::coord(100) - Utils::coord(40) * abs(i - 1));
             }
         }
         
@@ -101,17 +108,17 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         
         this->mIsAnimationRunning = false;
 
-        Text* text1 = Text::create((Textes) {"Результаты", Options::FONT, 64, -1}, this);
-        Text* text2 = Text::create((Textes) {"Результат: 114", Options::FONT, 42, -1}, this);
-        Text* text3 = Text::create((Textes) {"Рекорд: 114", Options::FONT, 42, -1}, this);
-        Text* text4 = Text::create((Textes) {"Комбо ударов: 5", Options::FONT, 42, -1}, this);
-        Text* text5 = Text::create((Textes) {"Заработано монет: 228", Options::FONT, 42, -1}, this);
+        Text* text1 = Text::create((Textes) {"Результаты", Options::FONT, 64, -1}, this->mScaleLayer);
+        Text* text2 = Text::create((Textes) {"Результат: 114", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text3 = Text::create((Textes) {"Рекорд: 114", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text4 = Text::create((Textes) {"Комбо ударов: 5", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text5 = Text::create((Textes) {"Заработано монет: 228", Options::FONT, 42, -1}, this->mScaleLayer);
 
-        text1->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(300));
-        text2->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(200));
-        text3->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(150));
-        text4->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(100));
-        text5->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() / 2 + Utils::coord(50));
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
+        text2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200));
+        text3->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+        text4->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100));
+        text5->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50));
         
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
     }
