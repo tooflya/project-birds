@@ -19,6 +19,8 @@ class Clock : public Entity
         // ===========================================================
 
         float mTimeElapsed;
+    
+        bool mPause;
 
         Entity* mArrow;
         
@@ -91,6 +93,7 @@ class Clock : public Entity
         float getTimeElapsed();
 
         void updateTime(float pDeltaTime);
+        void pause();
         
         // ===========================================================
         // Override Methods

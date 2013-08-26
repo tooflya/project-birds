@@ -275,11 +275,20 @@ void BoughtItem::update(float pDeltaTime)
     }
     
     this->mLights->setOpacity(this->getOpacity());
+    this->mShareButton->setOpacity(this->getOpacity());
+    this->mVkButton->setOpacity(this->getOpacity());
+    this->mFacebookButton->setOpacity(this->getOpacity());
+    this->mTwitterButton->setOpacity(this->getOpacity());
 }
 
 void BoughtItem::onTouch(CCTouch* touch, CCEvent* event)
 {
     this->hide();
+    
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->removeDelegate((Touchable*) this);
+    
+    this->setRegisterAsTouchable(false);
 }
 
 void BoughtItem::onEnter()
@@ -296,13 +305,12 @@ void BoughtItem::onEnter()
     this->mTwitterButton->setScale(0);
     this->mFacebookButton->setScale(0);
     this->mVkButton->setScale(0);
+    
+    this->setRegisterAsTouchable(true);
 }
     
 void BoughtItem::onExit()
 {
-    CCDirector* pDirector = CCDirector::sharedDirector();
-    pDirector->getTouchDispatcher()->removeDelegate((Touchable*) this);
-      
     CCLayer::onExit();
 
     this->stopAllActions();

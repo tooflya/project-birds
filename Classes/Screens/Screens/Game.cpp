@@ -39,6 +39,8 @@ Game::~Game()
     this->mExplosionsBasic->release();
     this->mExplosions->release();
     this->mDust->release();
+    
+    this->mPausePopup->release();
 }
 
 Game::Game() :
@@ -49,8 +51,17 @@ Game::Game() :
     
         this->mChalange = false;
         this->mGameRunning = false;
+        
+        this->mPause = false;
 
         this->addChild(TouchTrailLayer::create(), 10);
+        
+        SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_2, true);
+        
+        if(!Options::MUSIC_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+        }
     }
 
 Game* Game::create()
@@ -82,7 +93,7 @@ void Game::startGame()
     this->mGameStartText->setOpacity(0.0);
 
     this->mBirds->clear();
-    //this->mSpecialBirds->clear();
+    this->mSpecialBirds->clear();
     this->mFeathers->clear();
     this->mMarks->clear();
     this->mExplosions->clear();
@@ -137,6 +148,31 @@ void Game::onBirBlow(int pType)
     }
 }
 
+void Game::pause()
+{
+    if(this->mPause)
+    {
+        this->mBirds->resumeSchedulerAndActions();
+        this->mSpecialBirds->resumeSchedulerAndActions();
+        this->mFeathers->resumeSchedulerAndActions();
+        this->mExplosions->resumeSchedulerAndActions();
+        this->mExplosionsBasic->resumeSchedulerAndActions();
+        this->mDust->resumeSchedulerAndActions();
+        this->mMarks->resumeSchedulerAndActions();
+    }
+    else
+    {
+        this->mBirds->pauseSchedulerAndActions();
+        this->mSpecialBirds->pauseSchedulerAndActions();
+        this->mFeathers->pauseSchedulerAndActions();
+        this->mExplosions->pauseSchedulerAndActions();
+        this->mExplosionsBasic->pauseSchedulerAndActions();
+        this->mDust->pauseSchedulerAndActions();
+        this->mMarks->pauseSchedulerAndActions();
+    }
+    
+    this->mPause = !this->mPause;
+}
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -144,6 +180,11 @@ void Game::onBirBlow(int pType)
 void Game::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
+    
+    if(this->mPause)
+    {
+        return;
+    }
     
     if(this->mDust->getCount() < 30)
     {
@@ -196,7 +237,7 @@ void Game::update(float pDeltaTime)
                 }
                 
                 Bird* bird = static_cast<Bird*>(this->mBirds->create());
-                //SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
+                SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
 
                 if(Options::SOUND_ENABLE)
                 {

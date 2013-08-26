@@ -23,6 +23,8 @@ class ProgressPause : public Pause
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ProgressPause(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -76,7 +78,7 @@ class ProgressPause : public Pause
         // Constructors
         // ===========================================================
     
-        ProgressPause(CCNode* pParent);
+        static ProgressPause* create(CCNode* pParent);
 
         // ===========================================================
         // Methods

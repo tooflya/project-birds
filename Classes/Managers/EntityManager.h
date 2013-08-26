@@ -53,6 +53,9 @@ class EntityManager : public CCArray
         void setOpacity(GLubyte opacity);
     
         CCNode* getParent();
+    
+        void resumeSchedulerAndActions();
+        void pauseSchedulerAndActions();
 };
 
 #endif

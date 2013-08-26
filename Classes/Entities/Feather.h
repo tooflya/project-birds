@@ -25,8 +25,11 @@ class Feather : public ImpulseEntity
 
         float mWaitingTime;
         float mWaitingTimeElapsed;
-        
+    
+        float mAnimationSpeed;
+    
         bool bWaitingTime;
+        bool mIsAnimationReverse;
 
         // ===========================================================
         // Constructors

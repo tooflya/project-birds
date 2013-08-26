@@ -50,7 +50,7 @@ Popup::~Popup()
     this->removeAllChildrenWithCleanup(true);
 }
 
-Popup::Popup(CCNode* pParent)
+Popup::Popup(CCNode* pParent, bool pFirst)
 {
     this->init();
     
@@ -58,7 +58,7 @@ Popup::Popup(CCNode* pParent)
     
     this->mParent = pParent;
 
-    this->mSpriteBatch = CCSpriteBatchNode::create("TextureAtlas4.pvr.ccz");
+    this->mSpriteBatch = CCSpriteBatchNode::create(pFirst ? "TextureAtlas4.pvr.ccz" : "TextureAtlas12.pvr.ccz");
     this->mSpriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.pvr.ccz");
     
     this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);

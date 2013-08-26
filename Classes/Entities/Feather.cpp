@@ -20,10 +20,12 @@
 // ===========================================================
 
 Feather::Feather() :
-    ImpulseEntity("birds_feather_sprite@2x.png", 4, 2)
+    ImpulseEntity("birds_feather_sprite@2x.png", 4, 4)
     {
         this->mWaitingTimeElapsed = 0.0;
         this->mWaitingTime = 0.02;
+        
+        this->setAnchorPoint(ccp(0.5, 2.0));
     }
 
 Feather* Feather::create()
@@ -46,15 +48,21 @@ void Feather::onCreate()
 {
     ImpulseEntity::onCreate();
 
-    this->mWeight = Utils::coord(500.0f);
+    this->mWeight = Utils::coord(200.0f);
     this->mImpulsePower = 0;
     this->mSideImpulse = Utils::coord(Utils::randomf(-100.0f, 100.0f));
-    this->mRotateImpulse = Utils::coord(Utils::randomf(-1000.0f, 1000.0f));
+    this->mRotateImpulse = 0;//Utils::coord(Utils::randomf(-200.0f, 200.0f));
 
-    this->setRotation(Utils::randomf(0.0, 720.0));
+    this->setRotation(0.0);
     this->setOpacity(255.0);
+    
+    this->setScale(1.0);
+    this->setScaleX(Utils::probably(50) ? -1 : 1);
 
+    this->mIsAnimationReverse = Utils::probably(50);
     this->bWaitingTime = false;
+    
+    this->mAnimationSpeed = 1;
 }
 
 void Feather::init(int pIndex, float pSpeed)
@@ -89,7 +97,7 @@ void Feather::update(float pDeltaTime)
 
             this->bWaitingTime = false;
 
-            this->runAction(CCFadeOut::create(2.0));
+            this->runAction(CCFadeOut::create(3.0));
         }
 
         return;
@@ -117,6 +125,39 @@ void Feather::update(float pDeltaTime)
     else
     {
         ImpulseEntity::update(pDeltaTime);
+    }
+    
+    if(this->mRotateImpulse != 0)
+    {
+        if(abs(this->getRotation()) > 360.0)
+        {
+            this->mRotateImpulse = 0;
+        }
+    }
+    else
+    {
+    if(this->mIsAnimationReverse)
+    {
+        this->mAnimationSpeed += 0.01;
+        
+        this->setRotation(this->getRotation() - mAnimationSpeed);
+        
+        if(this->getRotation() <= - 45.0)
+        {
+            this->mIsAnimationReverse = !this->mIsAnimationReverse;
+        }
+    }
+    else
+    {
+        this->mAnimationSpeed -= 0.01;
+        
+        this->setRotation(this->getRotation() + mAnimationSpeed);
+        
+        if(this->getRotation() >= 45.0)
+        {
+            this->mIsAnimationReverse = !this->mIsAnimationReverse;
+        }
+    }
     }
 }
 

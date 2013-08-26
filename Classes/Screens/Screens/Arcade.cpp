@@ -85,7 +85,7 @@ Arcade::Arcade() :
         this->mTimeText[1]->setCenterPosition(Utils::coord(120) + this->mTimeText[1]->getWidth() / 2, Utils::coord(45));
         this->mTimeText[2]->setCenterPosition(Utils::coord(255) + this->mTimeText[2]->getWidth() / 2, Utils::coord(28));
 
-        //this->mPausePopup = new ArcadePause(this);
+        this->mPausePopup = ArcadePause::create(this);
         this->mEndScreen = ArcadeEnd::create(Splash::TYPE_ARCADE, this);
 
         this->mAlgorithmBirdsRemainig = 6;
@@ -223,6 +223,13 @@ void Arcade::onEnter()
 void Arcade::onExit()
 {
     Game::onExit();
+}
+
+void Arcade::pause()
+{
+    Game::pause();
+    
+    this->mTimeIcon->pause();
 }
 
 #endif

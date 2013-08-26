@@ -29,6 +29,15 @@ ProgressPause::ProgressPause(CCNode* pParent) :
         m_Instance = this;
     }
 
+ProgressPause* ProgressPause::create(CCNode* pParent)
+{
+    ProgressPause* popup = new ProgressPause(pParent);
+    popup->autorelease();
+    popup->retain();
+    
+    return popup;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

@@ -3,6 +3,8 @@
 
 #include "SpecialBird.h"
 
+#include "AppDelegate.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -26,7 +28,7 @@ SpecialBird::SpecialBird() :
         this->mMarkTimeElapsed = 0;
         
         this->mLife = new CCProgressTimer();
-        this->mLife->initWithSprite(CCSprite::create("birds_life@2x.png"));
+        this->mLife->initWithSprite(Entity::create("birds_life@2x.png"));
         this->mLife->setType(kCCProgressTimerTypeRadial);
         this->mLife->setReverseProgress(true);
 
@@ -54,6 +56,15 @@ SpecialBird* SpecialBird::create()
 SpecialBird* SpecialBird::deepCopy()
 {
     return SpecialBird::create();
+}
+
+void SpecialBird::onCreate()
+{
+    Bird::onCreate();
+    
+    this->mType = AppDelegate::getRandomBonusBird();
+    
+    this->setCurrentFrameIndex(this->mType);
 }
 
 #endif

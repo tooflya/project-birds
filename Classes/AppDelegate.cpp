@@ -250,6 +250,28 @@ int AppDelegate::getBestResult(int pType)
     return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_BEST_RESULT[pType]);
 }
 
+CCArray* AppDelegate::getArrayOfBoughtBirds()
+{
+    CCArray* array = CCArray::create();
+    
+    for(int i = 0; i < 20; i++)
+    {
+        if(AppDelegate::isItemBought(i + 20))
+        {
+            array->addObject(CCInteger::create(i));
+        }
+    }
+    
+    return array;
+}
+
+int AppDelegate::getRandomBonusBird()
+{
+    CCArray* array = AppDelegate::getArrayOfBoughtBirds();
+    
+    return static_cast<CCInteger*>(array->objectAtIndex(Utils::random(0, array->count())))->getValue();
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -268,14 +290,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     if(AppDelegate::IS_IPOD)
     {
         searchPath.push_back(resources1280x720.directory);
-        
-        CCLog("IPOD DETECTED!");
     }
     else
     {
         searchPath.push_back(resources2048x1536.directory);
-        
-        CCLog("NOT IPOD DETECTED!");
     }
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);

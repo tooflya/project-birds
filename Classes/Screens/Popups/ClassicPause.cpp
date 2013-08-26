@@ -29,6 +29,15 @@ ClassicPause::ClassicPause(CCNode* pParent) :
         m_Instance = this;
     }
 
+ClassicPause* ClassicPause::create(CCNode* pParent)
+{
+    ClassicPause* popup = new ClassicPause(pParent);
+    popup->autorelease();
+    popup->retain();
+    
+    return popup;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

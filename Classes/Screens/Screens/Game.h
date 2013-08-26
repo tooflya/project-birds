@@ -129,6 +129,8 @@ class Game : public Screen
     
         bool mGameRunning;
         bool mGamePaused;
+    
+        bool mPause;
 
         EntityManager* mBirds;
         EntityManager* mSpecialBirds;
@@ -156,6 +158,7 @@ class Game : public Screen
         virtual void onGameEnd();
         virtual void removeLife();
         virtual void onBirBlow(int pType);
+        virtual void pause();
         
         // ===========================================================
         // Override Methods

@@ -85,6 +85,8 @@ class SpecialBird : public Bird
         // ===========================================================
 
         SpecialBird* deepCopy();
+    
+        void onCreate();
 };
 
 #endif

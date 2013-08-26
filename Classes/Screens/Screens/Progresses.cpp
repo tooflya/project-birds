@@ -121,7 +121,7 @@ Progresses::Progresses() :
         this->mShelfes = EntityManager::create(10, Entity::create("game_shelf@2x.png"), spriteBatch7);
         this->mColors = EntityManager::create(50, Color::create(), spriteBatch7);
 
-        //this->mPausePopup = new ProgressPause(this);
+        this->mPausePopup = ProgressPause::create(this);
         this->mEndScreen = ProgressEnd::create(Splash::TYPE_PROGRESS, this);
 
         this->mAlgorithmBirdsRemainig = 20;

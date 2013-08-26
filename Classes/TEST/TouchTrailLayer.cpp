@@ -5,8 +5,7 @@
 
 #include "CCBlade.h"
 #include "Menu.h"
-
-#define kFileStreak "wep_1@2x.png"
+#include "Loader.h"
 
 TouchTrailLayer::~TouchTrailLayer()
 {
@@ -39,7 +38,7 @@ void TouchTrailLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 
     for (CCSetIterator it = pTouches->begin(); it != pTouches->end(); it++) {
         CCTouch *touch = (CCTouch *)*it;
-        CCBlade *blade = CCBlade::create(kFileStreak, 30, 12);
+        CCBlade *blade = CCBlade::create(Loader::WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], 30, 12);
         _map[touch] = blade;
         addChild(blade);
         

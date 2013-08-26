@@ -110,7 +110,7 @@ class Popup : public CCLayer
         // Constructors
         // ===========================================================
     
-        Popup(CCNode* pParent);
+        Popup(CCNode* pParent, bool pFirst = true);
         ~Popup();
 
         // ===========================================================
