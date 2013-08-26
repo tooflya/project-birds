@@ -154,6 +154,7 @@
             <filename>src/btn_sprite_close@2x.png</filename>
             <filename>src/popup_btn@2x.png</filename>
             <filename>src/pause_btn@2x.png</filename>
+            <filename>src/pause_btn_sprite@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
