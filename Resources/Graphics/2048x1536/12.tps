@@ -153,6 +153,7 @@
             <filename>../1280x720/src/btn_sfx_mfx_ach_lead_sprite_pause@2x.png</filename>
             <filename>../1280x720/src/btn_sprite_close@2x.png</filename>
             <filename>../1280x720/src/popup_btn@2x.png</filename>
+            <filename>../1280x720/src/pause_btn@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

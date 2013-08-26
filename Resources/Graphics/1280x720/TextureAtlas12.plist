@@ -43,6 +43,19 @@
                 <key>sourceSize</key>
                 <string>{600,707}</string>
             </dict>
+            <key>pause_btn@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{307,1871},{380,147}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{380,147}}</string>
+                <key>sourceSize</key>
+                <string>{380,147}</string>
+            </dict>
             <key>popup_bg@2x.png</key>
             <dict>
                 <key>frame</key>
@@ -59,7 +72,7 @@
             <key>popup_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{307,1871},{265,147}}</string>
+                <string>{{473,1705},{265,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -79,7 +92,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7f5cef4435bc6874bc6f730d8f008d99:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:3eac9be2423aba6305f9b2671bc31285:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas12.pvr.ccz</string>
         </dict>
