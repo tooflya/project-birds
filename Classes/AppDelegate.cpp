@@ -256,7 +256,7 @@ CCArray* AppDelegate::getArrayOfBoughtBirds()
     
     for(int i = 0; i < 20; i++)
     {
-        if(AppDelegate::isItemBought(i + 20))
+        if(AppDelegate::isItemBought(i + 20) || true)
         {
             array->addObject(CCInteger::create(i));
         }
@@ -269,7 +269,7 @@ int AppDelegate::getRandomBonusBird()
 {
     CCArray* array = AppDelegate::getArrayOfBoughtBirds();
     
-    return static_cast<CCInteger*>(array->objectAtIndex(Utils::random(0, array->count())))->getValue();
+    return static_cast<CCInteger*>(array->objectAtIndex(Utils::random(0, 0)))->getValue();
 }
 
 // ===========================================================

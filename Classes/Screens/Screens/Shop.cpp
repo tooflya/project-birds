@@ -243,7 +243,7 @@ class TouchLayer : public CCLayer
 Shop* Shop::m_Instance = NULL;
 
 int Shop::CLICKED_ITEM_ID = -1;
-int Shop::ITEMS_COUNT[3] = { 11, 9, 5 };
+int Shop::ITEMS_COUNT[3] = { 11, 8, 5 };
 int Shop::ACTION = -1;
 int Shop::PURCHASE_ID = -1;
 

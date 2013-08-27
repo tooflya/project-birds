@@ -604,10 +604,10 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[26].string = "Zombie";
             TEXT_SHOP_ITEMS[26].size = 48;
             
-            TEXT_SHOP_ITEMS[27].string = "Monster";
+            TEXT_SHOP_ITEMS[27].string = "Ninja";
             TEXT_SHOP_ITEMS[27].size = 48;
             
-            TEXT_SHOP_ITEMS[28].string = "Ninja";
+            TEXT_SHOP_ITEMS[28].string = "Information not found.";
             TEXT_SHOP_ITEMS[28].size = 48;
             
             TEXT_SHOP_ITEMS[40].string = "Information not found.";
@@ -667,8 +667,8 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Break it and you will fall on the blessed rain of birds.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Infected birds rest, which leads to a decrease in their health.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "This bird here, to slow down the time. You can easily straightened with a mass of other birds.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "This bird here, to slow down the time. You can easily straightened with a mass of other birds.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Information not found.";
@@ -1002,10 +1002,10 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[26].string = "Птица зомби";
             TEXT_SHOP_ITEMS[26].size = 48;
             
-            TEXT_SHOP_ITEMS[27].string = "Леший";
+            TEXT_SHOP_ITEMS[27].string = "Ниндзя";
             TEXT_SHOP_ITEMS[27].size = 48;
             
-            TEXT_SHOP_ITEMS[28].string = "Ниндзя";
+            TEXT_SHOP_ITEMS[28].string = "Информации не найдено";
             TEXT_SHOP_ITEMS[28].size = 48;
             
             TEXT_SHOP_ITEMS[40].string = "Информации не найдено";
@@ -1065,8 +1065,8 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Разбейте её и на вас обрушится благословенный дождь из птиц.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Заражает остальных птиц, что приводит к уменьшению их здоровья.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Эта птица здесь, для того чтобы замедлить время. Вы с легкостью расправитесь с массой остальных птиц.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Эта птица здесь, для того чтобы замедлить время. Вы с легкостью расправитесь с массой остальных птиц.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[31].string = "Информации не найдено.";

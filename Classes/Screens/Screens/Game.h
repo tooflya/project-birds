@@ -51,6 +51,8 @@ class Game : public Screen
 
         float mAlgorithmBirdsTime1;
         float mAlgorithmBirdsTime2;
+    
+        float mSpecialBirdstimeElapsed;
 
         Entity* mBackground;
         Entity* mCountIcon;

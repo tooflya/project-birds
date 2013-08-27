@@ -48,6 +48,8 @@ Game::Game() :
     {
         this->mBirdsTime = 0;
         this->mBirdsTimeElapsed = 0;
+        
+        this->mSpecialBirdstimeElapsed = 0;
     
         this->mChalange = false;
         this->mGameRunning = false;
@@ -194,6 +196,7 @@ void Game::update(float pDeltaTime)
     if(this->mGameRunning && !this->mGamePaused)
     {
         this->mBirdsTimeElapsed += pDeltaTime;
+        this->mSpecialBirdstimeElapsed += pDeltaTime;
 
         if(this->mChalange)
         {
@@ -237,7 +240,6 @@ void Game::update(float pDeltaTime)
                 }
                 
                 Bird* bird = static_cast<Bird*>(this->mBirds->create());
-                SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
 
                 if(Options::SOUND_ENABLE)
                 {
@@ -250,6 +252,13 @@ void Game::update(float pDeltaTime)
                         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_THROW);
                     }
                 }
+            }
+            
+            if(this->mSpecialBirdstimeElapsed >= 2.0)
+            {
+                this->mSpecialBirdstimeElapsed = 0;
+                
+                SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
             }
         }
     }
