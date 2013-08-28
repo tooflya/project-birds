@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "398607349.821505"
+         timestampString = "399382714.276568"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "627"
-         endingLineNumber = "627"
+         startingLineNumber = "625"
+         endingLineNumber = "625"
          landmarkName = "Entity::ccTouchMoved(CCTouch* touch, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -45,11 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "398607349.821505"
+         timestampString = "399382714.276568"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "628"
-         endingLineNumber = "628"
+         startingLineNumber = "626"
+         endingLineNumber = "626"
          landmarkName = "Entity::ccTouchMoved(CCTouch* touch, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -58,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Entities/Entity.cpp"
-         timestampString = "398607349.821505"
+         timestampString = "399382714.276568"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "707"
-         endingLineNumber = "707"
+         startingLineNumber = "703"
+         endingLineNumber = "703"
          landmarkName = "Entity::update(float pDeltaTime)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -101,6 +101,19 @@
          startingLineNumber = "222"
          endingLineNumber = "222"
          landmarkName = "Text::onExit()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Classes/Screens/Screens/Game.cpp"
+         timestampString = "399381113.633484"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "196"
+         endingLineNumber = "196"
+         landmarkName = "Game::generateCoinsBirds()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -29,6 +29,7 @@ ccColor3B StarParticle::COLORS[3] =
 StarParticle::StarParticle() :
     ImpulseEntity("star_particle@2x.png")
     {
+        this->mIsParticle = false;
         this->mType = -1;
     }
 
@@ -47,6 +48,17 @@ StarParticle* StarParticle::create()
 StarParticle* StarParticle::setType(int pType)
 {
     this->mType = pType;
+    
+    return this;
+}
+
+void StarParticle::initAsParticle()
+{
+    this->mIsParticle = true;
+    
+    this->mScaleSpeed = Utils::randomf(0.01, 0.1);
+    this->mRotationSpeed = Utils::randomf(1.0, 10.0);
+    this->mAlphaSpeed = Utils::randomf(0.1, 10.0);
 }
 
 // ===========================================================
@@ -55,15 +67,35 @@ StarParticle* StarParticle::setType(int pType)
 
 void StarParticle::update(float pDeltaTime)
 {
-    ImpulseEntity::update(pDeltaTime);
-
-    //
+    if(this->mIsParticle)
+    {
+        Entity::update(pDeltaTime);
+        
+        this->setOpacity(this->getOpacity() - this->mAlphaSpeed);
+        this->setScale(this->getScaleX() - this->mScaleSpeed);
+        this->setRotation(this->getRotation() - this->mRotationSpeed);
+        
+        if(this->getOpacity() <= 0.0 || this->getScaleX() <= 0.0)
+        {
+            this->destroy();
+        }
+    }
+    else
+    {
+        ImpulseEntity::update(pDeltaTime);
+    }
 }
 
 void StarParticle::onCreate()
 {
     ImpulseEntity::onCreate();
 
+    this->mIsParticle = false;
+    
+    this->setOpacity(255.0);
+    this->setScale(1.0);
+    this->setRotation(0.0);
+    
     switch(this->mType)
     {
         default:

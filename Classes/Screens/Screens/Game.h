@@ -40,6 +40,8 @@ class Game : public Screen
         int mStartGameAnimationIndex;
 
         int mAlgorithmBirdsRemainig;
+    
+        int mCoinsBirdsCount;
 
         float mBirdsTime;
         float mBirdsTimeElapsed;
@@ -52,7 +54,11 @@ class Game : public Screen
         float mAlgorithmBirdsTime1;
         float mAlgorithmBirdsTime2;
     
-        float mSpecialBirdstimeElapsed;
+        float mSpecialBirdsTime;
+        float mSpecialBirdsTimeElapsed;
+    
+        float mCoinsBirdTime;
+        float mCoinsBirdTimeElapsed;
 
         Entity* mBackground;
         Entity* mCountIcon;
@@ -78,6 +84,8 @@ class Game : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        void generateCoinsBirds();
 
         // ===========================================================
         // Override Methods

@@ -49,7 +49,13 @@ Game::Game() :
         this->mBirdsTime = 0;
         this->mBirdsTimeElapsed = 0;
         
-        this->mSpecialBirdstimeElapsed = 0;
+        this->mSpecialBirdsTime = 20.0;
+        this->mSpecialBirdsTimeElapsed = 0;
+        
+        this->mCoinsBirdTime = 4.0;
+        this->mCoinsBirdTimeElapsed = 0;
+        
+        this->mCoinsBirdsCount = 1;
     
         this->mChalange = false;
         this->mGameRunning = false;
@@ -88,6 +94,8 @@ void Game::startGame()
     this->mGamePaused = false;
 
     this->mStartGameAnimationIndex = -2;
+    
+    this->mCoinsBirdsCount = 1;
     
     this->mStartGameAnimation = 1.0;
     this->mStartGameAnimationElapsed = this->mStartGameAnimation;
@@ -175,6 +183,27 @@ void Game::pause()
     
     this->mPause = !this->mPause;
 }
+
+void Game::generateCoinsBirds()
+{
+    bool side = Utils::probably(50);
+    int y = Utils::random(Utils::coord(250), Options::CAMERA_HEIGHT - Utils::coord(250));
+    
+    for(int i = 0; i < this->mCoinsBirdsCount; i++)
+    {
+        int params[3] = {i, side ? 1: 0, y};
+        
+        static_cast<Bird*>(this->mBirds->create())->init(3, params);
+    }
+    
+    this->mCoinsBirdsCount += 2;
+    
+    if(this->mCoinsBirdsCount > 5)
+    {
+        this->mCoinsBirdsCount = 5;
+    }
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -196,7 +225,12 @@ void Game::update(float pDeltaTime)
     if(this->mGameRunning && !this->mGamePaused)
     {
         this->mBirdsTimeElapsed += pDeltaTime;
-        this->mSpecialBirdstimeElapsed += pDeltaTime;
+        this->mSpecialBirdsTimeElapsed += pDeltaTime;
+        
+        if(!this->mChalange)
+        {
+            this->mCoinsBirdTimeElapsed += pDeltaTime;
+        }
 
         if(this->mChalange)
         {
@@ -205,6 +239,7 @@ void Game::update(float pDeltaTime)
                 this->mBirdsTimeElapsed = 0;
                 
                 Bird* bird = static_cast<Bird*>(this->mBirds->create());
+                bird->init(2, 0);
 
                 if(Options::SOUND_ENABLE)
                 {
@@ -254,11 +289,21 @@ void Game::update(float pDeltaTime)
                 }
             }
             
-            if(this->mSpecialBirdstimeElapsed >= 2.0)
+            if(this->mSpecialBirdsTimeElapsed >= this->mSpecialBirdsTime)
             {
-                this->mSpecialBirdstimeElapsed = 0;
+                this->mSpecialBirdsTimeElapsed = 0;
                 
-                SpecialBird* specialBird = static_cast<SpecialBird*>(this->mSpecialBirds->create());
+                if(AppDelegate::isSomeBonusBirdBought())
+                {
+                    this->mSpecialBirds->create();
+                }
+            }
+            
+            if(this->mCoinsBirdTimeElapsed >= this->mCoinsBirdTime)
+            {
+                this->mCoinsBirdTimeElapsed = 0;
+                
+                this->generateCoinsBirds();
             }
         }
     }

@@ -24,6 +24,7 @@ ccColor3B Bird::COLORS[COUNT] =
     ccc3(0.0, 255.0, 255.0),
     ccc3(255.0, 255.0, 51.0),
     ccc3(0.0, 236.0, 47.0),
+    ccc3(64.0, 70.0, 98.0),
     ccc3(64.0, 70.0, 98.0)
 };
 
@@ -42,43 +43,36 @@ Bird::~Bird()
     this->removeAllChildrenWithCleanup(true);
 }
 
-Bird::Bird() :
-    ImpulseEntity("birds_sprite@2x.png", 14, 8)
+Bird::Bird(bool pBonus) :
+    ImpulseEntity(pBonus ? "special_birds_sprite@2x.png" : "birds_sprite@2x.png", 14, pBonus ? 8 : 9)
     {
-        this->mMarkTime = 0.02;
-        this->mMarkTimeElapsed = 0;
+        this->mBonus = pBonus;
         
-        this->mLife = CCProgressTimer::create(Entity::create("birds_life@2x.png"));
-        this->mLife->retain();
-        this->mLife->setType(kCCProgressTimerTypeRadial);
-        this->mLife->setReverseProgress(true);
-
-        this->mSoundEffect = 0;
+        if(this->mBonus)
+        {
+            this->count = SPECIAL_COUNT;
+        }
+        else
+        {
+            this->mMarkTime = 0.02;
+            this->mMarkTimeElapsed = 0;
         
-        this->count = COUNT;
+            this->mLife = CCProgressTimer::create(Entity::create("birds_life@2x.png"));
+            this->mLife->retain();
+            this->mLife->setType(kCCProgressTimerTypeRadial);
+            this->mLife->setReverseProgress(true);
 
-        this->mChalange = false;
-        this->mBonus = false;
+            this->mSoundEffect = 0;
+        
+            this->count = COUNT;
+
+            this->mChalange = false;
+        }
     }
 
-Bird::Bird(bool pSpecial) :
-    ImpulseEntity("special_birds_sprite@2x.png", 14, 8)
-    {
-        this->count = SPECIAL_COUNT;
-        this->mBonus = true;
-    }
-
-Bird* Bird::create()
+Bird* Bird::create(bool pBonus)
 {
-    Bird* entity = new Bird();
-    entity->autorelease();
-    
-    return entity;
-}
-
-Bird* Bird::create(bool pSpecial)
-{
-    Bird* entity = new Bird(pSpecial);
+    Bird* entity = new Bird(pBonus);
     entity->autorelease();
     
     return entity;
@@ -87,6 +81,47 @@ Bird* Bird::create(bool pSpecial)
 // ===========================================================
 // Methods
 // ===========================================================
+
+void Bird::init(int pChalangeType, int pSomeData[3])
+{
+    this->mChalangeType = pChalangeType;
+    
+    switch(this->mChalangeType)
+    {
+        case 2:
+            
+        this->mType = Utils::random(0, this->count - 3);
+        
+        this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(Utils::randomf(0.0f, 300.0f)));
+            
+        this->mWeight = Utils::coord(1000.0);
+        this->mImpulsePower = Utils::coord(Utils::randomf(200.0, 700.0));
+        this->mSideImpulse = Utils::coord(250.0);
+        this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+
+        break;
+            
+        case 3:
+            
+        this->mType = TYPE_FLAYER;
+            
+        this->setCenterPosition(pSomeData[1] == 1 ? (0 - Utils::coord(150) * pSomeData[0]) : Options::CAMERA_WIDTH + Utils::coord(100) * pSomeData[0], pSomeData[2] + Utils::coord(Utils::randomf(-50.0, 50.0) * pSomeData[0]));
+            
+        this->mWeight = Utils::coord(Utils::randomf(0.0, 100.0));
+        this->mImpulsePower = Utils::coord(Utils::randomf(0.0, 300.0));
+        this->mSideImpulse = Utils::coord(1250.0);
+        this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+            
+        break;
+    }
+    
+    this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
+    
+    this->animate(0.05, this->getCurrentFrameIndex() + 5, this->getCurrentFrameIndex() + 5 + 7, 1);
+    
+    this->setScale(1.0);
+    this->setScaleX(this->getCenterX() < Options::CAMERA_CENTER_X ? 1 : -1);
+}
 
 int Bird::getType()
 {
@@ -101,33 +136,51 @@ void Bird::onCreate()
 {
     ImpulseEntity::onCreate();
     
+    this->mChalangeType = 0;
+    
     Game* game = static_cast<Game*>(this->getParent()->getParent());
 
+    if(this->mBonus)
+    {
+        this->mType = AppDelegate::getRandomBonusBird();
+        
+        this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
+        
+        this->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
+        
+        this->mWeight = Utils::coord(1500.0);
+        this->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
+        this->mSideImpulse = Utils::coord(Utils::randomf(100.0, 300.0));
+        this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+    }
+    else
+    {
     if(game->mChalange)
     {
-        this->mType = Utils::random(0, this->count - 2);
+        this->mType = Utils::random(0, this->count - 3);
         
         this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
         this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(Utils::randomf(0.0f, 300.0f)));
 
-        this->mWeight = Utils::coord(1000.0f);
-        this->mImpulsePower = Utils::coord(Utils::randomf(200.0f, 700.0f));
-        this->mSideImpulse = Utils::coord(250.0f);
+        this->mWeight = Utils::coord(1000.0);
+        this->mImpulsePower = Utils::coord(Utils::randomf(200.0, 700.0));
+        this->mSideImpulse = Utils::coord(250.0);
         this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
     }
     else
     {
-        this->mType = Utils::random(0, this->count - 1);
+        this->mType = Utils::probably(20) ? TYPE_DANGER : Utils::random(0, this->count - 3);
         
         this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
         this->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
 
-        this->mWeight = Utils::coord(1500.0f);
-        this->mImpulsePower = Utils::coord(Utils::randomf(1200.0f, 1900.0f));
-        this->mSideImpulse = Utils::coord(Utils::randomf(100.0f, 300.0f));
+        this->mWeight = Utils::coord(1500.0);
+        this->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
+        this->mSideImpulse = Utils::coord(Utils::randomf(100.0, 300.0));
         this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+    }
     }
 
     this->mChalange = game->mChalange;
@@ -202,13 +255,13 @@ void Bird::onDestroy()
     {
         if(game->mGameRunning)
         {
-        if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange)
+        if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange && !this->mBonus && this->mChalangeType != 3)
         {
             game->removeLife();
         }
         else
         {
-            if(this->mChalange)
+            if(this->mChalange || this->mChalangeType == 3 || this->mBonus)
             {
                 if(this->mLifeCount <= 0)
                 {
@@ -236,8 +289,6 @@ void Bird::update(float pDeltaTime)
 {
     ImpulseEntity::update(pDeltaTime);
     
-    if(!this->isVisible()) return;
-    
     Game* game = static_cast<Game*>(this->getParent()->getParent());
 
     this->mMarkTimeElapsed += pDeltaTime;
@@ -246,10 +297,22 @@ void Bird::update(float pDeltaTime)
     {
         this->mMarkTimeElapsed = 0;
         
-        Entity* entity = game->mMarks->create();
-        
-        entity->setCenterPosition(this->getCenterX(), this->getCenterY());
-        //entity->setColor(COLORS[this->mType]);
+        if(this->mChalangeType == 3)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                StarParticle* entity = static_cast<StarParticle*>(game->mStars->create());
+            
+                entity->initAsParticle();
+                entity->setCenterPosition(this->getCenterX(), this->getCenterY() + Utils::randomf(-this->getHeight() / 2, this->getHeight() / 2));
+            }
+        }
+        else
+        {
+            Entity* entity = game->mMarks->create();
+            
+            entity->setCenterPosition(this->getCenterX(), this->getCenterY());
+        }
     }
 
     /** Collisions and destroy animation **/
@@ -296,16 +359,17 @@ void Bird::update(float pDeltaTime)
                     this->mLife->setPercentage((this->mLifeCount / this->mInitLifeCount * 100.0));
                 }
 
-                if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER || this->mBonus)
+                if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER || this->mBonus || this->mChalangeType == 3)
                 {
                     Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
                     Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 
-                    explosionBasic->create()->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
+                    explosionBasic->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
 
                     explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
                     explosion->setColor(COLORS[this->mType]);
 
+                    if(this->mType != TYPE_DANGER && !this->mBonus)
                     {
                         for(int i = 0; i < 15; i++)
                         {
@@ -352,7 +416,7 @@ void Bird::update(float pDeltaTime)
 
 Bird* Bird::deepCopy()
 {
-    return Bird::create();
+    return Bird::create(this->mBonus);
 }
 
 #endif

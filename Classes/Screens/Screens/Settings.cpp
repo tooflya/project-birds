@@ -72,7 +72,9 @@ Settings::Settings()
     
     this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(165), Utils::coord(128));
-
+    
+    this->mLanguage->create();
+    
     m_Instance = this;
 }
 
@@ -179,7 +181,7 @@ void Settings::update(float pDeltaTime)
     Screen::update(pDeltaTime);
 
     this->mLanguage->setScale(this->mLanguageButton->getScaleX());
-    this->mLanguage->create()->setCenterPosition(this->mLanguageButton->getCenterX() + this->mLanguageButton->getWidthScaled() / 2 - this->mLanguage->getWidthScaled() / 2, this->mLanguageButton->getCenterY());
+    this->mLanguage->setCenterPosition(this->mLanguageButton->getCenterX() + this->mLanguageButton->getWidthScaled() / 2 - this->mLanguage->getWidthScaled() / 2, this->mLanguageButton->getCenterY());
 }
 
 void Settings::onEnter()

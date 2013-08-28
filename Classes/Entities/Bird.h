@@ -18,6 +18,7 @@ class Bird : public ImpulseEntity
         // Fields
         // ===========================================================
 
+        int mChalangeType;
         int mType;
         int mSoundEffect;
         
@@ -44,8 +45,7 @@ class Bird : public ImpulseEntity
         // Constructors
         // ===========================================================
     
-        Bird();
-        Bird(bool pSpecial);
+        Bird(bool pBonus);
 
         // ===========================================================
         // Methods
@@ -89,8 +89,8 @@ class Bird : public ImpulseEntity
         // Constants
         // ===========================================================
 
-        static const int COUNT = 8;
-        static const int SPECIAL_COUNT = 9;
+        static const int COUNT = 9;
+        static const int SPECIAL_COUNT = 8;
 
         static const int TYPE_ORANGE = 0;
         static const int TYPE_RED = 1;
@@ -99,7 +99,8 @@ class Bird : public ImpulseEntity
         static const int TYPE_CYAN = 4;
         static const int TYPE_YELLOW = 5;
         static const int TYPE_GREEN = 6;
-        static const int TYPE_DANGER = 7;
+        static const int TYPE_FLAYER = 7;
+        static const int TYPE_DANGER = 8;
         static const int TYPE_GENERAL = 8;
         static const int TYPE_FREEZEE = 9;
         static const int TYPE_ZOMBIE = 10;
@@ -107,7 +108,6 @@ class Bird : public ImpulseEntity
         static const int TYPE_ROBOTO = 12;
         static const int TYPE_MEXICAN = 13;
         static const int TYPE_PIRATE = 14;
-        static const int TYPE_FLAYER = 15;
         static const int TYPE_NINJA = 16;
 
         static ccColor3B COLORS[COUNT];
@@ -122,8 +122,7 @@ class Bird : public ImpulseEntity
         // Constructors
         // ===========================================================
     
-        static Bird* create();
-        static Bird* create(bool pSpecial);
+        static Bird* create(bool pBonus);
     
         ~Bird();
 
@@ -131,6 +130,8 @@ class Bird : public ImpulseEntity
         // Methods
         // ===========================================================
 
+        void init(int pChalangeType, int pSomeData[3]);
+    
         int getType();
         
         // ===========================================================

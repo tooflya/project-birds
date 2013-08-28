@@ -38,7 +38,7 @@ bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
 const char* Options::VERSION = "0.7.0";
-int Options::BUILD = 4389;
+int Options::BUILD = 4561;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -359,9 +359,12 @@ void Options::init()
     {
         switch(CCApplication::sharedApplication()->getCurrentLanguage())
         {
+            default:
+                CURRENT_LANGUAGE = 0;
+            break;
             case kLanguageRussian:
                 CURRENT_LANGUAGE = 1;
-                break;
+            break;
         }
     }
 

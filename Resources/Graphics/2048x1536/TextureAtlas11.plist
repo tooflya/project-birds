@@ -7,15 +7,15 @@
             <key>special_birds_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{2044,1434}}</string>
+                <string>{{2,2},{2044,1275}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{2044,1434}}</string>
+                <string>{{0,0},{2044,1275}}</string>
                 <key>sourceSize</key>
-                <string>{2044,1434}</string>
+                <string>{2044,1275}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -27,7 +27,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:58822d57b20ce6aa657099d65f35818b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:b8062859751d226b8a32317def95d9f7:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas11.pvr.ccz</string>
         </dict>

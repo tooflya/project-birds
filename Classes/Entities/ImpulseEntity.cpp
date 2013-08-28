@@ -45,8 +45,6 @@ void ImpulseEntity::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
     
-    if(!this->isVisible()) return;
-    
     if(this->mImpulsePower >= 0.0f)
     {
         this->setCenterPosition(this->getCenterX(), this->getCenterY() + this->mImpulsePower * pDeltaTime);
@@ -63,7 +61,7 @@ void ImpulseEntity::update(float pDeltaTime)
     this->setCenterPosition(this->getCenterX() - this->mSideImpulse * pDeltaTime, this->getCenterY());
     this->setRotation(this->getRotation() - this->mRotateImpulse * pDeltaTime);
 
-    if(this->getCenterY() < 0)
+    if(this->getCenterY() < -this->getHeight() / 2 || this->getCenterX() < -Options::CAMERA_WIDTH || this->getCenterX() > Options::CAMERA_WIDTH * 2)
     {
         this->destroy();
     }

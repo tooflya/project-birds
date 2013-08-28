@@ -143,6 +143,8 @@ class AppDelegate : private CCApplication
     
         static int getRandomBonusBird();
     
+        static bool isSomeBonusBirdBought();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

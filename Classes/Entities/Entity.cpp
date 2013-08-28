@@ -282,6 +282,7 @@ float Entity::getSpeed(float pDeltaTime)
 
 Entity* Entity::create()
 {
+    this->scheduleUpdate();
     this->onCreate();
 
     return this;
@@ -289,6 +290,7 @@ Entity* Entity::create()
 
 bool Entity::destroy(bool pManage)
 {
+    this->unscheduleUpdate();
     this->onDestroy();
 
     if(pManage)
@@ -580,15 +582,11 @@ void Entity::stopAnimation()
 void Entity::onEnter()
 {
     CCSprite::onEnter();
-
-    this->scheduleUpdate();
 }
 
 void Entity::onExit()
 {
     CCSprite::onExit();
-
-    this->unscheduleAllSelectors();
 }
 
 void Entity::onTouch(CCTouch* touch, CCEvent* event)
@@ -663,8 +661,6 @@ Entity* Entity::deepCopy()
 
 void Entity::update(float pDeltaTime)
 {
-    if(!this->isVisible()) return;
-
     if(this->mAnimationStartTimeout >= 0)
     {
         this->mAnimationStartTimeout -= pDeltaTime;

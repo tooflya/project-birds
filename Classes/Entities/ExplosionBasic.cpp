@@ -61,8 +61,6 @@ ExplosionBasic* ExplosionBasic::deepCopy()
 void ExplosionBasic::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
-    
-    if(!this->isVisible()) return;
 }
 
 #endif

@@ -65,9 +65,9 @@ Classic::Classic() :
         this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, spriteBatch2, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
 
         this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
-        this->mMarks = EntityManager::create(200, Mark::create(), spriteBatch2);
+        this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
         this->mFeathers = EntityManager::create(200, Feather::create(), spriteBatch2);
-        this->mBirds = EntityManager::create(20, Bird::create(), spriteBatch4);
+        this->mBirds = EntityManager::create(20, Bird::create(false), spriteBatch4);
         this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
@@ -417,7 +417,7 @@ void Classic::onEnterTransitionDidFinish()
 }
 
 void Classic::removeLife()
-{
+{return;
     if(LIFES < 3 && !this->mGamePaused && this->mGameRunning)
     {
         Game::removeLife();

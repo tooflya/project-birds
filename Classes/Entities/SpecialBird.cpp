@@ -61,10 +61,6 @@ SpecialBird* SpecialBird::deepCopy()
 void SpecialBird::onCreate()
 {
     Bird::onCreate();
-    
-    this->mType = AppDelegate::getRandomBonusBird();
-    
-    this->setCurrentFrameIndex(this->mType);
 }
 
 #endif

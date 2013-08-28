@@ -56,9 +56,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "Loading::Loading()"
-         landmarkType = "5">
+         endingLineNumber = "80">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -69,9 +67,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "Loading::Loading()"
-         landmarkType = "5">
+         endingLineNumber = "82">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
