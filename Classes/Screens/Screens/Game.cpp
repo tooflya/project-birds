@@ -18,6 +18,7 @@ int Game::BEST_COUNT = 0;
 int Game::LIFES = 0;
 int Game::HEALTH = 0;
 int Game::RECORD_BEATEAN = 0;
+int Game::COMBO_COUNT = 0;
 
 // ===========================================================
 // Fields
@@ -52,10 +53,12 @@ Game::Game() :
         this->mSpecialBirdsTime = 20.0;
         this->mSpecialBirdsTimeElapsed = 0;
         
-        this->mCoinsBirdTime = 4.0;
+        this->mCoinsBirdTime = 15.0;
         this->mCoinsBirdTimeElapsed = 0;
         
         this->mCoinsBirdsCount = 1;
+        
+        this->mLastKillTime = 0;
     
         this->mChalange = false;
         this->mGameRunning = false;
@@ -96,6 +99,10 @@ void Game::startGame()
     this->mStartGameAnimationIndex = -2;
     
     this->mCoinsBirdsCount = 1;
+    this->mLastKillType = -1;
+    this->mLastKillCount = 0;
+    
+    this->mLastKillTime = Utils::millisecondNow();
     
     this->mStartGameAnimation = 1.0;
     this->mStartGameAnimationElapsed = this->mStartGameAnimation;
@@ -110,6 +117,7 @@ void Game::startGame()
     this->mExplosionsBasic->clear();
 
     HEALTH = 12;
+    COMBO_COUNT = 0;
 }
 
 void Game::onGameStarted()
@@ -137,17 +145,24 @@ void Game::onBirBlow(int pType)
         if(pType != Bird::TYPE_DANGER)
         {
             CURRENT_COUNT++;
+            
+            this->mLastKillTime = Utils::millisecondNow();
+            
+            if(this->mLastKillType == pType)
+            {
+                this->mLastKillCount++;
+            }
+            else
+            {
+                this->mLastKillCount = 1;
+                this->mLastKillType = pType;
+            }
 
             if(CURRENT_COUNT - 1 == BEST_COUNT && RECORD_BEATEAN == 0 && BEST_COUNT >= 10)
             {
                 this->mEventPanel->setEvent(0)->show();
 
                 RECORD_BEATEAN = 1;
-
-                for(int i = 0; i < 100; i++)
-                {
-                    static_cast<StarParticle*>(this->mStars->create())->setType(2)->onCreate();
-                }
             }
 
             if(CURRENT_COUNT > BEST_COUNT)
@@ -343,6 +358,19 @@ void Game::update(float pDeltaTime)
         }
     }
 
+    if(Utils::millisecondNow() - this->mLastKillTime >= 1000)
+    {
+        if(this->mLastKillCount > 1)
+        {
+            this->mEventPanel->setEvent(60)->show();
+            
+            COMBO_COUNT++;
+        }
+        
+        this->mLastKillType = -1;
+        this->mLastKillCount = 0;
+    }
+    
     if(this->mEventLayer)
     {
         //this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));

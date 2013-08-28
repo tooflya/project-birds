@@ -24,7 +24,7 @@ ccColor3B Bird::COLORS[COUNT] =
     ccc3(0.0, 255.0, 255.0),
     ccc3(255.0, 255.0, 51.0),
     ccc3(0.0, 236.0, 47.0),
-    ccc3(64.0, 70.0, 98.0),
+    ccc3(209.0, 169.0, 0.0),
     ccc3(64.0, 70.0, 98.0)
 };
 
@@ -170,7 +170,7 @@ void Bird::onCreate()
     }
     else
     {
-        this->mType = Utils::probably(20) ? TYPE_DANGER : Utils::random(0, this->count - 3);
+        this->mType = Utils::probably(15) ? TYPE_DANGER : Utils::random(0, this->count - 3);
         
         this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -378,6 +378,14 @@ void Bird::update(float pDeltaTime)
                             feather->setCenterPosition(this->getCenterX(), this->getCenterY());
                             feather->setCurrentFrameIndex(Utils::random(2 * this->mType, 2 * this->mType + 1));
                             feather->init(i, 15.0);
+                        }
+                    }
+                    
+                    if(this->mChalangeType == 3)
+                    {
+                        for(int i = 0; i < 10; i++)
+                        {
+                            game->mCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
                         }
                     }
                     

@@ -39,13 +39,17 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
         CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
         CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
         
         this->addChild(spriteBatch1);
         this->mScaleLayer->addChild(spriteBatch3);
         this->mScaleLayer->addChild(spriteBatch2, 2);
+        this->mScaleLayer->addChild(spriteBatch4, 3);
         
         this->addChild(this->mScaleLayer);
         this->mScaleLayer->setVisible(false);
+        
+        this->mCoinsCountText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this->mScaleLayer);
         
         this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 2, 1), spriteBatch1);
         
@@ -61,7 +65,18 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         
         this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", spriteBatch3);
         
+        this->mCoinsPanel = Entity::create("shop_money_bg@2x.png", spriteBatch3);
+        this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch4);
+        
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+        this->mCoinsPanel->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(90));
+        
+        this->mCoin->create()->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(105), this->mCoinsPanel->getCenterY());
+        this->mCoin->setRotation(-45);
+        this->mCoin->setScale(1.3);
+        this->mCoin->animate(0.05);
+        
+        this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
         
         this->mShopButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_SHOP, this->mOnTouchCallback);
         this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_MENU, this->mOnTouchCallback);
@@ -109,16 +124,20 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mIsAnimationRunning = false;
 
         Text* text1 = Text::create((Textes) {"Результаты", Options::FONT, 64, -1}, this->mScaleLayer);
-        Text* text2 = Text::create((Textes) {"Результат: 114", Options::FONT, 42, -1}, this->mScaleLayer);
-        Text* text3 = Text::create((Textes) {"Рекорд: 114", Options::FONT, 42, -1}, this->mScaleLayer);
-        Text* text4 = Text::create((Textes) {"Комбо ударов: 5", Options::FONT, 42, -1}, this->mScaleLayer);
-        Text* text5 = Text::create((Textes) {"Заработано монет: 228", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text2 = Text::create((Textes) {"Результат: 0", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text3 = Text::create((Textes) {"Рекорд: 0", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text4 = Text::create((Textes) {"Убито летчиков: 0", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text5 = Text::create((Textes) {"Комбо ударов: 0", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text6 = Text::create((Textes) {"Критических ударов: 0", Options::FONT, 42, -1}, this->mScaleLayer);
+        Text* text7 = Text::create((Textes) {"Заработано монет: 0", Options::FONT, 42, -1}, this->mScaleLayer);
 
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
         text2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200));
         text3->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
         text4->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100));
         text5->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50));
+        text6->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0));
+        text7->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
         
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
     }
@@ -167,6 +186,11 @@ void End::onStartShow()
     Splash::onStartShow();
     
     this->throwConfetti();
+    
+    int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
+    
+    this->mCoinsCountText->setString(Utils::intToString(coins).c_str());
+    this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
 }
 
 void End::onStartHide()

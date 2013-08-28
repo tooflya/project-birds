@@ -4,6 +4,7 @@
 #include "ClassicEnd.h"
 
 #include "Loader.h"
+#include "Shop.h"
 
 // ===========================================================
 // Inner Classes
@@ -72,7 +73,13 @@ void ClassicEnd::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_END_SHOP:
                     
-                    pSender->hide(); // TODO: Open shop screen.
+                    pSender->hide();
+                    
+                    Shop::ACTION = 0;
+                    
+                    Loader::ACTION = 5;
+                    
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
 
                 break;
             }

@@ -71,6 +71,7 @@ Arcade::Arcade() :
         this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
+        this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
 
         this->mEventPanel = EventPanel::create(this);
         

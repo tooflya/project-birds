@@ -19,15 +19,17 @@
 // Constructors
 // ===========================================================
 
-AnimatedCoin::AnimatedCoin() :
+AnimatedCoin::AnimatedCoin(float pScaleFactor) :
     ImpulseEntity("coins@2x.png", 5, 4)
     {
+        this->mScaleFactor = pScaleFactor;
+        
         this->animate(0.01);
     }
 
-AnimatedCoin* AnimatedCoin::create()
+AnimatedCoin* AnimatedCoin::create(float pScaleFactor)
 {
-    AnimatedCoin* coin = new AnimatedCoin();
+    AnimatedCoin* coin = new AnimatedCoin(pScaleFactor);
     coin->autorelease();
 
     return coin;
@@ -58,7 +60,7 @@ void AnimatedCoin::onCreate()
     this->mRotateImpulse = Utils::randomf(-160.0, 160.0);
 
     this->setScale(0);
-    this->runAction(CCScaleTo::create(1.0, 1.6));
+    this->runAction(CCScaleTo::create(1.0, this->mScaleFactor));
 
     if(Options::SOUND_ENABLE)
     {
@@ -74,7 +76,7 @@ void AnimatedCoin::onDestroy()
 
 AnimatedCoin* AnimatedCoin::deepCopy()
 {
-    return AnimatedCoin::create();
+    return AnimatedCoin::create(this->mScaleFactor);
 }
 
 #endif

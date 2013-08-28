@@ -8,7 +8,7 @@
 
 #include "BatchEntityManager.h"
 
-class Splash : public CCLayer
+class Splash : public CCLayer, public Touchable
 {
     protected:
         // ===========================================================

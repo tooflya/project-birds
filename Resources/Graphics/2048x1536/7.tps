@@ -148,25 +148,25 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../1280x720/src/explosion_basic@2x.png</filename>
-            <filename>../1280x720/src/explosion@2x.png</filename>
-            <filename>../1280x720/src/weapon_strike_sprite@2x.png</filename>
-            <filename>../1280x720/src/game_time_clock@2x.png</filename>
-            <filename>../1280x720/src/game_time_mask@2x.png</filename>
-            <filename>../1280x720/src/game_time_arrow@2x.png</filename>
-            <filename>../1280x720/src/colors@2x.png</filename>
-            <filename>../1280x720/src/confety_sprite@2x.png</filename>
-            <filename>../1280x720/src/birds_feather_sprite@2x.png</filename>
-            <filename>../1280x720/src/coins@2x.png</filename>
-            <filename>../1280x720/src/star_particle@2x.png</filename>
-            <filename>../1280x720/src/info_panel_btn_sprite@2x.png</filename>
-            <filename>../1280x720/src/lifes@2x.png</filename>
-            <filename>../1280x720/src/game_gui_count_pic@2x.png</filename>
-            <filename>../1280x720/src/game_shelf@2x.png</filename>
-            <filename>../1280x720/src/event_panel@2x.png</filename>
-            <filename>../1280x720/src/dust@2x.png</filename>
-            <filename>../1280x720/src/mark@2x.png</filename>
-            <filename>../1280x720/src/game_gui_btn_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/explosion_basic@2x.png</filename>
+            <filename>../../Graphics Sources/explosion@2x.png</filename>
+            <filename>../../Graphics Sources/weapon_strike_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/game_time_clock@2x.png</filename>
+            <filename>../../Graphics Sources/game_time_mask@2x.png</filename>
+            <filename>../../Graphics Sources/game_time_arrow@2x.png</filename>
+            <filename>../../Graphics Sources/colors@2x.png</filename>
+            <filename>../../Graphics Sources/confety_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/birds_feather_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/coins@2x.png</filename>
+            <filename>../../Graphics Sources/star_particle@2x.png</filename>
+            <filename>../../Graphics Sources/info_panel_btn_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/lifes@2x.png</filename>
+            <filename>../../Graphics Sources/game_gui_count_pic@2x.png</filename>
+            <filename>../../Graphics Sources/game_shelf@2x.png</filename>
+            <filename>../../Graphics Sources/event_panel@2x.png</filename>
+            <filename>../../Graphics Sources/dust@2x.png</filename>
+            <filename>../../Graphics Sources/mark@2x.png</filename>
+            <filename>../../Graphics Sources/game_gui_btn_sprite@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

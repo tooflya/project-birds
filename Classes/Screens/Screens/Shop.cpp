@@ -278,7 +278,7 @@ Shop::Shop()
     this->addChild(spriteBatch);
     this->addChild(spriteBatch2);
     
-    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create(), spriteBatch2, 3);
+    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create(1.6), spriteBatch2, 3);
 
     this->mTablet = Button::create("shop_money_bg@2x.png", 1, 1, spriteBatch2, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
     this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);

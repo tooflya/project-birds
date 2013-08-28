@@ -3,6 +3,9 @@
 
 #include "EventPanel.h"
 
+#include "StarParticle.h"
+#include "Game.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -85,6 +88,13 @@ void EventPanel::onShow()
 {
     this->mLive = true;
     this->mIsShowAnimationRunning = false;
+    
+    for(int i = 0; i < 100; i++)
+    {
+        Game* game = static_cast<Game*>(this->getParent());
+        
+        static_cast<StarParticle*>(game->mStars->create())->setType(2)->onCreate();
+    }
 }
 
 void EventPanel::onHide()

@@ -764,6 +764,9 @@ void Options::changeLanguage()
 
             TEXT_EVENTS[30].string = "You have one minute!";
             TEXT_EVENTS[30].size = 42;
+            
+            TEXT_EVENTS[60].string = "Combo strike!";
+            TEXT_EVENTS[60].size = 42;
 
             TEXT_PAYMENT_STRING[0].string = "Request processing";
 
@@ -1162,6 +1165,9 @@ void Options::changeLanguage()
 
             TEXT_EVENTS[30].string = "У вас есть минута!";
             TEXT_EVENTS[30].size = 42;
+            
+            TEXT_EVENTS[60].string = "Комбо удар!";
+            TEXT_EVENTS[60].size = 42;
 
             TEXT_PAYMENT_STRING[0].string = "Обработка запроса";
 

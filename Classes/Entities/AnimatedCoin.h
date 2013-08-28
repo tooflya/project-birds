@@ -17,6 +17,8 @@ class AnimatedCoin : public ImpulseEntity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        float mScaleFactor;
 
         // ===========================================================
         // Constructors
@@ -26,7 +28,7 @@ class AnimatedCoin : public ImpulseEntity
         // Methods
         // ===========================================================
 
-        AnimatedCoin();
+        AnimatedCoin(float pScaleFactor);
 
         // ===========================================================
         // Override Methods
@@ -74,7 +76,7 @@ class AnimatedCoin : public ImpulseEntity
         // Constructors
         // ===========================================================
 
-        static AnimatedCoin* create();
+        static AnimatedCoin* create(float pScaleFactor);
 
         // ===========================================================
         // Methods

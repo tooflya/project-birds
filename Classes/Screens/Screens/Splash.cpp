@@ -151,6 +151,11 @@ void Splash::update(float pDeltaTime)
 
 void Splash::onEnter()
 {
+    this->setRegisterAsTouchable(true);
+    
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->addTargetedDelegate((Touchable*) this, 0, true);
+    
     CCLayer::onEnter();
     
     this->scheduleUpdate();
@@ -158,6 +163,11 @@ void Splash::onEnter()
 
 void Splash::onExit()
 {
+    this->setRegisterAsTouchable(false);
+    
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->removeDelegate((Touchable*) this);
+    
     CCLayer::onExit();
     
     this->stopAllActions();

@@ -66,12 +66,13 @@ Classic::Classic() :
 
         this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
         this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
-        this->mFeathers = EntityManager::create(200, Feather::create(), spriteBatch2);
+        this->mFeathers = EntityManager::create(300, Feather::create(), spriteBatch2);
         this->mBirds = EntityManager::create(20, Bird::create(false), spriteBatch4);
         this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
         this->mLifes = EntityManager::create(3, Entity::create("lifes@2x.png", 1, 2), spriteBatch2);
+        this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
 
         this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
         this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
@@ -417,7 +418,7 @@ void Classic::onEnterTransitionDidFinish()
 }
 
 void Classic::removeLife()
-{return;
+{
     if(LIFES < 3 && !this->mGamePaused && this->mGameRunning)
     {
         Game::removeLife();

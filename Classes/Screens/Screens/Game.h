@@ -14,6 +14,7 @@
 #include "StarParticle.h"
 #include "Dust.h"
 #include "EventPanel.h"
+#include "AnimatedCoin.h"
 
 #include "Pause.h"
 
@@ -42,6 +43,9 @@ class Game : public Screen
         int mAlgorithmBirdsRemainig;
     
         int mCoinsBirdsCount;
+    
+        int mLastKillType;
+        int mLastKillCount;
 
         float mBirdsTime;
         float mBirdsTimeElapsed;
@@ -59,6 +63,8 @@ class Game : public Screen
     
         float mCoinsBirdTime;
         float mCoinsBirdTimeElapsed;
+    
+        long mLastKillTime;
 
         Entity* mBackground;
         Entity* mCountIcon;
@@ -130,6 +136,7 @@ class Game : public Screen
         static int LIFES;
         static int HEALTH;
         static int RECORD_BEATEAN;
+        static int COMBO_COUNT;
 
         // ===========================================================
         // Fields
@@ -150,6 +157,7 @@ class Game : public Screen
         EntityManager* mExplosions;
         EntityManager* mDust;
         EntityManager* mStars;
+        EntityManager* mCoins;
 
         // ===========================================================
         // Constructors
