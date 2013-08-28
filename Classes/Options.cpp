@@ -37,8 +37,8 @@ int Options::SELECTED_WEAPON_ID = 0;
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.7.0";
-int Options::BUILD = 4561;
+const char* Options::VERSION = "0.7.1";
+int Options::BUILD = 4665;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 

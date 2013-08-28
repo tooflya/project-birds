@@ -45,7 +45,7 @@ EventPanel::EventPanel(Screen* pParent) :
 
         this->mText = Text::create(Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED, this);
 
-        this->mIcon->create()->setCenterPosition(Utils::coord(64), this->getHeight() / 2 + Utils::coord(32));
+        this->mIcon->create()->setCenterPosition(Utils::coord(90), this->getHeight() / 2 + Utils::coord(24));
 
         this->mText->setCenterPosition(this->getWidth() / 2 + Utils::coord(16), this->getHeight() / 2);
     }
