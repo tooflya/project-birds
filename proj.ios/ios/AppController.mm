@@ -64,21 +64,7 @@ static AppDelegate s_sharedApplication;
     
     [__glView setMultipleTouchEnabled:YES];
     
-    //[self PlayVideo:0 fullscreen:1 file:@"a" fileExtension:@"m4v"];
-    
-    NSString* deviceType = machineName();
-    NSRange match = [deviceType rangeOfString: @"iPod"];
-    
-    if(match.location != NSNotFound)
-    {
-        s_sharedApplication.IS_IPOD = true;
-    }
-    else
-    {
-        s_sharedApplication.IS_IPOD = false;
-    }
-    
-    cocos2d::CCApplication::sharedApplication()->run();
+    [self PlayVideo:0 fullscreen:1 file:@"a" fileExtension:@"m4v"];
     
     return YES;
 }
@@ -223,7 +209,19 @@ int g_iPlayVideoState=0;
     
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
-    [__glView setMultipleTouchEnabled:YES];
+    [__glView setMultipleTouchEnabled:NO];
+    
+    NSString* deviceType = machineName();
+    NSRange match = [deviceType rangeOfString: @"iPod"];
+    
+    if(match.location != NSNotFound)
+    {
+        s_sharedApplication.IS_IPOD = true;
+    }
+    else
+    {
+        s_sharedApplication.IS_IPOD = false;
+    }
     
     cocos2d::CCApplication::sharedApplication()->run();
     
