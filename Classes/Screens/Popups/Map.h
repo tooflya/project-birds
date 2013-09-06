@@ -1,11 +1,11 @@
-#ifndef CONST_LOADER_H
-#define CONST_LOADER_H
+#ifndef CONST_MAP_H
+#define CONST_MAP_H
 
-#include "Screen.h"
+#include "Popup.h"
 
-class Loader : public Screen
+class Map : public Popup
 {
-    protected:
+        protected:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -13,51 +13,28 @@ class Loader : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static Map* m_Instance;
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        int mNumberOfSprites;
-        int mNumberOfLoadedSprites;
-    
-        float mCircleAnimationTime;
-        float mCircleAnimationTimeElapsed;
-
-        float mLoadingTime;
-        float mLoadingTimeElapsed;
-    
-        bool mTapToContinueAnimation;
-        bool mTapToContinueAnimationReverse;
-    
-        bool mIsWorkDone;
-        bool mLoading;
-    
-        Entity* mBackground;
-        Entity* mBird;
-    
-        Text* mLoadingText;
-        Text* mTipText;
-    
-        EntityManager* mCircles;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Loader();
+        Map(CCNode* pParent);
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void loadingCallBack(CCObject *obj);
 
         // ===========================================================
         // Override Methods
         // ===========================================================
 
-    private:
+        private:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -73,6 +50,37 @@ class Loader : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
+
+        // ===========================================================
+        // Methods
+        // ===========================================================
+    
+        static void onTouchButtonsCallback(const int pAction, const int pID);
+        
+        // ===========================================================
+        // Override Methods
+        // ===========================================================
+
+        public:
+        // ===========================================================
+        // Inner Classes
+        // ===========================================================
+
+        // ===========================================================
+        // Constants
+        // ===========================================================
+
+        // ===========================================================
+        // Fields
+        // ===========================================================
+
+        // ===========================================================
+        // Constructors
+        // ===========================================================
+    
+        static Map* create(CCNode* pParent);
+    
+        ~Map();
 
         // ===========================================================
         // Methods
@@ -81,52 +89,14 @@ class Loader : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
-
-    public:
-        // ===========================================================
-        // Inner Classes
-        // ===========================================================
-
-        // ===========================================================
-        // Constants
-        // ===========================================================
-
-        static int ACTION;
     
-        static TextureStructure TEXTURE_LIBRARY[8];
-        static const char* WEAPON_TEXTURE[11];
-
-        // ===========================================================
-        // Fields
-        // ===========================================================
-
-        // ===========================================================
-        // Constructors
-        // ===========================================================
+        virtual void update(float pDeltaTime);
     
-        static Loader* create();
+        virtual void hide();
+        virtual void show();
     
-        ~Loader();
-
-        // ===========================================================
-        // Methods
-        // ===========================================================
-
-        void startLoading();
-        
-        // ===========================================================
-        // Override Methods
-        // ===========================================================
-    
-        void update(float pDeltaTime);
-    
-        void onEnterTransitionDidFinish();
-        void onExitTransitionDidStart();
-
-        void onEnter();
-        void onExit();
-    
-        void onTouch(CCTouch* touch, CCEvent* event);
+        virtual void onShow();
+        virtual void onHide();
 };
 
 #endif

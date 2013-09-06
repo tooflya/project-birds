@@ -31,7 +31,7 @@ const char* Loader::WEAPON_TEXTURE[11] =
     "wep_11@2x.png"
 };
 
-TextureStructure Loader::TEXTURE_LIBRARY[7] =
+TextureStructure Loader::TEXTURE_LIBRARY[8] =
 {
     {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
     {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
@@ -39,6 +39,7 @@ TextureStructure Loader::TEXTURE_LIBRARY[7] =
     {"TextureAtlas10.pvr.ccz", "TextureAtlas10.plist"},
     {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"},
     {"TextureAtlas12.pvr.ccz", "TextureAtlas12.plist"},
+    {"TextureAtlas13.pvr.ccz", "TextureAtlas13.plist"},
     {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
 
