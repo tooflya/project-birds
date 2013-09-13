@@ -51,6 +51,7 @@
 #include "Screens/Popup.cpp"
 #include "Exit.cpp"
 #include "BuyItem.cpp"
+#include "Map.cpp"
 #include "GetCoins.cpp"
 #include "PleaseRate.cpp"
 #include "ResetProgress.cpp"
@@ -69,6 +70,7 @@
 #include "Texture.cpp"
 #include "TouchTrailLayer.cpp"
 #include "CCBlade.cpp"
+#include "SpecialBird.cpp"
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
 #include <platform/CCPlatformConfig.h>

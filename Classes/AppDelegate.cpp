@@ -292,6 +292,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     vector <string> searchPath;
     
+    #if CC_TARGER_PLATFORM == CC_PLATFORM_IOS
+
     if(AppDelegate::IS_IPOD)
     {
         searchPath.push_back(resources1280x720.directory);
@@ -300,6 +302,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     {
         searchPath.push_back(resources2048x1536.directory);
     }
+
+    #else CC_TARGER_PLATFORM == CC_PLATFORM_ANDROID
+
+    searchPath.push_back(resources2048x1536.directory);
+
+    #endif
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 

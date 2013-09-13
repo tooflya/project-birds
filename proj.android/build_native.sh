@@ -1,4 +1,4 @@
-APPNAME="NuclearPizzaWar"
+APPNAME="ProjectBirds"
 NDK_ROOT="/home/igor/.android/ndk"
 # options
 

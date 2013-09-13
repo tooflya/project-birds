@@ -26,6 +26,7 @@ Menu* Menu::m_Instance = NULL;
 Menu::~Menu()
 {
     this->mRatePopup->release();
+    this->mMapPopup->release();
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
@@ -56,7 +57,8 @@ Menu::Menu()
     #endif
 
     this->mRatePopup = PleaseRate::create(this);
-    
+    this->mMapPopup = Map::create(this);
+
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mShopButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(270));
     this->mSettingsButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
@@ -194,6 +196,8 @@ void Menu::onEnterTransitionDidFinish()
 
         AppDelegate::IS_ALREADY_PLAYED = false;
     }
+
+    this->mMapPopup->show();
 }
 
 void Menu::onExitTransitionDidStart()

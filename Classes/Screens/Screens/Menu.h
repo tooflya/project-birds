@@ -4,6 +4,7 @@
 #include "Screen.h"
 
 #include "Exit.h"
+#include "Map.h"
 #include "PleaseRate.h"
 
 #include "PlayButton.h"
@@ -38,6 +39,7 @@ class Menu : public Screen
     
         Popup* mExitPopup;
         Popup* mRatePopup;
+        Popup* mMapPopup;
 
         float mPlayDecorationColorUpdateTimeElapsed;
 
