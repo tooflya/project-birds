@@ -137,6 +137,8 @@ class Game : public Screen
         static int HEALTH;
         static int RECORD_BEATEAN;
         static int COMBO_COUNT;
+        static int FLAYER_COUNT;
+        static int CRITICAL_COUNT;
 
         // ===========================================================
         // Fields

@@ -83,7 +83,7 @@ class Loading : public Screen
         // Constants
         // ===========================================================
     
-        static TextureStructure TEXTURE_LIBRARY[9];
+        static TextureStructure TEXTURE_LIBRARY[10];
 
         // ===========================================================
         // Fields

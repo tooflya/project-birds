@@ -112,6 +112,8 @@
         </struct>
         <key>dataFileName</key>
         <filename>TextureAtlas13.plist</filename>
+        <key>multiPack</key>
+        <false/>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -147,10 +149,10 @@
         <key>fileList</key>
         <array>
             <filename>../../Graphics Sources/day_label_sprite.png</filename>
-            <filename>../../Graphics Sources/map.png</filename>
             <filename>../../Graphics Sources/map_sprite.png</filename>
             <filename>../../Graphics Sources/way.png</filename>
             <filename>../../Graphics Sources/wave.png</filename>
+            <filename>../../Graphics Sources/map@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

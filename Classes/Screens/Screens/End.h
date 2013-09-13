@@ -5,6 +5,7 @@
 #include "Splash.h"
 #include "Star.h"
 #include "Confetti.h"
+#include "AnimatedCoin.h"
 #include "BatchEntityManager.h"
 
 #include "AppDelegate.h"
@@ -34,15 +35,34 @@ class End : public Splash
     
         EntityManager* mStars;
         EntityManager* mConfetti;
+        EntityManager* mCoins;
     
         Text* mCoinsCountText;
+        Text* mTextes[7];
     
         int mAnimationCounter;
+        int mCoinsAnimationCounter;
+    
+        int mCurrentCount;
+        int mBestCurrentCount;
+        int mFlayerCount;
+        int mComboCount;
+        int mCriticalCount;
+        int mEarnedCoins;
+        int mTotalEarnedCoins;
     
         float mAnimationTime;
         float mAnimationtimeElapsed;
     
+        float mCoinsAnimationTime;
+        float mCoinsAnimationTimeElapsed;
+    
+        float mCoinsAnimationCurrentTime;
+        float mCoinsAnimationCurrentTimeElapsed;
+    
         bool mIsAnimationRunning;
+        bool mIsCoinsAnimationRunning;
+        bool mIsCoinsAnimationCurrentRunning;
 
         // ===========================================================
         // Constructors

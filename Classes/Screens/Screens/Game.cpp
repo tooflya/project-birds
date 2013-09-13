@@ -19,6 +19,8 @@ int Game::LIFES = 0;
 int Game::HEALTH = 0;
 int Game::RECORD_BEATEAN = 0;
 int Game::COMBO_COUNT = 0;
+int Game::FLAYER_COUNT = 0;
+int Game::CRITICAL_COUNT = 0;
 
 // ===========================================================
 // Fields
@@ -118,6 +120,8 @@ void Game::startGame()
 
     HEALTH = 12;
     COMBO_COUNT = 0;
+    FLAYER_COUNT = 0;
+    CRITICAL_COUNT = 0;
 }
 
 void Game::onGameStarted()

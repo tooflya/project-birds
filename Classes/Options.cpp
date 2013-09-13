@@ -1,8 +1,6 @@
 #ifndef CONST_OPTIONS
 #define CONST_OPTIONS
 
-#define ccsf(...) CCString::createWithFormat(__VA_ARGS__)->getCString()
-
 #include "Options.h"
 
 #include "Text.h"
@@ -37,8 +35,8 @@ int Options::SELECTED_WEAPON_ID = 0;
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.7.1";
-int Options::BUILD = 4665;
+const char* Options::VERSION = "0.7.2";
+int Options::BUILD = 4688;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -334,6 +332,16 @@ Textes Options::TEXT_PAYMENT_STRING[6] =
     {"", FONT, 36, 356},
     {"", FONT, 46, 357}
   };
+Textes Options::TEXT_END[7] =
+{
+    {"", FONT, 64, 358},
+    {"", FONT, 42, 359},
+    {"", FONT, 42, 360},
+    {"", FONT, 42, 361},
+    {"", FONT, 42, 362},
+    {"", FONT, 42, 363},
+    {"", FONT, 42, 364}
+};
 
 // ===========================================================
 // Fields
@@ -784,6 +792,14 @@ void Options::changeLanguage()
             TEXT_PAYMENT_STRING[3].string = "Your request is \n being processed..";
             TEXT_PAYMENT_STRING[4].string = "Your request is \n being processed...";
             TEXT_PAYMENT_STRING[5].string = "Cancel";
+            
+            TEXT_END[0].string = "Results";
+            TEXT_END[1].string = "Birds kills: %d";
+            TEXT_END[2].string = "Best record: %d";
+            TEXT_END[3].string = "Flyers kills: %d";
+            TEXT_END[4].string = "Combo hits: %d";
+            TEXT_END[5].string = "Critical hits: %d";
+            TEXT_END[6].string = "Total coins earned: %d";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1184,6 +1200,14 @@ void Options::changeLanguage()
             TEXT_PAYMENT_STRING[3].string = "Ваш запрос \n обрабатывается..";
             TEXT_PAYMENT_STRING[4].string = "Ваш запрос \n обрабатывается...";
             TEXT_PAYMENT_STRING[5].string = "Отмена";
+            
+            TEXT_END[0].string = "Результаты";
+            TEXT_END[1].string = "Результат: %d";
+            TEXT_END[2].string = "Рекорд: %d";
+            TEXT_END[3].string = "Убито летчиков: %d";
+            TEXT_END[4].string = "Комбо ударов: %d";
+            TEXT_END[5].string = "Критических ударов: %d";
+            TEXT_END[6].string = "Заработано монет: %d";
         break;
     }
     
@@ -1545,8 +1569,15 @@ void Options::changeLanguage()
     TEXTES_HOLDER[355] = TEXT_PAYMENT_STRING[3];
     TEXTES_HOLDER[356] = TEXT_PAYMENT_STRING[4];
     TEXTES_HOLDER[357] = TEXT_PAYMENT_STRING[5];
+    TEXTES_HOLDER[358] = TEXT_END[0];
+    TEXTES_HOLDER[359] = TEXT_END[1];
+    TEXTES_HOLDER[360] = TEXT_END[2];
+    TEXTES_HOLDER[361] = TEXT_END[3];
+    TEXTES_HOLDER[362] = TEXT_END[4];
+    TEXTES_HOLDER[363] = TEXT_END[5];
+    TEXTES_HOLDER[364] = TEXT_END[6];
     
-    for(int i = 0; i <= 357; i++)
+    for(int i = 0; i <= 364; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

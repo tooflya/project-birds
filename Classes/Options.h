@@ -5,6 +5,8 @@
 
 using namespace cocos2d;
 
+#define ccsf(...) CCString::createWithFormat(__VA_ARGS__)->getCString()
+
 typedef struct tagCCTouchInformation {
     bool slice;
     long last_sound_time;
@@ -288,6 +290,7 @@ class Options
         static Textes TEXT_EVENTS[90];
         static Textes TEXT_GAME_CLASSIC_BONUS_TIME;
         static Textes TEXT_PAYMENT_STRING[6];
+        static Textes TEXT_END[7];
 
         // ===========================================================
         // Fields

@@ -11,7 +11,7 @@
 // Constants
 // ===========================================================
 
-TextureStructure Loading::TEXTURE_LIBRARY[9] =
+TextureStructure Loading::TEXTURE_LIBRARY[10] =
 {
     {"TextureAtlas1.pvr.ccz", "TextureAtlas1.plist"},
     {"TextureAtlas2.pvr.ccz", "TextureAtlas2.plist"},
@@ -19,6 +19,7 @@ TextureStructure Loading::TEXTURE_LIBRARY[9] =
     {"TextureAtlas4.pvr.ccz", "TextureAtlas4.plist"},
     {"TextureAtlas5.pvr.ccz", "TextureAtlas5.plist"},
     {"TextureAtlas9.pvr.ccz", "TextureAtlas9.plist"},
+    {"TextureAtlas13.pvr.ccz", "TextureAtlas13.plist"},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},
     {"about_scroll_fill_small@2x.png", NULL}

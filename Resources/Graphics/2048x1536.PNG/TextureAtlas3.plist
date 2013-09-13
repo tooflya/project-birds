@@ -7,7 +7,7 @@
             <key>preload-lvl-bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1000,1280}}</string>
+                <string>{{0,0},{1000,1280}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>preload-lvl-bird@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1286},{676,630}}</string>
+                <string>{{0,1280},{676,630}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>preload-lvl-wave@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{682,1286},{303,301}}</string>
+                <string>{{676,1280},{303,301}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -51,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas3.png</string>
             <key>size</key>
-            <string>{2048,2048}</string>
+            <string>{1000,1910}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:114e3eeab2728065eec4bdf8c559f58c$</string>
+            <string>$TexturePacker:SmartUpdate:1f65c7772c13e3ace865f452a7b98a2b:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas3.png</string>
         </dict>

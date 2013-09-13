@@ -39,7 +39,8 @@ class Menu : public Screen
     
         Popup* mExitPopup;
         Popup* mRatePopup;
-        Popup* mMapPopup;
+    
+        Map* mMapPopup;
 
         float mPlayDecorationColorUpdateTimeElapsed;
 

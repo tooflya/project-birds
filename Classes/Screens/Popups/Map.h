@@ -1,9 +1,22 @@
 #ifndef CONST_MAP_H
 #define CONST_MAP_H
 
-#include "Popup.h"
+#include "cocos2d.h"
 
-class Map : public Popup
+#include "Screen.h"
+
+#include "Entity.h"
+#include "Button.h"
+#include "Ripple.h"
+
+#include "Utils.h"
+#include "Options.h"
+
+#include "BatchEntityManager.h"
+
+using namespace cocos2d;
+
+class Map : public CCLayer, public Touchable
 {
         protected:
         // ===========================================================
@@ -19,6 +32,30 @@ class Map : public Popup
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        CCNode* mParent;
+        Entity* mDarkness;
+        Entity* mBackground;
+    Entity* mScroll;
+    CCNodeRGBA* mSquare;
+    
+        Button* mCloseButton;
+    
+        int mShowAnimationCount;
+        int mHideAnimationCount;
+    
+        float mShowAnimationTime;
+        float mShowAnimationTimeElapsed;
+        
+        float mHideAnimationTime;
+        float mHideAnimationTimeElapsed;
+    
+        bool mShowAnimationRunning;
+        bool mHideAnimationRunning;
+    
+        bool mShowed;
+    
+        EntityManager* mRipples;
 
         // ===========================================================
         // Constructors
@@ -85,18 +122,27 @@ class Map : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-        
+    
+        virtual void show();
+        virtual void hide();
+    
+        bool isShowed();
+    
+        virtual void onShow();
+        virtual void onHide();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
     
-        virtual void update(float pDeltaTime);
+        void update(float pDeltaTime);
     
-        virtual void hide();
-        virtual void show();
+        void draw();
     
-        virtual void onShow();
-        virtual void onHide();
+        void onEnter();
+        void onExit();
+    
+        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
 };
 
 #endif

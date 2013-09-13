@@ -108,11 +108,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Screens/Screens/Game.cpp"
-         timestampString = "399395678.692617"
+         timestampString = "399465165.672556"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "215"
+         endingLineNumber = "215"
          landmarkName = "Game::generateCoinsBirds()"
          landmarkType = "5">
       </FileBreakpoint>

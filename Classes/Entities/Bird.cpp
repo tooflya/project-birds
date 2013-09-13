@@ -282,6 +282,11 @@ void Bird::onDestroy()
             }
         }
         }
+        
+        if(this->mType == TYPE_FLAYER)
+        {
+            Game::FLAYER_COUNT++;
+        }
     }
 }
 
