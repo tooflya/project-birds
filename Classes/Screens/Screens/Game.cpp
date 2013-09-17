@@ -58,6 +58,9 @@ Game::Game() :
         this->mCoinsBirdTime = 15.0;
         this->mCoinsBirdTimeElapsed = 0;
         
+        this->mBonusAnimationFrameTime = 0.5;
+        this->mBonusAnimationFrameTimeElapsed = 0;
+        
         this->mCoinsBirdsCount = 1;
         
         this->mLastKillTime = 0;
@@ -66,6 +69,19 @@ Game::Game() :
         this->mGameRunning = false;
         
         this->mPause = false;
+        
+        this->mBackgroundLightsAnimationsReverse[0] = false;
+        this->mBackgroundLightsAnimationsReverse[1] = false;
+        this->mBackgroundLightsAnimationsReverse[2] = true;
+        this->mBackgroundLightsAnimationsReverse[3] = false;
+        this->mBackgroundLightsAnimationsReverse[4] = false;
+        this->mBackgroundLightsAnimationsReverse[5] = true;
+        this->mBackgroundLightsAnimationsReverse[6] = false;
+        
+        this->mIsBonusAnimationRunning = false;
+        
+        this->mBonusAnimationTime = 2.0;
+        this->mBonusAnimationTimeElapsed = 0;
 
         this->addChild(TouchTrailLayer::create(), 10);
         
@@ -223,6 +239,13 @@ void Game::generateCoinsBirds()
     }
 }
 
+void Game::onBonus(int pId)
+{
+    this->mIsBonusAnimationRunning = true;
+    
+    this->mBonusAnimationTimeElapsed = 0;
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -378,6 +401,102 @@ void Game::update(float pDeltaTime)
     if(this->mEventLayer)
     {
         //this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));
+    }
+    
+    this->mBackgroundLights[0]->setOpacity(this->mBackgroundLights[0]->getOpacity() - (this->mBackgroundLightsAnimationsReverse[0] ? -0.5: 0.5));
+    
+    if(this->mBackgroundLightsAnimationsReverse[0])
+    {
+        if(this->mBackgroundLights[0]->getOpacity() >= 255)
+        {
+            this->mBackgroundLightsAnimationsReverse[0] = !this->mBackgroundLightsAnimationsReverse[0];
+        }
+    }
+    else
+    {
+        if(this->mBackgroundLights[0]->getOpacity() <= 100)
+        {
+            this->mBackgroundLightsAnimationsReverse[0] = !this->mBackgroundLightsAnimationsReverse[0];
+        }
+    }
+    
+    for(int i = 0; i < 3; i++)
+    {
+        this->mBackgroundLights[i + 1]->setRotation(this->mBackgroundLights[i + 1]->getRotation() - (this->mBackgroundLightsAnimationsReverse[i + 1] ? -0.01: 0.01));
+        
+        if(this->mBackgroundLightsAnimationsReverse[i + 1])
+        {
+            if(this->mBackgroundLights[i + 1]->getRotation() >= 10)
+            {
+                this->mBackgroundLightsAnimationsReverse[i + 1] = !this->mBackgroundLightsAnimationsReverse[i + 1];
+            }
+        }
+        else
+        {
+            if(this->mBackgroundLights[i + 1]->getRotation() < -10)
+            {
+                this->mBackgroundLightsAnimationsReverse[i + 1] = !this->mBackgroundLightsAnimationsReverse[i + 1];
+            }
+        }
+    }
+    
+    for(int i = 4; i < 7; i++)
+    {
+        this->mBackgroundLights[i]->setOpacity(this->mBackgroundLights[i]->getOpacity() - (this->mBackgroundLightsAnimationsReverse[i] ? -0.5: 0.5));
+        
+        if(this->mBackgroundLightsAnimationsReverse[i])
+        {
+            if(this->mBackgroundLights[i]->getOpacity() >= 255)
+            {
+                this->mBackgroundLightsAnimationsReverse[i] = !this->mBackgroundLightsAnimationsReverse[i];
+            }
+        }
+        else
+        {
+            if(this->mBackgroundLights[i]->getOpacity() <= 150)
+            {
+                this->mBackgroundLightsAnimationsReverse[i] = !this->mBackgroundLightsAnimationsReverse[i];
+            }
+        }
+    }
+    
+    if(this->mIsBonusAnimationRunning && this->mGameRunning)
+    {
+        this->mBonusAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mBonusAnimationTimeElapsed >= this->mBonusAnimationTime)
+        {
+            this->mIsBonusAnimationRunning = false;
+        }
+        else
+        {
+            this->mBonusAnimationFrameTimeElapsed += pDeltaTime;
+            
+            if(this->mBonusAnimationFrameTimeElapsed >= this->mBonusAnimationFrameTime)
+            {
+                this->mBonusAnimationFrameTimeElapsed = 0;
+                
+            Entity* circle = (Entity*) this->mBonusCircles->create();
+            circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+            circle->setRotation(0.0);
+            circle->setScale(0.0);
+            circle->setOpacity(255.0);
+            
+            for(int i = 0; i < this->mBonusCircles->getCount(); i++)
+            {
+                Entity* circle = static_cast<Entity*>(this->mBonusCircles->objectAtIndex(i));
+                
+                circle->setRotation(circle->getRotation() + 1.0 * 30.0);
+                circle->setScale(circle->getScaleX() + 0.01 * 30.0);
+                circle->setOpacity(circle->getOpacity() - 1.0 * 30.0);
+                
+                if(circle->getOpacity() <= 0.0)
+                {
+                    circle->destroy();
+                }
+            }
+            }
+        }
     }
 }
 

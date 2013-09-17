@@ -67,7 +67,7 @@
 	<key>CFBundleSignature</key>
 	<string>AAPL</string>
 	<key>CFBundleVersion</key>
-	<string>4723</string>
+	<string>4763</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -82,6 +82,8 @@
 	<true/>
 	<key>UIStatusBarHidden~ipad</key>
 	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackTranslucent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

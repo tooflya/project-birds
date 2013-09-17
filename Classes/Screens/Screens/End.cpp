@@ -37,10 +37,10 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mScaleLayer = CCLayer::create();
         this->mScaleLayer->retain();
         
-        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas8.png");
+        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.png");
+        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.png");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas7.png");
         
         this->addChild(spriteBatch1);
         this->mScaleLayer->addChild(spriteBatch3);

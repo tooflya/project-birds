@@ -296,16 +296,16 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     if(AppDelegate::IS_IPOD)
     {
-        searchPath.push_back(resources1280x720.directory);
+        searchPath.push_back(resources2048x1536xPNG.directory);
     }
     else
     {
-        searchPath.push_back(resources2048x1536.directory);
+        searchPath.push_back(resources2048x1536xPNG.directory);
     }
 
     #else CC_TARGER_PLATFORM == CC_PLATFORM_ANDROID
 
-    searchPath.push_back(resources2048x1536.directory);
+    searchPath.push_back(resources2048x1536xPNG.directory);
 
     #endif
 

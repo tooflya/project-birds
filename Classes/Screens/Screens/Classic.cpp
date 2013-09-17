@@ -37,12 +37,12 @@ Classic::Classic() :
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
         
-        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.pvr.ccz");
-        CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.png");
+        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.png");
+        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.png");
+        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.png");
+        CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.png");
+        CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.png");
         
         this->addChild(spriteBatch6);
         this->addChild(spriteBatch1);
@@ -53,6 +53,19 @@ Classic::Classic() :
         
         this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
         this->mCountIcon = Entity::create("game_gui_count_pic@2x.png", spriteBatch2);
+        
+        this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
+        this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
+        for(int i = 1; i < 4; i++)
+        {
+            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+        }
+        for(int i = 4; i < 7; i++)
+        {
+            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+        }
 
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
@@ -73,6 +86,8 @@ Classic::Classic() :
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
         this->mLifes = EntityManager::create(3, Entity::create("lifes@2x.png", 1, 2), spriteBatch2);
         this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
+        
+        this->mBonusCircles = EntityManager::create(50, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 
         this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
         this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
@@ -80,6 +95,13 @@ Classic::Classic() :
         this->mEventPanel = EventPanel::create(this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+        this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
+        for(int i = 1; i < 4; i++) {
+            this->mBackgroundLights[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+        }
+        for(int i = 1; i < 4; i++) {
+            this->mBackgroundLights[i + 3]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+        }
         ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
         this->mCountIcon->create()->setCenterPosition(Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(64));
 

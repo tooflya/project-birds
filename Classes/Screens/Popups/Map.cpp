@@ -61,7 +61,7 @@ Map::Map(CCNode* pParent)
     this->setScale(0.0);
     this->mSquare = Background::create();
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas13.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas13.png");
     this->addChild(spriteBatch);
     
     this->mBackground = Entity::create("map.png", spriteBatch);

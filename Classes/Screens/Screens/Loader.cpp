@@ -33,12 +33,12 @@ const char* Loader::WEAPON_TEXTURE[11] =
 
 TextureStructure Loader::TEXTURE_LIBRARY[7] =
 {
-    {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
-    {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
-    {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
-    {"TextureAtlas10.pvr.ccz", "TextureAtlas10.plist"},
-    {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"},
-    {"TextureAtlas12.pvr.ccz", "TextureAtlas12.plist"},
+    {"TextureAtlas6.png", "TextureAtlas6.plist"},
+    {"TextureAtlas7.png", "TextureAtlas7.plist"},
+    {"TextureAtlas8.png", "TextureAtlas8.plist"},
+    {"TextureAtlas10.png", "TextureAtlas10.plist"},
+    {"TextureAtlas11.png", "TextureAtlas11.plist"},
+    {"TextureAtlas12.png", "TextureAtlas12.plist"},
     {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
 
@@ -57,7 +57,7 @@ Loader::~Loader()
 
 Loader::Loader()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.png");
     this->addChild(spriteBatch);
 
     this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);

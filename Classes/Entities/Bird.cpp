@@ -288,6 +288,11 @@ void Bird::onDestroy()
             Game::FLAYER_COUNT++;
         }
     }
+    
+    if(this->mBonus)
+    {
+        game->onBonus(this->getCurrentFrameIndex());
+    }
 }
 
 void Bird::update(float pDeltaTime)

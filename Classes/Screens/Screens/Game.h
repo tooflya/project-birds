@@ -64,10 +64,22 @@ class Game : public Screen
         float mCoinsBirdTime;
         float mCoinsBirdTimeElapsed;
     
+        float mBonusAnimationTime;
+        float mBonusAnimationTimeElapsed;
+    
+        float mBonusAnimationFrameTime;
+        float mBonusAnimationFrameTimeElapsed;
+    
         long mLastKillTime;
+    
+        bool mBackgroundLightsAnimationsReverse[7];
+        bool mIsBonusAnimationRunning;
 
         Entity* mBackground;
         Entity* mCountIcon;
+    
+    Entity* mBackgroundLights[8];
+    EntityManager* mBonusCircles;
 
         EventPanel* mEventPanel;
 
@@ -179,7 +191,8 @@ class Game : public Screen
         virtual void removeLife();
         virtual void onBirBlow(int pType);
         virtual void pause();
-        
+        virtual void onBonus(int pId);
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
