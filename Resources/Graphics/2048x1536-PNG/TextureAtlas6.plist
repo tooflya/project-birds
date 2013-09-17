@@ -7,7 +7,7 @@
             <key>bg_light_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{303,0},{1137,603}}</string>
+                <string>{{0,0},{1137,603}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>bg_light_main@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,603},{1002,866}}</string>
+                <string>{{0,664},{1002,866}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,20 +33,20 @@
             <key>bonus-animation@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{303,301}}</string>
+                <string>{{1137,0},{682,664}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{303,301}}</string>
+                <string>{{0,0},{682,664}}</string>
                 <key>sourceSize</key>
-                <string>{303,301}</string>
+                <string>{682,664}</string>
             </dict>
             <key>temp_level_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1002,603},{1000,1280}}</string>
+                <string>{{1002,664},{1000,1280}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -64,9 +64,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas6.png</string>
             <key>size</key>
-            <string>{2002,1883}</string>
+            <string>{2002,1944}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6ca7907fe4c1add1bf39a9cae1837014:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:87d6e4878888ea63fd48f327cb5b6786:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas6.png</string>
         </dict>

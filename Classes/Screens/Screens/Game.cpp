@@ -58,9 +58,6 @@ Game::Game() :
         this->mCoinsBirdTime = 15.0;
         this->mCoinsBirdTimeElapsed = 0;
         
-        this->mBonusAnimationFrameTime = 0.5;
-        this->mBonusAnimationFrameTimeElapsed = 0;
-        
         this->mCoinsBirdsCount = 1;
         
         this->mLastKillTime = 0;
@@ -80,8 +77,11 @@ Game::Game() :
         
         this->mIsBonusAnimationRunning = false;
         
-        this->mBonusAnimationTime = 2.0;
+        this->mBonusAnimationTime = 20.0;
         this->mBonusAnimationTimeElapsed = 0;
+        
+        this->mBonusAnimationFrameTime = 0.4;
+        this->mBonusAnimationFrameTimeElapsed = 0;
 
         this->addChild(TouchTrailLayer::create(), 10);
         
@@ -241,6 +241,8 @@ void Game::generateCoinsBirds()
 
 void Game::onBonus(int pId)
 {
+    //if(!this->mGameRunning) return;
+    
     this->mIsBonusAnimationRunning = true;
     
     this->mBonusAnimationTimeElapsed = 0;
@@ -476,25 +478,49 @@ void Game::update(float pDeltaTime)
             {
                 this->mBonusAnimationFrameTimeElapsed = 0;
                 
-            Entity* circle = (Entity*) this->mBonusCircles->create();
-            circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-            circle->setRotation(0.0);
-            circle->setScale(0.0);
-            circle->setOpacity(255.0);
+                for(int i = 0; i < 4; i++)
+                {
+                    float x, y;
+                    
+                    switch(i)
+                    {
+                        case 0:
+                            x = -100;
+                            y = -100;
+                            break;
+                        case 1:
+                            x = -100;
+                            y = Options::CAMERA_HEIGHT + 100;
+                            break;
+                        case 2:
+                            x = Options::CAMERA_WIDTH + 100;
+                            y = Options::CAMERA_HEIGHT + 100;
+                            break;
+                        case 3:
+                            x = Options::CAMERA_WIDTH + 100;
+                            y = -100;
+                            break;
+                    }
+                    Entity* circle = (Entity*) this->mBonusCircles->create();
+                    circle->setCenterPosition(x, y);
+                    circle->setRotation(0.0);
+                    circle->setScale(0.0);
+                    circle->setOpacity(255.0);
+                }
+            }
             
             for(int i = 0; i < this->mBonusCircles->getCount(); i++)
             {
                 Entity* circle = static_cast<Entity*>(this->mBonusCircles->objectAtIndex(i));
                 
-                circle->setRotation(circle->getRotation() + 1.0 * 30.0);
-                circle->setScale(circle->getScaleX() + 0.01 * 30.0);
-                circle->setOpacity(circle->getOpacity() - 1.0 * 30.0);
+                circle->setRotation(circle->getRotation() + 1.0 * 1.0);
+                circle->setScale(circle->getScaleX() + 0.01 * 1.0);
+                circle->setOpacity(circle->getOpacity() - 1.0 * 0.01);
                 
                 if(circle->getOpacity() <= 0.0)
                 {
                     circle->destroy();
                 }
-            }
             }
         }
     }
