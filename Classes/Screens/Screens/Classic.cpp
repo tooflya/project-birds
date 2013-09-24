@@ -43,8 +43,10 @@ Classic::Classic() :
         CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.png");
         CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.png");
         CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.png");
+        CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas14.png");
         
         this->addChild(spriteBatch6);
+        this->addChild(spriteBatch7);
         this->addChild(spriteBatch1);
         this->addChild(spriteBatch2);
         this->addChild(spriteBatch3);
@@ -86,6 +88,7 @@ Classic::Classic() :
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
         this->mLifes = EntityManager::create(3, Entity::create("lifes@2x.png", 1, 2), spriteBatch2);
         this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
+        this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         
         this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 
@@ -113,6 +116,9 @@ Classic::Classic() :
         this->mLevelUpText->setOpacity(0);
         this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
         this->mBonusTimeText->setOpacity(0);
+        
+        this->e1 = Entity::create("freeze_bg.png", spriteBatch7);
+        this->e2 = Entity::create("prediction_bg.png", spriteBatch7);
 
         this->mPausePopup = ClassicPause::create(this);
         this->mEndScreen = ClassicEnd::create(Splash::TYPE_CLASSIC, this);
@@ -440,7 +446,7 @@ void Classic::onEnterTransitionDidFinish()
 }
 
 void Classic::removeLife()
-{
+{return;
     if(LIFES < 3 && !this->mGamePaused && this->mGameRunning)
     {
         Game::removeLife();

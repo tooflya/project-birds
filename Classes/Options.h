@@ -125,6 +125,10 @@ class Options
         static const char* SOUND_EQUIP_SWORD;
         static const char* SOUND_BONUS_TIME[3];
         static const char* SOUND_SWOOSH;
+        static const char* SOUND_FREEZEE;
+        static const char* SOUND_PREDICTION;
+        static const char* SOUND_POINTS[12];
+        static const char* SOUND_PROGRESS;
 
         static const char* VERSION;
         static int BUILD;
@@ -291,6 +295,7 @@ class Options
         static Textes TEXT_GAME_CLASSIC_BONUS_TIME;
         static Textes TEXT_PAYMENT_STRING[6];
         static Textes TEXT_END[7];
+        static Textes TEXT_DAILY_MAP;
 
         // ===========================================================
         // Fields

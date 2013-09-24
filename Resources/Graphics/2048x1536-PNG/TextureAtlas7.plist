@@ -7,7 +7,7 @@
             <key>birds_feather_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1136,103},{260,220}}</string>
+                <string>{{2605,0},{260,220}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,10 +17,36 @@
                 <key>sourceSize</key>
                 <string>{260,220}</string>
             </dict>
+            <key>bomb_arrow.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{70,0},{48,22}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{48,22}}</string>
+                <key>sourceSize</key>
+                <string>{48,22}</string>
+            </dict>
+            <key>bomb_ico.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{189,0},{78,83}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{78,83}}</string>
+                <key>sourceSize</key>
+                <string>{78,83}</string>
+            </dict>
             <key>coins@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1396,103},{300,240}}</string>
+                <string>{{0,220},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +59,7 @@
             <key>colors@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{790,0},{512,64}}</string>
+                <string>{{1019,0},{512,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +72,7 @@
             <key>confety_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1716,0},{128,102}}</string>
+                <string>{{378,0},{128,102}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +98,7 @@
             <key>event_panel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1844,0},{618,103}}</string>
+                <string>{{2865,0},{618,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +111,7 @@
             <key>explosion@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1071,733},{969,1252}}</string>
+                <string>{{1417,220},{969,1252}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +124,7 @@
             <key>explosion_basic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,733},{1071,1252}}</string>
+                <string>{{2386,220},{1071,1252}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +137,7 @@
             <key>game_gui_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1373,0},{232,78}}</string>
+                <string>{{608,0},{232,78}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +150,7 @@
             <key>game_gui_count_pic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1605,0},{111,88}}</string>
+                <string>{{267,0},{111,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +163,7 @@
             <key>game_shelf@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,0},{720,60}}</string>
+                <string>{{1531,0},{720,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +176,7 @@
             <key>game_time_arrow@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{48,0},{22,45}}</string>
+                <string>{{16,0},{22,45}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +189,7 @@
             <key>game_time_clock@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{354,103},{501,155}}</string>
+                <string>{{300,220},{501,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +202,7 @@
             <key>game_time_mask@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1302,0},{71,67}}</string>
+                <string>{{118,0},{71,67}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +215,7 @@
             <key>info_panel_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,103},{354,124}}</string>
+                <string>{{2251,0},{354,124}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +228,7 @@
             <key>lifes@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{855,103},{102,176}}</string>
+                <string>{{506,0},{102,176}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +241,7 @@
             <key>mark@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{957,103},{179,179}}</string>
+                <string>{{840,0},{179,179}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +254,7 @@
             <key>star_particle@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{16,0},{32,31}}</string>
+                <string>{{38,0},{32,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +267,7 @@
             <key>weapon_strike_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1696,103},{616,630}}</string>
+                <string>{{801,220},{616,630}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -259,9 +285,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas7.png</string>
             <key>size</key>
-            <string>{2462,1985}</string>
+            <string>{3483,1472}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a5277302e523b4e2ebe50eba733eafa5:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:ba512607f369389ac04fd0cfd033c16e:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas7.png</string>
         </dict>

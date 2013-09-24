@@ -3,6 +3,8 @@
 
 #include "Mark.h"
 
+#include "Game.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -59,6 +61,8 @@ Mark* Mark::deepCopy()
     
 void Mark::update(float pDeltaTime)
 {
+    pDeltaTime *= Game::TIME_SLOW;
+    
     Entity::update(pDeltaTime);
     
     if(!this->isVisible()) return;

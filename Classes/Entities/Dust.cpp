@@ -3,6 +3,8 @@
 
 #include "Dust.h"
 
+#include "Game.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -67,6 +69,8 @@ void Dust::onDestroy()
 
 void Dust::update(float pDeltaTime)
 {
+    pDeltaTime *= Game::TIME_SLOW;
+
     if(!this->isVisible()) return;
     
     Entity::update(pDeltaTime);

@@ -13,6 +13,9 @@
 // Constants
 // ===========================================================
 
+float Game::TIME_SLOW = 1;
+bool Game::PREDICTION = false;
+
 int Game::CURRENT_COUNT = 0;
 int Game::BEST_COUNT = 0;
 int Game::LIFES = 0;
@@ -77,7 +80,7 @@ Game::Game() :
         
         this->mIsBonusAnimationRunning = false;
         
-        this->mBonusAnimationTime = 20.0;
+        this->mBonusAnimationTime = 0.0;
         this->mBonusAnimationTimeElapsed = 0;
         
         this->mBonusAnimationFrameTime = 0.4;
@@ -241,11 +244,56 @@ void Game::generateCoinsBirds()
 
 void Game::onBonus(int pId)
 {
-    //if(!this->mGameRunning) return;
+    if(!this->mGameRunning) return;
     
     this->mIsBonusAnimationRunning = true;
     
     this->mBonusAnimationTimeElapsed = 0;
+    
+    switch(pId)
+    {
+        case 0:
+            Game::TIME_SLOW = 0.5;
+            
+            this->mEventPanel->setEvent(61)->show();
+            
+            this->e1->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+            
+            this->e1->setScale(2);
+            this->e1->setOpacity(0);
+            this->e1->runAction(CCScaleTo::create(0.5, 1.0));
+            this->e1->runAction(CCFadeTo::create(0.5, 255.0));
+            
+            this->mBonusAnimationTime = 6.0;
+            
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_FREEZEE);
+            }
+        break;
+        case 1:
+            PREDICTION = true;
+            
+            this->mEventPanel->setEvent(62)->show();
+            
+            this->e2->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+            
+            this->e2->setScale(2);
+            this->e2->setOpacity(0);
+            this->e2->runAction(CCScaleTo::create(0.5, 1.0));
+            this->e2->runAction(CCFadeTo::create(0.5, 255.0));
+            
+            this->mBonusAnimationTime = 6.0;
+            
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_PREDICTION);
+            }
+        break;
+    }
+    
+    this->mRunningBonusId = pId;
+    this->mIsBonusAnimationRunningCount = 0;
 }
 
 // ===========================================================
@@ -468,7 +516,46 @@ void Game::update(float pDeltaTime)
         
         if(this->mBonusAnimationTimeElapsed >= this->mBonusAnimationTime)
         {
-            this->mIsBonusAnimationRunning = false;
+            this->mBonusAnimationTimeElapsed = 0;
+            
+            this->mBonusCircles->clear();
+            
+            switch(this->mRunningBonusId)
+            {
+                case 0:
+                    if(this->mIsBonusAnimationRunningCount == 1)
+                    {
+                        this->e1->destroy();
+                    }
+                    else
+                    {
+                        this->e1->runAction(CCFadeTo::create(1.0, 0));
+                        this->e1->runAction(CCScaleTo::create(1.0, 2.0));
+                    
+                        TIME_SLOW = 1;
+                    }
+                break;
+                case 1:
+                    if(this->mIsBonusAnimationRunningCount == 1)
+                    {
+                        this->e2->destroy();
+                    }
+                    else
+                    {
+                        this->e2->runAction(CCFadeTo::create(1.0, 0));
+                        this->e2->runAction(CCScaleTo::create(1.0, 2.0));
+                        
+                        PREDICTION = false;
+                    }
+                break;
+            }
+            
+            if(this->mIsBonusAnimationRunningCount == 1)
+            {
+                this->mIsBonusAnimationRunning = false;
+            }
+            
+            this->mIsBonusAnimationRunningCount++;
         }
         else
         {
@@ -477,6 +564,16 @@ void Game::update(float pDeltaTime)
             if(this->mBonusAnimationFrameTimeElapsed >= this->mBonusAnimationFrameTime)
             {
                 this->mBonusAnimationFrameTimeElapsed = 0;
+                
+                switch(this->mRunningBonusId)
+                {
+                    case 0:
+                    break;
+                    case 1:
+                    break;
+                }
+                
+                return;
                 
                 for(int i = 0; i < 4; i++)
                 {
@@ -506,18 +603,23 @@ void Game::update(float pDeltaTime)
                     circle->setRotation(0.0);
                     circle->setScale(0.0);
                     circle->setOpacity(255.0);
+                    //circle->setColor(ccc3(Utils::randomf(0, 255.0), Utils::randomf(0, 255.0), Utils::randomf(0, 255.0)));
                 }
             }
             
             for(int i = 0; i < this->mBonusCircles->getCount(); i++)
-            {
+            {this->mBonusAnimationFrameTime=0.4;
                 Entity* circle = static_cast<Entity*>(this->mBonusCircles->objectAtIndex(i));
                 
                 circle->setRotation(circle->getRotation() + 1.0 * 1.0);
-                circle->setScale(circle->getScaleX() + 0.01 * 1.0);
-                circle->setOpacity(circle->getOpacity() - 1.0 * 0.01);
+                circle->setScale(circle->getScaleX() + 0.05);
+                //circle->setOpacity(circle->getOpacity() - 1.2 * 1.0);
                 
-                if(circle->getOpacity() <= 0.0)
+                if(circle->getScale() >= 2.0 && circle->numberOfRunningActions() == 0)
+                {
+                    circle->runAction(CCFadeOut::create(0.5));
+                }
+                else if(circle->numberOfRunningActions() > 0 && circle->getOpacity() < 10)
                 {
                     circle->destroy();
                 }

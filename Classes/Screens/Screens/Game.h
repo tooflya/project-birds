@@ -71,6 +71,7 @@ class Game : public Screen
         float mBonusAnimationFrameTimeElapsed;
     
         long mLastKillTime;
+        int mIsBonusAnimationRunningCount;
     
         bool mBackgroundLightsAnimationsReverse[7];
         bool mIsBonusAnimationRunning;
@@ -78,8 +79,8 @@ class Game : public Screen
         Entity* mBackground;
         Entity* mCountIcon;
     
-    Entity* mBackgroundLights[8];
-    EntityManager* mBonusCircles;
+        Entity* mBackgroundLights[8];
+        EntityManager* mBonusCircles;
 
         EventPanel* mEventPanel;
 
@@ -142,6 +143,9 @@ class Game : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static float TIME_SLOW;
+        static bool PREDICTION;
 
         static int CURRENT_COUNT;
         static int BEST_COUNT;
@@ -162,6 +166,8 @@ class Game : public Screen
         bool mGamePaused;
     
         bool mPause;
+    
+        int mRunningBonusId;
 
         EntityManager* mBirds;
         EntityManager* mSpecialBirds;
@@ -172,6 +178,10 @@ class Game : public Screen
         EntityManager* mDust;
         EntityManager* mStars;
         EntityManager* mCoins;
+        EntityManager* mArrows;
+    
+        Entity* e1;
+        Entity* e2;
 
         // ===========================================================
         // Constructors

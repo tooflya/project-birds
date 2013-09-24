@@ -55,7 +55,10 @@ const char* Options::SOUND_HIT = "Sound/hit.ogg";
 const char* Options::SOUND_BONUS_GONG = "Sound/bonus-gong.ogg";
 const char* Options::SOUND_BOMB_FUSE = "Sound/bomb-fuse.ogg";
 const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.ogg", "Sound/combo-blitz-backing.ogg", "Sound/combo-blitz-backing-end.ogg" };
-const char* Options::SOUND_SWOOSH= "Sound/swoosh.mp3";
+const char* Options::SOUND_SWOOSH = "Sound/swoosh.mp3";
+const char* Options::SOUND_FREEZEE = "Sound/bonus_banana_freeze.ogg";
+const char* Options::SOUND_PREDICTION = "Sound/pome-rampdown.ogg";
+const char* Options::SOUND_POINTS[12] = {"Sound/popup-1.ogg", "Sound/popup-2.ogg","Sound/popup-3.ogg","Sound/popup-4.ogg","Sound/popup-5.ogg","Sound/popup-6.ogg","Sound/popup-7.ogg","popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg"};
 
 #else
 
@@ -75,6 +78,10 @@ const char* Options::SOUND_BONUS_GONG = "bonus-gong.mp3";
 const char* Options::SOUND_BOMB_FUSE = "bomb-fuse.mp3";
 const char* Options::SOUND_BONUS_TIME[3] = { "combo-blitz-backing-light.mp3", "combo-blitz-backing.mp3", "combo-blitz-backing-end.mp3" };
 const char* Options::SOUND_SWOOSH= "swoosh.mp3";
+const char* Options::SOUND_FREEZEE = "bonus_banana_freeze.mp3";
+const char* Options::SOUND_PREDICTION = "pome-rampdown.mp3";
+const char* Options::SOUND_POINTS[12] = {"popup-1.mp3", "popup-2.mp3","popup-3.mp3","popup-4.mp3","popup-5.mp3","popup-6.mp3","popup-7.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3"};
+const char* Options::SOUND_PROGRESS = "progress_complete.mp3";
 
 #endif
 
@@ -342,6 +349,7 @@ Textes Options::TEXT_END[7] =
     {"", FONT, 42, 363},
     {"", FONT, 42, 364}
 };
+Textes Options::TEXT_DAILY_MAP = {"", Options::FONT, 48, 365};
 
 // ===========================================================
 // Fields
@@ -775,6 +783,9 @@ void Options::changeLanguage()
             
             TEXT_EVENTS[60].string = "Combo strike!";
             TEXT_EVENTS[60].size = 42;
+            
+            TEXT_EVENTS[61].string = "Freezee time";
+            TEXT_EVENTS[61].size = 42;
 
             TEXT_PAYMENT_STRING[0].string = "Request processing";
 
@@ -800,6 +811,8 @@ void Options::changeLanguage()
             TEXT_END[4].string = "Combo hits: %d";
             TEXT_END[5].string = "Critical hits: %d";
             TEXT_END[6].string = "Total coins earned: %d";
+            
+            TEXT_DAILY_MAP.string = "Daily revenue";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1208,6 +1221,8 @@ void Options::changeLanguage()
             TEXT_END[4].string = "Комбо ударов: %d";
             TEXT_END[5].string = "Критических ударов: %d";
             TEXT_END[6].string = "Заработано монет: %d";
+            
+            TEXT_DAILY_MAP.string = "Вознагрождение";
         break;
     }
     
@@ -1576,8 +1591,9 @@ void Options::changeLanguage()
     TEXTES_HOLDER[362] = TEXT_END[4];
     TEXTES_HOLDER[363] = TEXT_END[5];
     TEXTES_HOLDER[364] = TEXT_END[6];
+    TEXTES_HOLDER[365] = TEXT_DAILY_MAP;
     
-    for(int i = 0; i <= 364; i++)
+    for(int i = 0; i <= 365; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

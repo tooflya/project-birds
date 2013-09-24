@@ -4,23 +4,88 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>day_label_sprite.png</key>
+            <key>coins@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{96,0},{150,120}}</string>
+                <string>{{1370,0},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{150,120}}</string>
+                <string>{{0,0},{300,240}}</string>
                 <key>sourceSize</key>
-                <string>{150,120}</string>
+                <string>{300,240}</string>
+            </dict>
+            <key>day1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{128,0},{227,256}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{227,256}}</string>
+                <key>sourceSize</key>
+                <string>{227,256}</string>
+            </dict>
+            <key>day2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1108,0},{262,279}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{262,279}}</string>
+                <key>sourceSize</key>
+                <string>{262,279}</string>
+            </dict>
+            <key>day3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{857,0},{251,285}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{251,285}}</string>
+                <key>sourceSize</key>
+                <string>{251,285}</string>
+            </dict>
+            <key>day4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{606,0},{251,348}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{251,348}}</string>
+                <key>sourceSize</key>
+                <string>{251,348}</string>
+            </dict>
+            <key>day5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{355,0},{251,292}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{251,292}}</string>
+                <key>sourceSize</key>
+                <string>{251,292}</string>
             </dict>
             <key>map.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{246,0},{669,1226}}</string>
+                <string>{{0,348},{669,1226}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,10 +95,23 @@
                 <key>sourceSize</key>
                 <string>{669,1226}</string>
             </dict>
+            <key>map_name.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1670,0},{451,103}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{451,103}}</string>
+                <key>sourceSize</key>
+                <string>{451,103}</string>
+            </dict>
             <key>map_sprite.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1226},{1492,570}}</string>
+                <string>{{669,348},{1492,570}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +121,23 @@
                 <key>sourceSize</key>
                 <string>{1492,570}</string>
             </dict>
+            <key>star_particle@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,0},{32,31}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{32,31}}</string>
+                <key>sourceSize</key>
+                <string>{32,31}</string>
+            </dict>
             <key>wave.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{36,5}}</string>
+                <string>{{32,0},{36,5}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +150,7 @@
             <key>way.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,0},{60,31}}</string>
+                <string>{{68,0},{60,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -77,9 +168,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas13.png</string>
             <key>size</key>
-            <string>{1492,1796}</string>
+            <string>{2161,1574}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d81cf093cf52fb70c21ec4a74c279022:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:5b16e5f0f8c1e574493838cea63f3af0:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas13.png</string>
         </dict>

@@ -155,32 +155,32 @@ void Bird::onCreate()
     }
     else
     {
-    if(game->mChalange)
-    {
-        this->mType = Utils::random(0, this->count - 3);
+        if(game->mChalange)
+        {
+            this->mType = Utils::random(0, this->count - 3);
         
-        this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
+            this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
-        this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(Utils::randomf(0.0f, 300.0f)));
+            this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(Utils::randomf(0.0f, 300.0f)));
 
-        this->mWeight = Utils::coord(1000.0);
-        this->mImpulsePower = Utils::coord(Utils::randomf(200.0, 700.0));
-        this->mSideImpulse = Utils::coord(250.0);
-        this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
-    }
-    else
-    {
-        this->mType = Utils::probably(15) ? TYPE_DANGER : Utils::random(0, this->count - 3);
+            this->mWeight = Utils::coord(1000.0);
+            this->mImpulsePower = Utils::coord(Utils::randomf(200.0, 700.0));
+            this->mSideImpulse = Utils::coord(250.0);
+            this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+        }
+        else
+        {
+            this->mType = Utils::probably(15) ? TYPE_DANGER : Utils::random(0, this->count - 3);
         
-        this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
+            this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
-        this->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
+            this->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
 
-        this->mWeight = Utils::coord(1500.0);
-        this->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
-        this->mSideImpulse = Utils::coord(Utils::randomf(100.0, 300.0));
-        this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
-    }
+            this->mWeight = Utils::coord(1500.0);
+            this->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
+            this->mSideImpulse = Utils::coord(Utils::randomf(100.0, 300.0));
+            this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
+        }
     }
 
     this->mChalange = game->mChalange;
@@ -215,6 +215,21 @@ void Bird::onCreate()
         {
             this->mSoundEffect = SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BOMB_FUSE);
         }
+    
+        this->mPT = Game::PREDICTION ? 1.0 : 0.0;
+        this->mPTE = 0;
+        
+        if(Game::PREDICTION)
+        {
+            this->setVisible(false);
+            
+            game->mArrows->create()->setCenterPosition(this->getCenterX(), Utils::coord(100));
+        }
+    }
+    else
+    {
+        this->mPT = 0;
+        this->mPTE = 0;
     }
 }
 
@@ -291,12 +306,26 @@ void Bird::onDestroy()
     
     if(this->mBonus)
     {
-        game->onBonus(this->getCurrentFrameIndex());
+        game->onBonus(this->mType);
     }
 }
 
 void Bird::update(float pDeltaTime)
 {
+    this->mPTE += pDeltaTime;
+    
+    if(this->mPTE >= this->mPT)
+    {
+        if(this->mType == TYPE_DANGER && !this->isVisible())
+        {
+            this->setVisible(true);
+        }
+        
+        if(this->mType == TYPE_DANGER && static_cast<Game*>(this->getParent()->getParent())->mArrows->getCount() > 0)
+        {
+            static_cast<Entity*>(static_cast<Game*>(this->getParent()->getParent())->mArrows->objectAtIndex(0))->destroy();
+        }
+        
     ImpulseEntity::update(pDeltaTime);
     
     Game* game = static_cast<Game*>(this->getParent()->getParent());
@@ -307,7 +336,7 @@ void Bird::update(float pDeltaTime)
     {
         this->mMarkTimeElapsed = 0;
         
-        if(this->mChalangeType == 3)
+        if(this->mChalangeType == 3 || this->mBonus)
         {
             for(int i = 0; i < 5; i++)
             {
@@ -315,6 +344,19 @@ void Bird::update(float pDeltaTime)
             
                 entity->initAsParticle();
                 entity->setCenterPosition(this->getCenterX(), this->getCenterY() + Utils::randomf(-this->getHeight() / 2, this->getHeight() / 2));
+                
+                if(this->mBonus)
+                {
+                    switch(this->mType)
+                    {
+                        case 0:
+                            entity->setColor(ccc3(0, 200, 255));
+                        break;
+                        case 1:
+                            entity->setColor(ccc3(255, 120, 30));
+                        break;
+                    }
+                }
             }
         }
         else
@@ -322,6 +364,15 @@ void Bird::update(float pDeltaTime)
             Entity* entity = game->mMarks->create();
             
             entity->setCenterPosition(this->getCenterX(), this->getCenterY());
+            
+            if(this->mType == TYPE_DANGER)
+            {
+                entity->setColor(ccc3(255.0, 0, 0));
+            }
+            else
+            {
+                entity->setColor(ccc3(255, 255, 255));
+            }
         }
     }
 
@@ -429,7 +480,12 @@ void Bird::update(float pDeltaTime)
         }
     }
     
-    this->mLife->setPosition(ccp(this->getCenterX() + Utils::coord(5) * (this->getScaleX() > 0.0 ? 1.0 : - 1.0), this->getCenterY()));
+        this->mLife->setPosition(ccp(this->getCenterX() + Utils::coord(5) * (this->getScaleX() > 0.0 ? 1.0 : - 1.0), this->getCenterY()));
+    }
+    else
+    {
+        Entity::update(pDeltaTime);
+    }
 }
 
 Bird* Bird::deepCopy()

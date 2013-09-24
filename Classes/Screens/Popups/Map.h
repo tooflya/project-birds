@@ -16,6 +16,8 @@
 
 using namespace cocos2d;
 
+class BackgroundEntity;
+
 class Map : public CCLayer, public Touchable
 {
         protected:
@@ -35,9 +37,14 @@ class Map : public CCLayer, public Touchable
     
         CCNode* mParent;
         Entity* mDarkness;
-        Entity* mBackground;
+        BackgroundEntity* mBackground;
     Entity* mScroll;
     CCNodeRGBA* mSquare;
+    
+    Entity* mName;
+        Entity* mDay[5];
+    EntityManager* mRipples;
+    EntityManager* mWays;
     
         Button* mCloseButton;
     
@@ -55,7 +62,13 @@ class Map : public CCLayer, public Touchable
     
         bool mShowed;
     
-        EntityManager* mRipples;
+    bool mAnimation;
+    
+    float mAnimationTime;
+    float mAnimationTimeElapsed;
+    
+    int mAnimationCount;
+    int mAnimationCount2;
 
         // ===========================================================
         // Constructors

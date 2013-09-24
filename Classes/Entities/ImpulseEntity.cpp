@@ -3,6 +3,8 @@
 
 #include "ImpulseEntity.h"
 
+#include "Game.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -44,6 +46,8 @@ ImpulseEntity::ImpulseEntity(const char* pTextureFileName, int pHorizontalFrames
 void ImpulseEntity::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
+    
+    pDeltaTime *= Game::TIME_SLOW;
     
     if(this->mImpulsePower >= 0.0f)
     {

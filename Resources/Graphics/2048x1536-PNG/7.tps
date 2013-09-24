@@ -167,6 +167,8 @@
             <filename>../../Graphics Sources/dust@2x.png</filename>
             <filename>../../Graphics Sources/mark@2x.png</filename>
             <filename>../../Graphics Sources/game_gui_btn_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/bomb_arrow.png</filename>
+            <filename>../../Graphics Sources/bomb_ico.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

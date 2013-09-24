@@ -54,7 +54,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>4096</int>
             <key>height</key>
             <int>2048</int>
         </QSize>
@@ -148,11 +148,18 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/day_label_sprite.png</filename>
-            <filename>../../Graphics Sources/map.png</filename>
             <filename>../../Graphics Sources/map_sprite.png</filename>
             <filename>../../Graphics Sources/way.png</filename>
             <filename>../../Graphics Sources/wave.png</filename>
+            <filename>../../Graphics Sources/day1.png</filename>
+            <filename>../../Graphics Sources/day2.png</filename>
+            <filename>../../Graphics Sources/day3.png</filename>
+            <filename>../../Graphics Sources/day4.png</filename>
+            <filename>../../Graphics Sources/day5.png</filename>
+            <filename>../../Graphics Sources/map.png</filename>
+            <filename>../../Graphics Sources/map_name.png</filename>
+            <filename>../../Graphics Sources/coins@2x.png</filename>
+            <filename>../../Graphics Sources/star_particle@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

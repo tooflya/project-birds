@@ -17,6 +17,20 @@ class Ripple : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        int mAlphaSpeed;
+
+        float mScaleXSpeed;
+        float mScaleYSpeed;
+    
+        float mMinXScale;
+        float mMinYScale;
+        float mMaxXScale;
+        float mMaxYScale;
+        
+        bool mAlphaReverse;
+        bool mScaleXReverse;
+        bool mScaleYReverse;
 
         // ===========================================================
         // Constructors

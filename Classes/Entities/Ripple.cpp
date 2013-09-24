@@ -22,7 +22,6 @@
 Ripple::Ripple() :
     Entity("wave.png")
     {
-        
     }
 
 Ripple* Ripple::create()
@@ -44,6 +43,25 @@ Ripple* Ripple::create()
 void Ripple::onCreate()
 {
     Entity::onCreate();
+    
+    this->setScaleX(Utils::randomf(0.7, 1.2));
+    this->setScaleY(Utils::randomf(0.7, 1.2));
+    
+    this->setOpacity(Utils::randomf(10.0, 245.0));
+    
+    this->mAlphaSpeed = Utils::random(1, 5);
+    this->mScaleXSpeed = Utils::randomf(0.001, 0.01);
+    this->mScaleYSpeed = Utils::randomf(0.001, 0.01);
+    
+    this->mMaxXScale = Utils::randomf(0.7, 1.4);
+    this->mMaxYScale = Utils::randomf(0.7, 1.4);
+    
+    this->mMinXScale = Utils::randomf(0.4, 0.7);
+    this->mMinYScale = Utils::randomf(0.4, 0.7);
+    
+    this->mAlphaReverse = Utils::probably(50);
+    this->mScaleXReverse = Utils::probably(50);
+    this->mScaleYReverse = Utils::probably(50);
 }
     
 Ripple* Ripple::deepCopy()
@@ -54,6 +72,63 @@ Ripple* Ripple::deepCopy()
 void Ripple::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
+    
+    if(this->mAlphaReverse)
+    {
+        this->setOpacity(this->getOpacity() - this->mAlphaSpeed);
+        
+        if(this->getOpacity() <= 10.0)
+        {
+            this->mAlphaReverse = false;
+        }
+    }
+    else
+    {
+        this->setOpacity(this->getOpacity() + this->mAlphaSpeed);
+
+        if(this->getOpacity() >= 250.0)
+        {
+            this->mAlphaReverse = true;
+        }
+    }
+    
+    if(this->mScaleXReverse)
+    {
+        this->setScaleX(this->getScaleX() - this->mScaleXSpeed);
+        
+        if(this->getScaleX() <= this->mMinXScale)
+        {
+            this->mScaleXReverse = false;
+        }
+    }
+    else
+    {
+        this->setScaleX(this->getScaleX() + this->mScaleXSpeed);
+        
+        if(this->getScaleX() >= this->mMaxXScale)
+        {
+            this->mScaleXReverse = true;
+        }
+    }
+    
+    if(this->mScaleYReverse)
+    {
+        this->setScaleY(this->getScaleY() - this->mScaleYSpeed);
+        
+        if(this->getScaleY() <= this->mMinYScale)
+        {
+            this->mScaleYReverse = false;
+        }
+    }
+    else
+    {
+        this->setScaleY(this->getScaleY() + this->mScaleYSpeed);
+        
+        if(this->getScaleY() >= this->mMaxYScale)
+        {
+            this->mScaleYReverse = true;
+        }
+    }
 }
 
 #endif
