@@ -349,7 +349,7 @@ Textes Options::TEXT_END[7] =
     {"", FONT, 42, 363},
     {"", FONT, 42, 364}
 };
-Textes Options::TEXT_DAILY_MAP = {"", Options::FONT, 48, 365};
+Textes Options::TEXT_DAILY_MAP = {"", Options::FONT, 42, 365};
 
 // ===========================================================
 // Fields
@@ -1222,7 +1222,7 @@ void Options::changeLanguage()
             TEXT_END[5].string = "Критических ударов: %d";
             TEXT_END[6].string = "Заработано монет: %d";
             
-            TEXT_DAILY_MAP.string = "Вознагрождение";
+            TEXT_DAILY_MAP.string = "Вознаграждение";
         break;
     }
     
