@@ -17,18 +17,31 @@
                 <key>sourceSize</key>
                 <string>{1000,1280}</string>
             </dict>
-            <key>prediction_bg.png</key>
+            <key>rain.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1000,0},{1000,1280}}</string>
+                <string>{{0,1280},{32,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1000,1280}}</string>
+                <string>{{0,0},{32,57}}</string>
                 <key>sourceSize</key>
-                <string>{1000,1280}</string>
+                <string>{32,57}</string>
+            </dict>
+            <key>rain_circle.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{32,1280},{40,11}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,11}}</string>
+                <key>sourceSize</key>
+                <string>{40,11}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -38,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas14.png</string>
             <key>size</key>
-            <string>{2000,1280}</string>
+            <string>{1000,1337}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a0d95742702b93c17e53a2c185a8260b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:69d4313ec698060d11edb49c75ff1c25:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas14.png</string>
         </dict>

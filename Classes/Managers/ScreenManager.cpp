@@ -95,6 +95,7 @@ void ScreenManager::load(int pAction, int pDo)
     switch(pAction)
     {
         case 3:
+        case 5:
             
             switch(pDo)
             {

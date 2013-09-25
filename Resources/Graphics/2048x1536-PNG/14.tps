@@ -149,7 +149,8 @@
         <key>fileList</key>
         <array>
             <filename>../../Graphics Sources/freeze_bg.png</filename>
-            <filename>../../Graphics Sources/prediction_bg.png</filename>
+            <filename>../../Graphics Sources/rain_circle.png</filename>
+            <filename>../../Graphics Sources/rain.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

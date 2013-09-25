@@ -158,7 +158,6 @@
             <filename>../../Graphics Sources/day5.png</filename>
             <filename>../../Graphics Sources/map.png</filename>
             <filename>../../Graphics Sources/map_name.png</filename>
-            <filename>../../Graphics Sources/coins@2x.png</filename>
             <filename>../../Graphics Sources/star_particle@2x.png</filename>
         </array>
         <key>ignoreFileList</key>

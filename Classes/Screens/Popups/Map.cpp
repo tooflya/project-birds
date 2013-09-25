@@ -53,7 +53,7 @@ public:
         kmGLPushMatrix();
         glEnable(GL_SCISSOR_TEST);
         
-        CCEGLView::sharedOpenGLView()->setScissorInPoints(this->getCenterX() - this->mWidth / 2, this->getCenterY() + (this->mHeight / 2) - (this->mHeight * this->p / 100), this->mWidth, this->mHeight + Utils::coord(150));
+        CCEGLView::sharedOpenGLView()->setScissorInPoints(this->getCenterX() - Options::CAMERA_CENTER_X, this->getCenterY() + (this->mHeight / 2) - (this->mHeight * this->p / 100), Options::CAMERA_WIDTH, this->mHeight + Utils::coord(150));
         
         Entity::visit();
         glDisable(GL_SCISSOR_TEST);
@@ -97,6 +97,8 @@ Map::Map(CCNode* pParent)
     this->mSquare = Background::create();
     
     CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas13.png");
+    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas4.png");
+    CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas5.png");
     
     this->mBackground = BackgroundEntity::create("map.png", this);
     
@@ -223,9 +225,30 @@ Map::Map(CCNode* pParent)
     
     this->addChild(spriteBatch);
     
+    this->mBonusTextes[0] = Text::create(Options::TEXT_COINS_BONUS[0], this->mBackground);
+    this->mBonusTextes[1] = Text::create(Options::TEXT_COINS_BONUS[1], this->mBackground);
+    this->mBonusTextes[2] = Text::create(Options::TEXT_COINS_BONUS[2], this->mBackground);
+    this->mBonusTextes[3] = Text::create(Options::TEXT_COINS_BONUS[3], this->mBackground);
+    this->mBonusTextes[4] = Text::create(Options::TEXT_COINS_BONUS[4], this->mBackground);
+    
+    this->mBonusTextes[0]->setCenterPosition(this->mDay[0]->getCenterX(), this->mDay[0]->getCenterY() - Utils::coord(130));
+    this->mBonusTextes[1]->setCenterPosition(this->mDay[1]->getCenterX(), this->mDay[1]->getCenterY() - Utils::coord(130));
+    this->mBonusTextes[2]->setCenterPosition(this->mDay[2]->getCenterX(), this->mDay[2]->getCenterY() - Utils::coord(130));
+    this->mBonusTextes[3]->setCenterPosition(this->mDay[3]->getCenterX(), this->mDay[3]->getCenterY() - Utils::coord(130));
+    this->mBonusTextes[4]->setCenterPosition(this->mDay[4]->getCenterX(), this->mDay[4]->getCenterY() - Utils::coord(130));
+    
+    /*this->mBonusTextes[0]->setColor(ccc3(100, 100, 100));
+    this->mBonusTextes[1]->setColor(ccc3(100, 100, 100));
+    this->mBonusTextes[2]->setColor(ccc3(100, 100, 100));
+    this->mBonusTextes[3]->setColor(ccc3(100, 100, 100));
+    this->mBonusTextes[4]->setColor(ccc3(100, 100, 100));*/
+    
+    this->addChild(spriteBatch2);
+    this->mBackground->addChild(spriteBatch3);
+    
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
-    this->mScroll->create()->setCenterPosition(Options::CAMERA_CENTER_X, this->mBackground->getCenterY() - this->mBackground->getHeight() / 2 + Utils::coord(100));
+    this->mScroll->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT);
     this->mScroll->animate(0.04);
     
     this->mParent = pParent;
@@ -237,6 +260,27 @@ Map::Map(CCNode* pParent)
     this->mHideAnimationRunning = false;
     
     this->mParent->addChild(this->mSquare);
+    
+    this->mStars = EntityManager::create(100, StarParticle2::create(), this->mBackground);
+    this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
+    this->mCoins = EntityManager::create(5, Entity::create("coins@2x.png", 5, 4), spriteBatch3);
+    this->mAnimatedCoins = EntityManager::create(100, AnimatedCoin::create(1.5), spriteBatch3);
+    
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY());
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY());
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY());
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY());
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY());
+    
+    for(int i = 0; i < this->mCoins->getCount(); i++)
+    {
+        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setCurrentFrameIndex(Utils::random(0, 20));
+        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setScale(0.7);
+        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setRotation(-45);
+        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->animate(0.04);
+    }
+    
+    this->mAnimatedCoinsAnimation = false;
 }
 
 Map* Map::create(CCNode* pParent)
@@ -277,13 +321,42 @@ void Map::onTouchButtonsCallback(const int pAction, const int pID)
     }
 }
 
+void Map::throwAnimation(float pX, float pY)
+{
+    this->mConfetti->clear();
+    
+    float x = 0;
+    float y = Utils::coord(200);
+    
+    for(int i = 0; i < 10; i++)
+    {
+        for(int j = -10; j <= 10; j++)
+        {
+            x = Utils::coord(Utils::randomf(40.0, 40.0)) * j;
+            
+            this->mConfetti->create()->setCenterPosition(Options::CAMERA_CENTER_X + x, Options::CAMERA_HEIGHT + y);
+        }
+        
+        y -= Utils::coord(Utils::randomf(5.0, 10.0));
+    }
+    
+    for(int i = 0; i < 100; i++)
+    {
+        this->mStars->create()->setCenterPosition(pX, pY);
+    }
+    
+    this->mAnimatedCoinsAnimation = true;
+    
+    this->mAnimatedCoinsAnimationTime = 2.0;
+    this->mAnimatedCoinsAnimationTimeElpased = 0;
+}
+
 void Map::show()
 {
     if(this->mShowed) return;
     
     this->mParent->addChild(this, 1000);
     
-    this->mShowed = true;
     this->mShowAnimationRunning = true;
     
     this->mShowAnimationCount = 0;
@@ -304,6 +377,12 @@ void Map::hide()
     
     this->mHideAnimationTime = 0;
     this->mSquare->runAction(CCFadeTo::create(1.0, 0));
+    
+    
+    for(int i = 0; i < this->mConfetti->getCount(); i++)
+    {
+        static_cast<Entity*>(this->mConfetti->objectAtIndex(i))->runAction(CCFadeTo::create(0.5, 0));
+    }
 }
 
 bool Map::isShowed()
@@ -313,6 +392,7 @@ bool Map::isShowed()
 
 void Map::onShow()
 {
+    this->mShowed = true;
     this->mAnimation = true;
     
     this->mAnimationTime = 0.2;
@@ -320,6 +400,8 @@ void Map::onShow()
     
     this->mAnimationCount = 0;
     this->mAnimationCount2 = 0;
+    
+    AppDelegate::setLastVisitDaysCount(Utils::millisecondNow() / 86400000);
 }
 
 void Map::onHide()
@@ -333,6 +415,11 @@ void Map::onHide()
         static_cast<Entity*>(this->mWays->objectAtIndex(i))->setVisible(false);
         static_cast<Entity*>(this->mWays->objectAtIndex(i))->setOpacity(255);
     }
+    
+    for(int i = 0; i < 5; i++)
+    {
+        this->mDay[i]->setColor(ccc3(255, 255, 255));
+    }
 }
 
 // ===========================================================
@@ -342,6 +429,20 @@ void Map::onHide()
 void Map::update(float pDeltaTime)
 {
     CCLayer::update(pDeltaTime);
+    
+    if(this->mAnimatedCoinsAnimation)
+    {
+        this->mAnimatedCoinsAnimationTimeElpased += pDeltaTime;
+        
+        if(this->mAnimatedCoinsAnimationTimeElpased >= this->mAnimatedCoinsAnimationTime)
+        {
+            this->mAnimatedCoinsAnimationTimeElpased = 0;
+            
+            this->mAnimatedCoinsAnimation = false;
+        }
+        
+        this->mAnimatedCoins->create()->setCenterPosition(this->mDay[this->day - 1]->getCenterX(), this->mDay[this->day - 1]->getCenterY());
+    }
     
     if(this->mAnimation)
     {
@@ -381,10 +482,29 @@ void Map::update(float pDeltaTime)
                         static_cast<Entity*>(this->mWays->objectAtIndex(i))->setOpacity(150);
                     }
                     
-                break;
+                    break;
                 case 15:
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_PREDICTION);
+                    }
+                    
+                    this->mDay[0]->setScale(1.4);
+                    this->mDay[0]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[0]->setColor(ccc3(255, 255, 255));
+                    
+                    if(this->day == 1)
+                    {
+                        this->mAnimation = false;
+                        
+                        this->throwAnimation(this->mDay[0]->getCenterX(), this->mDay[0]->getCenterY());
+                        
+                        AppDelegate::addCoins(500, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                    }
+                break;
                 case 16:
                 case 17:
+                case 18:
                     
                 static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->setScale(1.4);
                 static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->runAction(CCScaleTo::create(0.2, 1));
@@ -398,7 +518,7 @@ void Map::update(float pDeltaTime)
                 this->mAnimationCount2++;
                     
                 break;
-                case 18:
+                case 19:
                     
                     if(Options::SOUND_ENABLE)
                     {
@@ -407,10 +527,126 @@ void Map::update(float pDeltaTime)
                     
                     this->mDay[1]->setScale(1.4);
                     this->mDay[1]->runAction(CCScaleTo::create(0.2, 1));
-                break;
-                case 19:
-                    this->mAnimation = false;
-                break;
+                    this->mDay[1]->setColor(ccc3(255, 255, 255));
+                    
+                    if(this->day == 2)
+                    {
+                        this->mAnimation = false;
+                        
+                        this->throwAnimation(this->mDay[1]->getCenterX(), this->mDay[1]->getCenterY());
+                        
+                        AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                    }
+                    break;
+                case 20:
+                case 21:
+                case 22:
+                    
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->setScale(1.4);
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->runAction(CCScaleTo::create(0.2, 1));
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->runAction(CCFadeTo::create(0.2, 255));
+                    
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_POINTS[this->mAnimationCount2]);
+                    }
+                    
+                    this->mAnimationCount2++;
+                    
+                    break;
+                case 23:
+                    
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_PREDICTION);
+                    }
+                    
+                    this->mDay[2]->setScale(1.4);
+                    this->mDay[2]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[2]->setColor(ccc3(255, 255, 255));
+                    
+                    if(this->day == 3)
+                    {
+                        this->mAnimation = false;
+                        
+                        this->throwAnimation(this->mDay[2]->getCenterX(), this->mDay[2]->getCenterY());
+                        
+                        AppDelegate::addCoins(4000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                    }
+                    break;
+                case 24:
+                case 25:
+                case 26:
+                    
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->setScale(1.4);
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->runAction(CCScaleTo::create(0.2, 1));
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->runAction(CCFadeTo::create(0.2, 255));
+                    
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_POINTS[this->mAnimationCount2]);
+                    }
+                    
+                    this->mAnimationCount2++;
+                    
+                    break;
+                case 27:
+                    
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_PREDICTION);
+                    }
+                    
+                    this->mDay[3]->setScale(1.4);
+                    this->mDay[3]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[3]->setColor(ccc3(255, 255, 255));
+                    
+                    if(this->day == 4)
+                    {
+                        this->mAnimation = false;
+                        
+                        this->throwAnimation(this->mDay[3]->getCenterX(), this->mDay[3]->getCenterY());
+                        
+                        AppDelegate::addCoins(8000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                    }
+                    break;
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                    
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->setScale(1.4);
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->runAction(CCScaleTo::create(0.2, 1));
+                    static_cast<Entity*>(this->mWays->objectAtIndex(this->mAnimationCount2))->runAction(CCFadeTo::create(0.2, 255));
+                    
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_POINTS[this->mAnimationCount2]);
+                    }
+                    
+                    this->mAnimationCount2++;
+                    
+                    break;
+                case 32:
+                    
+                    if(Options::SOUND_ENABLE)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_PREDICTION);
+                    }
+                    
+                    this->mDay[4]->setScale(1.4);
+                    this->mDay[4]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[4]->setColor(ccc3(255, 255, 255));
+                    
+                    if(this->day == 5)
+                    {
+                        this->mAnimation = false;
+                        
+                        this->throwAnimation(this->mDay[4]->getCenterX(), this->mDay[4]->getCenterY());
+                        
+                        AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                    }
+                    break;
             }
             
             if(this->mAnimationCount < 11 && Options::SOUND_ENABLE)
@@ -423,6 +659,7 @@ void Map::update(float pDeltaTime)
                 case 0:
                     this->mDay[0]->setScale(1.4);
                     this->mDay[0]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[0]->setColor(ccc3(100, 100, 100));
                     
                     if(Options::SOUND_ENABLE)
                     {
@@ -432,6 +669,7 @@ void Map::update(float pDeltaTime)
                 case 3:
                     this->mDay[1]->setScale(1.4);
                     this->mDay[1]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[1]->setColor(ccc3(100, 100, 100));
                     
                     if(Options::SOUND_ENABLE)
                     {
@@ -441,6 +679,7 @@ void Map::update(float pDeltaTime)
                 case 6:
                     this->mDay[2]->setScale(1.4);
                     this->mDay[2]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[2]->setColor(ccc3(100, 100, 100));
                     
                     if(Options::SOUND_ENABLE)
                     {
@@ -450,6 +689,7 @@ void Map::update(float pDeltaTime)
                 case 9:
                     this->mDay[3]->setScale(1.4);
                     this->mDay[3]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[3]->setColor(ccc3(100, 100, 100));
                     
                     if(Options::SOUND_ENABLE)
                     {
@@ -459,6 +699,7 @@ void Map::update(float pDeltaTime)
                 case 13:
                     this->mDay[4]->setScale(1.4);
                     this->mDay[4]->runAction(CCScaleTo::create(0.2, 1));
+                    this->mDay[4]->setColor(ccc3(100, 100, 100));
                     
                     if(Options::SOUND_ENABLE)
                     {
@@ -547,7 +788,12 @@ void Map::onExit()
 }
 
 bool Map::ccTouchBegan(CCTouch* touch, CCEvent* event)
-{this->hide();
+{
+    if(this->mShowed)
+    {
+        this->hide();
+    }
+    
     return this->mShowed;
 }
 

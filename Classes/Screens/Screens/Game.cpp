@@ -83,7 +83,7 @@ Game::Game() :
         this->mBonusAnimationTime = 0.0;
         this->mBonusAnimationTimeElapsed = 0;
         
-        this->mBonusAnimationFrameTime = 0.4;
+        this->mBonusAnimationFrameTime = 0;
         this->mBonusAnimationFrameTimeElapsed = 0;
 
         this->addChild(TouchTrailLayer::create(), 10);
@@ -276,14 +276,9 @@ void Game::onBonus(int pId)
             
             this->mEventPanel->setEvent(62)->show();
             
-            this->e2->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-            
-            this->e2->setScale(2);
-            this->e2->setOpacity(0);
-            this->e2->runAction(CCScaleTo::create(0.5, 1.0));
-            this->e2->runAction(CCFadeTo::create(0.5, 255.0));
-            
             this->mBonusAnimationTime = 6.0;
+            
+            this->e2->runAction(CCFadeTo::create(0.5, 100));
             
             if(Options::SOUND_ENABLE)
             {
@@ -538,12 +533,10 @@ void Game::update(float pDeltaTime)
                 case 1:
                     if(this->mIsBonusAnimationRunningCount == 1)
                     {
-                        this->e2->destroy();
                     }
                     else
                     {
-                        this->e2->runAction(CCFadeTo::create(1.0, 0));
-                        this->e2->runAction(CCScaleTo::create(1.0, 2.0));
+                        this->e2->runAction(CCFadeTo::create(0.5, 0));
                         
                         PREDICTION = false;
                     }
@@ -570,6 +563,15 @@ void Game::update(float pDeltaTime)
                     case 0:
                     break;
                     case 1:
+                        this->mRains->create();
+                        this->mRainsCircles->create();
+                        
+                        this->e2->setColor(ccc3(0, 0, 0));
+                        
+                        if(Utils::probably(2))
+                        {
+                            this->e2->setColor(ccc3(255, 255, 255));
+                        }
                     break;
                 }
                 

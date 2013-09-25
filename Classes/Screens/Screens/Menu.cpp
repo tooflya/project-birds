@@ -112,8 +112,8 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
                 case Options::BUTTONS_ID_MENU_PLAY:
-                    pSender->mMapPopup->show();
-                    //AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
 
                 break;
                 case Options::BUTTONS_ID_MENU_SETTINGS:
@@ -197,7 +197,14 @@ void Menu::onEnterTransitionDidFinish()
         AppDelegate::IS_ALREADY_PLAYED = false;
     }
 
-    this->mMapPopup->show();
+    int dn = Utils::millisecondNow() / 86400000;
+    int dl = AppDelegate::getLastVisitDaysCount();
+    
+    if(dn - dl > 0 && dl != 0)
+    {
+        this->mMapPopup->day = (dn - dl) > 5 ? 1 : (dn - dl);
+        this->mMapPopup->show();
+    }
 }
 
 void Menu::onExitTransitionDidStart()

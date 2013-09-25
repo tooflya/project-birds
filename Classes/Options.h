@@ -296,6 +296,7 @@ class Options
         static Textes TEXT_PAYMENT_STRING[6];
         static Textes TEXT_END[7];
         static Textes TEXT_DAILY_MAP;
+        static Textes TEXT_COINS_BONUS[5];
 
         // ===========================================================
         // Fields

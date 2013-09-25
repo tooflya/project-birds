@@ -9,6 +9,33 @@
 // Inner Classes
 // ===========================================================
 
+class Effect : public CCNodeRGBA
+{
+public:
+    Effect()
+    {
+        this->setColor(ccc3(0, 0, 0));
+        this->setOpacity(0);
+    }
+    
+    static Effect* create()
+    {
+        Effect* background = new Effect();
+        background->autorelease();
+        
+        return background;
+    }
+    
+    void draw()
+    {
+        if(this->getOpacity() <= 0) return;
+        
+        glLineWidth(1);
+        CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
+        ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
+    }
+};
+
 // ===========================================================
 // Constants
 // ===========================================================
@@ -46,6 +73,10 @@ Classic::Classic() :
         CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas14.png");
         
         this->addChild(spriteBatch6);
+        
+        this->e2 = Effect::create();
+        this->addChild(this->e2);
+        
         this->addChild(spriteBatch7);
         this->addChild(spriteBatch1);
         this->addChild(spriteBatch2);
@@ -118,7 +149,9 @@ Classic::Classic() :
         this->mBonusTimeText->setOpacity(0);
         
         this->e1 = Entity::create("freeze_bg.png", spriteBatch7);
-        this->e2 = Entity::create("prediction_bg.png", spriteBatch7);
+        
+        this->mRains = EntityManager::create(300, Rain::create(), spriteBatch7);
+        this->mRainsCircles = EntityManager::create(300, RainCircle::create(), spriteBatch7);
 
         this->mPausePopup = ClassicPause::create(this);
         this->mEndScreen = ClassicEnd::create(Splash::TYPE_CLASSIC, this);
@@ -446,7 +479,7 @@ void Classic::onEnterTransitionDidFinish()
 }
 
 void Classic::removeLife()
-{return;
+{
     if(LIFES < 3 && !this->mGamePaused && this->mGameRunning)
     {
         Game::removeLife();

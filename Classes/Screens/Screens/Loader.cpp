@@ -191,6 +191,7 @@ void Loader::startLoading()
 
         break;
         case 3:
+        case 5:
             this->mNumberOfSprites = sizeof(Loading::TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
             
             for(int i = 0; i < this->mNumberOfSprites + 1; i++)

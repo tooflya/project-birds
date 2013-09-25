@@ -350,6 +350,14 @@ Textes Options::TEXT_END[7] =
     {"", FONT, 42, 364}
 };
 Textes Options::TEXT_DAILY_MAP = {"", Options::FONT, 42, 365};
+Textes Options::TEXT_COINS_BONUS[5] =
+{
+    {"", FONT, 36, 366},
+    {"", FONT, 36, 367},
+    {"", FONT, 36, 368},
+    {"", FONT, 36, 369},
+    {"", FONT, 36, 370}
+};
 
 // ===========================================================
 // Fields
@@ -786,6 +794,9 @@ void Options::changeLanguage()
             
             TEXT_EVENTS[61].string = "Freezee time";
             TEXT_EVENTS[61].size = 42;
+            
+            TEXT_EVENTS[62].string = "Prediction";
+            TEXT_EVENTS[62].size = 42;
 
             TEXT_PAYMENT_STRING[0].string = "Request processing";
 
@@ -813,6 +824,12 @@ void Options::changeLanguage()
             TEXT_END[6].string = "Total coins earned: %d";
             
             TEXT_DAILY_MAP.string = "Daily revenue";
+            
+            TEXT_COINS_BONUS[0].string = "500";
+            TEXT_COINS_BONUS[1].string = "1 000";
+            TEXT_COINS_BONUS[2].string = "4 000";
+            TEXT_COINS_BONUS[3].string = "8 000";
+            TEXT_COINS_BONUS[4].string = "10 000";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1197,6 +1214,12 @@ void Options::changeLanguage()
             
             TEXT_EVENTS[60].string = "Комбо удар!";
             TEXT_EVENTS[60].size = 42;
+            
+            TEXT_EVENTS[61].string = "Заморозка";
+            TEXT_EVENTS[61].size = 42;
+            
+            TEXT_EVENTS[62].string = "Предсказание";
+            TEXT_EVENTS[62].size = 42;
 
             TEXT_PAYMENT_STRING[0].string = "Обработка запроса";
 
@@ -1223,6 +1246,12 @@ void Options::changeLanguage()
             TEXT_END[6].string = "Заработано монет: %d";
             
             TEXT_DAILY_MAP.string = "Вознаграждение";
+            
+            TEXT_COINS_BONUS[0].string = "500";
+            TEXT_COINS_BONUS[1].string = "1 000";
+            TEXT_COINS_BONUS[2].string = "4 000";
+            TEXT_COINS_BONUS[3].string = "8 000";
+            TEXT_COINS_BONUS[4].string = "10 000";
         break;
     }
     
@@ -1592,8 +1621,13 @@ void Options::changeLanguage()
     TEXTES_HOLDER[363] = TEXT_END[5];
     TEXTES_HOLDER[364] = TEXT_END[6];
     TEXTES_HOLDER[365] = TEXT_DAILY_MAP;
+    TEXTES_HOLDER[366] = TEXT_COINS_BONUS[0];
+    TEXTES_HOLDER[367] = TEXT_COINS_BONUS[1];
+    TEXTES_HOLDER[368] = TEXT_COINS_BONUS[2];
+    TEXTES_HOLDER[369] = TEXT_COINS_BONUS[3];
+    TEXTES_HOLDER[370] = TEXT_COINS_BONUS[4];
     
-    for(int i = 0; i <= 365; i++)
+    for(int i = 0; i <= 370; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

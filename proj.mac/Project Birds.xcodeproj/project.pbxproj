@@ -201,6 +201,9 @@
 		78DAB93D17F1DE850021C262 /* popup-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78DAB93217F1DE850021C262 /* popup-7.mp3 */; };
 		78DAB93E17F1DE850021C262 /* popup-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78DAB93317F1DE850021C262 /* popup-8.mp3 */; };
 		78DAB93F17F1DE850021C262 /* progress_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78DAB93417F1DE850021C262 /* progress_complete.mp3 */; };
+		78DAB94217F2D4BB0021C262 /* StarParticle2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DAB94017F2D4BA0021C262 /* StarParticle2.cpp */; };
+		78DAB94717F3056F0021C262 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DAB94317F3056C0021C262 /* Rain.cpp */; };
+		78DAB94817F3056F0021C262 /* RainCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DAB94517F3056E0021C262 /* RainCircle.cpp */; };
 		78FD751417E20AE40063B926 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78FD751217E20AE40063B926 /* Map.cpp */; };
 		78FD751B17E21D060063B926 /* Ripple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78FD751917E21D060063B926 /* Ripple.cpp */; };
 /* End PBXBuildFile section */
@@ -503,6 +506,12 @@
 		78DAB93217F1DE850021C262 /* popup-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "popup-7.mp3"; sourceTree = "<group>"; };
 		78DAB93317F1DE850021C262 /* popup-8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "popup-8.mp3"; sourceTree = "<group>"; };
 		78DAB93417F1DE850021C262 /* progress_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = progress_complete.mp3; sourceTree = "<group>"; };
+		78DAB94017F2D4BA0021C262 /* StarParticle2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarParticle2.cpp; sourceTree = "<group>"; };
+		78DAB94117F2D4BB0021C262 /* StarParticle2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarParticle2.h; sourceTree = "<group>"; };
+		78DAB94317F3056C0021C262 /* Rain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rain.cpp; sourceTree = "<group>"; };
+		78DAB94417F3056D0021C262 /* Rain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rain.h; sourceTree = "<group>"; };
+		78DAB94517F3056E0021C262 /* RainCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RainCircle.cpp; sourceTree = "<group>"; };
+		78DAB94617F3056E0021C262 /* RainCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainCircle.h; sourceTree = "<group>"; };
 		78FD751217E20AE40063B926 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		78FD751317E20AE40063B926 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		78FD751917E21D060063B926 /* Ripple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ripple.cpp; sourceTree = "<group>"; };
@@ -669,6 +678,12 @@
 		78735E8A17CDF54C006C1C9B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78DAB94317F3056C0021C262 /* Rain.cpp */,
+				78DAB94417F3056D0021C262 /* Rain.h */,
+				78DAB94517F3056E0021C262 /* RainCircle.cpp */,
+				78DAB94617F3056E0021C262 /* RainCircle.h */,
+				78DAB94017F2D4BA0021C262 /* StarParticle2.cpp */,
+				78DAB94117F2D4BB0021C262 /* StarParticle2.h */,
 				78FD751917E21D060063B926 /* Ripple.cpp */,
 				78FD751A17E21D060063B926 /* Ripple.h */,
 				78735E8B17CDF54C006C1C9B /* AnimatedCoin.cpp */,
@@ -1303,6 +1318,9 @@
 				7873608417CDF54D006C1C9B /* Utils.cpp in Sources */,
 				78FD751417E20AE40063B926 /* Map.cpp in Sources */,
 				78FD751B17E21D060063B926 /* Ripple.cpp in Sources */,
+				78DAB94217F2D4BB0021C262 /* StarParticle2.cpp in Sources */,
+				78DAB94717F3056F0021C262 /* Rain.cpp in Sources */,
+				78DAB94817F3056F0021C262 /* RainCircle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

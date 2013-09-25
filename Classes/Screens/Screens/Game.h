@@ -15,6 +15,8 @@
 #include "Dust.h"
 #include "EventPanel.h"
 #include "AnimatedCoin.h"
+#include "Rain.h"
+#include "RainCircle.h"
 
 #include "Pause.h"
 
@@ -93,6 +95,8 @@ class Game : public Screen
         End* mEndScreen;
 
         CCLayer* mEventLayer;
+    
+        CCNodeRGBA* e2;
     
         // ===========================================================
         // Constructors
@@ -181,7 +185,8 @@ class Game : public Screen
         EntityManager* mArrows;
     
         Entity* e1;
-        Entity* e2;
+        EntityManager* mRains;
+        EntityManager* mRainsCircles;
 
         // ===========================================================
         // Constructors

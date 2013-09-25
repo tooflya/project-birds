@@ -8,6 +8,9 @@
 #include "Entity.h"
 #include "Button.h"
 #include "Ripple.h"
+#include "Confetti.h"
+#include "AnimatedCoin.h"
+#include "StarParticle2.h"
 
 #include "Utils.h"
 #include "Options.h"
@@ -45,6 +48,10 @@ class Map : public CCLayer, public Touchable
         Entity* mDay[5];
     EntityManager* mRipples;
     EntityManager* mWays;
+    EntityManager* mCoins;
+    EntityManager* mConfetti;
+    EntityManager* mStars;
+    EntityManager* mAnimatedCoins;
     
         Button* mCloseButton;
     
@@ -60,6 +67,11 @@ class Map : public CCLayer, public Touchable
         bool mShowAnimationRunning;
         bool mHideAnimationRunning;
     
+        bool mAnimatedCoinsAnimation;
+    
+        float mAnimatedCoinsAnimationTime;
+        float mAnimatedCoinsAnimationTimeElpased;
+    
         bool mShowed;
     
     bool mAnimation;
@@ -69,6 +81,8 @@ class Map : public CCLayer, public Touchable
     
     int mAnimationCount;
     int mAnimationCount2;
+    
+    Text* mBonusTextes[5];
 
         // ===========================================================
         // Constructors
@@ -79,6 +93,8 @@ class Map : public CCLayer, public Touchable
         // ===========================================================
         // Methods
         // ===========================================================
+    
+    void throwAnimation(float x, float y);
 
         // ===========================================================
         // Override Methods
@@ -122,7 +138,9 @@ class Map : public CCLayer, public Touchable
 
         // ===========================================================
         // Fields
-        // ===========================================================
+    // ===========================================================
+    
+    int day;
 
         // ===========================================================
         // Constructors
