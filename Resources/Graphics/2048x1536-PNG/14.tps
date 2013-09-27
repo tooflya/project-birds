@@ -151,6 +151,12 @@
             <filename>../../Graphics Sources/freeze_bg.png</filename>
             <filename>../../Graphics Sources/rain_circle.png</filename>
             <filename>../../Graphics Sources/rain.png</filename>
+            <filename>../../Graphics Sources/gun.png</filename>
+            <filename>../../Graphics Sources/bonus_bird_parts.png</filename>
+            <filename>../../Graphics Sources/gun_laser.png</filename>
+            <filename>../../Graphics Sources/box_laser_green@2x.png</filename>
+            <filename>../../Graphics Sources/box_laser_red@2x.png</filename>
+            <filename>../../Graphics Sources/box@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

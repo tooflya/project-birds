@@ -3,7 +3,7 @@
 
 #include "Entity.h"
 
-class Clock : public Entity
+class Clock : public CCNode
 {
     protected:
         // ===========================================================
@@ -21,10 +21,6 @@ class Clock : public Entity
         float mTimeElapsed;
     
         bool mPause;
-
-        Entity* mArrow;
-        
-        CCProgressTimer* mArea;
 
         // ===========================================================
         // Constructors

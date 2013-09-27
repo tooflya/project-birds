@@ -157,7 +157,7 @@ class LevelButton : public Entity
     Text* mText;
     
     public:
-    LevelButton() : Entity("choose_box_lvl_sprite@2x.png", 3, 5)
+    LevelButton() : Entity("choose_box_lvl_sprite@2x.png", 2, 5)
     {
         this->setRegisterAsTouchable(true);
         
@@ -183,19 +183,24 @@ class LevelButton : public Entity
 
         if(stars == -1)
         {
-            this->setCurrentFrameIndex(12);
+            this->setCurrentFrameIndex(8);
 
             this->mText->setVisible(false);
         }
         else
         {
-            this->setCurrentFrameIndex(stars * 3);
+            this->setCurrentFrameIndex(stars * 2);
+        }
+        
+        if(pId == 5 || pId == 10 ||pId == 15||pId == 25)
+        {
+            this->setCurrentFrameIndex(this->getCurrentFrameIndex() + 1);
         }
     }
     
     void onTouch(CCTouch* touch, CCEvent* event)
     {
-        if(this->getCurrentFrameIndex() == 12)
+        if(this->getCurrentFrameIndex() == 8 || this->getCurrentFrameIndex() == 9)
         {
             
         }

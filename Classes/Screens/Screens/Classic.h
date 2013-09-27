@@ -40,10 +40,10 @@ class Classic : public Game
         bool mIsLevelUpAnimation;
 
         EntityManager* mConfetti;
-        EntityManager* mLifes;
 
         Text* mCountText;
         Text* mBestCountText;
+        Text* mGoldLifesCount;
         Text* mLevelUpText;
         Text* mBonusTimeText;
     

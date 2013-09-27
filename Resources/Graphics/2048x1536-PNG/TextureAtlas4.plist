@@ -33,20 +33,20 @@
             <key>choose_box_lvl_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{674,0},{600,1000}}</string>
+                <string>{{674,0},{400,1000}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{600,1000}}</string>
+                <string>{{0,0},{400,1000}}</string>
                 <key>sourceSize</key>
-                <string>{600,1000}</string>
+                <string>{400,1000}</string>
             </dict>
             <key>confety_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1274,0},{128,102}}</string>
+                <string>{{1074,0},{128,102}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>facebook_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1402,0},{84,84}}</string>
+                <string>{{1202,0},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>flag_not_avaliable_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1486,0},{257,41}}</string>
+                <string>{{1286,0},{257,41}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>flag_sprite_big@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1743,0},{636,1122}}</string>
+                <string>{{1543,0},{636,1122}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>popup_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2379,0},{648,988}}</string>
+                <string>{{2179,0},{648,988}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>share@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2818,1122},{169,182}}</string>
+                <string>{{0,1660},{169,182}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>twitter_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1660},{84,84}}</string>
+                <string>{{169,1660},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +228,7 @@
             <key>vk_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{84,1660},{84,84}}</string>
+                <string>{{253,1660},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -246,9 +246,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas4.png</string>
             <key>size</key>
-            <string>{3027,1744}</string>
+            <string>{2827,1842}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fd8397529e8248454ad9735b0ec2d44f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:3772badc2d5f2f664b8440cd09a8b9ff:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas4.png</string>
         </dict>

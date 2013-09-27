@@ -84,6 +84,8 @@ Bird* Bird::create(bool pBonus)
 
 void Bird::init(int pChalangeType, int pSomeData[3])
 {
+    if(this->mType == TYPE_DANGER) return;
+
     this->mChalangeType = pChalangeType;
     
     switch(this->mChalangeType)
@@ -170,7 +172,7 @@ void Bird::onCreate()
         }
         else
         {
-            this->mType = Utils::probably(15) ? TYPE_DANGER : Utils::random(0, this->count - 3);
+            this->mType = Utils::probably(Game::PREDICTION ? 30 : 15) ? TYPE_DANGER : Utils::random(0, this->count - 3);
         
             this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -216,20 +218,26 @@ void Bird::onCreate()
             this->mSoundEffect = SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BOMB_FUSE);
         }
     
-        this->mPT = Game::PREDICTION ? 1.0 : 0.0;
+        this->mPT = Game::PREDICTION ? 2.5 : 0.0;
         this->mPTE = 0;
+        this->mPTEL = Game::PREDICTION ? 0.2 : 1.0;
         
         if(Game::PREDICTION)
         {
             this->setVisible(false);
             
-            game->mArrows->create()->setCenterPosition(this->getCenterX(), Utils::coord(100));
+            this->e1 = static_cast<Entity*>(game->mArrows->create());
+            this->e2 = static_cast<Entity*>(game->mPredictionIcons->create());
+            
+            this->e1->setCenterPosition(this->getCenterX(), Utils::coord(100));
+            this->e2->setCenterPosition(this->getCenterX(), Utils::coord(100) + Utils::coord(60));
         }
     }
     else
     {
         this->mPT = 0;
         this->mPTE = 0;
+        this->mPTEL = 1;
     }
 }
 
@@ -270,7 +278,7 @@ void Bird::onDestroy()
     {
         if(game->mGameRunning)
         {
-        if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange && !this->mBonus && this->mChalangeType != 3)
+            if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange && !this->mBonus && this->mChalangeType != 3 && !Game::LASERGUN)
         {
             game->removeLife();
         }
@@ -306,7 +314,7 @@ void Bird::onDestroy()
     
     if(this->mBonus)
     {
-        game->onBonus(this->mType);
+        game->onBonus(this->mType, this->getCenterX(), this->getCenterY());
     }
 }
 
@@ -314,16 +322,24 @@ void Bird::update(float pDeltaTime)
 {
     this->mPTE += pDeltaTime;
     
+    pDeltaTime *= this->mPTEL;
+    
+    if(this->mPTEL < 1 && this->isVisible())
+    {
+        this->mPTEL += 0.005;
+    }
+    
     if(this->mPTE >= this->mPT)
     {
+        if(this->mType == TYPE_DANGER && static_cast<Game*>(this->getParent()->getParent())->mArrows->getCount() > 0 && !this->isVisible())
+        {
+            this->e1->destroy();
+            this->e2->destroy();
+        }
+        
         if(this->mType == TYPE_DANGER && !this->isVisible())
         {
             this->setVisible(true);
-        }
-        
-        if(this->mType == TYPE_DANGER && static_cast<Game*>(this->getParent()->getParent())->mArrows->getCount() > 0)
-        {
-            static_cast<Entity*>(static_cast<Game*>(this->getParent()->getParent())->mArrows->objectAtIndex(0))->destroy();
         }
         
     ImpulseEntity::update(pDeltaTime);
@@ -355,6 +371,9 @@ void Bird::update(float pDeltaTime)
                         case 1:
                             entity->setColor(ccc3(255, 120, 30));
                         break;
+                        case 2:
+                            entity->setColor(ccc3(0, 100, 255));
+                        break;
                     }
                 }
             }
@@ -375,6 +394,59 @@ void Bird::update(float pDeltaTime)
             }
         }
     }
+        
+        if(Game::LASERGUN)
+        {
+            if(this->mLifeCount < this->mInitLifeCount)
+            this->mLife->setPercentage((this->mLifeCount / this->mInitLifeCount * 100.0));
+            
+            if(this->mLifeCount <= 0)
+            {
+                Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
+                Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
+                
+                explosionBasic->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
+                
+                explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
+                explosion->setColor(COLORS[this->mType]);
+                
+                if(this->mType != TYPE_DANGER && !this->mBonus)
+                {
+                    for(int i = 0; i < 15; i++)
+                    {
+                        Feather* feather = (Feather*) game->mFeathers->create();
+                        
+                        feather->setCenterPosition(this->getCenterX(), this->getCenterY());
+                        feather->setCurrentFrameIndex(Utils::random(2 * this->mType, 2 * this->mType + 1));
+                        feather->init(i, 15.0);
+                    }
+                }
+                
+                if(this->mChalangeType == 3)
+                {
+                    for(int i = 0; i < 10; i++)
+                    {
+                        game->mCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                    }
+                }
+                
+                if(Options::SOUND_ENABLE)
+                {
+                    if(this->mType == TYPE_DANGER)
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_DANGER_EXPLOSION);
+                    }
+                    else
+                    {
+                        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BIRD_BLOW);
+                    }
+                }
+                
+                this->destroy();
+            
+                return;
+            }
+        }
 
     /** Collisions and destroy animation **/
 

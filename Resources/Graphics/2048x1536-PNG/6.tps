@@ -152,6 +152,14 @@
             <filename>../../Graphics Sources/bg_light_1.png</filename>
             <filename>../../Graphics Sources/bg_light_main@2x.png</filename>
             <filename>../../Graphics Sources/bonus-animation@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_game_life@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_pause@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_plus@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_textbox@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_counter_best@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_counter@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

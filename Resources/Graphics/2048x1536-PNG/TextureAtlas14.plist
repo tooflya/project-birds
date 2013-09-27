@@ -4,10 +4,62 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>bonus_bird_parts.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{600,0},{320,160}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{320,160}}</string>
+                <key>sourceSize</key>
+                <string>{320,160}</string>
+            </dict>
+            <key>box@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{300,0},{300,300}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{300,300}}</string>
+                <key>sourceSize</key>
+                <string>{300,300}</string>
+            </dict>
+            <key>box_laser_green@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{117,0},{45,46}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{45,46}}</string>
+                <key>sourceSize</key>
+                <string>{45,46}</string>
+            </dict>
+            <key>box_laser_red@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{72,0},{45,46}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{45,46}}</string>
+                <key>sourceSize</key>
+                <string>{45,46}</string>
+            </dict>
             <key>freeze_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{1000,1280}}</string>
+                <string>{{0,331},{1000,1280}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,10 +69,36 @@
                 <key>sourceSize</key>
                 <string>{1000,1280}</string>
             </dict>
+            <key>gun.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{162,0},{138,207}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{138,207}}</string>
+                <key>sourceSize</key>
+                <string>{138,207}</string>
+            </dict>
+            <key>gun_laser.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,300},{336,31}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{336,31}}</string>
+                <key>sourceSize</key>
+                <string>{336,31}</string>
+            </dict>
             <key>rain.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1280},{32,57}}</string>
+                <string>{{0,0},{32,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +111,7 @@
             <key>rain_circle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{32,1280},{40,11}}</string>
+                <string>{{32,0},{40,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -51,9 +129,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas14.png</string>
             <key>size</key>
-            <string>{1000,1337}</string>
+            <string>{1000,1611}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:69d4313ec698060d11edb49c75ff1c25:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:70e1e1f9f932adbc2554fc3e4012c978:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas14.png</string>
         </dict>

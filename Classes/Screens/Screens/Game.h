@@ -17,6 +17,7 @@
 #include "AnimatedCoin.h"
 #include "Rain.h"
 #include "RainCircle.h"
+#include "RobotoPart.h"
 
 #include "Pause.h"
 
@@ -72,6 +73,11 @@ class Game : public Screen
         float mBonusAnimationFrameTime;
         float mBonusAnimationFrameTimeElapsed;
     
+        bool mBonusSomeTimeUpdate;
+        int mBonusSomeTimeUpdateCount;
+        float mBonusSomeTime;
+        float mBonusSomeTimeElapsed;
+    
         long mLastKillTime;
         int mIsBonusAnimationRunningCount;
     
@@ -79,7 +85,13 @@ class Game : public Screen
         bool mIsBonusAnimationRunning;
 
         Entity* mBackground;
-        Entity* mCountIcon;
+        Entity* mGamePanel;
+        Entity* mTextAreas[4];
+        Entity* mTextIcons[4];
+        Entity* mHearts[4];
+        Button* mGoldLifeButton;
+        Entity* e3[4];
+        Entity* e4[8];
     
         Entity* mBackgroundLights[8];
         EntityManager* mBonusCircles;
@@ -150,6 +162,7 @@ class Game : public Screen
     
         static float TIME_SLOW;
         static bool PREDICTION;
+        static bool LASERGUN;
 
         static int CURRENT_COUNT;
         static int BEST_COUNT;
@@ -183,10 +196,14 @@ class Game : public Screen
         EntityManager* mStars;
         EntityManager* mCoins;
         EntityManager* mArrows;
+        EntityManager* mPredictionIcons;
     
         Entity* e1;
         EntityManager* mRains;
         EntityManager* mRainsCircles;
+        EntityManager* mRobotParts;
+        Entity* mGun;
+        Entity* mGunLaser;
 
         // ===========================================================
         // Constructors
@@ -206,7 +223,7 @@ class Game : public Screen
         virtual void removeLife();
         virtual void onBirBlow(int pType);
         virtual void pause();
-        virtual void onBonus(int pId);
+        virtual void onBonus(int pId, float pX, float pY);
     
         // ===========================================================
         // Override Methods

@@ -15,6 +15,7 @@
 
 float Game::TIME_SLOW = 1;
 bool Game::PREDICTION = false;
+bool Game::LASERGUN = false;
 
 int Game::CURRENT_COUNT = 0;
 int Game::BEST_COUNT = 0;
@@ -67,6 +68,7 @@ Game::Game() :
     
         this->mChalange = false;
         this->mGameRunning = false;
+        this->mBonusSomeTimeUpdate = false;
         
         this->mPause = false;
         
@@ -242,7 +244,7 @@ void Game::generateCoinsBirds()
     }
 }
 
-void Game::onBonus(int pId)
+void Game::onBonus(int pId, float pX, float pY)
 {
     if(!this->mGameRunning) return;
     
@@ -276,7 +278,7 @@ void Game::onBonus(int pId)
             
             this->mEventPanel->setEvent(62)->show();
             
-            this->mBonusAnimationTime = 6.0;
+            this->mBonusAnimationTime = 10.0;
             
             this->e2->runAction(CCFadeTo::create(0.5, 100));
             
@@ -284,6 +286,57 @@ void Game::onBonus(int pId)
             {
                 SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_PREDICTION);
             }
+        break;
+        case 2:
+            LASERGUN = true;
+            
+            this->mEventPanel->setEvent(63)->show();
+            
+            this->mBonusAnimationTime = 10.0;
+            
+            this->e2->runAction(CCFadeTo::create(0.5, 150));
+            
+            this->mGun->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(100));
+            this->mGunLaser->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(100));
+            
+            this->e4[0]->setScale(0);
+            this->e4[1]->setScale(0);
+            this->e4[2]->setScale(0);
+            this->e4[3]->setScale(0);
+            this->e4[4]->setScale(0);
+            this->e4[5]->setScale(0);
+            this->e4[6]->setScale(0);
+            this->e4[7]->setScale(0);
+            
+            this->e3[0]->create()->setCenterPosition(-this->e3[0]->getWidth() / 2, -this->e3[0]->getHeight() / 2);
+            this->e3[1]->create()->setCenterPosition(-this->e3[1]->getWidth() / 2, Options::CAMERA_HEIGHT + this->e3[1]->getHeight() / 2 - this->mGamePanel->getHeight());
+            this->e3[2]->create()->setCenterPosition(Options::CAMERA_WIDTH + this->e3[2]->getWidth() / 2, Options::CAMERA_HEIGHT + this->e3[2]->getHeight() / 2 - this->mGamePanel->getHeight());
+            this->e3[3]->create()->setCenterPosition(Options::CAMERA_WIDTH + this->e3[3]->getWidth() / 2, -this->e3[3]->getHeight() / 2);
+            
+            this->e4[0]->create()->setCenterPosition(Utils::coord(15), 0);
+            this->e4[1]->create()->setCenterPosition(Utils::coord(30), Options::CAMERA_HEIGHT);
+            this->e4[2]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(15), Options::CAMERA_HEIGHT);
+            this->e4[3]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(30), 0);
+            
+            this->e4[4]->create()->setCenterPosition(Options::CAMERA_WIDTH, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() - Utils::coord(15));
+            this->e4[5]->create()->setCenterPosition(0, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() - Utils::coord(30));
+            this->e4[6]->create()->setCenterPosition(0, Utils::coord(15));
+            this->e4[7]->create()->setCenterPosition(Options::CAMERA_WIDTH, Utils::coord(30));
+            
+            this->e3[0]->runAction(CCMoveTo::create(0.5, ccp(this->e3[0]->getWidth() / 2, this->e3[0]->getHeight() / 2)));
+            this->e3[1]->runAction(CCMoveTo::create(0.5, ccp(this->e3[1]->getWidth() / 2, Options::CAMERA_HEIGHT - this->e3[1]->getHeight() / 2 - this->mGamePanel->getHeight())));
+            this->e3[2]->runAction(CCMoveTo::create(0.5, ccp(Options::CAMERA_WIDTH - this->e3[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->e3[2]->getHeight() / 2 - this->mGamePanel->getHeight())));
+            this->e3[3]->runAction(CCMoveTo::create(0.5, ccp(Options::CAMERA_WIDTH - this->e3[3]->getWidth() / 2, this->e3[3]->getHeight() / 2)));
+            
+            for(int i = 0; i < 8; i++)
+            {
+                this->mRobotParts->create()->setCenterPosition(pX, pY);
+            }
+            
+            this->mBonusSomeTimeUpdate = true;
+            this->mBonusSomeTime = 1.0;
+            this->mBonusSomeTimeElapsed = 0;
+            this->mBonusSomeTimeUpdateCount = 0;
         break;
     }
     
@@ -307,6 +360,41 @@ void Game::update(float pDeltaTime)
     if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
+    }
+    
+    if(this->mBonusSomeTimeUpdate)
+    {
+        this->mBonusSomeTimeElapsed += pDeltaTime;
+        
+        if(this->mBonusSomeTimeElapsed >= this->mBonusSomeTime)
+        {
+            this->mBonusSomeTimeElapsed = 0;
+            
+            switch(this->mRunningBonusId)
+            {
+                case 2:
+                    switch(this->mBonusSomeTimeUpdateCount)
+                    {
+                        case 0:
+                            for(int i = 0; i < 4; i++)
+                            this->e4[i]->runAction(CCScaleTo::create(1.0, 1, Options::CAMERA_HEIGHT / Utils::coord(46)));
+                            for(int i = 4; i < 8; i++)
+                            this->e4[i]->runAction(CCScaleTo::create(1.0, 1, Options::CAMERA_WIDTH / Utils::coord(46)));
+                        
+                            this->mBonusSomeTimeUpdate = false;
+                        break;
+                        case 1:
+                            this->e3[0]->runAction(CCMoveTo::create(1.0, ccp(-this->e3[0]->getWidth() / 2, -this->e3[0]->getHeight() / 2)));
+                            this->e3[1]->runAction(CCMoveTo::create(1.0, ccp(-this->e3[1]->getWidth() / 2, Options::CAMERA_HEIGHT + this->e3[1]->getHeight() / 2 - this->mGamePanel->getHeight())));
+                            this->e3[2]->runAction(CCMoveTo::create(1.0, ccp(Options::CAMERA_WIDTH + this->e3[2]->getWidth() / 2, Options::CAMERA_HEIGHT + this->e3[2]->getHeight() / 2 - this->mGamePanel->getHeight())));
+                            this->e3[3]->runAction(CCMoveTo::create(1.0, ccp(Options::CAMERA_WIDTH + this->e3[3]->getWidth() / 2, -this->e3[3]->getHeight() / 2)));
+                        break;
+                    }
+                break;
+            }
+            
+            this->mBonusSomeTimeUpdateCount++;
+        }
     }
 
     if(this->mGameRunning && !this->mGamePaused)
@@ -513,7 +601,7 @@ void Game::update(float pDeltaTime)
         {
             this->mBonusAnimationTimeElapsed = 0;
             
-            this->mBonusCircles->clear();
+            //this->mBonusCircles->clear();
             
             switch(this->mRunningBonusId)
             {
@@ -539,6 +627,43 @@ void Game::update(float pDeltaTime)
                         this->e2->runAction(CCFadeTo::create(0.5, 0));
                         
                         PREDICTION = false;
+                        
+                        this->mIsBonusAnimationRunning = false;
+                    }
+                break;
+                case 2:
+                    if(this->mIsBonusAnimationRunningCount == 1)
+                    {
+                        this->mGun->destroy();
+                        this->mGunLaser->destroy();
+                        
+                        LASERGUN = false;
+                        
+                        this->e2->runAction(CCFadeTo::create(0.5, 0));
+                        
+                        this->mIsBonusAnimationRunning = false;
+                        
+                        for(int i = 0; i < 4; i++)
+                        {
+                            this->e3[i]->destroy();
+                        }
+                        
+                        for(int i = 0; i < 8; i++)
+                        {
+                            this->e4[i]->destroy();
+                        }
+                    }
+                    else
+                    {
+                        for(int i = 0; i < 8; i++)
+                        this->e4[i]->runAction(CCScaleTo::create(0.5, 1, 0));
+                        
+                        this->mBonusSomeTimeUpdate = true;
+                        this->mBonusSomeTime = 1.0;
+                        this->mBonusSomeTimeElapsed = 0;
+                        this->mBonusSomeTimeUpdateCount = 1;
+                        
+                        this->mBonusAnimationTime = 2;
                     }
                 break;
             }
@@ -572,6 +697,47 @@ void Game::update(float pDeltaTime)
                         {
                             this->e2->setColor(ccc3(255, 255, 255));
                         }
+                    break;
+                    case 2:
+                        Entity* bird = NULL;
+                        
+                        for(int i = 0; i < this->mBirds->getCount(); i++)
+                        {
+                            if(bird == NULL)
+                            {
+                                bird = static_cast<Entity*>(this->mBirds->objectAtIndex(i));
+                            }
+                            
+                            if(bird == NULL)
+                            {
+                                break;
+                            }
+                            
+                            if(Utils::distance(this->mGun->getCenterX(), this->mGun->getCenterY(), bird->getCenterX(), bird->getCenterY()) > Utils::distance(this->mGun->getCenterX(), this->mGun->getCenterY(), static_cast<Entity*>(this->mBirds->objectAtIndex(i))->getCenterX(), static_cast<Entity*>(this->mBirds->objectAtIndex(i))->getCenterY()))
+                            {
+                                bird = static_cast<Entity*>(this->mBirds->objectAtIndex(i));
+                            }
+                        }
+                        
+                        if(bird == NULL)
+                        {
+                            this->mGunLaser->destroy();
+                            
+                            break;
+                        }
+                        
+                        if(!this->mGunLaser->isVisible())
+                        {
+                            this->mGunLaser->create();
+                        }
+                        
+                        float angle = atan2(this->mGun->getCenterY() - bird->getCenterY(), this->mGun->getCenterX() - bird->getCenterX());
+                        
+                        this->mGun->setRotation(-CC_RADIANS_TO_DEGREES(angle) + 90);
+                        this->mGunLaser->setRotation(-CC_RADIANS_TO_DEGREES(angle) + 90);
+                        this->mGunLaser->setScaleY(Utils::distance(this->mGun->getCenterX(), this->mGun->getCenterY(), bird->getCenterX(), bird->getCenterY()) / Utils::coord(32));
+                        
+                        static_cast<Bird*>(bird)->mLifeCount -= 1;
                     break;
                 }
                 

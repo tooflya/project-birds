@@ -1,9 +1,9 @@
-#ifndef CONST_BIRD_H
-#define CONST_BIRD_H
+#ifndef CONST_ROBOTOPART_H
+#define CONST_ROBOTOPART_H
 
-#include "ImpulseEntity.h"
+#include "Entity.h"
 
-class Bird : public ImpulseEntity
+class RobotoPart : public Entity
 {
     protected:
         // ===========================================================
@@ -17,32 +17,22 @@ class Bird : public ImpulseEntity
         // ===========================================================
         // Fields
         // ===========================================================
-
-        int mChalangeType;
-        int mType;
-        int mSoundEffect;
-        
-        int mDestroyAnimationFrames;
-
-        float mMarkTime;
-        float mMarkTimeElapsed;
-
-        float mDestroyAnimationTime;
-        float mDestroyAnimationTimeElapsed;
-
-        bool mIsGoingToDestroy;
-        bool mSpecialAnimation;
-        bool mChalange;
-        bool mSpecial;
-        bool mBonus;
-
-        CCProgressTimer* mLife;
+    
+        float mRotationSpeed;
+    
+        float mVectorX;
+        float mVectorY;
+    
+        float mBlowTime;
+        float mBlowTimeElapsed;
+    
+        bool mVectorReference;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Bird(bool pBonus);
+        RobotoPart();
 
         // ===========================================================
         // Methods
@@ -60,6 +50,8 @@ class Bird : public ImpulseEntity
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static int FRAME;
 
         // ===========================================================
         // Fields
@@ -85,77 +77,33 @@ class Bird : public ImpulseEntity
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static float DANGER_COORDINATE;
-
-        static const int COUNT = 9;
-        static const int SPECIAL_COUNT = 8;
-
-        static const int TYPE_ORANGE = 0;
-        static const int TYPE_RED = 1;
-        static const int TYPE_PURPLE = 2;
-        static const int TYPE_BLUE = 3;
-        static const int TYPE_CYAN = 4;
-        static const int TYPE_YELLOW = 5;
-        static const int TYPE_GREEN = 6;
-        static const int TYPE_FLAYER = 7;
-        static const int TYPE_DANGER = 8;
-        static const int TYPE_GENERAL = 8;
-        static const int TYPE_FREEZEE = 9;
-        static const int TYPE_ZOMBIE = 10;
-        static const int TYPE_INDIE = 11;
-        static const int TYPE_ROBOTO = 12;
-        static const int TYPE_MEXICAN = 13;
-        static const int TYPE_PIRATE = 14;
-        static const int TYPE_NINJA = 16;
-
-        static ccColor3B COLORS[COUNT];
 
         // ===========================================================
         // Fields
         // ===========================================================
     
-        int count;
-    
-        float mPT;
-        float mPTE;
-    
-        float mPTEL;
-    
-        Entity* e1;
-    Entity* e2;
-    
-    float mLifeCount;
-    float mInitLifeCount;
+        int mFrameIndex;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        static Bird* create(bool pBonus);
-    
-        ~Bird();
+        static RobotoPart* create(int pFrameIndex);
 
         // ===========================================================
         // Methods
         // ===========================================================
-
-        void init(int pChalangeType, int pSomeData[3]);
     
-        int getType();
+        void update(float pDeltaTime);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
-
-        void onAnimationEnd();
     
         void onCreate();
         void onDestroy();
     
-        void update(float pDelta);
-
-        Bird* deepCopy();
+        RobotoPart* deepCopy();
 };
 
 #endif

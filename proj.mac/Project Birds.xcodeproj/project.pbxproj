@@ -204,6 +204,7 @@
 		78DAB94217F2D4BB0021C262 /* StarParticle2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DAB94017F2D4BA0021C262 /* StarParticle2.cpp */; };
 		78DAB94717F3056F0021C262 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DAB94317F3056C0021C262 /* Rain.cpp */; };
 		78DAB94817F3056F0021C262 /* RainCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DAB94517F3056E0021C262 /* RainCircle.cpp */; };
+		78DAB94B17F4750D0021C262 /* RobotoPart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78DAB94917F4750A0021C262 /* RobotoPart.cpp */; };
 		78FD751417E20AE40063B926 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78FD751217E20AE40063B926 /* Map.cpp */; };
 		78FD751B17E21D060063B926 /* Ripple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78FD751917E21D060063B926 /* Ripple.cpp */; };
 /* End PBXBuildFile section */
@@ -512,6 +513,8 @@
 		78DAB94417F3056D0021C262 /* Rain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rain.h; sourceTree = "<group>"; };
 		78DAB94517F3056E0021C262 /* RainCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RainCircle.cpp; sourceTree = "<group>"; };
 		78DAB94617F3056E0021C262 /* RainCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainCircle.h; sourceTree = "<group>"; };
+		78DAB94917F4750A0021C262 /* RobotoPart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobotoPart.cpp; sourceTree = "<group>"; };
+		78DAB94A17F4750C0021C262 /* RobotoPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotoPart.h; sourceTree = "<group>"; };
 		78FD751217E20AE40063B926 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		78FD751317E20AE40063B926 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		78FD751917E21D060063B926 /* Ripple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ripple.cpp; sourceTree = "<group>"; };
@@ -678,6 +681,8 @@
 		78735E8A17CDF54C006C1C9B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78DAB94917F4750A0021C262 /* RobotoPart.cpp */,
+				78DAB94A17F4750C0021C262 /* RobotoPart.h */,
 				78DAB94317F3056C0021C262 /* Rain.cpp */,
 				78DAB94417F3056D0021C262 /* Rain.h */,
 				78DAB94517F3056E0021C262 /* RainCircle.cpp */,
@@ -1321,6 +1326,7 @@
 				78DAB94217F2D4BB0021C262 /* StarParticle2.cpp in Sources */,
 				78DAB94717F3056F0021C262 /* Rain.cpp in Sources */,
 				78DAB94817F3056F0021C262 /* RainCircle.cpp in Sources */,
+				78DAB94B17F4750D0021C262 /* RobotoPart.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -336,6 +336,7 @@
 		78B3963E177E5E8000773C6A /* CCTouchHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78B39343177E5E7E00773C6A /* CCTouchHandler.cpp */; };
 		78B39B39177E5FA100773C6A /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B39704177E5F9F00773C6A /* libcurl.a */; };
 		78B39B3A177E5FA100773C6A /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B39705177E5F9F00773C6A /* libwebp.a */; };
+		78CA3A1A17F5830700FD7886 /* RobotoPart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78CA3A1817F582FC00FD7886 /* RobotoPart.cpp */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -962,6 +963,8 @@
 		78B39707177E5F9F00773C6A /* decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
 		78B39708177E5F9F00773C6A /* encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encode.h; sourceTree = "<group>"; };
 		78B39709177E5F9F00773C6A /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		78CA3A1817F582FC00FD7886 /* RobotoPart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RobotoPart.cpp; sourceTree = "<group>"; };
+		78CA3A1917F582FC00FD7886 /* RobotoPart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobotoPart.h; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1060,6 +1063,8 @@
 		783E873117C20CEB00FD49C1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78CA3A1817F582FC00FD7886 /* RobotoPart.cpp */,
+				78CA3A1917F582FC00FD7886 /* RobotoPart.h */,
 				7897DA9A17F3120D0023C1F9 /* Rain.cpp */,
 				7897DA9B17F3120D0023C1F9 /* Rain.h */,
 				7897DA9C17F3120D0023C1F9 /* RainCircle.cpp */,
@@ -2327,6 +2332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78CA3A1A17F5830700FD7886 /* RobotoPart.cpp in Sources */,
 				7897DA9E17F312260023C1F9 /* Rain.cpp in Sources */,
 				7897DA9F17F312260023C1F9 /* RainCircle.cpp in Sources */,
 				7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */,

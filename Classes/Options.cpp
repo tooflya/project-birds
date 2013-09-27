@@ -315,7 +315,7 @@ Textes Options::TEXT_GAME_START_STRING_1 = {"", Options::FONT, 100, 255};
 Textes Options::TEXT_GAME_START_STRING_2 = {"", Options::FONT, 100, 256};
 Textes Options::TEXT_GAME_CLASSIC_LEVEL_UP = {"", Options::FONT, 72, 257};
 Textes Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED = {"", Options::FONT, 42, 258};
-Textes Options::TEXT_GAME_BEST = {"", Options::FONT, 42, 259};
+Textes Options::TEXT_GAME_BEST = {"", Options::FONT, 32, 259};
 Textes Options::TEXT_GAME_ARCADE_TIME_REMAINING = {"", Options::FONT, 32, 260};
 Textes Options::TEXT_EVENTS[90] =
 {
@@ -779,7 +779,7 @@ void Options::changeLanguage()
 
             TEXT_GAME_CLASSIC_LEVEL_UP.string = "Level up!";
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Something was unclocked!";
-            TEXT_GAME_BEST.string = "Best:";
+            TEXT_GAME_BEST.string = "";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Time remaining:";
             TEXT_GAME_CLASSIC_BONUS_TIME.string = "Bonus time";
 
@@ -1202,7 +1202,7 @@ void Options::changeLanguage()
 
             TEXT_GAME_CLASSIC_LEVEL_UP.string = "Уровень пройден!";
             TEXT_GAME_SOMETHING_WAS_UNLOCKED.string = "Что-то было открыто";
-            TEXT_GAME_BEST.string = "Лучший:";
+            TEXT_GAME_BEST.string = "";
             TEXT_GAME_ARCADE_TIME_REMAINING.string = "Времени осталось:";
             TEXT_GAME_CLASSIC_BONUS_TIME.string = "Бонусное время";
 
@@ -1220,6 +1220,9 @@ void Options::changeLanguage()
             
             TEXT_EVENTS[62].string = "Предсказание";
             TEXT_EVENTS[62].size = 42;
+            
+            TEXT_EVENTS[63].string = "Роботизация";
+            TEXT_EVENTS[63].size = 42;
 
             TEXT_PAYMENT_STRING[0].string = "Обработка запроса";
 
