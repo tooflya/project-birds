@@ -72,18 +72,18 @@ Classic::Classic() :
         CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas14.png");
         CCSpriteBatchNode* spriteBatch8 = CCSpriteBatchNode::create("TextureAtlas6.png");
         
-        this->addChild(spriteBatch6);
+        this->mGameLayer->addChild(spriteBatch6);
         
         this->e2 = Effect::create();
-        this->addChild(this->e2);
+        this->mGameLayer->addChild(this->e2);
         
-        this->addChild(spriteBatch7);
-        this->addChild(spriteBatch1);
-        this->addChild(spriteBatch2);
-        this->addChild(spriteBatch3);
-        this->addChild(spriteBatch4);
-        this->addChild(spriteBatch5);
-        this->addChild(spriteBatch8);
+        this->mGameLayer->addChild(spriteBatch7);
+        this->mGameLayer->addChild(spriteBatch1);
+        this->mGameLayer->addChild(spriteBatch2);
+        this->mGameLayer->addChild(spriteBatch3);
+        this->mGameLayer->addChild(spriteBatch4);
+        this->mGameLayer->addChild(spriteBatch5);
+        this->mMenuLayer->addChild(spriteBatch8);
         
         this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
         
@@ -145,14 +145,12 @@ Classic::Classic() :
         this->mFeathers = EntityManager::create(300, Feather::create(), spriteBatch2);
         this->mBirds = EntityManager::create(20, Bird::create(false), spriteBatch4);
         this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
-        this->mPirateBox = PirateBox::create();
+        this->mPirateBox = PirateBox::create(spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
         this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
         this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
-        
-        spriteBatch5->addChild(this->mPirateBox);
         
         this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 

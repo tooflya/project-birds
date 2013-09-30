@@ -78,6 +78,7 @@ class ImpulseEntity : public Entity
         // ===========================================================
     
         ImpulseEntity(const char* pTextureFileName);
+        ImpulseEntity(const char* pTextureFileName, CCNode* pParent);
         ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
 
         // ===========================================================

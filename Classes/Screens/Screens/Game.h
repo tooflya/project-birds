@@ -84,6 +84,13 @@ class Game : public Screen
     
         bool mBackgroundLightsAnimationsReverse[7];
         bool mIsBonusAnimationRunning;
+        bool mPirateBoxAnimation;
+    
+        float mPirateBoxAnimationTime;
+        float mPirateBoxAnimationTimeElapsed;
+    
+        CCLayer* mMenuLayer;
+        CCLayer* mGameLayer;
 
         Entity* mBackground;
         Entity* mGamePanel;
@@ -227,6 +234,8 @@ class Game : public Screen
         virtual void onBirBlow(int pType);
         virtual void pause();
         virtual void onBonus(int pId, float pX, float pY);
+        void startBoxAnimation();
+        void stopBoxAnimation();
     
         // ===========================================================
         // Override Methods

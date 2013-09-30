@@ -140,7 +140,7 @@ void Bird::onCreate()
     
     this->mChalangeType = 0;
     
-    Game* game = static_cast<Game*>(this->getParent()->getParent());
+    Game* game = static_cast<Game*>(this->getParent()->getParent()->getParent());
 
     if(this->mBonus)
     {
@@ -270,7 +270,7 @@ void Bird::onDestroy()
 {
     ImpulseEntity::onDestroy();
     
-    Game* game = static_cast<Game*>(this->getParent()->getParent());
+    Game* game = static_cast<Game*>(this->getParent()->getParent()->getParent());
 
     this->mLife->setVisible(false);
 
@@ -312,7 +312,7 @@ void Bird::onDestroy()
         }
     }
     
-    if(this->mBonus)
+    if(this->mBonus && this->mLifeCount <= 0)
     {
         game->onBonus(this->mType, this->getCenterX(), this->getCenterY());
     }
@@ -331,7 +331,7 @@ void Bird::update(float pDeltaTime)
     
     if(this->mPTE >= this->mPT)
     {
-        if(this->mType == TYPE_DANGER && static_cast<Game*>(this->getParent()->getParent())->mArrows->getCount() > 0 && !this->isVisible())
+        if(this->mType == TYPE_DANGER && static_cast<Game*>(this->getParent()->getParent()->getParent())->mArrows->getCount() > 0 && !this->isVisible())
         {
             this->e1->destroy();
             this->e2->destroy();
@@ -344,7 +344,7 @@ void Bird::update(float pDeltaTime)
         
     ImpulseEntity::update(pDeltaTime);
     
-    Game* game = static_cast<Game*>(this->getParent()->getParent());
+    Game* game = static_cast<Game*>(this->getParent()->getParent()->getParent());
 
     this->mMarkTimeElapsed += pDeltaTime;
     
@@ -398,7 +398,7 @@ void Bird::update(float pDeltaTime)
         }
     }
         
-        if(Game::LASERGUN)
+        if(true)
         {
             if(this->mLifeCount < this->mInitLifeCount)
             this->mLife->setPercentage((this->mLifeCount / this->mInitLifeCount * 100.0));
@@ -497,6 +497,8 @@ void Bird::update(float pDeltaTime)
 
                 if(this->mLifeCount <= 0 || this->mType == TYPE_DANGER || this->mBonus || this->mChalangeType == 3)
                 {
+                    this->mLifeCount = 0;
+                    
                     Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
                     Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 

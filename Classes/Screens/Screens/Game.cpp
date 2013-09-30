@@ -53,6 +53,12 @@ Game::~Game()
 Game::Game() :
     Screen()
     {
+        this->mMenuLayer = CCLayer::create();
+        this->mGameLayer = CCLayer::create();
+        
+        this->addChild(this->mGameLayer);
+        this->addChild(this->mMenuLayer);
+        
         this->mBirdsTime = 0;
         this->mBirdsTimeElapsed = 0;
         
@@ -69,6 +75,7 @@ Game::Game() :
         this->mChalange = false;
         this->mGameRunning = false;
         this->mBonusSomeTimeUpdate = false;
+        this->mPirateBoxAnimation = false;
         
         this->mPause = false;
         
@@ -88,7 +95,7 @@ Game::Game() :
         this->mBonusAnimationFrameTime = 0;
         this->mBonusAnimationFrameTimeElapsed = 0;
 
-        this->addChild(TouchTrailLayer::create(), 10);
+        this->mGameLayer->addChild(TouchTrailLayer::create(), 10);
         
         SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_2, true);
         
@@ -244,6 +251,30 @@ void Game::generateCoinsBirds()
     }
 }
 
+void Game::startBoxAnimation()
+{
+    Game::TIME_SLOW = 0.1;
+    
+    this->mGameLayer->setAnchorPoint(ccp(this->mPirateBox->getCenterX() / Options::CAMERA_WIDTH, this->mPirateBox->getCenterY() / Options::CAMERA_HEIGHT));
+    this->mGameLayer->runAction(CCScaleTo::create(2.5, 1.5));
+    this->mGameLayer->runAction(CCRotateTo::create(2.5, Utils::randomf(-15, 15)));
+    this->mGameLayer->runAction(CCFollow::create(this->mPirateBox, CCRectMake(0, 0, Options::CAMERA_WIDTH, Options::CAMERA_HEIGHT)));
+}
+
+void Game::stopBoxAnimation()
+{
+    this->mGameLayer->stopAllActions();
+    
+    //this->mGameLayer->setAnchorPoint(ccp(0.5, 0.5));
+    this->mGameLayer->runAction(CCScaleTo::create(2.5, 1.0));
+    this->mGameLayer->runAction(CCRotateTo::create(2.5, 0.0));
+    this->mGameLayer->runAction(CCMoveTo::create(2.5, ccp(0.0, 0.0)));
+    
+    this->mPirateBoxAnimation = true;
+    this->mPirateBoxAnimationTime = 0.5;
+    this->mPirateBoxAnimationTimeElapsed = 0;
+}
+
 void Game::onBonus(int pId, float pX, float pY)
 {
     if(!this->mGameRunning) return;
@@ -363,6 +394,25 @@ void Game::update(float pDeltaTime)
     if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
+    }
+    
+    if(this->mPirateBoxAnimation)
+    {
+        this->mPirateBoxAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mPirateBoxAnimationTimeElapsed >= this->mPirateBoxAnimationTime)
+        {
+            this->mPirateBoxAnimationTimeElapsed = 0;
+            
+            Game::TIME_SLOW = 1;
+            
+            this->mPirateBoxAnimation = false;
+            
+            for(int i = 0; i < this->mBirds->getCount(); i++)
+            {
+                static_cast<Bird*>(this->mBirds->objectAtIndex(i))->mLifeCount = 0;
+            }
+        }
     }
     
     if(this->mBonusSomeTimeUpdate)

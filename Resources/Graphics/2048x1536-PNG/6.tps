@@ -160,6 +160,8 @@
             <filename>../../Graphics Sources/game_panel_textbox@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_counter_best@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_counter@2x.png</filename>
+            <filename>../../Graphics Sources/bonus_pirat_hat@2x.png</filename>
+            <filename>../../Graphics Sources/bonus_amigo_hat@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

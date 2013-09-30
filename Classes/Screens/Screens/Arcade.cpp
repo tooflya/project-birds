@@ -71,18 +71,18 @@ Arcade::Arcade() :
         CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas14.png");
         CCSpriteBatchNode* spriteBatch8 = CCSpriteBatchNode::create("TextureAtlas6.png");
         
-        this->addChild(spriteBatch6);
+        this->mGameLayer->addChild(spriteBatch6);
         
         this->e2 = Effect::create();
-        this->addChild(this->e2);
+        this->mGameLayer->addChild(this->e2);
         
-        this->addChild(spriteBatch7);
-        this->addChild(spriteBatch1);
-        this->addChild(spriteBatch2);
-        this->addChild(spriteBatch3);
-        this->addChild(spriteBatch4);
-        this->addChild(spriteBatch5);
-        this->addChild(spriteBatch8);
+        this->mGameLayer->addChild(spriteBatch7);
+        this->mGameLayer->addChild(spriteBatch1);
+        this->mGameLayer->addChild(spriteBatch2);
+        this->mGameLayer->addChild(spriteBatch3);
+        this->mGameLayer->addChild(spriteBatch4);
+        this->mGameLayer->addChild(spriteBatch5);
+        this->mMenuLayer->addChild(spriteBatch8);
 
         this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
         this->mTimeIcon = Clock::create(this->mEventLayer);

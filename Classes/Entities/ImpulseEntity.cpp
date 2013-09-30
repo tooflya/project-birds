@@ -30,6 +30,15 @@ ImpulseEntity::ImpulseEntity(const char* pTextureFileName) :
         this->mRotateImpulse = 0;
     }
 
+ImpulseEntity::ImpulseEntity(const char* pTextureFileName, CCNode* pParent) :
+    Entity(pTextureFileName, pParent)
+    {
+        this->mWeight = 0;
+        this->mSideImpulse = 0;
+        this->mImpulsePower = 0;
+        this->mRotateImpulse = 0;
+    }
+
 ImpulseEntity::ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount) :
     Entity(pTextureFileName, pHorizontalFramesCount, pVerticalFramesCount)
     {

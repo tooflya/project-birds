@@ -58,7 +58,8 @@ const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.og
 const char* Options::SOUND_SWOOSH = "Sound/swoosh.mp3";
 const char* Options::SOUND_FREEZEE = "Sound/bonus_banana_freeze.ogg";
 const char* Options::SOUND_PREDICTION = "Sound/pome-rampdown.ogg";
-const char* Options::SOUND_POINTS[12] = {"Sound/popup-1.ogg", "Sound/popup-2.ogg","Sound/popup-3.ogg","Sound/popup-4.ogg","Sound/popup-5.ogg","Sound/popup-6.ogg","Sound/popup-7.ogg","popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg"};
+const char* Options::SOUND_COMBO[8] = {"Sound/combo-1.ogg", "Sound/combo-2.ogg","Sound/combo-3.ogg","Sound/combo-4.ogg","Sound/combo-5.ogg","Sound/combo-6.ogg","Sound/combo-7.ogg","Sound/combo-8.ogg"};
+const char* Options::SOUND_POINTS[12] = {"Sound/popup-1.ogg", "Sound/popup-2.ogg","Sound/popup-3.ogg","Sound/popup-4.ogg","Sound/popup-5.ogg","Sound/popup-6.ogg","Sound/popup-7.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg"};
 
 #else
 
@@ -80,6 +81,7 @@ const char* Options::SOUND_BONUS_TIME[3] = { "combo-blitz-backing-light.mp3", "c
 const char* Options::SOUND_SWOOSH= "swoosh.mp3";
 const char* Options::SOUND_FREEZEE = "bonus_banana_freeze.mp3";
 const char* Options::SOUND_PREDICTION = "pome-rampdown.mp3";
+const char* Options::SOUND_COMBO[8] = {"combo-1.mp3", "combo-2.mp3","combo-3.mp3","combo-4.mp3","combo-5.mp3","combo-6.mp3","combo-7.mp3","combo-8.mp3"};
 const char* Options::SOUND_POINTS[12] = {"popup-1.mp3", "popup-2.mp3","popup-3.mp3","popup-4.mp3","popup-5.mp3","popup-6.mp3","popup-7.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3"};
 const char* Options::SOUND_PROGRESS = "progress_complete.mp3";
 

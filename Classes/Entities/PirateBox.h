@@ -17,12 +17,19 @@ class PirateBox : public ImpulseEntity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        bool mGoingToDestroy;
+    
+        float mTime;
+        float mTimeElapsed;
+    
+        int mHitCount;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        PirateBox();
+        PirateBox(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -74,7 +81,7 @@ class PirateBox : public ImpulseEntity
         // Constructors
         // ===========================================================
     
-        static PirateBox* create();
+        static PirateBox* create(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -86,10 +93,10 @@ class PirateBox : public ImpulseEntity
         // Virtual Methods
         // ===========================================================
     
+        Entity* create();
+    
         void onCreate();
         void onDestroy();
-    
-        PirateBox* deepCopy();
 };
 
 #endif

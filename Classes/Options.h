@@ -129,6 +129,7 @@ class Options
         static const char* SOUND_PREDICTION;
         static const char* SOUND_POINTS[12];
         static const char* SOUND_PROGRESS;
+        static const char* SOUND_COMBO[8];
 
         static const char* VERSION;
         static int BUILD;
