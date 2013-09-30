@@ -338,6 +338,9 @@ void Game::onBonus(int pId, float pX, float pY)
             this->mBonusSomeTimeElapsed = 0;
             this->mBonusSomeTimeUpdateCount = 0;
         break;
+        case 3:
+            this->mPirateBox->create()->setCenterPosition(pX, pY);
+        break;
     }
     
     this->mRunningBonusId = pId;

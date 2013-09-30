@@ -4,10 +4,23 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>pirate_box@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,0},{265,147}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{265,147}}</string>
+                <key>sourceSize</key>
+                <string>{265,147}</string>
+            </dict>
             <key>special_birds_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{2044,1275}}</string>
+                <string>{{0,147},{2044,1275}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -25,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas11.png</string>
             <key>size</key>
-            <string>{2044,1275}</string>
+            <string>{2044,1422}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:56195af370830f7bd27a97775ead4f2a:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:29b17982409e6cf93f310c2eccb2952e:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas11.png</string>
         </dict>

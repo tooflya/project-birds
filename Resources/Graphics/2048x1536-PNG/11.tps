@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>TextureAtlas11plist</filename>
+        <filename>TextureAtlas11.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -149,7 +149,7 @@
         <key>fileList</key>
         <array>
             <filename>../../Graphics Sources/special_birds_sprite@2x.png</filename>
-            <filename>../../Graphics Sources/pirate-box@2x.png</filename>
+            <filename>../../Graphics Sources/pirate_box@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
