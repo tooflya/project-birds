@@ -18,6 +18,7 @@
 #include "Rain.h"
 #include "RainCircle.h"
 #include "RobotoPart.h"
+#include "PirateBox.h"
 
 #include "Pause.h"
 
@@ -92,6 +93,8 @@ class Game : public Screen
         Button* mGoldLifeButton;
         Entity* e3[4];
         Entity* e4[8];
+    
+        PirateBox* mPirateBox;
     
         Entity* mBackgroundLights[8];
         EntityManager* mBonusCircles;
