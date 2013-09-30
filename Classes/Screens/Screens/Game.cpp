@@ -256,9 +256,9 @@ void Game::startBoxAnimation()
     Game::TIME_SLOW = 0.1;
     
     this->mGameLayer->setAnchorPoint(ccp(this->mPirateBox->getCenterX() / Options::CAMERA_WIDTH, this->mPirateBox->getCenterY() / Options::CAMERA_HEIGHT));
-    this->mGameLayer->runAction(CCScaleTo::create(2.5, 1.5));
-    this->mGameLayer->runAction(CCRotateTo::create(2.5, Utils::randomf(-15, 15)));
-    this->mGameLayer->runAction(CCFollow::create(this->mPirateBox, CCRectMake(0, 0, Options::CAMERA_WIDTH, Options::CAMERA_HEIGHT)));
+    this->mGameLayer->runAction(CCScaleTo::create(0.2, 1.5));
+    this->mGameLayer->runAction(CCRotateTo::create(0.2, Utils::randomf(-15, 15)));
+    this->mGameLayer->runAction(CCFollow::create(this->mPirateBox, CCRectMake(-Options::CAMERA_WIDTH/4, -Options::CAMERA_HEIGHT/4, Options::CAMERA_WIDTH+Options::CAMERA_WIDTH/4, Options::CAMERA_HEIGHT+Options::CAMERA_HEIGHT/4)));
 }
 
 void Game::stopBoxAnimation()
@@ -266,13 +266,16 @@ void Game::stopBoxAnimation()
     this->mGameLayer->stopAllActions();
     
     //this->mGameLayer->setAnchorPoint(ccp(0.5, 0.5));
-    this->mGameLayer->runAction(CCScaleTo::create(2.5, 1.0));
-    this->mGameLayer->runAction(CCRotateTo::create(2.5, 0.0));
-    this->mGameLayer->runAction(CCMoveTo::create(2.5, ccp(0.0, 0.0)));
+    this->mGameLayer->runAction(CCScaleTo::create(0.2, 1.0));
+    this->mGameLayer->runAction(CCRotateTo::create(0.2, 0.0));
+    this->mGameLayer->runAction(CCMoveTo::create(0.2, ccp(0.0, 0.0)));
     
     this->mPirateBoxAnimation = true;
     this->mPirateBoxAnimationTime = 0.5;
     this->mPirateBoxAnimationTimeElapsed = 0;
+    
+    this->mPirateBox->runAction(CCFadeOut::create(0.5));
+    this->mPirateBox->runAction(CCScaleTo::create(0.5, 5));
 }
 
 void Game::onBonus(int pId, float pX, float pY)
@@ -412,6 +415,8 @@ void Game::update(float pDeltaTime)
             {
                 static_cast<Bird*>(this->mBirds->objectAtIndex(i))->mLifeCount = 0;
             }
+            
+            this->mPirateBox->destroy();
         }
     }
     

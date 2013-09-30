@@ -24,6 +24,8 @@ class PirateBox : public ImpulseEntity
         float mTimeElapsed;
     
         int mHitCount;
+    
+        Entity* mLight;
 
         // ===========================================================
         // Constructors

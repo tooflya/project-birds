@@ -24,6 +24,10 @@
 PirateBox::PirateBox(CCNode* pParent) :
     ImpulseEntity("pirate_box@2x.png", pParent)
     {
+        this->mLight = Entity::create("get_coins_light@2x.png", pParent);
+        
+        this->setZOrder(2);
+        
         this->mGoingToDestroy = false;
     }
 
@@ -48,6 +52,13 @@ void PirateBox::onCreate()
 {
     ImpulseEntity::onCreate();
     
+    this->setOpacity(255);
+    this->setScale(1.0);
+    
+    this->mLight->create();
+    this->mLight->setRotation(0);
+    this->mLight->setScale(0.5);
+    
     this->mGoingToDestroy = false;
     
     this->mWeight = Utils::coord(1500.0);
@@ -66,12 +77,16 @@ void PirateBox::onDestroy()
 {
     ImpulseEntity::onDestroy();
     
-    static_cast<Game*>(this->getParent()->getParent()->getParent())->stopBoxAnimation();
+    this->mLight->destroy();
 }
 
 void PirateBox::update(float pDeltaTime)
 {
     ImpulseEntity::update(pDeltaTime);
+    
+    this->mLight->setCenterPosition(this->getCenterX(), this->getCenterY());
+    this->mLight->setRotation(this->mLight->getRotation() + 1);
+    this->mLight->setOpacity(this->getOpacity());
     
     /** Collisions and destroy animation **/
     
@@ -98,6 +113,10 @@ void PirateBox::update(float pDeltaTime)
                     
                     this->setScale(1.2);
                     this->runAction(CCScaleTo::create(0.2, 1));
+                    
+                    this->mLight->setScale(this->mLight->getScaleX() + 0.05);
+                    
+                    static_cast<Game*>(this->getParent()->getParent()->getParent())->mCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
                 }
             }
         }
@@ -109,7 +128,9 @@ void PirateBox::update(float pDeltaTime)
         
         if(this->mTimeElapsed >= this->mTime)
         {
-            this->destroy();
+            this->mTimeElapsed = 0;
+            
+            static_cast<Game*>(this->getParent()->getParent()->getParent())->stopBoxAnimation();
         }
     }
 }

@@ -146,9 +146,9 @@ Classic::Classic() :
         this->mBirds = EntityManager::create(20, Bird::create(false), spriteBatch4);
         this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mPirateBox = PirateBox::create(spriteBatch5);
-        this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
-        this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
-        this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
+        this->mExplosions = EntityManager::create(20, Explosion::create(), spriteBatch2);
+        this->mExplosionsBasic = EntityManager::create(20, ExplosionBasic::create(), spriteBatch2);
+        this->mCoins = EntityManager::create(100, AnimatedCoin::create(0.7), spriteBatch2);
         this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
         
