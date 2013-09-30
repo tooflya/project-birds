@@ -374,6 +374,9 @@ void Bird::update(float pDeltaTime)
                         case 2:
                             entity->setColor(ccc3(0, 100, 255));
                         break;
+                        case 3:
+                            entity->setColor(ccc3(36, 178, 27));
+                        break;
                     }
                 }
             }

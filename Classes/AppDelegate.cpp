@@ -82,10 +82,10 @@ void AppDelegate::install()
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey("rate", 0);
     
-    /*if(AppDelegate::getLastVisitDaysCount() != 0)
+    if(AppDelegate::getLastVisitDaysCount() != 0)
     {
         CCUserDefault::sharedUserDefault()->setIntegerForKey("last_visit_days_count", 0);
-    } else*/ CCUserDefault::sharedUserDefault()->setIntegerForKey("last_visit_days_count", -1);
+    } else CCUserDefault::sharedUserDefault()->setIntegerForKey("last_visit_days_count", -1);
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
