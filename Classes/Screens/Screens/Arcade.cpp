@@ -145,7 +145,7 @@ Arcade::Arcade() :
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
         this->mRobotParts = EntityManager::create(8, RobotoPart::create(0), spriteBatch7);
         this->mGunLaser = Entity::create("gun_laser.png", 4, 1, spriteBatch7);
-        this->mGun = Entity::create("gun.png", spriteBatch7);
+        this->mGun = RobotoGun::create(spriteBatch7);
         
         this->mGunLaser->setAnchorPoint(ccp(0.5, 1));
         this->mGunLaser->animate(0.04);

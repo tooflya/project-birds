@@ -151,6 +151,7 @@ Classic::Classic() :
         this->mCoins = EntityManager::create(100, AnimatedCoin::create(0.7), spriteBatch2);
         this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
+        this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
         
         this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 
@@ -218,7 +219,7 @@ Classic::Classic() :
         
         this->mRobotParts = EntityManager::create(8, RobotoPart::create(0), spriteBatch7);
         this->mGunLaser = Entity::create("gun_laser.png", 4, 1, spriteBatch7);
-        this->mGun = Entity::create("gun.png", spriteBatch7);
+        this->mGun = RobotoGun::create(spriteBatch7);
         
         this->mGunLaser->setAnchorPoint(ccp(0.5, 1));
         this->mGunLaser->animate(0.04);

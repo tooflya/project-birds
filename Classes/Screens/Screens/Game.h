@@ -18,7 +18,9 @@
 #include "Rain.h"
 #include "RainCircle.h"
 #include "RobotoPart.h"
+#include "RobotoGun.h"
 #include "PirateBox.h"
+#include "ZombieExplosion.h"
 
 #include "Pause.h"
 
@@ -78,6 +80,21 @@ class Game : public Screen
         int mBonusSomeTimeUpdateCount;
         float mBonusSomeTime;
         float mBonusSomeTimeElapsed;
+    
+        int mGunLaserFrame;
+    
+        float mGunLaserFrameTime;
+        float mGunLaserFrameTimeElapsed;
+    
+        bool mZombieAnimation;
+    
+        float mZombieAnimationTime;
+        float mZombieAnimationTimeElapsed;
+    
+        float mZombieAnimationX;
+        float mZombieAnimationY;
+    
+        int mZombieAnimationCount;
     
         long mLastKillTime;
         int mIsBonusAnimationRunningCount;
@@ -173,6 +190,7 @@ class Game : public Screen
         static float TIME_SLOW;
         static bool PREDICTION;
         static bool LASERGUN;
+        static bool ZOMBIE_AREA;
 
         static int CURRENT_COUNT;
         static int BEST_COUNT;
@@ -202,6 +220,8 @@ class Game : public Screen
         EntityManager* mFeathers;
         EntityManager* mExplosionsBasic;
         EntityManager* mExplosions;
+        EntityManager* mZombieExplosions;
+        EntityManager* mGeneralExplosions;
         EntityManager* mDust;
         EntityManager* mStars;
         EntityManager* mCoins;
@@ -212,7 +232,7 @@ class Game : public Screen
         EntityManager* mRains;
         EntityManager* mRainsCircles;
         EntityManager* mRobotParts;
-        Entity* mGun;
+        RobotoGun* mGun;
         Entity* mGunLaser;
 
         // ===========================================================

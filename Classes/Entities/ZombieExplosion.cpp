@@ -1,7 +1,7 @@
-#ifndef CONST_EXPLOSIONBASIC
-#define CONST_EXPLOSIONBASIC
+#ifndef CONST_ZOMBIEEXPLOSION
+#define CONST_ZOMBIEEXPLOSION
 
-#include "ExplosionBasic.h"
+#include "ZombieExplosion.h"
 
 // ===========================================================
 // Inner Classes
@@ -19,15 +19,15 @@
 // Constructors
 // ===========================================================
 
-ExplosionBasic::ExplosionBasic() :
-    Entity("explosion_basic@2x.png", 3, 4)
+ZombieExplosion::ZombieExplosion() :
+    Entity("explosion-zombi@2x.png", 3, 4)
     {
         
     }
 
-ExplosionBasic* ExplosionBasic::create()
+ZombieExplosion* ZombieExplosion::create()
 {
-    ExplosionBasic* entity = new ExplosionBasic();
+    ZombieExplosion* entity = new ZombieExplosion();
     entity->autorelease();
     
     return entity;
@@ -37,32 +37,50 @@ ExplosionBasic* ExplosionBasic::create()
 // Methods
 // ===========================================================
 
+void ZombieExplosion::setFollowEntity(Entity* pEntity)
+{
+    this->setScale(0.5);
+    
+    this->mFX = Utils::randomf(-50, 50);
+    this->mFY = Utils::randomf(-50, 50);
+    
+    this->mFollowEntity = pEntity;
+}
+
 // ===========================================================
 // Virtual Methods
 // ===========================================================
 
-void ExplosionBasic::onAnimationEnd()
+void ZombieExplosion::onAnimationEnd()
 {
     this->destroy();
 }
 
-void ExplosionBasic::onCreate()
+void ZombieExplosion::onCreate()
 {
     Entity::onCreate();
     
     this->setCurrentFrameIndex(0);
+    this->setScale(1);
     
-    this->animate(0.05, 1);
+    this->mFollowEntity = NULL;
+    
+    this->animate(0.08, 1);
 }
     
-ExplosionBasic* ExplosionBasic::deepCopy()
+ZombieExplosion* ZombieExplosion::deepCopy()
 {
-    return ExplosionBasic::create();
+    return ZombieExplosion::create();
 }
     
-void ExplosionBasic::update(float pDeltaTime)
+void ZombieExplosion::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
+    
+    if(this->mFollowEntity != NULL)
+    {
+        this->setCenterPosition(this->mFollowEntity->getCenterX() + this->mFX, this->mFollowEntity->getCenterY() + this->mFY);
+    }
 }
 
 #endif

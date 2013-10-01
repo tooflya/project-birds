@@ -50,6 +50,8 @@ void Explosion::onCreate()
 {
     Entity::onCreate();
     
+    this->setCurrentFrameIndex(0);
+    
     this->animate(0.05, 1);
 }
     

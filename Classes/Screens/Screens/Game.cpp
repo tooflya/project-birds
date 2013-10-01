@@ -14,8 +14,10 @@
 // ===========================================================
 
 float Game::TIME_SLOW = 1;
+
 bool Game::PREDICTION = false;
 bool Game::LASERGUN = false;
+bool Game::ZOMBIE_AREA = false;
 
 int Game::CURRENT_COUNT = 0;
 int Game::BEST_COUNT = 0;
@@ -76,6 +78,7 @@ Game::Game() :
         this->mGameRunning = false;
         this->mBonusSomeTimeUpdate = false;
         this->mPirateBoxAnimation = false;
+        this->mZombieAnimation = false;
         
         this->mPause = false;
         
@@ -265,7 +268,6 @@ void Game::stopBoxAnimation()
 {
     this->mGameLayer->stopAllActions();
     
-    //this->mGameLayer->setAnchorPoint(ccp(0.5, 0.5));
     this->mGameLayer->runAction(CCScaleTo::create(0.2, 1.0));
     this->mGameLayer->runAction(CCRotateTo::create(0.2, 0.0));
     this->mGameLayer->runAction(CCMoveTo::create(0.2, ccp(0.0, 0.0)));
@@ -375,6 +377,25 @@ void Game::onBonus(int pId, float pX, float pY)
         case 3:
             this->mPirateBox->create()->setCenterPosition(pX, pY);
         break;
+        case 4:
+        
+        break;
+        case 5:
+        
+        break;
+        case 6:
+            this->mZombieAnimation = true;
+            
+            this->mZombieAnimationTime = 0.04;
+            this->mZombieAnimationTimeElapsed = 0;
+            
+            this->mZombieAnimationCount = 0;
+            
+            this->mZombieAnimationX = pX;
+            this->mZombieAnimationY = pY;
+            
+            ZOMBIE_AREA = true;
+        break;
     }
     
     this->mRunningBonusId = pId;
@@ -397,6 +418,37 @@ void Game::update(float pDeltaTime)
     if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
+    }
+    
+    if(this->mZombieAnimation)
+    {
+        this->mZombieAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mZombieAnimationTimeElapsed >= this->mZombieAnimationTime)
+        {
+            this->mZombieAnimationTimeElapsed = 0;
+            
+            ZombieExplosion* explosion = static_cast<ZombieExplosion*>(this->mZombieExplosions->create());
+            explosion->setScale(1);
+            explosion->setCenterPosition(this->mZombieAnimationX + Utils::randomf(-Utils::coord(200), Utils::coord(200)), this->mZombieAnimationY + Utils::randomf(-Utils::coord(200), Utils::coord(200)));
+            
+            for(int i = 0; i < this->mBirds->getCount(); i++)
+            {
+                Entity* bird = static_cast<Entity*>(this->mBirds->objectAtIndex(i));
+                
+                explosion = static_cast<ZombieExplosion*>(this->mZombieExplosions->create());
+                explosion->setFollowEntity(bird);
+            }
+            
+            this->mZombieAnimationCount++;
+            
+            if(this->mZombieAnimationCount >= 200)
+            {
+                this->mZombieAnimation = false;
+                
+                ZOMBIE_AREA = false;
+            }
+        }
     }
     
     if(this->mPirateBoxAnimation)
@@ -779,6 +831,7 @@ void Game::update(float pDeltaTime)
                         
                         if(bird == NULL)
                         {
+                            this->mGun->setCurrentFrameIndex(0);
                             this->mGunLaser->destroy();
                             
                             break;
@@ -786,7 +839,29 @@ void Game::update(float pDeltaTime)
                         
                         if(!this->mGunLaser->isVisible())
                         {
+                            this->mGunLaserFrame = 0;
                             this->mGunLaser->create();
+                            
+                            this->mGunLaserFrameTime = 0.05;
+                            this->mGunLaserFrameTimeElapsed = 0;
+                        }
+                        
+                        this->mGunLaserFrameTimeElapsed += pDeltaTime;
+                        
+                        if(this->mGunLaserFrameTimeElapsed >= this->mGunLaserFrameTime)
+                        {
+                            this->mGunLaserFrameTimeElapsed = 0;
+                            
+                            if(this->mGunLaserFrame >= 4)
+                            {
+                                this->mGunLaserFrame = 1;
+                            }
+                            else
+                            {
+                                this->mGunLaserFrame++;
+                            }
+                        
+                            this->mGun->setCurrentFrameIndex(this->mGunLaserFrame);
                         }
                         
                         float angle = atan2(this->mGun->getCenterY() - bird->getCenterY(), this->mGun->getCenterX() - bird->getCenterX());

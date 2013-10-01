@@ -157,6 +157,11 @@ void Bird::onCreate()
     }
     else
     {
+        if(Game::ZOMBIE_AREA)
+        {
+            this->mLifeCount--;
+        }
+        
         if(game->mChalange)
         {
             this->mType = Utils::random(0, this->count - 3);
@@ -376,6 +381,18 @@ void Bird::update(float pDeltaTime)
                         break;
                         case 3:
                             entity->setColor(ccc3(36, 178, 27));
+                        break;
+                        case 4:
+                            entity->setColor(ccc3(224, 117, 118));
+                        break;
+                        case 5:
+                            entity->setColor(ccc3(205, 0, 15));
+                        break;
+                        case 6:
+                            entity->setColor(ccc3(123, 171, 55));
+                        break;
+                        case 7:
+                            entity->setColor(ccc3(62, 49, 176));
                         break;
                     }
                 }

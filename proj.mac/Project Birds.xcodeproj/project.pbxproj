@@ -180,6 +180,8 @@
 		7873627917CDF627006C1C9B /* iPhone-portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7873620817CDF627006C1C9B /* iPhone-portrait@2x.png */; };
 		7873627A17CDF627006C1C9B /* iPhone5-portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7873620917CDF627006C1C9B /* iPhone5-portrait@2x.png */; };
 		78837F0317F9968D0006E25E /* PirateBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78837F0117F9968D0006E25E /* PirateBox.cpp */; };
+		78837F0617FAE5560006E25E /* ZombieExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78837F0417FAE5550006E25E /* ZombieExplosion.cpp */; };
+		78837F0917FB1E820006E25E /* RobotoGun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78837F0717FB1E820006E25E /* RobotoGun.cpp */; };
 		78B37D43177E4B0E00773C6A /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B37D42177E4B0E00773C6A /* libcocos2dx.a */; };
 		78DA14A71733EA360005B6D2 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DA14441733EA350005B6D2 /* CDAudioManager.m */; };
 		78DA14A81733EA360005B6D2 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DA14471733EA350005B6D2 /* CDOpenALSupport.m */; };
@@ -479,6 +481,10 @@
 		7873620917CDF627006C1C9B /* iPhone5-portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone5-portrait@2x.png"; sourceTree = "<group>"; };
 		78837F0117F9968D0006E25E /* PirateBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PirateBox.cpp; sourceTree = "<group>"; };
 		78837F0217F9968D0006E25E /* PirateBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PirateBox.h; sourceTree = "<group>"; };
+		78837F0417FAE5550006E25E /* ZombieExplosion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZombieExplosion.cpp; sourceTree = "<group>"; };
+		78837F0517FAE5550006E25E /* ZombieExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZombieExplosion.h; sourceTree = "<group>"; };
+		78837F0717FB1E820006E25E /* RobotoGun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobotoGun.cpp; sourceTree = "<group>"; };
+		78837F0817FB1E820006E25E /* RobotoGun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotoGun.h; sourceTree = "<group>"; };
 		78AEFB5F1787609800CD5109 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78B37D42177E4B0E00773C6A /* libcocos2dx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcocos2dx.a; sourceTree = "<group>"; };
 		78DA142F1733EA350005B6D2 /* Export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Export.h; sourceTree = "<group>"; };
@@ -684,8 +690,12 @@
 		78735E8A17CDF54C006C1C9B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78837F0417FAE5550006E25E /* ZombieExplosion.cpp */,
+				78837F0517FAE5550006E25E /* ZombieExplosion.h */,
 				78837F0117F9968D0006E25E /* PirateBox.cpp */,
 				78837F0217F9968D0006E25E /* PirateBox.h */,
+				78837F0717FB1E820006E25E /* RobotoGun.cpp */,
+				78837F0817FB1E820006E25E /* RobotoGun.h */,
 				78DAB94917F4750A0021C262 /* RobotoPart.cpp */,
 				78DAB94A17F4750C0021C262 /* RobotoPart.h */,
 				78DAB94317F3056C0021C262 /* Rain.cpp */,
@@ -1333,6 +1343,8 @@
 				78DAB94817F3056F0021C262 /* RainCircle.cpp in Sources */,
 				78DAB94B17F4750D0021C262 /* RobotoPart.cpp in Sources */,
 				78837F0317F9968D0006E25E /* PirateBox.cpp in Sources */,
+				78837F0617FAE5560006E25E /* ZombieExplosion.cpp in Sources */,
+				78837F0917FB1E820006E25E /* RobotoGun.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

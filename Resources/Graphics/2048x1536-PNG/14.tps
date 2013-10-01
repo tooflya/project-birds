@@ -54,7 +54,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>4096</int>
             <key>height</key>
             <int>2048</int>
         </QSize>
@@ -157,6 +157,7 @@
             <filename>../../Graphics Sources/box_laser_green@2x.png</filename>
             <filename>../../Graphics Sources/box_laser_red@2x.png</filename>
             <filename>../../Graphics Sources/box@2x.png</filename>
+            <filename>../../Graphics Sources/explosion-zombi@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -1,7 +1,7 @@
-#ifndef CONST_EXPLOSIONBASIC
-#define CONST_EXPLOSIONBASIC
+#ifndef CONST_ROBOTOGUN
+#define CONST_ROBOTOGUN
 
-#include "ExplosionBasic.h"
+#include "RobotoGun.h"
 
 // ===========================================================
 // Inner Classes
@@ -19,15 +19,14 @@
 // Constructors
 // ===========================================================
 
-ExplosionBasic::ExplosionBasic() :
-    Entity("explosion_basic@2x.png", 3, 4)
+RobotoGun::RobotoGun(CCNode* pParent) :
+    Entity("gun.png", 5, 1, pParent)
     {
-        
     }
 
-ExplosionBasic* ExplosionBasic::create()
+RobotoGun* RobotoGun::create(CCNode* pParent)
 {
-    ExplosionBasic* entity = new ExplosionBasic();
+    RobotoGun* entity = new RobotoGun(pParent);
     entity->autorelease();
     
     return entity;
@@ -37,32 +36,28 @@ ExplosionBasic* ExplosionBasic::create()
 // Methods
 // ===========================================================
 
-// ===========================================================
-// Virtual Methods
-// ===========================================================
-
-void ExplosionBasic::onAnimationEnd()
+Entity* RobotoGun::create()
 {
-    this->destroy();
+    return Entity::create();
 }
 
-void ExplosionBasic::onCreate()
+void RobotoGun::onCreate()
 {
     Entity::onCreate();
-    
-    this->setCurrentFrameIndex(0);
-    
-    this->animate(0.05, 1);
 }
-    
-ExplosionBasic* ExplosionBasic::deepCopy()
+
+void RobotoGun::onDestroy()
 {
-    return ExplosionBasic::create();
+    Entity::onDestroy();
 }
-    
-void ExplosionBasic::update(float pDeltaTime)
+
+void RobotoGun::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
 }
+
+// ===========================================================
+// Virtual Methods
+// ===========================================================
 
 #endif
