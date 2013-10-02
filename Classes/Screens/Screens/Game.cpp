@@ -13,6 +13,11 @@
 // Constants
 // ===========================================================
 
+int** Game::MATRIX = NULL;
+
+int Game::MATRIX_SIZE_X = 0;
+int Game::MATRIX_SIZE_Y = 0;
+
 float Game::TIME_SLOW = 1;
 
 bool Game::PREDICTION = false;
@@ -55,6 +60,27 @@ Game::~Game()
 Game::Game() :
     Screen()
     {
+        int sx = (int) round(Options::CAMERA_WIDTH / Utils::coord(64));
+        int sy = (int) round(Options::CAMERA_HEIGHT / Utils::coord(64));
+        
+        MATRIX_SIZE_X = sx;
+        MATRIX_SIZE_Y = sy;
+        
+        MATRIX = new int*[sx];
+
+        for(int i = 0; i < sx; i++)
+        {
+            MATRIX[i] = new int[sy];
+        }
+        
+        for(int i = 0; i < sx; i++)
+        {
+            for(int j = 0; j < sy; j++)
+            {
+                MATRIX[i][j] = -1;
+            }
+        }
+        
         this->mMenuLayer = CCLayer::create();
         this->mGameLayer = CCLayer::create();
         
@@ -173,7 +199,7 @@ void Game::removeLife()
     }
 }
 
-void Game::onBirBlow(int pType)
+void Game::onBirBlow(int pType, float pX, float pY)
 {
     if(this->mGameRunning)
     {

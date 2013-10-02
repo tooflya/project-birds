@@ -17,6 +17,8 @@ class Color : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        int position;
 
         // ===========================================================
         // Constructors
@@ -81,11 +83,17 @@ class Color : public Entity
         // ===========================================================
 
         void setType(int pType);
-        
+    
+        void setCenterPositionWithCorrection(float pCenterX, float pCenterY);
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
 
+        void onCreate();
+    
+        void update(float pDeltaTime);
+    
         Color* deepCopy();
 };
 

@@ -293,12 +293,12 @@ void Bird::onDestroy()
             {
                 if(this->mLifeCount <= 0)
                 {
-                    game->onBirBlow(this->mType);
+                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
                 }
             }
             else
             {
-              game->onBirBlow(this->mType);
+              game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
             }
 
             if(this->mType == TYPE_DANGER)

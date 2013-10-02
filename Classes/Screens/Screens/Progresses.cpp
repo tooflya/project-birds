@@ -24,38 +24,76 @@ public:
     }
 };
 
+class Effect : public CCNodeRGBA
+{
+public:
+    Effect()
+    {
+        this->setColor(ccc3(0, 0, 0));
+        this->setOpacity(0);
+    }
+    
+    static Effect* create()
+    {
+        Effect* background = new Effect();
+        background->autorelease();
+        
+        return background;
+    }
+    
+    void draw()
+    {
+        if(this->getOpacity() <= 0) return;
+        
+        glLineWidth(1);
+        CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
+        ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
+    }
+};
+
 // ===========================================================
 // Constants
 // ===========================================================
 
 Progresses* Progresses::m_Instance = NULL;
 
-int Progresses::SIMLE_TASK[10][50] =
+class Grid : public CCNode
 {
-    {1, 1, 1, 1, 1, 2,  2, 3, 3, 3, 1, 1, 6, 6, 6, 5, 4, 4, 3, 3, 2, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-    {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }
-};
-
-CCArray* Progresses::TASK[10] =
-{
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+public:
+    
+  void draw()
+    {return;
+        float x1 = Utils::coord(0);
+        float x2 = Options::CAMERA_WIDTH;
+        float y1 = Utils::coord(0);
+        float y2 = Utils::coord(0);
+        
+        int xc = (Options::CAMERA_WIDTH / Utils::coord(64)) / 2;
+        int yc = (Options::CAMERA_HEIGHT / Utils::coord(64)) / 2;
+        
+        ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
+        
+        for(int i = -yc; i < yc + 1; i++)
+        {
+            y1 = Options::CAMERA_CENTER_Y + Utils::coord(64) * i;
+            y2 = Options::CAMERA_CENTER_Y + Utils::coord(64) * i;
+            
+            ccDrawLine(ccp(x1, y1), ccp(x2, y2));
+        }
+        
+        x1 = Utils::coord(0);
+        x2 = Utils::coord(0);
+        y1 = Utils::coord(0);
+        y2 = Options::CAMERA_HEIGHT - Utils::coord(65);
+        
+        for(int i = -xc; i < xc + 1; i++)
+        {
+            x1 = Options::CAMERA_CENTER_X + Utils::coord(64) * i;
+            x2 = Options::CAMERA_CENTER_X + Utils::coord(64) * i;
+            
+            ccDrawLine(ccp(x1, y1), ccp(x2, y2));
+        }
+    }
 };
 
 // ===========================================================
@@ -69,76 +107,204 @@ CCArray* Progresses::TASK[10] =
 Progresses::~Progresses()
 {
     this->mColors->release();
-    this->mShelfes->release();
 }
 
 Progresses::Progresses() :
     Game()
+{
+    this->mEventLayer = CCLayer::create();
+    
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
+    
+    CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.png");
+    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.png");
+    CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.png");
+    CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.png");
+    CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.png");
+    CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.png");
+    CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas14.png");
+    CCSpriteBatchNode* spriteBatch8 = CCSpriteBatchNode::create("TextureAtlas6.png");
+    
+    this->mGameLayer->addChild(spriteBatch6);
+    
+    this->e2 = Effect::create();
+    this->mGameLayer->addChild(this->e2);
+    
+    this->mGameLayer->addChild(spriteBatch7);
+    this->mGameLayer->addChild(spriteBatch1);
+    this->mGameLayer->addChild(spriteBatch2);
+    this->mGameLayer->addChild(spriteBatch3);
+    this->mGameLayer->addChild(spriteBatch4);
+    this->mGameLayer->addChild(spriteBatch5);
+    this->mMenuLayer->addChild(spriteBatch8);
+    
+    this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
+    
+    this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
+    this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
+    for(int i = 1; i < 4; i++)
     {
-        this->mEventLayer = CCLayer::create();
-        
-        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-        
-        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.png");
-        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.png");
-        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.png");
-        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.png");
-        CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.png");
-        CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.png");
-        CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas7.png");
-        
-        this->mGameLayer->addChild(spriteBatch6);
-        
-        //this->e2 = Effect::create();
-        //this->mGameLayer->addChild(this->e2);
-        
-        this->mGameLayer->addChild(spriteBatch7);
-        this->mGameLayer->addChild(spriteBatch1);
-        this->mGameLayer->addChild(spriteBatch2);
-        this->mGameLayer->addChild(spriteBatch3);
-        this->mGameLayer->addChild(spriteBatch4);
-        this->mGameLayer->addChild(spriteBatch5);
-        //this->mMenuLayer->addChild(spriteBatch8);
-        
-        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
-
-        this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
-
-        //this->mPauseButton = Button::create((EntityStructure) {"game_gui_btn_sprite@2x.png", 1, 1, 116, 0, 116, 78}, spriteBatch2, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
-        
-        this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
-        this->mMarks = EntityManager::create(200, Mark::create(), spriteBatch2);
-        this->mFeathers = EntityManager::create(100, Feather::create(), spriteBatch2);
-        this->mBirds = EntityManager::create(20, Bird::create(false), spriteBatch4);
-        this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
-        this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
-        this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
-        this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
-
-        this->mEventPanel = EventPanel::create(this);
-        
-        this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
-
-        //this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(64), Options::CAMERA_HEIGHT - Utils::coord(48));
-
-        this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-
-        this->mShelfes = EntityManager::create(10, Entity::create("game_shelf@2x.png"), spriteBatch7);
-        this->mColors = EntityManager::create(50, Color::create(), spriteBatch7);
-
-        this->mPausePopup = ProgressPause::create(this);
-        this->mEndScreen = ProgressEnd::create(Splash::TYPE_PROGRESS, this);
-
-        this->mAlgorithmBirdsRemainig = 20;
-        this->mAlgorithmBirdsTime = 0.5;
-
-        this->mAlgorithmBirdsTime1 = 0.0;
-        this->mAlgorithmBirdsTime2 = 1.5;
-
-        this->addChild(this->mEventLayer);
-
-        m_Instance = this;
+        this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+        this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+    }
+    for(int i = 4; i < 7; i++)
+    {
+        this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+        this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+    }
+    
+    this->mGamePanel = Entity::create("game_panel@2x.png", spriteBatch8);
+    this->mTextAreas[0] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
+    this->mTextAreas[1] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
+    this->mTextAreas[2] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
+    this->mTextIcons[0] = Entity::create("game_panel_counter@2x.png", spriteBatch8);
+    this->mTextIcons[1] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
+    this->mTextIcons[2] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
+    this->mHearts[0] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
+    this->mHearts[1] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
+    this->mHearts[2] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
+    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+    
+    this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mTextAreas[1]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mHearts[0]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() - Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mHearts[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(20), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mHearts[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(70), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() * 2 + Utils::coord(65), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    //this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
+    this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
+    
+    //this->mCountText = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+    //this->mBestCountText = Text::create(Options::TEXT_GAME_BEST, this);
+    //this->mGoldLifesCount = Text::create((Textes) {"5", Options::FONT, 32, -1}, this);
+    
+    this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
+    
+    this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+    
+    this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
+    this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
+    this->mFeathers = EntityManager::create(300, Feather::create(), spriteBatch2);
+    this->mBirds = EntityManager::create(20, Bird::create(false), spriteBatch4);
+    this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
+    this->mPirateBox = PirateBox::create(spriteBatch5);
+    this->mExplosions = EntityManager::create(20, Explosion::create(), spriteBatch2);
+    this->mExplosionsBasic = EntityManager::create(20, ExplosionBasic::create(), spriteBatch2);
+    this->mCoins = EntityManager::create(100, AnimatedCoin::create(0.7), spriteBatch2);
+    this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
+    this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
+    this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
+    this->mColors = EntityManager::create(300, Color::create(), spriteBatch2);
+    
+    this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
+    
+    //this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
+    //this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
+    
+    this->mEventPanel = EventPanel::create(this);
+    
+    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
+    for(int i = 1; i < 4; i++)
+    {
+        this->mBackgroundLights[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+    }
+    for(int i = 1; i < 4; i++)
+    {
+        this->mBackgroundLights[i + 3]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+    }
+    ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
+    
+    this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+    //this->mBestCountText->setCenterPosition(Utils::coord(10) + this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    //this->mLevelUpText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
+    //this->mLevelUpText->setOpacity(0);
+    //this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
+    //this->mBonusTimeText->setOpacity(0);
+    
+    //this->mGoldLifesCount->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->e4[0] = Entity::create("box_laser_green@2x.png", spriteBatch7);
+    this->e4[1] = Entity::create("box_laser_red@2x.png", spriteBatch7);
+    this->e4[2] = Entity::create("box_laser_green@2x.png", spriteBatch7);
+    this->e4[3] = Entity::create("box_laser_red@2x.png", spriteBatch7);
+    this->e4[4] = Entity::create("box_laser_green@2x.png", spriteBatch7);
+    this->e4[5] = Entity::create("box_laser_red@2x.png", spriteBatch7);
+    this->e4[6] = Entity::create("box_laser_green@2x.png", spriteBatch7);
+    this->e4[7] = Entity::create("box_laser_red@2x.png", spriteBatch7);
+    
+    this->e4[0]->setAnchorPoint(ccp(0.5, 0));
+    this->e4[1]->setAnchorPoint(ccp(0.5, 1));
+    this->e4[2]->setAnchorPoint(ccp(0.5, 1));
+    this->e4[3]->setAnchorPoint(ccp(0.5, 0));
+    this->e4[4]->setAnchorPoint(ccp(0.5, 0));
+    this->e4[5]->setAnchorPoint(ccp(0.5, 1));
+    this->e4[6]->setAnchorPoint(ccp(0.5, 1));
+    this->e4[7]->setAnchorPoint(ccp(0.5, 0));
+    
+    this->e1 = Entity::create("freeze_bg.png", spriteBatch7);
+    this->e3[0] = Entity::create("box@2x.png", spriteBatch7);
+    this->e3[1] = Entity::create("box@2x.png", spriteBatch7);
+    this->e3[2] = Entity::create("box@2x.png", spriteBatch7);
+    this->e3[3] = Entity::create("box@2x.png", spriteBatch7);
+    
+    this->e4[4]->setRotation(-90);
+    this->e4[5]->setRotation(-90);
+    this->e4[6]->setRotation(-90);
+    this->e4[7]->setRotation(-90);
+    
+    this->e3[1]->setScaleY(-1);
+    this->e3[2]->setScaleX(-1);
+    this->e3[2]->setScaleY(-1);
+    this->e3[3]->setScaleX(-1);
+    
+    this->mRobotParts = EntityManager::create(8, RobotoPart::create(0), spriteBatch7);
+    this->mGunLaser = Entity::create("gun_laser.png", 4, 1, spriteBatch7);
+    this->mGun = RobotoGun::create(spriteBatch7);
+    
+    this->mGunLaser->setAnchorPoint(ccp(0.5, 1));
+    this->mGunLaser->animate(0.04);
+    
+    this->mRains = EntityManager::create(300, Rain::create(), spriteBatch7);
+    this->mRainsCircles = EntityManager::create(300, RainCircle::create(), spriteBatch7);
+    
+    this->mPausePopup = ProgressPause::create(this);
+    this->mEndScreen = ProgressEnd::create(Splash::TYPE_PROGRESS, this);
+    
+    //this->mLevelUpTime = 30.0;
+    //this->mLevelUpTimeElapsed = 0;
+    
+    //this->mLevelUpAnimationTime = 4.0;
+    //this->mLevelUpAnimationTimeElapsed = 0;
+    
+    //this->mChalangeTime = 90.0 - 1.0;
+    //this->mChalangeTimeElapsed = 0;
+    
+    this->mAlgorithmBirdsRemainig = 6;
+    this->mAlgorithmBirdsTime = 1.5;
+    
+    this->mAlgorithmBirdsTime1 = 2.0;
+    this->mAlgorithmBirdsTime2 = 7.0;
+    
+    //this->mIsLevelUpAnimation = false;
+    
+    this->addChild(this->mEventLayer);
+    this->addChild(new Grid());
+    
+    m_Instance = this;
     }
 
 Progresses* Progresses::create()
@@ -188,6 +354,11 @@ void Progresses::onTouchButtonsCallback(const int pAction, const int pID)
 // Override Methods
 // ===========================================================
 
+void Progresses::draw()
+{
+    Game::draw();
+}
+
 void Progresses::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
@@ -198,43 +369,6 @@ void Progresses::onGameStarted()
     BEST_COUNT = AppDelegate::getBestResult(0);
 
     this->mColors->clear();
-    this->mShelfes->clear();
-
-    for(int i = -3; i < 7; i++)
-    {
-        Entity* entity = static_cast<Entity*>(this->mShelfes->create());
-
-        entity->setCenterPosition(entity->getWidth() * i, entity->getHeight() / 4);
-    }
-    
-    TASK[0] = new CCArray();
-    TASK[0]->initWithCapacity(50);
-
-    for(int i = 0; i < 50; i++)
-    {
-        int task = SIMLE_TASK[0][i];
-
-        if(task < 0)
-        {
-            break;
-        }
-
-        TASK[0]->addObject(new Task(task));
-    }
-
-    for(int i = 0; i < TASK[0]->count(); i++)
-    {
-        int task = static_cast<Task*>(TASK[0]->objectAtIndex(i))->getTask();
-
-        if(task >= 0)
-        {
-            Color* entity = static_cast<Color*>(this->mColors->create());
-
-            entity->setCurrentFrameIndex(task);
-            entity->setType(i);
-            entity->setCenterPosition(Utils::coord(64) * (i + 1), Utils::coord(64));
-        }
-    }
 }
 
 void Progresses::onGameEnd()
@@ -249,7 +383,7 @@ void Progresses::onGameEnd()
     }
 }
 
-void Progresses::onBirBlow(int pType)
+void Progresses::onBirBlow(int pType, float pX, float pY)
 {
     if(this->mGameRunning)
     {
@@ -259,92 +393,10 @@ void Progresses::onBirBlow(int pType)
         }
         else
         {
-            if(pType == static_cast<Task*>(TASK[0]->objectAtIndex(0))->getTask())
-            {
-                Color* entity = NULL;
-
-                for(int i = 0; i < this->mColors->getCount(); i++)
-                {
-                    Color* en = static_cast<Color*>(this->mColors->objectAtIndex(i));
-
-                    if(entity == NULL)
-                    {
-                        entity = en;
-                    }
-                    else
-                    {
-                        if(en->getCenterX() < entity->getCenterX())
-                        {
-                            entity = en;
-                        }
-                    }
-                }
-
-                entity->destroy();
-
-                Game::onBirBlow(pType);
-
-                entity = NULL;
-
-                for(int i = 0; i < this->mColors->getCount(); i++)
-                {
-                    Color* en = static_cast<Color*>(this->mColors->objectAtIndex(i));
-
-                    if(entity == NULL)
-                    {
-                        entity = en;
-                    }
-                    else
-                    {
-                        if(en->getCenterX() < entity->getCenterX())
-                        {
-                            entity = en;
-                        }
-                    }
-                }
-
-                this->mColors->getParent()->stopAllActions();
-                this->mShelfes->getParent()->stopAllActions();
-
-                this->mColors->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mColors->getParent()->getPosition().y)));
-                this->mShelfes->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mShelfes->getParent()->getPosition().y)));
-
-                TASK[0]->removeObjectAtIndex(0);
-            }
-            else
-            {
-                Color* entity1 = NULL;
-
-                for(int i = 0; i < this->mColors->getCount(); i++)
-                {
-                    Color* en = static_cast<Color*>(this->mColors->objectAtIndex(i));
-
-                    if(entity1 == NULL)
-                    {
-                        entity1 = en;
-                    }
-                    else
-                    {
-                        if(en->getCenterX() < entity1->getCenterX())
-                        {
-                            entity1 = en;
-                        }
-                    }
-                }
-
-                TASK[0]->insertObject(new Task(pType), 0);
-
-                Color* entity = static_cast<Color*>(this->mColors->create());
-
-                entity->setCurrentFrameIndex(pType);
-                entity->setCenterPosition(entity1->getCenterX() - Utils::coord(64), Utils::coord(64));
-
-                this->mColors->getParent()->stopAllActions();
-                this->mShelfes->getParent()->stopAllActions();
-                
-                this->mColors->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mColors->getParent()->getPosition().y)));
-                this->mShelfes->getParent()->runAction(CCMoveTo::create(0.2, ccp(-entity->getCenterX() + Utils::coord(64), this->mShelfes->getParent()->getPosition().y)));
-            }
+            Color* color = static_cast<Color*>(this->mColors->create());
+            
+            color->setCurrentFrameIndex(pType);
+            color->setCenterPositionWithCorrection(pX, pY);
         }
     }
 }
@@ -354,7 +406,6 @@ void Progresses::onEnter()
     Game::onEnter();
 
     this->mColors->clear();
-    this->mColors->getParent()->setPosition(ccp(0, 0));
 }
 
 void Progresses::onExit()

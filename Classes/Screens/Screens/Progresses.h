@@ -29,7 +29,6 @@ class Progresses : public Game
         // ===========================================================
 
         EntityManager* mColors;
-        EntityManager* mShelfes;
     
         // ===========================================================
         // Constructors
@@ -53,8 +52,6 @@ class Progresses : public Game
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static int SIMLE_TASK[10][50];
 
         // ===========================================================
         // Fields
@@ -83,8 +80,6 @@ class Progresses : public Game
         // Constants
         // ===========================================================
 
-        static CCArray* TASK[10];
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -106,6 +101,8 @@ class Progresses : public Game
         // ===========================================================
     
         void update(float pDeltaTime);
+    
+        void draw();
 
         void onEnter();
         void onExit();
@@ -113,7 +110,7 @@ class Progresses : public Game
         void onGameStarted();
         void onGameEnd();
 
-        void onBirBlow(int pType);
+        void onBirBlow(int pType, float pX, float pY);
 };
 
 #endif

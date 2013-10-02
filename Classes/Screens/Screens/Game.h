@@ -21,6 +21,7 @@
 #include "RobotoGun.h"
 #include "PirateBox.h"
 #include "ZombieExplosion.h"
+#include "Color.h"
 
 #include "Pause.h"
 
@@ -187,6 +188,11 @@ class Game : public Screen
         // Constants
         // ===========================================================
     
+        static int** MATRIX;
+    
+        static int MATRIX_SIZE_X;
+        static int MATRIX_SIZE_Y;
+    
         static float TIME_SLOW;
         static bool PREDICTION;
         static bool LASERGUN;
@@ -251,7 +257,7 @@ class Game : public Screen
         virtual void onGameStarted();
         virtual void onGameEnd();
         virtual void removeLife();
-        virtual void onBirBlow(int pType);
+        virtual void onBirBlow(int pType, float pX, float pY);
         virtual void pause();
         virtual void onBonus(int pId, float pX, float pY);
         void startBoxAnimation();
