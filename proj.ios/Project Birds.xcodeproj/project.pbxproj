@@ -174,6 +174,7 @@
 		78582AED17BBD94500C96267 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78582AEC17BBD94500C96267 /* Default-Portrait@2x~ipad.png */; };
 		78593F7E17FB079B0015EC86 /* ZombieExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78593F7C17FB07890015EC86 /* ZombieExplosion.cpp */; };
 		78593F8117FC370D0015EC86 /* RobotoGun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78593F7F17FC370A0015EC86 /* RobotoGun.cpp */; };
+		78593F8417FDDCFE0015EC86 /* GeneralExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78593F8217FDDCF60015EC86 /* GeneralExplosion.cpp */; };
 		7869165B17F0560900184E9D /* wep_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7869165A17F055C600184E9D /* wep_8@2x.png */; };
 		7869165C17F0560900184E9D /* TextureAtlas14.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7869165817F0540D00184E9D /* TextureAtlas14.plist */; };
 		7869165D17F0560900184E9D /* TextureAtlas14.png in Resources */ = {isa = PBXBuildFile; fileRef = 7869165917F0540D00184E9D /* TextureAtlas14.png */; };
@@ -600,6 +601,8 @@
 		78593F7D17FB07890015EC86 /* ZombieExplosion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZombieExplosion.h; sourceTree = "<group>"; };
 		78593F7F17FC370A0015EC86 /* RobotoGun.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RobotoGun.cpp; sourceTree = "<group>"; };
 		78593F8017FC370A0015EC86 /* RobotoGun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobotoGun.h; sourceTree = "<group>"; };
+		78593F8217FDDCF60015EC86 /* GeneralExplosion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GeneralExplosion.cpp; sourceTree = "<group>"; };
+		78593F8317FDDCF60015EC86 /* GeneralExplosion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralExplosion.h; sourceTree = "<group>"; };
 		7869165817F0540D00184E9D /* TextureAtlas14.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TextureAtlas14.plist; sourceTree = "<group>"; };
 		7869165917F0540D00184E9D /* TextureAtlas14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextureAtlas14.png; sourceTree = "<group>"; };
 		7869165A17F055C600184E9D /* wep_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_8@2x.png"; sourceTree = "<group>"; };
@@ -1072,6 +1075,8 @@
 		783E873117C20CEB00FD49C1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78593F8217FDDCF60015EC86 /* GeneralExplosion.cpp */,
+				78593F8317FDDCF60015EC86 /* GeneralExplosion.h */,
 				78593F7F17FC370A0015EC86 /* RobotoGun.cpp */,
 				78593F8017FC370A0015EC86 /* RobotoGun.h */,
 				78593F7C17FB07890015EC86 /* ZombieExplosion.cpp */,
@@ -2347,6 +2352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78593F8417FDDCFE0015EC86 /* GeneralExplosion.cpp in Sources */,
 				78593F8117FC370D0015EC86 /* RobotoGun.cpp in Sources */,
 				78593F7E17FB079B0015EC86 /* ZombieExplosion.cpp in Sources */,
 				78BA557817F9A02E00C03E44 /* PirateBox.cpp in Sources */,

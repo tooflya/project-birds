@@ -93,6 +93,20 @@ public:
             
             ccDrawLine(ccp(x1, y1), ccp(x2, y2));
         }
+        
+        ccDrawColor4F(1.0f, 1.0f, 1.0f, 1.0f);
+        
+        for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
+        {
+            for(int j = Game::MATRIX_SIZE_Y - 1; j >= 0; j--)
+            {
+                if(Game::MATRIX[i][j] == -1)
+                {
+                    ccDrawLine(ccp(Utils::coord(64) * i, Options::CAMERA_HEIGHT - Utils::coord(64) * j), ccp(Utils::coord(64) * (i + 1), Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 1)));
+                    ccDrawLine(ccp(Utils::coord(64) * i, Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 1)), ccp(Utils::coord(64) * (i + 1), Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 0)));
+                }
+            }
+        }
     }
 };
 
@@ -205,7 +219,7 @@ Progresses::Progresses() :
     this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
     this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
     this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
-    this->mColors = EntityManager::create(300, Color::create(), spriteBatch2);
+    this->mColors = EntityManager::create(1000, Color::create(), spriteBatch2);
     
     this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
     
@@ -293,11 +307,11 @@ Progresses::Progresses() :
     //this->mChalangeTime = 90.0 - 1.0;
     //this->mChalangeTimeElapsed = 0;
     
-    this->mAlgorithmBirdsRemainig = 6;
+    this->mAlgorithmBirdsRemainig = 5;
     this->mAlgorithmBirdsTime = 1.5;
     
-    this->mAlgorithmBirdsTime1 = 2.0;
-    this->mAlgorithmBirdsTime2 = 7.0;
+    this->mAlgorithmBirdsTime1 = 1.0;
+    this->mAlgorithmBirdsTime2 = 1.0;
     
     //this->mIsLevelUpAnimation = false;
     
@@ -305,6 +319,11 @@ Progresses::Progresses() :
     this->addChild(new Grid());
     
     m_Instance = this;
+    
+    //
+    
+    mSpecialBirdsTime = 20000;
+    mCoinsBirdTime = 20000;
     }
 
 Progresses* Progresses::create()
@@ -389,7 +408,7 @@ void Progresses::onBirBlow(int pType, float pX, float pY)
     {
         if(pType == Bird::TYPE_DANGER)
         {
-
+            
         }
         else
         {

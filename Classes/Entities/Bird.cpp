@@ -284,31 +284,31 @@ void Bird::onDestroy()
         if(game->mGameRunning)
         {
             if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange && !this->mBonus && this->mChalangeType != 3 && !Game::LASERGUN)
-        {
-            game->removeLife();
-        }
-        else
-        {
-            if(this->mChalange || this->mChalangeType == 3 || this->mBonus)
             {
-                if(this->mLifeCount <= 0)
-                {
-                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
-                }
+                game->removeLife();
             }
             else
             {
-              game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
-            }
-
-            if(this->mType == TYPE_DANGER)
-            {
-                if(this->mSoundEffect != 0)
+                if(this->mChalange || this->mChalangeType == 3 || this->mBonus)
                 {
-                    SimpleAudioEngine::sharedEngine()->stopEffect(this->mSoundEffect);
+                    if(this->mLifeCount <= 0)
+                    {
+                        game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
+                    }
+                }
+                else
+                {
+                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
+                }
+
+                if(this->mType == TYPE_DANGER)
+                {
+                    if(this->mSoundEffect != 0)
+                    {
+                        SimpleAudioEngine::sharedEngine()->stopEffect(this->mSoundEffect);
+                    }
                 }
             }
-        }
         }
         
         if(this->mType == TYPE_FLAYER)
@@ -516,6 +516,8 @@ void Bird::update(float pDeltaTime)
                 {
                     this->mLifeCount = 0;
                     
+                    if(!this->mBonus)
+                    {
                     Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
                     Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 
@@ -523,6 +525,7 @@ void Bird::update(float pDeltaTime)
 
                     explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
                     explosion->setColor(COLORS[this->mType]);
+                    }
 
                     if(this->mType != TYPE_DANGER && !this->mBonus)
                     {

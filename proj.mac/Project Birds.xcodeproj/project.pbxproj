@@ -19,6 +19,7 @@
 		41CD6C9415BF7793005E6F29 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8C15BF7793005E6F29 /* OpenAL.framework */; };
 		41CD6C9515BF7793005E6F29 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8D15BF7793005E6F29 /* OpenGL.framework */; };
 		41CD6C9615BF7793005E6F29 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8E15BF7793005E6F29 /* QuartzCore.framework */; };
+		782AD27917FDD037009C731E /* GeneralExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 782AD27717FDD036009C731E /* GeneralExplosion.cpp */; };
 		78334D7417E8793E0045D8A5 /* about_scroll_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78334D3F17E8793E0045D8A5 /* about_scroll_fill@2x.png */; };
 		78334D7517E8793E0045D8A5 /* about_scroll_fill_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78334D4017E8793E0045D8A5 /* about_scroll_fill_small@2x.png */; };
 		78334D7617E8793E0045D8A5 /* more_games_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78334D4117E8793E0045D8A5 /* more_games_list@2x.png */; };
@@ -246,6 +247,8 @@
 		41CD6C8C15BF7793005E6F29 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		41CD6C8D15BF7793005E6F29 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		41CD6C8E15BF7793005E6F29 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		782AD27717FDD036009C731E /* GeneralExplosion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneralExplosion.cpp; sourceTree = "<group>"; };
+		782AD27817FDD036009C731E /* GeneralExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralExplosion.h; sourceTree = "<group>"; };
 		78334D3F17E8793E0045D8A5 /* about_scroll_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill@2x.png"; sourceTree = "<group>"; };
 		78334D4017E8793E0045D8A5 /* about_scroll_fill_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill_small@2x.png"; sourceTree = "<group>"; };
 		78334D4117E8793E0045D8A5 /* more_games_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_games_list@2x.png"; sourceTree = "<group>"; };
@@ -690,6 +693,8 @@
 		78735E8A17CDF54C006C1C9B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				782AD27717FDD036009C731E /* GeneralExplosion.cpp */,
+				782AD27817FDD036009C731E /* GeneralExplosion.h */,
 				78837F0417FAE5550006E25E /* ZombieExplosion.cpp */,
 				78837F0517FAE5550006E25E /* ZombieExplosion.h */,
 				78837F0117F9968D0006E25E /* PirateBox.cpp */,
@@ -1345,6 +1350,7 @@
 				78837F0317F9968D0006E25E /* PirateBox.cpp in Sources */,
 				78837F0617FAE5560006E25E /* ZombieExplosion.cpp in Sources */,
 				78837F0917FB1E820006E25E /* RobotoGun.cpp in Sources */,
+				782AD27917FDD037009C731E /* GeneralExplosion.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

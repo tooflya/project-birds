@@ -71,6 +71,19 @@ class Color : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        bool mGoingToDestroy;
+    
+        float mDestroyTime;
+        float mDestroyTimeElapsed;
+    
+        int position_in_matrtix_x;
+        int position_in_matrtix_y;
+    
+        bool mc;
+    
+        float mct;
+        float mcte;
 
         // ===========================================================
         // Constructors
@@ -86,11 +99,16 @@ class Color : public Entity
     
         void setCenterPositionWithCorrection(float pCenterX, float pCenterY);
     
+        void runDestroy();
+    
+    void down();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
 
         void onCreate();
+        void onDestroy();
     
         void update(float pDeltaTime);
     

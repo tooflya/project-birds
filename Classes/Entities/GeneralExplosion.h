@@ -1,17 +1,9 @@
-#ifndef CONST_PROGRESSES_H
-#define CONST_PROGRESSES_H
+#ifndef CONST_GENERALEXPLOSION_H
+#define CONST_GENERALEXPLOSION_H
 
-#include "Game.h"
-#include "ProgressPause.h"
-#include "ProgressEnd.h"
+#include "Entity.h"
 
-#include "Pause.h"
-
-#include "AppDelegate.h"
-
-#include "Color.h"
-
-class Progresses : public Game
+class GeneralExplosion : public Entity
 {
     protected:
         // ===========================================================
@@ -22,24 +14,22 @@ class Progresses : public Game
         // Constants
         // ===========================================================
 
-        static Progresses* m_Instance;
-
         // ===========================================================
         // Fields
         // ===========================================================
-    
+
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Progresses();
+        GeneralExplosion();
 
         // ===========================================================
         // Methods
         // ===========================================================
 
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     private:
@@ -62,11 +52,9 @@ class Progresses : public Game
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     public:
@@ -81,34 +69,27 @@ class Progresses : public Game
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        static Progresses* create();
-    
-        ~Progresses();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static GeneralExplosion* create();
 
         // ===========================================================
         // Methods
         // ===========================================================
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
     
         void update(float pDeltaTime);
     
-        void draw();
-
-        void onEnter();
-        void onExit();
-
-        void onGameStarted();
-        void onGameEnd();
-
-        void onBirBlow(int pType, float pX, float pY);
+        void onAnimationEnd();
+        void onCreate();
+    
+        GeneralExplosion* deepCopy();
 };
 
 #endif

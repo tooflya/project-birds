@@ -60,6 +60,9 @@ Game::~Game()
 Game::Game() :
     Screen()
     {
+        array = new CCArray();
+        array->initWithCapacity(1000);
+        
         int sx = (int) round(Options::CAMERA_WIDTH / Utils::coord(64));
         int sy = (int) round(Options::CAMERA_HEIGHT / Utils::coord(64));
         
@@ -407,7 +410,7 @@ void Game::onBonus(int pId, float pX, float pY)
         
         break;
         case 5:
-        
+            this->mGeneralExplosions->create()->setCenterPosition(pX, pY);
         break;
         case 6:
             this->mZombieAnimation = true;
@@ -426,6 +429,71 @@ void Game::onBonus(int pId, float pX, float pY)
     
     this->mRunningBonusId = pId;
     this->mIsBonusAnimationRunningCount = 0;
+}
+
+bool Game::deepFind(int x, int y, int index, bool recursive)
+{
+    if(x < 0 || y < 0 || x >= MATRIX_SIZE_X || y >= MATRIX_SIZE_Y) return false;
+    if(MATRIX[x][y] != index) return false;
+    
+    bool a = false;
+    for(int i = 0; i < this->mColors->getCount(); i++)
+    {
+        Color* color = static_cast<Color*>(this->mColors->objectAtIndex(i));
+        
+        if(color->position_in_matrtix_x == x && color->position_in_matrtix_y == y && color->mc && !color->mGoingToDestroy)
+        {
+            if(array->containsObject(color)) return false;
+            
+            array->addObject(color);
+            a = true;
+        }
+    }
+    
+    if(!recursive)
+    if(!a) return false;
+    
+	// Visit neighbours
+	deepFind(x + 1, y, index, false);
+	deepFind(x - 1, y, index, false);
+	deepFind(x, y + 1, index, false);
+	deepFind(x, y - 1, index, false);
+    
+    if(recursive)
+    {
+        if(array->count() >= 2)
+            for(int i = 0; i < array->count(); i++)
+            {
+                Color* color = static_cast<Color*>(array->objectAtIndex(i));
+                
+                color->runDestroy();
+                
+                MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
+            }
+        
+        if(array->count() >= 2)
+            for(int i = 0; i < array->count(); i++)
+            {
+                Color* color = static_cast<Color*>(array->objectAtIndex(i));
+                
+                for(int j = 0; j < this->mColors->getCount(); j++)
+                {
+                    Color* color2 = static_cast<Color*>(mColors->objectAtIndex(j));
+                    
+                    if(color2->position_in_matrtix_y == color->position_in_matrtix_y)
+                    {
+                        //color2->down();
+                    }
+                }
+            }
+        
+        
+        
+        
+        array->removeAllObjects();
+    }
+    
+    return true;
 }
 
 // ===========================================================

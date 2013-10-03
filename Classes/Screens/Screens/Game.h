@@ -21,6 +21,7 @@
 #include "RobotoGun.h"
 #include "PirateBox.h"
 #include "ZombieExplosion.h"
+#include "GeneralExplosion.h"
 #include "Color.h"
 
 #include "Pause.h"
@@ -234,12 +235,16 @@ class Game : public Screen
         EntityManager* mArrows;
         EntityManager* mPredictionIcons;
     
+        EntityManager* mColors;
+    
         Entity* e1;
         EntityManager* mRains;
         EntityManager* mRainsCircles;
         EntityManager* mRobotParts;
         RobotoGun* mGun;
         Entity* mGunLaser;
+    
+        CCArray* array;
 
         // ===========================================================
         // Constructors
@@ -262,6 +267,8 @@ class Game : public Screen
         virtual void onBonus(int pId, float pX, float pY);
         void startBoxAnimation();
         void stopBoxAnimation();
+    
+        bool deepFind(int x, int y, int index, bool recursive);
     
         // ===========================================================
         // Override Methods

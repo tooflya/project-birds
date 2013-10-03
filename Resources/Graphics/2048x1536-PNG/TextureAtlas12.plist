@@ -7,7 +7,7 @@
             <key>btn_sfx_mfx_ach_lead_sprite_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{427,147},{301,200}}</string>
+                <string>{{0,0},{301,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>btn_sprite_close@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{265,147},{162,162}}</string>
+                <string>{{301,0},{162,162}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,10 +30,23 @@
                 <key>sourceSize</key>
                 <string>{162,162}</string>
             </dict>
+            <key>explosion-war@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{463,0},{1182,1448}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1182,1448}}</string>
+                <key>sourceSize</key>
+                <string>{1182,1448}</string>
+            </dict>
             <key>pause_birds_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,347},{600,707}}</string>
+                <string>{{1645,0},{600,707}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>pause_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{294,0},{380,147}}</string>
+                <string>{{2245,0},{380,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +72,7 @@
             <key>pause_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{294,147}}</string>
+                <string>{{2625,0},{294,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +85,7 @@
             <key>popup_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1054},{648,988}}</string>
+                <string>{{2919,0},{648,988}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +98,7 @@
             <key>popup_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,147},{265,147}}</string>
+                <string>{{3567,0},{265,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -103,9 +116,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas12.png</string>
             <key>size</key>
-            <string>{728,2042}</string>
+            <string>{3832,1448}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:549f0a474eea9c70dd8d9e6d20874e6c:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:2370d2f12781ca13e050ba17adb9aca2:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas12.png</string>
         </dict>

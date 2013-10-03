@@ -54,7 +54,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>4096</int>
             <key>height</key>
             <int>2048</int>
         </QSize>
@@ -155,6 +155,7 @@
             <filename>../../Graphics Sources/popup_btn@2x.png</filename>
             <filename>../../Graphics Sources/pause_btn@2x.png</filename>
             <filename>../../Graphics Sources/pause_btn_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/explosion-war@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -71,6 +71,7 @@ Classic::Classic() :
         CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.png");
         CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas14.png");
         CCSpriteBatchNode* spriteBatch8 = CCSpriteBatchNode::create("TextureAtlas6.png");
+        CCSpriteBatchNode* spriteBatch9 = CCSpriteBatchNode::create("TextureAtlas12.png");
         
         this->mGameLayer->addChild(spriteBatch6);
         
@@ -83,6 +84,7 @@ Classic::Classic() :
         this->mGameLayer->addChild(spriteBatch3);
         this->mGameLayer->addChild(spriteBatch4);
         this->mGameLayer->addChild(spriteBatch5);
+        this->mGameLayer->addChild(spriteBatch9);
         this->mMenuLayer->addChild(spriteBatch8);
         
         this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
@@ -152,6 +154,7 @@ Classic::Classic() :
         this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
         this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
+        this->mGeneralExplosions = EntityManager::create(100, GeneralExplosion::create(), spriteBatch9);
         
         this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 

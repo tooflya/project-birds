@@ -123,10 +123,10 @@ class Bird : public ImpulseEntity
         float mPTEL;
     
         Entity* e1;
-    Entity* e2;
+        Entity* e2;
     
-    float mLifeCount;
-    float mInitLifeCount;
+        float mLifeCount;
+        float mInitLifeCount;
 
         // ===========================================================
         // Constructors
