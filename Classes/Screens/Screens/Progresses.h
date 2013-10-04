@@ -28,6 +28,15 @@ class Progresses : public Game
         // Fields
         // ===========================================================
     
+        Text* mBestCountText;
+        Text* mGoldLifesCount;
+        Text* mTimeText;
+        Text* mStarTimeText;
+        Text* mTaskText[5];
+    
+        EntityManager* mColorsSmall;
+        EntityManager* mTasksBackground;
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -77,6 +86,8 @@ class Progresses : public Game
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static int TASK[80][10];
 
         // ===========================================================
         // Fields
@@ -93,6 +104,8 @@ class Progresses : public Game
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        void onShow();
         
         // ===========================================================
         // Override Methods

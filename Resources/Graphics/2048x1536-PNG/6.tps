@@ -54,7 +54,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>4096</int>
             <key>height</key>
             <int>2048</int>
         </QSize>
@@ -162,6 +162,10 @@
             <filename>../../Graphics Sources/game_panel_counter@2x.png</filename>
             <filename>../../Graphics Sources/bonus_pirat_hat@2x.png</filename>
             <filename>../../Graphics Sources/bonus_amigo_hat@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_time_star@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_time@2x.png</filename>
+            <filename>../../Graphics Sources/task-background@2x.png</filename>
+            <filename>../../Graphics Sources/colors_small@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

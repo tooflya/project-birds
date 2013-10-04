@@ -157,13 +157,13 @@
             <filename>../../Graphics Sources/coins@2x.png</filename>
             <filename>../../Graphics Sources/star_particle@2x.png</filename>
             <filename>../../Graphics Sources/info_panel_btn_sprite@2x.png</filename>
-            <filename>../../Graphics Sources/game_gui_count_pic@2x.png</filename>
             <filename>../../Graphics Sources/game_shelf@2x.png</filename>
             <filename>../../Graphics Sources/event_panel@2x.png</filename>
             <filename>../../Graphics Sources/dust@2x.png</filename>
             <filename>../../Graphics Sources/mark@2x.png</filename>
             <filename>../../Graphics Sources/bomb_arrow.png</filename>
             <filename>../../Graphics Sources/bomb_ico.png</filename>
+            <filename>../../Graphics Sources/coins_silver@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -523,7 +523,7 @@ void Classic::onEnterTransitionDidFinish()
 }
 
 void Classic::removeLife()
-{return;
+{
     if(LIFES < 3 && !this->mGamePaused && this->mGameRunning)
     {
         Game::removeLife();

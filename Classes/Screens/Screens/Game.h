@@ -220,6 +220,9 @@ class Game : public Screen
         bool mPause;
     
         int mRunningBonusId;
+    
+        float mTime;
+        float mStarTime;
 
         EntityManager* mBirds;
         EntityManager* mSpecialBirds;
@@ -244,7 +247,10 @@ class Game : public Screen
         RobotoGun* mGun;
         Entity* mGunLaser;
     
-        CCArray* array;
+    CCArray* array;
+    static int BURNED[10];
+    
+    static int LEVEL;
 
         // ===========================================================
         // Constructors
@@ -269,6 +275,8 @@ class Game : public Screen
         void stopBoxAnimation();
     
         bool deepFind(int x, int y, int index, bool recursive);
+    
+        void addTime(float pTime);
     
         // ===========================================================
         // Override Methods

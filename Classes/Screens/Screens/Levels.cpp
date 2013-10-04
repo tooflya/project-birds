@@ -3,8 +3,10 @@
 
 #include "Levels.h"
 
+#include "Game.h"
+
 // ===========================================================
-// Inner Classes
+// Inner Classe
 // ===========================================================
 
 class ListLayer : public CCLayer
@@ -206,6 +208,8 @@ class LevelButton : public Entity
         }
         else
         {
+            Game::LEVEL = this->mId - 1;
+            
             AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
         }
     }

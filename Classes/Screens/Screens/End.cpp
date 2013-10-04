@@ -109,7 +109,7 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
 
         if(this->mType == Splash::TYPE_PROGRESS)
         {
-            this->mStars = EntityManager::create(3, Star::create(), spriteBatch1);
+            this->mStars = EntityManager::create(3, Star::create(), spriteBatch3);
             
             for(int i = 0; i < 3; i++)
             {

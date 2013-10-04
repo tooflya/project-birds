@@ -4,6 +4,7 @@
 #include "ProgressEnd.h"
 
 #include "Loader.h"
+#include "Progresses.h"
 
 // ===========================================================
 // Inner Classes
@@ -45,6 +46,7 @@ ProgressEnd* ProgressEnd::create(int pType, Screen* pParent)
 void ProgressEnd::onTouchButtonsCallback(const int pAction, const int pID)
 {
     ProgressEnd* pSender = static_cast<ProgressEnd*>(ProgressEnd::m_Instance);
+    Progresses* pGame = static_cast<Progresses*>(pSender->getParent());
 
     switch(pAction)
     {
@@ -63,11 +65,17 @@ void ProgressEnd::onTouchButtonsCallback(const int pAction, const int pID)
                 case Options::BUTTONS_ID_END_RESTART:
 
                     pSender->hide();
+                    
+                    pGame->onShow();
 
                 break;
                 case Options::BUTTONS_ID_END_CONTINUE:
                     
+                    Game::LEVEL++;
+                    
                     pSender->hide();
+                    
+                    pGame->onShow();
 
                 break;
                 case Options::BUTTONS_ID_END_SHOP:

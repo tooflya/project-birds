@@ -55,6 +55,12 @@ public:
 // Constants
 // ===========================================================
 
+int Progresses::TASK[80][10] =
+{
+    {1, 10},
+    {1, 20, 2, 40}
+};
+
 Progresses* Progresses::m_Instance = NULL;
 
 class Grid : public CCNode
@@ -125,7 +131,7 @@ Progresses::~Progresses()
 
 Progresses::Progresses() :
     Game()
-{
+    {
     this->mEventLayer = CCLayer::create();
     
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
@@ -167,41 +173,45 @@ Progresses::Progresses() :
         this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
     }
     
-    this->mGamePanel = Entity::create("game_panel@2x.png", spriteBatch8);
-    this->mTextAreas[0] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
-    this->mTextAreas[1] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
-    this->mTextAreas[2] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
-    this->mTextIcons[0] = Entity::create("game_panel_counter@2x.png", spriteBatch8);
-    this->mTextIcons[1] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
-    this->mTextIcons[2] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
-    this->mHearts[0] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
-    this->mHearts[1] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
-    this->mHearts[2] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
-    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
-    
-    this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mTextAreas[1]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    
-    this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    
-    this->mHearts[0]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() - Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mHearts[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(20), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mHearts[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(70), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    
-    this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() * 2 + Utils::coord(65), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    
-    this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    
-    this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mGamePanel = Entity::create("game_panel@2x.png", spriteBatch8);
+        this->mTextAreas[0] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
+        this->mTextAreas[1] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
+        this->mTextAreas[2] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
+        this->mTextAreas[3] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
+        this->mTextIcons[0] = Entity::create("game_panel_time@2x.png", spriteBatch8);
+        this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
+        this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
+        this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
+        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        
+        this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[1]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[3]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        
+        this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextIcons[3]->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() - this->mTextAreas[3]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        
+        this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        
+        this->mBestCountText = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+        this->mGoldLifesCount = Text::create((Textes) {"5", Options::FONT, 32, -1}, this);
+        this->mTimeText = Text::create((Textes) {"0:00", Options::FONT, 32, -1}, this);
+        this->mStarTimeText = Text::create((Textes) {"0:00", Options::FONT, 32, -1}, this);
+        
+        this->mGoldLifesCount->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        
+        for(int i = 0; i < 5; i++)
+        {
+            this->mTaskText[i] = Text::create((Textes) {"0/0", Options::FONT, 32, -1}, this);
+            this->mTaskText[i]->setVisible(false);
+        }
     
     //this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
     this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
-    
-    //this->mCountText = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
-    //this->mBestCountText = Text::create(Options::TEXT_GAME_BEST, this);
-    //this->mGoldLifesCount = Text::create((Textes) {"5", Options::FONT, 32, -1}, this);
     
     this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
     
@@ -220,6 +230,8 @@ Progresses::Progresses() :
     this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
     this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
     this->mColors = EntityManager::create(1000, Color::create(), spriteBatch2);
+    this->mTasksBackground = EntityManager::create(10, Entity::create("task-background@2x.png"), spriteBatch8);
+    this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 8, 1), spriteBatch8);
     
     this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
     
@@ -243,13 +255,10 @@ Progresses::Progresses() :
     this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
     this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    //this->mBestCountText->setCenterPosition(Utils::coord(10) + this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     //this->mLevelUpText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
     //this->mLevelUpText->setOpacity(0);
     //this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
     //this->mBonusTimeText->setOpacity(0);
-    
-    //this->mGoldLifesCount->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
     this->e4[0] = Entity::create("box_laser_green@2x.png", spriteBatch7);
     this->e4[1] = Entity::create("box_laser_red@2x.png", spriteBatch7);
@@ -323,7 +332,10 @@ Progresses::Progresses() :
     //
     
     mSpecialBirdsTime = 20000;
-    mCoinsBirdTime = 20000;
+        mCoinsBirdTime = 20000;
+        
+        this->mTime = 0;
+        this->mStarTime = 0;
     }
 
 Progresses* Progresses::create()
@@ -381,6 +393,83 @@ void Progresses::draw()
 void Progresses::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
+    
+    if(this->mGamePaused)
+    {
+        if(!this->mEndScreen->isShowed())
+        {
+            this->startGame();
+        }
+    }
+    if(this->mGameRunning && !this->mGamePaused)
+    {
+        this->mTime -= pDeltaTime;
+        this->mStarTime -= pDeltaTime;
+        
+        if(this->mStarTime <= 0)
+        {
+            this->mStarTime = 0;
+        }
+    
+        if(this->mTime <= 0 || this->mColors->getCount() <= 0)
+        {
+            this->onGameEnd();
+        }
+    }
+    
+    this->mBestCountText->setString("0");
+    this->mBestCountText->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    int a;
+    int b;
+    
+    const char* str;
+    
+    a = (int)(this->mTime / 60);
+    b = (int)(this->mTime - (int)(this->mTime / 60) * 60);
+    
+    if(a < 10) str = "0%d:%d";
+    if(b < 10) str = "%d:0%d";
+    if(a < 10 && b < 10) str = "0%d:0%d";
+    if(a >= 10 && b >= 10) str = "%d:%d";
+    
+    this->mTimeText->setString(ccsf(str, a, b));
+    
+    a = (int)(this->mStarTime / 60);
+    b = (int)(this->mStarTime - (int)(this->mStarTime / 60) * 60);
+    
+    if(a < 10) str = "0%d:%d";
+    if(b < 10) str = "%d:0%d";
+    if(a < 10 && b < 10) str = "0%d:0%d";
+    if(a >= 10 && b >= 10) str = "%d:%d";
+    
+    this->mStarTimeText->setString(ccsf(str, a, b));
+    
+    this->mTimeText->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() / 2 - this->mTimeText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mStarTimeText->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() / 2 - this->mStarTimeText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    int c = 0;
+    for(int i = 0; i < 10; i += 2)
+    {
+        if(TASK[Game::LEVEL][i] != 0)
+        {
+            Entity* background = static_cast<Entity*>(this->mTasksBackground->objectAtIndex(c));
+            
+            this->mTaskText[c]->setString(ccsf("%d/%d", BURNED[TASK[Game::LEVEL][i] - 1], TASK[Game::LEVEL][i + 1]));
+            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
+            
+            if(BURNED[TASK[Game::LEVEL][i] - 1] >= TASK[Game::LEVEL][i + 1])
+            {
+                this->mTaskText[c]->setColor(ccc3(0, 255, 0));
+            }
+            else
+            {
+                this->mTaskText[c]->setColor(ccc3(255, 255, 255));
+            }
+            
+            c++;
+        }
+    }
 }
 
 void Progresses::onGameStarted()
@@ -388,6 +477,23 @@ void Progresses::onGameStarted()
     BEST_COUNT = AppDelegate::getBestResult(0);
 
     this->mColors->clear();
+    
+    this->mTime = 60.0;
+    this->mStarTime = 60.0;
+    
+    for(int i = 0; i < MATRIX_SIZE_X; i++)
+    {
+        for(int j = 0; j < MATRIX_SIZE_Y; j++)
+        {
+            if(Utils::probably(50))
+            {
+                Color* color = static_cast<Color*>(this->mColors->create());
+                
+                color->setCurrentFrameIndex(Utils::random(0, 3));
+                color->setCenterPositionWithCorrection(Utils::coord(64) * i, Utils::coord(64) * j);
+            }
+        }
+    }
 }
 
 void Progresses::onGameEnd()
@@ -423,13 +529,57 @@ void Progresses::onBirBlow(int pType, float pX, float pY)
 void Progresses::onEnter()
 {
     Game::onEnter();
-
-    this->mColors->clear();
+    
+    this->onShow();
 }
 
 void Progresses::onExit()
 {
     Game::onExit();
+}
+
+void Progresses::onShow()
+{
+    this->mColors->clear();
+    this->mColorsSmall->clear();
+    this->mTasksBackground->clear();
+    
+    for(int i = 0; i < MATRIX_SIZE_X; i++)
+    {
+        for(int j = 0; j < MATRIX_SIZE_Y; j++)
+        {
+            MATRIX[i][j] = -1;
+        }
+    }
+    
+    for(int i = 0; i < 10; i++)
+    {
+        BURNED[i] = 0;
+    }
+    
+    for(int i = 0; i < 5; i++)
+    {
+        this->mTaskText[i]->setVisible(false);
+    }
+    
+    int c = 0;
+    for(int i = 0; i < 10; i += 2)
+    {
+        if(TASK[Game::LEVEL][i] != 0)
+        {
+            Entity* background = this->mTasksBackground->create();
+            Entity* color = this->mColorsSmall->create();
+            
+            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
+            color->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
+            color->setCurrentFrameIndex(TASK[Game::LEVEL][i] - 1);
+            
+            this->mTaskText[c]->setVisible(true);
+            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
+            
+            c++;
+        }
+    }
 }
 
 #endif

@@ -108,7 +108,7 @@ Arcade::Arcade() :
         this->mTextAreas[3] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
         this->mTextIcons[0] = Entity::create("game_panel_counter@2x.png", spriteBatch8);
         this->mTextIcons[1] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
-        this->mTextIcons[2] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
+        this->mTextIcons[2] = Entity::create("game_panel_time@2x.png", spriteBatch8);
         this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
         this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
         

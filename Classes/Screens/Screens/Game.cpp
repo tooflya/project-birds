@@ -33,6 +33,10 @@ int Game::COMBO_COUNT = 0;
 int Game::FLAYER_COUNT = 0;
 int Game::CRITICAL_COUNT = 0;
 
+int Game::BURNED[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+int Game::LEVEL = -1;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -459,9 +463,17 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
 	deepFind(x, y + 1, index, false);
 	deepFind(x, y - 1, index, false);
     
+    // Diagonal
+    
+	deepFind(x + 1, y + 1, index, false);
+	deepFind(x - 1, y - 1, index, false);
+	deepFind(x + 1, y - 1, index, false);
+	deepFind(x - 1, y + 1, index, false);
+    
     if(recursive)
     {
-        if(array->count() >= 2)
+        if(array->count() >= 3)
+        {
             for(int i = 0; i < array->count(); i++)
             {
                 Color* color = static_cast<Color*>(array->objectAtIndex(i));
@@ -469,31 +481,22 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
                 color->runDestroy();
                 
                 MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
-            }
-        
-        if(array->count() >= 2)
-            for(int i = 0; i < array->count(); i++)
-            {
-                Color* color = static_cast<Color*>(array->objectAtIndex(i));
                 
-                for(int j = 0; j < this->mColors->getCount(); j++)
-                {
-                    Color* color2 = static_cast<Color*>(mColors->objectAtIndex(j));
-                    
-                    if(color2->position_in_matrtix_y == color->position_in_matrtix_y)
-                    {
-                        //color2->down();
-                    }
-                }
+                Game::BURNED[color->getCurrentFrameIndex()]++;
             }
-        
-        
-        
+            
+            this->addTime(0.1 * array->count());
+        }
         
         array->removeAllObjects();
     }
     
     return true;
+}
+
+void Game::addTime(float pTime)
+{
+    this->mTime += pTime;
 }
 
 // ===========================================================

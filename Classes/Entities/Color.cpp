@@ -90,7 +90,7 @@ void Color::runDestroy()
 
 void Color::down()
 {
-    this->runAction(CCMoveTo::create(0.2, ccp(this->getCenterX(), this->getCenterY() - Utils::coord(64))));
+    this->runAction(CCMoveTo::create(0.1, ccp(this->getCenterX(), this->getCenterY() - Utils::coord(64))));
     
     Game::MATRIX[this->position_in_matrtix_x][this->position_in_matrtix_y] = -1;
     this->position_in_matrtix_y++;
