@@ -34,16 +34,20 @@ class Shop : public Screen
 
         int mCoins;
     
+        Entity* mGamePanel;
         Entity* mBackgroundDecorations[2];
         Entity* mBackground;
-        Entity* mCoin;
+        Entity* mIcons[3];
+        Entity* mTextBackgrounds[3];
+    
+        Text* mTextText[3];
+    
+        Button* mTextPluses[3];
+    
 
         EntityManager* mPurchaseCoins;
         
         Button* mBackButton;
-        Button* mTablet;
-
-        Text* mCoinsCountText;
 
         // ===========================================================
         // Constructors

@@ -149,7 +149,6 @@
         <key>fileList</key>
         <array>
             <filename>../../Graphics Sources/shop_item_icon@2x.png</filename>
-            <filename>../../Graphics Sources/shop_money_bg@2x.png</filename>
             <filename>../../Graphics Sources/shop_wheel@2x.png</filename>
             <filename>../../Graphics Sources/shop_shelf_sprite@2x.png</filename>
             <filename>../../Graphics Sources/popup_item_rate_stars@2x.png</filename>
@@ -163,6 +162,12 @@
             <filename>../../Graphics Sources/about_logo@2x.png</filename>
             <filename>../../Graphics Sources/about_name_logo@2x.png</filename>
             <filename>../../Graphics Sources/shop_weapon_check@2x.png</filename>
+            <filename>../../Graphics Sources/coins_silver@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_plus@2x.png</filename>
+            <filename>../../Graphics Sources/shop_money_bg@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
+            <filename>../../Graphics Sources/shop_panel_textbox@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

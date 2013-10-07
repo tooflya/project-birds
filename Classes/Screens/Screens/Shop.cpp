@@ -280,11 +280,40 @@ Shop::Shop()
     
     this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create(1.6), spriteBatch2, 3);
 
-    this->mTablet = Button::create("shop_money_bg@2x.png", 1, 1, spriteBatch2, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
-    this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
+    this->mGamePanel = Entity::create("shop_panel@2x.png", spriteBatch2);
+    
+    this->mTextBackgrounds[0] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
+    this->mTextBackgrounds[1] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
+    this->mTextBackgrounds[2] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
+    
+    this->mTextPluses[0] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
+    this->mTextPluses[1] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
+    this->mTextPluses[2] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_TABLET, onTouchButtonsCallback);
+    
+    this->mIcons[0] = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
+    this->mIcons[1] = Entity::create("coins_silver@2x.png", 5, 4, spriteBatch2);
+    this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", spriteBatch2);
+    
+    this->mTextText[0] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+    this->mTextText[1] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+    this->mTextText[2] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+    
+    this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mTextBackgrounds[0]->create()->setCenterPosition(Options::CAMERA_WIDTH - this->mTextBackgrounds[0]->getWidth() / 2 - Utils::coord(60), Options::CAMERA_HEIGHT - Utils::coord(30));
+    this->mTextBackgrounds[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - this->mTextBackgrounds[1]->getWidth() / 2 - Utils::coord(110) - this->mTextBackgrounds[0]->getWidth(), Options::CAMERA_HEIGHT - Utils::coord(30));
+    this->mTextBackgrounds[2]->create()->setCenterPosition(Options::CAMERA_WIDTH - this->mTextBackgrounds[2]->getWidth() / 2 - Utils::coord(160) - this->mTextBackgrounds[0]->getWidth() * 2, Options::CAMERA_HEIGHT - Utils::coord(30));
+    
+    this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() / 2, this->mTextBackgrounds[0]->getCenterY());
+    this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() / 2, this->mTextBackgrounds[1]->getCenterY());
+    this->mTextPluses[1]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() / 2, this->mTextBackgrounds[2]->getCenterY());
+    
+    this->mIcons[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() - this->mTextBackgrounds[0]->getWidth() / 2, this->mTextBackgrounds[0]->getCenterY());
+    this->mIcons[1]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() - this->mTextBackgrounds[1]->getWidth() / 2, this->mTextBackgrounds[1]->getCenterY());
+    this->mIcons[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() - this->mTextBackgrounds[2]->getWidth() / 2, this->mTextBackgrounds[2]->getCenterY());
+    
+    //this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
     this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
-
-    this->mCoinsCountText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this);
     
     for(int i = 0; i < 9; i++)
     {
@@ -353,14 +382,13 @@ Shop::Shop()
     
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
 
-    this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(110));
-
-    this->mCoin->create()->setCenterPosition(this->mTablet->getCenterX() - Utils::coord(105), this->mTablet->getCenterY());
-    this->mCoin->setRotation(-45);
-    this->mCoin->setScale(1.3);
-    this->mCoin->animate(0.05);
+    this->mIcons[0]->setRotation(-45);
+    this->mIcons[0]->setScale(0.75);
+    this->mIcons[0]->animate(0.05);
     
-    this->mCoinsCountText->setCenterPosition(this->mTablet->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mTablet->getCenterY());
+    this->mIcons[1]->setRotation(-45);
+    this->mIcons[1]->setScale(0.75);
+    this->mIcons[1]->animate(0.05);
     
     x = Options::CAMERA_CENTER_X - Utils::coord(500);
     y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(300);
@@ -612,8 +640,8 @@ void Shop::update(float pDeltaTime)
 
         this->mCoins += realCoinsCount < this->mCoins ? -c : c;
 
-        this->mCoinsCountText->setString(Utils::intToString(this->mCoins).c_str());
-        this->mCoinsCountText->setCenterPosition(this->mTablet->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mTablet->getCenterY());
+        this->mTextText[0]->setString(Utils::intToString(this->mCoins).c_str());
+        this->mTextText[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() / 2 - this->mTextText[0]->getWidth() / 2 - Utils::coord(15), this->mTextBackgrounds[0]->getCenterY());
     }
 
     /** Purchase animation **/
@@ -638,8 +666,8 @@ void Shop::update(float pDeltaTime)
         }
     }
 
-    this->mCoinsCountText->setScale(this->mTablet->getScaleX());
-    this->mCoin->setScale(this->mTablet->getScaleX() + 0.3);
+    //this->mCoinsCountText->setScale(this->mTablet->getScaleX());
+    //this->mCoin->setScale(this->mTablet->getScaleX() + 0.3);
 }
 
 void Shop::onEnter()
@@ -667,8 +695,14 @@ void Shop::onEnter()
     this->mItems[id]->addChild(this->mWeaponChecker);
     this->mWeaponChecker->setCenterPosition(this->mItems[id]->getWidth() / 2 + Utils::coord(72), this->mItems[id]->getHeight() / 2 - Utils::coord(72));
     
-    this->mCoinsCountText->setString(Utils::intToString(this->mCoins).c_str());
-    this->mCoinsCountText->setCenterPosition(this->mTablet->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mTablet->getCenterY());
+    this->mTextText[0]->setString(Utils::intToString(this->mCoins).c_str());
+    this->mTextText[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() / 2 - this->mTextText[0]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[0]->getCenterY());
+    
+    this->mTextText[1]->setString(Utils::intToString(this->mCoins).c_str());
+    this->mTextText[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() / 2 - this->mTextText[1]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[1]->getCenterY());
+    
+    this->mTextText[2]->setString(Utils::intToString(this->mCoins).c_str());
+    this->mTextText[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() / 2 - this->mTextText[2]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[2]->getCenterY());
     
 }
 

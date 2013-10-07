@@ -68,7 +68,7 @@ class Grid : public CCNode
 public:
     
   void draw()
-    {return;
+    {//return;
         float x1 = Utils::coord(0);
         float x2 = Options::CAMERA_WIDTH;
         float y1 = Utils::coord(0);

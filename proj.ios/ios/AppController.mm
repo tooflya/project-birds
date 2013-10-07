@@ -64,8 +64,8 @@ static AppDelegate s_sharedApplication;
     
     [__glView setMultipleTouchEnabled:YES];
     
-    [self PlayVideo:0 fullscreen:1 file:@"a" fileExtension:@"m4v"];
-    //cocos2d::CCApplication::sharedApplication()->run();
+    //[self PlayVideo:0 fullscreen:1 file:@"a" fileExtension:@"m4v"];
+    cocos2d::CCApplication::sharedApplication()->run();
     return YES;
 }
 
