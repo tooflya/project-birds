@@ -3,6 +3,8 @@
 
 #include "Entity.h"
 
+#include "Text.h"
+
 class Color : public Entity
 {
     protected:
@@ -72,7 +74,10 @@ class Color : public Entity
         // Fields
         // ===========================================================
     
+        int mType;
+    
         bool mGoingToDestroy;
+        bool d;
     
         float mDestroyTime;
         float mDestroyTimeElapsed;
@@ -80,10 +85,21 @@ class Color : public Entity
         int position_in_matrtix_x;
         int position_in_matrtix_y;
     
+        int mPower;
+    
         bool mc;
     
         float mct;
         float mcte;
+    
+        float mBlinkTime;
+        float mBlinkTimeElapsed;
+    
+        bool mBlinking;
+    
+        Entity* mBlink;
+    
+        Text* mPowerText;
 
         // ===========================================================
         // Constructors
@@ -94,8 +110,6 @@ class Color : public Entity
         // ===========================================================
         // Methods
         // ===========================================================
-
-        void setType(int pType);
     
         void setCenterPositionWithCorrection(float pCenterX, float pCenterY);
     

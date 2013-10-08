@@ -3,6 +3,8 @@
 
 #include "Screen.h"
 
+#include "GetLives.h"
+
 class MainList;
 
 class Levels : public Screen
@@ -92,6 +94,8 @@ class Levels : public Screen
         Entity* mSlides[6];
         Entity* mSlidesArrows[2];
         Entity* mBackgroundDecorations[5];
+    
+        Popup* mGetLivesPopup;
 
         // ===========================================================
         // Constructors

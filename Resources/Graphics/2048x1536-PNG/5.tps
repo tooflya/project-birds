@@ -165,9 +165,9 @@
             <filename>../../Graphics Sources/coins_silver@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_plus@2x.png</filename>
             <filename>../../Graphics Sources/shop_money_bg@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
             <filename>../../Graphics Sources/shop_panel_textbox@2x.png</filename>
+            <filename>../../Graphics Sources/shop_panel@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

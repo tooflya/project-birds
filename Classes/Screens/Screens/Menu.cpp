@@ -197,7 +197,7 @@ void Menu::onEnterTransitionDidFinish()
         AppDelegate::IS_ALREADY_PLAYED = false;
     }
 
-    int dn = Utils::millisecondNow() / 86400000;
+    int dn = Utils::millisecondNow() / 1000 / 86400000;
     int dl = AppDelegate::getLastVisitDaysCount();
     
     if(dn - dl > 0 && dl != 0)

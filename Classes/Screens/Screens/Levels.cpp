@@ -181,7 +181,7 @@ class LevelButton : public Entity
         this->mText->setString(Utils::intToString(this->mId).c_str());
         this->mText->setCenterPosition(this->getWidth() / 2, this->getHeight() / 2);
         
-        int stars = AppDelegate::getLevelStars(this->mId);
+        int stars = AppDelegate::getLevelStars(this->mId -1);
 
         if(stars == -1)
         {
@@ -202,15 +202,22 @@ class LevelButton : public Entity
     
     void onTouch(CCTouch* touch, CCEvent* event)
     {
-        if(this->getCurrentFrameIndex() == 8 || this->getCurrentFrameIndex() == 9)
+        if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
         {
-            
+            static_cast<Levels*>(this->getParent()->getParent()->getParent())->mGetLivesPopup->show();
         }
         else
         {
-            Game::LEVEL = this->mId - 1;
+            if(this->getCurrentFrameIndex() == 8 || this->getCurrentFrameIndex() == 9)
+            {
+                
+            }
+            else
+            {
+                Game::LEVEL = this->mId - 1;
             
-            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+            }
         }
     }
     
@@ -559,6 +566,7 @@ Levels* Levels::m_Instance = NULL;
 Levels::~Levels()
 {
     this->mMainList->release();
+    this->mGetLivesPopup->release();
 }
 
 Levels::Levels()
@@ -668,6 +676,8 @@ Levels::Levels()
     this->mSlidesArrows[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(48), Options::CAMERA_CENTER_Y);
 
     this->mSlidesArrows[1]->setScaleX(-1);
+    
+    this->mGetLivesPopup = GetLives::create(this);
 
     /** Experiments */
 }

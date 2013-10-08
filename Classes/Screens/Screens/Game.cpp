@@ -13,7 +13,18 @@
 // Constants
 // ===========================================================
 
+int Game::STARS = 0;
+
 int** Game::MATRIX = NULL;
+int Game::LEVEL_TYPE[80] = {
+    0, 1, 2
+};
+int Game::LEVEL_HEIGHT[80] = {
+    1, 2, 3
+};
+int Game::LEVEL_COLORS[80] = {
+    2, 2, 3
+};
 
 int Game::MATRIX_SIZE_X = 0;
 int Game::MATRIX_SIZE_Y = 0;
@@ -78,14 +89,6 @@ Game::Game() :
         for(int i = 0; i < sx; i++)
         {
             MATRIX[i] = new int[sy];
-        }
-        
-        for(int i = 0; i < sx; i++)
-        {
-            for(int j = 0; j < sy; j++)
-            {
-                MATRIX[i][j] = -1;
-            }
         }
         
         this->mMenuLayer = CCLayer::create();
@@ -186,6 +189,17 @@ void Game::startGame()
     COMBO_COUNT = 0;
     FLAYER_COUNT = 0;
     CRITICAL_COUNT = 0;
+    
+    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) < 5)
+    {
+        this->mGoldLifeButton->setOpacity(255);
+        this->mGoldLifeButton->setColor(ccc3(255, 255, 255));
+    }
+    else
+    {
+        this->mGoldLifeButton->setOpacity(254);
+        this->mGoldLifeButton->setColor(ccc3(100, 100, 100));
+    }
 }
 
 void Game::onGameStarted()
@@ -204,6 +218,11 @@ void Game::removeLife()
     {
         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LOSE_LIFE);
     }
+}
+
+void Game::onTaskComplete()
+{
+    
 }
 
 void Game::onBirBlow(int pType, float pX, float pY)
@@ -482,7 +501,7 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
                 
                 MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
                 
-                Game::BURNED[color->getCurrentFrameIndex()]++;
+                Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
             }
             
             this->addTime(0.1 * array->count());

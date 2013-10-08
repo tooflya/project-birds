@@ -136,7 +136,7 @@ class Options
 
         static const char* FONT;
 
-        static const char* SAVE_DATA_COINS_ID[2];
+        static const char* SAVE_DATA_COINS_ID[3];
         static const char* SAVE_DATA_BEST_RESULT[2];
         static const char* SAVE_DATA_LANGUAGE_ID;
 
@@ -144,6 +144,7 @@ class Options
         
         static int SAVE_DATA_COINS_TYPE_GOLD;
         static int SAVE_DATA_COINS_TYPE_SILVER;
+        static int SAVE_DATA_COINS_TYPE_LIVES;
     
         static int CURRENT_LANGUAGE;
     
@@ -181,7 +182,9 @@ class Options
         static const int BUTTONS_ID_MODE_HELP  = 5007;
         static const int BUTTONS_ID_SHOP_BACK  = 6001;
         static const int BUTTONS_ID_SHOP_ITEM  = 6102;
-        static const int BUTTONS_ID_SHOP_TABLET = 6103;
+        static const int BUTTONS_ID_SHOP_GET_SILVER_COINS = 6103;
+        static const int BUTTONS_ID_SHOP_GET_GOLD_COINS = 6104;
+        static const int BUTTONS_ID_SHOP_GET_LIVES = 6105;
         static const int BUTTONS_ID_END_MENU  = 7001;
         static const int BUTTONS_ID_END_RESTART  = 7002;
         static const int BUTTONS_ID_END_CONTINUE  = 7003;
@@ -244,6 +247,7 @@ class Options
         static Textes TEXT_GETCOINS_2;
         static Textes TEXT_GETCOINS_3;
         static Textes TEXT_GETCOINS_4;
+        static Textes TEXT_GETLIVES_STRING_1;
         static Textes TEXT_LOADING_1;
         static Textes TEXT_LOADING_2;
         static Textes TEXT_PROGRESS_STRING_1;

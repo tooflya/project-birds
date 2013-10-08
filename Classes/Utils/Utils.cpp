@@ -27,9 +27,9 @@ float Utils::Pi = atan(1.0) * 4;
 
 float Utils::randomf(float min, float max)
 {
-	#if (CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_IOS)
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
-	return min + (float) arc4random() / ((float) RAND_MAX / (max - min));
+	return min + ((max + 1) - min) * (float)arc4random() / UINT_MAX;
 
 	#else
 
@@ -40,9 +40,9 @@ float Utils::randomf(float min, float max)
 
 int Utils::random(int min, int max)
 {
-	#if (CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_TARGET_PLATFORM_IOS)
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
-	return min + arc4random() / (RAND_MAX / (max + 1 - min));
+	return (arc4random() % (max + 1)) + min;
 
 	#else
 

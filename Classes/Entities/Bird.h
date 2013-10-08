@@ -88,7 +88,7 @@ class Bird : public ImpulseEntity
     
         static float DANGER_COORDINATE;
 
-        static const int COUNT = 6;
+        static const int COUNT = 9;
         static const int SPECIAL_COUNT = 8;
 
         static const int TYPE_ORANGE = 0;

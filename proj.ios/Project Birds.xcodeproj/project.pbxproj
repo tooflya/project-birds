@@ -191,6 +191,7 @@
 		7869167917F1DF9F00184E9D /* popup-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166E17F1DF9600184E9D /* popup-8.mp3 */; };
 		7869167A17F1DF9F00184E9D /* progress_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166F17F1DF9600184E9D /* progress_complete.mp3 */; };
 		7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7869167B17F2D84A00184E9D /* StarParticle2.cpp */; };
+		7896A9DA18041A06001F8145 /* GetLives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7896A9D8180418CB001F8145 /* GetLives.cpp */; };
 		7897DA9E17F312260023C1F9 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7897DA9A17F3120D0023C1F9 /* Rain.cpp */; };
 		7897DA9F17F312260023C1F9 /* RainCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7897DA9C17F3120D0023C1F9 /* RainCircle.cpp */; };
 		78B38A53177E5D0600773C6A /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4D177E5D0600773C6A /* AppController.mm */; };
@@ -620,6 +621,8 @@
 		7869166F17F1DF9600184E9D /* progress_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = progress_complete.mp3; sourceTree = "<group>"; };
 		7869167B17F2D84A00184E9D /* StarParticle2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StarParticle2.cpp; sourceTree = "<group>"; };
 		7869167C17F2D84A00184E9D /* StarParticle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StarParticle2.h; sourceTree = "<group>"; };
+		7896A9D8180418CB001F8145 /* GetLives.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GetLives.cpp; sourceTree = "<group>"; };
+		7896A9D9180418CB001F8145 /* GetLives.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetLives.h; sourceTree = "<group>"; };
 		7897DA9A17F3120D0023C1F9 /* Rain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rain.cpp; sourceTree = "<group>"; };
 		7897DA9B17F3120D0023C1F9 /* Rain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rain.h; sourceTree = "<group>"; };
 		7897DA9C17F3120D0023C1F9 /* RainCircle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RainCircle.cpp; sourceTree = "<group>"; };
@@ -1179,6 +1182,8 @@
 		783E876D17C20CEB00FD49C1 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				7896A9D8180418CB001F8145 /* GetLives.cpp */,
+				7896A9D9180418CB001F8145 /* GetLives.h */,
 				78B1F7AA17E87B5B009E2F0E /* Map.cpp */,
 				78B1F7AB17E87B5B009E2F0E /* Map.h */,
 				783E876E17C20CEB00FD49C1 /* ArcadeEnd.cpp */,
@@ -1226,6 +1231,8 @@
 				783E879417C20CEB00FD49C1 /* Arcade.h */,
 				783E879517C20CEB00FD49C1 /* Classic.cpp */,
 				783E879617C20CEB00FD49C1 /* Classic.h */,
+				783E87AD17C20CEB00FD49C1 /* Progresses.cpp */,
+				783E87AE17C20CEB00FD49C1 /* Progresses.h */,
 				783E879717C20CEB00FD49C1 /* Credits.cpp */,
 				783E879817C20CEB00FD49C1 /* Credits.h */,
 				783E879917C20CEB00FD49C1 /* End.cpp */,
@@ -1248,8 +1255,6 @@
 				783E87AA17C20CEB00FD49C1 /* More.h */,
 				783E87AB17C20CEB00FD49C1 /* Progress.cpp */,
 				783E87AC17C20CEB00FD49C1 /* Progress.h */,
-				783E87AD17C20CEB00FD49C1 /* Progresses.cpp */,
-				783E87AE17C20CEB00FD49C1 /* Progresses.h */,
 				783E87AF17C20CEB00FD49C1 /* Settings.cpp */,
 				783E87B017C20CEB00FD49C1 /* Settings.h */,
 				783E87B117C20CEB00FD49C1 /* Shop.cpp */,
@@ -2352,6 +2357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7896A9DA18041A06001F8145 /* GetLives.cpp in Sources */,
 				78593F8417FDDCFE0015EC86 /* GeneralExplosion.cpp in Sources */,
 				78593F8117FC370D0015EC86 /* RobotoGun.cpp in Sources */,
 				78593F7E17FB079B0015EC86 /* ZombieExplosion.cpp in Sources */,

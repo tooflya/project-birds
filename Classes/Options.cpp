@@ -133,12 +133,13 @@ const char* Options::FONT = "Fonts/Comic Sans MS.ttf";
 
 int Options::CURRENT_LANGUAGE = 0;
 
-const char* Options::SAVE_DATA_COINS_ID[2] = { "p_gold_coins_count", "p_silver_coins_count" };
+const char* Options::SAVE_DATA_COINS_ID[3] = { "p_gold_coins_count", "p_silver_coins_count", "p_lives_coins_count" };
 const char* Options::SAVE_DATA_BEST_RESULT[2] = { "p_best_result_classic", "p_best_result_arcade" };
 const char* Options::SAVE_DATA_LANGUAGE_ID = "p_language_id";
 
 int Options::SAVE_DATA_COINS_TYPE_GOLD = 0;
 int Options::SAVE_DATA_COINS_TYPE_SILVER = 1;
+int Options::SAVE_DATA_COINS_TYPE_LIVES = 2;
 
 int Options::SHOP_ITEMS_PRICES[100] =
 {
@@ -360,6 +361,7 @@ Textes Options::TEXT_COINS_BONUS[5] =
     {"", FONT, 36, 369},
     {"", FONT, 36, 370}
 };
+Textes Options::TEXT_GETLIVES_STRING_1 = {"", Options::FONT, 0, 371};
 
 // ===========================================================
 // Fields
@@ -470,6 +472,9 @@ void Options::changeLanguage()
             
             TEXT_GETCOINS_STRING_1.string = "You need to buy\nsome coins!";
             TEXT_GETCOINS_STRING_1.size = 48;
+            
+            TEXT_GETLIVES_STRING_1.string = "You need to buy\nsome extra lives!";
+            TEXT_GETLIVES_STRING_1.size = 48;
             
             TEXT_GETCOINS_STRING_2.string = "Any purchase will\nremove the ads!";
             TEXT_GETCOINS_STRING_2.size = 36;
@@ -887,6 +892,9 @@ void Options::changeLanguage()
             
             TEXT_RATE_STRING_4.string = "";
             TEXT_RATE_STRING_4.size = 48;
+            
+            TEXT_GETLIVES_STRING_1.string = "Желаете купить\n5 экстра жизней?";
+            TEXT_GETLIVES_STRING_1.size = 48;
             
             TEXT_GETCOINS_STRING_1.string = "Желаете купить\nнесколько монет?";
             TEXT_GETCOINS_STRING_1.size = 48;
@@ -1631,8 +1639,9 @@ void Options::changeLanguage()
     TEXTES_HOLDER[368] = TEXT_COINS_BONUS[2];
     TEXTES_HOLDER[369] = TEXT_COINS_BONUS[3];
     TEXTES_HOLDER[370] = TEXT_COINS_BONUS[4];
+    TEXTES_HOLDER[371] = TEXT_GETLIVES_STRING_1;
     
-    for(int i = 0; i <= 370; i++)
+    for(int i = 0; i <= 371; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {
