@@ -190,6 +190,12 @@ void End::onShow()
     this->mTotalEarnedCoins += Game::FLAYER_COUNT * 10;
     this->mTotalEarnedCoins += Game::CRITICAL_COUNT * 2;
     this->mTotalEarnedCoins += Game::COMBO_COUNT * 5;
+
+    if(AppDelegate::getLevelStars(Game::LEVEL) < Game::STARS)
+    {
+        AppDelegate::setLevelStars(Game::LEVEL, Game::STARS);
+        AppDelegate::setLevelStars(Game::LEVEL + 1, 0);
+    }
 }
 
 void End::onHide()
@@ -266,6 +272,13 @@ void End::update(float pDeltaTime)
         if(this->mAnimationtimeElapsed >= this->mAnimationTime)
         {
             this->mAnimationtimeElapsed = 0;
+            
+            if(this->mAnimationCounter == Game::STARS)
+            {
+                this->mIsAnimationRunning = false;
+                
+                return;
+            }
 
             if(this->mType == Splash::TYPE_PROGRESS)
             {
@@ -273,11 +286,6 @@ void End::update(float pDeltaTime)
                 
                 star->setCurrentFrameIndex(star->getCurrentFrameIndex() - 3);
                 star->animate();
-            }
-            
-            if(this->mAnimationCounter == (3 - 1))
-            {
-                this->mIsAnimationRunning = false;
             }
             
             this->mAnimationCounter++;
@@ -392,7 +400,7 @@ void End::update(float pDeltaTime)
                     break;
                         
                     //
-                        
+                    
                     case 5:
                         
                     if(Game::CRITICAL_COUNT > this->mCriticalCount)

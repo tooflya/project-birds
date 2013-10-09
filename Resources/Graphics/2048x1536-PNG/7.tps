@@ -164,6 +164,9 @@
             <filename>../../Graphics Sources/bomb_arrow.png</filename>
             <filename>../../Graphics Sources/bomb_ico.png</filename>
             <filename>../../Graphics Sources/coins_silver@2x.png</filename>
+            <filename>../../Graphics Sources/game_chess_bg@2x.png</filename>
+            <filename>../../Graphics Sources/game_chess@2x.png</filename>
+            <filename>../../Graphics Sources/egg light.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

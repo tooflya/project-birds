@@ -89,6 +89,7 @@ void AppDelegate::install()
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[2], 5);
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[1], 0);
@@ -124,7 +125,7 @@ void AppDelegate::install()
     
     CCUserDefault::sharedUserDefault()->setIntegerForKey("item_0_bought", 1);
 
-    for(int i = 1; i <= 80; i++)
+    for(int i = 0; i < 80; i++)
     {
         char text[64];
 
@@ -133,7 +134,7 @@ void AppDelegate::install()
         CCUserDefault::sharedUserDefault()->setIntegerForKey(text, -1);
     }
 
-    CCUserDefault::sharedUserDefault()->setIntegerForKey("level_1_stars", 0);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("level_0_stars", 0);
 
     CCUserDefault::sharedUserDefault()->flush();
 }
@@ -207,6 +208,17 @@ int AppDelegate::getLevelStars(int pLevel)
     sprintf(text, "level_%d_stars", pLevel);
 
     return CCUserDefault::sharedUserDefault()->getIntegerForKey(text);
+}
+
+void AppDelegate::setLevelStars(int pLevel, int pStars)
+{
+    char text[64];
+    
+    sprintf(text, "level_%d_stars", pLevel);
+    
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(text, pStars);
+    
+    CCUserDefault::sharedUserDefault()->flush();
 }
 
 void AppDelegate::setMusicEnable(bool pValue)

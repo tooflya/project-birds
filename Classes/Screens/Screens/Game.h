@@ -139,6 +139,7 @@ class Game : public Screen
     
         CCNodeRGBA* e2;
     
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -207,12 +208,15 @@ class Game : public Screen
         static int COMBO_COUNT;
         static int FLAYER_COUNT;
         static int CRITICAL_COUNT;
+    
+        static int STARS;
 
         // ===========================================================
         // Fields
         // ===========================================================
 
         bool mChalange;
+        bool mTaskDone;
     
         bool mGameRunning;
         bool mGamePaused;
@@ -237,6 +241,9 @@ class Game : public Screen
         EntityManager* mCoins;
         EntityManager* mArrows;
         EntityManager* mPredictionIcons;
+        EntityManager* mSchematicBig;
+        EntityManager* mSchematicSmall;
+        EntityManager* mColorsBlink;
     
         EntityManager* mColors;
     
@@ -247,10 +254,13 @@ class Game : public Screen
         RobotoGun* mGun;
         Entity* mGunLaser;
     
-    CCArray* array;
-    static int BURNED[10];
+        CCArray* array;
+        static int BURNED[10];
     
-    static int LEVEL;
+        static int LEVEL;
+        static int LEVEL_TYPE[80];
+        static int LEVEL_HEIGHT[80];
+        static int LEVEL_COLORS[80];
 
         // ===========================================================
         // Constructors
@@ -277,6 +287,8 @@ class Game : public Screen
         bool deepFind(int x, int y, int index, bool recursive);
     
         void addTime(float pTime);
+    
+        void onTaskComplete();
     
         // ===========================================================
         // Override Methods

@@ -7,7 +7,7 @@
             <key>birds_feather_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2685,0},{260,220}}</string>
+                <string>{{1631,105},{260,220}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>bomb_ico.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1328,0},{78,83}}</string>
+                <string>{{1392,0},{78,83}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>coins@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,240},{300,240}}</string>
+                <string>{{2191,105},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>coins_silver@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2945,0},{300,240}}</string>
+                <string>{{1891,105},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,20 +72,20 @@
             <key>colors@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{816,0},{512,64}}</string>
+                <string>{{816,0},{448,81}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{512,64}}</string>
+                <string>{{0,0},{448,81}}</string>
                 <key>sourceSize</key>
-                <string>{512,64}</string>
+                <string>{448,81}</string>
             </dict>
             <key>confety_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1406,0},{128,102}}</string>
+                <string>{{1470,0},{128,102}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,10 +108,23 @@
                 <key>sourceSize</key>
                 <string>{16,16}</string>
             </dict>
+            <key>egg light.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,105},{1098,124}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1098,124}}</string>
+                <key>sourceSize</key>
+                <string>{1098,124}</string>
+            </dict>
             <key>event_panel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1534,0},{618,103}}</string>
+                <string>{{1598,0},{618,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>explosion@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{916,240},{969,1252}}</string>
+                <string>{{616,345},{969,1252}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>explosion_basic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1885,240},{1071,1252}}</string>
+                <string>{{1585,345},{1071,1252}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -146,6 +159,32 @@
                 <string>{{0,0},{1071,1252}}</string>
                 <key>sourceSize</key>
                 <string>{1071,1252}</string>
+            </dict>
+            <key>game_chess@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1264,0},{128,81}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{128,81}}</string>
+                <key>sourceSize</key>
+                <string>{128,81}</string>
+            </dict>
+            <key>game_chess_bg@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2216,0},{82,105}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{82,105}}</string>
+                <key>sourceSize</key>
+                <string>{82,105}</string>
             </dict>
             <key>game_shelf@2x.png</key>
             <dict>
@@ -163,7 +202,7 @@
             <key>info_panel_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2152,0},{354,124}}</string>
+                <string>{{1098,105},{354,124}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +215,7 @@
             <key>mark@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2506,0},{179,179}}</string>
+                <string>{{1452,105},{179,179}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +241,7 @@
             <key>weapon_strike_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,240},{616,630}}</string>
+                <string>{{0,345},{616,630}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -220,9 +259,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas7.png</string>
             <key>size</key>
-            <string>{3245,1492}</string>
+            <string>{2656,1597}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1b9fc2e5830cd9a334b43f52b027524b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6f067e57c9f570ee08b484f9f951e13d:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas7.png</string>
         </dict>

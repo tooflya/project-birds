@@ -122,6 +122,8 @@ class Progresses : public Game
         void onGameEnd();
 
         void onBirBlow(int pType, float pX, float pY);
+    
+        void onTaskComplete();
 };
 
 #endif

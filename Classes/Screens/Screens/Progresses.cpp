@@ -68,7 +68,7 @@ class Grid : public CCNode
 public:
     
   void draw()
-    {//return;
+    {return;
         float x1 = Utils::coord(0);
         float x2 = Options::CAMERA_WIDTH;
         float y1 = Utils::coord(0);
@@ -100,14 +100,22 @@ public:
             ccDrawLine(ccp(x1, y1), ccp(x2, y2));
         }
         
-        ccDrawColor4F(1.0f, 1.0f, 1.0f, 1.0f);
-        
         for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
         {
             for(int j = Game::MATRIX_SIZE_Y - 1; j >= 0; j--)
             {
                 if(Game::MATRIX[i][j] == -1)
                 {
+                    ccDrawColor4F(1.0f, 1.0f, 1.0f, 1.0f);
+                    
+                    ccDrawLine(ccp(Utils::coord(64) * i, Options::CAMERA_HEIGHT - Utils::coord(64) * j), ccp(Utils::coord(64) * (i + 1), Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 1)));
+                    ccDrawLine(ccp(Utils::coord(64) * i, Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 1)), ccp(Utils::coord(64) * (i + 1), Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 0)));
+                }
+                
+                if(Game::MATRIX[i][j] == -2)
+                {
+                    ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
+                    
                     ccDrawLine(ccp(Utils::coord(64) * i, Options::CAMERA_HEIGHT - Utils::coord(64) * j), ccp(Utils::coord(64) * (i + 1), Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 1)));
                     ccDrawLine(ccp(Utils::coord(64) * i, Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 1)), ccp(Utils::coord(64) * (i + 1), Options::CAMERA_HEIGHT - Utils::coord(64) * (j + 0)));
                 }
@@ -216,7 +224,9 @@ Progresses::Progresses() :
     this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
     
     this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
-    
+        
+    this->mSchematicBig = EntityManager::create(100, Entity::create("game_chess_bg@2x.png"), spriteBatch2);
+    this->mSchematicSmall = EntityManager::create(100, Entity::create("game_chess@2x.png", 2, 1), spriteBatch2);
     this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
     this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
     this->mFeathers = EntityManager::create(300, Feather::create(), spriteBatch2);
@@ -229,9 +239,10 @@ Progresses::Progresses() :
     this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
     this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
     this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
-    this->mColors = EntityManager::create(1000, Color::create(), spriteBatch2);
+    this->mColors = EntityManager::create(100, Color::create(), spriteBatch2);
+    this->mColorsBlink = EntityManager::create(100, Entity::create("egg light.png", 9, 1), spriteBatch2);
     this->mTasksBackground = EntityManager::create(10, Entity::create("task-background@2x.png"), spriteBatch8);
-    this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 8, 1), spriteBatch8);
+    this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 7, 1), spriteBatch8);
     
     this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
     
@@ -385,6 +396,18 @@ void Progresses::onTouchButtonsCallback(const int pAction, const int pID)
 // Override Methods
 // ===========================================================
 
+void Progresses::onTaskComplete()
+{
+    STARS++;
+    
+    if(this->mStarTime > 0)
+    {
+        STARS++;
+    }
+    
+    this->mTaskDone = true;
+}
+
 void Progresses::draw()
 {
     Game::draw();
@@ -449,6 +472,7 @@ void Progresses::update(float pDeltaTime)
     this->mStarTimeText->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() / 2 - this->mStarTimeText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
     int c = 0;
+    bool complete = true;
     for(int i = 0; i < 10; i += 2)
     {
         if(TASK[Game::LEVEL][i] != 0)
@@ -465,10 +489,17 @@ void Progresses::update(float pDeltaTime)
             else
             {
                 this->mTaskText[c]->setColor(ccc3(255, 255, 255));
+                
+                complete = false;
             }
             
             c++;
         }
+    }
+    
+    if(complete)
+    {
+        this->onTaskComplete();
     }
 }
 
@@ -481,23 +512,41 @@ void Progresses::onGameStarted()
     this->mTime = 60.0;
     this->mStarTime = 60.0;
     
-    for(int i = 0; i < MATRIX_SIZE_X; i++)
+    for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
     {
-        for(int j = 0; j < MATRIX_SIZE_Y; j++)
+        int y = 0;
+        
+        for(int j = Game::MATRIX_SIZE_Y - 1; j >= 0; j--)
         {
-            if(Utils::probably(50))
+            if(MATRIX[i][j] == -1 && Utils::probably(50))
             {
                 Color* color = static_cast<Color*>(this->mColors->create());
                 
                 color->setCurrentFrameIndex(Utils::random(0, 3));
-                color->setCenterPositionWithCorrection(Utils::coord(64) * i, Utils::coord(64) * j);
+                color->mType = color->getCurrentFrameIndex();
+                
+                color->setCenterPositionWithCorrection(Utils::coord(64) * i, Utils::coord(64) * y);
             }
+            
+            y++;
         }
     }
 }
 
 void Progresses::onGameEnd()
 {
+    if(!this->mTaskDone)
+    {
+        STARS = 0;
+    }
+    else
+    {
+        if(this->mColors->getCount() <= 0)
+        {
+            STARS++;
+        }
+    }
+    
     this->mGamePaused = true;
 
     this->mEndScreen->show();
@@ -521,6 +570,8 @@ void Progresses::onBirBlow(int pType, float pX, float pY)
             Color* color = static_cast<Color*>(this->mColors->create());
             
             color->setCurrentFrameIndex(pType);
+            color->mType = pType;
+            
             color->setCenterPositionWithCorrection(pX, pY);
         }
     }
@@ -540,15 +591,57 @@ void Progresses::onExit()
 
 void Progresses::onShow()
 {
-    this->mColors->clear();
-    this->mColorsSmall->clear();
-    this->mTasksBackground->clear();
+    STARS = 0;
     
-    for(int i = 0; i < MATRIX_SIZE_X; i++)
+    this->mColors->clear();
+    this->mSchematicBig->clear();
+    this->mSchematicSmall->clear();
+    this->mTasksBackground->clear();
+    this->mColorsSmall->clear();
+    
+    this->mTaskDone = false;
+
+    for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
     {
-        for(int j = 0; j < MATRIX_SIZE_Y; j++)
+        int c = 0;
+        
+        for(int j = Game::MATRIX_SIZE_Y - 1; j >= 0; j--)
         {
-            MATRIX[i][j] = -1;
+            if(c < LEVEL_HEIGHT[LEVEL])
+            {
+                switch(LEVEL)
+                {
+                    default:
+                        MATRIX[i][j] = -1;
+                    break;
+                    case 0:
+                        MATRIX[i][j] = -1;
+                    break;
+                    case 1:
+                        if(c == LEVEL_HEIGHT[LEVEL] - 1)
+                        {
+                            if(i == 0 || i == MATRIX_SIZE_X - 1)
+                            {
+                                MATRIX[i][j] = -2;
+                            }
+                            else
+                            {
+                                MATRIX[i][j] = -1;
+                            }
+                        }
+                        else
+                        {
+                            MATRIX[i][j] = -1;
+                        }
+                    break;
+                }
+            }
+            else
+            {
+                MATRIX[i][j] = -2;
+            }
+            
+            c++;
         }
     }
     
@@ -579,6 +672,37 @@ void Progresses::onShow()
             
             c++;
         }
+    }
+    
+    int c2 = -1;
+    c = -1;
+    
+    for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
+    {
+        int y = 0;
+        
+        c2++;
+        c = c2;
+        
+        for(int j = Game::MATRIX_SIZE_Y - 1; j >= 0; j--)
+        {
+            if(MATRIX[i][j] >= -1)
+            {
+                Entity* big = this->mSchematicBig->create();
+                big->setCenterPosition(Utils::coord(64) * i + Utils::coord(32) + Utils::coord(8), Utils::coord(81) * y + Utils::coord(40) + Utils::coord(15));
+                
+                Entity* small = this->mSchematicSmall->create();
+                small->setCenterPosition(Utils::coord(64) * i + Utils::coord(32) + Utils::coord(8), Utils::coord(81) * y + Utils::coord(40) + Utils::coord(15));
+                small->setCurrentFrameIndex(c);
+            }
+            
+            y++;
+            c++;
+            
+            if(c == 2) c = 0;
+        }
+        
+        if(c2 == 1) c2 = -1;
     }
 }
 

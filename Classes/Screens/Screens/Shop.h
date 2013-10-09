@@ -5,6 +5,7 @@
 
 #include "BuyItem.h"
 #include "GetCoins.h"
+#include "GetLives.h"
 #include "BoughtItem.h"
 #include "PaymentProceed.h"
 
@@ -32,7 +33,7 @@ class Shop : public Screen
         // Fields
         // ===========================================================
 
-        int mCoins;
+        int mPanelItems[3];
     
         Entity* mGamePanel;
         Entity* mBackgroundDecorations[2];
@@ -116,6 +117,7 @@ class Shop : public Screen
     
         Popup* mBuyItemPopup;
         Popup* mGetCoinsPopup;
+        Popup* mGetLivesPopup;
         Popup* mPaymentProceed;
         
         BoughtItem* mBoughtItem;

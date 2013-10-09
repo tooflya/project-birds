@@ -33,7 +33,7 @@
             <key>bonus-animation@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2266,0},{682,664}}</string>
+                <string>{{2178,0},{682,664}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>bonus_amigo_hat@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{691,0},{131,75}}</string>
+                <string>{{923,0},{131,75}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>bonus_pirat_hat@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{822,0},{124,87}}</string>
+                <string>{{1054,0},{124,87}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,20 +72,20 @@
             <key>colors_small@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{946,0},{320,40}}</string>
+                <string>{{691,0},{232,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{320,40}}</string>
+                <string>{{0,0},{232,42}}</string>
                 <key>sourceSize</key>
-                <string>{320,40}</string>
+                <string>{232,42}</string>
             </dict>
             <key>game_panel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1266,0},{1000,66}}</string>
+                <string>{{1178,0},{1000,66}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>game_panel_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{613,0},{78,72}}</string>
+                <string>{{535,0},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>game_panel_plus@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{535,0},{78,72}}</string>
+                <string>{{613,0},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -248,7 +248,7 @@
             <key>size</key>
             <string>{3139,1944}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:29b2b2c96d2eda34c92831fcbed2d5be:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:741f4a59875fa090c72bebb95cc75b87:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas6.png</string>
         </dict>
