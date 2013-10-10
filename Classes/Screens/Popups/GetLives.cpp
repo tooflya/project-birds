@@ -39,7 +39,8 @@ GetLives::GetLives(CCNode* pParent) :
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
         this->mIllustration = Entity::create("popup_glife_pic@2x.png", spriteBatch3);
         
-        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_glife_btn_bg@2x.png", 1, 1, 0, 0, 512, 193}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
+        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_glife_btn1@2x.png", 1, 1, 0, 0, 298, 230}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
+        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_glife_btn2@2x.png", 1, 1, 0, 0, 309, 247}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_2, onTouchButtonsCallback);
         
         for(int i = 0; i < 2; i++)
         {
@@ -52,11 +53,12 @@ GetLives::GetLives(CCNode* pParent) :
         
         Text* text1 = Text::create(Options::TEXT_GETLIVES_STRING_1, this);
         
-        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(160));
         
-        this->mGetCoinsButtons[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(320));
+        this->mGetCoinsButtons[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(160), Options::CAMERA_CENTER_Y - Utils::coord(350));
+        this->mGetCoinsButtons[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(120), Options::CAMERA_CENTER_Y - Utils::coord(338));
         
-        this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
+        this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(230));
 
         this->mPurchaseId = -1;
         
@@ -92,28 +94,14 @@ void GetLives::onTouchButtonsCallback(const int pAction, const int pID)
             break;
             case Options::BUTTONS_ID_GETCOINS_1:
 
-                pSender->mPurchaseId = 0;
+                pSender->mPurchaseId = 4;
 
                 pSender->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_2:
 
-                pSender->mPurchaseId = 1;
-                
-                pSender->hide();
-                
-            break;
-            case Options::BUTTONS_ID_GETCOINS_3:
-
-                pSender->mPurchaseId = 2;
-                
-                pSender->hide();
-                
-            break;
-            case Options::BUTTONS_ID_GETCOINS_4:
-
-                pSender->mPurchaseId = 3;
+                pSender->mPurchaseId = 5;
                 
                 pSender->hide();
                 
@@ -160,28 +148,12 @@ void GetLives::onHide()
     Popup::onHide();
 
     Shop* shop = static_cast<Shop*>(this->mParent);
-
+    
     switch(this->mPurchaseId)
     {
-        case 0:
-
+        case 4:
+        case 5:
         shop->mPaymentProceed->show();
-
-        break;
-        case 1:
-
-        shop->mPaymentProceed->show();
-
-        break;
-        case 2:
-
-        shop->mPaymentProceed->show();
-
-        break;
-        case 3:
-
-        shop->mPaymentProceed->show();
-
         break;
     }
 

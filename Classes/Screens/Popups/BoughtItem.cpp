@@ -174,6 +174,11 @@ void BoughtItem::show(int pItemId)
 void BoughtItem::hide()
 {
     this->runAction(CCFadeTo::create(0.5, 0.0));
+    
+    for(int i = 0; i < this->mConfetti->getCount(); i++)
+    {
+        static_cast<Entity*>(this->mConfetti->objectAtIndex(i))->runAction(CCFadeTo::create(0.5, 0));
+    }
 
     this->mHideAnimation = true;
     this->mHideAnimationTimeElapsed = 0;

@@ -151,6 +151,7 @@
             <filename>../../Graphics Sources/get_coins_light@2x.png</filename>
             <filename>../../Graphics Sources/popup_quit_picture_light_main@2x.png</filename>
             <filename>../../Graphics Sources/popup_quit_picture_light_2@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_ico_fall_price@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

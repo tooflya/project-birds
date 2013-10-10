@@ -136,7 +136,7 @@ class Options
 
         static const char* FONT;
 
-        static const char* SAVE_DATA_COINS_ID[3];
+        static const char* SAVE_DATA_COINS_ID[4];
         static const char* SAVE_DATA_BEST_RESULT[2];
         static const char* SAVE_DATA_LANGUAGE_ID;
 
@@ -145,12 +145,14 @@ class Options
         static int SAVE_DATA_COINS_TYPE_GOLD;
         static int SAVE_DATA_COINS_TYPE_SILVER;
         static int SAVE_DATA_COINS_TYPE_LIVES;
+        static int SAVE_DATA_COINS_TYPE_KEYS;
     
         static int CURRENT_LANGUAGE;
     
         static Textes TEXTES_HOLDER[600];
 
         static int SHOP_ITEMS_PRICES[100];
+        static int SHOP_ITEMS_PRICES_GOLD[100];
         static int SHOP_ITEMS_RATING_FACTOR[100];
         static const char* SHOP_ITEMS_PROPERTIES[100];
 
@@ -185,6 +187,7 @@ class Options
         static const int BUTTONS_ID_SHOP_GET_SILVER_COINS = 6103;
         static const int BUTTONS_ID_SHOP_GET_GOLD_COINS = 6104;
         static const int BUTTONS_ID_SHOP_GET_LIVES = 6105;
+        static const int BUTTONS_ID_SHOP_GET_KEYS = 6106;
         static const int BUTTONS_ID_END_MENU  = 7001;
         static const int BUTTONS_ID_END_RESTART  = 7002;
         static const int BUTTONS_ID_END_CONTINUE  = 7003;
@@ -248,6 +251,7 @@ class Options
         static Textes TEXT_GETCOINS_3;
         static Textes TEXT_GETCOINS_4;
         static Textes TEXT_GETLIVES_STRING_1;
+        static Textes TEXT_GETKEYS_STRING_1;
         static Textes TEXT_LOADING_1;
         static Textes TEXT_LOADING_2;
         static Textes TEXT_PROGRESS_STRING_1;
@@ -301,7 +305,9 @@ class Options
         static Textes TEXT_PAYMENT_STRING[6];
         static Textes TEXT_END[7];
         static Textes TEXT_DAILY_MAP;
-        static Textes TEXT_COINS_BONUS[5];
+        static Textes TEXT_COINS_BONUS[10];
+        static Textes TEXT_UNLOCKLEVEL;
+        static Textes TEXT_UNLOCKLEVEL_OK;
 
         // ===========================================================
         // Fields

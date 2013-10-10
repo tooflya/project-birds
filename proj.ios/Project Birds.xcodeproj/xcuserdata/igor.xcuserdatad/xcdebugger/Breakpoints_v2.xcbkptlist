@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Shop.cpp"
-            timestampString = "402922565.390161"
+            timestampString = "403118521.981138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "Shop::Shop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -102,71 +102,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Game.cpp"
-            timestampString = "402850430.954735"
+            timestampString = "403109286.32348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214">
+            startingLineNumber = "218"
+            endingLineNumber = "218">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Progresses.cpp"
-            timestampString = "402937055.822929"
+            timestampString = "403120562.733606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
             landmarkName = "Progresses::onBirBlow(int pType, float pX, float pY)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Progresses::onShow()"
-                  moduleName = "Project Birds"
-                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Screens/Progresses.cpp"
-                  timestampString = "402863699.09816"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "566"
-                  endingLineNumber = "566"
-                  offsetFromSymbolStart = "134">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Progresses::onShow()"
-                  moduleName = "Project Birds"
-                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Screens/Progresses.cpp"
-                  timestampString = "402863699.098678"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "566"
-                  endingLineNumber = "566"
-                  offsetFromSymbolStart = "172">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Progresses::onShow()"
-                  moduleName = "Project Birds"
-                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Screens/Progresses.cpp"
-                  timestampString = "402863699.098978"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "566"
-                  endingLineNumber = "566"
-                  offsetFromSymbolStart = "180">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Screens/Screens/End.cpp"
+            timestampString = "403002050.977474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int))"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Screens/Screens/Levels.cpp"
+            timestampString = "403113622.117729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "801"
+            endingLineNumber = "801"
+            landmarkName = "Levels::unlock()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

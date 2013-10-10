@@ -23,6 +23,7 @@ class BuyItemList : public List
         // ===========================================================
 
         Entity* mIcon;
+        Entity* mSilverCoinsIcon;
         Entity* mCoinsIcon;
         Entity* mPropertiesIcon;
         Entity* mStars[2];
@@ -30,6 +31,7 @@ class BuyItemList : public List
         Text* mNameText;
         Text* mDescriptionText;
         Text* mPriceText;
+        Text* mPriceGoldText;
         Text* mPowerText;
         Text* mBoughtText;
 

@@ -166,12 +166,18 @@ class LevelButton : public Entity
         this->mText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this);
     }
     
-    static LevelButton* create()
+    static LevelButton* create(bool newest)
     {
         LevelButton* button = new LevelButton();
         button->autorelease();
+        button->retain();
         
         return button;
+    }
+    
+    Entity* create()
+    {
+        return Entity::create();
     }
     
     void setId(int pId)
@@ -194,9 +200,20 @@ class LevelButton : public Entity
             this->setCurrentFrameIndex(stars * 2);
         }
         
-        if(pId == 5 || pId == 10 ||pId == 15||pId == 25)
+        bool prize = false;
+        
+        for(int i = 0; i < 80; i++)
+        {
+            if(Levels::PRIZES[this->mId - 1] == 1)
+            {
+                prize = true;
+            }
+        }
+        
+        if(prize)
         {
             this->setCurrentFrameIndex(this->getCurrentFrameIndex() + 1);
+            this->mText->setVisible(false);
         }
     }
     
@@ -210,7 +227,9 @@ class LevelButton : public Entity
         {
             if(this->getCurrentFrameIndex() == 8 || this->getCurrentFrameIndex() == 9)
             {
-                
+                Game::LEVEL = this->mId - 1;
+
+                static_cast<Levels*>(this->getParent()->getParent()->getParent())->mUnlockLevelPopup->show();
             }
             else
             {
@@ -218,6 +237,27 @@ class LevelButton : public Entity
             
                 AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
             }
+        }
+        
+        if(Options::SOUND_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_TAP);
+        }
+    }
+    
+    void unlock()
+    {
+        if(this->getCurrentFrameIndex() == 8 || this->getCurrentFrameIndex() == 9)
+        {
+            if(this->getCurrentFrameIndex() == 8)
+            {
+                this->mText->setVisible(true);
+            }
+            
+            this->setCurrentFrameIndex(this->getCurrentFrameIndex() == 8 ? 0 : 1);
+            
+            AppDelegate::removeCoins(Levels::PRICES[Game::LEVEL], Options::SAVE_DATA_COINS_TYPE_KEYS);
+            AppDelegate::setLevelStars(Game::LEVEL, 0);
         }
     }
     
@@ -239,7 +279,7 @@ class LevelButton : public Entity
     
     LevelButton* deepCopy()
     {
-        return new LevelButton();
+        return LevelButton::create(true);
     }
 };
 
@@ -555,6 +595,30 @@ class MainList : public CCLayer
 
 Levels* Levels::m_Instance = NULL;
 
+int Levels::PRICES[80] =
+{
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+    51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+    61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
+    71, 72, 73, 74, 75, 76, 77, 78, 79, 80
+};
+
+int Levels::PRIZES[80] =
+{
+    0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 1, 0, 0, 1,
+    0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    1, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 1, 0
+};
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -566,7 +630,8 @@ Levels* Levels::m_Instance = NULL;
 Levels::~Levels()
 {
     this->mMainList->release();
-    this->mGetLivesPopup->release();
+    //this->mGetLivesPopup->release();
+    this->mUnlockLevelPopup->release();
 }
 
 Levels::Levels()
@@ -591,7 +656,7 @@ Levels::Levels()
         this->mSlides[i] = Entity::create("choose_box_navi_sprite@2x.png", 1, 2, spriteBatch);
     }
 
-    this->mStarsCountText = Text::create((Textes) {"206", Options::FONT, 64, -1}, this->mTablet);
+    this->mStarsCountText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this->mTablet);
 
     this->addChild(this->mMainList->mLayers[0]);
     this->addChild(this->mMainList);
@@ -632,7 +697,7 @@ Levels::Levels()
     
     int id = 0;
     
-    int t = 0;
+    int t = -1;
     for(int o = 1; o < LEVEL_PACKS_COUNT; o++)
     {
         for(int i = 0; i < 4; i++)
@@ -641,11 +706,13 @@ Levels::Levels()
             
             for(int j = 0; j < 4; j++)
             {
-                this->mLevels[t] = LevelButton::create();
+                t++;
+                
+                this->mLevels[t] = LevelButton::create(true);
                 this->mMainList->mLayers[o]->addChild(this->mLevels[t]);
                 
                 this->mLevels[t]->create()->setCenterPosition(x, y);
-                ((LevelButton*) this->mLevels[t])->setId(++id);
+                this->mLevels[t]->setId(++id);
                 
                 x += Utils::coord(150);
             }
@@ -677,7 +744,8 @@ Levels::Levels()
 
     this->mSlidesArrows[1]->setScaleX(-1);
     
-    this->mGetLivesPopup = GetLives::create(this);
+    //this->mGetLivesPopup = GetLives::create(this);
+    this->mUnlockLevelPopup = UnlockLevel::create(this);
 
     /** Experiments */
 }
@@ -720,6 +788,19 @@ void Levels::onTouchButtonsCallback(const int pAction, const int pID)
     }
 }
 
+void Levels::updateIcons()
+{
+    for(int i = 0; i < 80; i++)
+    {
+        this->mLevels[i]->setId(i + 1);
+    }
+}
+
+void Levels::unlock()
+{
+    this->mLevels[Game::LEVEL]->unlock();
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -743,6 +824,8 @@ void Levels::onEnter()
     this->mBackgroundDecorations[2]->setCurrentFrameIndex(0);
     this->mBackgroundDecorations[3]->setVisible(true);
     //this->mBackgroundDecorations[4]->setVisible(false);
+    
+    this->mStarsCountText->setString(ccsf("%d", AppDelegate::getLevelStarsTotalCount()));
 }
 
 void Levels::onExit()

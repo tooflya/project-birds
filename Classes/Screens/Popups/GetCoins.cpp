@@ -169,24 +169,10 @@ void GetCoins::onHide()
     switch(this->mPurchaseId)
     {
         case 0:
-
-        shop->mPaymentProceed->show();
-
-        break;
         case 1:
-
-        shop->mPaymentProceed->show();
-
-        break;
         case 2:
-
-        shop->mPaymentProceed->show();
-
-        break;
         case 3:
-
-        shop->mPaymentProceed->show();
-
+            shop->mPaymentProceed->show();
         break;
     }
 

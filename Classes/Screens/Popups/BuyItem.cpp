@@ -138,7 +138,7 @@ void BuyItem::onHide()
     {
         this->mYesPressed = false;
 
-        if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD) >= Options::SHOP_ITEMS_PRICES[Shop::CLICKED_ITEM_ID])
+        if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER) >= Options::SHOP_ITEMS_PRICES[Shop::CLICKED_ITEM_ID] && AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD) >= Options::SHOP_ITEMS_PRICES_GOLD[Shop::CLICKED_ITEM_ID])
         {
             shop->onItemBought(Shop::CLICKED_ITEM_ID);
         }

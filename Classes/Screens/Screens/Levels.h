@@ -4,8 +4,10 @@
 #include "Screen.h"
 
 #include "GetLives.h"
+#include "UnlockLevel.h"
 
 class MainList;
+class LevelButton;
 
 class Levels : public Screen
 {
@@ -27,7 +29,6 @@ class Levels : public Screen
         Entity* mBackground;
         Entity* mTablet;
         Entity* mStarsCountIcon;
-        Entity* mLevels[80]; // TODO: return 6.
         Button* mBackButton;
         Button* mShopButton;
 
@@ -86,6 +87,9 @@ class Levels : public Screen
         // ===========================================================
 
         static const int LEVEL_PACKS_COUNT = 6;
+    
+        static int PRICES[80];
+        static int PRIZES[80];
 
         // ===========================================================
         // Fields
@@ -96,6 +100,9 @@ class Levels : public Screen
         Entity* mBackgroundDecorations[5];
     
         Popup* mGetLivesPopup;
+        Popup* mUnlockLevelPopup;
+    
+        LevelButton* mLevels[80]; // TODO: return 6.
 
         // ===========================================================
         // Constructors
@@ -108,6 +115,9 @@ class Levels : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        void updateIcons();
+        void unlock();
         
         // ===========================================================
         // Override Methods

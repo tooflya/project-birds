@@ -239,6 +239,7 @@ class Game : public Screen
         EntityManager* mDust;
         EntityManager* mStars;
         EntityManager* mCoins;
+        EntityManager* mSilverCoins;
         EntityManager* mArrows;
         EntityManager* mPredictionIcons;
         EntityManager* mSchematicBig;
@@ -261,6 +262,13 @@ class Game : public Screen
         static int LEVEL_TYPE[80];
         static int LEVEL_HEIGHT[80];
         static int LEVEL_COLORS[80];
+        static int LEVEL_HEALTH[80];
+    
+        static int GAME_TYPE;
+    
+        static const int GAME_TYPE_CLASSIC = 0;
+        static const int GAME_TYPE_ARCADE = 1;
+        static const int GAME_TYPE_PROGRESS = 2;
 
         // ===========================================================
         // Constructors

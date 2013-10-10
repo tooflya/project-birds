@@ -90,6 +90,7 @@ void AppDelegate::install()
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[2], 5);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[3], 0);
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[1], 0);
@@ -210,6 +211,19 @@ int AppDelegate::getLevelStars(int pLevel)
     return CCUserDefault::sharedUserDefault()->getIntegerForKey(text);
 }
 
+int AppDelegate::getLevelStarsTotalCount()
+{
+    int count = 0;
+    
+    for(int i = 0; i < 80; i++)
+    {
+        int next = getLevelStars(i);
+        
+        if(next > 0) count += next;
+    }
+    
+    return count;
+}
 void AppDelegate::setLevelStars(int pLevel, int pStars)
 {
     char text[64];

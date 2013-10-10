@@ -92,7 +92,7 @@ void Bird::init(int pChalangeType, int pSomeData[3])
     {
         case 2:
             
-        this->mType = Utils::random(0, this->count - 3);
+        this->mType = Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
         
         this->setCenterPosition(Utils::probably(50) ? 0 : Options::CAMERA_WIDTH, Options::CAMERA_CENTER_Y + Utils::coord(Utils::randomf(0.0f, 300.0f)));
             
@@ -177,7 +177,7 @@ void Bird::onCreate()
         }
         else
         {
-            this->mType = Utils::probably(Game::PREDICTION ? 30 : 15) ? TYPE_DANGER : Utils::random(0, this->count - 3);
+            this->mType = Utils::probably(Game::PREDICTION ? 30 : 15) ? TYPE_DANGER : Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
         
             this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -446,7 +446,14 @@ void Bird::update(float pDeltaTime)
                 {
                     for(int i = 0; i < 10; i++)
                     {
-                        game->mCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                        if(Utils::probably(25))
+                        {
+                            game->mCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                        }
+                        else
+                        {
+                            game->mSilverCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                        }
                     }
                 }
                 

@@ -29,20 +29,20 @@ float Utils::randomf(float min, float max)
 {
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
-	return min + ((max + 1) - min) * (float)arc4random() / UINT_MAX;
+	return min + (max - min) * (float)arc4random() / UINT_MAX;
 
 	#else
 
 	return min + (float) rand() / ((float) RAND_MAX / (max - min));
 
 	#endif
-}
+} 
 
 int Utils::random(int min, int max)
 {
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
-	return (arc4random() % (max + 1)) + min;
+    return (arc4random() % ((max - min) + 1)) + min;
 
 	#else
 
@@ -70,7 +70,7 @@ float Utils::round(float x)
 
 float Utils::distance(float dX0, float dY0, float dX1, float dY1)
 {
-    return sqrt((dX1 - dX0)*(dX1 - dX0) + (dY1 - dY0)*(dY1 - dY0));
+    return sqrt((dX1 - dX0) * (dX1 - dX0) + (dY1 - dY0) * (dY1 - dY0));
 }
 
 bool Utils::probably(int pProbably)

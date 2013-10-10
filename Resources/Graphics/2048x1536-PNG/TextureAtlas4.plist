@@ -20,7 +20,7 @@
             <key>btn_sprite_close@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{512,0},{162,162}}</string>
+                <string>{{1473,0},{162,162}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>choose_box_lvl_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{674,0},{400,1000}}</string>
+                <string>{{2764,477},{400,1000}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>confety_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1074,0},{128,102}}</string>
+                <string>{{1080,0},{128,102}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>facebook_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1202,0},{84,84}}</string>
+                <string>{{996,0},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>flag_not_avaliable_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1286,0},{257,41}}</string>
+                <string>{{512,0},{257,41}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>flag_sprite_big@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1543,0},{636,1122}}</string>
+                <string>{{3164,477},{636,1122}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>popup_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2179,0},{648,988}}</string>
+                <string>{{2116,477},{648,988}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>popup_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1122},{265,147}}</string>
+                <string>{{1208,0},{265,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>popup_buy_coins_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{265,1122},{594,482}}</string>
+                <string>{{0,477},{594,482}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>popup_getcoins_picture@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{859,1122},{485,391}}</string>
+                <string>{{2342,0},{485,391}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -147,10 +147,49 @@
                 <key>sourceSize</key>
                 <string>{485,391}</string>
             </dict>
+            <key>popup_key_btn1@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1804,0},{265,231}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{265,231}}</string>
+                <key>sourceSize</key>
+                <string>{265,231}</string>
+            </dict>
+            <key>popup_key_btn2@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2069,0},{273,232}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{273,232}}</string>
+                <key>sourceSize</key>
+                <string>{273,232}</string>
+            </dict>
+            <key>popup_key_pic@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1103,477},{563,535}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{563,535}}</string>
+                <key>sourceSize</key>
+                <string>{563,535}</string>
+            </dict>
             <key>popup_progress_picture@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1344,1122},{456,477}}</string>
+                <string>{{2827,0},{456,477}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +202,7 @@
             <key>popup_quit_picture@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1800,1122},{450,538}}</string>
+                <string>{{1666,477},{450,538}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +215,7 @@
             <key>popup_rate_picture@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2250,1122},{509,519}}</string>
+                <string>{{594,477},{509,519}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +228,7 @@
             <key>settings_lang_check@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2759,1122},{59,61}}</string>
+                <string>{{769,0},{59,61}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +241,7 @@
             <key>share@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1660},{169,182}}</string>
+                <string>{{1635,0},{169,182}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +254,7 @@
             <key>twitter_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{169,1660},{84,84}}</string>
+                <string>{{828,0},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +267,7 @@
             <key>vk_icon@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{253,1660},{84,84}}</string>
+                <string>{{912,0},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -246,9 +285,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas4.png</string>
             <key>size</key>
-            <string>{2827,1842}</string>
+            <string>{3800,1604}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3772badc2d5f2f664b8440cd09a8b9ff:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:0cfb88160e12a274c126cd46fec725ae:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas4.png</string>
         </dict>

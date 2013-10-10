@@ -22,7 +22,7 @@ class GetLives : public Popup
     
         int mPurchaseId;
 
-        Button* mGetCoinsButtons[4];
+        Button* mGetCoinsButtons[2];
     
         EntityManager* mLights;
 

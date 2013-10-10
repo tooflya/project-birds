@@ -4,23 +4,36 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>popup_glife_btn_bg@2x.png</key>
+            <key>popup_glife_btn1@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{303,0},{512,193}}</string>
+                <string>{{0,0},{298,230}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{512,193}}</string>
+                <string>{{0,0},{298,230}}</string>
                 <key>sourceSize</key>
-                <string>{512,193}</string>
+                <string>{298,230}</string>
+            </dict>
+            <key>popup_glife_btn2@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{601,0},{309,247}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{309,247}}</string>
+                <key>sourceSize</key>
+                <string>{309,247}</string>
             </dict>
             <key>popup_glife_pic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{815,0},{614,628}}</string>
+                <string>{{910,0},{614,628}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +72,7 @@
             <key>preload-lvl-wave@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{303,301}}</string>
+                <string>{{298,0},{303,301}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -79,7 +92,7 @@
             <key>size</key>
             <string>{1676,1908}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fbc6715aaa5673b26b1e35bee22aaf43:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6183e9b18798c2f6c179db3bac858449:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas3.png</string>
         </dict>

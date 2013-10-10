@@ -6,8 +6,11 @@
 #include "BuyItem.h"
 #include "GetCoins.h"
 #include "GetLives.h"
+#include "GetKeys.h"
 #include "BoughtItem.h"
 #include "PaymentProceed.h"
+#include "KeyParticle.h"
+#include "LiveParticle.h"
 
 #include "Item.h"
 #include "AnimatedCoin.h"
@@ -33,21 +36,23 @@ class Shop : public Screen
         // Fields
         // ===========================================================
 
-        int mPanelItems[3];
+        int mPanelItems[4];
     
         Entity* mGamePanel;
         Entity* mBackgroundDecorations[2];
         Entity* mBackground;
-        Entity* mIcons[3];
-        Entity* mTextBackgrounds[3];
+        Entity* mIcons[4];
+        Entity* mTextBackgrounds[4];
     
-        Text* mTextText[3];
+        Text* mTextText[4];
     
-        Button* mTextPluses[3];
+        Button* mTextPluses[4];
     
-
         EntityManager* mPurchaseCoins;
-        
+        EntityManager* mPurchaseSilverCoins;
+        EntityManager* mPurchaseLives;
+        EntityManager* mPurchaseKeys;
+    
         Button* mBackButton;
 
         // ===========================================================
@@ -118,6 +123,7 @@ class Shop : public Screen
         Popup* mBuyItemPopup;
         Popup* mGetCoinsPopup;
         Popup* mGetLivesPopup;
+        Popup* mGetKeysPopup;
         Popup* mPaymentProceed;
         
         BoughtItem* mBoughtItem;
@@ -159,6 +165,8 @@ class Shop : public Screen
 
         void onEnter();
         void onExit();
+    
+        void onEnterTransitionDidFinish();
 };
 
 #endif
