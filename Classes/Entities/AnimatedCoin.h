@@ -28,7 +28,7 @@ class AnimatedCoin : public ImpulseEntity
         // Methods
         // ===========================================================
 
-        AnimatedCoin(float pScaleFactor);
+        AnimatedCoin(const char* pTextureFileName, float pScaleFactor);
 
         // ===========================================================
         // Override Methods
@@ -76,7 +76,7 @@ class AnimatedCoin : public ImpulseEntity
         // Constructors
         // ===========================================================
 
-        static AnimatedCoin* create(float pScaleFactor);
+        static AnimatedCoin* create(const char* pTextureFileName, float pScaleFactor);
 
         // ===========================================================
         // Methods

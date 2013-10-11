@@ -35,23 +35,36 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Icon.png</string>
-				<string>Icon@2x.png</string>
-				<string>Icon-72.png</string>
-				<string>Icon-Small-50.png</string>
-				<string>Icon-Small.png</string>
-				<string>Icon-Small@2x.png</string>
-				<string>Icon-57.png</string>
-				<string>Icon-114.png</string>
-				<string>Icon-144.png</string>
-				<string>Icon-57.png</string>
-				<string>Icon-114.png</string>
-				<string>Icon-57.png</string>
-				<string>Icon-144.png</string>
-				<string>Icon-72.png</string>
+				<string>Icon-80-ios7</string>
+				<string>Icon-58-ios6</string>
+				<string>Icon-29-ios6</string>
+				<string>Icon-120-ios7</string>
+				<string>Icon-114-ios6</string>
+				<string>Icon-57-ios6</string>
+				<string>Icon-114</string>
+				<string>Icon-57</string>
 			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
+		</dict>
+	</dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Icon-58-ios7</string>
+				<string>Icon-80-ios7</string>
+				<string>Icon-29-ios7</string>
+				<string>Icon-40-ios7</string>
+				<string>Icon-100-ios6</string>
+				<string>Icon-50-ios6</string>
+				<string>Icon-152-ios7</string>
+				<string>Icon-76-ios7</string>
+				<string>Icon-144-ios6</string>
+				<string>Icon-72-ios6</string>
+				<string>Icon</string>
+				<string>Icon-144</string>
+			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -63,11 +76,11 @@
 	<key>CFBundlePackageType</key>
 	<string>AAPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.8.0</string>
+	<string>0.8.1</string>
 	<key>CFBundleSignature</key>
 	<string>AAPL</string>
 	<key>CFBundleVersion</key>
-	<string>5352</string>
+	<string>5609</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -87,10 +100,12 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 </dict>
 </plist>

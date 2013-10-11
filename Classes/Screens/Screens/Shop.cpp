@@ -260,9 +260,11 @@ Shop::~Shop()
     this->mBuyItemPopup->release();
     this->mGetCoinsPopup->release();
     this->mGetLivesPopup->release();
+    this->mGetKeysPopup->release();
     this->mBoughtItem->release();
     this->mPaymentProceed->release();
     this->mPurchaseCoins->release();
+    this->mPurchaseSilverCoins->release();
     
     this->mWeaponChecker->release();
 }
@@ -279,39 +281,56 @@ Shop::Shop()
     this->addChild(spriteBatch);
     this->addChild(spriteBatch2);
     
-    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create(1.6), spriteBatch2, 3);
+    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 1.6), spriteBatch2, 3);
+    this->mPurchaseSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.6), spriteBatch2, 3);
+    this->mPurchaseLives = EntityManager::create(50, LiveParticle::create(), spriteBatch2, 3);
+    this->mPurchaseKeys = EntityManager::create(50, KeyParticle::create(), spriteBatch2, 3);
 
     this->mGamePanel = Entity::create("shop_panel@2x.png", spriteBatch2);
     
     this->mTextBackgrounds[0] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
     this->mTextBackgrounds[1] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
     this->mTextBackgrounds[2] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
+    this->mTextBackgrounds[3] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
+    
+    this->mTextBackgrounds[1]->setScaleX(0.9);
+    this->mTextBackgrounds[2]->setScaleX(0.8);
+    this->mTextBackgrounds[3]->setScaleX(0.8);
     
     this->mTextPluses[0] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, onTouchButtonsCallback);
     this->mTextPluses[1] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, onTouchButtonsCallback);
     this->mTextPluses[2] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, onTouchButtonsCallback);
+    this->mTextPluses[3] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, onTouchButtonsCallback);
     
     this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, spriteBatch2);
     this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
     this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", spriteBatch2);
+    this->mIcons[3] = Entity::create("popup_key_ico@2x.png", spriteBatch2);
     
     this->mTextText[0] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
     this->mTextText[1] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
     this->mTextText[2] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+    this->mTextText[3] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
     
     this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
-    this->mTextBackgrounds[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getWidth() / 2 + Utils::coord(60), Options::CAMERA_HEIGHT - Utils::coord(30));
-    this->mTextBackgrounds[1]->create()->setCenterPosition(this->mTextBackgrounds[1]->getWidth() / 2 + Utils::coord(110) + this->mTextBackgrounds[0]->getWidth(), Options::CAMERA_HEIGHT - Utils::coord(30));
-    this->mTextBackgrounds[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getWidth() / 2 + Utils::coord(160) + this->mTextBackgrounds[0]->getWidth() * 2, Options::CAMERA_HEIGHT - Utils::coord(30));
+    this->mTextBackgrounds[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getWidth() / 2 + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mTextBackgrounds[1]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mTextBackgrounds[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mTextBackgrounds[3]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
-    this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() / 2, this->mTextBackgrounds[0]->getCenterY());
-    this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() / 2, this->mTextBackgrounds[1]->getCenterY());
-    this->mTextPluses[1]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() / 2, this->mTextBackgrounds[2]->getCenterY());
+    this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
+    this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
     
-    this->mIcons[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() - this->mTextBackgrounds[0]->getWidth() / 2, this->mTextBackgrounds[0]->getCenterY());
-    this->mIcons[1]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() - this->mTextBackgrounds[1]->getWidth() / 2, this->mTextBackgrounds[1]->getCenterY());
-    this->mIcons[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() - this->mTextBackgrounds[2]->getWidth() / 2, this->mTextBackgrounds[2]->getCenterY());
+    this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2, this->mTextBackgrounds[0]->getCenterY());
+    this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2, this->mTextBackgrounds[1]->getCenterY());
+    this->mTextPluses[1]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2, this->mTextBackgrounds[2]->getCenterY());
+    this->mTextPluses[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2, this->mTextBackgrounds[3]->getCenterY());
+    
+    this->mIcons[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() - this->mTextBackgrounds[0]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[0]->getCenterY());
+    this->mIcons[1]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() - this->mTextBackgrounds[1]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[1]->getCenterY());
+    this->mIcons[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() - this->mTextBackgrounds[2]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[2]->getCenterY());
+    this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
     
     //this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
     this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
@@ -417,6 +436,7 @@ Shop::Shop()
     this->mBuyItemPopup = BuyItem::create(this);
     this->mGetCoinsPopup = GetCoins::create(this);
     this->mGetLivesPopup = GetLives::create(this);
+    this->mGetKeysPopup = GetKeys::create(this);
     this->mBoughtItem = BoughtItem::create(this);
     this->mPaymentProceed = PaymentProceed::create(this);
     
@@ -460,6 +480,10 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
                     }
+                    else if(ACTION == 2)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                    }
 
                     ACTION = -1;
 
@@ -477,10 +501,15 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_LIVES:
                     
-                    if(pSender->mTextPluses[1]->getOpacity() == 255)
+                    //if(pSender->mTextPluses[1]->getOpacity() == 255)
                     {
                         pSender->mGetLivesPopup->show();
                     }
+                    break;
+                case Options::BUTTONS_ID_SHOP_GET_KEYS:
+                    
+                     pSender->mGetKeysPopup->show();
+                    
                 break;
             }
         break;
@@ -567,25 +596,53 @@ void Shop::onPurchase(bool pProceed)
                 this->mIsAnimationPurchaseTime = 5.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.2;
                 
-                AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                AppDelegate::addCoins(25, Options::SAVE_DATA_COINS_TYPE_GOLD);
             break;
             case 1:
                 this->mIsAnimationPurchaseTime = 7.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.15;
                 
-                AppDelegate::addCoins(5000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                AppDelegate::addCoins(5000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                AppDelegate::addCoins(150, Options::SAVE_DATA_COINS_TYPE_GOLD);
             break;
             case 2:
                 this->mIsAnimationPurchaseTime = 10.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.1;
                 
-                AppDelegate::addCoins(15000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                AppDelegate::addCoins(15000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                AppDelegate::addCoins(500, Options::SAVE_DATA_COINS_TYPE_GOLD);
             break;
             case 3:
                 this->mIsAnimationPurchaseTime = 15.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.05;
                 
-                AppDelegate::addCoins(50000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                AppDelegate::addCoins(50000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                AppDelegate::addCoins(2000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+            break;
+            case 4:
+                this->mIsAnimationPurchaseTime = 3.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.1;
+                
+                AppDelegate::addCoins(10, Options::SAVE_DATA_COINS_TYPE_LIVES);
+            break;
+            case 5:
+                this->mIsAnimationPurchaseTime = 5.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.05;
+                
+                AppDelegate::addCoins(25, Options::SAVE_DATA_COINS_TYPE_LIVES);
+            break;
+            case 6:
+                this->mIsAnimationPurchaseTime = 3.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.1;
+                
+                AppDelegate::addCoins(50, Options::SAVE_DATA_COINS_TYPE_KEYS);
+            break;
+            case 7:
+                this->mIsAnimationPurchaseTime = 5.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.05;
+                
+                AppDelegate::addCoins(200, Options::SAVE_DATA_COINS_TYPE_KEYS);
             break;
         }
 
@@ -683,7 +740,7 @@ void Shop::update(float pDeltaTime)
         this->mPanelItems[1] += realSilverCoinsCount < this->mPanelItems[1] ? -c : c;
         
         this->mTextText[1]->setString(Utils::intToString(this->mPanelItems[1]).c_str());
-        this->mTextText[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() / 2 - this->mTextText[1]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[1]->getCenterY());
+        this->mTextText[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2 - this->mTextText[1]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[1]->getCenterY());
     }
 
     /** Purchase animation **/
@@ -704,7 +761,33 @@ void Shop::update(float pDeltaTime)
         {
             this->mIsAnimationPurchaseTimeEpisodeElapsed = 0;
 
-            this->mPurchaseCoins->create();
+            switch(PURCHASE_ID)
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    // Coins
+                    if(Utils::probably(10 * (PURCHASE_ID + 1)))
+                    {
+                        this->mPurchaseCoins->create();
+                    }
+                    else
+                    {
+                        this->mPurchaseSilverCoins->create();
+                    }
+                break;
+                case 4:
+                case 5:
+                    // Hearts
+                    this->mPurchaseLives->create();
+                break;
+                case 6:
+                case 7:
+                    // Keys
+                    this->mPurchaseKeys->create();
+                break;
+            }
         }
     }
 
@@ -731,6 +814,7 @@ void Shop::onEnter()
     this->mPanelItems[0] = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
     this->mPanelItems[1] = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
     this->mPanelItems[2] = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES);
+    this->mPanelItems[3] = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_KEYS);
     
     this->mWeaponChecker->removeFromParentAndCleanup(false);
     
@@ -745,7 +829,10 @@ void Shop::onEnter()
     this->mTextText[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() / 2 - this->mTextText[1]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[1]->getCenterY());
     
     this->mTextText[2]->setString(Utils::intToString(this->mPanelItems[2]).c_str());
-    this->mTextText[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() / 2 - this->mTextText[2]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[2]->getCenterY());
+    this->mTextText[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2 - this->mTextText[2]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[2]->getCenterY());
+    
+    this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
+    this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[3]->getCenterY());
     
     if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) < 5)
     {
@@ -771,6 +858,16 @@ void Shop::onExit()
     
     this->mIsAnimationPurchaseRunning = false;
     this->mPurchaseCoins->clear();
+}
+
+void Shop::onEnterTransitionDidFinish()
+{
+    Screen::onEnterTransitionDidFinish();
+    
+    if(ACTION == 2)
+    {
+        this->mGetKeysPopup->show();
+    }
 }
 
 #endif

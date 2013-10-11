@@ -140,7 +140,8 @@ Arcade::Arcade() :
         this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
         this->mExplosions = EntityManager::create(10, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(10, ExplosionBasic::create(), spriteBatch2);
-        this->mCoins = EntityManager::create(50, AnimatedCoin::create(0.7), spriteBatch2);
+        this->mCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 0.7), spriteBatch2);
+        this->mSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 0.7), spriteBatch2);
         this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
         this->mRobotParts = EntityManager::create(8, RobotoPart::create(0), spriteBatch7);
@@ -294,6 +295,8 @@ void Arcade::onEnter()
     BEST_COUNT = AppDelegate::getBestResult(1);
 
     this->mTimeIcon->start();
+    
+    GAME_TYPE = GAME_TYPE_ARCADE;
 }
 
 void Arcade::onExit()

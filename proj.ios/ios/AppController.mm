@@ -39,7 +39,7 @@ static AppDelegate s_sharedApplication;
                               preserveBackbuffer: NO
                                       sharegroup: nil
                                    multiSampling: NO
-                                 numberOfSamples:0 ];
+                                 numberOfSamples: 0 ];
     
     // Use RootViewController manage EAGLView
     viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];

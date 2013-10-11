@@ -168,6 +168,9 @@
             <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
             <filename>../../Graphics Sources/shop_panel_textbox@2x.png</filename>
             <filename>../../Graphics Sources/shop_panel@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_ico@2x.png</filename>
+            <filename>../../Graphics Sources/popup_glife_pic_fall@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_ico_fall@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

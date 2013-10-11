@@ -3,6 +3,8 @@
 
 #include "ResetProgress.h"
 
+#include "Levels.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -125,6 +127,7 @@ void ResetProgress::onHide()
     if(this->mAction)
     {
         AppDelegate::install();
+        static_cast<Levels*>(AppDelegate::screens->mScreens[Screen::SCREEN_LEVELS])->updateIcons();
         
         AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
     }

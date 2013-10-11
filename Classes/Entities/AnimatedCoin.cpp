@@ -19,17 +19,17 @@
 // Constructors
 // ===========================================================
 
-AnimatedCoin::AnimatedCoin(float pScaleFactor) :
-    ImpulseEntity("coins@2x.png", 5, 4)
+AnimatedCoin::AnimatedCoin(const char* pTextureFileName, float pScaleFactor) :
+    ImpulseEntity(pTextureFileName, 5, 4)
     {
         this->mScaleFactor = pScaleFactor;
         
         this->animate(0.01);
     }
 
-AnimatedCoin* AnimatedCoin::create(float pScaleFactor)
+AnimatedCoin* AnimatedCoin::create(const char* pTextureFileName, float pScaleFactor)
 {
-    AnimatedCoin* coin = new AnimatedCoin(pScaleFactor);
+    AnimatedCoin* coin = new AnimatedCoin(pTextureFileName, pScaleFactor);
     coin->autorelease();
 
     return coin;
@@ -76,7 +76,7 @@ void AnimatedCoin::onDestroy()
 
 AnimatedCoin* AnimatedCoin::deepCopy()
 {
-    return AnimatedCoin::create(this->mScaleFactor);
+    return AnimatedCoin::create(this->mTextureFileName, this->mScaleFactor);
 }
 
 #endif

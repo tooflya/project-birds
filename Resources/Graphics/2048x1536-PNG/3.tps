@@ -151,8 +151,9 @@
             <filename>../../Graphics Sources/preload-lvl-bg@2x.png</filename>
             <filename>../../Graphics Sources/preload-lvl-bird@2x.png</filename>
             <filename>../../Graphics Sources/preload-lvl-wave@2x.png</filename>
-            <filename>../../Graphics Sources/popup_glife_btn_bg@2x.png</filename>
             <filename>../../Graphics Sources/popup_glife_pic@2x.png</filename>
+            <filename>../../Graphics Sources/popup_glife_btn1@2x.png</filename>
+            <filename>../../Graphics Sources/popup_glife_btn2@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

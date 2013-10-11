@@ -121,6 +121,7 @@ class AppDelegate : private CCApplication
         static void selectItem(int pItem);
 
         static int getLevelStars(int pLevel);
+        static int getLevelStarsTotalCount();
         static void setLevelStars(int pLevel, int pStars);
 
         static void setMusicEnable(bool pValue);

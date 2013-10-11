@@ -53,7 +53,7 @@ void GeneralExplosion::onCreate()
     this->setCurrentFrameIndex(0);
     this->setScale(1.6);
     
-    this->animate(0.04, 1);
+    this->animate(0.06, 1);
 }
     
 GeneralExplosion* GeneralExplosion::deepCopy()

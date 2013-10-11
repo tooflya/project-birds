@@ -150,7 +150,8 @@ Classic::Classic() :
         this->mPirateBox = PirateBox::create(spriteBatch5);
         this->mExplosions = EntityManager::create(20, Explosion::create(), spriteBatch2);
         this->mExplosionsBasic = EntityManager::create(20, ExplosionBasic::create(), spriteBatch2);
-        this->mCoins = EntityManager::create(100, AnimatedCoin::create(0.7), spriteBatch2);
+        this->mCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 0.7), spriteBatch2);
+        this->mSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 0.7), spriteBatch2);
         this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
         this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
@@ -515,6 +516,8 @@ void Classic::onEnter()
     {
         this->mHearts[i]->setCurrentFrameIndex(1);
     }
+    
+    GAME_TYPE = GAME_TYPE_CLASSIC;
 }
 
 void Classic::onEnterTransitionDidFinish()

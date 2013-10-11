@@ -84,36 +84,13 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mRestartButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_RESTART, this->mOnTouchCallback);
         this->mContinueButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_CONTINUE, this->mOnTouchCallback);
 
-        if(this->mType == TYPE_PROGRESS)
-        {
-            this->mContinueButton->create()->setCurrentFrameIndex(2);
-            this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
-                
-            this->mRestartButton->create()->setCurrentFrameIndex(1);
-            this->mRestartButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(340));
-
-            this->mMenuButton->create()->setCurrentFrameIndex(0);
-            this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
-        }
-        else
-        {
-            this->mShopButton->create()->setCurrentFrameIndex(3);
-            this->mShopButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
-                
-            this->mMenuButton->create()->setCurrentFrameIndex(0);
-            this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(340));
-
-            this->mContinueButton->create()->setCurrentFrameIndex(2);
-            this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
-        }
-
         if(this->mType == Splash::TYPE_PROGRESS)
         {
             this->mStars = EntityManager::create(3, Star::create(), spriteBatch3);
             
             for(int i = 0; i < 3; i++)
             {
-                Entity* star = ((Entity*) this->mStars->create());
+                Entity* star = this->mStars->create();
                 
                 star->setCurrentFrameIndex(i + 3);
                 star->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180) * (i - 1), this->mBackground->getHeight() - Utils::coord(100) - Utils::coord(40) * abs(i - 1));
@@ -146,7 +123,7 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mTextes[6]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
         
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
-        this->mCoins = EntityManager::create(100, AnimatedCoin::create(1.5), spriteBatch4);
+        this->mCoins = EntityManager::create(100, AnimatedCoin::create("coins@2x.png", 1.5), spriteBatch4);
     }
 
 End* End::create(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int))
@@ -165,7 +142,7 @@ void End::onShow()
 {
     Splash::onShow();
 
-    this->mIsAnimationRunning = true;
+    this->mIsAnimationRunning = Game::STARS > 0;
     
     this->mAnimationTime = 0.6;
     this->mAnimationtimeElapsed = 0;
@@ -190,6 +167,43 @@ void End::onShow()
     this->mTotalEarnedCoins += Game::FLAYER_COUNT * 10;
     this->mTotalEarnedCoins += Game::CRITICAL_COUNT * 2;
     this->mTotalEarnedCoins += Game::COMBO_COUNT * 5;
+    
+    if(this->mType == TYPE_PROGRESS)
+    {
+        if(AppDelegate::getLevelStars(Game::LEVEL + 1) >= 0)
+        {
+            this->mContinueButton->create()->setCurrentFrameIndex(2);
+            this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
+        
+            this->mRestartButton->create()->setCurrentFrameIndex(1);
+            this->mRestartButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(340));
+        
+            this->mMenuButton->create()->setCurrentFrameIndex(0);
+            this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
+        }
+        else
+        {
+            this->mShopButton->create()->setCurrentFrameIndex(3);
+            this->mShopButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
+            
+            this->mRestartButton->create()->setCurrentFrameIndex(1);
+            this->mRestartButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(340));
+            
+            this->mMenuButton->create()->setCurrentFrameIndex(0);
+            this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
+        }
+    }
+    else
+    {
+        this->mShopButton->create()->setCurrentFrameIndex(3);
+        this->mShopButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
+        
+        this->mMenuButton->create()->setCurrentFrameIndex(0);
+        this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(340));
+        
+        this->mContinueButton->create()->setCurrentFrameIndex(2);
+        this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
+    }
 
     if(AppDelegate::getLevelStars(Game::LEVEL) < Game::STARS)
     {
@@ -206,18 +220,23 @@ void End::onHide()
     {
         for(int i = 0; i < 3; i++)
         {
-            Entity* star = ((Entity*) this->mStars->objectAtIndex(i));
+            Entity* star = static_cast<Entity*>(this->mStars->objectAtIndex(i));
             
-            star->setCurrentFrameIndex(star->getCurrentFrameIndex() + 3);
+            star->setCurrentFrameIndex(i + 3);
         }
     }
+    
+    this->mShopButton->isVisible() ? this->mShopButton->destroy() : false;
+    this->mMenuButton->isVisible() ? this->mMenuButton->destroy() : false;
+    this->mRestartButton->isVisible() ? this->mRestartButton->destroy() : false;
+    this->mContinueButton->isVisible() ? this->mContinueButton->destroy() : false;
 }
 
 void End::onStartShow()
 {
     Splash::onStartShow();
     
-    this->throwConfetti();
+    if(Game::STARS > 0) this->throwConfetti();
     
     int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
     
@@ -264,7 +283,7 @@ void End::throwConfetti()
 void End::update(float pDeltaTime)
 {
     Splash::update(pDeltaTime);
-    
+
     if(this->mIsAnimationRunning)
     {
         this->mAnimationtimeElapsed += pDeltaTime;
@@ -272,23 +291,21 @@ void End::update(float pDeltaTime)
         if(this->mAnimationtimeElapsed >= this->mAnimationTime)
         {
             this->mAnimationtimeElapsed = 0;
-            
-            if(this->mAnimationCounter == Game::STARS)
-            {
-                this->mIsAnimationRunning = false;
-                
-                return;
-            }
 
             if(this->mType == Splash::TYPE_PROGRESS)
             {
-                Star* star = (Star*) this->mStars->objectAtIndex(this->mAnimationCounter);
+                Star* star = static_cast<Star*>(this->mStars->objectAtIndex(this->mAnimationCounter));
                 
                 star->setCurrentFrameIndex(star->getCurrentFrameIndex() - 3);
                 star->animate();
+                
+                this->mAnimationCounter++;
+                
+                if(this->mAnimationCounter >= Game::STARS)
+                {
+                    this->mIsAnimationRunning = false;
+                }
             }
-            
-            this->mAnimationCounter++;
         }
     }
     

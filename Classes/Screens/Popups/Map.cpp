@@ -231,11 +231,23 @@ Map::Map(CCNode* pParent)
     this->mBonusTextes[3] = Text::create(Options::TEXT_COINS_BONUS[3], this->mBackground);
     this->mBonusTextes[4] = Text::create(Options::TEXT_COINS_BONUS[4], this->mBackground);
     
+    this->mBonusTextes2[0] = Text::create(Options::TEXT_COINS_BONUS[5], this->mBackground);
+    this->mBonusTextes2[1] = Text::create(Options::TEXT_COINS_BONUS[6], this->mBackground);
+    this->mBonusTextes2[2] = Text::create(Options::TEXT_COINS_BONUS[7], this->mBackground);
+    this->mBonusTextes2[3] = Text::create(Options::TEXT_COINS_BONUS[8], this->mBackground);
+    this->mBonusTextes2[4] = Text::create(Options::TEXT_COINS_BONUS[9], this->mBackground);
+    
     this->mBonusTextes[0]->setCenterPosition(this->mDay[0]->getCenterX(), this->mDay[0]->getCenterY() - Utils::coord(130));
     this->mBonusTextes[1]->setCenterPosition(this->mDay[1]->getCenterX(), this->mDay[1]->getCenterY() - Utils::coord(130));
     this->mBonusTextes[2]->setCenterPosition(this->mDay[2]->getCenterX(), this->mDay[2]->getCenterY() - Utils::coord(130));
     this->mBonusTextes[3]->setCenterPosition(this->mDay[3]->getCenterX(), this->mDay[3]->getCenterY() - Utils::coord(130));
     this->mBonusTextes[4]->setCenterPosition(this->mDay[4]->getCenterX(), this->mDay[4]->getCenterY() - Utils::coord(130));
+    
+    this->mBonusTextes2[0]->setCenterPosition(this->mDay[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 + this->mBonusTextes2[0]->getWidth() / 2, this->mDay[0]->getCenterY() - Utils::coord(170));
+    this->mBonusTextes2[1]->setCenterPosition(this->mDay[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 + this->mBonusTextes2[1]->getWidth() / 2, this->mDay[1]->getCenterY() - Utils::coord(170));
+    this->mBonusTextes2[2]->setCenterPosition(this->mDay[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 + this->mBonusTextes2[2]->getWidth() / 2, this->mDay[2]->getCenterY() - Utils::coord(170));
+    this->mBonusTextes2[3]->setCenterPosition(this->mDay[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 + this->mBonusTextes2[3]->getWidth() / 2, this->mDay[3]->getCenterY() - Utils::coord(170));
+    this->mBonusTextes2[4]->setCenterPosition(this->mDay[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 + this->mBonusTextes2[4]->getWidth() / 2, this->mDay[4]->getCenterY() - Utils::coord(170));
     
     /*this->mBonusTextes[0]->setColor(ccc3(100, 100, 100));
     this->mBonusTextes[1]->setColor(ccc3(100, 100, 100));
@@ -264,13 +276,29 @@ Map::Map(CCNode* pParent)
     this->mStars = EntityManager::create(100, StarParticle2::create(), this->mBackground);
     this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
     this->mCoins = EntityManager::create(5, Entity::create("coins@2x.png", 5, 4), spriteBatch3);
-    this->mAnimatedCoins = EntityManager::create(100, AnimatedCoin::create(1.5), spriteBatch3);
+    this->mSilverCoins = EntityManager::create(5, Entity::create("coins_silver@2x.png", 5, 4), spriteBatch3);
+    this->mAnimatedCoins = EntityManager::create(100, AnimatedCoin::create("coins@2x.png", 1.5), spriteBatch3);
+    this->mSilverAnimatedCoins = EntityManager::create(100, AnimatedCoin::create("coins_silver@2x.png", 1.5), spriteBatch3);
     
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY());
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY());
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY());
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY());
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY());
+    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY());
+    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY());
+    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY());
+    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY());
+    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY());
+    
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY() - Utils::coord(40));
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY() - Utils::coord(40));
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY() - Utils::coord(40));
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY() - Utils::coord(40));
+    this->mCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY() - Utils::coord(40));
+    
+    for(int i = 0; i < this->mSilverCoins->getCount(); i++)
+    {
+        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setCurrentFrameIndex(Utils::random(0, 20));
+        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setScale(0.7);
+        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setRotation(-45);
+        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->animate(0.04);
+    }
     
     for(int i = 0; i < this->mCoins->getCount(); i++)
     {
@@ -378,7 +406,6 @@ void Map::hide()
     this->mHideAnimationTime = 0;
     this->mSquare->runAction(CCFadeTo::create(1.0, 0));
     
-    
     for(int i = 0; i < this->mConfetti->getCount(); i++)
     {
         static_cast<Entity*>(this->mConfetti->objectAtIndex(i))->runAction(CCFadeTo::create(0.5, 0));
@@ -441,7 +468,14 @@ void Map::update(float pDeltaTime)
             this->mAnimatedCoinsAnimation = false;
         }
         
-        this->mAnimatedCoins->create()->setCenterPosition(this->mDay[this->day - 1]->getCenterX(), this->mDay[this->day - 1]->getCenterY());
+        if(Utils::probably(5 * this->day))
+        {
+            this->mAnimatedCoins->create()->setCenterPosition(this->mDay[this->day - 1]->getCenterX(), this->mDay[this->day - 1]->getCenterY());
+        }
+        else
+        {
+            this->mSilverAnimatedCoins->create()->setCenterPosition(this->mDay[this->day - 1]->getCenterX(), this->mDay[this->day - 1]->getCenterY());
+        }
     }
     
     if(this->mAnimation)
@@ -724,7 +758,8 @@ void Map::update(float pDeltaTime)
             
             this->mBackground->p += 2;
             
-            if(this->mBackground->p >= 100) {
+            if(this->mBackground->p >= 105)
+            {
                 this->mShowAnimationRunning = false;
                 
                 this->onShow();

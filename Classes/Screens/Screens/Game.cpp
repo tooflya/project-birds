@@ -14,6 +14,7 @@
 // ===========================================================
 
 int Game::STARS = 0;
+int Game::GAME_TYPE = -1;
 
 int** Game::MATRIX = NULL;
 int Game::LEVEL_TYPE[80] = {
@@ -24,6 +25,9 @@ int Game::LEVEL_HEIGHT[80] = {
 };
 int Game::LEVEL_COLORS[80] = {
     2, 2, 3
+};
+int Game::LEVEL_HEALTH[80] = {
+    12, 12, 15, 12, 12, 12, 12
 };
 
 int Game::MATRIX_SIZE_X = 0;
@@ -185,7 +189,7 @@ void Game::startGame()
     this->mExplosions->clear();
     this->mExplosionsBasic->clear();
 
-    HEALTH = 12;
+    HEALTH = LEVEL_HEALTH[LEVEL];
     COMBO_COUNT = 0;
     FLAYER_COUNT = 0;
     CRITICAL_COUNT = 0;

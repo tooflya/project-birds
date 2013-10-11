@@ -49,9 +49,11 @@ class Map : public CCLayer, public Touchable
     EntityManager* mRipples;
     EntityManager* mWays;
     EntityManager* mCoins;
+    EntityManager* mSilverCoins;
     EntityManager* mConfetti;
     EntityManager* mStars;
     EntityManager* mAnimatedCoins;
+    EntityManager* mSilverAnimatedCoins;
     
         Button* mCloseButton;
     
@@ -83,6 +85,7 @@ class Map : public CCLayer, public Touchable
     int mAnimationCount2;
     
     Text* mBonusTextes[5];
+    Text* mBonusTextes2[5];
 
         // ===========================================================
         // Constructors

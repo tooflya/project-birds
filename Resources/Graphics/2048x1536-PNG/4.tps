@@ -166,6 +166,9 @@
             <filename>../../Graphics Sources/vk_icon@2x.png</filename>
             <filename>../../Graphics Sources/share@2x.png</filename>
             <filename>../../Graphics Sources/confety_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_btn1@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_btn2@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_pic@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

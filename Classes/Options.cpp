@@ -35,8 +35,8 @@ int Options::SELECTED_WEAPON_ID = 0;
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.8.0";
-int Options::BUILD = 4688;
+const char* Options::VERSION = "0.8.1";
+int Options::BUILD = 5576;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -133,13 +133,14 @@ const char* Options::FONT = "Fonts/Comic Sans MS.ttf";
 
 int Options::CURRENT_LANGUAGE = 0;
 
-const char* Options::SAVE_DATA_COINS_ID[3] = { "p_gold_coins_count", "p_silver_coins_count", "p_lives_coins_count" };
+const char* Options::SAVE_DATA_COINS_ID[4] = { "p_gold_coins_count", "p_silver_coins_count", "p_lives_coins_count", "p_keys_coins_count" };
 const char* Options::SAVE_DATA_BEST_RESULT[2] = { "p_best_result_classic", "p_best_result_arcade" };
 const char* Options::SAVE_DATA_LANGUAGE_ID = "p_language_id";
 
 int Options::SAVE_DATA_COINS_TYPE_GOLD = 0;
 int Options::SAVE_DATA_COINS_TYPE_SILVER = 1;
 int Options::SAVE_DATA_COINS_TYPE_LIVES = 2;
+int Options::SAVE_DATA_COINS_TYPE_KEYS = 3;
 
 int Options::SHOP_ITEMS_PRICES[100] =
 {
@@ -153,6 +154,20 @@ int Options::SHOP_ITEMS_PRICES[100] =
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+int Options::SHOP_ITEMS_PRICES_GOLD[100] =
+{
+    1, 0, 5, 0, 0, 0, 10, 0, 0, 0,
+    2, 0, 0, 50, 0, 0, 50, 0, 0, 0,
+    20, 50, 40, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
 int Options::SHOP_ITEMS_RATING_FACTOR[100] =
@@ -353,15 +368,23 @@ Textes Options::TEXT_END[7] =
     {"", FONT, 42, 364}
 };
 Textes Options::TEXT_DAILY_MAP = {"", Options::FONT, 42, 365};
-Textes Options::TEXT_COINS_BONUS[5] =
+Textes Options::TEXT_COINS_BONUS[10] =
 {
     {"", FONT, 36, 366},
     {"", FONT, 36, 367},
     {"", FONT, 36, 368},
     {"", FONT, 36, 369},
-    {"", FONT, 36, 370}
+    {"", FONT, 36, 370},
+    {"", FONT, 36, 371},
+    {"", FONT, 36, 372},
+    {"", FONT, 36, 373},
+    {"", FONT, 36, 374},
+    {"", FONT, 36, 375}
 };
-Textes Options::TEXT_GETLIVES_STRING_1 = {"", Options::FONT, 0, 371};
+Textes Options::TEXT_GETLIVES_STRING_1 = {"", Options::FONT, 0, 376};
+Textes Options::TEXT_GETKEYS_STRING_1 = {"", Options::FONT, 0, 377};
+Textes Options::TEXT_UNLOCKLEVEL = {"", Options::FONT, 0, 378};
+Textes Options::TEXT_UNLOCKLEVEL_OK = {"", Options::FONT, 0, 379};
 
 // ===========================================================
 // Fields
@@ -475,6 +498,9 @@ void Options::changeLanguage()
             
             TEXT_GETLIVES_STRING_1.string = "You need to buy\nsome extra lives!";
             TEXT_GETLIVES_STRING_1.size = 48;
+            
+            TEXT_GETKEYS_STRING_1.string = "You need to buy\nsome keys for unclock!";
+            TEXT_GETKEYS_STRING_1.size = 48;
             
             TEXT_GETCOINS_STRING_2.string = "Any purchase will\nremove the ads!";
             TEXT_GETCOINS_STRING_2.size = 36;
@@ -806,6 +832,12 @@ void Options::changeLanguage()
             TEXT_EVENTS[62].size = 42;
 
             TEXT_PAYMENT_STRING[0].string = "Request processing";
+            
+            TEXT_UNLOCKLEVEL.string = "You can unlock \n this level just for:";
+            TEXT_UNLOCKLEVEL.size = 42;
+            
+            TEXT_UNLOCKLEVEL_OK.string = "Unlock";
+            TEXT_UNLOCKLEVEL_OK.size = 46;
 
             #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
@@ -837,6 +869,14 @@ void Options::changeLanguage()
             TEXT_COINS_BONUS[2].string = "4 000";
             TEXT_COINS_BONUS[3].string = "8 000";
             TEXT_COINS_BONUS[4].string = "10 000";
+            TEXT_COINS_BONUS[5].string = "10";
+            TEXT_COINS_BONUS[6].string = "25";
+            TEXT_COINS_BONUS[7].string = "50";
+            TEXT_COINS_BONUS[8].string = "100";
+            TEXT_COINS_BONUS[9].string = "500";
+            
+            TEXT_UNLOCKLEVEL_OK.string = "";
+            TEXT_UNLOCKLEVEL_OK.font = "32";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -893,11 +933,14 @@ void Options::changeLanguage()
             TEXT_RATE_STRING_4.string = "";
             TEXT_RATE_STRING_4.size = 48;
             
-            TEXT_GETLIVES_STRING_1.string = "Желаете купить\n5 экстра жизней?";
+            TEXT_GETLIVES_STRING_1.string = "Желаете купить\n экстра жизней?";
             TEXT_GETLIVES_STRING_1.size = 48;
             
             TEXT_GETCOINS_STRING_1.string = "Желаете купить\nнесколько монет?";
             TEXT_GETCOINS_STRING_1.size = 48;
+            
+            TEXT_GETKEYS_STRING_1.string = "Желаете купить\nнесколько ключей?";
+            TEXT_GETKEYS_STRING_1.size = 48;
             
             TEXT_GETCOINS_STRING_2.string = "Любая покупка\nуберет рекламу!";
             TEXT_GETCOINS_STRING_2.size = 36;
@@ -1265,6 +1308,17 @@ void Options::changeLanguage()
             TEXT_COINS_BONUS[2].string = "4 000";
             TEXT_COINS_BONUS[3].string = "8 000";
             TEXT_COINS_BONUS[4].string = "10 000";
+            TEXT_COINS_BONUS[5].string = "10";
+            TEXT_COINS_BONUS[6].string = "25";
+            TEXT_COINS_BONUS[7].string = "50";
+            TEXT_COINS_BONUS[8].string = "100";
+            TEXT_COINS_BONUS[9].string = "500";
+            
+            TEXT_UNLOCKLEVEL.string = "Вы можете открыть этот \n уровень всего лишь за \n несколько игровых ключей:";
+            TEXT_UNLOCKLEVEL.size = 38;
+            
+            TEXT_UNLOCKLEVEL_OK.string = "Открыть";
+            TEXT_UNLOCKLEVEL_OK.size = 46;
         break;
     }
     
@@ -1639,9 +1693,17 @@ void Options::changeLanguage()
     TEXTES_HOLDER[368] = TEXT_COINS_BONUS[2];
     TEXTES_HOLDER[369] = TEXT_COINS_BONUS[3];
     TEXTES_HOLDER[370] = TEXT_COINS_BONUS[4];
-    TEXTES_HOLDER[371] = TEXT_GETLIVES_STRING_1;
+    TEXTES_HOLDER[371] = TEXT_COINS_BONUS[5];
+    TEXTES_HOLDER[372] = TEXT_COINS_BONUS[6];
+    TEXTES_HOLDER[373] = TEXT_COINS_BONUS[7];
+    TEXTES_HOLDER[374] = TEXT_COINS_BONUS[8];
+    TEXTES_HOLDER[375] = TEXT_COINS_BONUS[9];
+    TEXTES_HOLDER[376] = TEXT_GETLIVES_STRING_1;
+    TEXTES_HOLDER[377] = TEXT_GETKEYS_STRING_1;
+    TEXTES_HOLDER[378] = TEXT_UNLOCKLEVEL;
+    TEXTES_HOLDER[379] = TEXT_UNLOCKLEVEL_OK;
     
-    for(int i = 0; i <= 371; i++)
+    for(int i = 0; i <= 379; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {
