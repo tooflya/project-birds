@@ -29,9 +29,9 @@ ModeHelp::~ModeHelp()
 ModeHelp::ModeHelp(CCNode* pParent) :
     Popup(pParent)
     {
-        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         
-        this->mOkButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mOkButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         
         this->mListBorders[0] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);
         this->mListBorders[1] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);

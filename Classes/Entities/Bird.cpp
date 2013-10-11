@@ -550,7 +550,14 @@ void Bird::update(float pDeltaTime)
                     {
                         for(int i = 0; i < 10; i++)
                         {
-                            game->mCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                            if(Utils::probably(25))
+                            {
+                                game->mCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                            }
+                            else
+                            {
+                                game->mSilverCoins->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                            }
                         }
                     }
                     

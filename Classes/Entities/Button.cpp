@@ -19,57 +19,57 @@
 // Constructors
 // ===========================================================
 
-void Button::constructor(const int pButtonID, void (*pOnTouchCallback)(int, int))
+void Button::constructor(const int pButtonID, ButtonReceiver* pSender)
 {
-        this->mOnTouchCallback = pOnTouchCallback;
+    this->mSender = pSender;
 
-        this->mID = pButtonID;
+    this->mID = pButtonID;
 
-        this->mText = NULL;
-        this->mIsModal = false;
+    this->mText = NULL;
+    this->mIsModal = false;
 
-        this->setRegisterAsTouchable(true);
+    this->setRegisterAsTouchable(true);
 }
 
-Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int)) :
+Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender) :
     Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent)
     {
-        this->constructor(pButtonID, pOnTouchCallback);
+        this->constructor(pButtonID, pSender);
     }
 
-Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int)) :
+Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender) :
     Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount)
     {
-        this->constructor(pButtonID, pOnTouchCallback);
+        this->constructor(pButtonID, pSender);
     }
 
-Button::Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int)) :
+Button::Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender) :
     Entity(pEntityStructure, pParent)
     {
-        this->constructor(pButtonID, pOnTouchCallback);
+        this->constructor(pButtonID, pSender);
     }
 
 
 
-Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int))
+Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender)
 {
-    Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pOnTouchCallback);
+    Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender);
     button->autorelease();
     
     return button;
 }
 
-Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int))
+Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender)
 {
-    Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pButtonID, pOnTouchCallback);
+    Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pButtonID, pSender);
     button->autorelease();
     
     return button;
 }
 
-Button* Button::create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int))
+Button* Button::create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender)
 {
-    Button* button = new Button(pEntityStructure, pParent, pButtonID, pOnTouchCallback);
+    Button* button = new Button(pEntityStructure, pParent, pButtonID, pSender);
     button->autorelease();
     
     return button;
@@ -81,14 +81,14 @@ Button* Button::create(const EntityStructure pEntityStructure, CCNode* pParent, 
     
 void Button::onTouch(CCTouch* touch, CCEvent* event)
 {
-    if(this->mOnTouchCallback != 0)
+    if(true)
     {
         if(Options::SOUND_ENABLE)
         {
             SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_TAP);
         }
         
-        this->mOnTouchCallback(Options::BUTTONS_ACTION_ONTOUCH, this->mID);
+        this->mSender->onTouchButtonsCallback(Options::BUTTONS_ACTION_ONTOUCH, this->mID);
     }
 }
 
@@ -161,7 +161,7 @@ Entity* Button::create()
 
 Button* Button::deepCopy()
 {
-    return new Button(this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mID, this->mOnTouchCallback);
+    return new Button(this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mID, this->mSender);
 }
 
 #endif

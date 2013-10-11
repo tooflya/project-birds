@@ -13,8 +13,6 @@ class UnlockLevel : public Popup
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static UnlockLevel* m_Instance;
 
         // ===========================================================
         // Fields
@@ -64,8 +62,6 @@ class UnlockLevel : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -105,6 +101,8 @@ class UnlockLevel : public Popup
     
         virtual void onShow();
         virtual void onHide();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

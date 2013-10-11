@@ -50,7 +50,7 @@ int Game::CRITICAL_COUNT = 0;
 
 int Game::BURNED[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-int Game::LEVEL = -1;
+int Game::LEVEL = 0;
 
 // ===========================================================
 // Fields
@@ -193,17 +193,6 @@ void Game::startGame()
     COMBO_COUNT = 0;
     FLAYER_COUNT = 0;
     CRITICAL_COUNT = 0;
-    
-    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) < 5)
-    {
-        this->mGoldLifeButton->setOpacity(255);
-        this->mGoldLifeButton->setColor(ccc3(255, 255, 255));
-    }
-    else
-    {
-        this->mGoldLifeButton->setOpacity(254);
-        this->mGoldLifeButton->setColor(ccc3(100, 100, 100));
-    }
 }
 
 void Game::onGameStarted()

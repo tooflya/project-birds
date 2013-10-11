@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-class Popup : public CCLayer
+class Popup : public CCLayer, public ButtonReceiver
 {
     protected:
         // ===========================================================
@@ -124,7 +124,9 @@ class Popup : public CCLayer
     
         virtual void onShow();
         virtual void onHide();
-        
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

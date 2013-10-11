@@ -18,9 +18,9 @@
 
 using namespace cocos2d;
 
-class Screen : public CCScene, public Touchable
+class Screen : public CCScene, public Touchable, public ButtonReceiver
 {
-    protected:
+        protected:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -49,7 +49,7 @@ class Screen : public CCScene, public Touchable
         
         bool containsTouchLocation(CCTouch* touch);
 
-    private:
+        private:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -74,7 +74,7 @@ class Screen : public CCScene, public Touchable
         // Override Methods
         // ===========================================================
 
-    public:
+        public:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -110,6 +110,8 @@ class Screen : public CCScene, public Touchable
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods

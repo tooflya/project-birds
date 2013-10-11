@@ -21,15 +21,15 @@
 // Constructors
 // ===========================================================
 
-Item::Item(void (*pOnTouchCallback)(int, int)) :
-    Button("shop_item_icon@2x.png", 10, 6, Options::BUTTONS_ID_SHOP_ITEM, pOnTouchCallback)
+Item::Item(ButtonReceiver* pSender) :
+    Button("shop_item_icon@2x.png", 10, 6, Options::BUTTONS_ID_SHOP_ITEM, pSender)
     {
 
     }
 
-Item* Item::create(void (*pOnTouchCallback)(int, int))
+Item* Item::create(ButtonReceiver* pSender)
 {
-    Item* item = new Item(pOnTouchCallback);
+    Item* item = new Item(pSender);
     item->autorelease();
     
     return item;
@@ -52,7 +52,7 @@ void Item::onTouch(CCTouch* touch, CCEvent* event)
 
 Item* Item::deepCopy()
 {
-    return new Item(this->mOnTouchCallback);
+    return new Item(this->mSender);
 }
 
 #endif

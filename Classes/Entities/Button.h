@@ -6,6 +6,8 @@
 #include "Entity.h"
 #include "Text.h"
 
+#include "ButtonReceiver.h"
+
 using namespace cocos2d;
 
 class Button : public Entity
@@ -25,9 +27,9 @@ class Button : public Entity
 
         int mID;
 
+        ButtonReceiver* mSender;
+    
         Text* mText;
-
-        void (*mOnTouchCallback)(int, int);
     
         bool mIsModal;
 
@@ -35,9 +37,9 @@ class Button : public Entity
         // Constructors
         // ===========================================================
     
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
-        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
-        Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
+        Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender);
+        Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
 
         // ===========================================================
         // Methods
@@ -68,7 +70,7 @@ class Button : public Entity
         // Methods
         // ===========================================================
 
-        void constructor(const int pButtonID, void (*pOnTouchCallback)(int, int));
+        void constructor(const int pButtonID, ButtonReceiver* pSender);
         
         // ===========================================================
         // Override Methods
@@ -87,9 +89,9 @@ class Button : public Entity
         // Fields
         // ===========================================================
 
-        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
-        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, void (*pOnTouchCallback)(int, int));
-        static Button* create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int));
+        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
+        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender);
+        static Button* create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
        
         // ===========================================================
         // Constructors

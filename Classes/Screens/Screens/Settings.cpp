@@ -35,13 +35,13 @@ Settings::Settings()
 
     this->addChild(spriteBatch);
 
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, onTouchButtonsCallback);
-    this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_CREDITS, onTouchButtonsCallback);
-    this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_RATE, onTouchButtonsCallback);
-    this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_MORE, onTouchButtonsCallback);
-    this->mLanguageButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_LANGUAGE, onTouchButtonsCallback);
-    this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, onTouchButtonsCallback);
-    this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, onTouchButtonsCallback);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, this);
+    this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_CREDITS, this);
+    this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_RATE, this);
+    this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_MORE, this);
+    this->mLanguageButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_LANGUAGE, this);
+    this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, this);
+    this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 

@@ -190,7 +190,7 @@ Progresses::Progresses() :
     this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
     this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
     this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
-    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
     this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -223,7 +223,7 @@ Progresses::Progresses() :
     
     this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
     
-    this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+    this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
     this->mSchematicBig = EntityManager::create(100, Entity::create("game_chess_bg@2x.png"), spriteBatch2);
     this->mSchematicSmall = EntityManager::create(100, Entity::create("game_chess@2x.png", 2, 1), spriteBatch2);
@@ -316,8 +316,8 @@ Progresses::Progresses() :
     this->mRains = EntityManager::create(300, Rain::create(), spriteBatch7);
     this->mRainsCircles = EntityManager::create(300, RainCircle::create(), spriteBatch7);
     
-    this->mPausePopup = ProgressPause::create(this);
-    this->mEndScreen = ProgressEnd::create(Splash::TYPE_PROGRESS, this);
+    this->mPausePopup = Pause::create(this);
+    this->mEndScreen = End::create(Splash::TYPE_PROGRESS, this);
     
     //this->mLevelUpTime = 30.0;
     //this->mLevelUpTimeElapsed = 0;
@@ -557,6 +557,11 @@ void Progresses::onGameEnd()
     if(BEST_COUNT > AppDelegate::getBestResult(0))
     {
         AppDelegate::setBestResult(BEST_COUNT, 0);
+    }
+    
+    if(STARS <= 0)
+    {
+        AppDelegate::removeCoins(1, Options::SAVE_DATA_COINS_TYPE_LIVES);
     }
 }
 

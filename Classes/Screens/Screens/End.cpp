@@ -28,11 +28,10 @@ End::~End()
     //this->mStars->release();
 }
 
-End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
+End::End(int pType, Screen* pParent) :
     Splash(pParent)
     {
         this->mType = pType;
-        this->mOnTouchCallback = pOnTouchCallback;
         
         this->mScaleLayer = CCLayer::create();
         this->mScaleLayer->retain();
@@ -79,10 +78,10 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         
         this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
         
-        this->mShopButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_SHOP, this->mOnTouchCallback);
-        this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_MENU, this->mOnTouchCallback);
-        this->mRestartButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_RESTART, this->mOnTouchCallback);
-        this->mContinueButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_CONTINUE, this->mOnTouchCallback);
+        this->mShopButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_SHOP, this);
+        this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_MENU, this);
+        this->mRestartButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_RESTART, this);
+        this->mContinueButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_CONTINUE, this);
 
         if(this->mType == Splash::TYPE_PROGRESS)
         {
@@ -126,10 +125,11 @@ End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mCoins = EntityManager::create(100, AnimatedCoin::create("coins@2x.png", 1.5), spriteBatch4);
     }
 
-End* End::create(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int))
+End* End::create(int pType, Screen* pParent)
 {
-    End* screen = new End(pType, pParent, pOnTouchCallback);
+    End* screen = new End(pType, pParent);
     screen->autorelease();
+    screen->retain();
     
     return screen;
 }
@@ -137,6 +137,48 @@ End* End::create(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int))
 // ===========================================================
 // Methods
 // ===========================================================
+
+void End::onTouchButtonsCallback(const int pAction, const int pID)
+{
+    switch(pAction)
+    {
+        case Options::BUTTONS_ACTION_ONTOUCH:
+            switch(pID)
+            {
+            case Options::BUTTONS_ID_END_MENU:
+                
+            this->hide();
+                
+            Loader::ACTION = 3;
+                
+            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                
+            break;
+            case Options::BUTTONS_ID_END_RESTART:
+                
+            this->hide();
+                
+            break;
+            case Options::BUTTONS_ID_END_CONTINUE:
+                
+            this->hide();
+                
+            break;
+            case Options::BUTTONS_ID_END_SHOP:
+                
+            this->hide(); // TODO: Open shop screen.
+                
+            break;
+            }
+        break;
+            
+        case Options::BUTTONS_ACTION_ONBEGIN:
+            break;
+            
+        case Options::BUTTONS_ACTION_ONEND:
+            break;
+    }
+}
 
 void End::onShow()
 {
@@ -238,7 +280,7 @@ void End::onStartShow()
     
     if(Game::STARS > 0) this->throwConfetti();
     
-    int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
+    int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
     
     this->mCoinsCountText->setString(Utils::intToString(coins).c_str());
     this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
@@ -332,7 +374,7 @@ void End::update(float pDeltaTime)
             {
                 this->mCoinsAnimationCurrentTimeElapsed = 0;
                 
-                int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
+                int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
                 
                 this->mCoinsCountText->setString(Utils::intToString(coins).c_str());
                 this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
@@ -345,7 +387,7 @@ void End::update(float pDeltaTime)
                     {
                         this->mCurrentCount++;
                         
-                        AppDelegate::addCoins(1, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(1, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
                         this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }
@@ -380,7 +422,7 @@ void End::update(float pDeltaTime)
                     {
                         this->mFlayerCount++;
                         
-                        AppDelegate::addCoins(10, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(10, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
                         this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }
@@ -402,7 +444,7 @@ void End::update(float pDeltaTime)
                     {
                         this->mComboCount++;
                         
-                        AppDelegate::addCoins(2, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(2, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
                         this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }
@@ -424,7 +466,7 @@ void End::update(float pDeltaTime)
                     {
                         this->mCriticalCount++;
                         
-                        AppDelegate::addCoins(5, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(5, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
                         this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }

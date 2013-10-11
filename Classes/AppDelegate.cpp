@@ -75,10 +75,12 @@ bool AppDelegate::isInstalled()
 
 void AppDelegate::install()
 {
-    CCUserDefault::sharedUserDefault()->setIntegerForKey("installed", 1);
+    AppDelegate::changeLanguage(AppDelegate::getSelectedLanguage());
 
-    CCUserDefault::sharedUserDefault()->setIntegerForKey("music_enable", 1);
-    CCUserDefault::sharedUserDefault()->setIntegerForKey("sound_enable", 1);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("music_enable", AppDelegate::isInstalled() ? Options::MUSIC_ENABLE : 1);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("sound_enable", AppDelegate::isInstalled() ? Options::SOUND_ENABLE : 1);
+    
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("installed", 1);
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey("rate", 0);
     
@@ -332,6 +334,18 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     director->setOpenGLView(EGLView);
     director->setContentScaleFactor(designResolutionSize.height / screenSize.height);
+    
+    Options::SCREEN_WIDTH  = designResolutionSize.width;
+    Options::SCREEN_HEIGHT = designResolutionSize.height;
+    
+    Options::SCREEN_CENTER_X = designResolutionSize.width / 2;
+    Options::SCREEN_CENTER_Y = designResolutionSize.height / 2;
+    
+    Options::CAMERA_WIDTH  = screenSize.width;
+    Options::CAMERA_HEIGHT = screenSize.height;
+    
+    Options::CAMERA_CENTER_X  = screenSize.width / 2;
+    Options::CAMERA_CENTER_Y = screenSize.height / 2;
 
     vector <string> searchPath;
     
@@ -340,31 +354,30 @@ bool AppDelegate::applicationDidFinishLaunching()
     if(AppDelegate::IS_IPOD)
     {
         searchPath.push_back(resources2048x1536xPNG.directory);
+        
+        Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPOD4;
     }
     else
     {
         searchPath.push_back(resources2048x1536xPNG.directory);
+        
+        if(Options::CAMERA_HEIGHT == 960)
+        {
+            Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
+        }
+        else
+        {
+            Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE5;
+        }
     }
 
-    #else CC_TARGER_PLATFORM == CC_PLATFORM_ANDROID
+    #else
 
     searchPath.push_back(resources2048x1536xPNG.directory);
 
     #endif
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
-
-    Options::SCREEN_WIDTH  = designResolutionSize.width;
-    Options::SCREEN_HEIGHT = designResolutionSize.height;
-
-    Options::SCREEN_CENTER_X = designResolutionSize.width / 2;
-    Options::SCREEN_CENTER_Y = designResolutionSize.height / 2;
-
-    Options::CAMERA_WIDTH  = screenSize.width;
-    Options::CAMERA_HEIGHT = screenSize.height;
-
-    Options::CAMERA_CENTER_X  = screenSize.width / 2;
-    Options::CAMERA_CENTER_Y = screenSize.height / 2;
 
     director->setAlphaBlending(false);
     director->setDepthTest(false);

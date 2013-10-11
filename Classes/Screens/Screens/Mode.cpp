@@ -27,6 +27,7 @@ Mode* Mode::m_Instance = NULL;
 Mode::~Mode()
 {
     this->mHelpPopup->release();
+    this->mLivesPopup->release();
     this->mTempPublisherRatingExplain->release();
     this->mTempPublisherAchievementsExplain->release();
 }
@@ -39,18 +40,18 @@ Mode::Mode()
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
     this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
 
-    this->mBackButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_BACK, onTouchButtonsCallback);
-    this->mHelpButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_HELP, onTouchButtonsCallback);
-    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mBackButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_BACK, this);
+    this->mHelpButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_HELP, this);
+    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
 
     this->addChild(spriteBatch);
 
-    this->mClassicMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_CLASSIC, onTouchButtonsCallback);
-    this->mArcadeMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_ARCADE, onTouchButtonsCallback);
-    this->mProgressMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_PROGRESS, onTouchButtonsCallback);
+    this->mClassicMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_CLASSIC, this);
+    this->mArcadeMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_ARCADE, this);
+    this->mProgressMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_PROGRESS, this);
 
-    this->mAchievementsButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 0, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, onTouchButtonsCallback);
-    this->mLeaderboardButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 200, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_LEADERBOARD, onTouchButtonsCallback);
+    this->mAchievementsButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 0, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, this);
+    this->mLeaderboardButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 200, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_LEADERBOARD, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
@@ -72,6 +73,7 @@ Mode::Mode()
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     
     this->mHelpPopup = ModeHelp::create(this);
+    this->mLivesPopup = GetLives::create(this);
     this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
     this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
 
@@ -107,16 +109,30 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MODE_CLASSIC:
 
-                    Loader::ACTION = 0;
+                    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+                    {
+                        this->mLivesPopup->show();
+                    }
+                    else
+                    {
+                        Loader::ACTION = 0;
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                    }
 
                 break;
                 case Options::BUTTONS_ID_MODE_ARCADE:
-
-                    Loader::ACTION = 1;
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                    
+                    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+                    {
+                        this->mLivesPopup->show();
+                    }
+                    else
+                    {
+                        Loader::ACTION = 1;
+                        
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                    }
 
                 break;
                 case Options::BUTTONS_ID_MODE_PROGRESS:

@@ -70,8 +70,6 @@ class ResetProgress : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -110,6 +108,8 @@ class ResetProgress : public Popup
         // ===========================================================
     
         void update(float pDeltaTime);
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Shop.cpp"
-            timestampString = "403118521.981138"
+            timestampString = "403178270.99528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "Shop::Shop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -102,11 +102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Game.cpp"
-            timestampString = "403109286.32348"
+            timestampString = "403179122.426098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218">
+            startingLineNumber = "207"
+            endingLineNumber = "207">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Progresses.cpp"
-            timestampString = "403120562.733606"
+            timestampString = "403189630.115499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
             landmarkName = "Progresses::onBirBlow(int pType, float pX, float pY)"
             landmarkType = "5">
          </BreakpointContent>
@@ -132,12 +132,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/End.cpp"
-            timestampString = "403002050.977474"
+            timestampString = "403186962.459778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "End::End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int))"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "End::End(int pType, Screen* pParent)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -147,14 +147,70 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Screens/Screens/Levels.cpp"
-            timestampString = "403113622.117729"
+            filePath = "../Classes/Entities/Button.cpp"
+            timestampString = "403187609.185984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "801"
-            endingLineNumber = "801"
-            landmarkName = "Levels::unlock()"
-            landmarkType = "5">
+            startingLineNumber = "77"
+            endingLineNumber = "77">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Button::onTouch(cocos2d::CCTouch*, cocos2d::CCEvent*)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Entities/Button.cpp"
+                  timestampString = "403187609.325377"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Button::onTouch(cocos2d::CCTouch*, cocos2d::CCEvent*)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Entities/Button.cpp"
+                  timestampString = "403187609.326354"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "non-virtual thunk to Button::onTouch(cocos2d::CCTouch*, cocos2d::CCEvent*)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Entities/Button.cpp"
+                  timestampString = "403187609.326588"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "non-virtual thunk to Button::onTouch(cocos2d::CCTouch*, cocos2d::CCEvent*)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Entities/Button.cpp"
+                  timestampString = "403187609.326792"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

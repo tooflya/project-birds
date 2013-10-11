@@ -22,8 +22,6 @@ class Menu : public Screen
         // Constants
         // ===========================================================
 
-        static Menu* m_Instance;
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -76,8 +74,6 @@ class Menu : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -120,6 +116,8 @@ class Menu : public Screen
 
         void onExitTransitionDidStart();
         void onEnterTransitionDidFinish();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

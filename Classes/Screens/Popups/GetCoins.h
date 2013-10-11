@@ -13,8 +13,6 @@ class GetCoins : public Popup
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static GetCoins* m_Instance;
 
         // ===========================================================
         // Fields
@@ -60,8 +58,6 @@ class GetCoins : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -103,6 +99,8 @@ class GetCoins : public Popup
     
         virtual void onShow();
         virtual void onHide();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

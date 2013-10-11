@@ -4,6 +4,7 @@
 #include "GetLives.h"
 
 #include "Shop.h"
+#include "Mode.h"
 
 // ===========================================================
 // Inner Classes
@@ -12,8 +13,6 @@
 // ===========================================================
 // Constants
 // ===========================================================
-
-GetLives* GetLives::m_Instance = NULL;
 
 // ===========================================================
 // Fields
@@ -36,11 +35,11 @@ GetLives::GetLives(CCNode* pParent) :
         
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
         
-        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_glife_pic@2x.png", spriteBatch3);
         
-        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_glife_btn1@2x.png", 1, 1, 0, 0, 298, 230}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_glife_btn2@2x.png", 1, 1, 0, 0, 309, 247}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_2, onTouchButtonsCallback);
+        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_glife_btn1@2x.png", 1, 1, 0, 0, 298, 230}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_1, this);
+        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_glife_btn2@2x.png", 1, 1, 0, 0, 309, 247}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_2, this);
         
         for(int i = 0; i < 2; i++)
         {
@@ -61,8 +60,6 @@ GetLives::GetLives(CCNode* pParent) :
         this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(230));
 
         this->mPurchaseId = -1;
-        
-        m_Instance = this;
     }
 
 GetLives* GetLives::create(CCNode* pParent)
@@ -80,8 +77,6 @@ GetLives* GetLives::create(CCNode* pParent)
 
 void GetLives::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    GetLives* pSender = static_cast<GetLives*>(GetLives::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -89,21 +84,21 @@ void GetLives::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_1:
 
-                pSender->mPurchaseId = 4;
+                this->mPurchaseId = 4;
 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_2:
 
-                pSender->mPurchaseId = 5;
+                this->mPurchaseId = 5;
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }
@@ -146,20 +141,40 @@ void GetLives::onShow()
 void GetLives::onHide()
 {
     Popup::onHide();
-
-    Shop* shop = static_cast<Shop*>(this->mParent);
     
     switch(this->mPurchaseId)
     {
         case 4:
         case 5:
-        shop->mPaymentProceed->show();
+        Shop* shop = dynamic_cast<Shop*>(this->mParent);
+        
+        Shop::PURCHASE_ID = this->mPurchaseId;
+            
+        this->mPurchaseId = -1;
+            
+        if(shop != 0)
+        {
+            shop->mPaymentProceed->show();
+        }
+        else
+        {
+            Mode* mode = dynamic_cast<Mode*>(this->mParent);
+            
+            if(mode != 0)
+            {
+                Shop::ACTION = 3;
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+            }
+            else
+            {
+                Shop::ACTION = 4;
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+            }
+        }
         break;
     }
-
-    Shop::PURCHASE_ID = this->mPurchaseId;
-
-    this->mPurchaseId = -1;
 }
 
 void GetLives::show()

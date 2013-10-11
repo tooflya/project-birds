@@ -533,7 +533,8 @@ void Map::update(float pDeltaTime)
                         
                         this->throwAnimation(this->mDay[0]->getCenterX(), this->mDay[0]->getCenterY());
                         
-                        AppDelegate::addCoins(500, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(500, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                        AppDelegate::addCoins(10, Options::SAVE_DATA_COINS_TYPE_GOLD);
                     }
                 break;
                 case 16:
@@ -569,7 +570,8 @@ void Map::update(float pDeltaTime)
                         
                         this->throwAnimation(this->mDay[1]->getCenterX(), this->mDay[1]->getCenterY());
                         
-                        AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                        AppDelegate::addCoins(25, Options::SAVE_DATA_COINS_TYPE_GOLD);
                     }
                     break;
                 case 20:
@@ -605,7 +607,8 @@ void Map::update(float pDeltaTime)
                         
                         this->throwAnimation(this->mDay[2]->getCenterX(), this->mDay[2]->getCenterY());
                         
-                        AppDelegate::addCoins(4000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(4000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                        AppDelegate::addCoins(50, Options::SAVE_DATA_COINS_TYPE_GOLD);
                     }
                     break;
                 case 24:
@@ -641,7 +644,8 @@ void Map::update(float pDeltaTime)
                         
                         this->throwAnimation(this->mDay[3]->getCenterX(), this->mDay[3]->getCenterY());
                         
-                        AppDelegate::addCoins(8000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(8000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                        AppDelegate::addCoins(100, Options::SAVE_DATA_COINS_TYPE_GOLD);
                     }
                     break;
                 case 28:
@@ -678,7 +682,8 @@ void Map::update(float pDeltaTime)
                         
                         this->throwAnimation(this->mDay[4]->getCenterX(), this->mDay[4]->getCenterY());
                         
-                        AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_GOLD);
+                        AppDelegate::addCoins(10000, Options::SAVE_DATA_COINS_TYPE_SILVER);
+                        AppDelegate::addCoins(500, Options::SAVE_DATA_COINS_TYPE_GOLD);
                     }
                     break;
             }

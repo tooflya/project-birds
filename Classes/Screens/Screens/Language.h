@@ -64,8 +64,6 @@ class Language : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -102,6 +100,8 @@ class Language : public Screen
 
         void onEnter();
         void onExit();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

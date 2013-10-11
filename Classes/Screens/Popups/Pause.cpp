@@ -22,11 +22,9 @@
 // Constructors
 // ===========================================================
 
-Pause::Pause(CCNode* pParent, void (*pOnTouchCallback)(int, int)) :
+Pause::Pause(CCNode* pParent) :
     Popup(pParent, false)
     {
-        this->mOnTouchCallback = pOnTouchCallback;
-
         this->mIllustrationAnimationTime = 0.5;
         this->mIllustrationAnimationTimeElapsed = 0;
 
@@ -40,15 +38,15 @@ Pause::Pause(CCNode* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mBirdsIllustrations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(0), Options::CAMERA_CENTER_Y + Utils::coord(480));
         this->mBirdsIllustrations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(160), Options::CAMERA_CENTER_Y + Utils::coord(480));
 
-        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this->mOnTouchCallback);
-        this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, this->mOnTouchCallback);
-        this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, this->mOnTouchCallback);
-        this->mLeaderBoardButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_LEADERBOARD, this->mOnTouchCallback);
-        this->mAchievementsButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_ACHIEVEMENTS, this->mOnTouchCallback);
-        this->mContinueButton = Button::create("pause_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_CONTINUE, this->mOnTouchCallback);
-        this->mBackButton = Button::create("pause_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_MODE, this->mOnTouchCallback);
-        this->mShopButton = Button::create("pause_btn_sprite@2x.png", 2, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_SHOP, this->mOnTouchCallback);
-        this->mMenuButton = Button::create("pause_btn_sprite@2x.png", 2, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_MENU, this->mOnTouchCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
+        this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, this);
+        this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, this);
+        this->mLeaderBoardButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_LEADERBOARD, this);
+        this->mAchievementsButton = Button::create("btn_sfx_mfx_ach_lead_sprite_pause@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_ACHIEVEMENTS, this);
+        this->mContinueButton = Button::create("pause_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_CONTINUE, this);
+        this->mBackButton = Button::create("pause_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_MODE, this);
+        this->mShopButton = Button::create("pause_btn_sprite@2x.png", 2, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_SHOP, this);
+        this->mMenuButton = Button::create("pause_btn_sprite@2x.png", 2, 1, this->mSpriteBatch, Options::BUTTONS_ID_PAUSE_MENU, this);
 
         this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         this->mSoundButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(235), Options::CAMERA_CENTER_Y - Utils::coord(390));
@@ -69,9 +67,124 @@ Pause::Pause(CCNode* pParent, void (*pOnTouchCallback)(int, int)) :
         this->mMenuButton->setCurrentFrameIndex(0);
     }
 
+Pause* Pause::create(CCNode* pParent)
+{
+    Pause* pause = new Pause(pParent);
+    pause->autorelease();
+    pause->retain();
+    
+    return pause;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
+
+void Pause::onTouchButtonsCallback(const int pAction, const int pID)
+{
+    switch(pAction)
+    {
+        case Options::BUTTONS_ACTION_ONTOUCH:
+            switch(pID)
+        {
+            case Options::BUTTONS_ID_POPUP_CLOSE:
+                
+                this->hide();
+                
+                break;
+            case Options::BUTTONS_ID_PAUSE_MENU:
+                
+                this->hide();
+                
+                Loader::ACTION = 3;
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                
+                break;
+            case Options::BUTTONS_ID_PAUSE_SHOP:
+                
+                this->hide();
+                
+                Loader::ACTION = 5;
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                
+                break;
+            case Options::BUTTONS_ID_PAUSE_RESTART:
+                
+                this->hide();
+                
+                break;
+            case Options::BUTTONS_ID_PAUSE_CONTINUE:
+                
+                this->hide();
+                
+                break;
+            case Options::BUTTONS_ID_SETTINGS_MUSIC:
+                
+                Options::MUSIC_ENABLE = !Options::MUSIC_ENABLE;
+                
+                if(Options::MUSIC_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+                    
+                    this->mMusicButton->setCurrentFrameIndex(0);
+                }
+                else
+                {
+                    SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+                    
+                    this->mMusicButton->setCurrentFrameIndex(3);
+                }
+                
+                AppDelegate::setMusicEnable(Options::MUSIC_ENABLE);
+                
+                break;
+            case Options::BUTTONS_ID_SETTINGS_SOUND:
+                
+                Options::SOUND_ENABLE = !Options::SOUND_ENABLE;
+                
+                if(Options::SOUND_ENABLE)
+                {
+                    this->mSoundButton->setCurrentFrameIndex(1);
+                }
+                else
+                {
+                    this->mSoundButton->setCurrentFrameIndex(4);
+                }
+                
+                AppDelegate::setSoundEnable(Options::SOUND_ENABLE);
+                
+                break;
+            case Options::BUTTONS_ID_PAUSE_LEADERBOARD:
+                
+                // TODO: Open leaderboard.
+                
+                break;
+            case Options::BUTTONS_ID_PAUSE_ACHIEVEMENTS:
+                
+                // TODO: Open achievements.
+                
+                break;
+            case Options::BUTTONS_ID_PAUSE_MODE:
+                
+                this->hide();
+                
+                Loader::ACTION = 4;
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                
+                break;
+        }
+            break;
+            
+        case Options::BUTTONS_ACTION_ONBEGIN:
+            break;
+            
+        case Options::BUTTONS_ACTION_ONEND:
+            break;
+    }
+}
 
 // ===========================================================
 // Override Methods

@@ -13,8 +13,6 @@
 // Constants
 // ===========================================================
 
-GetKeys* GetKeys::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -33,11 +31,11 @@ GetKeys::GetKeys(CCNode* pParent) :
     {
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
         
-        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_key_pic@2x.png", this->mSpriteBatch);
         
-        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_key_btn1@2x.png", 1, 1, 0, 0, 265, 231}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_key_btn2@2x.png", 1, 1, 0, 0, 273, 232}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, onTouchButtonsCallback);
+        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_key_btn1@2x.png", 1, 1, 0, 0, 265, 231}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, this);
+        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_key_btn2@2x.png", 1, 1, 0, 0, 273, 232}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, this);
         
         for(int i = 0; i < 2; i++)
         {
@@ -58,8 +56,6 @@ GetKeys::GetKeys(CCNode* pParent) :
         this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200));
 
         this->mPurchaseId = -1;
-        
-        m_Instance = this;
     }
 
 GetKeys* GetKeys::create(CCNode* pParent)
@@ -77,8 +73,6 @@ GetKeys* GetKeys::create(CCNode* pParent)
 
 void GetKeys::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    GetKeys* pSender = static_cast<GetKeys*>(GetKeys::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -86,21 +80,21 @@ void GetKeys::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_1:
 
-                pSender->mPurchaseId = 6;
+                this->mPurchaseId = 6;
 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_2:
 
-                pSender->mPurchaseId = 7;
+                this->mPurchaseId = 7;
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

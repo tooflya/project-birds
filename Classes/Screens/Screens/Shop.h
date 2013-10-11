@@ -89,8 +89,6 @@ class Shop : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -167,6 +165,8 @@ class Shop : public Screen
         void onExit();
     
         void onEnterTransitionDidFinish();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

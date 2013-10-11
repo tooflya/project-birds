@@ -68,7 +68,7 @@ class End : public Splash
         // Constructors
         // ===========================================================
     
-        End(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int));
+        End(int pType, Screen* pParent);
 
         // ===========================================================
         // Methods
@@ -90,8 +90,6 @@ class End : public Splash
         // ===========================================================
         // Fields
         // ===========================================================
-
-        void (*mOnTouchCallback)(int, int);
 
         // ===========================================================
         // Constructors
@@ -122,7 +120,7 @@ class End : public Splash
         // Constructors
         // ===========================================================
     
-        static End* create(int pType, Screen* pParent, void (*pOnTouchCallback)(int, int));
+        static End* create(int pType, Screen* pParent);
         ~End();
 
         // ===========================================================
@@ -142,6 +140,8 @@ class End : public Splash
         // ===========================================================
     
         void update(float pDeltaTime);
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

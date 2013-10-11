@@ -59,8 +59,6 @@ class Pause : public Popup
         // Fields
         // ===========================================================
 
-        void (*mOnTouchCallback)(int, int);
-
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -90,7 +88,9 @@ class Pause : public Popup
         // Constructors
         // ===========================================================
     
-        Pause(CCNode* pParent, void (*pOnTouchCallback)(int, int));
+        Pause(CCNode* pParent);
+    
+        static Pause* create(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -107,6 +107,8 @@ class Pause : public Popup
     
         virtual void onShow();
         virtual void onHide();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

@@ -29,9 +29,9 @@ BuyItem::~BuyItem()
 BuyItem::BuyItem(Screen* pScreen) :
     Popup(pScreen)
     {
-        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         
-        this->mBuyButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_BUYITEM_BUY, onTouchButtonsCallback);
+        this->mBuyButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_BUYITEM_BUY, this);
         
         this->mListBorders[0] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);
         this->mListBorders[1] = Entity::create("about_scroll_border_small@2x.png", this->mSpriteBatch);
@@ -138,7 +138,7 @@ void BuyItem::onHide()
     {
         this->mYesPressed = false;
 
-        if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER) >= Options::SHOP_ITEMS_PRICES[Shop::CLICKED_ITEM_ID] && AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD) >= Options::SHOP_ITEMS_PRICES_GOLD[Shop::CLICKED_ITEM_ID])
+        if((AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER) >= Options::SHOP_ITEMS_PRICES[Shop::CLICKED_ITEM_ID] && AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD) >= Options::SHOP_ITEMS_PRICES_GOLD[Shop::CLICKED_ITEM_ID]) || AppDelegate::isItemBought(Shop::CLICKED_ITEM_ID))
         {
             shop->onItemBought(Shop::CLICKED_ITEM_ID);
         }

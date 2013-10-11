@@ -30,21 +30,21 @@ Language::Language()
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
     this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
 
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LANGUAGE_BACK, onTouchButtonsCallback);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LANGUAGE_BACK, this);
 
     this->addChild(spriteBatch);
     this->addChild(spriteBatch2);
     
-    this->mLanguages[0] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_EN, onTouchButtonsCallback);
-    this->mLanguages[1] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_RU, onTouchButtonsCallback);
-    this->mLanguages[2] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_DE, onTouchButtonsCallback);
-    this->mLanguages[3] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_ES, onTouchButtonsCallback);
-    this->mLanguages[4] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_FR, onTouchButtonsCallback);
-    this->mLanguages[5] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_NL, onTouchButtonsCallback);
-    this->mLanguages[6] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_IT, onTouchButtonsCallback);
-    this->mLanguages[7] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_JP, onTouchButtonsCallback);
-    this->mLanguages[8] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_KR, onTouchButtonsCallback);
-    this->mLanguages[9] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_CN, onTouchButtonsCallback);
+    this->mLanguages[0] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_EN, this);
+    this->mLanguages[1] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_RU, this);
+    this->mLanguages[2] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_DE, this);
+    this->mLanguages[3] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_ES, this);
+    this->mLanguages[4] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_FR, this);
+    this->mLanguages[5] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_NL, this);
+    this->mLanguages[6] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_IT, this);
+    this->mLanguages[7] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_JP, this);
+    this->mLanguages[8] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_KR, this);
+    this->mLanguages[9] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_CN, this);
     
     this->mNotAvailableBackgrounds[0] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
     this->mNotAvailableBackgrounds[1] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);

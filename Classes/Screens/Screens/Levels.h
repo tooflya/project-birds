@@ -26,8 +26,15 @@ class Levels : public Screen
         // Fields
         // ===========================================================
     
+        bool mIsUnlockAnimationRunning;
+        bool mIsUnlockAnimationSound;
+    
+        float mUnlockAnimationTime;
+        float mUnlockAnimationTimeElapsed;
+    
         Entity* mBackground;
         Entity* mTablet;
+        Entity* mLigts[2];
         Entity* mStarsCountIcon;
         Button* mBackButton;
         Button* mShopButton;
@@ -35,6 +42,8 @@ class Levels : public Screen
         Text* mStarsCountText;
 
         MainList* mMainList;
+    
+        CCSpriteBatchNode* spriteBatch2;
 
         // ===========================================================
         // Constructors
@@ -70,8 +79,6 @@ class Levels : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -123,8 +130,12 @@ class Levels : public Screen
         // Override Methods
         // ===========================================================
     
+        void update(float pDeltaTime);
+    
         void onEnter();
         void onExit();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

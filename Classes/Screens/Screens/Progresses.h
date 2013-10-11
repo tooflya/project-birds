@@ -2,8 +2,7 @@
 #define CONST_PROGRESSES_H
 
 #include "Game.h"
-#include "ProgressPause.h"
-#include "ProgressEnd.h"
+#include "End.h"
 
 #include "Pause.h"
 
@@ -71,8 +70,6 @@ class Progresses : public Game
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -124,6 +121,8 @@ class Progresses : public Game
         void onBirBlow(int pType, float pX, float pY);
     
         void onTaskComplete();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

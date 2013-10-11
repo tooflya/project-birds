@@ -65,8 +65,6 @@ class Progress : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -100,6 +98,8 @@ class Progress : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

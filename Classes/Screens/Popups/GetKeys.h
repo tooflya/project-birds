@@ -13,8 +13,6 @@ class GetKeys : public Popup
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static GetKeys* m_Instance;
 
         // ===========================================================
         // Fields
@@ -60,8 +58,6 @@ class GetKeys : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -103,6 +99,8 @@ class GetKeys : public Popup
     
         virtual void onShow();
         virtual void onHide();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

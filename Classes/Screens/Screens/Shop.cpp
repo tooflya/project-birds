@@ -297,10 +297,18 @@ Shop::Shop()
     this->mTextBackgrounds[2]->setScaleX(0.8);
     this->mTextBackgrounds[3]->setScaleX(0.8);
     
-    this->mTextPluses[0] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, onTouchButtonsCallback);
-    this->mTextPluses[1] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, onTouchButtonsCallback);
-    this->mTextPluses[2] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, onTouchButtonsCallback);
-    this->mTextPluses[3] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, onTouchButtonsCallback);
+    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4)
+    {
+        this->mTextBackgrounds[0]->setScaleX(this->mTextBackgrounds[0]->getScaleX() + 0.2);
+        this->mTextBackgrounds[1]->setScaleX(this->mTextBackgrounds[1]->getScaleX() + 0.2);
+        this->mTextBackgrounds[2]->setScaleX(this->mTextBackgrounds[2]->getScaleX() + 0.2);
+        this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
+    }
+    
+    this->mTextPluses[0] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
+    this->mTextPluses[1] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
+    this->mTextPluses[2] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
+    this->mTextPluses[3] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
     
     this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, spriteBatch2);
     this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
@@ -322,6 +330,14 @@ Shop::Shop()
     this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
     this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
     
+    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4)
+    {
+        this->mTextBackgrounds[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + Utils::coord(30), this->mTextBackgrounds[0]->getCenterY());
+        this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(60), this->mTextBackgrounds[1]->getCenterY());
+        this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + Utils::coord(95), this->mTextBackgrounds[2]->getCenterY());
+        this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + Utils::coord(120), this->mTextBackgrounds[3]->getCenterY());
+    }
+    
     this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2, this->mTextBackgrounds[0]->getCenterY());
     this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2, this->mTextBackgrounds[1]->getCenterY());
     this->mTextPluses[1]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2, this->mTextBackgrounds[2]->getCenterY());
@@ -333,7 +349,7 @@ Shop::Shop()
     this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
     
     //this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SHOP_BACK, onTouchButtonsCallback);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SHOP_BACK, this);
     
     for(int i = 0; i < 9; i++)
     {
@@ -376,7 +392,7 @@ Shop::Shop()
         
         for(int j = 0; j < ITEMS_COUNT[i]; j++)
         {
-            Entity* item = Item::create(onTouchButtonsCallback);
+            Entity* item = Item::create(this);
             this->mItems[t++] = item;
             spriteBatch2->addChild(item);
             
@@ -484,6 +500,14 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
                     }
+                    else if(ACTION == 3)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    }
+                    else if(ACTION == 4)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                    }
 
                     ACTION = -1;
 
@@ -551,7 +575,9 @@ void Shop::onItemBought(int pItemId)
 
             this->mBoughtItem->show(pItemId);
 
-            AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
+            AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_SILVER);
+            AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES_GOLD[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
+            
             AppDelegate::buyItem(pItemId);
             
             if(pItemId < 30)
@@ -680,67 +706,73 @@ void Shop::update(float pDeltaTime)
 
     int realGoldCoinsCount = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_GOLD);
     int realSilverCoinsCount = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
+    int realLivesCoinsCount = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES);
+    int realKeysCoinsCount = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_KEYS);
 
-    if(realGoldCoinsCount != this->mPanelItems[0])
+    if(realSilverCoinsCount != this->mPanelItems[0])
     {
         int c = 1;
 
-        if(abs(realGoldCoinsCount - this->mPanelItems[0]) > 1111)
+        if(abs(realSilverCoinsCount - this->mPanelItems[0]) > 1111)
         {
             c = 111;
         }
-        else if(abs(realGoldCoinsCount - this->mPanelItems[0]) > 111)
+        else if(abs(realSilverCoinsCount - this->mPanelItems[0]) > 111)
         {
             c = 11;
         }
-        else if(abs(realGoldCoinsCount - this->mPanelItems[0]) > 1111)
+        else if(abs(realSilverCoinsCount - this->mPanelItems[0]) > 1111)
         {
             c = 111;
         }
-        else if(abs(realGoldCoinsCount - this->mPanelItems[0]) > 11111)
+        else if(abs(realSilverCoinsCount - this->mPanelItems[0]) > 11111)
         {
             c = 1111;
         }
-        else if(abs(realGoldCoinsCount - this->mPanelItems[0]) > 111111)
+        else if(abs(realSilverCoinsCount - this->mPanelItems[0]) > 111111)
         {
             c = 11111;
         }
 
-        this->mPanelItems[0] += realGoldCoinsCount < this->mPanelItems[0] ? -c : c;
+        this->mPanelItems[0] += realSilverCoinsCount < this->mPanelItems[0] ? -c : c;
 
         this->mTextText[0]->setString(Utils::intToString(this->mPanelItems[0]).c_str());
         this->mTextText[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() / 2 - this->mTextText[0]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[0]->getCenterY());
     }
     
-    if(realSilverCoinsCount != this->mPanelItems[1])
+    if(realGoldCoinsCount != this->mPanelItems[1])
     {
         int c = 1;
         
-        if(abs(realSilverCoinsCount - this->mPanelItems[1]) > 1111)
-        {
-            c = 111;
-        }
-        else if(abs(realSilverCoinsCount - this->mPanelItems[1]) > 111)
+        if(abs(realGoldCoinsCount - this->mPanelItems[1]) > 111)
         {
             c = 11;
         }
-        else if(abs(realSilverCoinsCount - this->mPanelItems[1]) > 1111)
-        {
-            c = 111;
-        }
-        else if(abs(realSilverCoinsCount - this->mPanelItems[1]) > 11111)
-        {
-            c = 1111;
-        }
-        else if(abs(realSilverCoinsCount - this->mPanelItems[1]) > 111111)
-        {
-            c = 11111;
-        }
         
-        this->mPanelItems[1] += realSilverCoinsCount < this->mPanelItems[1] ? -c : c;
+        this->mPanelItems[1] += realGoldCoinsCount < this->mPanelItems[1] ? -c : c;
         
         this->mTextText[1]->setString(Utils::intToString(this->mPanelItems[1]).c_str());
         this->mTextText[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2 - this->mTextText[1]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[1]->getCenterY());
+    }
+    
+    if(realLivesCoinsCount != this->mPanelItems[2])
+    {
+        int c = 1;
+        
+        this->mPanelItems[2] += realLivesCoinsCount < this->mPanelItems[2] ? -c : c;
+        
+        this->mTextText[2]->setString(Utils::intToString(this->mPanelItems[2]).c_str());
+        this->mTextText[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2 - this->mTextText[2]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[2]->getCenterY());
+    }
+    
+    if(realKeysCoinsCount != this->mPanelItems[3])
+    {
+        int c = 1;
+        
+        this->mPanelItems[3] += realKeysCoinsCount < this->mPanelItems[3] ? -c : c;
+        
+        this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
+        this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[3]->getCenterY());
     }
 
     /** Purchase animation **/
@@ -826,24 +858,13 @@ void Shop::onEnter()
     this->mTextText[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() / 2 - this->mTextText[0]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[0]->getCenterY());
     
     this->mTextText[1]->setString(Utils::intToString(this->mPanelItems[1]).c_str());
-    this->mTextText[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() / 2 - this->mTextText[1]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[1]->getCenterY());
+    this->mTextText[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2 - this->mTextText[1]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[1]->getCenterY());
     
     this->mTextText[2]->setString(Utils::intToString(this->mPanelItems[2]).c_str());
     this->mTextText[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2 - this->mTextText[2]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[2]->getCenterY());
     
     this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
     this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[3]->getCenterY());
-    
-    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) < 5)
-    {
-        this->mTextPluses[1]->setOpacity(255);
-        this->mTextPluses[1]->setColor(ccc3(255, 255, 255));
-    }
-    else
-    {
-        this->mTextPluses[1]->setOpacity(254);
-        this->mTextPluses[1]->setColor(ccc3(100, 100, 100));
-    }
     
 }
 
@@ -858,6 +879,9 @@ void Shop::onExit()
     
     this->mIsAnimationPurchaseRunning = false;
     this->mPurchaseCoins->clear();
+    this->mPurchaseSilverCoins->clear();
+    this->mPurchaseLives->clear();
+    this->mPurchaseKeys->clear();
 }
 
 void Shop::onEnterTransitionDidFinish()
@@ -867,6 +891,10 @@ void Shop::onEnterTransitionDidFinish()
     if(ACTION == 2)
     {
         this->mGetKeysPopup->show();
+    }
+    else if(ACTION == 3 || ACTION == 4)
+    {
+        this->mPaymentProceed->show();
     }
 }
 

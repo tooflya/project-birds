@@ -26,7 +26,7 @@ More::More()
     CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MORE_BACK, onTouchButtonsCallback);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MORE_BACK, this);
 
     this->addChild(spriteBatch);
     

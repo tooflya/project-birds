@@ -19,14 +19,14 @@
 // Constructors
 // ===========================================================
 
-PlayButton::PlayButton(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int)) :
-	Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pOnTouchCallback)
+PlayButton::PlayButton(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender) :
+	Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender)
 	{
 	}
 
-PlayButton* PlayButton::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, void (*pOnTouchCallback)(int, int))
+PlayButton* PlayButton::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender)
 {
-    PlayButton* button = new PlayButton(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pOnTouchCallback);
+    PlayButton* button = new PlayButton(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender);
     button->autorelease();
     
     return button;

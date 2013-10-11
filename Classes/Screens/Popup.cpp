@@ -78,7 +78,7 @@ Popup::Popup(CCNode* pParent, bool pFirst)
     this->addChild(this->mSpriteBatch2);
     this->addChild(this->mSpriteBatch);
 
-    this->mParent->addChild(this->mSquare);
+    this->mParent->addChild(this->mSquare, 500);
 }
 
 // ===========================================================
@@ -130,6 +130,10 @@ void Popup::onHide()
     this->removeFromParentAndCleanup(false);
 
     this->mShowed = false;
+}
+
+void Popup::onTouchButtonsCallback(const int pAction, const int pID)
+{
 }
 
 // ===========================================================

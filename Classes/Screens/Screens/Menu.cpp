@@ -13,8 +13,6 @@
 // Constants
 // ===========================================================
 
-Menu* Menu::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -41,12 +39,12 @@ Menu::Menu()
 
     this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
     this->mPlayDecoration = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
-    this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, onTouchButtonsCallback);
-    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
-    this->mTwitterButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, onTouchButtonsCallback);
-    this->mFacebookButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, onTouchButtonsCallback);
-    this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, onTouchButtonsCallback);
-    this->mSettingsButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, onTouchButtonsCallback);
+    this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
+    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
+    this->mTwitterButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
+    this->mFacebookButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
+    this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, this);
+    this->mSettingsButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
     
     this->addChild(spriteBatch);
 
@@ -78,8 +76,6 @@ Menu::Menu()
     {
         SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
     }
-    
-    m_Instance = this;
 }
 
 Menu* Menu::create()
@@ -97,8 +93,6 @@ Menu* Menu::create()
 
 void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Menu* pSender = static_cast<Menu*>(Menu::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:

@@ -38,8 +38,6 @@ public:
 // Constants
 // ===========================================================
 
-Arcade* Arcade::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -110,7 +108,7 @@ Arcade::Arcade() :
         this->mTextIcons[1] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
         this->mTextIcons[2] = Entity::create("game_panel_time@2x.png", spriteBatch8);
         this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
-        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
         this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -131,7 +129,7 @@ Arcade::Arcade() :
 
         this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
         
-        this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
         this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
         this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
@@ -166,8 +164,8 @@ Arcade::Arcade() :
         this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         this->mTimeText->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mTimeText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 
-        this->mPausePopup = ArcadePause::create(this);
-        this->mEndScreen = ArcadeEnd::create(Splash::TYPE_ARCADE, this);
+        this->mPausePopup = Pause::create(this);
+        this->mEndScreen = End::create(Splash::TYPE_ARCADE, this);
 
         this->mAlgorithmBirdsRemainig = 6;
         this->mAlgorithmBirdsTime = 1.5;
@@ -176,8 +174,6 @@ Arcade::Arcade() :
         this->mAlgorithmBirdsTime2 = 7.0;
 
         this->addChild(this->mEventLayer);
-
-        m_Instance = this;
     }
 
 Arcade* Arcade::create()
@@ -195,8 +191,6 @@ Arcade* Arcade::create()
 
 void Arcade::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Arcade* pSender = static_cast<Arcade*>(Arcade::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -204,7 +198,7 @@ void Arcade::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_GAME_PAUSE:
 
-                    pSender->mPausePopup->show();
+                    this->mPausePopup->show();
 
                 break;
                 case Options::BUTTONS_ID_GAME_RESTART:
@@ -283,6 +277,10 @@ void Arcade::onGameEnd()
     if(BEST_COUNT > AppDelegate::getBestResult(1))
     {
         AppDelegate::setBestResult(BEST_COUNT, 1);
+    }
+    else
+    {
+        AppDelegate::removeCoins(1, Options::SAVE_DATA_COINS_TYPE_LIVES);
     }
 }
 

@@ -8,7 +8,7 @@
 #include "Touchable.h"
 #include "Confetti.h"
 
-class BoughtItem : public CCLayerColor, public Touchable
+class BoughtItem : public CCLayerColor, public Touchable, public ButtonReceiver
 {
     protected:
         // ===========================================================
@@ -82,8 +82,6 @@ class BoughtItem : public CCLayerColor, public Touchable
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -132,6 +130,8 @@ class BoughtItem : public CCLayerColor, public Touchable
         void onExit();
     
         void onTouch(CCTouch* touch, CCEvent* event);
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

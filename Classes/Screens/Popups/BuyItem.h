@@ -66,8 +66,6 @@ class BuyItem : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -106,6 +104,8 @@ class BuyItem : public Popup
         
         void onShow();
         void onHide();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

@@ -2,8 +2,7 @@
 #define CONST_CLASSIC_H
 
 #include "Game.h"
-#include "ClassicPause.h"
-#include "ClassicEnd.h"
+#include "End.h"
 
 #include "Confetti.h"
 #include "StarParticle.h"
@@ -82,8 +81,6 @@ class Classic : public Game
         // Methods
         // ===========================================================
 
-        static void onTouchButtonsCallback(const int pAction, const int pID);
-
         void levelUp();
 
         void throwConfetti();
@@ -136,6 +133,8 @@ class Classic : public Game
         void onGameEnd();
 
         void removeLife();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

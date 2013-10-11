@@ -33,7 +33,7 @@
             <key>choose_box_lvl_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2764,477},{400,1000}}</string>
+                <string>{{2765,477},{400,1000}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>flag_sprite_big@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{3164,477},{636,1122}}</string>
+                <string>{{3165,477},{636,1122}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>popup_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2116,477},{648,988}}</string>
+                <string>{{2117,477},{648,988}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,15 +124,15 @@
             <key>popup_buy_coins_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,477},{594,482}}</string>
+                <string>{{0,477},{595,483}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{594,482}}</string>
+                <string>{{0,0},{595,483}}</string>
                 <key>sourceSize</key>
-                <string>{594,482}</string>
+                <string>{595,483}</string>
             </dict>
             <key>popup_getcoins_picture@2x.png</key>
             <dict>
@@ -176,7 +176,7 @@
             <key>popup_key_pic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1103,477},{563,535}}</string>
+                <string>{{1104,477},{563,535}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>popup_quit_picture@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1666,477},{450,538}}</string>
+                <string>{{1667,477},{450,538}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>popup_rate_picture@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{594,477},{509,519}}</string>
+                <string>{{595,477},{509,519}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -285,9 +285,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas4.png</string>
             <key>size</key>
-            <string>{3800,1604}</string>
+            <string>{3801,1605}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0cfb88160e12a274c126cd46fec725ae:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:bf264516eb897e7e9d5f73ccbae0dfa2:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas4.png</string>
         </dict>

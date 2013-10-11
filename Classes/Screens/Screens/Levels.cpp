@@ -143,8 +143,8 @@ class ListLayer : public CCLayer
 
         bool containsTouchLocation(CCTouch* touch)
         {
-            float x = touch->getLocation().x;
-            float y = touch->getLocation().y;
+            //float x = touch->getLocation().x;
+            //float y = touch->getLocation().y;
             
             //return x > this->mListInitialCenterX - this->mWidth / 2 && x < this->mListInitialCenterX + this->mWidth / 2 && y < this->mListInitialCenterY + this->mHeight / 2 && y > this->mListInitialCenterY - this->mHeight / 2;
             
@@ -353,7 +353,7 @@ class MainList : public CCLayer
             //((Entity*) this->mListBorders->objectAtIndex(0))->setScaleY(1);
             //((Entity*) this->mListBorders->objectAtIndex(1))->setScaleY(-1);
 
-            int f = 0;
+            //int f = 0;
             /*for(int i = 1; i > -2; i--)
             {
                 Entity* element = static_cast<Entity*>(this->mElements->create());
@@ -404,7 +404,7 @@ class MainList : public CCLayer
 
     bool containsTouchLocation(CCTouch* touch)
     {
-        float x = touch->getLocation().x;
+        //float x = touch->getLocation().x;
         float y = touch->getLocation().y;
 
         return y < Options::CAMERA_CENTER_Y + Utils::coord(400) && y > Options::CAMERA_CENTER_Y - Utils::coord(400);
@@ -561,7 +561,7 @@ class MainList : public CCLayer
             if(this->mPostUpdate)
             {
                 float x = this->getPosition().x;
-                float y = this->getPosition().y;
+                //float y = this->getPosition().y;
 
                 if(x < this->mMinWidth)
                 {
@@ -630,8 +630,10 @@ int Levels::PRIZES[80] =
 Levels::~Levels()
 {
     this->mMainList->release();
-    //this->mGetLivesPopup->release();
+    this->mGetLivesPopup->release();
     this->mUnlockLevelPopup->release();
+    
+    spriteBatch2->release();
 }
 
 Levels::Levels()
@@ -639,15 +641,20 @@ Levels::Levels()
     this->mMainList = MainList::create(this);
     
     CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
+    spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.png");
+    spriteBatch2->retain();
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
     this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
-
+    
     this->addChild(spriteBatch);
     
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, onTouchButtonsCallback);
-    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, onTouchButtonsCallback);
+    this->mLigts[0] = Entity::create("get_coins_light@2x.png", spriteBatch2);
+    this->mLigts[1] = Entity::create("get_coins_light@2x.png", spriteBatch2);
+    
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, this);
+    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
     this->mTablet = Entity::create("shop_money_bg@2x.png", this);
     this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
     
@@ -744,7 +751,9 @@ Levels::Levels()
 
     this->mSlidesArrows[1]->setScaleX(-1);
     
-    //this->mGetLivesPopup = GetLives::create(this);
+    this->mIsUnlockAnimationRunning = false;
+    
+    this->mGetLivesPopup = GetLives::create(this);
     this->mUnlockLevelPopup = UnlockLevel::create(this);
 
     /** Experiments */
@@ -765,8 +774,6 @@ Levels* Levels::create()
 
 void Levels::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Levels* pSender = static_cast<Levels*>(Levels::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -798,12 +805,78 @@ void Levels::updateIcons()
 
 void Levels::unlock()
 {
+    this->mLigts[0]->create()->setCenterPosition(this->mLevels[Game::LEVEL]->getCenterX(), this->mLevels[Game::LEVEL]->getCenterY());
+    this->mLigts[1]->create()->setCenterPosition(this->mLevels[Game::LEVEL]->getCenterX(), this->mLevels[Game::LEVEL]->getCenterY());
+    
+    this->mLigts[0]->setZOrder(1);
+    this->mLigts[1]->setZOrder(1);
+    
+    this->mLigts[0]->setScale(0);
+    this->mLigts[1]->setScale(0);
+    
+    this->mLigts[0]->setRotation(0);
+    this->mLigts[1]->setRotation(0);
+    
+    this->mLigts[0]->setOpacity(255);
+    this->mLigts[1]->setOpacity(255);
+    
+    this->mLevels[Game::LEVEL]->setZOrder(2);
+    
     this->mLevels[Game::LEVEL]->unlock();
+    
+    this->mLevels[Game::LEVEL]->getParent()->addChild(spriteBatch2);
+    
+    this->mIsUnlockAnimationRunning = true;
+    this->mIsUnlockAnimationSound = false;
+    this->mUnlockAnimationTime = 2.0;
+    this->mUnlockAnimationTimeElapsed = 0;
 }
 
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Levels::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+    
+    if(this->mIsUnlockAnimationRunning)
+    {
+        this->mUnlockAnimationTimeElapsed += pDeltaTime;
+        
+        this->mLigts[0]->setRotation(this->mLigts[0]->getRotation() + 1);
+        this->mLigts[1]->setRotation(this->mLigts[1]->getRotation() - 1);
+        
+        this->mLigts[0]->setScale(this->mLigts[0]->getScaleX() + 0.02);
+        this->mLigts[1]->setScale(this->mLigts[1]->getScaleX() + 0.02);
+        
+        if(this->mLigts[0]->getOpacity() > 0 && this->mUnlockAnimationTimeElapsed >= this->mUnlockAnimationTime / 2)
+        {
+            this->mLigts[0]->setOpacity(this->mLigts[0]->getOpacity() - 5);
+            this->mLigts[1]->setOpacity(this->mLigts[1]->getOpacity() - 5);
+            
+            if(!this->mIsUnlockAnimationSound)
+            {
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
+                }
+                
+                this->mIsUnlockAnimationSound = true;
+            }
+        }
+        
+        if(this->mUnlockAnimationTimeElapsed >= this->mUnlockAnimationTime)
+        {
+            spriteBatch2->removeFromParentAndCleanup(false);
+            
+            this->mLigts[0]->destroy();
+            this->mLigts[1]->destroy();
+            
+            this->mLevels[Game::LEVEL]->setZOrder(0);
+        }
+    }
+}
 
 void Levels::onEnter()
 {

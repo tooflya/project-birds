@@ -54,20 +54,14 @@
 		783E88AC17C20CEC00FD49C1 /* ScreenManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E876617C20CEB00FD49C1 /* ScreenManager.cpp */; };
 		783E88AD17C20CEC00FD49C1 /* Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E876817C20CEB00FD49C1 /* Options.cpp */; };
 		783E88AE17C20CEC00FD49C1 /* Popup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E876B17C20CEB00FD49C1 /* Popup.cpp */; };
-		783E88AF17C20CEC00FD49C1 /* ArcadeEnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E876E17C20CEB00FD49C1 /* ArcadeEnd.cpp */; };
-		783E88B017C20CEC00FD49C1 /* ArcadePause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877017C20CEB00FD49C1 /* ArcadePause.cpp */; };
 		783E88B117C20CEC00FD49C1 /* BoughtItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877217C20CEB00FD49C1 /* BoughtItem.cpp */; };
 		783E88B217C20CEC00FD49C1 /* BuyItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877417C20CEB00FD49C1 /* BuyItem.cpp */; };
-		783E88B317C20CEC00FD49C1 /* ClassicEnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877617C20CEB00FD49C1 /* ClassicEnd.cpp */; };
-		783E88B417C20CEC00FD49C1 /* ClassicPause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877817C20CEB00FD49C1 /* ClassicPause.cpp */; };
 		783E88B517C20CEC00FD49C1 /* Exit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877A17C20CEB00FD49C1 /* Exit.cpp */; };
 		783E88B617C20CEC00FD49C1 /* GetCoins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877C17C20CEB00FD49C1 /* GetCoins.cpp */; };
 		783E88B717C20CEC00FD49C1 /* ModeHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E877E17C20CEB00FD49C1 /* ModeHelp.cpp */; };
 		783E88B817C20CEC00FD49C1 /* Pause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878017C20CEB00FD49C1 /* Pause.cpp */; };
 		783E88B917C20CEC00FD49C1 /* PaymentProceed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878217C20CEB00FD49C1 /* PaymentProceed.cpp */; };
 		783E88BA17C20CEC00FD49C1 /* PleaseRate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878417C20CEB00FD49C1 /* PleaseRate.cpp */; };
-		783E88BB17C20CEC00FD49C1 /* ProgressEnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878617C20CEB00FD49C1 /* ProgressEnd.cpp */; };
-		783E88BC17C20CEC00FD49C1 /* ProgressPause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878817C20CEB00FD49C1 /* ProgressPause.cpp */; };
 		783E88BD17C20CEC00FD49C1 /* ResetProgress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878A17C20CEB00FD49C1 /* ResetProgress.cpp */; };
 		783E88BE17C20CEC00FD49C1 /* TempPublisherAchievementsExplain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878C17C20CEB00FD49C1 /* TempPublisherAchievementsExplain.cpp */; };
 		783E88BF17C20CEC00FD49C1 /* TempPublisherRatingExplain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783E878E17C20CEB00FD49C1 /* TempPublisherRatingExplain.cpp */; };
@@ -205,6 +199,8 @@
 		7896A9DA18041A06001F8145 /* GetLives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7896A9D8180418CB001F8145 /* GetLives.cpp */; };
 		7897DA9E17F312260023C1F9 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7897DA9A17F3120D0023C1F9 /* Rain.cpp */; };
 		7897DA9F17F312260023C1F9 /* RainCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7897DA9C17F3120D0023C1F9 /* RainCircle.cpp */; };
+		78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */; };
+		78AE448018081EF300FBABDD /* ButtonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */; };
 		78B38A53177E5D0600773C6A /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4D177E5D0600773C6A /* AppController.mm */; };
 		78B38A55177E5D0600773C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4F177E5D0600773C6A /* main.m */; };
 		78B38A56177E5D0600773C6A /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A52177E5D0600773C6A /* RootViewController.mm */; };
@@ -442,18 +438,10 @@
 		783E876917C20CEB00FD49C1 /* Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Options.h; sourceTree = "<group>"; };
 		783E876B17C20CEB00FD49C1 /* Popup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Popup.cpp; sourceTree = "<group>"; };
 		783E876C17C20CEB00FD49C1 /* Popup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Popup.h; sourceTree = "<group>"; };
-		783E876E17C20CEB00FD49C1 /* ArcadeEnd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArcadeEnd.cpp; sourceTree = "<group>"; };
-		783E876F17C20CEB00FD49C1 /* ArcadeEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcadeEnd.h; sourceTree = "<group>"; };
-		783E877017C20CEB00FD49C1 /* ArcadePause.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArcadePause.cpp; sourceTree = "<group>"; };
-		783E877117C20CEB00FD49C1 /* ArcadePause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcadePause.h; sourceTree = "<group>"; };
 		783E877217C20CEB00FD49C1 /* BoughtItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoughtItem.cpp; sourceTree = "<group>"; };
 		783E877317C20CEB00FD49C1 /* BoughtItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoughtItem.h; sourceTree = "<group>"; };
 		783E877417C20CEB00FD49C1 /* BuyItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuyItem.cpp; sourceTree = "<group>"; };
 		783E877517C20CEB00FD49C1 /* BuyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyItem.h; sourceTree = "<group>"; };
-		783E877617C20CEB00FD49C1 /* ClassicEnd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassicEnd.cpp; sourceTree = "<group>"; };
-		783E877717C20CEB00FD49C1 /* ClassicEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassicEnd.h; sourceTree = "<group>"; };
-		783E877817C20CEB00FD49C1 /* ClassicPause.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassicPause.cpp; sourceTree = "<group>"; };
-		783E877917C20CEB00FD49C1 /* ClassicPause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassicPause.h; sourceTree = "<group>"; };
 		783E877A17C20CEB00FD49C1 /* Exit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exit.cpp; sourceTree = "<group>"; };
 		783E877B17C20CEB00FD49C1 /* Exit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exit.h; sourceTree = "<group>"; };
 		783E877C17C20CEB00FD49C1 /* GetCoins.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetCoins.cpp; sourceTree = "<group>"; };
@@ -466,10 +454,6 @@
 		783E878317C20CEB00FD49C1 /* PaymentProceed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentProceed.h; sourceTree = "<group>"; };
 		783E878417C20CEB00FD49C1 /* PleaseRate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PleaseRate.cpp; sourceTree = "<group>"; };
 		783E878517C20CEB00FD49C1 /* PleaseRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PleaseRate.h; sourceTree = "<group>"; };
-		783E878617C20CEB00FD49C1 /* ProgressEnd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProgressEnd.cpp; sourceTree = "<group>"; };
-		783E878717C20CEB00FD49C1 /* ProgressEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressEnd.h; sourceTree = "<group>"; };
-		783E878817C20CEB00FD49C1 /* ProgressPause.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProgressPause.cpp; sourceTree = "<group>"; };
-		783E878917C20CEB00FD49C1 /* ProgressPause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressPause.h; sourceTree = "<group>"; };
 		783E878A17C20CEB00FD49C1 /* ResetProgress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResetProgress.cpp; sourceTree = "<group>"; };
 		783E878B17C20CEB00FD49C1 /* ResetProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetProgress.h; sourceTree = "<group>"; };
 		783E878C17C20CEB00FD49C1 /* TempPublisherAchievementsExplain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TempPublisherAchievementsExplain.cpp; sourceTree = "<group>"; };
@@ -657,6 +641,9 @@
 		7897DA9B17F3120D0023C1F9 /* Rain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rain.h; sourceTree = "<group>"; };
 		7897DA9C17F3120D0023C1F9 /* RainCircle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RainCircle.cpp; sourceTree = "<group>"; };
 		7897DA9D17F3120D0023C1F9 /* RainCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RainCircle.h; sourceTree = "<group>"; };
+		78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = upsell_whoosh.mp3; sourceTree = "<group>"; };
+		78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonReceiver.cpp; sourceTree = "<group>"; };
+		78AE447F18081EF300FBABDD /* ButtonReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonReceiver.h; sourceTree = "<group>"; };
 		78B1F7AA17E87B5B009E2F0E /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		78B1F7AB17E87B5B009E2F0E /* Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		78B1F7AC17E87B6D009E2F0E /* Ripple.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ripple.cpp; sourceTree = "<group>"; };
@@ -1251,18 +1238,10 @@
 				783E877D17C20CEB00FD49C1 /* GetCoins.h */,
 				78B1F7AA17E87B5B009E2F0E /* Map.cpp */,
 				78B1F7AB17E87B5B009E2F0E /* Map.h */,
-				783E876E17C20CEB00FD49C1 /* ArcadeEnd.cpp */,
-				783E876F17C20CEB00FD49C1 /* ArcadeEnd.h */,
-				783E877017C20CEB00FD49C1 /* ArcadePause.cpp */,
-				783E877117C20CEB00FD49C1 /* ArcadePause.h */,
 				783E877217C20CEB00FD49C1 /* BoughtItem.cpp */,
 				783E877317C20CEB00FD49C1 /* BoughtItem.h */,
 				783E877417C20CEB00FD49C1 /* BuyItem.cpp */,
 				783E877517C20CEB00FD49C1 /* BuyItem.h */,
-				783E877617C20CEB00FD49C1 /* ClassicEnd.cpp */,
-				783E877717C20CEB00FD49C1 /* ClassicEnd.h */,
-				783E877817C20CEB00FD49C1 /* ClassicPause.cpp */,
-				783E877917C20CEB00FD49C1 /* ClassicPause.h */,
 				783E877A17C20CEB00FD49C1 /* Exit.cpp */,
 				783E877B17C20CEB00FD49C1 /* Exit.h */,
 				783E877E17C20CEB00FD49C1 /* ModeHelp.cpp */,
@@ -1273,10 +1252,6 @@
 				783E878317C20CEB00FD49C1 /* PaymentProceed.h */,
 				783E878417C20CEB00FD49C1 /* PleaseRate.cpp */,
 				783E878517C20CEB00FD49C1 /* PleaseRate.h */,
-				783E878617C20CEB00FD49C1 /* ProgressEnd.cpp */,
-				783E878717C20CEB00FD49C1 /* ProgressEnd.h */,
-				783E878817C20CEB00FD49C1 /* ProgressPause.cpp */,
-				783E878917C20CEB00FD49C1 /* ProgressPause.h */,
 				783E878A17C20CEB00FD49C1 /* ResetProgress.cpp */,
 				783E878B17C20CEB00FD49C1 /* ResetProgress.h */,
 				783E878C17C20CEB00FD49C1 /* TempPublisherAchievementsExplain.cpp */,
@@ -1351,6 +1326,8 @@
 		783E87BD17C20CEB00FD49C1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */,
+				78AE447F18081EF300FBABDD /* ButtonReceiver.h */,
 				783E87BE17C20CEB00FD49C1 /* BuyItemList.cpp */,
 				783E87BF17C20CEB00FD49C1 /* BuyItemList.h */,
 				783E87C017C20CEB00FD49C1 /* CreditsList.cpp */,
@@ -1410,6 +1387,7 @@
 		783E885E17C20CEC00FD49C1 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */,
 				7869166517F1DF9600184E9D /* pome-rampdown.mp3 */,
 				7869166617F1DF9600184E9D /* pome-zoomout.mp3 */,
 				7869166717F1DF9600184E9D /* popup-1.mp3 */,
@@ -2308,6 +2286,7 @@
 				78397AD51807014A00C999E7 /* Icon-72-ios6.png in Resources */,
 				7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */,
 				78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */,
+				78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */,
 				78397AE61807029200C999E7 /* Icon-152-ios7.png in Resources */,
 				7869167117F1DF9F00184E9D /* pome-zoomout.mp3 in Resources */,
 				7869167217F1DF9F00184E9D /* popup-1.mp3 in Resources */,
@@ -2497,6 +2476,7 @@
 				78B39377177E5E7E00773C6A /* vec2.c in Sources */,
 				78B39378177E5E7E00773C6A /* vec3.c in Sources */,
 				78B39379177E5E7E00773C6A /* vec4.c in Sources */,
+				78AE448018081EF300FBABDD /* ButtonReceiver.cpp in Sources */,
 				78B3937A177E5E7E00773C6A /* CCKeypadDelegate.cpp in Sources */,
 				78B3937B177E5E7E00773C6A /* CCKeypadDispatcher.cpp in Sources */,
 				78B3937C177E5E7E00773C6A /* CCLabelAtlas.cpp in Sources */,
@@ -2612,20 +2592,14 @@
 				783E88AC17C20CEC00FD49C1 /* ScreenManager.cpp in Sources */,
 				783E88AD17C20CEC00FD49C1 /* Options.cpp in Sources */,
 				783E88AE17C20CEC00FD49C1 /* Popup.cpp in Sources */,
-				783E88AF17C20CEC00FD49C1 /* ArcadeEnd.cpp in Sources */,
-				783E88B017C20CEC00FD49C1 /* ArcadePause.cpp in Sources */,
 				783E88B117C20CEC00FD49C1 /* BoughtItem.cpp in Sources */,
 				783E88B217C20CEC00FD49C1 /* BuyItem.cpp in Sources */,
-				783E88B317C20CEC00FD49C1 /* ClassicEnd.cpp in Sources */,
-				783E88B417C20CEC00FD49C1 /* ClassicPause.cpp in Sources */,
 				783E88B517C20CEC00FD49C1 /* Exit.cpp in Sources */,
 				783E88B617C20CEC00FD49C1 /* GetCoins.cpp in Sources */,
 				783E88B717C20CEC00FD49C1 /* ModeHelp.cpp in Sources */,
 				783E88B817C20CEC00FD49C1 /* Pause.cpp in Sources */,
 				783E88B917C20CEC00FD49C1 /* PaymentProceed.cpp in Sources */,
 				783E88BA17C20CEC00FD49C1 /* PleaseRate.cpp in Sources */,
-				783E88BB17C20CEC00FD49C1 /* ProgressEnd.cpp in Sources */,
-				783E88BC17C20CEC00FD49C1 /* ProgressPause.cpp in Sources */,
 				783E88BD17C20CEC00FD49C1 /* ResetProgress.cpp in Sources */,
 				783E88BE17C20CEC00FD49C1 /* TempPublisherAchievementsExplain.cpp in Sources */,
 				783E88BF17C20CEC00FD49C1 /* TempPublisherRatingExplain.cpp in Sources */,

@@ -39,6 +39,7 @@ class Mode : public Screen
         Button* mShopButton;
 
         Popup* mHelpPopup;
+        Popup* mLivesPopup;
         Popup* mTempPublisherRatingExplain;
         Popup* mTempPublisherAchievementsExplain;
 
@@ -76,8 +77,6 @@ class Mode : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -111,6 +110,8 @@ class Mode : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

@@ -62,8 +62,6 @@ class ModeHelp : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -99,6 +97,8 @@ class ModeHelp : public Popup
         // ===========================================================
 
         virtual void onHide();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

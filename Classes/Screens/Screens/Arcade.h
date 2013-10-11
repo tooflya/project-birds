@@ -2,8 +2,7 @@
 #define CONST_ARCADE_H
 
 #include "Game.h"
-#include "ArcadePause.h"
-#include "ArcadeEnd.h"
+#include "End.h"
 
 #include "AppDelegate.h"
 
@@ -19,8 +18,6 @@ class Arcade : public Game
         // ===========================================================
         // Constants
         // ===========================================================
-
-        static Arcade* m_Instance;
 
         // ===========================================================
         // Fields
@@ -66,8 +63,6 @@ class Arcade : public Game
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -113,6 +108,8 @@ class Arcade : public Game
         void onGameEnd();
     
         void pause();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

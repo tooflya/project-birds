@@ -130,9 +130,26 @@ class Options
         static const char* SOUND_POINTS[12];
         static const char* SOUND_PROGRESS;
         static const char* SOUND_COMBO[8];
+        static const char* SOUND_LEVEL_UNLOCK;
 
         static const char* VERSION;
         static int BUILD;
+    
+        static int DEVICE_TYPE;
+    
+        static const int DEVICE_TYPE_IOS = 0;
+        static const int DEVICE_TYPE_ANDROID = 1;
+        static const int DEVICE_TYPE_WP = 2;
+        static const int DEVICE_TYPE_MAC = 3;
+        static const int DEVICE_TYPE_LINUX = 4;
+        static const int DEVICE_TYPE_WINDOWS = 5;
+    
+        static const int DEVICE_TYPE_IPHONE5 = 10;
+        static const int DEVICE_TYPE_IPHONE4 = 11;
+        static const int DEVICE_TYPE_IPOD4 = 12;
+        static const int DEVICE_TYPE_IPAD_RETINA = 13;
+    
+        static const int DEVICE_TYPE_NEXUS3 = 20;
 
         static const char* FONT;
 

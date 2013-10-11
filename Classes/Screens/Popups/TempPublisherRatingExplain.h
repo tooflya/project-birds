@@ -56,8 +56,6 @@ class TempPublisherRatingExplain : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -91,6 +89,8 @@ class TempPublisherRatingExplain : public Popup
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

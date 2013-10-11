@@ -112,7 +112,7 @@ Classic::Classic() :
         this->mHearts[0] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[1] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[2] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
-        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
         this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -140,7 +140,7 @@ Classic::Classic() :
 
         this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, onTouchButtonsCallback);
+        this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
 
         this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
         this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
@@ -231,8 +231,8 @@ Classic::Classic() :
         this->mRains = EntityManager::create(300, Rain::create(), spriteBatch7);
         this->mRainsCircles = EntityManager::create(300, RainCircle::create(), spriteBatch7);
 
-        this->mPausePopup = ClassicPause::create(this);
-        this->mEndScreen = ClassicEnd::create(Splash::TYPE_CLASSIC, this);
+        this->mPausePopup = Pause::create(this);
+        this->mEndScreen = End::create(Splash::TYPE_CLASSIC, this);
 
         this->mLevelUpTime = 30.0;
         this->mLevelUpTimeElapsed = 0;
@@ -252,6 +252,16 @@ Classic::Classic() :
         this->mIsLevelUpAnimation = false;
 
         this->addChild(this->mEventLayer);
+        
+        /** Correction of text areas position */
+        
+        if(Options::CAMERA_WIDTH == 960)
+        {
+            // TODO : Maybe some fixes of panel textareas?
+        }
+        else
+        {
+        }
 
         m_Instance = this;
     }
@@ -502,6 +512,10 @@ void Classic::onGameEnd()
     if(BEST_COUNT > AppDelegate::getBestResult(0))
     {
         AppDelegate::setBestResult(BEST_COUNT, 0);
+    }
+    else
+    {
+        AppDelegate::removeCoins(1, Options::SAVE_DATA_COINS_TYPE_LIVES);
     }
 }
 

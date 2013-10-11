@@ -15,8 +15,6 @@
 // Constants
 // ===========================================================
 
-UnlockLevel* UnlockLevel::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -33,8 +31,8 @@ UnlockLevel::UnlockLevel(CCNode* pParent) :
         
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), spriteBatch3, 0);
     
-        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
-        this->mUnlockButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_BUYITEM_BUY, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
+        this->mUnlockButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_BUYITEM_BUY, this);
         this->mIllustration = Entity::create("popup_key_pic@2x.png", this->mSpriteBatch);
         
         this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
@@ -60,8 +58,6 @@ UnlockLevel::UnlockLevel(CCNode* pParent) :
         this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200));
         
         this->mKey->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(310));
-        
-        m_Instance = this;
     }
 
 UnlockLevel* UnlockLevel::create(CCNode* pParent)
@@ -79,8 +75,6 @@ UnlockLevel* UnlockLevel::create(CCNode* pParent)
 
 void UnlockLevel::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    UnlockLevel* pSender = static_cast<UnlockLevel*>(UnlockLevel::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -88,14 +82,14 @@ void UnlockLevel::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_BUYITEM_BUY:
                 
-                pSender->action = true;
+                this->action = true;
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

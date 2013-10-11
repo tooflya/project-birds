@@ -22,7 +22,7 @@ class Item : public Button
         // Constructors
         // ===========================================================
     
-        Item(void (*pOnTouchCallback)(int, int));
+        Item(ButtonReceiver* pSender);
 
         // ===========================================================
         // Methods
@@ -74,7 +74,7 @@ class Item : public Button
         // Constructors
         // ===========================================================
 
-        static Item* create(void (*pOnTouchCallback)(int, int));
+        static Item* create(ButtonReceiver* pSender);
 
         // ===========================================================
         // Methods

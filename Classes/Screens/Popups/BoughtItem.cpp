@@ -46,10 +46,10 @@ BoughtItem::BoughtItem(CCNode* pParent)
     this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this);
     this->mIcon->setZOrder(2);
     
-    this->mShareButton = Button::create("share@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE, onTouchButtonsCallback);
-    this->mTwitterButton = Button::create("twitter_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_TWITTER, onTouchButtonsCallback);
-    this->mFacebookButton = Button::create("facebook_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_FACEBOOK, onTouchButtonsCallback);
-    this->mVkButton = Button::create("vk_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_VK, onTouchButtonsCallback);
+    this->mShareButton = Button::create("share@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE, this);
+    this->mTwitterButton = Button::create("twitter_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_TWITTER, this);
+    this->mFacebookButton = Button::create("facebook_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_FACEBOOK, this);
+    this->mVkButton = Button::create("vk_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_VK, this);
     
     this->mTextes[0] = Text::create(Options::TEXT_SHOP_BOUGHT, this);
     this->mTextes[1] = Text::create(Options::TEXT_SHOP_BOUGHT, this);

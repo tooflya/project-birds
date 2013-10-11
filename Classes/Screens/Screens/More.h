@@ -60,8 +60,6 @@ class More : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -96,6 +94,8 @@ class More : public Screen
     
         void onEnter();
         void onExit();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

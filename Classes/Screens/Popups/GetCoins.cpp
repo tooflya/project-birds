@@ -13,8 +13,6 @@
 // Constants
 // ===========================================================
 
-GetCoins* GetCoins::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -33,13 +31,13 @@ GetCoins::GetCoins(CCNode* pParent) :
     {
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
         
-        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, onTouchButtonsCallback);
+        this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_getcoins_picture@2x.png", this->mSpriteBatch);
         
-        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 36, 282, 207}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, onTouchButtonsCallback);
-        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 25, 279, 201}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, onTouchButtonsCallback);
-        this->mGetCoinsButtons[2] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 243, 285, 225}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_3, onTouchButtonsCallback);
-        this->mGetCoinsButtons[3] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 226, 279, 242}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_4, onTouchButtonsCallback);
+        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 36, 282, 207}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, this);
+        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 25, 279, 201}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, this);
+        this->mGetCoinsButtons[2] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 243, 285, 225}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_3, this);
+        this->mGetCoinsButtons[3] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 226, 279, 242}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_4, this);
         
         for(int i = 0; i < 2; i++)
         {
@@ -64,8 +62,6 @@ GetCoins::GetCoins(CCNode* pParent) :
         this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(450));
 
         this->mPurchaseId = -1;
-        
-        m_Instance = this;
     }
 
 GetCoins* GetCoins::create(CCNode* pParent)
@@ -83,8 +79,6 @@ GetCoins* GetCoins::create(CCNode* pParent)
 
 void GetCoins::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    GetCoins* pSender = static_cast<GetCoins*>(GetCoins::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -92,35 +86,35 @@ void GetCoins::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_1:
 
-                pSender->mPurchaseId = 0;
+                this->mPurchaseId = 0;
 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_2:
 
-                pSender->mPurchaseId = 1;
+                this->mPurchaseId = 1;
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_3:
 
-                pSender->mPurchaseId = 2;
+                this->mPurchaseId = 2;
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_GETCOINS_4:
 
-                pSender->mPurchaseId = 3;
+                this->mPurchaseId = 3;
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }
