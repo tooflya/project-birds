@@ -7,7 +7,7 @@
             <key>bonus_bird_parts.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{462,0},{320,160}}</string>
+                <string>{{2,1286},{320,160}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>box@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{162,0},{300,300}}</string>
+                <string>{{1006,1268},{300,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>box_laser_green@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{72,0},{45,46}}</string>
+                <string>{{1395,1494},{45,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>box_laser_red@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{117,0},{45,46}}</string>
+                <string>{{1346,1494},{45,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,20 +59,20 @@
             <key>explosion-zombi@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1000,300},{1071,1320}}</string>
+                <string>{{1006,2},{1024,1262}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1071,1320}}</string>
+                <string>{{0,0},{1024,1262}}</string>
                 <key>sourceSize</key>
-                <string>{1071,1320}</string>
+                <string>{1024,1262}</string>
             </dict>
             <key>freeze_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,300},{1000,1280}}</string>
+                <string>{{2,2},{1000,1280}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>gun.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1118,0},{715,222}}</string>
+                <string>{{1310,1268},{715,222}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>gun_laser.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{782,0},{336,31}}</string>
+                <string>{{1444,1494},{336,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>rain.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{32,57}}</string>
+                <string>{{1310,1494},{32,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>rain_circle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{32,0},{40,11}}</string>
+                <string>{{1310,1555},{40,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -142,9 +142,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas14.png</string>
             <key>size</key>
-            <string>{2071,1620}</string>
+            <string>{2032,1570}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ad5fa17bd2f26f7759ccf29c746bedef:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:47b01d36d739b98e1e7aeea10389d514:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas14.png</string>
         </dict>
