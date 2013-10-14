@@ -7,7 +7,7 @@
             <key>bar_remove@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,930},{738,49}}</string>
+                <string>{{1262,749},{738,49}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>end_lvl_bg_popup@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{937,0},{652,930}}</string>
+                <string>{{2,749},{652,930}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>end_lvl_bg_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1130},{2000,743}}</string>
+                <string>{{2,2},{2000,743}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>end_lvl_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{738,930},{800,200}}</string>
+                <string>{{658,1153},{800,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>end_lvl_star_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{337,0},{600,400}}</string>
+                <string>{{658,749},{600,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>shop_money_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{32,0},{305,125}}</string>
+                <string>{{658,1357},{305,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>star_particle@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{32,31}}</string>
+                <string>{{658,1486},{32,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -103,9 +103,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas8.png</string>
             <key>size</key>
-            <string>{2000,1873}</string>
+            <string>{2004,1681}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:29a3d84576e2fc41af95a61187c26b5c:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:4cef5697abe1f8d3d3d4e8534578400b:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas8.png</string>
         </dict>

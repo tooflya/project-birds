@@ -7,7 +7,7 @@
             <key>bg_light_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,664},{1137,603}}</string>
+                <string>{{2,1286},{1137,603}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>bg_light_main@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1137,664},{1002,866}}</string>
+                <string>{{1006,2},{1002,866}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>bonus-animation@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2178,0},{682,664}}</string>
+                <string>{{1143,942},{682,664}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>bonus_amigo_hat@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{923,0},{131,75}}</string>
+                <string>{{1006,942},{131,75}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>bonus_pirat_hat@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1054,0},{124,87}}</string>
+                <string>{{1006,1021},{124,87}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>colors_small@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{691,0},{232,42}}</string>
+                <string>{{1143,1610},{232,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>game_panel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1178,0},{1000,66}}</string>
+                <string>{{1006,872},{1000,66}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>game_panel_counter@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,0},{33,38}}</string>
+                <string>{{1974,942},{33,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>game_panel_counter_best@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{130,0},{47,38}}</string>
+                <string>{{1006,1233},{47,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>game_panel_game_life@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{177,0},{94,38}}</string>
+                <string>{{1006,1151},{94,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>game_panel_goldlife@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{83,0},{47,37}}</string>
+                <string>{{1057,1233},{47,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>game_panel_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{535,0},{78,72}}</string>
+                <string>{{1911,984},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>game_panel_plus@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{613,0},{78,72}}</string>
+                <string>{{1829,980},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>game_panel_textbox@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{271,0},{123,35}}</string>
+                <string>{{1006,1112},{123,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>game_panel_time@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{22,37}}</string>
+                <string>{{1104,1192},{22,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>game_panel_time_star@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{22,0},{28,37}}</string>
+                <string>{{1104,1151},{28,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>task-background@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{394,0},{141,34}}</string>
+                <string>{{1829,942},{141,34}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +228,7 @@
             <key>temp_level_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2139,664},{1000,1280}}</string>
+                <string>{{2,2},{1000,1280}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -246,9 +246,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas6.png</string>
             <key>size</key>
-            <string>{3139,1944}</string>
+            <string>{2010,1891}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:741f4a59875fa090c72bebb95cc75b87:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:3b3d5382f24e2ef4afe0148999687fc2:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas6.png</string>
         </dict>

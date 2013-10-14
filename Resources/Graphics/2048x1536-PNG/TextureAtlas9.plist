@@ -7,7 +7,7 @@
             <key>get_coins_light@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{350,335}}</string>
+                <string>{{497,2},{350,335}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>popup_key_ico_fall_price@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,0},{54,65}}</string>
+                <string>{{118,431},{54,65}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>popup_quit_picture_light_2@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{404,0},{112,505}}</string>
+                <string>{{2,2},{112,505}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>popup_quit_picture_light_main@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{516,0},{375,425}}</string>
+                <string>{{118,2},{375,425}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -64,9 +64,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas9.png</string>
             <key>size</key>
-            <string>{891,505}</string>
+            <string>{849,509}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c57b0fe3f4b82fc3cd3a1eb7ac9c505d:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:14f5be075bc15bd97a9b3a0708cd7bfa:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas9.png</string>
         </dict>
