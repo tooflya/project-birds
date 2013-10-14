@@ -7,17 +7,17 @@
 // Inner Classes
 // ===========================================================
 
-class Background : public CCNodeRGBA
+class Background1 : public CCNodeRGBA
 {
 public:
-    Background()
+    Background1()
     {
         this->setOpacity(0);
     }
     
-    static Background* create()
+    static Background1* create()
     {
-        Background* background = new Background();
+        Background1* background = new Background1();
         background->autorelease();
         
         return background;
@@ -36,11 +36,11 @@ public:
 class BackgroundEntity : public Entity
 {
 public:
-    float p = 0;
+    float p;
     BackgroundEntity(const char* pTextureFileName, CCNode* pParent) :
     Entity(pTextureFileName, pParent)
     {
-        
+        p = 0;
     }
     
     Entity* create()
@@ -94,7 +94,7 @@ Map::Map(CCNode* pParent)
     this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
     
     this->ignoreAnchorPointForPosition(false);
-    this->mSquare = Background::create();
+    this->mSquare = Background1::create();
     
     CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas13.png");
     CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas4.png");

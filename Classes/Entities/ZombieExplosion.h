@@ -1,4 +1,4 @@
-#ifndef CONST_ZOMBIEXPLOSION_H
+#ifndef CONST_ZOMBIEEXPLOSION_H
 #define CONST_ZOMBIEEXPLOSION_H
 
 #include "Entity.h"

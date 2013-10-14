@@ -35,7 +35,34 @@ class Game : public Screen
     protected:
         // ===========================================================
         // Inner Classes
-        // ===========================================================
+    // ===========================================================
+    
+    class Effect : public CCNodeRGBA
+    {
+    public:
+        Effect()
+        {
+            this->setColor(ccc3(0, 0, 0));
+            this->setOpacity(0);
+        }
+        
+        static Effect* create()
+        {
+            Effect* background = new Effect();
+            background->autorelease();
+            
+            return background;
+        }
+        
+        void draw()
+        {
+            if(this->getOpacity() <= 0) return;
+            
+            glLineWidth(1);
+            CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
+            ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
+        }
+    };
 
         // ===========================================================
         // Constants
