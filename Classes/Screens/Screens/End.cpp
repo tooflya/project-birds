@@ -36,10 +36,10 @@ End::End(int pType, Screen* pParent) :
         this->mScaleLayer = CCLayer::create();
         this->mScaleLayer->retain();
         
-        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas8.png");
-        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.png");
-        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.png");
-        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas7.png");
+        SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas8");
+        SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
+        SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
+        SpriteBatch* spriteBatch4 = SpriteBatch::create("TextureAtlas7");
         
         this->addChild(spriteBatch1);
         this->mScaleLayer->addChild(spriteBatch3);

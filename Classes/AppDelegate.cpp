@@ -349,17 +349,17 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     vector <string> searchPath;
     
-    #if CC_TARGER_PLATFORM == CC_PLATFORM_IOS
-
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    
     if(AppDelegate::IS_IPOD)
     {
-        searchPath.push_back(resources2048x1536xPNG.directory);
+        searchPath.push_back(resources1280x720.directory);
         
         Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPOD4;
     }
     else
     {
-        searchPath.push_back(resources2048x1536xPNG.directory);
+        searchPath.push_back(resources1280x720.directory);
         
         if(Options::CAMERA_HEIGHT == 960)
         {
@@ -370,12 +370,33 @@ bool AppDelegate::applicationDidFinishLaunching()
             Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE5;
         }
     }
+    
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    
+    searchPath.push_back(resources1280x720xPNG.directory);
+    
+    Options::DEVICE_TYPE = Options::DEVICE_TYPE_MAC;
 
-    #else
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    
+    if(Options::CAMERA_WIDTH == 720)
+    {
+        Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
+        
+        searchPath.push_back(resources1280x720.directory);
+    }
+    else
+    {
+        Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE5;
+        
+        searchPath.push_back(resources1280x720.directory);
+    }
+    
+#else
 
-    searchPath.push_back(resources2048x1536xPNG.directory);
+    searchPath.push_back(resources1280x720xPNG.directory);
 
-    #endif
+#endif
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 

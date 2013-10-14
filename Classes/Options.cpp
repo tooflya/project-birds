@@ -34,6 +34,16 @@ int Options::SELECTED_WEAPON_ID = 0;
 
 int Options::DEVICE_TYPE = -1;
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+
+const char* Options::TEXTURES_EXTENSION = ".png";
+
+#else
+
+const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
+
+#endif
+
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 

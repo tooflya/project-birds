@@ -36,15 +36,15 @@ Classic::Classic() :
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
         
-        CCSpriteBatchNode* spriteBatch1 = CCSpriteBatchNode::create("TextureAtlas3.png");
-        CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas7.png");
-        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas8.png");
-        CCSpriteBatchNode* spriteBatch4 = CCSpriteBatchNode::create("TextureAtlas10.png");
-        CCSpriteBatchNode* spriteBatch5 = CCSpriteBatchNode::create("TextureAtlas11.png");
-        CCSpriteBatchNode* spriteBatch6 = CCSpriteBatchNode::create("TextureAtlas6.png");
-        CCSpriteBatchNode* spriteBatch7 = CCSpriteBatchNode::create("TextureAtlas14.png");
-        CCSpriteBatchNode* spriteBatch8 = CCSpriteBatchNode::create("TextureAtlas6.png");
-        CCSpriteBatchNode* spriteBatch9 = CCSpriteBatchNode::create("TextureAtlas12.png");
+        SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
+        SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
+        SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
+        SpriteBatch* spriteBatch4 = SpriteBatch::create("TextureAtlas10");
+        SpriteBatch* spriteBatch5 = SpriteBatch::create("TextureAtlas11");
+        SpriteBatch* spriteBatch6 = SpriteBatch::create("TextureAtlas6");
+        SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas14");
+        SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
+        SpriteBatch* spriteBatch9 = SpriteBatch::create("TextureAtlas12");
         
         this->mGameLayer->addChild(spriteBatch6);
         

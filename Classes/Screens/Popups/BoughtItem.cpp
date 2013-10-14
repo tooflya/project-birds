@@ -37,8 +37,8 @@ BoughtItem::BoughtItem(CCNode* pParent)
 
     this->setCascadeOpacityEnabled(true);
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas4.png");
-    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.png");
+    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas4");
+    SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas9");
     
     this->mConfetti = EntityManager::create(210, Confetti::create(), spriteBatch);
     

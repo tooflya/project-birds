@@ -34,7 +34,7 @@ Mode::~Mode()
 
 Mode::Mode()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
+    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);

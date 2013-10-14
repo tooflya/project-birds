@@ -107,6 +107,8 @@ class Options
         static bool MUSIC_ENABLE;
         static bool SOUND_ENABLE;
     
+        static const char* TEXTURES_EXTENSION;
+    
         static int SELECTED_WEAPON_ID;
 
         static const char* MUSIC_1;

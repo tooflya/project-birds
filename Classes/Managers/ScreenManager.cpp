@@ -137,8 +137,8 @@ void ScreenManager::load(int pAction, int pDo)
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MORE]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LANGUAGE]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MODE]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
+                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
+                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
                     
                 break;
                     

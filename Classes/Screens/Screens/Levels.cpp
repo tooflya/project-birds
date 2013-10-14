@@ -640,8 +640,8 @@ Levels::Levels()
 {
     this->mMainList = MainList::create(this);
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
-    spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.png");
+    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+    spriteBatch2 = SpriteBatch::create("TextureAtlas9");
     spriteBatch2->retain();
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);

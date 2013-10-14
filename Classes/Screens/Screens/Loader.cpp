@@ -31,6 +31,7 @@ const char* Loader::WEAPON_TEXTURE[11] =
     "wep_11@2x.png"
 };
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 TextureStructure Loader::TEXTURE_LIBRARY[8] =
 {
     {"TextureAtlas6.png", "TextureAtlas6.plist"},
@@ -42,6 +43,19 @@ TextureStructure Loader::TEXTURE_LIBRARY[8] =
     {"TextureAtlas14.png", "TextureAtlas14.plist"},
     {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
+#else
+TextureStructure Loader::TEXTURE_LIBRARY[8] =
+{
+    {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
+    {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
+    {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
+    {"TextureAtlas10.pvr.ccz", "TextureAtlas10.plist"},
+    {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"},
+    {"TextureAtlas12.pvr.ccz", "TextureAtlas12.plist"},
+    {"TextureAtlas14.pvr.ccz", "TextureAtlas14.plist"},
+    {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
+};
+#endif
 
 // ===========================================================
 // Fields
@@ -58,7 +72,7 @@ Loader::~Loader()
 
 Loader::Loader()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
+    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas3");
     this->addChild(spriteBatch);
 
     this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);
@@ -185,7 +199,13 @@ void Loader::startLoading()
                 {
                     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(TEXTURE_LIBRARY[i].frames);
 
+                    #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
                     CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                    #else
+                    CCTextureCache::sharedTextureCache()->addPVRImage(TEXTURE_LIBRARY[i].texture);
+                    
+                    this->loadingCallBack(NULL);
+                    #endif
                 }
             }
 
@@ -203,8 +223,14 @@ void Loader::startLoading()
                 else
                 {
                     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(Loading::TEXTURE_LIBRARY[i].frames);
-
-                    CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                    
+                    #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+                    CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                    #else
+                    CCTextureCache::sharedTextureCache()->addPVRImage(TEXTURE_LIBRARY[i].texture);
+                    
+                    this->loadingCallBack(NULL);
+                    #endif
                 }
             }
 

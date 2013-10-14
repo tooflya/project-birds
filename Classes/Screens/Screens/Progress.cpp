@@ -28,7 +28,7 @@ Progress::~Progress()
 
 Progress::Progress()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
+    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
     this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_PROGRESS_BACK, this);

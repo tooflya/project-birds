@@ -19,14 +19,14 @@
 // Constructors
 // ===========================================================
 
-SpriteBatch::SpriteBatch(const char* pTextureAtlas)
+SpriteBatch::SpriteBatch()
 {
 }
 
 SpriteBatch* SpriteBatch::create(const char* pTextureAtlas)
 {
-    SpriteBatch* entity = new SpriteBatch(pTextureAtlas);
-    entity->initWithFile(pTextureAtlas, 10);
+    SpriteBatch* entity = new SpriteBatch();
+    entity->initWithFile(ccsf("%s%s", pTextureAtlas, Options::TEXTURES_EXTENSION), 10);
     entity->autorelease();
     
     return entity;

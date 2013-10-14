@@ -96,9 +96,9 @@ Map::Map(CCNode* pParent)
     this->ignoreAnchorPointForPosition(false);
     this->mSquare = Background1::create();
     
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas13.png");
-    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas4.png");
-    CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas5.png");
+    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas13");
+    SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas4");
+    SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas5");
     
     this->mBackground = BackgroundEntity::create("map.png", this);
     

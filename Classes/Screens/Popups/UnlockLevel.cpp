@@ -26,7 +26,7 @@
 UnlockLevel::UnlockLevel(CCNode* pParent) :
     Popup(pParent)
     {
-        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas9.pvr.ccz");
+        CCSpriteBatchNode* spriteBatch3 = SpriteBatch::create("TextureAtlas9");
         this->addChild(spriteBatch3);
         
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), spriteBatch3, 0);

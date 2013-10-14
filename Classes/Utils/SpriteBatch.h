@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+#include "Options.h"
+
 using namespace cocos2d;
 
 class SpriteBatch : public CCSpriteBatchNode
@@ -24,7 +26,7 @@ class SpriteBatch : public CCSpriteBatchNode
 		// Constructors
 		// ===========================================================
 
-		SpriteBatch(const char* pTextureAtlas);
+		SpriteBatch();
 
 		// ===========================================================
 		// Methods

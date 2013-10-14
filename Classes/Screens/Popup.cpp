@@ -58,8 +58,8 @@ Popup::Popup(CCNode* pParent, bool pFirst)
     
     this->mParent = pParent;
 
-    this->mSpriteBatch = CCSpriteBatchNode::create(pFirst ? "TextureAtlas4.pvr.ccz" : "TextureAtlas12.png");
-    this->mSpriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.png");
+    this->mSpriteBatch = SpriteBatch::create(pFirst ? "TextureAtlas4" : "TextureAtlas12");
+    this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas9");
     
     this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);
     this->mSquare = Background::create();

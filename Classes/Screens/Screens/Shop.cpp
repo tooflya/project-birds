@@ -274,8 +274,8 @@ Shop::~Shop()
 
 Shop::Shop()
 {
-    this->mSpriteBatch1 = SpriteBatch::create("TextureAtlas2.png");
-    this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas5.pvr.ccz");
+    this->mSpriteBatch1 = SpriteBatch::create("TextureAtlas2");
+    this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas5");
     
     this->addChild(this->mSpriteBatch1);
     this->addChild(this->mSpriteBatch2);

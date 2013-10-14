@@ -8,6 +8,8 @@
 #include "Touchable.h"
 #include "Confetti.h"
 
+#include "SpriteBatch.h"
+
 class BoughtItem : public CCLayerColor, public Touchable, public ButtonReceiver
 {
     protected:
