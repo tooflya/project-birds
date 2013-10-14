@@ -62,6 +62,8 @@ const char* Options::SOUND_FREEZEE = "Sound/bonus_banana_freeze.ogg";
 const char* Options::SOUND_PREDICTION = "Sound/pome-rampdown.ogg";
 const char* Options::SOUND_COMBO[8] = {"Sound/combo-1.ogg", "Sound/combo-2.ogg","Sound/combo-3.ogg","Sound/combo-4.ogg","Sound/combo-5.ogg","Sound/combo-6.ogg","Sound/combo-7.ogg","Sound/combo-8.ogg"};
 const char* Options::SOUND_POINTS[12] = {"Sound/popup-1.ogg", "Sound/popup-2.ogg","Sound/popup-3.ogg","Sound/popup-4.ogg","Sound/popup-5.ogg","Sound/popup-6.ogg","Sound/popup-7.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg"};
+const char* Options::SOUND_PROGRESS = "Sound/progress_complete.ogg";
+const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.ogg";
 
 #else
 

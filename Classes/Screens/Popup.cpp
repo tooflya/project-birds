@@ -58,7 +58,7 @@ Popup::Popup(CCNode* pParent, bool pFirst)
     
     this->mParent = pParent;
 
-    this->mSpriteBatch = CCSpriteBatchNode::create(pFirst ? "TextureAtlas4.png" : "TextureAtlas12.png");
+    this->mSpriteBatch = CCSpriteBatchNode::create(pFirst ? "TextureAtlas4.pvr.ccz" : "TextureAtlas12.png");
     this->mSpriteBatch2 = CCSpriteBatchNode::create("TextureAtlas9.png");
     
     this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);
@@ -73,7 +73,10 @@ Popup::Popup(CCNode* pParent, bool pFirst)
     
     this->ignoreAnchorPointForPosition(false);
     this->setAnchorPoint(ccp(0.5, 0.5));
+    
+    #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
     this->setScale(0.0);
+    #endif
     
     this->addChild(this->mSpriteBatch2);
     this->addChild(this->mSpriteBatch);
@@ -90,8 +93,12 @@ void Popup::show()
     if(this->mShowed) return;
     
     this->mParent->addChild(this, 1000);
-
+    
     this->mShowed = true;
+
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    this->mSquare->setOpacity(200);
+    #else
     this->mShowAnimationRunning = true;
     
     this->mShowAnimationCount = 0;
@@ -99,21 +106,30 @@ void Popup::show()
     
     this->mShowAnimationTime = 0.3;
     this->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.2));
+    
     this->mSquare->runAction(CCFadeTo::create(0.5, 200));
+    #endif
 }
 
 void Popup::hide()
 {
     if(!this->mShowed) return;
     
-    this->mHideAnimationRunning = true;
-    
     this->mHideAnimationCount = 0;
     this->mHideAnimationTimeElapsed = 0;
     
     this->mHideAnimationTime = 0.1;
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    this->mSquare->setOpacity(0);
+    
+    this->onHide();
+    #else
+    this->mHideAnimationRunning = true;
+    
     this->runAction(CCScaleTo::create(this->mHideAnimationTime, 1.2));
     this->mSquare->runAction(CCFadeTo::create(0.5, 0));
+    #endif
 }
 
 bool Popup::isShowed()

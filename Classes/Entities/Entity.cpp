@@ -661,6 +661,8 @@ Entity* Entity::deepCopy()
 
 void Entity::update(float pDeltaTime)
 {
+    CCSprite::update(pDeltaTime);
+    
     if(this->mAnimationStartTimeout >= 0)
     {
         this->mAnimationStartTimeout -= pDeltaTime;

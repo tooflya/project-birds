@@ -58,7 +58,7 @@ Loader::~Loader()
 
 Loader::Loader()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.png");
+    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
     this->addChild(spriteBatch);
 
     this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);

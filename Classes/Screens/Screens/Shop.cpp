@@ -257,6 +257,9 @@ int Shop::PURCHASE_ID = -1;
 
 Shop::~Shop()
 {
+    this->mSpriteBatch1->release();
+    this->mSpriteBatch2->release();
+    
     this->mBuyItemPopup->release();
     this->mGetCoinsPopup->release();
     this->mGetLivesPopup->release();
@@ -271,27 +274,29 @@ Shop::~Shop()
 
 Shop::Shop()
 {
-    CCSpriteBatchNode* spriteBatch = CCSpriteBatchNode::create("TextureAtlas2.png");
-    CCSpriteBatchNode* spriteBatch2 = CCSpriteBatchNode::create("TextureAtlas5.png");
-
-    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-    this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
-    this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
-
-    this->addChild(spriteBatch);
-    this->addChild(spriteBatch2);
+    this->mSpriteBatch1 = SpriteBatch::create("TextureAtlas2.png");
+    this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas5.pvr.ccz");
     
-    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 1.6), spriteBatch2, 3);
-    this->mPurchaseSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.6), spriteBatch2, 3);
-    this->mPurchaseLives = EntityManager::create(50, LiveParticle::create(), spriteBatch2, 3);
-    this->mPurchaseKeys = EntityManager::create(50, KeyParticle::create(), spriteBatch2, 3);
+    this->addChild(this->mSpriteBatch1);
+    this->addChild(this->mSpriteBatch2);
 
-    this->mGamePanel = Entity::create("shop_panel@2x.png", spriteBatch2);
+    this->mBackground = Entity::create("settings_bg@2x.png", this->mSpriteBatch1);
+    this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
+    this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
     
-    this->mTextBackgrounds[0] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
-    this->mTextBackgrounds[1] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
-    this->mTextBackgrounds[2] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
-    this->mTextBackgrounds[3] = Entity::create("shop_panel_textbox@2x.png", spriteBatch2);
+    this->mBackground->setBlendFunc((ccBlendFunc){GL_ONE, GL_ZERO});
+    
+    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 1.6), this->mSpriteBatch2, 3);
+    this->mPurchaseSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.6), this->mSpriteBatch2, 3);
+    this->mPurchaseLives = EntityManager::create(50, LiveParticle::create(), this->mSpriteBatch2, 3);
+    this->mPurchaseKeys = EntityManager::create(50, KeyParticle::create(), this->mSpriteBatch2, 3);
+
+    this->mGamePanel = Entity::create("shop_panel@2x.png", this->mSpriteBatch2);
+
+    this->mTextBackgrounds[0] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
+    this->mTextBackgrounds[1] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
+    this->mTextBackgrounds[2] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
+    this->mTextBackgrounds[3] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
     
     this->mTextBackgrounds[1]->setScaleX(0.9);
     this->mTextBackgrounds[2]->setScaleX(0.8);
@@ -305,15 +310,15 @@ Shop::Shop()
         this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
     }
     
-    this->mTextPluses[0] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
-    this->mTextPluses[1] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
-    this->mTextPluses[2] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
-    this->mTextPluses[3] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
+    this->mTextPluses[0] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
+    this->mTextPluses[1] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
+    this->mTextPluses[2] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
+    this->mTextPluses[3] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
     
-    this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, spriteBatch2);
-    this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
-    this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", spriteBatch2);
-    this->mIcons[3] = Entity::create("popup_key_ico@2x.png", spriteBatch2);
+    this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, this->mSpriteBatch2);
+    this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, this->mSpriteBatch2);
+    this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", this->mSpriteBatch2);
+    this->mIcons[3] = Entity::create("popup_key_ico@2x.png", this->mSpriteBatch2);
     
     this->mTextText[0] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
     this->mTextText[1] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
@@ -349,11 +354,11 @@ Shop::Shop()
     this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
     
     //this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SHOP_BACK, this);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this->mSpriteBatch1, Options::BUTTONS_ID_SHOP_BACK, this);
     
     for(int i = 0; i < 9; i++)
     {
-        this->mWheels[i] = Entity::create("shop_wheel@2x.png", spriteBatch2);
+        this->mWheels[i] = Entity::create("shop_wheel@2x.png", this->mSpriteBatch2);
     }
     
     float x = Options::CAMERA_CENTER_X;
@@ -372,7 +377,7 @@ Shop::Shop()
         
         for(int j = -1; j < 5; j++)
         {
-            Entity* shelf = Entity::create("shop_shelf_sprite@2x.png", 1, 2, spriteBatch2);
+            Entity* shelf = Entity::create("shop_shelf_sprite@2x.png", 1, 2, this->mSpriteBatch2);
             
             this->mShelfs[5 * i + (j + 1)] = shelf;
             shelf->create()->setCenterPosition(x + shelf->getWidth() * j - Utils::coord(42) * j, y);
@@ -394,7 +399,7 @@ Shop::Shop()
         {
             Entity* item = Item::create(this);
             this->mItems[t++] = item;
-            spriteBatch2->addChild(item);
+            this->mSpriteBatch2->addChild(item);
             
             item->create()->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
             item->setCurrentFrameIndex(++itemID);
@@ -882,6 +887,17 @@ void Shop::onExit()
     this->mPurchaseSilverCoins->clear();
     this->mPurchaseLives->clear();
     this->mPurchaseKeys->clear();
+}
+
+void Shop::draw()
+{
+    Screen::draw();
+}
+
+void Shop::visit()
+{
+    
+    Screen::visit();
 }
 
 void Shop::onEnterTransitionDidFinish()

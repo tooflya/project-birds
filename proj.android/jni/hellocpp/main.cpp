@@ -73,6 +73,7 @@
 #include "SpecialBird.cpp"
 #include "StarParticle2.cpp"
 #include "Ripple.cpp"
+#include "SpriteBatch.cpp"
 #include "Rain.cpp"
 #include "RainCircle.cpp"
 #include "RobotoPart.cpp"

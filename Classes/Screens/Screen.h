@@ -14,6 +14,8 @@
 #include "Utils.h"
 #include "Options.h"
 
+#include "SpriteBatch.h"
+
 #include "AppDelegate.h"
 
 using namespace cocos2d;
@@ -119,6 +121,8 @@ class Screen : public CCScene, public Touchable, public ButtonReceiver
 
         void onEnter();
         void onExit();
+    
+        void visit();
 };
 
 #endif

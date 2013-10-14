@@ -38,6 +38,9 @@ class Shop : public Screen
 
         int mPanelItems[4];
     
+        SpriteBatch* mSpriteBatch1;
+        SpriteBatch* mSpriteBatch2;
+    
         Entity* mGamePanel;
         Entity* mBackgroundDecorations[2];
         Entity* mBackground;
@@ -163,6 +166,9 @@ class Shop : public Screen
 
         void onEnter();
         void onExit();
+    
+        void visit();
+        void draw();
     
         void onEnterTransitionDidFinish();
     

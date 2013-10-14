@@ -1,7 +1,7 @@
-#ifndef CONST_SCREEN
-#define CONST_SCREEN
+#ifndef CONST_SPRITEBATCH
+#define CONST_SPRITEBATCH
 
-#include "Screen.h"
+#include "SpriteBatch.h"
 
 // ===========================================================
 // Inner Classes
@@ -19,6 +19,19 @@
 // Constructors
 // ===========================================================
 
+SpriteBatch::SpriteBatch(const char* pTextureAtlas)
+{
+}
+
+SpriteBatch* SpriteBatch::create(const char* pTextureAtlas)
+{
+    SpriteBatch* entity = new SpriteBatch(pTextureAtlas);
+    entity->initWithFile(pTextureAtlas, 10);
+    entity->autorelease();
+    
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -30,15 +43,6 @@
 // ===========================================================
 // Constructors
 // ===========================================================
-
-Screen::~Screen()
-{
-    this->removeAllChildrenWithCleanup(true);
-}
-
-Screen::Screen()
-{
-}
 
 // ===========================================================
 // Getters
@@ -52,39 +56,18 @@ Screen::Screen()
 // Methods
 // ===========================================================
 
-void Screen::onTouchButtonsCallback(const int pAction, const int pID)
-{
-}
-
 // ===========================================================
 // Override Methods
 // ===========================================================
 
-bool Screen::containsTouchLocation(CCTouch* touch)
+void SpriteBatch::draw()
 {
-    return true;
+    CCSpriteBatchNode::draw();
 }
 
-void Screen::onEnter()
+void SpriteBatch::visit()
 {
-    CCScene::onEnter();
-    
-    this->scheduleUpdate();
-}
-
-void Screen::onExit()
-{
-    CCScene::onExit();
-
-    this->stopAllActions();
-    this->unscheduleAllSelectors();
-
-    this->release();
-}
-
-void Screen::visit()
-{
-    CCScene::visit();
+    CCSpriteBatchNode::visit();
 }
 
 #endif

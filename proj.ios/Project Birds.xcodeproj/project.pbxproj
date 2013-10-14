@@ -10,6 +10,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		78365442180BF85200AA9432 /* SpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78365440180BF85200AA9432 /* SpriteBatch.cpp */; };
 		78397ACE1807014A00C999E7 /* Icon-114-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78397AC51807014A00C999E7 /* Icon-114-ios6.png */; };
 		78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78397AC61807014A00C999E7 /* Icon-144-ios6.png */; };
 		78397AD41807014A00C999E7 /* Icon-57-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78397ACB1807014A00C999E7 /* Icon-57-ios6.png */; };
@@ -365,6 +366,8 @@
 		1D6058910D05DD3D006BFB54 /* Project Birds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project Birds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		78365440180BF85200AA9432 /* SpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBatch.cpp; sourceTree = "<group>"; };
+		78365441180BF85200AA9432 /* SpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBatch.h; sourceTree = "<group>"; };
 		78397AC51807014A00C999E7 /* Icon-114-ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114-ios6.png"; sourceTree = "<group>"; };
 		78397AC61807014A00C999E7 /* Icon-144-ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144-ios6.png"; sourceTree = "<group>"; };
 		78397ACB1807014A00C999E7 /* Icon-57-ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57-ios6.png"; sourceTree = "<group>"; };
@@ -1326,6 +1329,8 @@
 		783E87BD17C20CEB00FD49C1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				78365440180BF85200AA9432 /* SpriteBatch.cpp */,
+				78365441180BF85200AA9432 /* SpriteBatch.h */,
 				78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */,
 				78AE447F18081EF300FBABDD /* ButtonReceiver.h */,
 				783E87BE17C20CEB00FD49C1 /* BuyItemList.cpp */,
@@ -2560,6 +2565,7 @@
 				78B39639177E5E8000773C6A /* CCTMXObjectGroup.cpp in Sources */,
 				78B3963A177E5E8000773C6A /* CCTMXTiledMap.cpp in Sources */,
 				78B3963B177E5E8000773C6A /* CCTMXXMLParser.cpp in Sources */,
+				78365442180BF85200AA9432 /* SpriteBatch.cpp in Sources */,
 				78B3963C177E5E8000773C6A /* CCTouch.cpp in Sources */,
 				78B3963D177E5E8000773C6A /* CCTouchDispatcher.cpp in Sources */,
 				78B3963E177E5E8000773C6A /* CCTouchHandler.cpp in Sources */,

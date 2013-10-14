@@ -30,7 +30,7 @@ GetLives::~GetLives()
 GetLives::GetLives(CCNode* pParent) :
     Popup(pParent)
     {
-        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas3.png");
+        CCSpriteBatchNode* spriteBatch3 = CCSpriteBatchNode::create("TextureAtlas3.pvr.ccz");
         this->addChild(spriteBatch3);
         
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);

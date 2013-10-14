@@ -47,6 +47,8 @@ Menu::Menu()
     this->mSettingsButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
     
     this->addChild(spriteBatch);
+    
+    this->mBackground->setBlendFunc((ccBlendFunc){GL_ONE, GL_ZERO});
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
