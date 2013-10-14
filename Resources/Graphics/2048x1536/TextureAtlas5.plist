@@ -7,7 +7,7 @@
             <key>about_logo@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1520,1776},{345,128}}</string>
+                <string>{{899,1567},{345,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>about_name_logo@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,1586},{510,321}}</string>
+                <string>{{606,1182},{510,321}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>bar_remove@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1726},{738,49}}</string>
+                <string>{{2,1784},{738,49}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,23 +43,23 @@
                 <key>sourceSize</key>
                 <string>{738,49}</string>
             </dict>
-            <key>bg_detail_dark@2x.png</key>
+            <key>coins@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1182},{1000,418}}</string>
+                <string>{{1653,1426},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1000,418}}</string>
+                <string>{{0,0},{300,240}}</string>
                 <key>sourceSize</key>
-                <string>{1000,418}</string>
+                <string>{300,240}</string>
             </dict>
-            <key>coins@2x.png</key>
+            <key>coins_silver@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1779},{300,240}}</string>
+                <string>{{1653,1182},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>end_lvl_star_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,1182},{600,400}}</string>
+                <string>{{2,1182},{600,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>flag_sprite_small@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1610,1182},{334,590}}</string>
+                <string>{{1315,1182},{334,590}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -95,10 +95,36 @@
                 <key>sourceSize</key>
                 <string>{334,590}</string>
             </dict>
+            <key>game_panel_goldlife@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{898,1784},{47,37}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{47,37}}</string>
+                <key>sourceSize</key>
+                <string>{47,37}</string>
+            </dict>
+            <key>game_panel_plus@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{811,1507},{78,72}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{78,72}}</string>
+                <key>sourceSize</key>
+                <string>{78,72}</string>
+            </dict>
             <key>icon_properties@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1520,1586},{40,100}}</string>
+                <string>{{1248,1182},{40,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +137,7 @@
             <key>popup_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,1779},{265,147}}</string>
+                <string>{{1653,1670},{265,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -121,10 +147,23 @@
                 <key>sourceSize</key>
                 <string>{265,147}</string>
             </dict>
+            <key>popup_glife_pic_fall@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{893,1507},{69,56}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{69,56}}</string>
+                <key>sourceSize</key>
+                <string>{69,56}</string>
+            </dict>
             <key>popup_item_rate_stars@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1829,1908},{201,74}}</string>
+                <string>{{606,1507},{201,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -133,6 +172,32 @@
                 <string>{{0,0},{201,74}}</string>
                 <key>sourceSize</key>
                 <string>{201,74}</string>
+            </dict>
+            <key>popup_key_ico@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{949,1784},{36,42}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{36,42}}</string>
+                <key>sourceSize</key>
+                <string>{36,42}</string>
+            </dict>
+            <key>popup_key_ico_fall@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1248,1351},{54,65}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{54,65}}</string>
+                <key>sourceSize</key>
+                <string>{54,65}</string>
             </dict>
             <key>shop_item_icon@2x.png</key>
             <dict>
@@ -150,7 +215,7 @@
             <key>shop_money_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1520,1908},{305,125}}</string>
+                <string>{{1006,1699},{305,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -160,10 +225,36 @@
                 <key>sourceSize</key>
                 <string>{305,125}</string>
             </dict>
+            <key>shop_panel@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1708},{1000,72}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1000,72}}</string>
+                <key>sourceSize</key>
+                <string>{1000,72}</string>
+            </dict>
+            <key>shop_panel_textbox@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{744,1784},{150,35}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,35}}</string>
+                <key>sourceSize</key>
+                <string>{150,35}</string>
+            </dict>
             <key>shop_shelf_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1604},{806,118}}</string>
+                <string>{{2,1586},{806,118}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +267,7 @@
             <key>shop_weapon_check@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1869,1776},{59,61}}</string>
+                <string>{{1248,1286},{59,61}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +280,7 @@
             <key>shop_wheel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1520,1690},{83,82}}</string>
+                <string>{{812,1583},{83,82}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -207,9 +298,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas5.pvr.ccz</string>
             <key>size</key>
-            <string>{2048,2048}</string>
+            <string>{1964,1835}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:71c9843034d14d3d50b8ae4002350d4f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:76c5489ba9e49bd2b7612380fb680fd8:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas5.pvr.ccz</string>
         </dict>

@@ -26,7 +26,7 @@
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">AtkinsonAlpha</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -66,7 +66,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <true/>
+        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -76,7 +76,7 @@
             <key>sizeConstraints</key>
             <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -140,7 +140,7 @@
             <key>extrude</key>
             <uint>2</uint>
             <key>trimThreshold</key>
-            <uint>111</uint>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
@@ -148,9 +148,10 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../1280x720/src/get_coins_light@2x.png</filename>
-            <filename>../1280x720/src/popup_quit_picture_light_main@2x.png</filename>
-            <filename>../1280x720/src/popup_quit_picture_light_2@2x.png</filename>
+            <filename>../../Graphics Sources/get_coins_light@2x.png</filename>
+            <filename>../../Graphics Sources/popup_quit_picture_light_main@2x.png</filename>
+            <filename>../../Graphics Sources/popup_quit_picture_light_2@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_ico_fall_price@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

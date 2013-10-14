@@ -26,7 +26,7 @@
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">AtkinsonAlpha</enum>
+        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -66,7 +66,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <true/>
+        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -74,9 +74,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>TextureAtlas11plist</filename>
+        <filename>TextureAtlas11.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -138,9 +138,9 @@
             <key>innerPadding</key>
             <uint>0</uint>
             <key>extrude</key>
-            <uint>2</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
-            <uint>111</uint>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
@@ -148,7 +148,9 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../1280x720/src/special_birds_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/special_birds_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/pirate_box@2x.png</filename>
+            <filename>../../Graphics Sources/get_coins_light@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

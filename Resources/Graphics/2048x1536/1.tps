@@ -26,7 +26,7 @@
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">AtkinsonAlpha</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -61,9 +61,9 @@
         <key>fixedTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>-1</int>
             <key>height</key>
-            <int>2048</int>
+            <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
         <false/>
@@ -74,9 +74,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -138,7 +138,7 @@
             <key>innerPadding</key>
             <uint>2</uint>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>2</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
@@ -148,9 +148,9 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../1280x720/src/start_preloader_bg@2x.png</filename>
-            <filename>../1280x720/src/start_preload_bar_fill@2x.png</filename>
-            <filename>../1280x720/src/start_preload_bar@2x.png</filename>
+            <filename>../../Graphics Sources/start_preloader_bg@2x.png</filename>
+            <filename>../../Graphics Sources/start_preload_bar_fill@2x.png</filename>
+            <filename>../../Graphics Sources/start_preload_bar@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

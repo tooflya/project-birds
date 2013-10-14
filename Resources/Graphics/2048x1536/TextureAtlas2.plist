@@ -111,7 +111,7 @@
             <key>choose_box_navi_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1977,1286},{48,96}}</string>
+                <string>{{1583,1607},{48,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>settings_btn_big@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1583,1770},{435,187}}</string>
+                <string>{{1410,1793},{435,187}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -207,9 +207,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas2.pvr.ccz</string>
             <key>size</key>
-            <string>{2048,2048}</string>
+            <string>{2008,2040}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7fdea40039cebc4195198848e44a09a1:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:09a17caaa6acc7821fcd09e822e32b08:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas2.pvr.ccz</string>
         </dict>

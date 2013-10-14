@@ -7,7 +7,7 @@
             <key>birds_life@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1440},{256,256}}</string>
+                <string>{{1,1437},{256,256}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>birds_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{2044,1434}}</string>
+                <string>{{1,1},{2044,1434}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -38,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas10.pvr.ccz</string>
             <key>size</key>
-            <string>{2048,2048}</string>
+            <string>{2046,1694}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0f008f86ca35211c8244f2799d11eebd:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:e1ad4dff71a2f09ee0885bf6714887f0:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas10.pvr.ccz</string>
         </dict>

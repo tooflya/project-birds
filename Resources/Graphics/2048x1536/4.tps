@@ -14,7 +14,7 @@
         <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
-        <false/>
+        <true/>
         <key>shapeDebug</key>
         <false/>
         <key>dpi</key>
@@ -26,7 +26,7 @@
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -54,7 +54,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>4096</int>
             <key>height</key>
             <int>2048</int>
         </QSize>
@@ -66,7 +66,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <true/>
+        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -74,9 +74,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -140,7 +140,7 @@
             <key>extrude</key>
             <uint>2</uint>
             <key>trimThreshold</key>
-            <uint>111</uint>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
@@ -148,24 +148,27 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../1280x720/src/popup_bg@2x.png</filename>
-            <filename>../1280x720/src/popup_getcoins_picture@2x.png</filename>
-            <filename>../1280x720/src/popup_progress_picture@2x.png</filename>
-            <filename>../1280x720/src/popup_quit_picture@2x.png</filename>
-            <filename>../1280x720/src/popup_rate_picture@2x.png</filename>
-            <filename>../1280x720/src/popup_buy_coins_btn_sprite@2x.png</filename>
-            <filename>../1280x720/src/popup_btn@2x.png</filename>
-            <filename>../1280x720/src/btn_sprite_close@2x.png</filename>
-            <filename>../1280x720/src/flag_sprite_big@2x.png</filename>
-            <filename>../1280x720/src/choose_box_lvl_sprite@2x.png</filename>
-            <filename>../1280x720/src/about_scroll_border_small@2x.png</filename>
-            <filename>../1280x720/src/flag_not_avaliable_bg@2x.png</filename>
-            <filename>../1280x720/src/settings_lang_check@2x.png</filename>
-            <filename>../1280x720/src/facebook_icon@2x.png</filename>
-            <filename>../1280x720/src/twitter_icon@2x.png</filename>
-            <filename>../1280x720/src/vk_icon@2x.png</filename>
-            <filename>../1280x720/src/share@2x.png</filename>
-            <filename>../1280x720/src/confety_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/popup_bg@2x.png</filename>
+            <filename>../../Graphics Sources/popup_getcoins_picture@2x.png</filename>
+            <filename>../../Graphics Sources/popup_progress_picture@2x.png</filename>
+            <filename>../../Graphics Sources/popup_quit_picture@2x.png</filename>
+            <filename>../../Graphics Sources/popup_rate_picture@2x.png</filename>
+            <filename>../../Graphics Sources/popup_buy_coins_btn_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/popup_btn@2x.png</filename>
+            <filename>../../Graphics Sources/btn_sprite_close@2x.png</filename>
+            <filename>../../Graphics Sources/flag_sprite_big@2x.png</filename>
+            <filename>../../Graphics Sources/choose_box_lvl_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/about_scroll_border_small@2x.png</filename>
+            <filename>../../Graphics Sources/flag_not_avaliable_bg@2x.png</filename>
+            <filename>../../Graphics Sources/settings_lang_check@2x.png</filename>
+            <filename>../../Graphics Sources/facebook_icon@2x.png</filename>
+            <filename>../../Graphics Sources/twitter_icon@2x.png</filename>
+            <filename>../../Graphics Sources/vk_icon@2x.png</filename>
+            <filename>../../Graphics Sources/share@2x.png</filename>
+            <filename>../../Graphics Sources/confety_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_btn1@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_btn2@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_pic@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

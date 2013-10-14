@@ -26,7 +26,7 @@
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -66,7 +66,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <true/>
+        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -74,9 +74,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -140,7 +140,7 @@
             <key>extrude</key>
             <uint>2</uint>
             <key>trimThreshold</key>
-            <uint>111</uint>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
@@ -148,7 +148,24 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../1280x720/src/temp_level_bg@2x.png</filename>
+            <filename>../../Graphics Sources/temp_level_bg@2x.png</filename>
+            <filename>../../Graphics Sources/bg_light_1.png</filename>
+            <filename>../../Graphics Sources/bg_light_main@2x.png</filename>
+            <filename>../../Graphics Sources/bonus-animation@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_game_life@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_pause@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_plus@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_textbox@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_counter_best@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_counter@2x.png</filename>
+            <filename>../../Graphics Sources/bonus_pirat_hat@2x.png</filename>
+            <filename>../../Graphics Sources/bonus_amigo_hat@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_time_star@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_time@2x.png</filename>
+            <filename>../../Graphics Sources/task-background@2x.png</filename>
+            <filename>../../Graphics Sources/colors_small@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

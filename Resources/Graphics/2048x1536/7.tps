@@ -26,7 +26,7 @@
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">AtkinsonAlpha</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -66,7 +66,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <true/>
+        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -74,9 +74,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -138,9 +138,9 @@
             <key>innerPadding</key>
             <uint>0</uint>
             <key>extrude</key>
-            <uint>2</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
-            <uint>111</uint>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
@@ -151,22 +151,22 @@
             <filename>../../Graphics Sources/explosion_basic@2x.png</filename>
             <filename>../../Graphics Sources/explosion@2x.png</filename>
             <filename>../../Graphics Sources/weapon_strike_sprite@2x.png</filename>
-            <filename>../../Graphics Sources/game_time_clock@2x.png</filename>
-            <filename>../../Graphics Sources/game_time_mask@2x.png</filename>
-            <filename>../../Graphics Sources/game_time_arrow@2x.png</filename>
             <filename>../../Graphics Sources/colors@2x.png</filename>
             <filename>../../Graphics Sources/confety_sprite@2x.png</filename>
             <filename>../../Graphics Sources/birds_feather_sprite@2x.png</filename>
             <filename>../../Graphics Sources/coins@2x.png</filename>
             <filename>../../Graphics Sources/star_particle@2x.png</filename>
             <filename>../../Graphics Sources/info_panel_btn_sprite@2x.png</filename>
-            <filename>../../Graphics Sources/lifes@2x.png</filename>
-            <filename>../../Graphics Sources/game_gui_count_pic@2x.png</filename>
             <filename>../../Graphics Sources/game_shelf@2x.png</filename>
             <filename>../../Graphics Sources/event_panel@2x.png</filename>
             <filename>../../Graphics Sources/dust@2x.png</filename>
             <filename>../../Graphics Sources/mark@2x.png</filename>
-            <filename>../../Graphics Sources/game_gui_btn_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/bomb_arrow.png</filename>
+            <filename>../../Graphics Sources/bomb_ico.png</filename>
+            <filename>../../Graphics Sources/coins_silver@2x.png</filename>
+            <filename>../../Graphics Sources/game_chess_bg@2x.png</filename>
+            <filename>../../Graphics Sources/game_chess@2x.png</filename>
+            <filename>../../Graphics Sources/egg light.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

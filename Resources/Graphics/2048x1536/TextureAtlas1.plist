@@ -7,7 +7,7 @@
             <key>start_preload_bar@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1004,0},{635,92}}</string>
+                <string>{{2,1290},{635,92}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>start_preload_bar_fill@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1004,92},{581,42}}</string>
+                <string>{{2,1386},{581,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>start_preloader_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{1004,1284}}</string>
+                <string>{{2,2},{1004,1284}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -51,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas1.pvr.ccz</string>
             <key>size</key>
-            <string>{2048,2048}</string>
+            <string>{1008,1430}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6ba4c5bbaa20f18221bd5a8e55b4acf8:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:5b3d8b9063501350bf00c7cce5d2eb3b:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas1.pvr.ccz</string>
         </dict>

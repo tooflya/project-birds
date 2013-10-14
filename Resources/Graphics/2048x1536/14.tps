@@ -22,11 +22,11 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TextureAtlas10.pvr.ccz</filename>
+        <filename>TextureAtlas14.pvr.ccz</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">AtkinsonAlpha</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -66,7 +66,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <true/>
+        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -74,9 +74,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>1.java</filename>
+            <filename>../1280x720/1.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>TextureAtlas10plist</filename>
+        <filename>TextureAtlas14.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">PVRTC4</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -140,7 +140,7 @@
             <key>extrude</key>
             <uint>2</uint>
             <key>trimThreshold</key>
-            <uint>111</uint>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
@@ -148,8 +148,16 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>src/birds_sprite@2x.png</filename>
-            <filename>src/birds_life@2x.png</filename>
+            <filename>../../Graphics Sources/freeze_bg.png</filename>
+            <filename>../../Graphics Sources/rain_circle.png</filename>
+            <filename>../../Graphics Sources/rain.png</filename>
+            <filename>../../Graphics Sources/gun.png</filename>
+            <filename>../../Graphics Sources/bonus_bird_parts.png</filename>
+            <filename>../../Graphics Sources/gun_laser.png</filename>
+            <filename>../../Graphics Sources/box_laser_green@2x.png</filename>
+            <filename>../../Graphics Sources/box_laser_red@2x.png</filename>
+            <filename>../../Graphics Sources/box@2x.png</filename>
+            <filename>../../Graphics Sources/explosion-zombi@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

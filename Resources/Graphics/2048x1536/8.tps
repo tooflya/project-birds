@@ -26,7 +26,7 @@
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">FloydSteinberg</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -66,7 +66,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <true/>
+        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -74,9 +74,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -119,7 +119,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -140,7 +140,7 @@
             <key>extrude</key>
             <uint>2</uint>
             <key>trimThreshold</key>
-            <uint>111</uint>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
@@ -148,13 +148,13 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../1280x720/src/end_lvl_bg_sprite@2x.png</filename>
-            <filename>../1280x720/src/end_lvl_bg_popup@2x.png</filename>
-            <filename>../1280x720/src/end_lvl_star_sprite@2x.png</filename>
-            <filename>../1280x720/src/star_particle@2x.png</filename>
-            <filename>../1280x720/src/shop_money_bg@2x.png</filename>
-            <filename>../1280x720/src/bar_remove@2x.png</filename>
-            <filename>../1280x720/src/end_lvl_btn_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/end_lvl_bg_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/end_lvl_bg_popup@2x.png</filename>
+            <filename>../../Graphics Sources/end_lvl_star_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/star_particle@2x.png</filename>
+            <filename>../../Graphics Sources/shop_money_bg@2x.png</filename>
+            <filename>../../Graphics Sources/bar_remove@2x.png</filename>
+            <filename>../../Graphics Sources/end_lvl_btn_sprite@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
