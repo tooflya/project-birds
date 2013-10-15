@@ -62,18 +62,35 @@ int Game::LEVEL = 0;
 
 Game::~Game()
 {
-    this->mEventPanel->release();
-    this->mEndScreen->release();
-    
     this->mBirds->release();
     this->mSpecialBirds->release();
     this->mMarks->release();
     this->mFeathers->release();
     this->mExplosionsBasic->release();
     this->mExplosions->release();
+    this->mZombieExplosions->release();
+    this->mGeneralExplosions->release();
     this->mDust->release();
+    this->mStars->release();
+    this->mCoins->release();
+    this->mSilverCoins->release();
+    this->mArrows->release();
+    this->mPredictionIcons->release();
+    //this->mSchematicBig->release();
+    //this->mSchematicSmall->release();
+    //this->mColorsBlink->release();
+    //this->mColors->release();
+    this->mRains->release();
+    this->mRainsCircles->release();
+    this->mRobotParts->release();
+    this->mBonusCircles->release();
     
     this->mPausePopup->release();
+    this->mEndScreen->release();
+    
+    //this->mEventPanel->release();
+    
+    this->array->release();
 }
 
 Game::Game() :

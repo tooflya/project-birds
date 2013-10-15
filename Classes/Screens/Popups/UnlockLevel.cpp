@@ -23,6 +23,11 @@
 // Constructors
 // ===========================================================
 
+UnlockLevel::~UnlockLevel()
+{
+    this->mLights->release();
+}
+
 UnlockLevel::UnlockLevel(CCNode* pParent) :
     Popup(pParent)
     {

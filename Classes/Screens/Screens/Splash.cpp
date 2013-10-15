@@ -23,6 +23,8 @@ Splash::~Splash()
 {
     this->mParts->release();
     this->mScaleLayer->release();
+    
+    this->removeAllChildrenWithCleanup(true);
 }
 
 Splash::Splash(Screen* pParent)
@@ -151,8 +153,6 @@ void Splash::update(float pDeltaTime)
 
 void Splash::onEnter()
 {
-    this->setRegisterAsTouchable(true);
-    
     CCDirector* pDirector = CCDirector::sharedDirector();
     pDirector->getTouchDispatcher()->addTargetedDelegate((Touchable*) this, 0, true);
     
@@ -163,8 +163,6 @@ void Splash::onEnter()
 
 void Splash::onExit()
 {
-    this->setRegisterAsTouchable(false);
-    
     CCDirector* pDirector = CCDirector::sharedDirector();
     pDirector->getTouchDispatcher()->removeDelegate((Touchable*) this);
     

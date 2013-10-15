@@ -257,9 +257,6 @@ int Shop::PURCHASE_ID = -1;
 
 Shop::~Shop()
 {
-    this->mSpriteBatch1->release();
-    this->mSpriteBatch2->release();
-    
     this->mBuyItemPopup->release();
     this->mGetCoinsPopup->release();
     this->mGetLivesPopup->release();
@@ -268,6 +265,8 @@ Shop::~Shop()
     this->mPaymentProceed->release();
     this->mPurchaseCoins->release();
     this->mPurchaseSilverCoins->release();
+    this->mPurchaseLives->release();
+    this->mPurchaseKeys->release();
     
     this->mWeaponChecker->release();
 }

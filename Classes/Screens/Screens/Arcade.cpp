@@ -31,8 +31,6 @@ Arcade::Arcade() :
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
         
-        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-        
         SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");

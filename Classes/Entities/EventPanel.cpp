@@ -22,6 +22,11 @@
 // Constructors
 // ===========================================================
 
+EventPanel::~EventPanel()
+{
+    this->removeAllChildrenWithCleanup(true);
+}
+
 EventPanel::EventPanel(Screen* pParent) :
 Entity("event_panel@2x.png")
 {
@@ -54,7 +59,6 @@ EventPanel* EventPanel::create(Screen *pParent)
 {
     EventPanel* panel = new EventPanel(pParent);
     panel->autorelease();
-    panel->retain();
     
     return panel;
 }

@@ -85,6 +85,16 @@ Map* Map::m_Instance = NULL;
 
 Map::~Map()
 {
+    this->mRipples->release();
+    this->mWays->release();
+    this->mStars->release();
+    this->mCoins->release();
+    this->mConfetti->release();
+    this->mSilverCoins->release();
+    this->mAnimatedCoins->release();
+    this->mSilverAnimatedCoins->release();
+    
+    this->removeAllChildrenWithCleanup(true);
 }
 
 Map::Map(CCNode* pParent)

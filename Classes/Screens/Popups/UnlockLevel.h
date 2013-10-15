@@ -85,6 +85,8 @@ class UnlockLevel : public Popup
         // ===========================================================
     
         static UnlockLevel* create(CCNode* pParent);
+    
+        ~UnlockLevel();
 
         // ===========================================================
         // Methods
