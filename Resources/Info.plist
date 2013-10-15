@@ -80,9 +80,9 @@
 	<key>CFBundleSignature</key>
 	<string>AAPL</string>
 	<key>CFBundleVersion</key>
-	<string>5847</string>
+	<string>5912</string>
 	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<string>public.app-category.games</string>
 	<key>LSRequiresIPhoneOS</key>
 	<false/>
 	<key>UIAppFonts</key>

@@ -28,18 +28,23 @@ Progress::~Progress()
 
 Progress::Progress()
 {
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+    SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas2");
+    SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas2");
+    
+    spriteBatch1->setBlendFunc((ccBlendFunc){GL_ONE, GL_ZERO});
+    spriteBatch2->setBlendFunc((ccBlendFunc){GL_ONE, GL_ONE_MINUS_SRC_ALPHA});
+    
+    this->addChild(spriteBatch1);
+    this->addChild(spriteBatch2);
 
-    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_PROGRESS_BACK, this);
-
-    this->addChild(spriteBatch);
+    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch1);
+    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch2, Options::BUTTONS_ID_PROGRESS_BACK, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     
-    this->mResetButton = Button::create("settings_btn_big@2x.png", 1, 1, this, Options::BUTTONS_ID_PROGRESS_RESET, this);
+    this->mResetButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch2, Options::BUTTONS_ID_PROGRESS_RESET, this);
     
     this->mResetButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(200));
     this->mResetButton->setText(Options::TEXT_PROGRESS_RESET);

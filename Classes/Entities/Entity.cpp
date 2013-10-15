@@ -122,6 +122,8 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     this->mIsAnimationReverseNeed = false;
 
     this->destroy();
+    
+    this->getTexture()->setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444);
 }
 
 Entity::Entity()

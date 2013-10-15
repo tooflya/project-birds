@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Entities/Entity.cpp"
-            timestampString = "403460912.214968"
+            timestampString = "403527131.018064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "705"
-            endingLineNumber = "705"
+            startingLineNumber = "707"
+            endingLineNumber = "707"
             landmarkName = "Entity::update(float pDeltaTime)"
             landmarkType = "5">
          </BreakpointContent>

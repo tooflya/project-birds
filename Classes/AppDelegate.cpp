@@ -351,13 +351,13 @@ bool AppDelegate::applicationDidFinishLaunching()
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     
-    if(AppDelegate::IS_IPOD)
+    /*if(AppDelegate::IS_IPOD)
     {
         searchPath.push_back(resources1280x720.directory);
         
         Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPOD4;
     }
-    else
+    else*/
     {
         searchPath.push_back(resources1280x720.directory);
         
@@ -400,10 +400,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 
-    director->setAlphaBlending(false);
-    director->setDepthTest(false);
-
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
     
     director->setProjection(kCCDirectorProjection2D);
 
