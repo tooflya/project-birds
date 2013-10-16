@@ -97,6 +97,8 @@ void Popup::show()
     this->mShowed = true;
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    this->onShow();
+    
     this->mSquare->setOpacity(200);
     #else
     this->mShowAnimationRunning = true;

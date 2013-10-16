@@ -76,7 +76,7 @@ ScreenManager* ScreenManager::create()
 
 void ScreenManager::generate()
 {
-    this->load(3, 1);
+    this->load(3, -1);
     this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
 }
 
@@ -99,36 +99,35 @@ void ScreenManager::load(int pAction, int pDo)
             
             switch(pDo)
             {
-                case 0:
-                    
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
-                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
-                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
-                
+                case 1:
+                    CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
+                break;
+                case 2:
+                    CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
+                break;
+                case 3:
+                    CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
                 break;
                 
                 default:
-                
-                this->mScreens[Screen::SCREEN_MENU] = Menu::create();
-                this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
-                this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();
-                this->mScreens[Screen::SCREEN_PROGRESS] = Progress::create();
-                this->mScreens[Screen::SCREEN_MORE] = More::create();
-                this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
-                this->mScreens[Screen::SCREEN_MODE] = Mode::create();
-                this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
-                //this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
-                
+                    this->mScreens[Screen::SCREEN_MENU] = Menu::create();
+                    this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
+                    this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();
+                    this->mScreens[Screen::SCREEN_PROGRESS] = Progress::create();
+                    this->mScreens[Screen::SCREEN_MORE] = More::create();
+                    this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
+                    this->mScreens[Screen::SCREEN_MODE] = Mode::create();
+                    this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
+                    this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 break;
             }
             
         break;
             
         default:
-            
             switch(pDo)
             {
-                case 0:
+                default:
                     
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MENU]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SETTINGS]);
@@ -138,16 +137,18 @@ void ScreenManager::load(int pAction, int pDo)
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LANGUAGE]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MODE]);
                 CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
-                //CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
+                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
                     
                 break;
                     
-                default:
-
-                this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
-                //this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
-                //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progresses::create();
-                
+                case 1:
+                    this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
+                break;
+                case 2:
+                    this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
+                break;
+                case 3:
+                    this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progresses::create();
                 break;
             }
 

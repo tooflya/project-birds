@@ -23,7 +23,7 @@
 
 GetCoins::~GetCoins()
 {
-    this->mLights->release();
+    CC_SAFE_RELEASE_NULL(this->mLights);
 }
 
 GetCoins::GetCoins(CCNode* pParent) :

@@ -79,6 +79,8 @@ class SpriteBatch : public CCSpriteBatchNode
 		// ===========================================================
     
         static SpriteBatch* create(const char* pTextureAtlas);
+    
+        ~SpriteBatch();
 
 		// ===========================================================
 		// Methods

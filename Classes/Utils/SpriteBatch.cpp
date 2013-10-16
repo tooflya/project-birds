@@ -19,6 +19,10 @@
 // Constructors
 // ===========================================================
 
+SpriteBatch::~SpriteBatch()
+{
+}
+
 SpriteBatch::SpriteBatch()
 {
 }

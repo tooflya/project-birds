@@ -257,18 +257,18 @@ int Shop::PURCHASE_ID = -1;
 
 Shop::~Shop()
 {
-    this->mBuyItemPopup->release();
-    this->mGetCoinsPopup->release();
-    this->mGetLivesPopup->release();
-    this->mGetKeysPopup->release();
-    this->mBoughtItem->release();
-    this->mPaymentProceed->release();
-    this->mPurchaseCoins->release();
-    this->mPurchaseSilverCoins->release();
-    this->mPurchaseLives->release();
-    this->mPurchaseKeys->release();
+    CC_SAFE_RELEASE_NULL(this->mBuyItemPopup);
+    CC_SAFE_RELEASE_NULL(this->mGetCoinsPopup);
+    CC_SAFE_RELEASE_NULL(this->mGetLivesPopup);
+    CC_SAFE_RELEASE_NULL(this->mGetKeysPopup);
+    CC_SAFE_RELEASE_NULL(this->mBoughtItem);
+    CC_SAFE_RELEASE_NULL(this->mPaymentProceed);
+    CC_SAFE_RELEASE_NULL(this->mPurchaseCoins);
+    CC_SAFE_RELEASE_NULL(this->mPurchaseSilverCoins);
+    CC_SAFE_RELEASE_NULL(this->mPurchaseLives);
+    CC_SAFE_RELEASE_NULL(this->mPurchaseKeys);
     
-    this->mWeaponChecker->release();
+    CC_SAFE_RELEASE_NULL(this->mWeaponChecker);
 }
 
 Shop::Shop()

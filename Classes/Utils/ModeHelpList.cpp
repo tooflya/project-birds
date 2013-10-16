@@ -40,6 +40,15 @@ ModeHelpList::ModeHelpList(CCNode* pParent) :
         this->mText[1]->setColor(ccc3(167.0, 65.0, 7.0));
     }
 
+ModeHelpList* ModeHelpList::create(CCNode* pParent)
+{
+    ModeHelpList* list = new ModeHelpList(pParent);
+    list->autorelease();
+    list->retain();
+    
+    return list;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-Credits* Credits::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,7 +21,7 @@ Credits* Credits::m_Instance = NULL;
 
 Credits::~Credits()
 {
-    this->mList->release();
+    CC_SAFE_RELEASE_NULL(this->mList);
 }
 
 Credits::Credits()
@@ -48,9 +46,7 @@ Credits::Credits()
     this->mListBorders[0]->setScaleY(1);
     this->mListBorders[1]->setScaleY(-1);
     
-    this->mList = new CreditsList(this);
-
-    m_Instance = this;
+    this->mList = CreditsList::create(this);
 }
 
 Credits* Credits::create()
@@ -68,8 +64,6 @@ Credits* Credits::create()
 
 void Credits::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Credits* pSender = static_cast<Credits*>(Credits::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:

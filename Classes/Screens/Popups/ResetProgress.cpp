@@ -25,7 +25,7 @@ ResetProgress* ResetProgress::m_Instance = NULL;
 
 ResetProgress::~ResetProgress()
 {
-    this->mLights->release();
+    CC_SAFE_RELEASE_NULL(this->mLights);
 }
 
 ResetProgress::ResetProgress(CCNode* pParent) :

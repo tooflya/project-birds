@@ -25,12 +25,14 @@ Classic* Classic::m_Instance = NULL;
 
 Classic::~Classic()
 {
-    this->mConfetti->release();
+    CC_SAFE_RELEASE_NULL(this->mConfetti);
 }
 
 Classic::Classic() :
     Game()
     {
+        Loader::TYPE = 1;
+        
         this->mEventLayer = CCLayer::create();
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
@@ -61,18 +63,23 @@ Classic::Classic() :
         
         this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
         
-        this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
-        this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
-        for(int i = 1; i < 4; i++)
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+        if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
         {
-            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
-            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+            this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
+            this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
+            for(int i = 1; i < 4; i++)
+            {
+                this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+                this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+            }
+            for(int i = 4; i < 7; i++)
+            {
+                this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+                this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+            }
         }
-        for(int i = 4; i < 7; i++)
-        {
-            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
-            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
-        }
+        #endif
         
         this->mGamePanel = Entity::create("game_panel@2x.png", spriteBatch8);
         this->mTextAreas[0] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
@@ -134,19 +141,27 @@ Classic::Classic() :
         this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
         this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
 
-        //this->mEventPanel = EventPanel::create(this);
+        this->mEventPanel = EventPanel::create(this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
-        for(int i = 1; i < 4; i++)
+        
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+        if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
         {
-            this->mBackgroundLights[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+            this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
+            
+            for(int i = 1; i < 4; i++)
+            {
+                this->mBackgroundLights[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+            }
+            for(int i = 1; i < 4; i++)
+            {
+                this->mBackgroundLights[i + 3]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+            }
         }
-        for(int i = 1; i < 4; i++)
-        {
-            this->mBackgroundLights[i + 3]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
-        }
-        //((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
+        #endif
+        
+        ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
 
         this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 

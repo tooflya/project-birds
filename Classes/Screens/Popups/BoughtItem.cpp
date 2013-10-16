@@ -23,8 +23,8 @@ BoughtItem* BoughtItem::m_Instance = NULL;
 
 BoughtItem::~BoughtItem()
 {
-    this->mLights->release();
-    this->mConfetti->release();
+    CC_SAFE_RELEASE_NULL(this->mLights);
+    CC_SAFE_RELEASE_NULL(this->mConfetti);
     
     this->removeAllChildrenWithCleanup(true);
 }

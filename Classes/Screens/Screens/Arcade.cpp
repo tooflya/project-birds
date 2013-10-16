@@ -3,6 +3,8 @@
 
 #include "Arcade.h"
 
+#include "Loader.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -21,12 +23,14 @@
 
 Arcade::~Arcade()
 {
-    this->mStars->release();
+    CC_SAFE_RELEASE_NULL(this->mStars);
 }
 
 Arcade::Arcade() :
     Game()
     {
+        Loader::TYPE = 2;
+    
         this->mEventLayer = CCLayer::create();
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
@@ -39,6 +43,7 @@ Arcade::Arcade() :
         SpriteBatch* spriteBatch6 = SpriteBatch::create("TextureAtlas6");
         SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas14");
         SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
+        SpriteBatch* spriteBatch9 = SpriteBatch::create("TextureAtlas12");
         
         this->mGameLayer->addChild(spriteBatch6);
         
@@ -51,6 +56,7 @@ Arcade::Arcade() :
         this->mGameLayer->addChild(spriteBatch3);
         this->mGameLayer->addChild(spriteBatch4);
         this->mGameLayer->addChild(spriteBatch5);
+        this->mGameLayer->addChild(spriteBatch9);
         this->mMenuLayer->addChild(spriteBatch8);
 
         this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
@@ -113,6 +119,8 @@ Arcade::Arcade() :
         this->mSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 0.7), spriteBatch2);
         this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
+        this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
+        this->mGeneralExplosions = EntityManager::create(100, GeneralExplosion::create(), spriteBatch9);
         this->mRobotParts = EntityManager::create(8, RobotoPart::create(0), spriteBatch7);
         this->mGunLaser = Entity::create("gun_laser.png", 4, 1, spriteBatch7);
         this->mGun = RobotoGun::create(spriteBatch7);
@@ -120,10 +128,10 @@ Arcade::Arcade() :
         this->mGunLaser->setAnchorPoint(ccp(0.5, 1));
         this->mGunLaser->animate(0.04);
 
-        this->mEventPanel = EventPanel::create(this);
+        //this->mEventPanel = EventPanel::create(this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
+        //((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
         
         this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         

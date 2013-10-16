@@ -8,8 +8,8 @@
 
 Entity::~Entity()
 {
-    delete this->mFramesCoordinatesX;
-    delete this->mFramesCoordinatesY;
+    free(this->mFramesCoordinatesX);
+    free(this->mFramesCoordinatesY);
 }
 
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)

@@ -15,6 +15,8 @@
 // ===========================================================
 
 int Loader::ACTION = -1;
+int Loader::TYPE = -1;
+int Loader::T = -1;
 
 const char* Loader::WEAPON_TEXTURE[11] =
 {
@@ -67,7 +69,7 @@ TextureStructure Loader::TEXTURE_LIBRARY[8] =
 
 Loader::~Loader()
 {
-    this->mCircles->release();
+    CC_SAFE_RELEASE_NULL(this->mCircles);
 }
 
 Loader::Loader()
@@ -149,7 +151,7 @@ void Loader::loadingCallBack(CCObject *obj)
     {
         this->mLoadingProgress = false;
         
-        AppDelegate::screens->load(ACTION, 1);
+        AppDelegate::screens->load(ACTION, T);
         
         this->mLoadingText->setOpacity(0.0);
         this->mLoadingText->setString(Options::TEXT_TAP_TO_CONTINUE.string);
@@ -169,6 +171,9 @@ void Loader::loadingCallBack(CCObject *obj)
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
         CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+        
+        CCSpriteFrameCache::sharedSpriteFrameCache()->purgeSharedSpriteFrameCache();
+        //CCTextureCache::sharedTextureCache()->purgeSharedTextureCache();
 
         CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
     }
@@ -180,9 +185,9 @@ void Loader::loadingCallBack(CCObject *obj)
 
 void Loader::startLoading()
 {
-    AppDelegate::screens->load(ACTION, 0);
+    AppDelegate::screens->load(ACTION, TYPE);
     
-    CCTextureCache::sharedTextureCache()->removeAllTextures();
+    //CCTextureCache::sharedTextureCache()->removeAllTextures();
         
     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
     CCTextureCache::sharedTextureCache()->removeUnusedTextures();
@@ -193,7 +198,7 @@ void Loader::startLoading()
     
     this->mLoadingProgress = true;
     
-    this->mLoadingProgressTime = 0.1;
+    this->mLoadingProgressTime = 0.3;
     this->mLoadingProgressTimeElapsed = 0;
 }
 
@@ -205,6 +210,8 @@ void Loader::onTouch(CCTouch* touch, CCEvent* event)
 {
     if(this->mIsWorkDone)
     {
+        T = -1;
+        
         switch(ACTION)
         {
             case 0:
@@ -255,10 +262,13 @@ void Loader::update(float pDeltaTime)
         
         Entity* circle = (Entity*) this->mCircles->create();
         
-        circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
-        circle->setRotation(0.0);
-        circle->setScale(0.0);
-        circle->setOpacity(255.0);
+        if(circle != NULL)
+        {
+            circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+            circle->setRotation(0.0);
+            circle->setScale(0.0);
+            circle->setOpacity(255.0);
+        }
     }
     
     for(int i = 0; i < this->mCircles->getCount(); i++)

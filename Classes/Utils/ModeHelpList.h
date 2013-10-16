@@ -31,6 +31,8 @@ class ModeHelpList : public List
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        ModeHelpList(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -82,7 +84,8 @@ class ModeHelpList : public List
         // Constructors
         // ===========================================================
     
-        ModeHelpList(CCNode* pParent);
+        static ModeHelpList* create(CCNode* pParent);
+    
         ~ModeHelpList();
 
         // ===========================================================

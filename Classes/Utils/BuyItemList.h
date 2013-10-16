@@ -38,6 +38,8 @@ class BuyItemList : public List
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        BuyItemList(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -89,7 +91,8 @@ class BuyItemList : public List
         // Constructors
         // ===========================================================
     
-        BuyItemList(CCNode* pParent);
+        static BuyItemList* create(CCNode* pParent);
+    
         ~BuyItemList();
 
         // ===========================================================

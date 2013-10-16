@@ -73,8 +73,6 @@ public:
 // Constants
 // ===========================================================
 
-Map* Map::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -85,16 +83,14 @@ Map* Map::m_Instance = NULL;
 
 Map::~Map()
 {
-    this->mRipples->release();
-    this->mWays->release();
-    this->mStars->release();
-    this->mCoins->release();
-    this->mConfetti->release();
-    this->mSilverCoins->release();
-    this->mAnimatedCoins->release();
-    this->mSilverAnimatedCoins->release();
-    
-    this->removeAllChildrenWithCleanup(true);
+    CC_SAFE_RELEASE_NULL(this->mRipples);
+    CC_SAFE_RELEASE_NULL(this->mWays);
+    CC_SAFE_RELEASE_NULL(this->mStars);
+    CC_SAFE_RELEASE_NULL(this->mCoins);
+    CC_SAFE_RELEASE_NULL(this->mConfetti);
+    CC_SAFE_RELEASE_NULL(this->mSilverCoins);
+    CC_SAFE_RELEASE_NULL(this->mAnimatedCoins);
+    CC_SAFE_RELEASE_NULL(this->mSilverAnimatedCoins);
 }
 
 Map::Map(CCNode* pParent)
@@ -336,8 +332,6 @@ Map* Map::create(CCNode* pParent)
 
 void Map::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Map* pSender = static_cast<Map*>(Map::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -345,7 +339,7 @@ void Map::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-            pSender->hide();
+            this->hide();
                 
             break;
         }

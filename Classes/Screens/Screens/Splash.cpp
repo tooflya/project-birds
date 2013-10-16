@@ -21,8 +21,8 @@
 
 Splash::~Splash()
 {
-    this->mParts->release();
-    this->mScaleLayer->release();
+    CC_SAFE_RELEASE_NULL(this->mParts);
+    CC_SAFE_RELEASE_NULL(this->mScaleLayer);
     
     this->removeAllChildrenWithCleanup(true);
 }

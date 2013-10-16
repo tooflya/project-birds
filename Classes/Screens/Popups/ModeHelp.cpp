@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-ModeHelp* ModeHelp::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,7 +21,7 @@ ModeHelp* ModeHelp::m_Instance = NULL;
 
 ModeHelp::~ModeHelp()
 {
-    this->mList->release();
+    CC_SAFE_RELEASE_NULL(this->mList);
 }
 
 ModeHelp::ModeHelp(CCNode* pParent) :
@@ -47,9 +45,7 @@ ModeHelp::ModeHelp(CCNode* pParent) :
         this->mListBorders[0]->setScaleY(1);
         this->mListBorders[1]->setScaleY(-1);
         
-        this->mList = new ModeHelpList(this);
-        
-        m_Instance = this;
+        this->mList = ModeHelpList::create(this);
     }
 
 ModeHelp* ModeHelp::create(CCNode* pParent)
@@ -67,8 +63,6 @@ ModeHelp* ModeHelp::create(CCNode* pParent)
 
 void ModeHelp::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    ModeHelp* pSender = (ModeHelp*) ModeHelp::m_Instance;
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -76,7 +70,7 @@ void ModeHelp::onTouchButtonsCallback(const int pAction, const int pID)
         {
             default:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

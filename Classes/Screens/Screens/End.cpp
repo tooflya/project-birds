@@ -24,12 +24,10 @@
 
 End::~End()
 {
-    //this->mScaleLayer->release();
+    CC_SAFE_RELEASE_NULL(this->mConfetti);
+    CC_SAFE_RELEASE_NULL(this->mCoins);
     
-    this->mConfetti->release();
-    this->mCoins->release();
-    
-    this->mStars->release();
+    CC_SAFE_RELEASE_NULL(this->mStars);
 }
 
 End::End(int pType, Screen* pParent) :

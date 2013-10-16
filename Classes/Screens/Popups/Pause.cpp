@@ -22,6 +22,10 @@
 // Constructors
 // ===========================================================
 
+Pause::~Pause()
+{
+}
+
 Pause::Pause(CCNode* pParent) :
     Popup(pParent, false)
     {

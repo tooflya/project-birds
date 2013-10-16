@@ -25,7 +25,7 @@
 
 UnlockLevel::~UnlockLevel()
 {
-    this->mLights->release();
+    CC_SAFE_RELEASE_NULL(this->mLights);
 }
 
 UnlockLevel::UnlockLevel(CCNode* pParent) :
