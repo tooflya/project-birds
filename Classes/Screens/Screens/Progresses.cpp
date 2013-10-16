@@ -3,6 +3,8 @@
 
 #include "Progresses.h"
 
+#include "Loader.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -107,7 +109,7 @@ public:
 
 Progresses::~Progresses()
 {
-    this->mColors->release();
+    CC_SAFE_RELEASE_NULL(this->mColors);
 }
 
 Progresses::Progresses() :
@@ -565,6 +567,8 @@ void Progresses::onEnter()
     this->onShow();
     
     GAME_TYPE = GAME_TYPE_PROGRESS;
+    
+    Loader::TYPE = 3;
 }
 
 void Progresses::onExit()

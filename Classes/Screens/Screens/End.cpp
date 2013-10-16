@@ -24,8 +24,10 @@
 
 End::~End()
 {
-    this->mConfetti->release();
-    //this->mStars->release();
+    CC_SAFE_RELEASE_NULL(this->mConfetti);
+    CC_SAFE_RELEASE_NULL(this->mCoins);
+    
+    CC_SAFE_RELEASE_NULL(this->mStars);
 }
 
 End::End(int pType, Screen* pParent) :
@@ -82,11 +84,11 @@ End::End(int pType, Screen* pParent) :
         this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_MENU, this);
         this->mRestartButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_RESTART, this);
         this->mContinueButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_CONTINUE, this);
+        
+        this->mStars = EntityManager::create(3, Star::create(), spriteBatch3);
 
         if(this->mType == Splash::TYPE_PROGRESS)
         {
-            this->mStars = EntityManager::create(3, Star::create(), spriteBatch3);
-            
             for(int i = 0; i < 3; i++)
             {
                 Entity* star = this->mStars->create();

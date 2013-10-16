@@ -84,6 +84,15 @@ CreditsList::CreditsList(CCNode* pParent) :
         this->mCompanyLogo->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(600) - Utils::coord(500));
 }
 
+CreditsList* CreditsList::create(CCNode* pParent)
+{
+    CreditsList* list = new CreditsList(pParent);
+    list->autorelease();
+    list->retain();
+    
+    return list;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

@@ -32,6 +32,8 @@ class CreditsList : public List
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        CreditsList(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -83,7 +85,8 @@ class CreditsList : public List
         // Constructors
         // ===========================================================
     
-        CreditsList(CCNode* pParent);
+        static CreditsList* create(CCNode* pParent);
+    
         ~CreditsList();
 
         // ===========================================================

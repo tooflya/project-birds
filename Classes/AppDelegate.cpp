@@ -350,20 +350,18 @@ bool AppDelegate::applicationDidFinishLaunching()
     vector <string> searchPath;
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    
-    /*if(AppDelegate::IS_IPOD)
-    {
-        searchPath.push_back(resources1280x720.directory);
-        
-        Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPOD4;
-    }
-    else*/
+
     {
         searchPath.push_back(resources1280x720.directory);
         
         if(Options::CAMERA_HEIGHT == 960)
         {
             Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
+            
+            if(AppDelegate::IS_IPOD)
+            {
+                Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPOD4;
+            }
         }
         else
         {

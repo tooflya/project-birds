@@ -97,6 +97,8 @@ class EventPanel : public Entity
         // ===========================================================
 
         static EventPanel* create(Screen* pParent);
+    
+        ~EventPanel();
 
         // ===========================================================
         // Methods

@@ -24,7 +24,7 @@
 
 GetLives::~GetLives()
 {
-    this->mLights->release();
+    CC_SAFE_RELEASE_NULL(this->mLights);
 }
 
 GetLives::GetLives(CCNode* pParent) :

@@ -91,6 +91,8 @@ class Pause : public Popup
         Pause(CCNode* pParent);
     
         static Pause* create(CCNode* pParent);
+    
+        ~Pause();
 
         // ===========================================================
         // Methods

@@ -81,8 +81,9 @@ Loading::Loading()
     this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
 
     this->mLoading = false;
+    this->mLoadingProgress = false;
 
-    this->mLoadingPauseTime = 0.3;
+    this->mLoadingPauseTime = 0;
     this->mLoadingPauseTimeElapsed = 0.0;
 }
 
@@ -111,6 +112,8 @@ void Loading::loadingCallBack(CCObject *obj)
     
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
+        this->mLoadingProgress = false;
+        
         AppDelegate::screens = ScreenManager::create();
         
         {
@@ -123,31 +126,16 @@ void Loading::loadingCallBack(CCObject *obj)
     }
     else
     {
-        
+        CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     }
 }
 
 void Loading::startLoading()
 {
-    for(int i = 0; i < this->mNumberOfSprites + 1; i++)
-    {
-        if(TEXTURE_LIBRARY[i].frames == NULL)
-        {
-            CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loading::loadingCallBack));
-        }
-        else
-        {
-            CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(TEXTURE_LIBRARY[i].frames);
-            
-            #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-            CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loading::loadingCallBack));
-            #else
-            CCTextureCache::sharedTextureCache()->addPVRImage(TEXTURE_LIBRARY[i].texture);
-            
-            this->loadingCallBack(NULL);
-            #endif
-        }
-    }
+    this->mLoadingProgress = true;
+    
+    this->mLoadingProgressTime = 0.3;
+    this->mLoadingProgressTimeElapsed = 0;
 }
 
 // ===========================================================
@@ -167,6 +155,33 @@ void Loading::update(float pDeltaTime)
             this->mLoading = true;
 
             this->startLoading();
+        }
+    }
+    
+    if(this->mLoadingProgress)
+    {
+        this->mLoadingProgressTimeElapsed += pDeltaTime;
+        
+        if(this->mLoadingProgressTimeElapsed >= this->mLoadingProgressTime)
+        {
+            this->mLoadingProgressTimeElapsed = 0;
+            
+            if(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].frames == NULL)
+            {
+                CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loading::loadingCallBack));
+            }
+            else
+            {
+                CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].frames);
+                
+                #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+                //CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loading::loadingCallBack));
+                #else
+                //CCTextureCache::sharedTextureCache()->addPVRImage(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture);
+                
+                this->loadingCallBack(NULL);
+                #endif
+            }
         }
     }
 }

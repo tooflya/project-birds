@@ -21,7 +21,7 @@ using namespace cocos2d;
 
 class BackgroundEntity;
 
-class Map : public CCLayer, public Touchable
+class Map : public CCLayer, public Touchable, public ButtonReceiver
 {
         protected:
         // ===========================================================
@@ -31,8 +31,6 @@ class Map : public CCLayer, public Touchable
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static Map* m_Instance;
 
         // ===========================================================
         // Fields
@@ -123,8 +121,6 @@ class Map : public CCLayer, public Touchable
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        static void onTouchButtonsCallback(const int pAction, const int pID);
         
         // ===========================================================
         // Override Methods
@@ -176,7 +172,9 @@ class Map : public CCLayer, public Touchable
         void onEnter();
         void onExit();
     
-        bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+    bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+    
+    void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

@@ -23,12 +23,12 @@
 
 Menu::~Menu()
 {
-    this->mRatePopup->release();
-    this->mMapPopup->release();
+    CC_SAFE_RELEASE_NULL(this->mRatePopup);
+    CC_SAFE_RELEASE_NULL(this->mMapPopup);
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
-    this->mExitPopup->release();
+    CC_SAFE_RELEASE_NULL(this->mExitPopup);
     
     #endif
 }

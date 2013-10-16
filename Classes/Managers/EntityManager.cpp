@@ -115,6 +115,9 @@ Entity* EntityManager::create()
 
         return object;
     }
+    
+    this->mLastElementNumber--;
+    
     return NULL;
     // Create a new object if manager hasn't free object.
 

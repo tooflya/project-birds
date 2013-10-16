@@ -23,6 +23,9 @@ class Loader : public Screen
     
         float mCircleAnimationTime;
         float mCircleAnimationTimeElapsed;
+    
+        float mLoadingProgressTime;
+        float mLoadingProgressTimeElapsed;
 
         float mLoadingTime;
         float mLoadingTimeElapsed;
@@ -32,6 +35,7 @@ class Loader : public Screen
     
         bool mIsWorkDone;
         bool mLoading;
+        bool mLoadingProgress;
     
         Entity* mBackground;
         Entity* mBird;
@@ -92,6 +96,8 @@ class Loader : public Screen
         // ===========================================================
 
         static int ACTION;
+        static int TYPE;
+        static int T;
     
         static TextureStructure TEXTURE_LIBRARY[8];
         static const char* WEAPON_TEXTURE[11];

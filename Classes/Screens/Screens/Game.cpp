@@ -62,24 +62,42 @@ int Game::LEVEL = 0;
 
 Game::~Game()
 {
-    this->mEventPanel->release();
-    this->mEndScreen->release();
+    CC_SAFE_RELEASE_NULL(this->mBirds);
+    CC_SAFE_RELEASE_NULL(this->mSpecialBirds);
+    CC_SAFE_RELEASE_NULL(this->mMarks);
+    CC_SAFE_RELEASE_NULL(this->mFeathers);
+    CC_SAFE_RELEASE_NULL(this->mExplosionsBasic);
+    CC_SAFE_RELEASE_NULL(this->mExplosions);
+    CC_SAFE_RELEASE_NULL(this->mZombieExplosions);
+    CC_SAFE_RELEASE_NULL(this->mGeneralExplosions);
+    CC_SAFE_RELEASE_NULL(this->mDust);
+    CC_SAFE_RELEASE_NULL(this->mStars);
+    CC_SAFE_RELEASE_NULL(this->mCoins);
+    CC_SAFE_RELEASE_NULL(this->mSilverCoins);
+    CC_SAFE_RELEASE_NULL(this->mArrows);
+    CC_SAFE_RELEASE_NULL(this->mPredictionIcons);
+    //this->mSchematicBig->release();
+    //this->mSchematicSmall->release();
+    //this->mColorsBlink->release();
+    //this->mColors->release();
+    CC_SAFE_RELEASE_NULL(this->mRains);
+    CC_SAFE_RELEASE_NULL(this->mRainsCircles);
+    CC_SAFE_RELEASE_NULL(this->mRobotParts);
+    CC_SAFE_RELEASE_NULL(this->mBonusCircles);
     
-    this->mBirds->release();
-    this->mSpecialBirds->release();
-    this->mMarks->release();
-    this->mFeathers->release();
-    this->mExplosionsBasic->release();
-    this->mExplosions->release();
-    this->mDust->release();
+    CC_SAFE_RELEASE_NULL(this->mPausePopup);
+    CC_SAFE_RELEASE_NULL(this->mEndScreen);
     
-    this->mPausePopup->release();
+    //this->mEventPanel->release();
+    
+    CC_SAFE_RELEASE_NULL(this->array);
 }
 
 Game::Game() :
     Screen()
     {
-        array = new CCArray();
+        array = CCArray::create();
+        array->retain();
         array->initWithCapacity(1000);
         
         int sx = (int) round(Options::CAMERA_WIDTH / Utils::coord(64));
@@ -755,62 +773,67 @@ void Game::update(float pDeltaTime)
         //this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));
     }
     
-    this->mBackgroundLights[0]->setOpacity(this->mBackgroundLights[0]->getOpacity() - (this->mBackgroundLightsAnimationsReverse[0] ? -0.5: 0.5));
+    #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+    if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
+    {
+        this->mBackgroundLights[0]->setOpacity(this->mBackgroundLights[0]->getOpacity() - (this->mBackgroundLightsAnimationsReverse[0] ? -0.5: 0.5));
     
-    if(this->mBackgroundLightsAnimationsReverse[0])
-    {
-        if(this->mBackgroundLights[0]->getOpacity() >= 255)
+        if(this->mBackgroundLightsAnimationsReverse[0])
         {
-            this->mBackgroundLightsAnimationsReverse[0] = !this->mBackgroundLightsAnimationsReverse[0];
-        }
-    }
-    else
-    {
-        if(this->mBackgroundLights[0]->getOpacity() <= 100)
-        {
-            this->mBackgroundLightsAnimationsReverse[0] = !this->mBackgroundLightsAnimationsReverse[0];
-        }
-    }
-    
-    for(int i = 0; i < 3; i++)
-    {
-        this->mBackgroundLights[i + 1]->setRotation(this->mBackgroundLights[i + 1]->getRotation() - (this->mBackgroundLightsAnimationsReverse[i + 1] ? -0.01: 0.01));
-        
-        if(this->mBackgroundLightsAnimationsReverse[i + 1])
-        {
-            if(this->mBackgroundLights[i + 1]->getRotation() >= 10)
+            if(this->mBackgroundLights[0]->getOpacity() >= 255)
             {
-                this->mBackgroundLightsAnimationsReverse[i + 1] = !this->mBackgroundLightsAnimationsReverse[i + 1];
+                this->mBackgroundLightsAnimationsReverse[0] = !this->mBackgroundLightsAnimationsReverse[0];
             }
         }
         else
         {
-            if(this->mBackgroundLights[i + 1]->getRotation() < -10)
+            if(this->mBackgroundLights[0]->getOpacity() <= 100)
             {
-                this->mBackgroundLightsAnimationsReverse[i + 1] = !this->mBackgroundLightsAnimationsReverse[i + 1];
+                this->mBackgroundLightsAnimationsReverse[0] = !this->mBackgroundLightsAnimationsReverse[0];
             }
         }
-    }
     
-    for(int i = 4; i < 7; i++)
-    {
-        this->mBackgroundLights[i]->setOpacity(this->mBackgroundLights[i]->getOpacity() - (this->mBackgroundLightsAnimationsReverse[i] ? -0.5: 0.5));
-        
-        if(this->mBackgroundLightsAnimationsReverse[i])
+        for(int i = 0; i < 3; i++)
         {
-            if(this->mBackgroundLights[i]->getOpacity() >= 255)
+            this->mBackgroundLights[i + 1]->setRotation(this->mBackgroundLights[i + 1]->getRotation() - (this->mBackgroundLightsAnimationsReverse[i + 1] ? -0.01: 0.01));
+        
+            if(this->mBackgroundLightsAnimationsReverse[i + 1])
             {
-                this->mBackgroundLightsAnimationsReverse[i] = !this->mBackgroundLightsAnimationsReverse[i];
+                if(this->mBackgroundLights[i + 1]->getRotation() >= 10)
+                {
+                    this->mBackgroundLightsAnimationsReverse[i + 1] = !this->mBackgroundLightsAnimationsReverse[i + 1];
+                }
+            }
+            else
+            {
+                if(this->mBackgroundLights[i + 1]->getRotation() < -10)
+                {
+                    this->mBackgroundLightsAnimationsReverse[i + 1] = !this->mBackgroundLightsAnimationsReverse[i + 1];
+                }
             }
         }
-        else
+    
+        for(int i = 4; i < 7; i++)
         {
-            if(this->mBackgroundLights[i]->getOpacity() <= 150)
+            this->mBackgroundLights[i]->setOpacity(this->mBackgroundLights[i]->getOpacity() - (this->mBackgroundLightsAnimationsReverse[i] ? -0.5: 0.5));
+        
+            if(this->mBackgroundLightsAnimationsReverse[i])
             {
-                this->mBackgroundLightsAnimationsReverse[i] = !this->mBackgroundLightsAnimationsReverse[i];
+                if(this->mBackgroundLights[i]->getOpacity() >= 255)
+                {
+                    this->mBackgroundLightsAnimationsReverse[i] = !this->mBackgroundLightsAnimationsReverse[i];
+                }
+            }
+            else
+            {
+                if(this->mBackgroundLights[i]->getOpacity() <= 150)
+                {
+                    this->mBackgroundLightsAnimationsReverse[i] = !this->mBackgroundLightsAnimationsReverse[i];
+                }
             }
         }
     }
+    #endif
     
     if(this->mIsBonusAnimationRunning && this->mGameRunning)
     {

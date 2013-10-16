@@ -14,8 +14,6 @@
 // Constants
 // ===========================================================
 
-Mode* Mode::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -26,10 +24,10 @@ Mode* Mode::m_Instance = NULL;
 
 Mode::~Mode()
 {
-    this->mHelpPopup->release();
-    this->mLivesPopup->release();
-    this->mTempPublisherRatingExplain->release();
-    this->mTempPublisherAchievementsExplain->release();
+    CC_SAFE_RELEASE_NULL(this->mHelpPopup);
+    CC_SAFE_RELEASE_NULL(this->mLivesPopup);
+    CC_SAFE_RELEASE_NULL(this->mTempPublisherRatingExplain);
+    CC_SAFE_RELEASE_NULL(this->mTempPublisherAchievementsExplain);
 }
 
 Mode::Mode()
@@ -76,8 +74,6 @@ Mode::Mode()
     this->mLivesPopup = GetLives::create(this);
     this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
     this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
-
-    m_Instance = this;
 }
 
 Mode* Mode::create()
@@ -95,8 +91,6 @@ Mode* Mode::create()
 
 void Mode::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Mode* pSender = static_cast<Mode*>(Mode::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -116,6 +110,8 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                     else
                     {
                         Loader::ACTION = 0;
+                        Loader::T = 1;
+                        Loader::TYPE = -1;
 
                         AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
                     }
@@ -130,6 +126,8 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                     else
                     {
                         Loader::ACTION = 1;
+                        Loader::T = 2;
+                        Loader::TYPE = -1;
                         
                         AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
                     }
@@ -138,23 +136,25 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 case Options::BUTTONS_ID_MODE_PROGRESS:
 
                     Loader::ACTION = 2;
+                    Loader::T = 3;
+                    Loader::TYPE = -1;
 
                     AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
 
                 break;
                 case Options::BUTTONS_ID_MODE_HELP:
 
-                    pSender->mHelpPopup->show();
+                    this->mHelpPopup->show();
 
                 break;
                 case Options::BUTTONS_ID_MODE_ACHIEVEMENTS:
 
-                    pSender->mTempPublisherAchievementsExplain->show();
+                    this->mTempPublisherAchievementsExplain->show();
 
                 break;
                 case Options::BUTTONS_ID_MODE_LEADERBOARD:
 
-                    pSender->mTempPublisherRatingExplain->show();
+                    this->mTempPublisherRatingExplain->show();
 
                 break;
                 case Options::BUTTONS_ID_MENU_SHOP:

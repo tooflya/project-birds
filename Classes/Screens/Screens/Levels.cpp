@@ -170,7 +170,6 @@ class LevelButton : public Entity
     {
         LevelButton* button = new LevelButton();
         button->autorelease();
-        button->retain();
         
         return button;
     }
@@ -629,11 +628,11 @@ int Levels::PRIZES[80] =
 
 Levels::~Levels()
 {
-    this->mMainList->release();
-    this->mGetLivesPopup->release();
-    this->mUnlockLevelPopup->release();
+    CC_SAFE_RELEASE_NULL(this->mMainList);
+    CC_SAFE_RELEASE_NULL(this->mGetLivesPopup);
+    CC_SAFE_RELEASE_NULL(this->mUnlockLevelPopup);
     
-    spriteBatch2->release();
+    CC_SAFE_RELEASE_NULL(spriteBatch2);
 }
 
 Levels::Levels()
@@ -672,7 +671,7 @@ Levels::Levels()
     this->mSlidesArrows[1] = Entity::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, spriteBatch);
     
     this->mBackgroundDecorations[2] = Entity::create("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
-    this->mBackgroundDecorations[3] = Entity::create("bg_detail_dark@2x.png", this);
+    this->mBackgroundDecorations[3] = Entity::create("bg_detail_lamp@2x.png", this);
     //this->mBackgroundDecorations[4] = Entity::create("popup_darkness@2x.png", this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);

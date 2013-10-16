@@ -23,6 +23,9 @@ class Loading : public Screen
 
         float mLoadingPauseTime;
         float mLoadingPauseTimeElapsed;
+    
+        float mLoadingProgressTime;
+        float mLoadingProgressTimeElapsed;
 
         Entity* mBackground;
         Entity* mBarBackground;
@@ -31,6 +34,7 @@ class Loading : public Screen
         Text* mLoadingText;
 
         bool mLoading;
+        bool mLoadingProgress;
 
         // ===========================================================
         // Constructors

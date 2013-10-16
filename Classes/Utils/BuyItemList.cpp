@@ -83,6 +83,15 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(120), Options::CAMERA_CENTER_Y + Utils::coord(120));
     }
 
+BuyItemList* BuyItemList::create(CCNode* pParent)
+{
+    BuyItemList* list = new BuyItemList(pParent);
+    list->autorelease();
+    list->retain();
+    
+    return list;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================

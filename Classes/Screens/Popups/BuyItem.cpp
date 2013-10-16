@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-BuyItem* BuyItem::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,7 +21,7 @@ BuyItem* BuyItem::m_Instance = NULL;
 
 BuyItem::~BuyItem()
 {
-    this->mList->release();
+    CC_SAFE_RELEASE_NULL(this->mList);
 }
 
 BuyItem::BuyItem(Screen* pScreen) :
@@ -47,11 +45,9 @@ BuyItem::BuyItem(Screen* pScreen) :
         this->mListBorders[0]->setScaleY(1);
         this->mListBorders[1]->setScaleY(-1);
         
-        this->mList = new BuyItemList(this);
+        this->mList = BuyItemList::create(this);
         
         this->mYesPressed = false;
-        
-        m_Instance = this;
     }
 
 BuyItem* BuyItem::create(Screen* pScreen)
@@ -69,8 +65,6 @@ BuyItem* BuyItem::create(Screen* pScreen)
 
 void BuyItem::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    BuyItem* pSender = static_cast<BuyItem*>(BuyItem::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -78,14 +72,14 @@ void BuyItem::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_BUYITEM_BUY:
 
-                pSender->mYesPressed = true;
+                this->mYesPressed = true;
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

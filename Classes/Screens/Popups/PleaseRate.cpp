@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-PleaseRate* PleaseRate::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,7 +21,7 @@ PleaseRate* PleaseRate::m_Instance = NULL;
 
 PleaseRate::~PleaseRate()
 {
-    this->mLights->release();
+    CC_SAFE_RELEASE_NULL(this->mLights);
 }
 
 PleaseRate::PleaseRate(CCNode* pParent) :
@@ -53,8 +51,6 @@ PleaseRate::PleaseRate(CCNode* pParent) :
         this->mRateButton->setText(Options::TEXT_RATE_NOW);
         
         this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(340));
-        
-        m_Instance = this;
     }
 
 PleaseRate* PleaseRate::create(CCNode* pParent)
@@ -72,8 +68,6 @@ PleaseRate* PleaseRate::create(CCNode* pParent)
 
 void PleaseRate::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    PleaseRate* pSender = static_cast<PleaseRate*>(PleaseRate::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -81,14 +75,14 @@ void PleaseRate::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
             case Options::BUTTONS_ID_RATE_RATE:
                 
                 AppDelegate::setRate();
 
-                pSender->hide();
+                this->hide();
                 
             break;
         }
