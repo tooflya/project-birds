@@ -379,7 +379,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     if(Options::CAMERA_WIDTH == 720)
     {
-        Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
+        //Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
         
         searchPath.push_back(resources1280x720.directory);
     }

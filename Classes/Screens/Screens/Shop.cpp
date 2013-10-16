@@ -240,8 +240,6 @@ class TouchLayer : public CCLayer
 // Constants
 // ===========================================================
 
-Shop* Shop::m_Instance = NULL;
-
 int Shop::CLICKED_ITEM_ID = -1;
 int Shop::ITEMS_COUNT[3] = { 11, 8, 5 };
 int Shop::ACTION = -1;
@@ -462,8 +460,6 @@ Shop::Shop()
     
     this->mIsAnimationOnItemBoughtRunning = false;
     this->mIsAnimationPurchaseRunning = false;
-
-    m_Instance = this;
 }
 
 Shop* Shop::create()
@@ -481,9 +477,7 @@ Shop* Shop::create()
 
 void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Shop* pSender = static_cast<Shop*>(Shop::m_Instance);
-
-    if(pSender->mIsAnimationOnItemBoughtRunning) return;
+    if(this->mIsAnimationOnItemBoughtRunning) return;
 
     switch(pAction)
     {
@@ -518,25 +512,25 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SHOP_ITEM:
                     
-                    pSender->mBuyItemPopup->show();
+                    this->mBuyItemPopup->show();
                     
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_SILVER_COINS:
                 case Options::BUTTONS_ID_SHOP_GET_GOLD_COINS:
                     
-                    pSender->mGetCoinsPopup->show();
+                    this->mGetCoinsPopup->show();
                     
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_LIVES:
                     
                     //if(pSender->mTextPluses[1]->getOpacity() == 255)
                     {
-                        pSender->mGetLivesPopup->show();
+                        this->mGetLivesPopup->show();
                     }
                     break;
                 case Options::BUTTONS_ID_SHOP_GET_KEYS:
                     
-                     pSender->mGetKeysPopup->show();
+                     this->mGetKeysPopup->show();
                     
                 break;
             }

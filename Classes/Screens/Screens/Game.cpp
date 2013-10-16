@@ -515,7 +515,7 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
                 Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
             }
             
-            this->addTime(0.1 * array->count());
+            this->addTime(0.5 * array->count());
         }
         
         array->removeAllObjects();

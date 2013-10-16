@@ -39,12 +39,13 @@ BoughtItem::BoughtItem(CCNode* pParent)
     
     SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas4");
     SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas9");
-    
-    this->mConfetti = EntityManager::create(210, Confetti::create(), spriteBatch);
+    SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas4");
     
     this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), spriteBatch2);
     this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this);
     this->mIcon->setZOrder(2);
+    
+    this->mConfetti = EntityManager::create(210, Confetti::create(), spriteBatch3);
     
     this->mShareButton = Button::create("share@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE, this);
     this->mTwitterButton = Button::create("twitter_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_TWITTER, this);
@@ -83,6 +84,9 @@ BoughtItem::BoughtItem(CCNode* pParent)
     
     this->addChild(spriteBatch2);
     this->addChild(spriteBatch);
+    this->addChild(spriteBatch3);
+    
+    spriteBatch3->setZOrder(3);
     
     this->mTapToContinueAnimationReverse = false;
     this->mShowAnimation = false;
@@ -111,8 +115,6 @@ BoughtItem* BoughtItem::create(CCNode* pParent)
 
 void BoughtItem::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    BoughtItem* pSender = static_cast<BoughtItem*>(BoughtItem::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -120,11 +122,11 @@ void BoughtItem::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_SHARE:
                 
-                pSender->mTwitterButton->runAction(CCScaleTo::create(0.1, pSender->mShare ? 0.0 : 1.0));
-                pSender->mFacebookButton->runAction(CCScaleTo::create(0.2, pSender->mShare ? 0.0 : 1.0));
-                pSender->mVkButton->runAction(CCScaleTo::create(0.3, pSender->mShare ? 0.0 : 1.0));
+                this->mTwitterButton->runAction(CCScaleTo::create(0.1, this->mShare ? 0.0 : 1.0));
+                this->mFacebookButton->runAction(CCScaleTo::create(0.2, this->mShare ? 0.0 : 1.0));
+                this->mVkButton->runAction(CCScaleTo::create(0.3, this->mShare ? 0.0 : 1.0));
                 
-                pSender->mShare = !pSender->mShare;
+                this->mShare = !this->mShare;
                 
             break;
             case Options::BUTTONS_ID_SHARE_TWITTER:
