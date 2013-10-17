@@ -28,7 +28,7 @@ class GetLives : public Popup
         // Constructors
         // ===========================================================
     
-        GetLives(CCNode* pParent);
+        GetLives(CCNode* pParent, bool pFirst);
 
         // ===========================================================
         // Methods
@@ -80,7 +80,7 @@ class GetLives : public Popup
         // Constructors
         // ===========================================================
     
-        static GetLives* create(CCNode* pParent);
+        static GetLives* create(CCNode* pParent, bool pFirst);
     
         ~GetLives();
 

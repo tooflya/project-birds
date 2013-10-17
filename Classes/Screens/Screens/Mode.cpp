@@ -71,7 +71,7 @@ Mode::Mode()
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     
     this->mHelpPopup = ModeHelp::create(this);
-    this->mLivesPopup = GetLives::create(this);
+    this->mLivesPopup = GetLives::create(this, true);
     this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
     this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
 }

@@ -220,7 +220,7 @@ Classic::Classic() :
 
         this->mPausePopup = Pause::create(this);
         this->mEndScreen = End::create(Splash::TYPE_CLASSIC, this);
-        this->mGetLivesPopup = GetLives::create(this);
+        this->mGetLivesPopup = GetLives::create(this, false);
 
         this->mLevelUpTime = 30.0;
         this->mLevelUpTimeElapsed = 0;

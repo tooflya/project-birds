@@ -27,13 +27,21 @@ GetLives::~GetLives()
     CC_SAFE_RELEASE_NULL(this->mLights);
 }
 
-GetLives::GetLives(CCNode* pParent) :
-    Popup(pParent)
+GetLives::GetLives(CCNode* pParent, bool pFirst) :
+    Popup(pParent, pFirst)
     {
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas3");
         this->addChild(spriteBatch3);
         
-        this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
+        SpriteBatch* spriteBatch11;
+        
+        if(!pFirst)
+        {
+            spriteBatch11 = SpriteBatch::create("TextureAtlas11");
+            this->addChild(spriteBatch11, -1);
+        }
+        
+        this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), pFirst ? this->mSpriteBatch2 : spriteBatch11, -1);
         
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_glife_pic@2x.png", spriteBatch3);
@@ -62,9 +70,9 @@ GetLives::GetLives(CCNode* pParent) :
         this->mPurchaseId = -1;
     }
 
-GetLives* GetLives::create(CCNode* pParent)
+GetLives* GetLives::create(CCNode* pParent, bool pFirst)
 {
-    GetLives* popup = new GetLives(pParent);
+    GetLives* popup = new GetLives(pParent, pFirst);
     popup->autorelease();
     popup->retain();
     

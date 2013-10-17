@@ -794,7 +794,7 @@ Levels::Levels()
     
     this->mIsUnlockAnimationRunning = false;
     
-    this->mGetLivesPopup = GetLives::create(this);
+    this->mGetLivesPopup = GetLives::create(this, true);
     this->mUnlockLevelPopup = UnlockLevel::create(this);
     this->mSurpriseLevelPopup = SurpriseLevel::create(this);
 

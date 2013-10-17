@@ -453,7 +453,7 @@ Shop::Shop()
 
     this->mBuyItemPopup = BuyItem::create(this);
     this->mGetCoinsPopup = GetCoins::create(this);
-    this->mGetLivesPopup = GetLives::create(this);
+    this->mGetLivesPopup = GetLives::create(this, true);
     this->mGetKeysPopup = GetKeys::create(this);
     this->mBoughtItem = BoughtItem::create(this);
     this->mPaymentProceed = PaymentProceed::create(this);
