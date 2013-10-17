@@ -7,28 +7,28 @@
             <key>bg_detail_dark@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1000,418}}</string>
+                <string>{{0,0},{1004,422}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1000,418}}</string>
+                <string>{{0,0},{1004,422}}</string>
                 <key>sourceSize</key>
-                <string>{1000,418}</string>
+                <string>{1004,422}</string>
             </dict>
             <key>popup_key_pic_wander@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,424},{604,540}}</string>
+                <string>{{0,422},{608,544}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{604,540}}</string>
+                <string>{{0,0},{608,544}}</string>
                 <key>sourceSize</key>
-                <string>{604,540}</string>
+                <string>{608,544}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -40,7 +40,7 @@
             <key>size</key>
             <string>{1004,966}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8dd9b178776e42bfeaebc69db47066f1:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:760452bf56cabaabca3315b4873824ff:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas15.pvr.ccz</string>
         </dict>

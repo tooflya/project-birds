@@ -7,249 +7,249 @@
             <key>birds_feather_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{921,1497},{260,220}}</string>
+                <string>{{920,1496},{262,222}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{260,220}}</string>
+                <string>{{0,0},{262,222}}</string>
                 <key>sourceSize</key>
-                <string>{260,220}</string>
+                <string>{262,222}</string>
             </dict>
             <key>bomb_arrow.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1185,1794},{48,22}}</string>
+                <string>{{1184,1793},{50,24}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{48,22}}</string>
+                <string>{{0,0},{50,24}}</string>
                 <key>sourceSize</key>
-                <string>{48,22}</string>
+                <string>{50,24}</string>
             </dict>
             <key>bomb_ico.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1105,1719},{78,83}}</string>
+                <string>{{1104,1718},{80,85}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{78,83}}</string>
+                <string>{{0,0},{80,85}}</string>
                 <key>sourceSize</key>
-                <string>{78,83}</string>
+                <string>{80,85}</string>
             </dict>
             <key>coins@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{619,1497},{300,240}}</string>
+                <string>{{618,1496},{302,242}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,240}}</string>
+                <string>{{0,0},{302,242}}</string>
                 <key>sourceSize</key>
-                <string>{300,240}</string>
+                <string>{302,242}</string>
             </dict>
             <key>coins_silver@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1719,1255},{300,240}}</string>
+                <string>{{1718,1254},{302,242}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,240}}</string>
+                <string>{{0,0},{302,242}}</string>
                 <key>sourceSize</key>
-                <string>{300,240}</string>
+                <string>{302,242}</string>
             </dict>
             <key>colors@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1185,1711},{448,81}}</string>
+                <string>{{1184,1710},{450,83}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{448,81}}</string>
+                <string>{{0,0},{450,83}}</string>
                 <key>sourceSize</key>
-                <string>{448,81}</string>
+                <string>{450,83}</string>
             </dict>
             <key>confety_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{975,1719},{128,102}}</string>
+                <string>{{974,1718},{130,104}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{128,102}}</string>
+                <string>{{0,0},{130,104}}</string>
                 <key>sourceSize</key>
-                <string>{128,102}</string>
+                <string>{130,104}</string>
             </dict>
             <key>dust@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2021,1255},{16,16}}</string>
+                <string>{{2020,1254},{18,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{16,16}}</string>
+                <string>{{0,0},{18,18}}</string>
                 <key>sourceSize</key>
-                <string>{16,16}</string>
+                <string>{18,18}</string>
             </dict>
             <key>egg light.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{619,1255},{1098,124}}</string>
+                <string>{{618,1254},{1100,126}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1098,124}}</string>
+                <string>{{0,0},{1100,126}}</string>
                 <key>sourceSize</key>
-                <string>{1098,124}</string>
+                <string>{1100,126}</string>
             </dict>
             <key>event_panel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{703,1381},{618,103}}</string>
+                <string>{{702,1380},{620,105}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{618,103}}</string>
+                <string>{{0,0},{620,105}}</string>
                 <key>sourceSize</key>
-                <string>{618,103}</string>
+                <string>{620,105}</string>
             </dict>
             <key>explosion@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1074,1},{969,1252}}</string>
+                <string>{{1073,0},{971,1254}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{969,1252}}</string>
+                <string>{{0,0},{971,1254}}</string>
                 <key>sourceSize</key>
-                <string>{969,1252}</string>
+                <string>{971,1254}</string>
             </dict>
             <key>explosion_basic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,1},{1071,1252}}</string>
+                <string>{{0,0},{1073,1254}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1071,1252}}</string>
+                <string>{{0,0},{1073,1254}}</string>
                 <key>sourceSize</key>
-                <string>{1071,1252}</string>
+                <string>{1073,1254}</string>
             </dict>
             <key>game_chess@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1323,1381},{128,81}}</string>
+                <string>{{1322,1380},{130,83}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{128,81}}</string>
+                <string>{{0,0},{130,83}}</string>
                 <key>sourceSize</key>
-                <string>{128,81}</string>
+                <string>{130,83}</string>
             </dict>
             <key>game_chess_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{619,1381},{82,105}}</string>
+                <string>{{618,1380},{84,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{82,105}}</string>
+                <string>{{0,0},{84,107}}</string>
                 <key>sourceSize</key>
-                <string>{82,105}</string>
+                <string>{84,107}</string>
             </dict>
             <key>game_shelf@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{975,1823},{720,60}}</string>
+                <string>{{974,1822},{722,62}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{720,60}}</string>
+                <string>{{0,0},{722,62}}</string>
                 <key>sourceSize</key>
-                <string>{720,60}</string>
+                <string>{722,62}</string>
             </dict>
             <key>info_panel_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{619,1739},{354,124}}</string>
+                <string>{{618,1738},{356,126}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{354,124}}</string>
+                <string>{{0,0},{356,126}}</string>
                 <key>sourceSize</key>
-                <string>{354,124}</string>
+                <string>{356,126}</string>
             </dict>
             <key>mark@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1183,1497},{179,179}}</string>
+                <string>{{1182,1496},{181,181}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{179,179}}</string>
+                <string>{{0,0},{181,181}}</string>
                 <key>sourceSize</key>
-                <string>{179,179}</string>
+                <string>{181,181}</string>
             </dict>
             <key>star_particle@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1183,1678},{32,31}}</string>
+                <string>{{1182,1677},{34,33}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,31}}</string>
+                <string>{{0,0},{34,33}}</string>
                 <key>sourceSize</key>
-                <string>{32,31}</string>
+                <string>{34,33}</string>
             </dict>
             <key>weapon_strike_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,1255},{616,630}}</string>
+                <string>{{0,1254},{618,632}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{616,630}}</string>
+                <string>{{0,0},{618,632}}</string>
                 <key>sourceSize</key>
-                <string>{616,630}</string>
+                <string>{618,632}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -261,7 +261,7 @@
             <key>size</key>
             <string>{2044,1886}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a16f08d2ef8fe7bc5556426000e0f351:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:04b1e887974256a0dea82deeab521eb0:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas7.pvr.ccz</string>
         </dict>

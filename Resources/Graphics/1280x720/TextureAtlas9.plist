@@ -7,54 +7,54 @@
             <key>get_coins_light@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{497,2},{350,335}}</string>
+                <string>{{495,0},{354,339}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{350,335}}</string>
+                <string>{{0,0},{354,339}}</string>
                 <key>sourceSize</key>
-                <string>{350,335}</string>
+                <string>{354,339}</string>
             </dict>
             <key>popup_key_ico_fall_price@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{118,431},{54,65}}</string>
+                <string>{{116,429},{58,69}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{54,65}}</string>
+                <string>{{0,0},{58,69}}</string>
                 <key>sourceSize</key>
-                <string>{54,65}</string>
+                <string>{58,69}</string>
             </dict>
             <key>popup_quit_picture_light_2@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{112,505}}</string>
+                <string>{{0,0},{116,509}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{112,505}}</string>
+                <string>{{0,0},{116,509}}</string>
                 <key>sourceSize</key>
-                <string>{112,505}</string>
+                <string>{116,509}</string>
             </dict>
             <key>popup_quit_picture_light_main@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{118,2},{375,425}}</string>
+                <string>{{116,0},{379,429}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{375,425}}</string>
+                <string>{{0,0},{379,429}}</string>
                 <key>sourceSize</key>
-                <string>{375,425}</string>
+                <string>{379,429}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -66,7 +66,7 @@
             <key>size</key>
             <string>{849,509}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:028b6248d92ac814422c093bce8ab62c:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:9efa8a438ad740af17ee3fd1022c9538:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas9.pvr.ccz</string>
         </dict>

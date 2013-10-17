@@ -7,41 +7,41 @@
             <key>get_coins_light@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,1278},{350,335}}</string>
+                <string>{{0,1277},{352,337}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{350,335}}</string>
+                <string>{{0,0},{352,337}}</string>
                 <key>sourceSize</key>
-                <string>{350,335}</string>
+                <string>{352,337}</string>
             </dict>
             <key>pirate_box@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{353,1278},{128,117}}</string>
+                <string>{{352,1277},{130,119}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{128,117}}</string>
+                <string>{{0,0},{130,119}}</string>
                 <key>sourceSize</key>
-                <string>{128,117}</string>
+                <string>{130,119}</string>
             </dict>
             <key>special_birds_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,1},{2044,1275}}</string>
+                <string>{{0,0},{2046,1277}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{2044,1275}}</string>
+                <string>{{0,0},{2046,1277}}</string>
                 <key>sourceSize</key>
-                <string>{2044,1275}</string>
+                <string>{2046,1277}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -53,7 +53,7 @@
             <key>size</key>
             <string>{2046,1614}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5becf7fff51b89c3a73cf9adb56255be:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:e9fc6478b66a1fd9a846e1dea75182a8:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas11.pvr.ccz</string>
         </dict>

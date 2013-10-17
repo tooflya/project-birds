@@ -7,80 +7,80 @@
             <key>popup_glife_btn1@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,558},{298,230}}</string>
+                <string>{{1004,556},{302,234}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{298,230}}</string>
+                <string>{{0,0},{302,234}}</string>
                 <key>sourceSize</key>
-                <string>{298,230}</string>
+                <string>{302,234}</string>
             </dict>
             <key>popup_glife_btn2@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,2},{309,247}}</string>
+                <string>{{1004,0},{313,251}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{309,247}}</string>
+                <string>{{0,0},{313,251}}</string>
                 <key>sourceSize</key>
-                <string>{309,247}</string>
+                <string>{313,251}</string>
             </dict>
             <key>popup_glife_pic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{682,1286},{614,628}}</string>
+                <string>{{680,1284},{618,632}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{614,628}}</string>
+                <string>{{0,0},{618,632}}</string>
                 <key>sourceSize</key>
-                <string>{614,628}</string>
+                <string>{618,632}</string>
             </dict>
             <key>preload-lvl-bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1000,1280}}</string>
+                <string>{{0,0},{1004,1284}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1000,1280}}</string>
+                <string>{{0,0},{1004,1284}}</string>
                 <key>sourceSize</key>
-                <string>{1000,1280}</string>
+                <string>{1004,1284}</string>
             </dict>
             <key>preload-lvl-bird@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1286},{676,630}}</string>
+                <string>{{0,1284},{680,634}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{676,630}}</string>
+                <string>{{0,0},{680,634}}</string>
                 <key>sourceSize</key>
-                <string>{676,630}</string>
+                <string>{680,634}</string>
             </dict>
             <key>preload-lvl-wave@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,253},{303,301}}</string>
+                <string>{{1004,251},{307,305}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{303,301}}</string>
+                <string>{{0,0},{307,305}}</string>
                 <key>sourceSize</key>
-                <string>{303,301}</string>
+                <string>{307,305}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -92,7 +92,7 @@
             <key>size</key>
             <string>{1317,1918}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f2493f042afb11c3534f7bed38f6ddde:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:74923a49576d4a42ce0cb83816764214:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas3.pvr.ccz</string>
         </dict>

@@ -7,93 +7,93 @@
             <key>bar_remove@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1262,749},{738,49}}</string>
+                <string>{{1260,747},{742,53}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{738,49}}</string>
+                <string>{{0,0},{742,53}}</string>
                 <key>sourceSize</key>
-                <string>{738,49}</string>
+                <string>{742,53}</string>
             </dict>
             <key>end_lvl_bg_popup@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,749},{652,930}}</string>
+                <string>{{0,747},{656,934}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{652,930}}</string>
+                <string>{{0,0},{656,934}}</string>
                 <key>sourceSize</key>
-                <string>{652,930}</string>
+                <string>{656,934}</string>
             </dict>
             <key>end_lvl_bg_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{2000,743}}</string>
+                <string>{{0,0},{2004,747}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{2000,743}}</string>
+                <string>{{0,0},{2004,747}}</string>
                 <key>sourceSize</key>
-                <string>{2000,743}</string>
+                <string>{2004,747}</string>
             </dict>
             <key>end_lvl_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{658,1153},{800,200}}</string>
+                <string>{{656,1151},{804,204}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{800,200}}</string>
+                <string>{{0,0},{804,204}}</string>
                 <key>sourceSize</key>
-                <string>{800,200}</string>
+                <string>{804,204}</string>
             </dict>
             <key>end_lvl_star_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{658,749},{600,400}}</string>
+                <string>{{656,747},{604,404}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{600,400}}</string>
+                <string>{{0,0},{604,404}}</string>
                 <key>sourceSize</key>
-                <string>{600,400}</string>
+                <string>{604,404}</string>
             </dict>
             <key>shop_money_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{658,1357},{305,125}}</string>
+                <string>{{656,1355},{309,129}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{305,125}}</string>
+                <string>{{0,0},{309,129}}</string>
                 <key>sourceSize</key>
-                <string>{305,125}</string>
+                <string>{309,129}</string>
             </dict>
             <key>star_particle@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{658,1486},{32,31}}</string>
+                <string>{{656,1484},{36,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,31}}</string>
+                <string>{{0,0},{36,35}}</string>
                 <key>sourceSize</key>
-                <string>{32,31}</string>
+                <string>{36,35}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -105,7 +105,7 @@
             <key>size</key>
             <string>{2004,1681}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fcbc935830e5aa8cde989d0811139639:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:93552762cb098b8ad8c9d6f63b35ef6e:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas8.pvr.ccz</string>
         </dict>
