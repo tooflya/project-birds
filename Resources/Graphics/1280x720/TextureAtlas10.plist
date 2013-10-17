@@ -7,28 +7,28 @@
             <key>birds_life@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1436},{258,258}}</string>
+                <string>{{1,1437},{256,256}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{258,258}}</string>
+                <string>{{0,0},{256,256}}</string>
                 <key>sourceSize</key>
-                <string>{258,258}</string>
+                <string>{256,256}</string>
             </dict>
             <key>birds_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{2046,1436}}</string>
+                <string>{{1,1},{2044,1434}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{2046,1436}}</string>
+                <string>{{0,0},{2044,1434}}</string>
                 <key>sourceSize</key>
-                <string>{2046,1436}</string>
+                <string>{2044,1434}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -40,7 +40,7 @@
             <key>size</key>
             <string>{2046,1694}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5b6bbdaa7527a5c250b37663d8d0a820:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:afee3e83c089312c4df9cd3eb54e7609:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas10.pvr.ccz</string>
         </dict>

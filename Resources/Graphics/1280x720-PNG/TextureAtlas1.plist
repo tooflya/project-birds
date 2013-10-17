@@ -7,41 +7,41 @@
             <key>start_preload_bar@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1290},{635,92}}</string>
+                <string>{{2,1284},{631,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{635,92}}</string>
+                <string>{{0,0},{631,88}}</string>
                 <key>sourceSize</key>
-                <string>{635,92}</string>
+                <string>{631,88}</string>
             </dict>
             <key>start_preload_bar_fill@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1386},{581,42}}</string>
+                <string>{{2,1374},{577,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{581,42}}</string>
+                <string>{{0,0},{577,38}}</string>
                 <key>sourceSize</key>
-                <string>{581,42}</string>
+                <string>{577,38}</string>
             </dict>
             <key>start_preloader_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1004,1284}}</string>
+                <string>{{2,2},{1000,1280}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1004,1284}}</string>
+                <string>{{0,0},{1000,1280}}</string>
                 <key>sourceSize</key>
-                <string>{1004,1284}</string>
+                <string>{1000,1280}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -51,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas1.png</string>
             <key>size</key>
-            <string>{1008,1430}</string>
+            <string>{1004,1414}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0e7aeca8d3bf23841aa29bf66ae5ed46:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:c081fa84da1b7f692064c6bf0c22bf8b:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas1.png</string>
         </dict>

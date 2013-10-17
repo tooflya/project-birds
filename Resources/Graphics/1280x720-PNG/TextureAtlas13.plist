@@ -7,7 +7,7 @@
             <key>day1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1185,859},{227,256}}</string>
+                <string>{{1179,855},{227,256}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>day2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1130,576},{262,279}}</string>
+                <string>{{1126,574},{262,279}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>day3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{675,1035},{251,285}}</string>
+                <string>{{673,1029},{251,285}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>day4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{675,683},{251,348}}</string>
+                <string>{{673,679},{251,348}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>day5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{930,859},{251,292}}</string>
+                <string>{{926,855},{251,292}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>map.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,576},{669,1226}}</string>
+                <string>{{2,574},{669,1226}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>map_name.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{675,576},{451,103}}</string>
+                <string>{{673,574},{451,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>star_particle@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1460,576},{32,31}}</string>
+                <string>{{1452,581},{32,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>wave.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1396,611},{36,5}}</string>
+                <string>{{1452,574},{36,5}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>way.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1396,576},{60,31}}</string>
+                <string>{{1390,574},{60,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -155,9 +155,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas13.png</string>
             <key>size</key>
-            <string>{1496,1804}</string>
+            <string>{1496,1802}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8c7bff9cba46175e8c5265c8a43bb6af:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:1981327694145d627d3bbc3d822e3d35:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas13.png</string>
         </dict>

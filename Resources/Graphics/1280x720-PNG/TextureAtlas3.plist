@@ -7,7 +7,7 @@
             <key>popup_glife_btn1@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,558},{298,230}}</string>
+                <string>{{1004,554},{298,230}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>popup_glife_btn2@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,2},{309,247}}</string>
+                <string>{{1004,2},{309,247}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>popup_glife_pic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{682,1286},{614,628}}</string>
+                <string>{{680,1284},{614,628}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>preload-lvl-bird@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1286},{676,630}}</string>
+                <string>{{2,1284},{676,630}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>preload-lvl-wave@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,253},{303,301}}</string>
+                <string>{{1004,251},{303,301}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -90,9 +90,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas3.png</string>
             <key>size</key>
-            <string>{1317,1918}</string>
+            <string>{1315,1916}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a6df59043bcbf5eae8c5f4d156b49397:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:2b40b1a0c0d8b6343154ace3096cb3a8:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas3.png</string>
         </dict>

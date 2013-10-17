@@ -7,106 +7,106 @@
             <key>btn_sfx_mfx_ach_lead_sprite_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1452},{305,204}}</string>
+                <string>{{2,1452},{301,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{305,204}}</string>
+                <string>{{0,0},{301,200}}</string>
                 <key>sourceSize</key>
-                <string>{305,204}</string>
+                <string>{301,200}</string>
             </dict>
             <key>btn_sprite_close@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{305,1452},{166,166}}</string>
+                <string>{{305,1452},{162,162}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{166,166}}</string>
+                <string>{{0,0},{162,162}}</string>
                 <key>sourceSize</key>
-                <string>{166,166}</string>
+                <string>{162,162}</string>
             </dict>
             <key>explosion-war@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{1186,1452}}</string>
+                <string>{{2,2},{1182,1448}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1186,1452}}</string>
+                <string>{{0,0},{1182,1448}}</string>
                 <key>sourceSize</key>
-                <string>{1186,1452}</string>
+                <string>{1182,1448}</string>
             </dict>
             <key>pause_birds_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1186,992},{604,711}}</string>
+                <string>{{1186,992},{600,707}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{604,711}}</string>
+                <string>{{0,0},{600,707}}</string>
                 <key>sourceSize</key>
-                <string>{604,711}</string>
+                <string>{600,707}</string>
             </dict>
             <key>pause_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{471,1452},{384,151}}</string>
+                <string>{{469,1452},{380,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{384,151}}</string>
+                <string>{{0,0},{380,147}}</string>
                 <key>sourceSize</key>
-                <string>{384,151}</string>
+                <string>{380,147}</string>
             </dict>
             <key>pause_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{471,1603},{298,151}}</string>
+                <string>{{469,1601},{294,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{298,151}}</string>
+                <string>{{0,0},{294,147}}</string>
                 <key>sourceSize</key>
-                <string>{298,151}</string>
+                <string>{294,147}</string>
             </dict>
             <key>popup_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1186,0},{652,992}}</string>
+                <string>{{1186,2},{648,988}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{652,992}}</string>
+                <string>{{0,0},{648,988}}</string>
                 <key>sourceSize</key>
-                <string>{652,992}</string>
+                <string>{648,988}</string>
             </dict>
             <key>popup_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{769,1603},{269,151}}</string>
+                <string>{{765,1601},{265,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{269,151}}</string>
+                <string>{{0,0},{265,147}}</string>
                 <key>sourceSize</key>
-                <string>{269,151}</string>
+                <string>{265,147}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -116,9 +116,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas12.pvr.ccz</string>
             <key>size</key>
-            <string>{1838,1754}</string>
+            <string>{1836,1750}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:02eb72bb31cf0b81acccdb035705384b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6c543f4562e9ae957d593017803c1122:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas12.pvr.ccz</string>
         </dict>

@@ -7,7 +7,7 @@
             <key>bonus_bird_parts.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1286},{320,160}}</string>
+                <string>{{2,1284},{320,160}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>box@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,1268},{300,300}}</string>
+                <string>{{1004,1266},{300,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>box_laser_green@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1395,1494},{45,46}}</string>
+                <string>{{1387,1490},{45,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>box_laser_red@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1346,1494},{45,46}}</string>
+                <string>{{1340,1490},{45,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>explosion-zombi@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,2},{1024,1262}}</string>
+                <string>{{1004,2},{1024,1262}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>gun.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1310,1268},{715,222}}</string>
+                <string>{{1306,1266},{715,222}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>gun_laser.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1444,1494},{336,31}}</string>
+                <string>{{1434,1490},{336,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>rain.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1310,1494},{32,57}}</string>
+                <string>{{1306,1490},{32,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>rain_circle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1310,1555},{40,11}}</string>
+                <string>{{1306,1549},{40,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -142,9 +142,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas14.png</string>
             <key>size</key>
-            <string>{2032,1570}</string>
+            <string>{2030,1568}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:47b01d36d739b98e1e7aeea10389d514:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6e2651a2e1d3ddb31b14bd50d691cf9b:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas14.png</string>
         </dict>
