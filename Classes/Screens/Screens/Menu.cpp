@@ -38,7 +38,8 @@ Menu::Menu()
     SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
     this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
-    this->mPlayDecoration = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
+    this->mPlayDecoration[0] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
+    this->mPlayDecoration[1] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
     this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
     this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
     this->mTwitterButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
@@ -48,7 +49,7 @@ Menu::Menu()
     
     this->addChild(spriteBatch);
     
-    this->mBackground->setBlendFunc((ccBlendFunc){GL_ONE, GL_ZERO});
+    this->mBackground->setBlendFunc((ccBlendFunc) {GL_ONE, GL_ZERO});
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
@@ -65,10 +66,14 @@ Menu::Menu()
     this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
     this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
     this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-    this->mPlayDecoration->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
+    this->mPlayDecoration[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(0), Options::CAMERA_CENTER_Y - Utils::coord(80));
+    this->mPlayDecoration[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(0), Options::CAMERA_CENTER_Y - Utils::coord(80));
     this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     
-    this->mPlayDecoration->setColor(ccc3(255.0, 0.0, 0.0));
+    this->mPlayDecoration[0]->setColor(ccc3(255.0, 0.0, 0.0));
+    this->mPlayDecoration[1]->setColor(ccc3(255.0, 0.0, 0.0));
+    
+    this->mPlayDecoration[1]->setScale(0.9);
     
     this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
@@ -151,7 +156,8 @@ void Menu::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
     
-    this->mPlayDecoration->setRotation(this->mPlayDecoration->getRotation() + 1.0);
+    this->mPlayDecoration[0]->setRotation(this->mPlayDecoration[0]->getRotation() + 0.5);
+    this->mPlayDecoration[1]->setRotation(this->mPlayDecoration[1]->getRotation() - 0.5);
 
     this->mPlayDecorationColorUpdateTimeElapsed += pDeltaTime;
 

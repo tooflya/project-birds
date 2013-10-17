@@ -597,8 +597,10 @@ void Shop::onItemBought(int pItemId)
         this->mAnimationOnItemBoughtTimeElapsed = 0;
 
         this->mBoughtItem->show(pItemId);
-
-        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
+        
+        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_SILVER);
+        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES_GOLD[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
+        
         AppDelegate::buyItem(pItemId);
         
         if(Options::SOUND_ENABLE)

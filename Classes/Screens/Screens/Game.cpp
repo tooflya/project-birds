@@ -76,10 +76,6 @@ Game::~Game()
     CC_SAFE_RELEASE_NULL(this->mSilverCoins);
     CC_SAFE_RELEASE_NULL(this->mArrows);
     CC_SAFE_RELEASE_NULL(this->mPredictionIcons);
-    //this->mSchematicBig->release();
-    //this->mSchematicSmall->release();
-    //this->mColorsBlink->release();
-    //this->mColors->release();
     CC_SAFE_RELEASE_NULL(this->mRains);
     CC_SAFE_RELEASE_NULL(this->mRainsCircles);
     CC_SAFE_RELEASE_NULL(this->mRobotParts);
@@ -87,8 +83,9 @@ Game::~Game()
     
     CC_SAFE_RELEASE_NULL(this->mPausePopup);
     CC_SAFE_RELEASE_NULL(this->mEndScreen);
+    CC_SAFE_RELEASE_NULL(this->mGetLivesPopup);
     
-    //this->mEventPanel->release();
+    CC_SAFE_RELEASE_NULL(this->mEventPanel);
     
     CC_SAFE_RELEASE_NULL(this->array);
 }

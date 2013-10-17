@@ -235,6 +235,7 @@ class Options
         static const int BUTTONS_ID_LANGUAGE_L_CN  = 1710;
         static const int BUTTONS_ID_GAME_RESTART = 1801;
         static const int BUTTONS_ID_GAME_PAUSE = 1802;
+        static const int BUTTONS_ID_GAME_GET_LIVES = 1803;
         static const int BUTTONS_ID_PAUSE_MENU = 1901;
         static const int BUTTONS_ID_PAUSE_RESTART = 1902;
         static const int BUTTONS_ID_PAUSE_CONTINUE = 1903;
@@ -327,6 +328,8 @@ class Options
         static Textes TEXT_COINS_BONUS[10];
         static Textes TEXT_UNLOCKLEVEL;
         static Textes TEXT_UNLOCKLEVEL_OK;
+        static Textes TEXT_SURPRISE_OK;
+        static Textes TEXT_SURPRISE;
 
         // ===========================================================
         // Fields

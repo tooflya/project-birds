@@ -1,17 +1,9 @@
-#ifndef CONST_MENU_H
-#define CONST_MENU_H
+#ifndef CONST_SURPRISELEVEL_H
+#define CONST_SURPRISELEVEL_H
 
-#include "Screen.h"
+#include "Popup.h"
 
-#include "Exit.h"
-#include "Map.h"
-#include "PleaseRate.h"
-
-#include "PlayButton.h"
-
-#include "AppDelegate.h"
-
-class Menu : public Screen
+class SurpriseLevel : public Popup
 {
     protected:
         // ===========================================================
@@ -26,25 +18,17 @@ class Menu : public Screen
         // Fields
         // ===========================================================
     
-        Entity* mBackground;
-        Entity* mPlayDecoration[2];
-        Entity* mPlayButton;
-        Entity* mShopButton;
-        Entity* mTwitterButton;
-        Entity* mFacebookButton;
-        Entity* mVkButton;
-        Entity* mSettingsButton;
+        Button* mUnlockButton;
     
-        Popup* mExitPopup;
-        Popup* mRatePopup;
+        EntityManager* mLights;
     
-        Map* mMapPopup;
-
-        float mPlayDecorationColorUpdateTimeElapsed;
+        bool action;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        SurpriseLevel(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -96,10 +80,9 @@ class Menu : public Screen
         // Constructors
         // ===========================================================
     
-        Menu();
-        ~Menu();
-
-        static Menu* create();
+        static SurpriseLevel* create(CCNode* pParent);
+    
+        ~SurpriseLevel();
 
         // ===========================================================
         // Methods
@@ -109,13 +92,13 @@ class Menu : public Screen
         // Override Methods
         // ===========================================================
     
-        void update(float pDeltaTime);
-
-        void onEnter();
-        void onExit();
-
-        void onExitTransitionDidStart();
-        void onEnterTransitionDidFinish();
+        virtual void update(float pDeltaTime);
+    
+        virtual void hide();
+        virtual void show();
+    
+        virtual void onShow();
+        virtual void onHide();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
 };

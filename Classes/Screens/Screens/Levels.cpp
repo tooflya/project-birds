@@ -9,6 +9,33 @@
 // Inner Classe
 // ===========================================================
 
+class Effect : public CCNodeRGBA
+{
+    public:
+    Effect()
+    {
+        this->setColor(ccc3(0, 0, 0));
+        this->setOpacity(50);
+    }
+    
+    static Effect* create()
+    {
+        Effect* background = new Effect();
+        background->autorelease();
+        
+        return background;
+    }
+    
+    void draw()
+    {
+        if(this->getOpacity() <= 0) return;
+        
+        glLineWidth(1);
+        CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
+        ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
+    }
+};
+
 class ListLayer : public CCLayer
 {
     public:
@@ -224,9 +251,22 @@ class LevelButton : public Entity
         }
         else
         {
+            if(Levels::PRIZES[this->mId - 1] == 1)
+            {
+                Game::LEVEL = this->mId - 1;
+                
+                static_cast<Levels*>(this->getParent()->getParent()->getParent())->mSurpriseLevelPopup->show();
+                
+                Levels::SHOULD_START_AFTER_UNLOCK = true;
+                
+                goto sound;
+            }
+            
             if(this->getCurrentFrameIndex() == 8 || this->getCurrentFrameIndex() == 9)
             {
                 Game::LEVEL = this->mId - 1;
+                
+                Levels::SHOULD_START_AFTER_UNLOCK = false;
 
                 static_cast<Levels*>(this->getParent()->getParent()->getParent())->mUnlockLevelPopup->show();
             }
@@ -238,6 +278,7 @@ class LevelButton : public Entity
             }
         }
         
+        sound:
         if(Options::SOUND_ENABLE)
         {
             SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_TAP);
@@ -425,7 +466,7 @@ class MainList : public CCLayer
         
             this->mParent->mBackgroundDecorations[2]->setCurrentFrameIndex(1);
             this->mParent->mBackgroundDecorations[3]->setVisible(false);
-            //this->mParent->mBackgroundDecorations[4]->setVisible(true);
+            this->mParent->mDarkness->setOpacity(50);
 
             return true;
         }
@@ -580,7 +621,7 @@ class MainList : public CCLayer
                 {
                     this->mParent->mBackgroundDecorations[2]->setCurrentFrameIndex(0);
                     this->mParent->mBackgroundDecorations[3]->setVisible(true);
-                    //this->mParent->mBackgroundDecorations[4]->setVisible(false);
+                    this->mParent->mDarkness->setOpacity(0);
 
                     this->mPostUpdate = false;
                 }
@@ -592,7 +633,7 @@ class MainList : public CCLayer
 // Constants
 // ===========================================================
 
-Levels* Levels::m_Instance = NULL;
+bool Levels::SHOULD_START_AFTER_UNLOCK = false;
 
 int Levels::PRICES[80] =
 {
@@ -671,8 +712,11 @@ Levels::Levels()
     this->mSlidesArrows[1] = Entity::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, spriteBatch);
     
     this->mBackgroundDecorations[2] = Entity::create("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
-    this->mBackgroundDecorations[3] = Entity::create("bg_detail_lamp@2x.png", this);
-    //this->mBackgroundDecorations[4] = Entity::create("popup_darkness@2x.png", this);
+    this->mBackgroundDecorations[3] = Entity::create("bg_detail_dark@2x.png", this);
+    
+    this->mDarkness = Effect::create();
+    
+    this->addChild(this->mDarkness);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
@@ -688,10 +732,8 @@ Levels::Levels()
     this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     this->mBackgroundDecorations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(63));
     this->mBackgroundDecorations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(192));
-    //this->mBackgroundDecorations[4]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
     this->mBackgroundDecorations[3]->setOpacity(50);
-    //this->mBackgroundDecorations[4]->setOpacity(50);
     
     /** Organization of level icons */
 
@@ -718,7 +760,7 @@ Levels::Levels()
                 this->mMainList->mLayers[o]->addChild(this->mLevels[t]);
                 
                 this->mLevels[t]->create()->setCenterPosition(x, y);
-                this->mLevels[t]->setId(++id);
+                static_cast<LevelButton*>(this->mLevels[t])->setId(++id);
                 
                 x += Utils::coord(150);
             }
@@ -754,6 +796,7 @@ Levels::Levels()
     
     this->mGetLivesPopup = GetLives::create(this);
     this->mUnlockLevelPopup = UnlockLevel::create(this);
+    this->mSurpriseLevelPopup = SurpriseLevel::create(this);
 
     /** Experiments */
 }
@@ -798,7 +841,7 @@ void Levels::updateIcons()
 {
     for(int i = 0; i < 80; i++)
     {
-        this->mLevels[i]->setId(i + 1);
+        static_cast<LevelButton*>(this->mLevels[i])->setId(i + 1);
     }
 }
 
@@ -821,7 +864,7 @@ void Levels::unlock()
     
     this->mLevels[Game::LEVEL]->setZOrder(2);
     
-    this->mLevels[Game::LEVEL]->unlock();
+    static_cast<LevelButton*>(this->mLevels[Game::LEVEL])->unlock();
     
     this->mLevels[Game::LEVEL]->getParent()->addChild(spriteBatch2);
     
@@ -873,6 +916,13 @@ void Levels::update(float pDeltaTime)
             this->mLigts[1]->destroy();
             
             this->mLevels[Game::LEVEL]->setZOrder(0);
+            
+            this->mIsUnlockAnimationRunning = false;
+            
+            if(SHOULD_START_AFTER_UNLOCK)
+            {
+                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+            }
         }
     }
 }
@@ -895,7 +945,7 @@ void Levels::onEnter()
     
     this->mBackgroundDecorations[2]->setCurrentFrameIndex(0);
     this->mBackgroundDecorations[3]->setVisible(true);
-    //this->mBackgroundDecorations[4]->setVisible(false);
+    this->mDarkness->setOpacity(0);
     
     this->mStarsCountText->setString(ccsf("%d", AppDelegate::getLevelStarsTotalCount()));
 }

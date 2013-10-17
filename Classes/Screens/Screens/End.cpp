@@ -124,7 +124,7 @@ End::End(int pType, Screen* pParent) :
         this->mTextes[6]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
         
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
-        this->mCoins = EntityManager::create(100, AnimatedCoin::create("coins@2x.png", 1.5), spriteBatch4);
+        this->mCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.5), spriteBatch4);
     }
 
 End* End::create(int pType, Screen* pParent)

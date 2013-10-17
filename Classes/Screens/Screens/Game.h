@@ -25,6 +25,7 @@
 #include "Color.h"
 
 #include "Pause.h"
+#include "GetLives.h"
 
 #include "TouchTrailLayer.h"
 
@@ -159,6 +160,7 @@ class Game : public Screen
         Text* mGameStartText;
 
         Popup* mPausePopup;
+        Popup* mGetLivesPopup;
 
         End* mEndScreen;
 

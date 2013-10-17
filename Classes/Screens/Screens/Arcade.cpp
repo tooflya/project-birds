@@ -128,10 +128,10 @@ Arcade::Arcade() :
         this->mGunLaser->setAnchorPoint(ccp(0.5, 1));
         this->mGunLaser->animate(0.04);
 
-        //this->mEventPanel = EventPanel::create(this);
+        this->mEventPanel = EventPanel::create(this);
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        //((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
+        ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
         
         this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         

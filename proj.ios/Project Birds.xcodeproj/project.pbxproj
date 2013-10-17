@@ -194,6 +194,9 @@
 		7869167917F1DF9F00184E9D /* popup-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166E17F1DF9600184E9D /* popup-8.mp3 */; };
 		7869167A17F1DF9F00184E9D /* progress_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166F17F1DF9600184E9D /* progress_complete.mp3 */; };
 		7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7869167B17F2D84A00184E9D /* StarParticle2.cpp */; };
+		787AD78B1810037900738DE3 /* TextureAtlas15.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787AD7891810037900738DE3 /* TextureAtlas15.plist */; };
+		787AD78C1810037900738DE3 /* TextureAtlas15.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 787AD78A1810037900738DE3 /* TextureAtlas15.pvr.ccz */; };
+		787AD78F181007ED00738DE3 /* SurpriseLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */; };
 		787CC98B18056EF400D54AD9 /* GetKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787CC98918056ECC00D54AD9 /* GetKeys.cpp */; };
 		787CC990180580AE00D54AD9 /* KeyParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787CC98C18057FFF00D54AD9 /* KeyParticle.cpp */; };
 		787CC991180580AE00D54AD9 /* LiveParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787CC98E18057FFF00D54AD9 /* LiveParticle.cpp */; };
@@ -632,6 +635,10 @@
 		7869166F17F1DF9600184E9D /* progress_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = progress_complete.mp3; sourceTree = "<group>"; };
 		7869167B17F2D84A00184E9D /* StarParticle2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StarParticle2.cpp; sourceTree = "<group>"; };
 		7869167C17F2D84A00184E9D /* StarParticle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StarParticle2.h; sourceTree = "<group>"; };
+		787AD7891810037900738DE3 /* TextureAtlas15.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas15.plist; sourceTree = "<group>"; };
+		787AD78A1810037900738DE3 /* TextureAtlas15.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas15.pvr.ccz; sourceTree = "<group>"; };
+		787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurpriseLevel.cpp; sourceTree = "<group>"; };
+		787AD78E181007ED00738DE3 /* SurpriseLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurpriseLevel.h; sourceTree = "<group>"; };
 		787CC98918056ECC00D54AD9 /* GetKeys.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GetKeys.cpp; sourceTree = "<group>"; };
 		787CC98A18056ECC00D54AD9 /* GetKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetKeys.h; sourceTree = "<group>"; };
 		787CC98C18057FFF00D54AD9 /* KeyParticle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyParticle.cpp; sourceTree = "<group>"; };
@@ -1082,6 +1089,8 @@
 		78365443180C5ED100AA9432 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				787AD7891810037900738DE3 /* TextureAtlas15.plist */,
+				787AD78A1810037900738DE3 /* TextureAtlas15.pvr.ccz */,
 				78365452180C5ED100AA9432 /* about_scroll_fill@2x.png */,
 				78365453180C5ED100AA9432 /* about_scroll_fill_small@2x.png */,
 				78365454180C5ED100AA9432 /* more_games_list@2x.png */,
@@ -1280,6 +1289,8 @@
 		783E876D17C20CEB00FD49C1 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */,
+				787AD78E181007ED00738DE3 /* SurpriseLevel.h */,
 				785B4F2E180595A0008B444E /* UnlockLevel.cpp */,
 				785B4F2F180595A0008B444E /* UnlockLevel.h */,
 				787CC98918056ECC00D54AD9 /* GetKeys.cpp */,
@@ -2294,6 +2305,7 @@
 				7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */,
 				78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */,
 				78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */,
+				787AD78C1810037900738DE3 /* TextureAtlas15.pvr.ccz in Resources */,
 				78397AE61807029200C999E7 /* Icon-152-ios7.png in Resources */,
 				783654AD180C5ED100AA9432 /* wep_3@2x.png in Resources */,
 				7869167117F1DF9F00184E9D /* pome-zoomout.mp3 in Resources */,
@@ -2356,6 +2368,7 @@
 				783E896717C20CEC00FD49C1 /* berry_count_ind_d.mp3 in Resources */,
 				783E896817C20CEC00FD49C1 /* bird-blow.mp3 in Resources */,
 				783E896A17C20CEC00FD49C1 /* bomb-fuse.mp3 in Resources */,
+				787AD78B1810037900738DE3 /* TextureAtlas15.plist in Resources */,
 				783E896C17C20CEC00FD49C1 /* bonus-gong.mp3 in Resources */,
 				783E896E17C20CEC00FD49C1 /* combo-1.mp3 in Resources */,
 				783E897017C20CEC00FD49C1 /* combo-2.mp3 in Resources */,
@@ -2457,6 +2470,7 @@
 				78B3935D177E5E7E00773C6A /* CCAutoreleasePool.cpp in Sources */,
 				78B3935E177E5E7E00773C6A /* CCDataVisitor.cpp in Sources */,
 				78B3935F177E5E7E00773C6A /* CCDictionary.cpp in Sources */,
+				787AD78F181007ED00738DE3 /* SurpriseLevel.cpp in Sources */,
 				78B39360177E5E7E00773C6A /* CCGeometry.cpp in Sources */,
 				78B39361177E5E7E00773C6A /* CCNS.cpp in Sources */,
 				78B39362177E5E7E00773C6A /* CCObject.cpp in Sources */,

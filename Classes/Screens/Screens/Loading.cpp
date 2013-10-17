@@ -12,7 +12,7 @@
 // ===========================================================
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-TextureStructure Loading::TEXTURE_LIBRARY[10] =
+TextureStructure Loading::TEXTURE_LIBRARY[11] =
 {
     {"TextureAtlas1.png", "TextureAtlas1.plist"},
     {"TextureAtlas2.png", "TextureAtlas2.plist"},
@@ -21,12 +21,13 @@ TextureStructure Loading::TEXTURE_LIBRARY[10] =
     {"TextureAtlas5.png", "TextureAtlas5.plist"},
     {"TextureAtlas9.png", "TextureAtlas9.plist"},
     {"TextureAtlas13.png", "TextureAtlas13.plist"},
+    {"TextureAtlas15.png", "TextureAtlas15.plist"},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},
     {"about_scroll_fill_small@2x.png", NULL}
 };
 #else
-TextureStructure Loading::TEXTURE_LIBRARY[10] =
+TextureStructure Loading::TEXTURE_LIBRARY[11] =
 {
     {"TextureAtlas1.pvr.ccz", "TextureAtlas1.plist"},
     {"TextureAtlas2.pvr.ccz", "TextureAtlas2.plist"},
@@ -35,6 +36,7 @@ TextureStructure Loading::TEXTURE_LIBRARY[10] =
     {"TextureAtlas5.pvr.ccz", "TextureAtlas5.plist"},
     {"TextureAtlas9.pvr.ccz", "TextureAtlas9.plist"},
     {"TextureAtlas13.pvr.ccz", "TextureAtlas13.plist"},
+    {"TextureAtlas15.png", "TextureAtlas15.plist"},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},
     {"about_scroll_fill_small@2x.png", NULL}

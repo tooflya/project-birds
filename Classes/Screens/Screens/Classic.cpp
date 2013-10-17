@@ -91,7 +91,7 @@ Classic::Classic() :
         this->mHearts[0] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[1] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[2] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
-        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
+        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
         
         this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -115,7 +115,7 @@ Classic::Classic() :
 
         this->mCountText = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
         this->mBestCountText = Text::create(Options::TEXT_GAME_BEST, this);
-        this->mGoldLifesCount = Text::create((Textes) {"5", Options::FONT, 32, -1}, this);
+        this->mGoldLifesCount = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
 
         this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
 
@@ -220,6 +220,7 @@ Classic::Classic() :
 
         this->mPausePopup = Pause::create(this);
         this->mEndScreen = End::create(Splash::TYPE_CLASSIC, this);
+        this->mGetLivesPopup = GetLives::create(this);
 
         this->mLevelUpTime = 30.0;
         this->mLevelUpTimeElapsed = 0;
@@ -249,8 +250,6 @@ Classic::Classic() :
         else
         {
         }
-
-        m_Instance = this;
     }
 
 Classic* Classic::create()
@@ -268,8 +267,6 @@ Classic* Classic::create()
 
 void Classic::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Classic* pSender = static_cast<Classic*>(Classic::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -277,8 +274,13 @@ void Classic::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_GAME_PAUSE:
 
-                    pSender->mPausePopup->show();
+                    this->mPausePopup->show();
 
+                break;
+                case Options::BUTTONS_ID_GAME_GET_LIVES:
+                    
+                    this->mGetLivesPopup->show();
+                    
                 break;
                 case Options::BUTTONS_ID_GAME_RESTART:
 
@@ -300,6 +302,8 @@ void Classic::startGame()
 {
     Game::startGame();
     
+    this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
+    
     this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;
 
@@ -314,6 +318,8 @@ void Classic::startGame()
     }
     
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
+    
+    Game::HEALTH = 1; // Arcade?
 }
 
 void Classic::levelUp()

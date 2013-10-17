@@ -400,6 +400,8 @@ Textes Options::TEXT_GETLIVES_STRING_1 = {"", Options::FONT, 0, 376};
 Textes Options::TEXT_GETKEYS_STRING_1 = {"", Options::FONT, 0, 377};
 Textes Options::TEXT_UNLOCKLEVEL = {"", Options::FONT, 0, 378};
 Textes Options::TEXT_UNLOCKLEVEL_OK = {"", Options::FONT, 0, 379};
+Textes Options::TEXT_SURPRISE_OK = {"", Options::FONT, 0, 380};
+Textes Options::TEXT_SURPRISE = {"", Options::FONT, 0, 381};
 
 // ===========================================================
 // Fields
@@ -853,6 +855,12 @@ void Options::changeLanguage()
             
             TEXT_UNLOCKLEVEL_OK.string = "Unlock";
             TEXT_UNLOCKLEVEL_OK.size = 46;
+            
+            TEXT_SURPRISE_OK.string = "Start";
+            TEXT_SURPRISE_OK.size = 46;
+            
+            TEXT_SURPRISE.string = "Each gift level \n gives you a opportunity \n to capture a \n unique artifact!";
+            TEXT_SURPRISE.size = 42;
 
             #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
@@ -889,9 +897,6 @@ void Options::changeLanguage()
             TEXT_COINS_BONUS[7].string = "50";
             TEXT_COINS_BONUS[8].string = "100";
             TEXT_COINS_BONUS[9].string = "500";
-            
-            TEXT_UNLOCKLEVEL_OK.string = "";
-            TEXT_UNLOCKLEVEL_OK.font = "32";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1334,6 +1339,12 @@ void Options::changeLanguage()
             
             TEXT_UNLOCKLEVEL_OK.string = "Открыть";
             TEXT_UNLOCKLEVEL_OK.size = 46;
+            
+            TEXT_SURPRISE_OK.string = "Начать";
+            TEXT_SURPRISE_OK.size = 46;
+            
+            TEXT_SURPRISE.string = "Каждый подарочный \n уровень дает вам \n возможность завладеть \n уникальным артефактом!";
+            TEXT_SURPRISE.size = 42;
         break;
     }
     
@@ -1717,8 +1728,10 @@ void Options::changeLanguage()
     TEXTES_HOLDER[377] = TEXT_GETKEYS_STRING_1;
     TEXTES_HOLDER[378] = TEXT_UNLOCKLEVEL;
     TEXTES_HOLDER[379] = TEXT_UNLOCKLEVEL_OK;
+    TEXTES_HOLDER[380] = TEXT_SURPRISE_OK;
+    TEXTES_HOLDER[381] = TEXT_SURPRISE;
     
-    for(int i = 0; i <= 379; i++)
+    for(int i = 0; i <= 381; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

@@ -37,8 +37,8 @@ Entity("event_panel@2x.png")
     this->mIsShowAnimationRunning = false;
     this->mIsHideAnimationRunning = false;
     
-    this->mShowAnimationTime = 0.5;
-    this->mHideAnimationTime = 0.5;
+    this->mShowAnimationTime = 0.2;
+    this->mHideAnimationTime = 0.2;
     
     this->mShowAnimationTimeElapsed = 0;
     this->mHideAnimationTimeElapsed = 0;
@@ -84,7 +84,7 @@ void EventPanel::hide()
 {
     if(!this->mShowed) return;
     
-    this->runAction(CCMoveTo::create(this->mShowAnimationTime, ccp(this->getCenterX(), -Utils::coord(100))));
+    this->runAction(CCMoveTo::create(this->mHideAnimationTime, ccp(this->getCenterX(), -Utils::coord(100))));
     
     this->mIsHideAnimationRunning = true;
 }

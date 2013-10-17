@@ -5,9 +5,9 @@
 
 #include "GetLives.h"
 #include "UnlockLevel.h"
+#include "SurpriseLevel.h"
 
 class MainList;
-class LevelButton;
 
 class Levels : public Screen
 {
@@ -19,8 +19,6 @@ class Levels : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-
-        static Levels* m_Instance;
 
         // ===========================================================
         // Fields
@@ -95,6 +93,8 @@ class Levels : public Screen
 
         static const int LEVEL_PACKS_COUNT = 6;
     
+        static bool SHOULD_START_AFTER_UNLOCK;
+    
         static int PRICES[80];
         static int PRIZES[80];
 
@@ -104,12 +104,15 @@ class Levels : public Screen
 
         Entity* mSlides[6];
         Entity* mSlidesArrows[2];
-        Entity* mBackgroundDecorations[5];
+        Entity* mBackgroundDecorations[4];
     
         Popup* mGetLivesPopup;
         Popup* mUnlockLevelPopup;
+        Popup* mSurpriseLevelPopup;
     
-        LevelButton* mLevels[80]; // TODO: return 6.
+        CCNodeRGBA* mDarkness;
+    
+        Entity* mLevels[80]; // TODO: return 6.
 
         // ===========================================================
         // Constructors
