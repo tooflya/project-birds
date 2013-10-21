@@ -31,8 +31,6 @@ class Pause : public Popup
         Button* mMenuButton;
 
         Entity* mBirdsIllustrations[4];
-        
-        CCSpriteBatchNode* mBirdsIllustrationsBatch;
 
         // ===========================================================
         // Constructors

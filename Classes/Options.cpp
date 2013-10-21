@@ -47,8 +47,10 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.8.1";
-int Options::BUILD = 5576;
+const char* Options::VERSION = "0.8.4";
+string Options::STRING_VERSION = "0.8.4";
+
+int Options::BUILD = 6615;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -402,6 +404,7 @@ Textes Options::TEXT_UNLOCKLEVEL = {"", Options::FONT, 0, 378};
 Textes Options::TEXT_UNLOCKLEVEL_OK = {"", Options::FONT, 0, 379};
 Textes Options::TEXT_SURPRISE_OK = {"", Options::FONT, 0, 380};
 Textes Options::TEXT_SURPRISE = {"", Options::FONT, 0, 381};
+Textes Options::TEXT_PUBLISHER_STRING_4 = {"", FONT, 36, 382};
 
 // ===========================================================
 // Fields
@@ -813,6 +816,7 @@ void Options::changeLanguage()
             TEXT_PUBLISHER_STRING_1.string = "Information for Publisher";
             TEXT_PUBLISHER_STRING_2.string = "This button should open Game Center with the table of players rating. For iOS it's Apple Game Center and for Android it's Google Play Game Services.";
             TEXT_PUBLISHER_STRING_3.string = "This button should open Game Center with the table of players achievements. For iOS it's Apple Game Center and for Android it's Google Play Game Services.";
+            TEXT_PUBLISHER_STRING_4.string = "Dear publishers! For your convenience, all in-game purchases are working in Debug mode! You can easily acquire all play good.";
             
             TEXT_BUYITEM_CHOOSE.string = "Select";
             TEXT_BUYITEM_CHOOSE.size = 46;
@@ -1259,6 +1263,7 @@ void Options::changeLanguage()
             TEXT_PUBLISHER_STRING_1.string = "Информация для издателей";
             TEXT_PUBLISHER_STRING_2.string = "Данная кнопка должна открывать Game Center с таблицей рейтинга игроков. Для iOS это Apple Game Center, для Android это Google Play Game Services.";
             TEXT_PUBLISHER_STRING_3.string = "Данная кнопка должна открывать Game Center со списком достижений игроков. Для iOS это Apple Game Center, для Android это Google Play Game Services.";
+            TEXT_PUBLISHER_STRING_4.string = "Уважаемые издатели! Для вашего удобства все внутриигровые покупки работают в Debug режиме! Вы легко можете приобретать все игровые блага.";
             
             TEXT_BUYITEM_CHOOSE.string = "Выбрать";
             TEXT_BUYITEM_CHOOSE.size = 46;
@@ -1730,8 +1735,9 @@ void Options::changeLanguage()
     TEXTES_HOLDER[379] = TEXT_UNLOCKLEVEL_OK;
     TEXTES_HOLDER[380] = TEXT_SURPRISE_OK;
     TEXTES_HOLDER[381] = TEXT_SURPRISE;
+    TEXTES_HOLDER[382] = TEXT_PUBLISHER_STRING_4;
     
-    for(int i = 0; i <= 381; i++)
+    for(int i = 0; i <= 382; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

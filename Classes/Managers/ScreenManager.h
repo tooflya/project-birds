@@ -77,7 +77,7 @@ class ScreenManager : CCObject
 		Screen* mScreens[14];
 
 		int mCurrentScreenIndex;
-    bool a;
+
 		// ===========================================================
 		// Constructors
 		// ===========================================================

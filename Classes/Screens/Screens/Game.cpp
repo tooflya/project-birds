@@ -62,32 +62,33 @@ int Game::LEVEL = 0;
 
 Game::~Game()
 {
-    CC_SAFE_RELEASE_NULL(this->mBirds);
-    CC_SAFE_RELEASE_NULL(this->mSpecialBirds);
-    CC_SAFE_RELEASE_NULL(this->mMarks);
-    CC_SAFE_RELEASE_NULL(this->mFeathers);
-    CC_SAFE_RELEASE_NULL(this->mExplosionsBasic);
-    CC_SAFE_RELEASE_NULL(this->mExplosions);
-    CC_SAFE_RELEASE_NULL(this->mZombieExplosions);
-    CC_SAFE_RELEASE_NULL(this->mGeneralExplosions);
-    CC_SAFE_RELEASE_NULL(this->mDust);
-    CC_SAFE_RELEASE_NULL(this->mStars);
-    CC_SAFE_RELEASE_NULL(this->mCoins);
-    CC_SAFE_RELEASE_NULL(this->mSilverCoins);
-    CC_SAFE_RELEASE_NULL(this->mArrows);
-    CC_SAFE_RELEASE_NULL(this->mPredictionIcons);
-    CC_SAFE_RELEASE_NULL(this->mRains);
-    CC_SAFE_RELEASE_NULL(this->mRainsCircles);
-    CC_SAFE_RELEASE_NULL(this->mRobotParts);
-    CC_SAFE_RELEASE_NULL(this->mBonusCircles);
+    CC_SAFE_RELEASE(this->spriteBatch99);
+    CC_SAFE_RELEASE(this->mBirds);
+    CC_SAFE_RELEASE(this->mSpecialBirds);
+    CC_SAFE_RELEASE(this->mMarks);
+    CC_SAFE_RELEASE(this->mFeathers);
+    CC_SAFE_RELEASE(this->mExplosionsBasic);
+    CC_SAFE_RELEASE(this->mExplosions);
+    CC_SAFE_RELEASE(this->mZombieExplosions);
+    CC_SAFE_RELEASE(this->mGeneralExplosions);
+    CC_SAFE_RELEASE(this->mDust);
+    CC_SAFE_RELEASE(this->mStars);
+    CC_SAFE_RELEASE(this->mCoins);
+    CC_SAFE_RELEASE(this->mSilverCoins);
+    CC_SAFE_RELEASE(this->mArrows);
+    CC_SAFE_RELEASE(this->mPredictionIcons);
+    CC_SAFE_RELEASE(this->mRains);
+    CC_SAFE_RELEASE(this->mRainsCircles);
+    CC_SAFE_RELEASE(this->mRobotParts);
+    CC_SAFE_RELEASE(this->mBonusCircles);
+    CC_SAFE_RELEASE(this->mKeys);
+    CC_SAFE_RELEASE(this->mKeysLights);
     
-    CC_SAFE_RELEASE_NULL(this->mPausePopup);
-    CC_SAFE_RELEASE_NULL(this->mEndScreen);
-    CC_SAFE_RELEASE_NULL(this->mGetLivesPopup);
+    CC_SAFE_RELEASE(this->mPausePopup);
+    CC_SAFE_RELEASE(this->mEndScreen);
+    CC_SAFE_RELEASE(this->mGetLivesPopup);
     
-    CC_SAFE_RELEASE_NULL(this->mEventPanel);
-    
-    CC_SAFE_RELEASE_NULL(this->array);
+    CC_SAFE_RELEASE(this->array);
 }
 
 Game::Game() :

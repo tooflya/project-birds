@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-More* More::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -33,8 +31,6 @@ More::More()
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
-
-    m_Instance = this;
 }
 
 More* More::create()
@@ -52,8 +48,6 @@ More* More::create()
 
 void More::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    More* pSender = static_cast<More*>(More::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:

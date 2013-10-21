@@ -36,8 +36,6 @@ int Progresses::TASK[80][10] =
     {1, 20, 2, 40}
 };
 
-Progresses* Progresses::m_Instance = NULL;
-
 class Grid : public CCNode
 {
 public:
@@ -109,12 +107,12 @@ public:
 
 Progresses::~Progresses()
 {
-    CC_SAFE_RELEASE_NULL(this->mColors);
+    CC_SAFE_RELEASE(this->mColors);
 }
 
 Progresses::Progresses() :
-    Game()
-    {
+Game()
+{
     this->mEventLayer = CCLayer::create();
     
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
@@ -127,6 +125,8 @@ Progresses::Progresses() :
     SpriteBatch* spriteBatch6 = SpriteBatch::create("TextureAtlas6");
     SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas14");
     SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
+    this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
+    this->spriteBatch99->retain();
     
     this->mGameLayer->addChild(spriteBatch6);
     
@@ -137,24 +137,30 @@ Progresses::Progresses() :
     this->mGameLayer->addChild(spriteBatch1);
     this->mGameLayer->addChild(spriteBatch2);
     this->mGameLayer->addChild(spriteBatch3);
+    this->mGameLayer->addChild(this->spriteBatch99);
     this->mGameLayer->addChild(spriteBatch4);
     this->mGameLayer->addChild(spriteBatch5);
     this->mMenuLayer->addChild(spriteBatch8);
     
     this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
     
-    this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
-    this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
-    for(int i = 1; i < 4; i++)
+    #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+    if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
     {
-        this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
-        this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+        this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
+        this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
+        for(int i = 1; i < 4; i++)
+        {
+            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+        }
+            for(int i = 4; i < 7; i++)
+        {
+            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+        }
     }
-    for(int i = 4; i < 7; i++)
-    {
-        this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
-        this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
-    }
+    #endif
     
     this->mGamePanel = Entity::create("game_panel@2x.png", spriteBatch8);
     this->mTextAreas[0] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
@@ -165,7 +171,7 @@ Progresses::Progresses() :
     this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
     this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
     this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
-    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
+    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
         
     this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -219,6 +225,8 @@ Progresses::Progresses() :
     this->mColorsBlink = EntityManager::create(100, Entity::create("egg light.png", 9, 1), spriteBatch2);
     this->mTasksBackground = EntityManager::create(10, Entity::create("task-background@2x.png"), spriteBatch8);
     this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 7, 1), spriteBatch8);
+    this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
+    this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
     
     this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
     
@@ -227,16 +235,23 @@ Progresses::Progresses() :
     
     this->mEventPanel = EventPanel::create(this);
     
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
-    for(int i = 1; i < 4; i++)
+        
+    #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+    if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
     {
-        this->mBackgroundLights[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+        this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+        this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
+        for(int i = 1; i < 4; i++)
+        {
+            this->mBackgroundLights[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+        }
+        for(int i = 1; i < 4; i++)
+        {
+            this->mBackgroundLights[i + 3]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+        }
     }
-    for(int i = 1; i < 4; i++)
-    {
-        this->mBackgroundLights[i + 3]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
-    }
+    #endif
+
     ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
     
     this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -293,6 +308,7 @@ Progresses::Progresses() :
     
     this->mPausePopup = Pause::create(this);
     this->mEndScreen = End::create(Splash::TYPE_PROGRESS, this);
+    this->mGetLivesPopup = GetLives::create(this, false);
     
     //this->mLevelUpTime = 30.0;
     //this->mLevelUpTimeElapsed = 0;
@@ -312,9 +328,7 @@ Progresses::Progresses() :
     //this->mIsLevelUpAnimation = false;
     
     this->addChild(this->mEventLayer);
-    this->addChild(new Grid());
-    
-    m_Instance = this;
+    //this->addChild(new Grid());
     
     //
     
@@ -340,8 +354,6 @@ Progresses* Progresses::create()
 
 void Progresses::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Progresses* pSender = static_cast<Progresses*>(Progresses::m_Instance);
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -349,8 +361,13 @@ void Progresses::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_GAME_PAUSE:
 
-                    pSender->mPausePopup->show();
+                    this->mPausePopup->show();
 
+                break;
+                case Options::BUTTONS_ID_GAME_GET_LIVES:
+                    
+                    this->mGetLivesPopup->show();
+                    
                 break;
                 case Options::BUTTONS_ID_GAME_RESTART:
 
@@ -399,6 +416,8 @@ void Progresses::update(float pDeltaTime)
     {
         if(!this->mEndScreen->isShowed())
         {
+            this->onShow();
+            
             this->startGame();
         }
     }
@@ -579,6 +598,9 @@ void Progresses::onExit()
 void Progresses::onShow()
 {
     STARS = 0;
+    
+    this->mTimeText->setString("0:00");
+    this->mStarTimeText->setString("0:00");
     
     this->mColors->clear();
     this->mSchematicBig->clear();

@@ -135,6 +135,7 @@ class Options
         static const char* SOUND_LEVEL_UNLOCK;
 
         static const char* VERSION;
+        static std::string STRING_VERSION;
         static int BUILD;
     
         static int DEVICE_TYPE;
@@ -309,6 +310,7 @@ class Options
         static Textes TEXT_PUBLISHER_STRING_1;
         static Textes TEXT_PUBLISHER_STRING_2;
         static Textes TEXT_PUBLISHER_STRING_3;
+        static Textes TEXT_PUBLISHER_STRING_4;
         static Textes TEXT_BUYITEM_CHOOSE;
         static Textes TEXT_ITEM_ALREADY_BOUGHT;
         static Textes TEXT_PAUSE_CONTINUE;

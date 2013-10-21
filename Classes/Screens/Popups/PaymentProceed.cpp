@@ -13,8 +13,6 @@
 // Constants
 // ===========================================================
 
-PaymentProceed* PaymentProceed::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -22,6 +20,10 @@ PaymentProceed* PaymentProceed::m_Instance = NULL;
 // ===========================================================
 // Constructors
 // ===========================================================
+
+PaymentProceed::~PaymentProceed()
+{
+}
 
 PaymentProceed::PaymentProceed(CCNode* pParent) :
     Popup(pParent)
@@ -48,8 +50,6 @@ PaymentProceed::PaymentProceed(CCNode* pParent) :
         this->mUpdateTimeElapsed = 0;
 
         this->mUpdateTimeTotal = 0;
-
-        m_Instance = this;
     }
 
 PaymentProceed* PaymentProceed::create(CCNode* pParent)
@@ -67,8 +67,6 @@ PaymentProceed* PaymentProceed::create(CCNode* pParent)
 
 void PaymentProceed::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    PaymentProceed* pSender = static_cast<PaymentProceed*>(PaymentProceed::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -76,7 +74,7 @@ void PaymentProceed::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

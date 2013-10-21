@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-Exit* Exit::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -20,6 +18,11 @@ Exit* Exit::m_Instance = NULL;
 // ===========================================================
 // Constructors
 // ===========================================================
+
+Exit::~Exit()
+{
+    CC_SAFE_RELEASE(this->mLight);
+}
 
 Exit::Exit(CCNode* pParent) :
     Popup(pParent)
@@ -64,8 +67,6 @@ Exit::Exit(CCNode* pParent) :
         {
             this->mLightsAnimationReverse[i] = Utils::probably(50);
         }
-        
-        m_Instance = this;
     }
 
 // ===========================================================
@@ -74,8 +75,6 @@ Exit::Exit(CCNode* pParent) :
 
 void Exit::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Exit* pSender = (Exit*) Exit::m_Instance;
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -83,12 +82,12 @@ void Exit::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                pSender->hide();
+                this->hide();
                 
                 break;
             case Options::BUTTONS_ID_EXIT_YES:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

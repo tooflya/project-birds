@@ -241,7 +241,7 @@ class TouchLayer : public CCLayer
 // ===========================================================
 
 int Shop::CLICKED_ITEM_ID = -1;
-int Shop::ITEMS_COUNT[3] = { 11, 8, 5 };
+int Shop::ITEMS_COUNT[3] = { 11, 8, 7 };
 int Shop::ACTION = -1;
 int Shop::PURCHASE_ID = -1;
 
@@ -255,18 +255,18 @@ int Shop::PURCHASE_ID = -1;
 
 Shop::~Shop()
 {
-    CC_SAFE_RELEASE_NULL(this->mBuyItemPopup);
-    CC_SAFE_RELEASE_NULL(this->mGetCoinsPopup);
-    CC_SAFE_RELEASE_NULL(this->mGetLivesPopup);
-    CC_SAFE_RELEASE_NULL(this->mGetKeysPopup);
-    CC_SAFE_RELEASE_NULL(this->mBoughtItem);
-    CC_SAFE_RELEASE_NULL(this->mPaymentProceed);
-    CC_SAFE_RELEASE_NULL(this->mPurchaseCoins);
-    CC_SAFE_RELEASE_NULL(this->mPurchaseSilverCoins);
-    CC_SAFE_RELEASE_NULL(this->mPurchaseLives);
-    CC_SAFE_RELEASE_NULL(this->mPurchaseKeys);
+    CC_SAFE_RELEASE(this->mBuyItemPopup);
+    CC_SAFE_RELEASE(this->mGetCoinsPopup);
+    CC_SAFE_RELEASE(this->mGetLivesPopup);
+    CC_SAFE_RELEASE(this->mGetKeysPopup);
+    CC_SAFE_RELEASE(this->mBoughtItem);
+    CC_SAFE_RELEASE(this->mPaymentProceed);
+    CC_SAFE_RELEASE(this->mPurchaseCoins);
+    CC_SAFE_RELEASE(this->mPurchaseSilverCoins);
+    CC_SAFE_RELEASE(this->mPurchaseLives);
+    CC_SAFE_RELEASE(this->mPurchaseKeys);
     
-    CC_SAFE_RELEASE_NULL(this->mWeaponChecker);
+    CC_SAFE_RELEASE(this->mWeaponChecker);
 }
 
 Shop::Shop()
@@ -299,7 +299,7 @@ Shop::Shop()
     this->mTextBackgrounds[2]->setScaleX(0.8);
     this->mTextBackgrounds[3]->setScaleX(0.8);
     
-    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4)
+    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
     {
         this->mTextBackgrounds[0]->setScaleX(this->mTextBackgrounds[0]->getScaleX() + 0.2);
         this->mTextBackgrounds[1]->setScaleX(this->mTextBackgrounds[1]->getScaleX() + 0.2);
@@ -332,7 +332,7 @@ Shop::Shop()
     this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
     this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
     
-    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4)
+    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
     {
         this->mTextBackgrounds[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + Utils::coord(30), this->mTextBackgrounds[0]->getCenterY());
         this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(60), this->mTextBackgrounds[1]->getCenterY());
@@ -505,6 +505,10 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                     else if(ACTION == 4)
                     {
                         AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                    }
+                    else if(ACTION == 5)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
                     }
 
                     ACTION = -1;
@@ -891,7 +895,6 @@ void Shop::draw()
 
 void Shop::visit()
 {
-    
     Screen::visit();
 }
 
@@ -903,7 +906,7 @@ void Shop::onEnterTransitionDidFinish()
     {
         this->mGetKeysPopup->show();
     }
-    else if(ACTION == 3 || ACTION == 4)
+    else if(ACTION == 3 || ACTION == 4 || ACTION == 5)
     {
         this->mPaymentProceed->show();
     }

@@ -24,7 +24,7 @@
 PirateBox::PirateBox(CCNode* pParent) :
     ImpulseEntity("pirate_box@2x.png", pParent)
     {
-        this->mLight = Entity::create("get_coins_light@2x.png", pParent);
+        this->mLight = Entity::create("get_coins_light@2x.png", static_cast<Game*>(pParent->getParent()->getParent())->spriteBatch99);
         
         this->setZOrder(2);
         

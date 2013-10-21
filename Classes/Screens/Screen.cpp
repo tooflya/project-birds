@@ -34,6 +34,11 @@
 Screen::~Screen()
 {
     this->removeAllChildrenWithCleanup(true);
+    
+    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 Screen::Screen()

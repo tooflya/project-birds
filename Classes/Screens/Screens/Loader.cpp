@@ -34,11 +34,12 @@ const char* Loader::WEAPON_TEXTURE[11] =
 };
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-TextureStructure Loader::TEXTURE_LIBRARY[8] =
+TextureStructure Loader::TEXTURE_LIBRARY[9] =
 {
     {"TextureAtlas6.png", "TextureAtlas6.plist"},
     {"TextureAtlas7.png", "TextureAtlas7.plist"},
     {"TextureAtlas8.png", "TextureAtlas8.plist"},
+    {"TextureAtlas9.png", "TextureAtlas9.plist"},
     {"TextureAtlas10.png", "TextureAtlas10.plist"},
     {"TextureAtlas11.png", "TextureAtlas11.plist"},
     {"TextureAtlas12.png", "TextureAtlas12.plist"},
@@ -46,11 +47,12 @@ TextureStructure Loader::TEXTURE_LIBRARY[8] =
     {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
 #else
-TextureStructure Loader::TEXTURE_LIBRARY[8] =
+TextureStructure Loader::TEXTURE_LIBRARY[9] =
 {
     {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
     {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
     {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
+    {"TextureAtlas9.pvr.ccz", "TextureAtlas9.plist"},
     {"TextureAtlas10.pvr.ccz", "TextureAtlas10.plist"},
     {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"},
     {"TextureAtlas12.pvr.ccz", "TextureAtlas12.plist"},
@@ -69,7 +71,7 @@ TextureStructure Loader::TEXTURE_LIBRARY[8] =
 
 Loader::~Loader()
 {
-    CC_SAFE_RELEASE_NULL(this->mCircles);
+    CC_SAFE_RELEASE(this->mCircles);
 }
 
 Loader::Loader()
@@ -91,7 +93,6 @@ Loader::Loader()
 
     for(int i = 0; i < 5; i++)
     {
-            
             Entity* circle = (Entity*) this->mCircles->create();
             
             circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
@@ -169,17 +170,19 @@ void Loader::loadingCallBack(CCObject *obj)
             AppDelegate::IS_ALREADY_PLAYED = true;
         }
         
-        CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-        CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+        //CCDirector::sharedDirector()->purgeCachedData();
         
-        CCSpriteFrameCache::sharedSpriteFrameCache()->purgeSharedSpriteFrameCache();
         //CCTextureCache::sharedTextureCache()->purgeSharedTextureCache();
-
+        //CCSpriteFrameCache::sharedSpriteFrameCache()->purgeSharedSpriteFrameCache();
+        //CCAnimationCache::sharedAnimationCache()->purgeSharedAnimationCache();
+        
+        CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+        CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+        
         CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
     }
     else
     {
-        //CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     }
 }
 
@@ -187,12 +190,8 @@ void Loader::startLoading()
 {
     AppDelegate::screens->load(ACTION, TYPE);
     
-    //CCTextureCache::sharedTextureCache()->removeAllTextures();
-        
-    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    
-    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+    CCTextureCache::sharedTextureCache()->removeAllTextures();
+    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFrames();
     
     this->mNumberOfLoadedSprites = -1;
     
@@ -241,7 +240,7 @@ void Loader::onTouch(CCTouch* touch, CCEvent* event)
             break;
             case 5:
 
-                Shop::ACTION = 0;
+                //Shop::ACTION = 0;
 
                 AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
                 

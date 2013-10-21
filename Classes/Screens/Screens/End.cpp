@@ -24,10 +24,10 @@
 
 End::~End()
 {
-    CC_SAFE_RELEASE_NULL(this->mConfetti);
-    CC_SAFE_RELEASE_NULL(this->mCoins);
+    CC_SAFE_RELEASE(this->mConfetti);
+    CC_SAFE_RELEASE(this->mCoins);
     
-    CC_SAFE_RELEASE_NULL(this->mStars);
+    CC_SAFE_RELEASE(this->mStars);
 }
 
 End::End(int pType, Screen* pParent) :
@@ -162,6 +162,8 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
                 
             break;
             case Options::BUTTONS_ID_END_CONTINUE:
+                    
+            Game::LEVEL++;
                 
             this->hide();
                 
@@ -214,6 +216,12 @@ void End::onShow()
     
     if(this->mType == TYPE_PROGRESS)
     {
+        if(AppDelegate::getLevelStars(Game::LEVEL) < Game::STARS)
+        {
+            AppDelegate::setLevelStars(Game::LEVEL, Game::STARS);
+            AppDelegate::setLevelStars(Game::LEVEL + 1, 0);
+        }
+        
         if(AppDelegate::getLevelStars(Game::LEVEL + 1) >= 0)
         {
             this->mContinueButton->create()->setCurrentFrameIndex(2);
@@ -247,12 +255,6 @@ void End::onShow()
         
         this->mContinueButton->create()->setCurrentFrameIndex(2);
         this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
-    }
-
-    if(AppDelegate::getLevelStars(Game::LEVEL) < Game::STARS)
-    {
-        AppDelegate::setLevelStars(Game::LEVEL, Game::STARS);
-        AppDelegate::setLevelStars(Game::LEVEL + 1, 0);
     }
 }
 

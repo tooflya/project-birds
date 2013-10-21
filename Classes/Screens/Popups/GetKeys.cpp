@@ -23,7 +23,7 @@
 
 GetKeys::~GetKeys()
 {
-    CC_SAFE_RELEASE_NULL(this->mLights);
+    CC_SAFE_RELEASE(this->mLights);
 }
 
 GetKeys::GetKeys(CCNode* pParent) :

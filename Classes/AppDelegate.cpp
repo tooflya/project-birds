@@ -73,9 +73,13 @@ bool AppDelegate::isInstalled()
     return CCUserDefault::sharedUserDefault()->getIntegerForKey("installed") == 1;
 }
 
-void AppDelegate::install()
+void AppDelegate::install(bool soft)
 {
     AppDelegate::changeLanguage(AppDelegate::getSelectedLanguage());
+    
+    CCUserDefault::sharedUserDefault()->setStringForKey("last_version", Options::STRING_VERSION);
+    
+    CCUserDefault::sharedUserDefault()->setBoolForKey("temp_inapp_inf", false);
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey("music_enable", AppDelegate::isInstalled() ? Options::MUSIC_ENABLE : 1);
     CCUserDefault::sharedUserDefault()->setIntegerForKey("sound_enable", AppDelegate::isInstalled() ? Options::SOUND_ENABLE : 1);
@@ -322,6 +326,16 @@ int AppDelegate::getLastVisitDaysCount()
     return CCUserDefault::sharedUserDefault()->getIntegerForKey("last_visit_days_count");
 }
 
+string AppDelegate::lastVersion()
+{
+    return CCUserDefault::sharedUserDefault()->getStringForKey("last_version");
+}
+
+bool AppDelegate::tempPublisherInAppInformationShowed()
+{
+    return CCUserDefault::sharedUserDefault()->getBoolForKey("temp_inapp_inf");
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -404,9 +418,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     director->setAnimationInterval(1.0f / 60.0f);
 
-    if(!AppDelegate::isInstalled())
+    if(!AppDelegate::isInstalled() || AppDelegate::lastVersion() != Options::VERSION)
     {
-        AppDelegate::install();
+        AppDelegate::install(true);
     }
 
     Options::init();

@@ -100,13 +100,13 @@ void ScreenManager::load(int pAction, int pDo)
             switch(pDo)
             {
                 case 1:
-                    CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
+                    CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
                 break;
                 case 2:
-                    CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
+                    CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
                 break;
                 case 3:
-                    CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
+                    CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
                 break;
                 
                 default:
@@ -129,15 +129,15 @@ void ScreenManager::load(int pAction, int pDo)
             {
                 default:
                     
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MENU]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SETTINGS]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_CREDITS]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_PROGRESS]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MORE]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LANGUAGE]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_MODE]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_SHOP]);
-                CC_SAFE_RELEASE_NULL(this->mScreens[Screen::SCREEN_LEVELS]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MENU]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SETTINGS]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CREDITS]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MORE]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LANGUAGE]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MODE]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SHOP]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LEVELS]);
                     
                 break;
                     

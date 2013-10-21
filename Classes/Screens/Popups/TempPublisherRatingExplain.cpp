@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-TempPublisherRatingExplain* TempPublisherRatingExplain::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,7 +21,6 @@ TempPublisherRatingExplain* TempPublisherRatingExplain::m_Instance = NULL;
 
 TempPublisherRatingExplain::~TempPublisherRatingExplain()
 {
-    
 }
 
 TempPublisherRatingExplain::TempPublisherRatingExplain(CCNode* pParent) :
@@ -42,8 +39,6 @@ TempPublisherRatingExplain::TempPublisherRatingExplain(CCNode* pParent) :
 
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(250));
         text2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
-        
-        m_Instance = this;
     }
 
 TempPublisherRatingExplain* TempPublisherRatingExplain::create(CCNode* pParent)
@@ -61,8 +56,6 @@ TempPublisherRatingExplain* TempPublisherRatingExplain::create(CCNode* pParent)
 
 void TempPublisherRatingExplain::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    TempPublisherRatingExplain* pSender = (TempPublisherRatingExplain*) TempPublisherRatingExplain::m_Instance;
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -70,7 +63,7 @@ void TempPublisherRatingExplain::onTouchButtonsCallback(const int pAction, const
         {
             default:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

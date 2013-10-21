@@ -21,7 +21,7 @@
 
 Credits::~Credits()
 {
-    CC_SAFE_RELEASE_NULL(this->mList);
+    CC_SAFE_RELEASE(this->mList);
 }
 
 Credits::Credits()

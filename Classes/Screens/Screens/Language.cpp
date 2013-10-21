@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-Language* Language::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -100,8 +98,6 @@ Language::Language()
         this->mTextes[i - 2]->disableShadow();
         this->mTextes[i - 2]->setCenterPosition(this->mNotAvailableBackgrounds[i - 2]->getCenterX(), this->mNotAvailableBackgrounds[i - 2]->getCenterY());
     }
-    
-    m_Instance = this;
 }
 
 Language* Language::create()
@@ -119,8 +115,6 @@ Language* Language::create()
 
 void Language::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Language* pSender = static_cast<Language*>(Language::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:

@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-BoughtItem* BoughtItem::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,8 +21,8 @@ BoughtItem* BoughtItem::m_Instance = NULL;
 
 BoughtItem::~BoughtItem()
 {
-    CC_SAFE_RELEASE_NULL(this->mLights);
-    CC_SAFE_RELEASE_NULL(this->mConfetti);
+    CC_SAFE_RELEASE(this->mLights);
+    CC_SAFE_RELEASE(this->mConfetti);
     
     this->removeAllChildrenWithCleanup(true);
 }
@@ -96,8 +94,6 @@ BoughtItem::BoughtItem(CCNode* pParent)
     this->setRegisterAsTouchable(true);
     
     this->mLights->setOpacity(0);
-    
-    m_Instance = this;
 }
 
 BoughtItem* BoughtItem::create(CCNode* pParent)
