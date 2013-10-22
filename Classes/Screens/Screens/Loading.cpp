@@ -11,18 +11,8 @@
 // Constants
 // ===========================================================
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
-TextureStructure Loading::TEXTURE_LIBRARY[11] =
-=======
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 TextureStructure Loading::TEXTURE_LIBRARY[10] =
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
-=======
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-TextureStructure Loading::TEXTURE_LIBRARY[10] =
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
 {
     {"TextureAtlas2.png", "TextureAtlas2.plist"},
     {"TextureAtlas3.png", "TextureAtlas3.plist"},

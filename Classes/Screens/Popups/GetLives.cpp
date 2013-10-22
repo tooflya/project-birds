@@ -35,19 +35,9 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
     {
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas3");
         this->addChild(spriteBatch3);
-        
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         SpriteBatch* spriteBatch11 = 0;
-        
-=======
-        SpriteBatch* spriteBatch11;
 
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
-=======
-        SpriteBatch* spriteBatch11;
-
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
         if(!pFirst)
         {
             spriteBatch11 = SpriteBatch::create("TextureAtlas9");

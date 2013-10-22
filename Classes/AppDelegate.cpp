@@ -423,18 +423,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->setProjection(kCCDirectorProjection2D);
 
     director->setAnimationInterval(1.0f / 60.0f);
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-    if(!AppDelegate::isInstalled())
-=======
 
     if(!AppDelegate::isInstalled() || AppDelegate::lastVersion() != Options::VERSION)
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
-=======
-
-    if(!AppDelegate::isInstalled() || AppDelegate::lastVersion() != Options::VERSION)
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
     {
         AppDelegate::install(true);
     }

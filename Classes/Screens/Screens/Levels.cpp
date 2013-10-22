@@ -677,16 +677,10 @@ Levels::~Levels()
     CC_SAFE_RELEASE(this->mGetLivesPopup);
     CC_SAFE_RELEASE(this->mUnlockLevelPopup);
     CC_SAFE_RELEASE(this->mSurpriseLevelPopup);
-<<<<<<< HEAD
-    
+
     CC_SAFE_RELEASE(spriteBatch2);
-    
-=======
-    
-    CC_SAFE_RELEASE(spriteBatch2);
-    
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
-    this->cleanup();
+
+	this->removeAllChildrenWithCleanup(true);
 }
 
 Levels::Levels()

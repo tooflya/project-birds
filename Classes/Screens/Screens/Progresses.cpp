@@ -170,18 +170,9 @@ Game()
     this->mTextIcons[0] = Entity::create("game_panel_time@2x.png", spriteBatch8);
     this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
     this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
-    this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 	EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 	this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
-=======
-    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
-=======
-    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
->>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
         
     this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);

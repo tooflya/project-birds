@@ -313,6 +313,12 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="ProjectBirds.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\KeyDisplay.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Entities\AnimatedCoin.h">
@@ -568,6 +574,12 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="ProjectBirds.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\KeyDisplay.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\AlignmentGrid.png">

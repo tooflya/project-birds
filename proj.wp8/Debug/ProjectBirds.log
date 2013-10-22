@@ -1,0 +1,560 @@
+﻿Build started 10/22/2013 1:49:47 PM.
+     1>Project "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\ProjectBirds.vcxproj" on node 2 (Rebuild target(s)).
+     1>PreBuildEvent:
+         xcopy "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\Resources" "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\Assets\Resources" /s /y /i /q & echo Copied Resource files to \Assets\Resources
+         :VCEnd
+         380 File(s) copied
+         Copied Resource files to \Assets\Resources
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\bin\CL.exe /c /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\cocos2dx\platform\wp8" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\cocos2dx" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\cocos2dx\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\cocos2dx\kazmath\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\cocos2dx\platform\winrt" /I..\Classes /I..\Classes\Entities /I..\Classes\Managers /I..\Classes\Screens /I..\Classes\Screens\Screens /I..\Classes\Screens\Popups /I..\Classes\TEST /I..\Classes\Utils /I..\Classes\Graphics /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\..\..\..\..\CocosDenshion\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\\" /I"Generated Files\\" /IDebug\ /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D PSAPI_VERSION=2 /D WP8 /D _WP8 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /wd4453 /FU"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\CocosDenshion\CocosDenshion.winmd" /FU"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\lib\platform.winmd" /FU"C:\Program Files (x86)\Windows Phone Kits\8.0\Windows Metadata\Windows.winmd" /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp ..\Classes\Entities\AnimatedCoin.cpp ..\Classes\Entities\Bird.cpp ..\Classes\Entities\Button.cpp ..\Classes\Entities\Clock.cpp ..\Classes\Entities\Color.cpp ..\Classes\Entities\Confetti.cpp ..\Classes\Entities\Dust.cpp ..\Classes\Entities\Entity.cpp ..\Classes\Entities\EventPanel.cpp ..\Classes\Entities\Explosion.cpp ..\Classes\Entities\ExplosionBasic.cpp ..\Classes\Entities\Feather.cpp ..\Classes\Entities\GeneralExplosion.cpp ..\Classes\Entities\ImpulseEntity.cpp ..\Classes\Entities\Item.cpp ..\Classes\Entities\KeyDisplay.cpp ..\Classes\Entities\KeyParticle.cpp ..\Classes\Entities\LiveParticle.cpp ..\Classes\Entities\Mark.cpp ..\Classes\Entities\PirateBox.cpp ..\Classes\Entities\PlayButton.cpp ..\Classes\Entities\Rain.cpp ..\Classes\Entities\RainCircle.cpp ..\Classes\Entities\Ripple.cpp ..\Classes\Entities\RobotoGun.cpp ..\Classes\Entities\RobotoPart.cpp ..\Classes\Entities\SpecialBird.cpp ..\Classes\Entities\Star.cpp ..\Classes\Entities\StarParticle.cpp ..\Classes\Entities\StarParticle2.cpp ..\Classes\Entities\Text.cpp ..\Classes\Entities\WeaponParticle.cpp ..\Classes\Entities\ZombieExplosion.cpp ..\Classes\Graphics\Texture.cpp ..\Classes\Managers\BatchEntityManager.cpp ..\Classes\Managers\BladeParticlesManager.cpp ..\Classes\Managers\EntityManager.cpp ..\Classes\Managers\ScreenManager.cpp ..\Classes\Options.cpp ..\Classes\Screens\Popup.cpp ..\Classes\Screens\Popups\BoughtItem.cpp ..\Classes\Screens\Popups\BuyItem.cpp ..\Classes\Screens\Popups\Exit.cpp ..\Classes\Screens\Popups\GetCoins.cpp ..\Classes\Screens\Popups\GetKeys.cpp ..\Classes\Screens\Popups\GetLives.cpp ..\Classes\Screens\Popups\Map.cpp ..\Classes\Screens\Popups\ModeHelp.cpp ..\Classes\Screens\Popups\Pause.cpp ..\Classes\Screens\Popups\PaymentProceed.cpp ..\Classes\Screens\Popups\PleaseRate.cpp ..\Classes\Screens\Popups\ResetProgress.cpp ..\Classes\Screens\Popups\SurpriseLevel.cpp ..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp ..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp ..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp ..\Classes\Screens\Popups\UnlockLevel.cpp ..\Classes\Screens\Screen.cpp ..\Classes\Screens\Screens\Arcade.cpp ..\Classes\Screens\Screens\Classic.cpp ..\Classes\Screens\Screens\Credits.cpp ..\Classes\Screens\Screens\End.cpp ..\Classes\Screens\Screens\Game.cpp ..\Classes\Screens\Screens\Language.cpp ..\Classes\Screens\Screens\Levels.cpp ..\Classes\Screens\Screens\Loader.cpp ..\Classes\Screens\Screens\Loading.cpp ..\Classes\Screens\Screens\Menu.cpp ..\Classes\Screens\Screens\Mode.cpp ..\Classes\Screens\Screens\More.cpp ..\Classes\Screens\Screens\Progress.cpp ..\Classes\Screens\Screens\Progresses.cpp ..\Classes\Screens\Screens\Settings.cpp ..\Classes\Screens\Screens\Shop.cpp ..\Classes\Screens\Screens\Splash.cpp ..\Classes\TEST\CCBlade.cpp ..\Classes\TEST\TouchTrailLayer.cpp ..\Classes\Utils\ButtonReceiver.cpp ..\Classes\Utils\BuyItemList.cpp ..\Classes\Utils\CreditsList.cpp ..\Classes\Utils\List.cpp ..\Classes\Utils\ModeHelpList.cpp ..\Classes\Utils\SpriteBatch.cpp ..\Classes\Utils\Touchable.cpp ..\Classes\Utils\Utils.cpp ProjectBirds.cpp
+         AppDelegate.cpp
+         AnimatedCoin.cpp
+         Bird.cpp
+         Button.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\animatedcoin.cpp(27): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(55): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(120): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(193): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(203): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(255): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(263): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(267): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(342): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(509): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\bird.cpp(518): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Clock.cpp
+         Color.cpp
+         Confetti.cpp
+         Dust.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\confetti.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\color.cpp(131): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\color.cpp(166): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\color.cpp(246): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Entity.cpp
+         EventPanel.cpp
+         Explosion.cpp
+         ExplosionBasic.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\entity.cpp(106): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\entity.cpp(107): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\entity.cpp(109): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\entity.cpp(815): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\eventpanel.cpp(40): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\eventpanel.cpp(41): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\explosion.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\explosionbasic.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Feather.cpp
+         GeneralExplosion.cpp
+         ImpulseEntity.cpp
+         Item.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\feather.cpp(26): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\feather.cpp(116): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\feather.cpp(141): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\feather.cpp(152): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\generalexplosion.cpp(54): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\generalexplosion.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'float'
+         KeyDisplay.cpp
+         KeyParticle.cpp
+         LiveParticle.cpp
+         Mark.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\liveparticle.cpp(47): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\mark.cpp(51): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\mark.cpp(54): warning C4305: 'argument' : truncation from 'double' to 'float'
+         PirateBox.cpp
+         PlayButton.cpp
+         Rain.cpp
+         RainCircle.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\piratebox.cpp(114): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\piratebox.cpp(115): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\playbutton.cpp(62): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\rain.cpp(46): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\raincircle.cpp(49): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Ripple.cpp
+         RobotoGun.cpp
+         RobotoPart.cpp
+         SpecialBird.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\robotopart.cpp(61): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\robotopart.cpp(91): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(47): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(48): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(54): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(57): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(59): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\ripple.cpp(60): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\robotopart.cpp(99): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\robotopart.cpp(100): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\specialbird.cpp(27): warning C4305: '=' : truncation from 'double' to 'float'
+         Star.cpp
+         StarParticle.cpp
+         StarParticle2.cpp
+         Text.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\star.cpp(46): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\star.cpp(65): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\starparticle.cpp(59): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\starparticle.cpp(61): warning C4305: 'argument' : truncation from 'double' to 'float'
+         WeaponParticle.cpp
+         ZombieExplosion.cpp
+         Texture.cpp
+         BatchEntityManager.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\weaponparticle.cpp(62): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\entities\zombieexplosion.cpp(68): warning C4305: 'argument' : truncation from 'double' to 'float'
+         BladeParticlesManager.cpp
+         EntityManager.cpp
+         ScreenManager.cpp
+         Options.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\managers\entitymanager.cpp(213): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\managers\screenmanager.cpp(85): warning C4305: '=' : truncation from 'double' to 'float'
+         Popup.cpp
+         BoughtItem.cpp
+         BuyItem.cpp
+         Exit.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(112): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(113): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(126): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(135): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(179): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(180): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(183): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popup.cpp(208): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\boughtitem.cpp(121): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\boughtitem.cpp(122): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\boughtitem.cpp(123): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\boughtitem.cpp(231): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\exit.cpp(158): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\exit.cpp(164): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\exit.cpp(184): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\exit.cpp(190): warning C4305: 'argument' : truncation from 'double' to 'float'
+         GetCoins.cpp
+         GetKeys.cpp
+         GetLives.cpp
+         Map.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\getcoins.cpp(148): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\getcoins.cpp(195): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\getkeys.cpp(126): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\getkeys.cpp(171): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(281): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(315): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(317): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(323): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(325): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\getlives.cpp(141): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(440): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(520): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(521): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(524): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(525): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(541): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(542): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(559): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(560): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(561): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(578): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(579): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(596): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(597): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\getlives.cpp(225): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(598): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(615): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(616): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(633): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(634): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(635): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(652): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(653): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(671): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(672): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(673): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(690): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(691): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(714): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(715): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(724): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(725): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(734): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(735): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(744): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(745): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(754): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(755): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(787): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\map.cpp(811): warning C4305: 'argument' : truncation from 'double' to 'float'
+         ModeHelp.cpp
+         Pause.cpp
+         PaymentProceed.cpp
+         PleaseRate.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\modehelp.cpp(76): warning C4065: switch statement contains 'default' but no 'case' labels
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\pleaserate.cpp(126): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\pleaserate.cpp(142): warning C4305: 'argument' : truncation from 'double' to 'float'
+         ResetProgress.cpp
+         SurpriseLevel.cpp
+         TempPublisherAchievementsExplain.cpp
+         TempPublisherInAppExplain.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\resetprogress.cpp(145): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\resetprogress.cpp(157): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\surpriselevel.cpp(120): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\surpriselevel.cpp(169): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\temppublisherinappexplain.cpp(69): warning C4065: switch statement contains 'default' but no 'case' labels
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\temppublisherachievementsexplain.cpp(69): warning C4065: switch statement contains 'default' but no 'case' labels
+         TempPublisherRatingExplain.cpp
+         UnlockLevel.cpp
+         Screen.cpp
+         Arcade.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\temppublisherratingexplain.cpp(69): warning C4065: switch statement contains 'default' but no 'case' labels
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\unlocklevel.cpp(51): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\unlocklevel.cpp(126): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\popups\unlocklevel.cpp(189): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\arcade.cpp(133): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\arcade.cpp(134): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\arcade.cpp(146): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Classic.cpp
+         Credits.cpp
+         End.cpp
+         Game.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\classic.cpp(142): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\classic.cpp(143): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\classic.cpp(228): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\classic.cpp(377): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\classic.cpp(386): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\end.cpp(80): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\end.cpp(81): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\end.cpp(109): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\end.cpp(110): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\end.cpp(195): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(320): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(323): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(324): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(332): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(333): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(334): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(450): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(505): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(736): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(743): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(975): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\game.cpp(1042): warning C4305: '=' : truncation from 'double' to 'float'
+         Language.cpp
+         Levels.cpp
+         Loader.cpp
+         Loading.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\loader.cpp(200): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\loading.cpp(132): warning C4305: '=' : truncation from 'double' to 'float'
+         Menu.cpp
+         Mode.cpp
+         More.cpp
+         Progress.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\menu.cpp(84): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Progresses.cpp
+         Settings.cpp
+         Shop.cpp
+         Splash.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\progresses.cpp(228): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\progresses.cpp(229): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\progresses.cpp(313): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(86): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(90): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(287): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(288): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(299): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(300): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(301): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(433): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(437): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(635): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(642): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(649): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(656): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(663): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(669): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(675): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\shop.cpp(681): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(49): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(52): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(57): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(69): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(72): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(74): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(77): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\screens\screens\splash.cpp(129): warning C4305: 'argument' : truncation from 'double' to 'float'
+         CCBlade.cpp
+         TouchTrailLayer.cpp
+         ButtonReceiver.cpp
+         BuyItemList.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\test\ccblade.cpp(85): warning C4305: 'return' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\test\ccblade.cpp(165): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\test\ccblade.cpp(209): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\test\ccblade.cpp(256): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\test\touchtraillayer.cpp(47): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\buyitemlist.cpp(58): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\buyitemlist.cpp(63): warning C4305: 'argument' : truncation from 'double' to 'float'
+         CreditsList.cpp
+         List.cpp
+         ModeHelpList.cpp
+         SpriteBatch.cpp
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(84): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(90): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(97): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(103): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(168): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(174): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(181): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\igor\documents\github\cocos2d-x-2.2\projects\2013\project-birds\classes\utils\list.cpp(187): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Touchable.cpp
+         Utils.cpp
+         ProjectBirds.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds.exe" /INCREMENTAL:NO /NOLOGO d3d11.lib WindowsPhoneCore.lib RuntimeObject.lib PhoneAppModelHost.lib /NODEFAULTLIB:ole32.lib /MANIFEST:NO /DEBUG /PDB:"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds.pdb" /SUBSYSTEM:WINDOWS /LTCG /TLBID:1 /WINMD:NO /WINMDFILE:"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds.winmd" /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /IGNORE:4264 Debug\AppDelegate.obj
+         Debug\AnimatedCoin.obj
+         Debug\Bird.obj
+         Debug\Button.obj
+         Debug\Clock.obj
+         Debug\Color.obj
+         Debug\Confetti.obj
+         Debug\Dust.obj
+         Debug\Entity.obj
+         Debug\EventPanel.obj
+         Debug\Explosion.obj
+         Debug\ExplosionBasic.obj
+         Debug\Feather.obj
+         Debug\GeneralExplosion.obj
+         Debug\ImpulseEntity.obj
+         Debug\Item.obj
+         Debug\KeyDisplay.obj
+         Debug\KeyParticle.obj
+         Debug\LiveParticle.obj
+         Debug\Mark.obj
+         Debug\PirateBox.obj
+         Debug\PlayButton.obj
+         Debug\Rain.obj
+         Debug\RainCircle.obj
+         Debug\Ripple.obj
+         Debug\RobotoGun.obj
+         Debug\RobotoPart.obj
+         Debug\SpecialBird.obj
+         Debug\Star.obj
+         Debug\StarParticle.obj
+         Debug\StarParticle2.obj
+         Debug\Text.obj
+         Debug\WeaponParticle.obj
+         Debug\ZombieExplosion.obj
+         Debug\Texture.obj
+         Debug\BatchEntityManager.obj
+         Debug\BladeParticlesManager.obj
+         Debug\EntityManager.obj
+         Debug\ScreenManager.obj
+         Debug\Options.obj
+         Debug\Popup.obj
+         Debug\BoughtItem.obj
+         Debug\BuyItem.obj
+         Debug\Exit.obj
+         Debug\GetCoins.obj
+         Debug\GetKeys.obj
+         Debug\GetLives.obj
+         Debug\Map.obj
+         Debug\ModeHelp.obj
+         Debug\Pause.obj
+         Debug\PaymentProceed.obj
+         Debug\PleaseRate.obj
+         Debug\ResetProgress.obj
+         Debug\SurpriseLevel.obj
+         Debug\TempPublisherAchievementsExplain.obj
+         Debug\TempPublisherInAppExplain.obj
+         Debug\TempPublisherRatingExplain.obj
+         Debug\UnlockLevel.obj
+         Debug\Screen.obj
+         Debug\Arcade.obj
+         Debug\Classic.obj
+         Debug\Credits.obj
+         Debug\End.obj
+         Debug\Game.obj
+         Debug\Language.obj
+         Debug\Levels.obj
+         Debug\Loader.obj
+         Debug\Loading.obj
+         Debug\Menu.obj
+         Debug\Mode.obj
+         Debug\More.obj
+         Debug\Progress.obj
+         Debug\Progresses.obj
+         Debug\Settings.obj
+         Debug\Shop.obj
+         Debug\Splash.obj
+         Debug\CCBlade.obj
+         Debug\TouchTrailLayer.obj
+         Debug\ButtonReceiver.obj
+         Debug\BuyItemList.obj
+         Debug\CreditsList.obj
+         Debug\List.obj
+         Debug\ModeHelpList.obj
+         Debug\SpriteBatch.obj
+         Debug\Touchable.obj
+         Debug\Utils.obj
+         Debug\ProjectBirds.obj
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libEGL_phone.lib"
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libGLESv2_phone.lib"
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\esUtil_phone.lib"
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\libs\vs2012\Win32\Debug\preprocessor_phone.lib"
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\libs\vs2012\Win32\Debug\translator_common_phone.lib"
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\libs\vs2012\Win32\Debug\translator_hlsl_phone.lib"
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\libcocos2d\libcocos2d.lib"
+         "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\CocosDenshion\CocosDenshion.lib"
+     1>AppDelegate.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+         LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
+         ProjectBirds.vcxproj -> C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds.exe
+       XapPackager:
+         Begin Xap packaging
+         Creating file ProjectBirds_Debug_Win32.xap
+         Adding WMAppManifest.xml
+         Adding ProjectBirds.exe
+         Adding CocosDenshion.winmd
+         Adding CocosDenshion.dll
+         Adding Assets\Resources\Fonts\Comic Sans MS.ttf
+         Adding Assets\AlignmentGrid.png
+         Adding Assets\ApplicationIcon.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill_small@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\more_games_list@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_1@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_10@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_11@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_2@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_3@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_4@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_5@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_6@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_7@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_8@2x.png
+         Adding Assets\Resources\Graphics\1280x720-PNG\wep_9@2x.png
+         Adding Assets\Resources\Graphics\1280x720\about_scroll_fill@2x.png
+         Adding Assets\Resources\Graphics\1280x720\about_scroll_fill_small@2x.png
+         Adding Assets\Resources\Graphics\1280x720\more_games_list@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_1@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_10@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_11@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_2@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_3@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_4@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_5@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_6@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_7@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_8@2x.png
+         Adding Assets\Resources\Graphics\1280x720\wep_9@2x.png
+         Adding Assets\Tiles\FlipCycleTileLarge.png
+         Adding Assets\Tiles\FlipCycleTileMedium.png
+         Adding Assets\Tiles\FlipCycleTileSmall.png
+         Adding Assets\Tiles\IconicTileMediumLarge.png
+         Adding Assets\Tiles\IconicTileSmall.png
+         Adding Assets\Resources\Music\music-1.mp3
+         Adding Assets\Resources\Music\music-2.mp3
+         Adding Assets\Resources\Sound\berry_count_ind_a.mp3
+         Adding Assets\Resources\Sound\berry_count_ind_b.mp3
+         Adding Assets\Resources\Sound\berry_count_ind_c.mp3
+         Adding Assets\Resources\Sound\berry_count_ind_d.mp3
+         Adding Assets\Resources\Sound\bird-blow.mp3
+         Adding Assets\Resources\Sound\bomb-fuse.mp3
+         Adding Assets\Resources\Sound\bonus-gong.mp3
+         Adding Assets\Resources\Sound\bonus_banana_freeze.mp3
+         Adding Assets\Resources\Sound\combo-1.mp3
+         Adding Assets\Resources\Sound\combo-2.mp3
+         Adding Assets\Resources\Sound\combo-3.mp3
+         Adding Assets\Resources\Sound\combo-4.mp3
+         Adding Assets\Resources\Sound\combo-5.mp3
+         Adding Assets\Resources\Sound\combo-6.mp3
+         Adding Assets\Resources\Sound\combo-7.mp3
+         Adding Assets\Resources\Sound\combo-8.mp3
+         Adding Assets\Resources\Sound\combo-blitz-backing-end.mp3
+         Adding Assets\Resources\Sound\combo-blitz-backing-light.mp3
+         Adding Assets\Resources\Sound\combo-blitz-backing.mp3
+         Adding Assets\Resources\Sound\critical.mp3
+         Adding Assets\Resources\Sound\equip-new-sword.mp3
+         Adding Assets\Resources\Sound\equip-unlock.mp3
+         Adding Assets\Resources\Sound\explosion.mp3
+         Adding Assets\Resources\Sound\hit.mp3
+         Adding Assets\Resources\Sound\lose_life.mp3
+         Adding Assets\Resources\Sound\pome-rampdown.mp3
+         Adding Assets\Resources\Sound\pome-zoomout.mp3
+         Adding Assets\Resources\Sound\popup-1.mp3
+         Adding Assets\Resources\Sound\popup-2.mp3
+         Adding Assets\Resources\Sound\popup-3.mp3
+         Adding Assets\Resources\Sound\popup-4.mp3
+         Adding Assets\Resources\Sound\popup-5.mp3
+         Adding Assets\Resources\Sound\popup-6.mp3
+         Adding Assets\Resources\Sound\popup-7.mp3
+         Adding Assets\Resources\Sound\popup-8.mp3
+         Adding Assets\Resources\Sound\progress_complete.mp3
+         Adding Assets\Resources\Sound\swoosh.mp3
+         Adding Assets\Resources\Sound\tap.wav
+         Adding Assets\Resources\Sound\throw-bird.mp3
+         Adding Assets\Resources\Sound\throw-bomb.mp3
+         Adding Assets\Resources\Sound\upsell_whoosh.mp3
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.plist
+         Adding Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas1.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas1.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas10.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas10.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas11.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas11.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas12.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas12.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas13.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas13.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas14.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas14.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas15.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas15.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas2.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas2.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas3.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas3.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas4.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas4.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas5.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas5.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas6.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas6.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas7.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas7.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas8.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas8.pvr.ccz
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas9.plist
+         Adding Assets\Resources\Graphics\1280x720\TextureAtlas9.pvr.ccz
+         Adding Assets\Resources\Music\music-1.ogg
+         Adding Assets\Resources\Music\music-2.ogg
+         Adding libEGL_phone.dll
+         Adding libGLESv2_phone.dll
+         Adding libcocos2d.dll
+         Xap packaging completed successfully
+     1>Done Building Project "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\ProjectBirds.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:59.36
