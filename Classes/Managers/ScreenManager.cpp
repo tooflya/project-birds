@@ -36,10 +36,12 @@
 // Constructors
 // ===========================================================
 
-ScreenManager::ScreenManager()
-{
-    this->generate();
-}
+ScreenManager::ScreenManager() :
+	mScreens(),
+	mCurrentScreenIndex(0)
+	{
+		this->generate();
+	}
 
 ScreenManager* ScreenManager::create()
 {

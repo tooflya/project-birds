@@ -20,7 +20,8 @@
 // ===========================================================
 
 LiveParticle::LiveParticle() :
-    Entity("popup_glife_pic_fall@2x.png")
+    Entity("popup_glife_pic_fall@2x.png"),
+	mMoveSpeed(0)
     {
     }
 

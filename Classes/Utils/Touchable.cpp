@@ -19,10 +19,12 @@
 // Constructors
 // ===========================================================
 
-Touchable::Touchable()
-{
-	this->mIsRegisterAsTouchable = false;
-}
+Touchable::Touchable() :
+	mWasTouched(0),
+	mIsRegisterAsTouchable(0)
+	{
+		this->mIsRegisterAsTouchable = false;
+	}
 
 // ===========================================================
 // Methods

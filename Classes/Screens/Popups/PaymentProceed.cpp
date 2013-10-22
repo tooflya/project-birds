@@ -26,7 +26,14 @@ PaymentProceed::~PaymentProceed()
 }
 
 PaymentProceed::PaymentProceed(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mUpdateTimes(0),
+	mUpdateTime(0),
+	mUpdateTimeElapsed(0),
+	mUpdateTimeTotal(0),
+	mWaitingPurchase(0),
+	mCancelButton(0),
+	mTextes()
     {
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mCancelButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);

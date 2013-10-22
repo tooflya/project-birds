@@ -27,74 +27,89 @@ BoughtItem::~BoughtItem()
     this->removeAllChildrenWithCleanup(true);
 }
 
-BoughtItem::BoughtItem(CCNode* pParent)
-{
-    this->initWithColor(ccc4(0.0, 0.0, 0.0, 200.0));
+BoughtItem::BoughtItem(CCNode* pParent) :
+	mParent(0),
+	mIcon(0),
+	mTwitterButton(0),
+	mFacebookButton(0),
+	mVkButton(0),
+	mShareButton(0),
+	mLights(0),
+	mConfetti(0),
+	mTextes(),
+	mShowAnimationTimeElapsed(0),
+	mHideAnimationTimeElapsed(0),
+	mShowAnimation(0),
+	mHideAnimation(0),
+	mTapToContinueAnimationReverse(0),
+	mShare(0)
+	{
+		this->initWithColor(ccc4(0.0, 0.0, 0.0, 200.0));
 
-    this->mParent = pParent;
+		this->mParent = pParent;
 
-    this->setCascadeOpacityEnabled(true);
+		this->setCascadeOpacityEnabled(true);
     
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas4");
-    SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas9");
-    SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas4");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas4");
+		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas9");
+		SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas4");
     
-    this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), spriteBatch2);
-    this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this);
-    this->mIcon->setZOrder(2);
+		this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), spriteBatch2);
+		this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this);
+		this->mIcon->setZOrder(2);
     
-    this->mConfetti = EntityManager::create(210, Confetti::create(), spriteBatch3);
+		this->mConfetti = EntityManager::create(210, Confetti::create(), spriteBatch3);
     
-    this->mShareButton = Button::create("share@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE, this);
-    this->mTwitterButton = Button::create("twitter_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_TWITTER, this);
-    this->mFacebookButton = Button::create("facebook_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_FACEBOOK, this);
-    this->mVkButton = Button::create("vk_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_VK, this);
+		this->mShareButton = Button::create("share@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE, this);
+		this->mTwitterButton = Button::create("twitter_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_TWITTER, this);
+		this->mFacebookButton = Button::create("facebook_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_FACEBOOK, this);
+		this->mVkButton = Button::create("vk_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_VK, this);
     
-    this->mTextes[0] = Text::create(Options::TEXT_SHOP_BOUGHT, this);
-    this->mTextes[1] = Text::create(Options::TEXT_SHOP_BOUGHT, this);
-    this->mTextes[2] = Text::create(Options::TEXT_TAP_TO_CONTINUE, this);
+		this->mTextes[0] = Text::create(Options::TEXT_SHOP_BOUGHT, this);
+		this->mTextes[1] = Text::create(Options::TEXT_SHOP_BOUGHT, this);
+		this->mTextes[2] = Text::create(Options::TEXT_TAP_TO_CONTINUE, this);
 
-    this->mIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         
-    for(int i = 0; i < 2; i++)
-    {
-        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        static_cast<Entity*>(this->mLights->objectAtIndex(i))->setScale(3.0);
-    }
+		for(int i = 0; i < 2; i++)
+		{
+			this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+			static_cast<Entity*>(this->mLights->objectAtIndex(i))->setScale(3.0);
+		}
     
-    this->mShareButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-    this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(250));
-    this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(350));
-    this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(450));
+		this->mShareButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
+		this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(250));
+		this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(350));
+		this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(450));
     
-    this->mTwitterButton->setScale(0);
-    this->mFacebookButton->setScale(0);
-    this->mVkButton->setScale(0);
+		this->mTwitterButton->setScale(0);
+		this->mFacebookButton->setScale(0);
+		this->mVkButton->setScale(0);
 
-    this->mTwitterButton->setModal(true);
-    this->mFacebookButton->setModal(true);
-    this->mVkButton->setModal(true);
-    this->mShareButton->setModal(true);
+		this->mTwitterButton->setModal(true);
+		this->mFacebookButton->setModal(true);
+		this->mVkButton->setModal(true);
+		this->mShareButton->setModal(true);
 
-    this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(300));
-    this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(380));
-    this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(450));
+		this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(300));
+		this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(380));
+		this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(450));
     
-    this->addChild(spriteBatch2);
-    this->addChild(spriteBatch);
-    this->addChild(spriteBatch3);
+		this->addChild(spriteBatch2);
+		this->addChild(spriteBatch);
+		this->addChild(spriteBatch3);
     
-    spriteBatch3->setZOrder(3);
+		spriteBatch3->setZOrder(3);
     
-    this->mTapToContinueAnimationReverse = false;
-    this->mShowAnimation = false;
-    this->mHideAnimation = false;
-    this->mShare = false;
+		this->mTapToContinueAnimationReverse = false;
+		this->mShowAnimation = false;
+		this->mHideAnimation = false;
+		this->mShare = false;
     
-    this->setRegisterAsTouchable(true);
+		this->setRegisterAsTouchable(true);
     
-    this->mLights->setOpacity(0);
-}
+		this->mLights->setOpacity(0);
+	}
 
 BoughtItem* BoughtItem::create(CCNode* pParent)
 {

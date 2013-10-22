@@ -34,64 +34,77 @@ Menu::~Menu()
     #endif
 }
 
-Menu::Menu()
-{
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+Menu::Menu() :
+	mBackground(0),
+	mPlayDecoration(),
+	mPlayButton(0),
+	mShopButton(0),
+	mTwitterButton(0),
+	mFacebookButton(0),
+	mVkButton(0),
+	mSettingsButton(0),
+	mExitPopup(0),
+	mRatePopup(0),
+	mTempPublisherInAppExplainPopup(0),
+	mMapPopup(0),
+	mPlayDecorationColorUpdateTimeElapsed(0)
+	{
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
-	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162};
-	EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162};
-	EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162};
-	EntityStructure structure4 = {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162};
+		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162};
+		EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162};
+		EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162};
+		EntityStructure structure4 = {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162};
 
-    this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
-    this->mPlayDecoration[0] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
-    this->mPlayDecoration[1] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
-    this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
-    this->mShopButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
-    this->mTwitterButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
-    this->mFacebookButton = Button::create(structure3, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
-    this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, this);
-    this->mSettingsButton = Button::create(structure4, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
+		this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
+		this->mPlayDecoration[0] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
+		this->mPlayDecoration[1] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
+		this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
+		this->mShopButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
+		this->mTwitterButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
+		this->mFacebookButton = Button::create(structure3, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
+		this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, this);
+		this->mSettingsButton = Button::create(structure4, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
     
-    this->addChild(spriteBatch);
+		this->addChild(spriteBatch);
     
-	ccBlendFunc bf = {GL_ONE, GL_ZERO};
-    this->mBackground->setBlendFunc(bf);
+		ccBlendFunc bf = {GL_ONE, GL_ZERO};
+		this->mBackground->setBlendFunc(bf);
 
-    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+		#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
-    this->mExitPopup = new Exit(this);
+		this->mExitPopup = new Exit(this);
 
-    #endif
+		#endif
 
-    this->mRatePopup = PleaseRate::create(this);
-    this->mMapPopup = Map::create(this);
-    this->mTempPublisherInAppExplainPopup = TempPublisherInAppExplain::create(this);
+		this->mRatePopup = PleaseRate::create(this);
+		this->mMapPopup = Map::create(this);
+		this->mTempPublisherInAppExplainPopup = TempPublisherInAppExplain::create(this);
 
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->mShopButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(270));
-    this->mSettingsButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
-    this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
-    this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-    this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-    this->mPlayDecoration[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(5), Options::CAMERA_CENTER_Y - Utils::coord(80));
-    this->mPlayDecoration[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(5), Options::CAMERA_CENTER_Y - Utils::coord(80));
-    this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mShopButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(270));
+		this->mSettingsButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+		this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
+		this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
+		this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
+		this->mPlayDecoration[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(5), Options::CAMERA_CENTER_Y - Utils::coord(80));
+		this->mPlayDecoration[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(5), Options::CAMERA_CENTER_Y - Utils::coord(80));
+		this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     
-    this->mPlayDecoration[0]->setColor(ccc3(255.0, 0.0, 0.0));
-    this->mPlayDecoration[1]->setColor(ccc3(255.0, 0.0, 0.0));
+		this->mPlayDecoration[0]->setColor(ccc3(255.0, 0.0, 0.0));
+		this->mPlayDecoration[1]->setColor(ccc3(255.0, 0.0, 0.0));
     
-    this->mPlayDecoration[1]->setScale(0.9);
+		this->mPlayDecoration[1]->setScale(0.9);
     
-    this->mPlayDecorationColorUpdateTimeElapsed = 0;
+		this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
-    //SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
+		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
 
-    if(!Options::MUSIC_ENABLE)
-    {
-        SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
-    }
-}
+		if(!Options::MUSIC_ENABLE)
+		{
+			SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+		}
+	}
 
 Menu* Menu::create()
 {

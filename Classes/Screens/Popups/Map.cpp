@@ -42,7 +42,8 @@ class BackgroundEntity : public Entity
 public:
     float p;
     BackgroundEntity(const char* pTextureFileName, CCNode* pParent) :
-    Entity(pTextureFileName, pParent)
+    Entity(pTextureFileName, pParent),
+	p(0)
     {
         p = 0;
     }
@@ -104,229 +105,265 @@ Map::~Map()
     this->removeAllChildrenWithCleanup(true);
 }
 
-Map::Map(CCNode* pParent)
-{
-    this->init();
+Map::Map(CCNode* pParent) :
+	mParent(0),
+	mDarkness(0),
+	mBackground(0),
+	mScroll(0),
+	mSquare(0),
+	mName(0),
+	mDay(),
+	mRipples(0),
+	mWays(0),
+	mCoins(0),
+	mSilverCoins(0),
+	mConfetti(0),
+	mStars(0),
+	mAnimatedCoins(0),
+	mSilverAnimatedCoins(0),
+	mCloseButton(0),
+	mShowAnimationCount(0),
+	mHideAnimationCount(0),
+	mShowAnimationTime(0),
+	mShowAnimationTimeElapsed(0),
+	mHideAnimationTime(0),
+	mHideAnimationTimeElapsed(0),
+	mShowAnimationRunning(0),
+	mHideAnimationRunning(0),
+	mAnimatedCoinsAnimation(0),
+	mAnimatedCoinsAnimationTime(0),
+	mAnimatedCoinsAnimationTimeElpased(0),
+	mShowed(0),
+	mAnimation(0),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0),
+	mAnimationCount(0),
+	mAnimationCount2(0),
+	mBonusTextes(),
+	mBonusTextes2(),
+	day(0)
+	{
+		this->init();
     
-    this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
+		this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
     
-    this->ignoreAnchorPointForPosition(false);
-    this->mSquare = Background1::create();
+		this->ignoreAnchorPointForPosition(false);
+		this->mSquare = Background1::create();
     
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas13");
-    SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas4");
-    SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas5");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas13");
+		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas4");
+		SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas5");
     
-    this->mBackground = BackgroundEntity::create("map.png", this);
+		this->mBackground = BackgroundEntity::create("map.png", this);
     
-    this->mRipples = EntityManager::create(40, Ripple::create(), this->mBackground);
+		this->mRipples = EntityManager::create(40, Ripple::create(), this->mBackground);
     
-    this->mWays = EntityManager::create(13, Entity::create("way.png"), this->mBackground);
+		this->mWays = EntityManager::create(13, Entity::create("way.png"), this->mBackground);
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(105) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(200));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(192));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(85) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(188));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(105) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(200));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(192));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(85) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(188));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(200));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(120) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(212));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(146) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(203));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(200));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(120) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(212));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(146) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(203));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(120));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(120) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(142));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(146) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(123));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(120));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(120) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(142));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(146) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(123));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(0) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(120));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(5) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(142));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(26) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(123));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(0) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(120));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(5) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(142));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(26) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(123));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(70) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(100));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(75) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(112));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(96) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(103));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(70) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(100));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(75) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(112));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(96) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(103));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(300) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(100));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(305) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(112));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(324) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(103));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(300) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(100));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(305) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(112));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(324) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(103));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(210) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(50));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(205) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(56));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(194) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(42));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(210) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(50));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(205) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(56));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(194) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(42));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(370) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(140));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(375) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(152));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(394) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(143));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(370) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(140));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(375) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(152));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(394) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(143));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(90) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(240));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(95) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(252));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(114) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(243));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(90) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(240));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(95) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(252));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(114) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(243));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(120) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(190));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(202));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(144) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(193));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(120) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(190));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(125) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(202));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(144) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(193));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(60) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(190));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(65) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(202));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(84) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(193));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(60) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(190));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(65) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(202));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(84) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(193));
     
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(130) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(240));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(135) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(252));
-    this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(154) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(243));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(130) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(240));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(135) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(252));
+		this->mRipples->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(154) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(243));
     
     
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(300) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(210));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(270) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(280));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(210) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(330));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(300) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(210));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(270) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(280));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(210) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(330));
     
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(20) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(320));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(60) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(260));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(80) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(190));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(20) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(320));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(60) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(260));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(80) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(190));
     
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(70) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(60));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(110) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(140));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(140) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(220));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(70) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(60));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(110) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(140));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(140) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(220));
     
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(350) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(420));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(300) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(480));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(200) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(480));
-    this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(100) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(480));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(350) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(420));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(300) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(480));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(200) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(480));
+		this->mWays->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(100) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(480));
     
-    static_cast<Entity*>(this->mWays->objectAtIndex(0))->setRotation(-85);
-    static_cast<Entity*>(this->mWays->objectAtIndex(1))->setRotation(-55);
-    static_cast<Entity*>(this->mWays->objectAtIndex(2))->setRotation(-30);
+		static_cast<Entity*>(this->mWays->objectAtIndex(0))->setRotation(-85);
+		static_cast<Entity*>(this->mWays->objectAtIndex(1))->setRotation(-55);
+		static_cast<Entity*>(this->mWays->objectAtIndex(2))->setRotation(-30);
     
-    static_cast<Entity*>(this->mWays->objectAtIndex(3))->setRotation(-125);
-    static_cast<Entity*>(this->mWays->objectAtIndex(4))->setRotation(-115);
-    static_cast<Entity*>(this->mWays->objectAtIndex(5))->setRotation(-105);
+		static_cast<Entity*>(this->mWays->objectAtIndex(3))->setRotation(-125);
+		static_cast<Entity*>(this->mWays->objectAtIndex(4))->setRotation(-115);
+		static_cast<Entity*>(this->mWays->objectAtIndex(5))->setRotation(-105);
     
-    static_cast<Entity*>(this->mWays->objectAtIndex(6))->setRotation(-50);
-    static_cast<Entity*>(this->mWays->objectAtIndex(7))->setRotation(-60);
-    static_cast<Entity*>(this->mWays->objectAtIndex(8))->setRotation(-70);
+		static_cast<Entity*>(this->mWays->objectAtIndex(6))->setRotation(-50);
+		static_cast<Entity*>(this->mWays->objectAtIndex(7))->setRotation(-60);
+		static_cast<Entity*>(this->mWays->objectAtIndex(8))->setRotation(-70);
     
-    static_cast<Entity*>(this->mWays->objectAtIndex(9))->setRotation(-85);
-    static_cast<Entity*>(this->mWays->objectAtIndex(10))->setRotation(20);
-    static_cast<Entity*>(this->mWays->objectAtIndex(11))->setRotation(0);
-    static_cast<Entity*>(this->mWays->objectAtIndex(12))->setRotation(0);
+		static_cast<Entity*>(this->mWays->objectAtIndex(9))->setRotation(-85);
+		static_cast<Entity*>(this->mWays->objectAtIndex(10))->setRotation(20);
+		static_cast<Entity*>(this->mWays->objectAtIndex(11))->setRotation(0);
+		static_cast<Entity*>(this->mWays->objectAtIndex(12))->setRotation(0);
     
-    static_cast<Entity*>(this->mWays->objectAtIndex(0))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(1))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(2))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(3))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(4))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(5))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(6))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(7))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(8))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(9))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(10))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(11))->setVisible(false);
-    static_cast<Entity*>(this->mWays->objectAtIndex(12))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(0))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(1))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(2))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(3))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(4))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(5))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(6))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(7))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(8))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(9))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(10))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(11))->setVisible(false);
+		static_cast<Entity*>(this->mWays->objectAtIndex(12))->setVisible(false);
     
-    this->mDay[0] = Entity::create("day1.png", this->mBackground);
-    this->mDay[1] = Entity::create("day2.png", this->mBackground);
-    this->mDay[2] = Entity::create("day3.png", this->mBackground);
-    this->mDay[3] = Entity::create("day4.png", this->mBackground);
-    this->mDay[4] = Entity::create("day5.png", this->mBackground);
+		this->mDay[0] = Entity::create("day1.png", this->mBackground);
+		this->mDay[1] = Entity::create("day2.png", this->mBackground);
+		this->mDay[2] = Entity::create("day3.png", this->mBackground);
+		this->mDay[3] = Entity::create("day4.png", this->mBackground);
+		this->mDay[4] = Entity::create("day5.png", this->mBackground);
     
-    this->mDay[0]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(340) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(110));
-    this->mDay[1]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(90) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(405) + Utils::coord(0));
-    this->mDay[2]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(50) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(30));
-    this->mDay[3]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(260) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(260));
-    this->mDay[4]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(50) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(430));
+		this->mDay[0]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(340) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(110));
+		this->mDay[1]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(90) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(405) + Utils::coord(0));
+		this->mDay[2]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(50) + Utils::coord(130), this->mBackground->getHeight() / 2 + Utils::coord(30));
+		this->mDay[3]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(260) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(260));
+		this->mDay[4]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(50) + Utils::coord(130), this->mBackground->getHeight() / 2 - Utils::coord(430));
     
-    this->mName = Entity::create("map_name.png", this->mBackground);
+		this->mName = Entity::create("map_name.png", this->mBackground);
     
-    this->mName->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - Utils::coord(30));
+		this->mName->create()->setCenterPosition(this->mBackground->getWidth() / 2, this->mBackground->getHeight() - Utils::coord(30));
     
-    Text::create(Options::TEXT_DAILY_MAP, this->mName)->setCenterPosition(this->mName->getWidth() / 2, this->mName->getHeight() / 2);
+		Text::create(Options::TEXT_DAILY_MAP, this->mName)->setCenterPosition(this->mName->getWidth() / 2, this->mName->getHeight() / 2);
     
-    this->mScroll = Entity::create("map_sprite.png", 2, 2, spriteBatch);
+		this->mScroll = Entity::create("map_sprite.png", 2, 2, spriteBatch);
     
-    this->addChild(spriteBatch);
+		this->addChild(spriteBatch);
     
-    this->mBonusTextes[0] = Text::create(Options::TEXT_COINS_BONUS[0], this->mBackground);
-    this->mBonusTextes[1] = Text::create(Options::TEXT_COINS_BONUS[1], this->mBackground);
-    this->mBonusTextes[2] = Text::create(Options::TEXT_COINS_BONUS[2], this->mBackground);
-    this->mBonusTextes[3] = Text::create(Options::TEXT_COINS_BONUS[3], this->mBackground);
-    this->mBonusTextes[4] = Text::create(Options::TEXT_COINS_BONUS[4], this->mBackground);
+		this->mBonusTextes[0] = Text::create(Options::TEXT_COINS_BONUS[0], this->mBackground);
+		this->mBonusTextes[1] = Text::create(Options::TEXT_COINS_BONUS[1], this->mBackground);
+		this->mBonusTextes[2] = Text::create(Options::TEXT_COINS_BONUS[2], this->mBackground);
+		this->mBonusTextes[3] = Text::create(Options::TEXT_COINS_BONUS[3], this->mBackground);
+		this->mBonusTextes[4] = Text::create(Options::TEXT_COINS_BONUS[4], this->mBackground);
     
-    this->mBonusTextes2[0] = Text::create(Options::TEXT_COINS_BONUS[5], this->mBackground);
-    this->mBonusTextes2[1] = Text::create(Options::TEXT_COINS_BONUS[6], this->mBackground);
-    this->mBonusTextes2[2] = Text::create(Options::TEXT_COINS_BONUS[7], this->mBackground);
-    this->mBonusTextes2[3] = Text::create(Options::TEXT_COINS_BONUS[8], this->mBackground);
-    this->mBonusTextes2[4] = Text::create(Options::TEXT_COINS_BONUS[9], this->mBackground);
+		this->mBonusTextes2[0] = Text::create(Options::TEXT_COINS_BONUS[5], this->mBackground);
+		this->mBonusTextes2[1] = Text::create(Options::TEXT_COINS_BONUS[6], this->mBackground);
+		this->mBonusTextes2[2] = Text::create(Options::TEXT_COINS_BONUS[7], this->mBackground);
+		this->mBonusTextes2[3] = Text::create(Options::TEXT_COINS_BONUS[8], this->mBackground);
+		this->mBonusTextes2[4] = Text::create(Options::TEXT_COINS_BONUS[9], this->mBackground);
     
-    this->mBonusTextes[0]->setCenterPosition(this->mDay[0]->getCenterX(), this->mDay[0]->getCenterY() - Utils::coord(130));
-    this->mBonusTextes[1]->setCenterPosition(this->mDay[1]->getCenterX(), this->mDay[1]->getCenterY() - Utils::coord(130));
-    this->mBonusTextes[2]->setCenterPosition(this->mDay[2]->getCenterX(), this->mDay[2]->getCenterY() - Utils::coord(130));
-    this->mBonusTextes[3]->setCenterPosition(this->mDay[3]->getCenterX(), this->mDay[3]->getCenterY() - Utils::coord(130));
-    this->mBonusTextes[4]->setCenterPosition(this->mDay[4]->getCenterX(), this->mDay[4]->getCenterY() - Utils::coord(130));
+		this->mBonusTextes[0]->setCenterPosition(this->mDay[0]->getCenterX(), this->mDay[0]->getCenterY() - Utils::coord(130));
+		this->mBonusTextes[1]->setCenterPosition(this->mDay[1]->getCenterX(), this->mDay[1]->getCenterY() - Utils::coord(130));
+		this->mBonusTextes[2]->setCenterPosition(this->mDay[2]->getCenterX(), this->mDay[2]->getCenterY() - Utils::coord(130));
+		this->mBonusTextes[3]->setCenterPosition(this->mDay[3]->getCenterX(), this->mDay[3]->getCenterY() - Utils::coord(130));
+		this->mBonusTextes[4]->setCenterPosition(this->mDay[4]->getCenterX(), this->mDay[4]->getCenterY() - Utils::coord(130));
     
-    this->mBonusTextes2[0]->setCenterPosition(this->mDay[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 + this->mBonusTextes2[0]->getWidth() / 2, this->mDay[0]->getCenterY() - Utils::coord(170));
-    this->mBonusTextes2[1]->setCenterPosition(this->mDay[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 + this->mBonusTextes2[1]->getWidth() / 2, this->mDay[1]->getCenterY() - Utils::coord(170));
-    this->mBonusTextes2[2]->setCenterPosition(this->mDay[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 + this->mBonusTextes2[2]->getWidth() / 2, this->mDay[2]->getCenterY() - Utils::coord(170));
-    this->mBonusTextes2[3]->setCenterPosition(this->mDay[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 + this->mBonusTextes2[3]->getWidth() / 2, this->mDay[3]->getCenterY() - Utils::coord(170));
-    this->mBonusTextes2[4]->setCenterPosition(this->mDay[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 + this->mBonusTextes2[4]->getWidth() / 2, this->mDay[4]->getCenterY() - Utils::coord(170));
+		this->mBonusTextes2[0]->setCenterPosition(this->mDay[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 + this->mBonusTextes2[0]->getWidth() / 2, this->mDay[0]->getCenterY() - Utils::coord(170));
+		this->mBonusTextes2[1]->setCenterPosition(this->mDay[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 + this->mBonusTextes2[1]->getWidth() / 2, this->mDay[1]->getCenterY() - Utils::coord(170));
+		this->mBonusTextes2[2]->setCenterPosition(this->mDay[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 + this->mBonusTextes2[2]->getWidth() / 2, this->mDay[2]->getCenterY() - Utils::coord(170));
+		this->mBonusTextes2[3]->setCenterPosition(this->mDay[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 + this->mBonusTextes2[3]->getWidth() / 2, this->mDay[3]->getCenterY() - Utils::coord(170));
+		this->mBonusTextes2[4]->setCenterPosition(this->mDay[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 + this->mBonusTextes2[4]->getWidth() / 2, this->mDay[4]->getCenterY() - Utils::coord(170));
     
-    /*this->mBonusTextes[0]->setColor(ccc3(100, 100, 100));
-    this->mBonusTextes[1]->setColor(ccc3(100, 100, 100));
-    this->mBonusTextes[2]->setColor(ccc3(100, 100, 100));
-    this->mBonusTextes[3]->setColor(ccc3(100, 100, 100));
-    this->mBonusTextes[4]->setColor(ccc3(100, 100, 100));*/
+		/*this->mBonusTextes[0]->setColor(ccc3(100, 100, 100));
+		this->mBonusTextes[1]->setColor(ccc3(100, 100, 100));
+		this->mBonusTextes[2]->setColor(ccc3(100, 100, 100));
+		this->mBonusTextes[3]->setColor(ccc3(100, 100, 100));
+		this->mBonusTextes[4]->setColor(ccc3(100, 100, 100));*/
     
-    this->addChild(spriteBatch2);
-    this->mBackground->addChild(spriteBatch3);
+		this->addChild(spriteBatch2);
+		this->mBackground->addChild(spriteBatch3);
     
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
-    this->mScroll->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT);
-    this->mScroll->animate(0.04);
+		this->mScroll->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT);
+		this->mScroll->animate(0.04);
     
-    this->mParent = pParent;
+		this->mParent = pParent;
     
-    this->mShowed = false;
-    this->mAnimation = false;
+		this->mShowed = false;
+		this->mAnimation = false;
     
-    this->mShowAnimationRunning = false;
-    this->mHideAnimationRunning = false;
+		this->mShowAnimationRunning = false;
+		this->mHideAnimationRunning = false;
     
-    this->mParent->addChild(this->mSquare);
+		this->mParent->addChild(this->mSquare);
     
-    this->mStars = EntityManager::create(100, StarParticle2::create(), this->mBackground);
-    this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
-    this->mCoins = EntityManager::create(5, Entity::create("coins@2x.png", 5, 4), spriteBatch3);
-    this->mSilverCoins = EntityManager::create(5, Entity::create("coins_silver@2x.png", 5, 4), spriteBatch3);
-    this->mAnimatedCoins = EntityManager::create(100, AnimatedCoin::create("coins@2x.png", 1.5), spriteBatch3);
-    this->mSilverAnimatedCoins = EntityManager::create(100, AnimatedCoin::create("coins_silver@2x.png", 1.5), spriteBatch3);
+		this->mStars = EntityManager::create(100, StarParticle2::create(), this->mBackground);
+		this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
+		this->mCoins = EntityManager::create(5, Entity::create("coins@2x.png", 5, 4), spriteBatch3);
+		this->mSilverCoins = EntityManager::create(5, Entity::create("coins_silver@2x.png", 5, 4), spriteBatch3);
+		this->mAnimatedCoins = EntityManager::create(100, AnimatedCoin::create("coins@2x.png", 1.5), spriteBatch3);
+		this->mSilverAnimatedCoins = EntityManager::create(100, AnimatedCoin::create("coins_silver@2x.png", 1.5), spriteBatch3);
     
-    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY());
-    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY());
-    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY());
-    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY());
-    this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY());
+		this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY());
+		this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY());
+		this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY());
+		this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY());
+		this->mSilverCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY());
     
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY() - Utils::coord(40));
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY() - Utils::coord(40));
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY() - Utils::coord(40));
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY() - Utils::coord(40));
-    this->mCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY() - Utils::coord(40));
+		this->mCoins->create()->setCenterPosition(this->mBonusTextes[0]->getCenterX() - this->mBonusTextes[0]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[0]->getCenterY() - Utils::coord(40));
+		this->mCoins->create()->setCenterPosition(this->mBonusTextes[1]->getCenterX() - this->mBonusTextes[1]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[1]->getCenterY() - Utils::coord(40));
+		this->mCoins->create()->setCenterPosition(this->mBonusTextes[2]->getCenterX() - this->mBonusTextes[2]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[2]->getCenterY() - Utils::coord(40));
+		this->mCoins->create()->setCenterPosition(this->mBonusTextes[3]->getCenterX() - this->mBonusTextes[3]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[3]->getCenterY() - Utils::coord(40));
+		this->mCoins->create()->setCenterPosition(this->mBonusTextes[4]->getCenterX() - this->mBonusTextes[4]->getWidth() / 2 - Utils::coord(30), this->mBonusTextes[4]->getCenterY() - Utils::coord(40));
     
-    for(int i = 0; i < this->mSilverCoins->getCount(); i++)
-    {
-        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setCurrentFrameIndex(Utils::random(0, 20));
-        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setScale(0.7);
-        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setRotation(-45);
-        static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->animate(0.04);
-    }
+		for(int i = 0; i < this->mSilverCoins->getCount(); i++)
+		{
+			static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setCurrentFrameIndex(Utils::random(0, 20));
+			static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setScale(0.7);
+			static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->setRotation(-45);
+			static_cast<Entity*>(this->mSilverCoins->objectAtIndex(i))->animate(0.04);
+		}
     
-    for(int i = 0; i < this->mCoins->getCount(); i++)
-    {
-        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setCurrentFrameIndex(Utils::random(0, 20));
-        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setScale(0.7);
-        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setRotation(-45);
-        static_cast<Entity*>(this->mCoins->objectAtIndex(i))->animate(0.04);
-    }
+		for(int i = 0; i < this->mCoins->getCount(); i++)
+		{
+			static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setCurrentFrameIndex(Utils::random(0, 20));
+			static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setScale(0.7);
+			static_cast<Entity*>(this->mCoins->objectAtIndex(i))->setRotation(-45);
+			static_cast<Entity*>(this->mCoins->objectAtIndex(i))->animate(0.04);
+		}
     
-    this->mAnimatedCoinsAnimation = false;
-}
+		this->mAnimatedCoinsAnimation = false;
+	}
 
 Map* Map::create(CCNode* pParent)
 {

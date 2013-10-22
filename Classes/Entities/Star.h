@@ -22,7 +22,6 @@ class Star : public Entity
 		// Fields
 		// ===========================================================
     
-    
         float mAnimationTimeElapsed;
     
         bool mIsAnimationRunning;

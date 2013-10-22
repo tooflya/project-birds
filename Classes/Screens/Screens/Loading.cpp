@@ -53,35 +53,47 @@ Loading::~Loading()
 {
 }
 
-Loading::Loading()
-{
-	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
+Loading::Loading() :
+	mNumberOfSprites(0),
+	mNumberOfLoadedSprites(0),
+	mLoadingPauseTime(0),
+	mLoadingPauseTimeElapsed(0),
+	mLoadingProgressTime(0),
+	mLoadingProgressTimeElapsed(0),
+	mBackground(0),
+	mBarBackground(0),
+	mBar(0),
+	mLoadingText(0),
+	mLoading(0),
+	mLoadingProgress(0)
+	{
+		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
 
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas1");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas1");
 
-    this->mBackground = Entity::create("start_preloader_bg@2x.png", spriteBatch);
-    this->mBarBackground = Entity::create("start_preload_bar@2x.png", spriteBatch);
-    this->mBar = Entity::create("start_preload_bar_fill@2x.png", spriteBatch);
+		this->mBackground = Entity::create("start_preloader_bg@2x.png", spriteBatch);
+		this->mBarBackground = Entity::create("start_preload_bar@2x.png", spriteBatch);
+		this->mBar = Entity::create("start_preload_bar_fill@2x.png", spriteBatch);
 
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->mBarBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
-    this->mBar->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
-    this->mBar->showPercentage(0);
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mBarBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
+		this->mBar->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
+		this->mBar->showPercentage(0);
     
-    this->mNumberOfLoadedSprites = -1;
-    this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
+		this->mNumberOfLoadedSprites = -1;
+		this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
     
-    this->addChild(spriteBatch);
+		this->addChild(spriteBatch);
 
-    this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
-    this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
+		this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
+		this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
 
-    this->mLoading = false;
-    this->mLoadingProgress = false;
+		this->mLoading = false;
+		this->mLoadingProgress = false;
 
-    this->mLoadingPauseTime = 0;
-    this->mLoadingPauseTimeElapsed = 0.0;
-}
+		this->mLoadingPauseTime = 0;
+		this->mLoadingPauseTimeElapsed = 0.0;
+	}
 
 Loading* Loading::create()
 {

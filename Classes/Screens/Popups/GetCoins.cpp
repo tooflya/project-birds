@@ -27,7 +27,10 @@ GetCoins::~GetCoins()
 }
 
 GetCoins::GetCoins(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mPurchaseId(0),
+	mGetCoinsButtons(),
+	mLights(0)
     {
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
         

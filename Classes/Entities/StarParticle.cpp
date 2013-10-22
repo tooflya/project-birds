@@ -27,7 +27,12 @@ ccColor3B StarParticle::COLORS[3] =
 // ===========================================================
 
 StarParticle::StarParticle() :
-    ImpulseEntity("star_particle@2x.png")
+    ImpulseEntity("star_particle@2x.png"),
+	mType(0),
+	mScaleSpeed(0),
+	mRotationSpeed(0),
+	mAlphaSpeed(0),
+	mIsParticle(0)
     {
         this->mIsParticle = false;
         this->mType = -1;

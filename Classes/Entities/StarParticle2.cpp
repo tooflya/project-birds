@@ -27,7 +27,9 @@ ccColor3B StarParticle2::COLORS[3] =
 // ===========================================================
 
 StarParticle2::StarParticle2() :
-    Entity("star_particle@2x.png")
+    Entity("star_particle@2x.png"),
+	mVectorX(0),
+    mVectorY(0)
     {
     }
 

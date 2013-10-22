@@ -26,7 +26,12 @@ Arcade::~Arcade()
 }
 
 Arcade::Arcade() :
-    Game()
+    Game(),
+	mTimeIcon(0),
+	mCountText(0),
+	mBestCountText(0),
+	mTimeText(0),
+	mGoldLifesCount(0)
     {
         Loader::TYPE = 2;
     

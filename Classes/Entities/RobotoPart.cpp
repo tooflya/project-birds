@@ -22,7 +22,14 @@ int RobotoPart::FRAME = 0;
 // ===========================================================
 
 RobotoPart::RobotoPart() :
-    Entity("bonus_bird_parts.png", 4, 2)
+    Entity("bonus_bird_parts.png", 4, 2),
+	mRotationSpeed(0),
+	mVectorX(0),
+	mVectorY(0),
+	mBlowTime(0),
+	mBlowTimeElapsed(0),
+	mVectorReference(0),
+	mFrameIndex(0)
     {
     }
 

@@ -20,6 +20,7 @@
 // ===========================================================
 
 AnimatedCoin::AnimatedCoin(const char* pTextureFileName, float pScaleFactor) :
+	mScaleFactor(0),
     ImpulseEntity(pTextureFileName, 5, 4)
     {
         this->mScaleFactor = pScaleFactor;

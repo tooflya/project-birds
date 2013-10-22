@@ -20,7 +20,12 @@
 // ===========================================================
 
 KeyParticle::KeyParticle() :
-    Entity("popup_key_ico_fall@2x.png")
+    Entity("popup_key_ico_fall@2x.png"),
+	mMoveSpeed(0),
+	mRotationSpeed(0),
+	mAlphaSpeed(0),
+	mMoveTime(0),
+	mMoveTimeElapsed(0)
     {
     }
 

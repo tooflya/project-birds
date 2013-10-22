@@ -315,6 +315,12 @@
     <ClCompile Include="..\Classes\Utils\Utils.cpp">
       <Filter>Classes\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\KeyDisplay.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -571,6 +577,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Utils\Utils.h">
       <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\KeyDisplay.h">
+      <Filter>Classes\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

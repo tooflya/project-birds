@@ -34,19 +34,31 @@ void Button::constructor(const int pButtonID, ButtonReceiver* pSender)
 }
 
 Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender) :
-    Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent)
+    Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent),
+	mID(0),
+	mSender(0),
+	mText(0),
+	mIsModal(0)
     {
         this->constructor(pButtonID, pSender);
     }
 
 Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender) :
-    Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount)
+    Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount),
+	mID(0),
+	mSender(0),
+	mText(0),
+	mIsModal(0)
     {
         this->constructor(pButtonID, pSender);
     }
 
 Button::Button(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender) :
-    Entity(pEntityStructure, pParent)
+    Entity(pEntityStructure, pParent),
+	mID(0),
+	mSender(0),
+	mText(0),
+	mIsModal(0)
     {
         this->constructor(pButtonID, pSender);
     }

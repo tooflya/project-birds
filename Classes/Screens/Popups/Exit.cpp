@@ -25,7 +25,11 @@ Exit::~Exit()
 }
 
 Exit::Exit(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mLightsAnimationReverse(),
+	mYesButton(0),
+	mLight(0),
+	mLights(0)
     {
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mLight = Entity::create("popup_quit_picture_light_main@2x.png", this->mSpriteBatch);

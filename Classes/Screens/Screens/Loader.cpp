@@ -74,58 +74,76 @@ Loader::~Loader()
     CC_SAFE_RELEASE(this->mCircles);
 }
 
-Loader::Loader()
-{
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas3");
-    this->addChild(spriteBatch);
+Loader::Loader() :
+	mNumberOfSprites(0),
+	mNumberOfLoadedSprites(0),
+	mCircleAnimationTime(0),
+	mCircleAnimationTimeElapsed(0),
+	mLoadingProgressTime(0),
+	mLoadingProgressTimeElapsed(0),
+	mLoadingTime(0),
+	mLoadingTimeElapsed(0),
+	mTapToContinueAnimation(0),
+	mTapToContinueAnimationReverse(0),
+	mIsWorkDone(0),
+	mLoading(0),
+	mLoadingProgress(0),
+	mBackground(0),
+	mBird(0),
+	mLoadingText(0),
+	mTipText(0),
+	mCircles(0)
+	{
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas3");
+		this->addChild(spriteBatch);
 
-    this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);
-    this->mCircles = EntityManager::create(15, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
-    this->mBird = Entity::create("preload-lvl-bird@2x.png", spriteBatch);
+		this->mBackground = Entity::create("preload-lvl-bg@2x.png", spriteBatch);
+		this->mCircles = EntityManager::create(15, Entity::create("preload-lvl-wave@2x.png"), spriteBatch);
+		this->mBird = Entity::create("preload-lvl-bird@2x.png", spriteBatch);
     
-    this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
+		this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
     
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->mBird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
-    this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mBird->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+		this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     
-    this->mTipText = Text::create(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH - Utils::coord(50), 0), this);
+		this->mTipText = Text::create(Options::TEXT_TIP[0], ccp(Options::CAMERA_WIDTH - Utils::coord(50), 0), this);
 
-    for(int i = 0; i < 5; i++)
-    {
-            Entity* circle = (Entity*) this->mCircles->create();
+		for(int i = 0; i < 5; i++)
+		{
+				Entity* circle = (Entity*) this->mCircles->create();
             
-            circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
-            circle->setRotation(0.0);
-            circle->setScale(0.0);
-            circle->setOpacity(255.0);
+				circle->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+				circle->setRotation(0.0);
+				circle->setScale(0.0);
+				circle->setOpacity(255.0);
         
-        for(int i = 0; i < this->mCircles->getCount(); i++)
-        {
-            Entity* circle = static_cast<Entity*>(this->mCircles->objectAtIndex(i));
+			for(int i = 0; i < this->mCircles->getCount(); i++)
+			{
+				Entity* circle = static_cast<Entity*>(this->mCircles->objectAtIndex(i));
             
-            circle->setRotation(circle->getRotation() + 1.0 * 30.0);
-            circle->setScale(circle->getScaleX() + 0.01 * 30.0);
-            circle->setOpacity(circle->getOpacity() - 1.0 * 30.0);
+				circle->setRotation(circle->getRotation() + 1.0 * 30.0);
+				circle->setScale(circle->getScaleX() + 0.01 * 30.0);
+				circle->setOpacity(circle->getOpacity() - 1.0 * 30.0);
             
-            if(circle->getOpacity() <= 0.0)
-            {
-                circle->destroy();
-            }
-        }
-    }
+				if(circle->getOpacity() <= 0.0)
+				{
+					circle->destroy();
+				}
+			}
+		}
     
-    this->mCircleAnimationTime = 0.5;
-    this->mCircleAnimationTimeElapsed = 0;
+		this->mCircleAnimationTime = 0.5;
+		this->mCircleAnimationTimeElapsed = 0;
 
-    this->mLoadingTime = 0.5;
-    this->mLoadingTimeElapsed = 0;
+		this->mLoadingTime = 0.5;
+		this->mLoadingTimeElapsed = 0;
 
-    this->mLoading = false;
-    this->mLoadingProgress = false;
+		this->mLoading = false;
+		this->mLoadingProgress = false;
     
-    this->setRegisterAsTouchable(true);
-}
+		this->setRegisterAsTouchable(true);
+	}
 
 Loader* Loader::create()
 {

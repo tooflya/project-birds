@@ -29,7 +29,21 @@ Classic::~Classic()
 }
 
 Classic::Classic() :
-    Game()
+    Game(),
+	mLevelUpTime(0),
+	mLevelUpTimeElapsed(0),
+	mLevelUpAnimationTime(0),
+	mLevelUpAnimationTimeElapsed(0),
+	mChalangeTime(0),
+	mChalangeTimeElapsed(0),
+	mSoundChalangeTimeElapsed(0),
+	mIsLevelUpAnimation(0),
+	mConfetti(0),
+	mCountText(0),
+	mBestCountText(0),
+	mGoldLifesCount(0),
+	mLevelUpText(0),
+	mBonusTimeText(0)
     {
         Loader::TYPE = 1;
         

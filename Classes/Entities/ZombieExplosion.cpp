@@ -20,9 +20,11 @@
 // ===========================================================
 
 ZombieExplosion::ZombieExplosion() :
-    Entity("explosion-zombi@2x.png", 3, 4)
-    {
-        
+    Entity("explosion-zombi@2x.png", 3, 4),
+	mFollowEntity(0),
+	mFX(0),
+	mFY(0)
+    {   
     }
 
 ZombieExplosion* ZombieExplosion::create()

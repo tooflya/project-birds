@@ -29,7 +29,12 @@ UnlockLevel::~UnlockLevel()
 }
 
 UnlockLevel::UnlockLevel(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mKey(0),
+	mUnlockButton(0),
+	mPriceText(0),
+	mLights(0),
+	action(0)
     {
         CCSpriteBatchNode* spriteBatch3 = SpriteBatch::create("TextureAtlas9");
         this->addChild(spriteBatch3);

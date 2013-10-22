@@ -25,7 +25,9 @@ PleaseRate::~PleaseRate()
 }
 
 PleaseRate::PleaseRate(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mRateButton(0),
+	mLights()
     {
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
     

@@ -1,8 +1,8 @@
-﻿<xapCache source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds_Debug_Win32.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="10/22/2013 1:50:46 PM">
+﻿<xapCache source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds_Debug_Win32.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="10/22/2013 4:02:28 PM">
   <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="10/22/2013 1:16:21 PM" />
-  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds.exe" archivePath="ProjectBirds.exe" lastWriteTime="10/22/2013 1:50:42 PM" />
-  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\CocosDenshion\CocosDenshion.winmd" archivePath="CocosDenshion.winmd" lastWriteTime="10/22/2013 1:48:34 PM" />
-  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\CocosDenshion\CocosDenshion.dll" archivePath="CocosDenshion.dll" lastWriteTime="10/22/2013 1:48:34 PM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\ProjectBirds\ProjectBirds.exe" archivePath="ProjectBirds.exe" lastWriteTime="10/22/2013 4:02:25 PM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\CocosDenshion\CocosDenshion.winmd" archivePath="CocosDenshion.winmd" lastWriteTime="10/22/2013 3:58:52 PM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\CocosDenshion\CocosDenshion.dll" archivePath="CocosDenshion.dll" lastWriteTime="10/22/2013 3:58:52 PM" />
   <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\Assets\Resources\Fonts\Comic Sans MS.ttf" archivePath="Assets\Resources\Fonts\Comic Sans MS.ttf" lastWriteTime="10/19/2013 5:15:34 AM" />
   <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="10/22/2013 12:53:37 PM" />
   <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="10/22/2013 12:53:37 PM" />
@@ -144,7 +144,7 @@
   <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\Assets\Resources\Graphics\1280x720\TextureAtlas9.pvr.ccz" archivePath="Assets\Resources\Graphics\1280x720\TextureAtlas9.pvr.ccz" lastWriteTime="10/19/2013 5:15:35 AM" />
   <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\Assets\Resources\Music\music-1.ogg" archivePath="Assets\Resources\Music\music-1.ogg" lastWriteTime="10/19/2013 5:15:35 AM" />
   <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.wp8\Assets\Resources\Music\music-2.ogg" archivePath="Assets\Resources\Music\music-2.ogg" lastWriteTime="10/19/2013 5:15:35 AM" />
-  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libEGL_phone.dll" archivePath="libEGL_phone.dll" lastWriteTime="10/22/2013 1:49:00 PM" />
-  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libGLESv2_phone.dll" archivePath="libGLESv2_phone.dll" lastWriteTime="10/22/2013 1:48:56 PM" />
-  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\libcocos2d\libcocos2d.dll" archivePath="libcocos2d.dll" lastWriteTime="10/22/2013 1:49:46 PM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libEGL_phone.dll" archivePath="libEGL_phone.dll" lastWriteTime="10/22/2013 3:58:54 PM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libGLESv2_phone.dll" archivePath="libGLESv2_phone.dll" lastWriteTime="10/22/2013 3:58:53 PM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\libcocos2d\libcocos2d.dll" archivePath="libcocos2d.dll" lastWriteTime="10/22/2013 3:59:05 PM" />
 </xapCache>

@@ -20,7 +20,17 @@
 // ===========================================================
 
 Ripple::Ripple() :
-    Entity("wave.png")
+    Entity("wave.png"),
+	mAlphaSpeed(0),
+	mScaleXSpeed(0),
+	mScaleYSpeed(0),
+	mMinXScale(0),
+	mMinYScale(0),
+	mMaxXScale(0),
+	mMaxYScale(0),
+	mAlphaReverse(0),
+	mScaleXReverse(0),
+	mScaleYReverse(0)
     {
     }
 

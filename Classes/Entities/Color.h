@@ -115,7 +115,7 @@ class Color : public Entity
     
         void runDestroy();
     
-    void down();
+		void down();
     
         // ===========================================================
         // Override Methods

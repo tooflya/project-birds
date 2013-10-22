@@ -24,32 +24,36 @@ Credits::~Credits()
     CC_SAFE_RELEASE(this->mList);
 }
 
-Credits::Credits()
-{
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+Credits::Credits() :
+	mBackground(0),
+	mBackButton(0),
+	mListBorders(),
+	mList(0)
+	{
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
-	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
-    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-    this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_CREDITS_BACK, this);
+		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_CREDITS_BACK, this);
     
-    this->mListBorders[0] = Entity::create("about_scroll_border@2x.png", spriteBatch);
-    this->mListBorders[1] = Entity::create("about_scroll_border@2x.png", spriteBatch);
+		this->mListBorders[0] = Entity::create("about_scroll_border@2x.png", spriteBatch);
+		this->mListBorders[1] = Entity::create("about_scroll_border@2x.png", spriteBatch);
 
-    this->addChild(spriteBatch);
+		this->addChild(spriteBatch);
     
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
-    this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     
-    this->mListBorders[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
-    this->mListBorders[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(400));
+		this->mListBorders[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
+		this->mListBorders[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(400));
     
-    this->mListBorders[0]->setScaleY(1);
-    this->mListBorders[1]->setScaleY(-1);
+		this->mListBorders[0]->setScaleY(1);
+		this->mListBorders[1]->setScaleY(-1);
     
-    this->mList = CreditsList::create(this);
-}
+		this->mList = CreditsList::create(this);
+	}
 
 Credits* Credits::create()
 {

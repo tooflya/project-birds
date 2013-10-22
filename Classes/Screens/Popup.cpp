@@ -53,39 +53,56 @@ Popup::~Popup()
     this->removeAllChildrenWithCleanup(true);
 }
 
-Popup::Popup(CCNode* pParent, bool pFirst)
-{
-    this->init();
+Popup::Popup(CCNode* pParent, bool pFirst) :
+	mSpriteBatch(0),
+	mSpriteBatch2(0),
+	mParent(0),
+	mSquare(0),
+	mBackground(0),
+	mDarkness(0),
+	mIllustration(0),
+	mCloseButton(0),
+	mShowAnimationCount(0),
+	mHideAnimationCount(0),
+	mShowAnimationTime(0),
+	mShowAnimationTimeElapsed(0),
+	mHideAnimationTime(0),
+	mHideAnimationTimeElapsed(0),
+	mShowAnimationRunning(0),
+	mHideAnimationRunning(0),
+	mShowed(0)
+	{
+		this->init();
     
-    this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
+		this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
     
-    this->mParent = pParent;
+		this->mParent = pParent;
 
-    this->mSpriteBatch = SpriteBatch::create(pFirst ? "TextureAtlas4" : "TextureAtlas12");
-    this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas9");
+		this->mSpriteBatch = SpriteBatch::create(pFirst ? "TextureAtlas4" : "TextureAtlas12");
+		this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas9");
     
-    this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);
-    this->mSquare = Background::create();
+		this->mBackground = Entity::create("popup_bg@2x.png", this->mSpriteBatch);
+		this->mSquare = Background::create();
     
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
-    this->mShowed = false;
+		this->mShowed = false;
 
-    this->mShowAnimationRunning = false;
-    this->mHideAnimationRunning = false;
+		this->mShowAnimationRunning = false;
+		this->mHideAnimationRunning = false;
     
-    this->ignoreAnchorPointForPosition(false);
-    this->setAnchorPoint(ccp(0.5, 0.5));
+		this->ignoreAnchorPointForPosition(false);
+		this->setAnchorPoint(ccp(0.5, 0.5));
     
-    #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
-    this->setScale(0.0);
-    #endif
+		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+		this->setScale(0.0);
+		#endif
     
-    this->addChild(this->mSpriteBatch2);
-    this->addChild(this->mSpriteBatch);
+		this->addChild(this->mSpriteBatch2);
+		this->addChild(this->mSpriteBatch);
 
-    this->mParent->addChild(this->mSquare, 500);
-}
+		this->mParent->addChild(this->mSquare, 500);
+	}
 
 // ===========================================================
 // Methods

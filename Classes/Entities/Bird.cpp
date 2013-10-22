@@ -42,7 +42,29 @@ Bird::~Bird()
 }
 
 Bird::Bird(bool pBonus) :
-    ImpulseEntity(pBonus ? "special_birds_sprite@2x.png" : "birds_sprite@2x.png", 14, pBonus ? 8 : 9)
+    ImpulseEntity(pBonus ? "special_birds_sprite@2x.png" : "birds_sprite@2x.png", 14, pBonus ? 8 : 9),
+    mChalangeType(0),
+    mType(0),
+    mSoundEffect(0),
+    mDestroyAnimationFrames(0),
+    mMarkTime(0),
+    mMarkTimeElapsed(0),
+    mDestroyAnimationTime(0),
+    mDestroyAnimationTimeElapsed(0),
+    mIsGoingToDestroy(0),
+    mSpecialAnimation(0),
+    mChalange(0),
+    mSpecial(0),
+    mBonus(0),
+    mLife(0),
+	count(0),
+    mPT(0),
+    mPTE(0),
+    mPTEL(0),
+    e1(0),
+    e2(0),
+    mLifeCount(0),
+    mInitLifeCount(0)
     {
         this->mBonus = pBonus;
         

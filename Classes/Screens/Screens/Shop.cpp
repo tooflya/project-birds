@@ -26,19 +26,27 @@ class TouchLayer : public CCLayer
     bool mPostUpdate;
     
     public:
-    TouchLayer(const int pId, int pItemsCount)
-    {
-        this->init();
+    TouchLayer(const int pId, int pItemsCount) :
+		mId(0),
+		mItemsCount(0),
+		mMaxWidth(0),
+		mStartCoordinateX(0),
+		mStartPositionCoordinateX(0),
+		mStartTime(0),
+		mPostUpdatePower(0),
+		mPostUpdate(0)
+		{
+			this->init();
         
-        this->scheduleUpdate();
+			this->scheduleUpdate();
 
-        this->mId = pId;
-        this->mItemsCount = pItemsCount;
+			this->mId = pId;
+			this->mItemsCount = pItemsCount;
 
-        this->mMaxWidth = Utils::coord(230) * (this->mItemsCount - 3);
+			this->mMaxWidth = Utils::coord(230) * (this->mItemsCount - 3);
 
-        this->mPostUpdate = false;
-    }
+			this->mPostUpdate = false;
+		}
     
     static TouchLayer* create(const int pId, int pItemsCount)
     {
@@ -269,206 +277,240 @@ Shop::~Shop()
     CC_SAFE_RELEASE(this->mWeaponChecker);
 }
 
-Shop::Shop()
-{
-    this->mSpriteBatch1 = SpriteBatch::create("TextureAtlas2");
-    this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas5");
+Shop::Shop() :
+	mPanelItems(),
+	mSpriteBatch1(0),
+	mSpriteBatch2(0),
+	mGamePanel(0),
+	mBackgroundDecorations(),
+	mBackground(0),
+	mIcons(),
+	mTextBackgrounds(),
+	mTextText(),
+	mTextPluses(),
+	mPurchaseCoins(0),
+	mPurchaseSilverCoins(0),
+	mPurchaseLives(0),
+	mPurchaseKeys(0),
+	mBackButton(0),
+	mWheels(),
+	mItems(),
+	mShelfs(),
+	mLayersA(),
+	mBuyItemPopup(0),
+	mGetCoinsPopup(0),
+	mGetLivesPopup(0),
+	mGetKeysPopup(0),
+	mPaymentProceed(0),
+	mBoughtItem(0),
+	mWeaponChecker(0),
+	mAnimationOnItemBoughtTime(0),
+	mAnimationOnItemBoughtTimeElapsed(0),
+	mIsAnimationPurchaseTime(0),
+	mIsAnimationPurchaseTimeElapsed(0),
+	mIsAnimationPurchaseTimeEpisode(0),
+	mIsAnimationPurchaseTimeEpisodeElapsed(0),
+	mIsAnimationOnItemBoughtRunning(0),
+	mIsAnimationPurchaseRunning(0)
+	{
+		this->mSpriteBatch1 = SpriteBatch::create("TextureAtlas2");
+		this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas5");
     
-    this->addChild(this->mSpriteBatch1);
-    this->addChild(this->mSpriteBatch2);
+		this->addChild(this->mSpriteBatch1);
+		this->addChild(this->mSpriteBatch2);
 
-    this->mBackground = Entity::create("settings_bg@2x.png", this->mSpriteBatch1);
-    this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
-    this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
+		this->mBackground = Entity::create("settings_bg@2x.png", this->mSpriteBatch1);
+		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
+		this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
     
-	ccBlendFunc bf = {GL_ONE, GL_ZERO};
-    this->mBackground->setBlendFunc(bf);
+		ccBlendFunc bf = {GL_ONE, GL_ZERO};
+		this->mBackground->setBlendFunc(bf);
     
-    this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 1.6), this->mSpriteBatch2, 3);
-    this->mPurchaseSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.6), this->mSpriteBatch2, 3);
-    this->mPurchaseLives = EntityManager::create(50, LiveParticle::create(), this->mSpriteBatch2, 3);
-    this->mPurchaseKeys = EntityManager::create(50, KeyParticle::create(), this->mSpriteBatch2, 3);
+		this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 1.6), this->mSpriteBatch2, 3);
+		this->mPurchaseSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.6), this->mSpriteBatch2, 3);
+		this->mPurchaseLives = EntityManager::create(50, LiveParticle::create(), this->mSpriteBatch2, 3);
+		this->mPurchaseKeys = EntityManager::create(50, KeyParticle::create(), this->mSpriteBatch2, 3);
 
-    this->mGamePanel = Entity::create("shop_panel@2x.png", this->mSpriteBatch2);
+		this->mGamePanel = Entity::create("shop_panel@2x.png", this->mSpriteBatch2);
 
-    this->mTextBackgrounds[0] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
-    this->mTextBackgrounds[1] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
-    this->mTextBackgrounds[2] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
-    this->mTextBackgrounds[3] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
+		this->mTextBackgrounds[0] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
+		this->mTextBackgrounds[1] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
+		this->mTextBackgrounds[2] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
+		this->mTextBackgrounds[3] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
     
-    this->mTextBackgrounds[1]->setScaleX(0.9);
-    this->mTextBackgrounds[2]->setScaleX(0.8);
-    this->mTextBackgrounds[3]->setScaleX(0.8);
+		this->mTextBackgrounds[1]->setScaleX(0.9);
+		this->mTextBackgrounds[2]->setScaleX(0.8);
+		this->mTextBackgrounds[3]->setScaleX(0.8);
     
-    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
-    {
-        this->mTextBackgrounds[0]->setScaleX(this->mTextBackgrounds[0]->getScaleX() + 0.2);
-        this->mTextBackgrounds[1]->setScaleX(this->mTextBackgrounds[1]->getScaleX() + 0.2);
-        this->mTextBackgrounds[2]->setScaleX(this->mTextBackgrounds[2]->getScaleX() + 0.2);
-        this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
-    }
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
+		{
+			this->mTextBackgrounds[0]->setScaleX(this->mTextBackgrounds[0]->getScaleX() + 0.2);
+			this->mTextBackgrounds[1]->setScaleX(this->mTextBackgrounds[1]->getScaleX() + 0.2);
+			this->mTextBackgrounds[2]->setScaleX(this->mTextBackgrounds[2]->getScaleX() + 0.2);
+			this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
+		}
     
-	EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
+		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 
-    this->mTextPluses[0] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
-    this->mTextPluses[1] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
-    this->mTextPluses[2] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
-    this->mTextPluses[3] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
+		this->mTextPluses[0] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
+		this->mTextPluses[1] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
+		this->mTextPluses[2] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
+		this->mTextPluses[3] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
     
-    this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, this->mSpriteBatch2);
-    this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, this->mSpriteBatch2);
-    this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", this->mSpriteBatch2);
-    this->mIcons[3] = Entity::create("popup_key_ico@2x.png", this->mSpriteBatch2);
+		this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, this->mSpriteBatch2);
+		this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, this->mSpriteBatch2);
+		this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", this->mSpriteBatch2);
+		this->mIcons[3] = Entity::create("popup_key_ico@2x.png", this->mSpriteBatch2);
     
-	Textes textes1 = {"0", Options::FONT, 32, -1};
+		Textes textes1 = {"0", Options::FONT, 32, -1};
 
-    this->mTextText[0] = Text::create(textes1, this);
-    this->mTextText[1] = Text::create(textes1, this);
-    this->mTextText[2] = Text::create(textes1, this);
-    this->mTextText[3] = Text::create(textes1, this);
+		this->mTextText[0] = Text::create(textes1, this);
+		this->mTextText[1] = Text::create(textes1, this);
+		this->mTextText[2] = Text::create(textes1, this);
+		this->mTextText[3] = Text::create(textes1, this);
     
-    this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
-    this->mTextBackgrounds[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getWidth() / 2 + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mTextBackgrounds[1]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mTextBackgrounds[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-    this->mTextBackgrounds[3]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getWidth() / 2 + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[1]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[3]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
-    this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
-    this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
+		this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
+		this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
     
-    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
-    {
-        this->mTextBackgrounds[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + Utils::coord(30), this->mTextBackgrounds[0]->getCenterY());
-        this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(60), this->mTextBackgrounds[1]->getCenterY());
-        this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + Utils::coord(95), this->mTextBackgrounds[2]->getCenterY());
-        this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + Utils::coord(120), this->mTextBackgrounds[3]->getCenterY());
-    }
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
+		{
+			this->mTextBackgrounds[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + Utils::coord(30), this->mTextBackgrounds[0]->getCenterY());
+			this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(60), this->mTextBackgrounds[1]->getCenterY());
+			this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + Utils::coord(95), this->mTextBackgrounds[2]->getCenterY());
+			this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + Utils::coord(120), this->mTextBackgrounds[3]->getCenterY());
+		}
     
-    this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2, this->mTextBackgrounds[0]->getCenterY());
-    this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2, this->mTextBackgrounds[1]->getCenterY());
-    this->mTextPluses[1]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2, this->mTextBackgrounds[2]->getCenterY());
-    this->mTextPluses[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2, this->mTextBackgrounds[3]->getCenterY());
+		this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2, this->mTextBackgrounds[0]->getCenterY());
+		this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2, this->mTextBackgrounds[1]->getCenterY());
+		this->mTextPluses[1]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2, this->mTextBackgrounds[2]->getCenterY());
+		this->mTextPluses[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2, this->mTextBackgrounds[3]->getCenterY());
     
-    this->mIcons[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() - this->mTextBackgrounds[0]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[0]->getCenterY());
-    this->mIcons[1]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() - this->mTextBackgrounds[1]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[1]->getCenterY());
-    this->mIcons[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() - this->mTextBackgrounds[2]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[2]->getCenterY());
-    this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
+		this->mIcons[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() - this->mTextBackgrounds[0]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[0]->getCenterY());
+		this->mIcons[1]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() - this->mTextBackgrounds[1]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[1]->getCenterY());
+		this->mIcons[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() - this->mTextBackgrounds[2]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[2]->getCenterY());
+		this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
     
-    //this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
+		//this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
 
-	EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+		EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
-    this->mBackButton = Button::create(structure2, this->mSpriteBatch1, Options::BUTTONS_ID_SHOP_BACK, this);
+		this->mBackButton = Button::create(structure2, this->mSpriteBatch1, Options::BUTTONS_ID_SHOP_BACK, this);
     
-    for(int i = 0; i < 9; i++)
-    {
-        this->mWheels[i] = Entity::create("shop_wheel@2x.png", this->mSpriteBatch2);
-    }
+		for(int i = 0; i < 9; i++)
+		{
+			this->mWheels[i] = Entity::create("shop_wheel@2x.png", this->mSpriteBatch2);
+		}
     
-    float x = Options::CAMERA_CENTER_X;
-    float y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(330);
+		float x = Options::CAMERA_CENTER_X;
+		float y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(330);
     
-    this->mWeaponChecker = NULL;
+		this->mWeaponChecker = NULL;
     
-    int t = 0;
-    for(int i = 0; i < 3; i++)
-    {
-        int itemID = 20 * i - 1;
+		int t = 0;
+		for(int i = 0; i < 3; i++)
+		{
+			int itemID = 20 * i - 1;
 
-        this->mLayersA[i + 1] = TouchLayer::create(i, ITEMS_COUNT[i]);
+			this->mLayersA[i + 1] = TouchLayer::create(i, ITEMS_COUNT[i]);
         
-        this->addChild(this->mLayersA[i + 1], 2);
+			this->addChild(this->mLayersA[i + 1], 2);
         
-        for(int j = -1; j < 5; j++)
-        {
-            Entity* shelf = Entity::create("shop_shelf_sprite@2x.png", 1, 2, this->mSpriteBatch2);
+			for(int j = -1; j < 5; j++)
+			{
+				Entity* shelf = Entity::create("shop_shelf_sprite@2x.png", 1, 2, this->mSpriteBatch2);
             
-            this->mShelfs[5 * i + (j + 1)] = shelf;
-            shelf->create()->setCenterPosition(x + shelf->getWidth() * j - Utils::coord(42) * j, y);
+				this->mShelfs[5 * i + (j + 1)] = shelf;
+				shelf->create()->setCenterPosition(x + shelf->getWidth() * j - Utils::coord(42) * j, y);
             
-            if(j == 0)
-            {
-                Text* text = Text::create(Options::TEXT_SHOP_DESCRIPTION[i], this->mLayersA[i + 1]);
-                text->setCenterPosition(shelf->getCenterX() - shelf->getWidth() / 2 + Utils::coord(180), shelf->getCenterY());
+				if(j == 0)
+				{
+					Text* text = Text::create(Options::TEXT_SHOP_DESCRIPTION[i], this->mLayersA[i + 1]);
+					text->setCenterPosition(shelf->getCenterX() - shelf->getWidth() / 2 + Utils::coord(180), shelf->getCenterY());
                 
-                shelf->setCurrentFrameIndex(0);
-            }
-            else
-            {
-                shelf->setCurrentFrameIndex(1);
-            }
-        }
+					shelf->setCurrentFrameIndex(0);
+				}
+				else
+				{
+					shelf->setCurrentFrameIndex(1);
+				}
+			}
         
-        for(int j = 0; j < ITEMS_COUNT[i]; j++)
-        {
-            Entity* item = Item::create(this);
-            this->mItems[t++] = item;
-            this->mSpriteBatch2->addChild(item);
+			for(int j = 0; j < ITEMS_COUNT[i]; j++)
+			{
+				Entity* item = Item::create(this);
+				this->mItems[t++] = item;
+				this->mSpriteBatch2->addChild(item);
             
-            item->create()->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
-            item->setCurrentFrameIndex(++itemID);
+				item->create()->setCenterPosition(Utils::coord(130) + Utils::coord(230) * j, y + Utils::coord(115));
+				item->setCurrentFrameIndex(++itemID);
 
-            if(i == 0)
-            {
-                if(AppDelegate::isItemSelected(j) && this->mWeaponChecker == NULL)
-                {
-                    this->mWeaponChecker = Entity::create("shop_weapon_check@2x.png", item);this->mWeaponChecker->retain();
-                    this->mWeaponChecker->create()->setCenterPosition(item->getWidth() / 2 + Utils::coord(64), item->getHeight() / 2 - Utils::coord(64));
+				if(i == 0)
+				{
+					if(AppDelegate::isItemSelected(j) && this->mWeaponChecker == NULL)
+					{
+						this->mWeaponChecker = Entity::create("shop_weapon_check@2x.png", item);this->mWeaponChecker->retain();
+						this->mWeaponChecker->create()->setCenterPosition(item->getWidth() / 2 + Utils::coord(64), item->getHeight() / 2 - Utils::coord(64));
                     
-                    Options::SELECTED_WEAPON_ID = itemID;
-                }
-            }
-        }
+						Options::SELECTED_WEAPON_ID = itemID;
+					}
+				}
+			}
         
-        y -= Utils::coord(300);
-    }
+			y -= Utils::coord(300);
+		}
     
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
-    this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
 
-    this->mIcons[0]->setRotation(-45);
-    this->mIcons[0]->setScale(0.75);
-    this->mIcons[0]->animate(0.05);
+		this->mIcons[0]->setRotation(-45);
+		this->mIcons[0]->setScale(0.75);
+		this->mIcons[0]->animate(0.05);
     
-    this->mIcons[1]->setRotation(-45);
-    this->mIcons[1]->setScale(0.75);
-    this->mIcons[1]->animate(0.05);
+		this->mIcons[1]->setRotation(-45);
+		this->mIcons[1]->setScale(0.75);
+		this->mIcons[1]->animate(0.05);
     
-    x = Options::CAMERA_CENTER_X - Utils::coord(500);
-    y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(300);
+		x = Options::CAMERA_CENTER_X - Utils::coord(500);
+		y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(300);
     
-    for(int i = 0; i < 9; i++)
-    {
-        if(i % 3 == 0 && i != 0)
-        {
-            x = Options::CAMERA_CENTER_X - Utils::coord(250);
-            y -= Utils::coord(300);
-        }
-        else
-        {
-            x += Utils::coord(250);
-        }
+		for(int i = 0; i < 9; i++)
+		{
+			if(i % 3 == 0 && i != 0)
+			{
+				x = Options::CAMERA_CENTER_X - Utils::coord(250);
+				y -= Utils::coord(300);
+			}
+			else
+			{
+				x += Utils::coord(250);
+			}
         
-        this->mWheels[i]->create()->setCenterPosition(x, y);
-    }
+			this->mWheels[i]->create()->setCenterPosition(x, y);
+		}
     
-    this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
-    this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
+		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
+		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
     
-    this->mBackgroundDecorations[1]->setScale(-1);
+		this->mBackgroundDecorations[1]->setScale(-1);
 
-    this->mBuyItemPopup = BuyItem::create(this);
-    this->mGetCoinsPopup = GetCoins::create(this);
-    this->mGetLivesPopup = GetLives::create(this, true);
-    this->mGetKeysPopup = GetKeys::create(this);
-    this->mBoughtItem = BoughtItem::create(this);
-    this->mPaymentProceed = PaymentProceed::create(this);
+		this->mBuyItemPopup = BuyItem::create(this);
+		this->mGetCoinsPopup = GetCoins::create(this);
+		this->mGetLivesPopup = GetLives::create(this, true);
+		this->mGetKeysPopup = GetKeys::create(this);
+		this->mBoughtItem = BoughtItem::create(this);
+		this->mPaymentProceed = PaymentProceed::create(this);
     
-    this->mIsAnimationOnItemBoughtRunning = false;
-    this->mIsAnimationPurchaseRunning = false;
-}
+		this->mIsAnimationOnItemBoughtRunning = false;
+		this->mIsAnimationPurchaseRunning = false;
+	}
 
 Shop* Shop::create()
 {

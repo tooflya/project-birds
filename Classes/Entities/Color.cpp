@@ -22,7 +22,24 @@
 // ===========================================================
 
 Color::Color() :
-    Entity("colors@2x.png", 7, 1)
+    Entity("colors@2x.png", 7, 1),
+	position(0),
+	mType(0),
+	mGoingToDestroy(0),
+	d(0),
+	mDestroyTime(0),
+	mDestroyTimeElapsed(0),
+	position_in_matrtix_x(0),
+	position_in_matrtix_y(0),
+	mPower(0),
+	mc(0),
+	mct(0),
+	mcte(0),
+	mBlinkTime(0),
+	mBlinkTimeElapsed(0),
+	mBlinking(0),
+	mBlink(0),
+	mPowerText(0)
     {
         this->mBlink = NULL;
         this->mPowerText = NULL;

@@ -22,7 +22,11 @@
 // ===========================================================
 
 ImpulseEntity::ImpulseEntity(const char* pTextureFileName) :
-    Entity(pTextureFileName)
+    Entity(pTextureFileName),
+	mImpulsePower(0),
+	mSideImpulse(0),
+	mRotateImpulse(0),
+	mWeight(0)
     {
         this->mWeight = 0;
         this->mSideImpulse = 0;
@@ -31,7 +35,11 @@ ImpulseEntity::ImpulseEntity(const char* pTextureFileName) :
     }
 
 ImpulseEntity::ImpulseEntity(const char* pTextureFileName, CCNode* pParent) :
-    Entity(pTextureFileName, pParent)
+    Entity(pTextureFileName, pParent),
+	mImpulsePower(0),
+	mSideImpulse(0),
+	mRotateImpulse(0),
+	mWeight(0)
     {
         this->mWeight = 0;
         this->mSideImpulse = 0;
@@ -40,7 +48,11 @@ ImpulseEntity::ImpulseEntity(const char* pTextureFileName, CCNode* pParent) :
     }
 
 ImpulseEntity::ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount) :
-    Entity(pTextureFileName, pHorizontalFramesCount, pVerticalFramesCount)
+    Entity(pTextureFileName, pHorizontalFramesCount, pVerticalFramesCount),
+	mImpulsePower(0),
+	mSideImpulse(0),
+	mRotateImpulse(0),
+	mWeight(0)
     {
         this->mWeight = 0;
         this->mSideImpulse = 0;

@@ -19,15 +19,19 @@
 // Constructors
 // ===========================================================
 
-Texture::Texture(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount)
-{
-    this->mTexture = CCTextureCache::sharedTextureCache()->addImage(pszFileName);
+Texture::Texture(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount) :
+	mTextureFileName(0),
+	mTexture(0),
+	mHorizontalFramesCount(0),
+	mVerticalFramesCount(0)
+	{
+		this->mTexture = CCTextureCache::sharedTextureCache()->addImage(pszFileName);
 
-    this->mTextureFileName = pszFileName;
+		this->mTextureFileName = pszFileName;
             
-    this->mHorizontalFramesCount = pHorizontalFramesCount;
-    this->mVerticalFramesCount   = pVerticalFramesCount;
-}
+		this->mHorizontalFramesCount = pHorizontalFramesCount;
+		this->mVerticalFramesCount   = pVerticalFramesCount;
+	}
 
 // ===========================================================
 // Methods

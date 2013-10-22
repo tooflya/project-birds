@@ -27,8 +27,19 @@ BuyItemList::~BuyItemList()
 }
 
 BuyItemList::BuyItemList(CCNode* pParent) :
-    List(Utils::coord(512), Utils::coord(640), Utils::coord(512), Utils::coord(/** 750 **/0), ((Entity*) pParent)->getWidth() / 2, ((Entity*) pParent)->getHeight() / 2 + Utils::coord(0), "about_scroll_fill_small@2x.png", pParent)
-    {
+    List(Utils::coord(512), Utils::coord(640), Utils::coord(512), Utils::coord(/** 750 **/0), ((Entity*) pParent)->getWidth() / 2, ((Entity*) pParent)->getHeight() / 2 + Utils::coord(0), "about_scroll_fill_small@2x.png", pParent),
+	mIcon(0),
+	mSilverCoinsIcon(0),
+	mCoinsIcon(0),
+	mPropertiesIcon(0),
+	mStars(),
+	mNameText(0),
+	mDescriptionText(0),
+	mPriceText(0),
+	mPriceGoldText(0),
+	mPowerText(0),
+	mBoughtText(0)
+	{
         this->setListType(List::TYPE_VERTICAL);
         this->setParentType(List::PARENT_TYPE_POPUP);
 

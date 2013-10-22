@@ -31,7 +31,36 @@ End::~End()
 }
 
 End::End(int pType, Screen* pParent) :
-    Splash(pParent)
+    Splash(pParent),
+	mShopButton(0),
+	mMenuButton(0),
+	mRestartButton(0),
+	mContinueButton(0),
+	mCoinsPanel(0),
+	mCoin(0),
+	mStars(0),
+	mConfetti(0),
+	mCoins(0),
+	mCoinsCountText(0),
+	mTextes(),
+	mAnimationCounter(0),
+	mCoinsAnimationCounter(0),
+	mCurrentCount(0),
+	mBestCurrentCount(0),
+	mFlayerCount(0),
+	mComboCount(0),
+	mCriticalCount(0),
+	mEarnedCoins(0),
+	mTotalEarnedCoins(0),
+	mAnimationTime(0),
+	mAnimationtimeElapsed(0),
+	mCoinsAnimationTime(0),
+	mCoinsAnimationTimeElapsed(0),
+	mCoinsAnimationCurrentTime(0),
+	mCoinsAnimationCurrentTimeElapsed(0),
+	mIsAnimationRunning(0),
+	mIsCoinsAnimationRunning(0),
+	mIsCoinsAnimationCurrentRunning(0)
     {
         this->mType = pType;
         

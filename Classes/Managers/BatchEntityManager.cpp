@@ -4,7 +4,10 @@
 #include "BatchEntityManager.h"
 
 BatchEntityManager::BatchEntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen) :
-    CCSpriteBatchNode()
+    CCSpriteBatchNode(),
+	mLastElementNumber(0),
+	mCapacity(0),
+	mInitCapacity(0)
     {
         this->initWithTexture(pEntity->getTexture(), 50);
         

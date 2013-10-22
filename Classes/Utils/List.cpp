@@ -24,29 +24,49 @@ List::~List()
     this->removeAllChildrenWithCleanup(true);
 }
 
-List::List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float pListInitialCenterX, float pListInitialCenterY, const char* pListTextureFileName, CCNode* pParent)
-{
-    this->mParent = static_cast<Entity*>(pParent);
+List::List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float pListInitialCenterX, float pListInitialCenterY, const char* pListTextureFileName, CCNode* pParent) :
+	mType(0),
+	mParentType(0),
+	mWidth(0),
+	mHeight(0),
+	mMaxWidth(0),
+	mMaxHeight(0),
+	mListInitialCenterX(0),
+	mListInitialCenterY(0),
+	mStartCoordinateY(0),
+	mStartCoordinateX(0),
+	mStartPositionCoordinateY(0),
+	mStartPositionCoordinateX(0),
+	mLastDistanceX(0),
+	mLastDistanceY(0),
+	mSpeedX(0),
+	mSpeedY(0),
+	mPostUpdate(0),
+	mListSroll(0),
+	mParent(0),
+	mSpriteBatch(0)
+	{
+		this->mParent = static_cast<Entity*>(pParent);
 
-    this->mParent->addChild(this);
+		this->mParent->addChild(this);
     
-    this->mListSroll = Entity::create(pListTextureFileName, this);
-    this->mListSroll->create()->setRepeatTexture(true);
+		this->mListSroll = Entity::create(pListTextureFileName, this);
+		this->mListSroll->create()->setRepeatTexture(true);
 
-    this->mWidth = pWidth;
-    this->mHeight = pHeight;
+		this->mWidth = pWidth;
+		this->mHeight = pHeight;
 
-    this->mMaxWidth = pMaxWidth;
-    this->mMaxHeight = pMaxHeight;
+		this->mMaxWidth = pMaxWidth;
+		this->mMaxHeight = pMaxHeight;
 
-    this->mListInitialCenterX = pListInitialCenterX;
-    this->mListInitialCenterY = pListInitialCenterY;
+		this->mListInitialCenterX = pListInitialCenterX;
+		this->mListInitialCenterY = pListInitialCenterY;
     
-    this->mType = TYPE_BOTH;
-    this->mParentType = PARENT_TYPE_SIMPLE;
+		this->mType = TYPE_BOTH;
+		this->mParentType = PARENT_TYPE_SIMPLE;
 
-    this->mPostUpdate = false;
-}
+		this->mPostUpdate = false;
+	}
 
 // ===========================================================
 // Methods

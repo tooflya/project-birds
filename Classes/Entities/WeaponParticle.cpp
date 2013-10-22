@@ -18,7 +18,13 @@ long WeaponParticle::LAST_TIME = 0;
 // ===========================================================
 
 WeaponParticle::WeaponParticle() :
-    Entity("weapon_strike_sprite@2x.png", 6, 6)
+    Entity("weapon_strike_sprite@2x.png", 6, 6),
+	mType(0),
+	mAlphaSpeed(0),
+	mScaleSpeed(0),
+	mRotationSpeed(0),
+	mVectorX(0),
+	mVectorY(0)
     {
         this->mAlphaSpeed = 0;
         this->mScaleSpeed = 0;

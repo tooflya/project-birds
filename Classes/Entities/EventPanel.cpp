@@ -28,32 +28,45 @@ EventPanel::~EventPanel()
 }
 
 EventPanel::EventPanel(Screen* pParent) :
-Entity("event_panel@2x.png")
-{
-    this->mParent = pParent;
+	Entity("event_panel@2x.png"),
+	mShowAnimationTime(0),
+	mHideAnimationTime(0),
+	mShowAnimationTimeElapsed(0),
+	mHideAnimationTimeElapsed(0),
+	mLiveTime(0),
+	mLiveTimeElapsed(0),
+	mShowed(0),
+	mIsShowAnimationRunning(0),
+	mIsHideAnimationRunning(0),
+	mLive(0),
+	mIcon(0),
+	mParent(0),
+	mText(0)
+	{
+		this->mParent = pParent;
     
-    this->mShowed = false;
-    this->mLive = false;
-    this->mIsShowAnimationRunning = false;
-    this->mIsHideAnimationRunning = false;
+		this->mShowed = false;
+		this->mLive = false;
+		this->mIsShowAnimationRunning = false;
+		this->mIsHideAnimationRunning = false;
     
-    this->mShowAnimationTime = 0.2;
-    this->mHideAnimationTime = 0.2;
+		this->mShowAnimationTime = 0.2;
+		this->mHideAnimationTime = 0.2;
     
-    this->mShowAnimationTimeElapsed = 0;
-    this->mHideAnimationTimeElapsed = 0;
+		this->mShowAnimationTimeElapsed = 0;
+		this->mHideAnimationTimeElapsed = 0;
     
-    this->mLiveTime = 2.0;
-    this->mLiveTimeElapsed = 0;
+		this->mLiveTime = 2.0;
+		this->mLiveTimeElapsed = 0;
     
-    this->mIcon = Entity::create("info_panel_btn_sprite@2x.png", 3, 1, this);
+		this->mIcon = Entity::create("info_panel_btn_sprite@2x.png", 3, 1, this);
     
-    this->mText = Text::create(Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED, this);
+		this->mText = Text::create(Options::TEXT_GAME_SOMETHING_WAS_UNLOCKED, this);
     
-    this->mIcon->create()->setCenterPosition(Utils::coord(90), this->getHeight() / 2 + Utils::coord(24));
+		this->mIcon->create()->setCenterPosition(Utils::coord(90), this->getHeight() / 2 + Utils::coord(24));
     
-    this->mText->setCenterPosition(this->getWidth() / 2 + Utils::coord(16), this->getHeight() / 2);
-}
+		this->mText->setCenterPosition(this->getWidth() / 2 + Utils::coord(16), this->getHeight() / 2);
+	}
 
 EventPanel* EventPanel::create(Screen *pParent)
 {

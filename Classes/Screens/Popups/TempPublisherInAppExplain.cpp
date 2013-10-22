@@ -24,7 +24,8 @@ TempPublisherInAppExplain::~TempPublisherInAppExplain()
 }
 
 TempPublisherInAppExplain::TempPublisherInAppExplain(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mOkButton(0)
     {
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mOkButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_BUYITEM_BUY, this);

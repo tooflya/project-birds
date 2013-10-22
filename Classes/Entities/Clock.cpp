@@ -20,7 +20,9 @@
 // ===========================================================
 
 Clock::Clock(CCNode* pParent) :
-    CCNode()
+    CCNode(),
+	mTimeElapsed(0),
+	mPause(0)
     {
         pParent->addChild(this);
         

@@ -126,34 +126,262 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     this->getTexture()->setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444);
 }
 
-Entity::Entity()
-{
-}
+Entity::Entity() :
+	mFramesCount(0),
+	mHorizontalFramesCount(0),
+	mVerticalFramesCount(0),
+	mCurrentFrameIndex(0),
+	mAnimationStartFrame(0),
+	mAnimationFinishFrame(0),
+	mAnimationFramesElapsed(0),
+	mAnimationRepeatCount(0),
+	mPercentage(0),
+	id(0),
+	mWidth(0),
+	mHeight(0),
+	mFrameWidth(0),
+	mFrameHeight(0),
+	mFramesCoordinatesX(0),
+	mFramesCoordinatesY(0),
+	mPaddingX(0),
+	mPaddingY(0),
+	mSpeed(0),
+	mPauseBeforeNewAnimationCircleTime(0),
+	mPauseBeforeNewAnimationCircleTimeElapsed(0),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0),
+	mAnimationStartTimeout(0),
+	mAnimationScaleDownTime(0),
+	mAnimationScaleUpTime(0),
+	mAnimationScaleDownFactor(0),
+	mAnimationScaleUpFactor(0),
+	mIsAnimationReverse(0),
+	mIsAnimationReverseNeed(0),
+	mAnimationRunning(0),
+	mWasTouched(0),
+	mAlphaParent(0),
+	mCreatedFromAtlas(0),
+	mTextureFileName(0),
+	//mStartTouchPoint(0),
+	mEntityManager(0),
+	mBatchEntityManager(0)
+	{
+	}
 
-Entity::Entity(const char* pszFileName)
-{
-    this->constructor(pszFileName, 1, 1, 0, 0, -1, -1, NULL);
-}
+Entity::Entity(const char* pszFileName) :
+	mFramesCount(0),
+	mHorizontalFramesCount(0),
+	mVerticalFramesCount(0),
+	mCurrentFrameIndex(0),
+	mAnimationStartFrame(0),
+	mAnimationFinishFrame(0),
+	mAnimationFramesElapsed(0),
+	mAnimationRepeatCount(0),
+	mPercentage(0),
+	id(0),
+	mWidth(0),
+	mHeight(0),
+	mFrameWidth(0),
+	mFrameHeight(0),
+	mFramesCoordinatesX(0),
+	mFramesCoordinatesY(0),
+	mPaddingX(0),
+	mPaddingY(0),
+	mSpeed(0),
+	mPauseBeforeNewAnimationCircleTime(0),
+	mPauseBeforeNewAnimationCircleTimeElapsed(0),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0),
+	mAnimationStartTimeout(0),
+	mAnimationScaleDownTime(0),
+	mAnimationScaleUpTime(0),
+	mAnimationScaleDownFactor(0),
+	mAnimationScaleUpFactor(0),
+	mIsAnimationReverse(0),
+	mIsAnimationReverseNeed(0),
+	mAnimationRunning(0),
+	mWasTouched(0),
+	mAlphaParent(0),
+	mCreatedFromAtlas(0),
+	mTextureFileName(0),
+	//mStartTouchPoint(0),
+	mEntityManager(0),
+	mBatchEntityManager(0)
+	{
+		this->constructor(pszFileName, 1, 1, 0, 0, -1, -1, NULL);
+	}
 
-Entity::Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount)
-{
-    this->constructor(pszFileName, pHorizontalFramesCount, pVerticalFramesCount, -1, -1, -1, -1, NULL);
-}
+Entity::Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount) :
+	mFramesCount(0),
+	mHorizontalFramesCount(0),
+	mVerticalFramesCount(0),
+	mCurrentFrameIndex(0),
+	mAnimationStartFrame(0),
+	mAnimationFinishFrame(0),
+	mAnimationFramesElapsed(0),
+	mAnimationRepeatCount(0),
+	mPercentage(0),
+	id(0),
+	mWidth(0),
+	mHeight(0),
+	mFrameWidth(0),
+	mFrameHeight(0),
+	mFramesCoordinatesX(0),
+	mFramesCoordinatesY(0),
+	mPaddingX(0),
+	mPaddingY(0),
+	mSpeed(0),
+	mPauseBeforeNewAnimationCircleTime(0),
+	mPauseBeforeNewAnimationCircleTimeElapsed(0),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0),
+	mAnimationStartTimeout(0),
+	mAnimationScaleDownTime(0),
+	mAnimationScaleUpTime(0),
+	mAnimationScaleDownFactor(0),
+	mAnimationScaleUpFactor(0),
+	mIsAnimationReverse(0),
+	mIsAnimationReverseNeed(0),
+	mAnimationRunning(0),
+	mWasTouched(0),
+	mAlphaParent(0),
+	mCreatedFromAtlas(0),
+	mTextureFileName(0),
+	//mStartTouchPoint(0),
+	mEntityManager(0),
+	mBatchEntityManager(0)
+	{
+		this->constructor(pszFileName, pHorizontalFramesCount, pVerticalFramesCount, -1, -1, -1, -1, NULL);
+	}
 
-Entity::Entity(const char* pszFileName, CCNode* pParent)
-{
-    this->constructor(pszFileName, 1, 1, 0, 0, -1, -1, pParent);
-}
+Entity::Entity(const char* pszFileName, CCNode* pParent) :
+	mFramesCount(0),
+	mHorizontalFramesCount(0),
+	mVerticalFramesCount(0),
+	mCurrentFrameIndex(0),
+	mAnimationStartFrame(0),
+	mAnimationFinishFrame(0),
+	mAnimationFramesElapsed(0),
+	mAnimationRepeatCount(0),
+	mPercentage(0),
+	id(0),
+	mWidth(0),
+	mHeight(0),
+	mFrameWidth(0),
+	mFrameHeight(0),
+	mFramesCoordinatesX(0),
+	mFramesCoordinatesY(0),
+	mPaddingX(0),
+	mPaddingY(0),
+	mSpeed(0),
+	mPauseBeforeNewAnimationCircleTime(0),
+	mPauseBeforeNewAnimationCircleTimeElapsed(0),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0),
+	mAnimationStartTimeout(0),
+	mAnimationScaleDownTime(0),
+	mAnimationScaleUpTime(0),
+	mAnimationScaleDownFactor(0),
+	mAnimationScaleUpFactor(0),
+	mIsAnimationReverse(0),
+	mIsAnimationReverseNeed(0),
+	mAnimationRunning(0),
+	mWasTouched(0),
+	mAlphaParent(0),
+	mCreatedFromAtlas(0),
+	mTextureFileName(0),
+	//mStartTouchPoint(0),
+	mEntityManager(0),
+	mBatchEntityManager(0)
+	{
+		this->constructor(pszFileName, 1, 1, 0, 0, -1, -1, pParent);
+	}
 
-Entity::Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent)
-{
-    this->constructor(pszFileName, pHorizontalFramesCount, pVerticalFramesCount, 0, 0, -1, -1, pParent);
-}
+Entity::Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent) :
+	mFramesCount(0),
+	mHorizontalFramesCount(0),
+	mVerticalFramesCount(0),
+	mCurrentFrameIndex(0),
+	mAnimationStartFrame(0),
+	mAnimationFinishFrame(0),
+	mAnimationFramesElapsed(0),
+	mAnimationRepeatCount(0),
+	mPercentage(0),
+	id(0),
+	mWidth(0),
+	mHeight(0),
+	mFrameWidth(0),
+	mFrameHeight(0),
+	mFramesCoordinatesX(0),
+	mFramesCoordinatesY(0),
+	mPaddingX(0),
+	mPaddingY(0),
+	mSpeed(0),
+	mPauseBeforeNewAnimationCircleTime(0),
+	mPauseBeforeNewAnimationCircleTimeElapsed(0),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0),
+	mAnimationStartTimeout(0),
+	mAnimationScaleDownTime(0),
+	mAnimationScaleUpTime(0),
+	mAnimationScaleDownFactor(0),
+	mAnimationScaleUpFactor(0),
+	mIsAnimationReverse(0),
+	mIsAnimationReverseNeed(0),
+	mAnimationRunning(0),
+	mWasTouched(0),
+	mAlphaParent(0),
+	mCreatedFromAtlas(0),
+	mTextureFileName(0),
+	//mStartTouchPoint(0),
+	mEntityManager(0),
+	mBatchEntityManager(0)
+	{
+		this->constructor(pszFileName, pHorizontalFramesCount, pVerticalFramesCount, 0, 0, -1, -1, pParent);
+	}
 
-Entity::Entity(EntityStructure pStructure, CCNode* pParent)
-{
-    this->constructor(pStructure.fileName, pStructure.horizontalFramesCount, pStructure.verticalFramesCount, pStructure.x, pStructure.y, pStructure.width, pStructure.height, pParent);
-}
+Entity::Entity(EntityStructure pStructure, CCNode* pParent) :
+	mFramesCount(0),
+	mHorizontalFramesCount(0),
+	mVerticalFramesCount(0),
+	mCurrentFrameIndex(0),
+	mAnimationStartFrame(0),
+	mAnimationFinishFrame(0),
+	mAnimationFramesElapsed(0),
+	mAnimationRepeatCount(0),
+	mPercentage(0),
+	id(0),
+	mWidth(0),
+	mHeight(0),
+	mFrameWidth(0),
+	mFrameHeight(0),
+	mFramesCoordinatesX(0),
+	mFramesCoordinatesY(0),
+	mPaddingX(0),
+	mPaddingY(0),
+	mSpeed(0),
+	mPauseBeforeNewAnimationCircleTime(0),
+	mPauseBeforeNewAnimationCircleTimeElapsed(0),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0),
+	mAnimationStartTimeout(0),
+	mAnimationScaleDownTime(0),
+	mAnimationScaleUpTime(0),
+	mAnimationScaleDownFactor(0),
+	mAnimationScaleUpFactor(0),
+	mIsAnimationReverse(0),
+	mIsAnimationReverseNeed(0),
+	mAnimationRunning(0),
+	mWasTouched(0),
+	mAlphaParent(0),
+	mCreatedFromAtlas(0),
+	mTextureFileName(0),
+	//mStartTouchPoint(0),
+	mEntityManager(0),
+	mBatchEntityManager(0)
+	{
+		this->constructor(pStructure.fileName, pStructure.horizontalFramesCount, pStructure.verticalFramesCount, pStructure.x, pStructure.y, pStructure.width, pStructure.height, pParent);
+	}
 
 Entity* Entity::create(const char* pszFileName)
 {

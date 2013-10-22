@@ -25,7 +25,11 @@ BuyItem::~BuyItem()
 }
 
 BuyItem::BuyItem(Screen* pScreen) :
-    Popup(pScreen)
+    Popup(pScreen),
+	mBuyButton(0),
+	mYesPressed(0),
+	mListBorders(),
+	mList(0)
     {
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         

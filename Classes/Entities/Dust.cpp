@@ -22,7 +22,19 @@
 // ===========================================================
 
 Dust::Dust() :
-    Entity("dust@2x.png")
+    Entity("dust@2x.png"),
+	mSpeedX(0),
+	mSpeedY(0),
+	mMustSpeedX(0),
+	mMustSpeedY(0),
+	mSpeedTime(0),
+	mSpeedTimeElapsed(0),
+	mAlphaTime(0),
+	mAlphaTimeElapsed(0),
+	mScaleTime(0),
+	mScaleTimeElapsed(0),
+	mIsMustChangeSpeedX(0),
+	mIsMustChangeSpeedY(0)
     {
         this->mSpeedTime = Utils::randomf(1.0f, 5.0f);
         this->mSpeedTimeElapsed = 10.0f;

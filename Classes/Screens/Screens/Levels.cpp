@@ -188,7 +188,10 @@ class LevelButton : public Entity
     Text* mText;
     
     public:
-    LevelButton() : Entity("choose_box_lvl_sprite@2x.png", 2, 5)
+    LevelButton() :
+	Entity("choose_box_lvl_sprite@2x.png", 2, 5),
+	mId(0),
+	mText(0)
     {
         this->setRegisterAsTouchable(true);
         
@@ -366,7 +369,26 @@ class MainList : public CCLayer
             this->removeAllChildrenWithCleanup(true);
         }
 
-        MainList(Levels* pParent)
+        MainList(Levels* pParent) :
+		mLayers(),
+		mListInitialCenterX(0),
+		mListInitialCenterY(0),
+		mStartCoordinateY(0),
+		mStartCoordinateX(0),
+		mStartPositionCoordinateY(0),
+		mStartPositionCoordinateX(0),
+		mLastDistanceX(0),
+		mLastDistanceY(0),
+		mSpeedX(0),
+		mSpeedY(0),
+		mMinWidth(0),
+		mMinHeight(0),
+		mMaxWidth(0),
+		mMaxHeight(0),
+		mPostUpdate(0),
+		mParent(0),
+		mListBorders(0),
+		mElements(0)
         {
             this->mParent = pParent;
 
@@ -683,137 +705,150 @@ Levels::~Levels()
 	this->removeAllChildrenWithCleanup(true);
 }
 
-Levels::Levels()
-{
-    this->mMainList = MainList::create(this);
+Levels::Levels() :
+	mIsUnlockAnimationRunning(0),
+	mIsUnlockAnimationSound(0),
+	mUnlockAnimationTime(0),
+	mUnlockAnimationTimeElapsed(0),
+	mBackground(0),
+	mTablet(0),
+	mLigts(),
+	mStarsCountIcon(0),
+	mBackButton(0),
+	mShopButton(0),
+	mStarsCountText(0),
+	mMainList(0),
+	spriteBatch2(0)
+	{
+		this->mMainList = MainList::create(this);
     
-    SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
-    spriteBatch2 = SpriteBatch::create("TextureAtlas9");
-    spriteBatch2->retain();
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+		spriteBatch2 = SpriteBatch::create("TextureAtlas9");
+		spriteBatch2->retain();
 
-    this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-    this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
-    this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
+		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
+		this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
     
-    this->addChild(spriteBatch);
+		this->addChild(spriteBatch);
     
-    this->mLigts[0] = Entity::create("get_coins_light@2x.png", spriteBatch2);
-    this->mLigts[1] = Entity::create("get_coins_light@2x.png", spriteBatch2);
+		this->mLigts[0] = Entity::create("get_coins_light@2x.png", spriteBatch2);
+		this->mLigts[1] = Entity::create("get_coins_light@2x.png", spriteBatch2);
     
-	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
-	EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162};
+		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+		EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162};
 
-    this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, this);
-    this->mShopButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
-    this->mTablet = Entity::create("shop_money_bg@2x.png", this);
-    this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
+		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, this);
+		this->mShopButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
+		this->mTablet = Entity::create("shop_money_bg@2x.png", this);
+		this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
     
-    for(int i = 0; i < 6; i++)
-    {
-        this->mSlides[i] = Entity::create("choose_box_navi_sprite@2x.png", 1, 2, spriteBatch);
-    }
+		for(int i = 0; i < 6; i++)
+		{
+			this->mSlides[i] = Entity::create("choose_box_navi_sprite@2x.png", 1, 2, spriteBatch);
+		}
 
-	Textes textes1 = {"0", Options::FONT, 64, -1};
+		Textes textes1 = {"0", Options::FONT, 64, -1};
 
-    this->mStarsCountText = Text::create(textes1, this->mTablet);
+		this->mStarsCountText = Text::create(textes1, this->mTablet);
 
-    this->addChild(this->mMainList->mLayers[0]);
-    this->addChild(this->mMainList);
+		this->addChild(this->mMainList->mLayers[0]);
+		this->addChild(this->mMainList);
     
-	EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162};
+		EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162};
 
-    this->mSlidesArrows[0] = Entity::create(structure3, spriteBatch);
-    this->mSlidesArrows[1] = Entity::create(structure3, spriteBatch);
+		this->mSlidesArrows[0] = Entity::create(structure3, spriteBatch);
+		this->mSlidesArrows[1] = Entity::create(structure3, spriteBatch);
     
-    this->mBackgroundDecorations[2] = Entity::create("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
-    this->mBackgroundDecorations[3] = Entity::create("bg_detail_dark@2x.png", this);
+		this->mBackgroundDecorations[2] = Entity::create("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
+		this->mBackgroundDecorations[3] = Entity::create("bg_detail_dark@2x.png", this);
     
-    this->mDarkness = Effect::create();
+		this->mDarkness = Effect::create();
     
-    this->addChild(this->mDarkness);
+		this->addChild(this->mDarkness);
     
-    this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
-    //this->mShopButton->create()->setCenterPosition(Utils::coord(65), Options::CAMERA_HEIGHT - Utils::coord(65)); // TODO: Change icon coordinates.
-    this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(170));
-    this->mStarsCountIcon->create()->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(100), this->mTablet->getHeight() / 2);
-    this->mStarsCountText->setCenterPosition(this->mTablet->getWidth() / 2 + Utils::coord(10), this->mTablet->getHeight() / 2);
+		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+		//this->mShopButton->create()->setCenterPosition(Utils::coord(65), Options::CAMERA_HEIGHT - Utils::coord(65)); // TODO: Change icon coordinates.
+		this->mTablet->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(170));
+		this->mStarsCountIcon->create()->setCenterPosition(this->mTablet->getWidth() / 2 - Utils::coord(100), this->mTablet->getHeight() / 2);
+		this->mStarsCountText->setCenterPosition(this->mTablet->getWidth() / 2 + Utils::coord(10), this->mTablet->getHeight() / 2);
 
-    this->mStarsCountIcon->setCurrentFrameIndex(1);
-    this->mStarsCountIcon->setScale(0.5);
+		this->mStarsCountIcon->setCurrentFrameIndex(1);
+		this->mStarsCountIcon->setScale(0.5);
     
-    this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
-    this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
-    this->mBackgroundDecorations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(63));
-    this->mBackgroundDecorations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(192));
+		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
+		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
+		this->mBackgroundDecorations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(63));
+		this->mBackgroundDecorations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(192));
 
-    this->mBackgroundDecorations[3]->setOpacity(50);
+		this->mBackgroundDecorations[3]->setOpacity(50);
     
-    /** Organization of level icons */
+		/** Organization of level icons */
 
-    float startX = Options::CAMERA_CENTER_X;
-    float startY = Options::CAMERA_CENTER_Y + Utils::coord(150) * 2;
+		float startX = Options::CAMERA_CENTER_X;
+		float startY = Options::CAMERA_CENTER_Y + Utils::coord(150) * 2;
 
-    float x = startX;
-    float y = startY;
+		float x = startX;
+		float y = startY;
     
-    int id = 0;
+		int id = 0;
     
-    int t = -1;
-    for(int o = 1; o < LEVEL_PACKS_COUNT; o++)
-    {
-        for(int i = 0; i < 4; i++)
-        {
-            x = startX - Utils::coord(116) * 2;
+		int t = -1;
+		for(int o = 1; o < LEVEL_PACKS_COUNT; o++)
+		{
+			for(int i = 0; i < 4; i++)
+			{
+				x = startX - Utils::coord(116) * 2;
             
-            for(int j = 0; j < 4; j++)
-            {
-                t++;
+				for(int j = 0; j < 4; j++)
+				{
+					t++;
                 
-                this->mLevels[t] = LevelButton::create(true);
-                this->mMainList->mLayers[o]->addChild(this->mLevels[t]);
+					this->mLevels[t] = LevelButton::create(true);
+					this->mMainList->mLayers[o]->addChild(this->mLevels[t]);
                 
-                this->mLevels[t]->create()->setCenterPosition(x, y);
-                static_cast<LevelButton*>(this->mLevels[t])->setId(++id);
+					this->mLevels[t]->create()->setCenterPosition(x, y);
+					static_cast<LevelButton*>(this->mLevels[t])->setId(++id);
                 
-                x += Utils::coord(150);
-            }
+					x += Utils::coord(150);
+				}
             
-            y -= Utils::coord(180);
-        }
+				y -= Utils::coord(180);
+			}
 
-        x = startX;
-        y = startY;
-    }
+			x = startX;
+			y = startY;
+		}
 
-    /** Organization of slider icons */
+		/** Organization of slider icons */
 
-    x = Options::CAMERA_CENTER_X;
-    y = Options::CAMERA_CENTER_Y - Utils::coord(400);
+		x = Options::CAMERA_CENTER_X;
+		y = Options::CAMERA_CENTER_Y - Utils::coord(400);
 
-    t = 0;
-    for(int i = -LEVEL_PACKS_COUNT / 2; i < LEVEL_PACKS_COUNT / 2; i++)
-    {
-        x = Options::CAMERA_CENTER_X + Utils::coord(25) + Utils::coord(50) * i;
+		t = 0;
+		for(int i = -LEVEL_PACKS_COUNT / 2; i < LEVEL_PACKS_COUNT / 2; i++)
+		{
+			x = Options::CAMERA_CENTER_X + Utils::coord(25) + Utils::coord(50) * i;
 
-        this->mSlides[t++]->create()->setCenterPosition(x, y);
-    }
+			this->mSlides[t++]->create()->setCenterPosition(x, y);
+		}
 
-    this->mSlides[0]->setCurrentFrameIndex(1);
+		this->mSlides[0]->setCurrentFrameIndex(1);
 
-    this->mSlidesArrows[0]->create()->setCenterPosition(Utils::coord(48), Options::CAMERA_CENTER_Y);
-    this->mSlidesArrows[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(48), Options::CAMERA_CENTER_Y);
+		this->mSlidesArrows[0]->create()->setCenterPosition(Utils::coord(48), Options::CAMERA_CENTER_Y);
+		this->mSlidesArrows[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(48), Options::CAMERA_CENTER_Y);
 
-    this->mSlidesArrows[1]->setScaleX(-1);
+		this->mSlidesArrows[1]->setScaleX(-1);
     
-    this->mIsUnlockAnimationRunning = false;
+		this->mIsUnlockAnimationRunning = false;
     
-    this->mGetLivesPopup = GetLives::create(this, true);
-    this->mUnlockLevelPopup = UnlockLevel::create(this);
-    this->mSurpriseLevelPopup = SurpriseLevel::create(this);
+		this->mGetLivesPopup = GetLives::create(this, true);
+		this->mUnlockLevelPopup = UnlockLevel::create(this);
+		this->mSurpriseLevelPopup = SurpriseLevel::create(this);
 
-    /** Experiments */
-}
+		/** Experiments */
+	}
 
 Levels* Levels::create()
 {

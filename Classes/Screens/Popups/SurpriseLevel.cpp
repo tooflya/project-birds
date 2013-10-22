@@ -29,7 +29,10 @@ SurpriseLevel::~SurpriseLevel()
 }
 
 SurpriseLevel::SurpriseLevel(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mUnlockButton(0),
+	mLights(0),
+	action(0)
     {
         CCSpriteBatchNode* spriteBatch3 = SpriteBatch::create("TextureAtlas9");
         CCSpriteBatchNode* spriteBatch15 = SpriteBatch::create("TextureAtlas15");

@@ -31,7 +31,10 @@ GetLives::~GetLives()
 }
 
 GetLives::GetLives(CCNode* pParent, bool pFirst) :
-    Popup(pParent, pFirst)
+    Popup(pParent, pFirst),
+	mPurchaseId(0),
+	mGetCoinsButtons(),
+	mLights(0)
     {
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas3");
         this->addChild(spriteBatch3);

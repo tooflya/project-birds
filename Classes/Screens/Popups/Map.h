@@ -39,19 +39,19 @@ class Map : public CCLayer, public Touchable, public ButtonReceiver
         CCNode* mParent;
         Entity* mDarkness;
         BackgroundEntity* mBackground;
-    Entity* mScroll;
-    CCNodeRGBA* mSquare;
+		Entity* mScroll;
+		CCNodeRGBA* mSquare;
     
-    Entity* mName;
+		Entity* mName;
         Entity* mDay[5];
-    EntityManager* mRipples;
-    EntityManager* mWays;
-    EntityManager* mCoins;
-    EntityManager* mSilverCoins;
-    EntityManager* mConfetti;
-    EntityManager* mStars;
-    EntityManager* mAnimatedCoins;
-    EntityManager* mSilverAnimatedCoins;
+		EntityManager* mRipples;
+		EntityManager* mWays;
+		EntityManager* mCoins;
+		EntityManager* mSilverCoins;
+		 EntityManager* mConfetti;
+		EntityManager* mStars;
+		EntityManager* mAnimatedCoins;
+		EntityManager* mSilverAnimatedCoins;
     
         Button* mCloseButton;
     
@@ -74,16 +74,16 @@ class Map : public CCLayer, public Touchable, public ButtonReceiver
     
         bool mShowed;
     
-    bool mAnimation;
+		bool mAnimation;
     
-    float mAnimationTime;
-    float mAnimationTimeElapsed;
+		float mAnimationTime;
+		float mAnimationTimeElapsed;
     
-    int mAnimationCount;
-    int mAnimationCount2;
+		int mAnimationCount;
+		int mAnimationCount2;
     
-    Text* mBonusTextes[5];
-    Text* mBonusTextes2[5];
+		Text* mBonusTextes[5];
+		Text* mBonusTextes2[5];
 
         // ===========================================================
         // Constructors
@@ -95,7 +95,7 @@ class Map : public CCLayer, public Touchable, public ButtonReceiver
         // Methods
         // ===========================================================
     
-    void throwAnimation(float x, float y);
+		void throwAnimation(float x, float y);
 
         // ===========================================================
         // Override Methods
@@ -137,9 +137,9 @@ class Map : public CCLayer, public Touchable, public ButtonReceiver
 
         // ===========================================================
         // Fields
-    // ===========================================================
+		// ===========================================================
     
-    int day;
+		int day;
 
         // ===========================================================
         // Constructors
@@ -172,9 +172,9 @@ class Map : public CCLayer, public Touchable, public ButtonReceiver
         void onEnter();
         void onExit();
     
-    bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+		bool ccTouchBegan(CCTouch* touch, CCEvent* event);
     
-    void onTouchButtonsCallback(const int pAction, const int pID);
+		void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

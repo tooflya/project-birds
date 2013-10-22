@@ -226,6 +226,7 @@
     <ClInclude Include="..\Classes\Entities\GeneralExplosion.h" />
     <ClInclude Include="..\Classes\Entities\ImpulseEntity.h" />
     <ClInclude Include="..\Classes\Entities\Item.h" />
+    <ClInclude Include="..\Classes\Entities\KeyDisplay.h" />
     <ClInclude Include="..\Classes\Entities\KeyParticle.h" />
     <ClInclude Include="..\Classes\Entities\LiveParticle.h" />
     <ClInclude Include="..\Classes\Entities\Mark.h" />
@@ -264,6 +265,7 @@
     <ClInclude Include="..\Classes\Screens\Popups\ResetProgress.h" />
     <ClInclude Include="..\Classes\Screens\Popups\SurpriseLevel.h" />
     <ClInclude Include="..\Classes\Screens\Popups\TempPublisherAchievementsExplain.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.h" />
     <ClInclude Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.h" />
     <ClInclude Include="..\Classes\Screens\Popups\UnlockLevel.h" />
     <ClInclude Include="..\Classes\Screens\Screen.h" />
@@ -426,6 +428,7 @@
     <ClCompile Include="..\Classes\Entities\GeneralExplosion.cpp" />
     <ClCompile Include="..\Classes\Entities\ImpulseEntity.cpp" />
     <ClCompile Include="..\Classes\Entities\Item.cpp" />
+    <ClCompile Include="..\Classes\Entities\KeyDisplay.cpp" />
     <ClCompile Include="..\Classes\Entities\KeyParticle.cpp" />
     <ClCompile Include="..\Classes\Entities\LiveParticle.cpp" />
     <ClCompile Include="..\Classes\Entities\Mark.cpp" />
@@ -464,6 +467,7 @@
     <ClCompile Include="..\Classes\Screens\Popups\ResetProgress.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\SurpriseLevel.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\UnlockLevel.cpp" />
     <ClCompile Include="..\Classes\Screens\Screen.cpp" />

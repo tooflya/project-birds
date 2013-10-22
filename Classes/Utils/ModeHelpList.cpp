@@ -25,8 +25,9 @@ ModeHelpList::~ModeHelpList()
 }
 
 ModeHelpList::ModeHelpList(CCNode* pParent) :
-    List(Utils::coord(512), Utils::coord(640), Utils::coord(512), Utils::coord(300), ((Entity*) pParent)->getWidth() / 2, ((Entity*) pParent)->getHeight() / 2 + Utils::coord(0), "about_scroll_fill_small@2x.png", pParent)
-    {
+    List(Utils::coord(512), Utils::coord(640), Utils::coord(512), Utils::coord(300), ((Entity*) pParent)->getWidth() / 2, ((Entity*) pParent)->getHeight() / 2 + Utils::coord(0), "about_scroll_fill_small@2x.png", pParent),
+    mText()
+	{
         this->setListType(List::TYPE_VERTICAL);
         this->setParentType(List::PARENT_TYPE_POPUP);
 

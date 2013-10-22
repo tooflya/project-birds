@@ -20,7 +20,15 @@
 // ===========================================================
 
 Feather::Feather() :
-    ImpulseEntity("birds_feather_sprite@2x.png", 4, 4)
+    ImpulseEntity("birds_feather_sprite@2x.png", 4, 4),
+	mVectorX(0),
+	mVectorY(0),
+	mPower(0),
+	mWaitingTime(0),
+	mWaitingTimeElapsed(0),
+	mAnimationSpeed(0),
+	bWaitingTime(0),
+	mIsAnimationReverse(0)
     {
         this->mWaitingTimeElapsed = 0.0;
         this->mWaitingTime = 0.02;

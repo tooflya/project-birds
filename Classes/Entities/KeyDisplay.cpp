@@ -22,7 +22,11 @@
 // ===========================================================
 
 KeyDisplay::KeyDisplay() :
-    Entity("popup_key_ico_fall@2x.png")
+    Entity("popup_key_ico_fall@2x.png"),
+	mActionCount(0),
+	mTime(0),
+	mTimeElapsed(0),
+	mLights()
     {
         this->mLights[0] = 0;
         this->mLights[1] = 0;

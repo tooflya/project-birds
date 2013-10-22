@@ -25,7 +25,10 @@ CreditsList::~CreditsList()
 }
 
 CreditsList::CreditsList(CCNode* pParent) :
-    List(Utils::coord(600), Utils::coord(890), Utils::coord(750), Utils::coord(800), Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50), "about_scroll_fill@2x.png", pParent)
+    List(Utils::coord(600), Utils::coord(890), Utils::coord(750), Utils::coord(800), Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50), "about_scroll_fill@2x.png", pParent),
+	mGameLogo(0),
+	mCompanyLogo(0),
+	mText()
     {
         this->setListType(List::TYPE_VERTICAL);
 

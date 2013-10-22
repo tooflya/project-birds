@@ -27,7 +27,14 @@ ccColor3B Confetti::COLORS[3] =
 // ===========================================================
 
 Confetti::Confetti() :
-    Entity("confety_sprite@2x.png", 5, 4)
+    Entity("confety_sprite@2x.png", 5, 4),
+	mSpeedX(0),
+	mSpeedY(0),
+	mWeight(0),
+	mRotationSpeed(0),
+	mAlphaSpeed(0),
+	mMoveUp(0),
+	mAppear(0)
     {
         this->mAppear = false;
     }

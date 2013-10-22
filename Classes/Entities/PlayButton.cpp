@@ -20,7 +20,9 @@
 // ===========================================================
 
 PlayButton::PlayButton(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender) :
-	Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender)
+	Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender),
+	mAnimationTime(0),
+	mAnimationTimeElapsed(0)
 	{
 	}
 

@@ -37,29 +37,44 @@ void EntityManager::init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNod
     }
 }
 
-EntityManager::EntityManager(int pCreateCount, Entity* pEntity)
-{
-    this->init(pCreateCount, -1, pEntity, NULL, 0);
-}
+EntityManager::EntityManager(int pCreateCount, Entity* pEntity) :
+	mParent(0),
+	mLastElementNumber(0),
+	mCapacity(0)
+	{
+		this->init(pCreateCount, -1, pEntity, NULL, 0);
+	}
 
-EntityManager::EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen)
-{
-    this->init(pCreateCount, -1, pEntity, pScreen, 0);
-}
+EntityManager::EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen) :
+	mParent(0),
+	mLastElementNumber(0),
+	mCapacity(0)
+	{
+		this->init(pCreateCount, -1, pEntity, pScreen, 0);
+	}
 
-EntityManager::EntityManager(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen)
-{
-    this->init(pCreateCount, pMaxCount, pEntity, pScreen, 0);
-}
+EntityManager::EntityManager(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen) :
+	mParent(0),
+	mLastElementNumber(0),
+	mCapacity(0)
+	{
+		this->init(pCreateCount, pMaxCount, pEntity, pScreen, 0);
+	}
 
-EntityManager::EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder)
-{
-    this->init(pCreateCount, -1, pEntity, pScreen, pZOrder);
-}
+EntityManager::EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder) :
+	mParent(0),
+	mLastElementNumber(0),
+	mCapacity(0)
+	{
+		this->init(pCreateCount, -1, pEntity, pScreen, pZOrder);
+	}
 
-EntityManager::EntityManager()
-{
-}
+EntityManager::EntityManager() :
+	mParent(0),
+	mLastElementNumber(0),
+	mCapacity(0)
+	{
+	}
 
 EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity)
 {

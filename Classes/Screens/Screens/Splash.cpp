@@ -27,14 +27,26 @@ Splash::~Splash()
     this->removeAllChildrenWithCleanup(true);
 }
 
-Splash::Splash(Screen* pParent)
-{
-    this->mParent = pParent;
+Splash::Splash(Screen* pParent) :
+	mType(0),
+	mShowBackgroundTime(0),
+	mShowBackgroundTimeElapsed(0),
+	mHideBackgroundTime(0),
+	mHideBackgroundTimeElapsed(0),
+	mShowBackground(0),
+	mHideBackground(0),
+	mShowed(0),
+	mParent(0),
+	mBackground(0),
+	mParts(0),
+	mScaleLayer(0)
+	{
+		this->mParent = pParent;
     
-    this->mShowBackground = false;
-    this->mHideBackground = false;
-    this->mShowed = false;
-}
+		this->mShowBackground = false;
+		this->mHideBackground = false;
+		this->mShowed = false;
+	}
 
 // ===========================================================
 // Methods

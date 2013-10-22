@@ -34,7 +34,7 @@ int Options::SELECTED_WEAPON_ID = 0;
 
 int Options::DEVICE_TYPE = -1;
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 
 const char* Options::TEXTURES_EXTENSION = ".png";
 
@@ -44,8 +44,8 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 
 #endif
 
-bool Options::MUSIC_ENABLE = true;
-bool Options::SOUND_ENABLE = true;
+bool Options::MUSIC_ENABLE = false;
+bool Options::SOUND_ENABLE = false;
 
 const char* Options::VERSION = "0.8.4";
 string Options::STRING_VERSION = "0.8.4";
@@ -76,6 +76,31 @@ const char* Options::SOUND_COMBO[8] = {"Sound/combo-1.ogg", "Sound/combo-2.ogg",
 const char* Options::SOUND_POINTS[12] = {"Sound/popup-1.ogg", "Sound/popup-2.ogg","Sound/popup-3.ogg","Sound/popup-4.ogg","Sound/popup-5.ogg","Sound/popup-6.ogg","Sound/popup-7.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg"};
 const char* Options::SOUND_PROGRESS = "Sound/progress_complete.ogg";
 const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.ogg";
+
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
+
+const char* Options::MUSIC_1 = "Music/music-1.mp3";
+const char* Options::MUSIC_2 = "Music/music-2.mp3";
+
+const char* Options::SOUND_TAP = "Sound/tap.wav";
+const char* Options::SOUND_UNLOCKED = "Sound/equip-unlock.mp3";
+const char* Options::SOUND_EQUIP_SWORD = "Sound/equip-new-sword.mp3";
+const char* Options::SOUND_BIRD_BLOW = "Sound/bird-blow.mp3";
+const char* Options::SOUND_DANGER_EXPLOSION = "Sound/explosion.mp3";
+const char* Options::SOUND_THROW = "Sound/throw-bird.mp3";
+const char* Options::SOUND_THROW_BOMB = "Sound/throw-bomb.mp3";
+const char* Options::SOUND_LOSE_LIFE = "Sound/lose_life.mp3";
+const char* Options::SOUND_HIT = "Sound/hit.mp3";
+const char* Options::SOUND_BONUS_GONG = "Sound/bonus-gong.mp3";
+const char* Options::SOUND_BOMB_FUSE = "Sound/bomb-fuse.mp3";
+const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.mp3", "Sound/combo-blitz-backing.mp3", "Sound/combo-blitz-backing-end.mp3" };
+const char* Options::SOUND_SWOOSH = "Sound/swoosh.mp3";
+const char* Options::SOUND_FREEZEE = "Sound/bonus_banana_freeze.mp3";
+const char* Options::SOUND_PREDICTION = "Sound/pome-rampdown.mp3";
+const char* Options::SOUND_COMBO[8] = { "Sound/combo-1.mp3", "Sound/combo-2.mp3", "Sound/combo-3.mp3", "Sound/combo-4.mp3", "Sound/combo-5.mp3", "Sound/combo-6.mp3", "Sound/combo-7.mp3", "Sound/combo-8.mp3" };
+const char* Options::SOUND_POINTS[12] = { "Sound/popup-1.mp3", "Sound/popup-2.mp3", "Sound/popup-3.mp3", "Sound/popup-4.mp3", "Sound/popup-5.mp3", "Sound/popup-6.mp3", "Sound/popup-7.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3" };
+const char* Options::SOUND_PROGRESS = "Sound/progress_complete.mp3";
+const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.mp3";
 
 #else
 
@@ -439,8 +464,8 @@ void Options::init()
         }
     }
 
-    Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
-    Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
+    //Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
+    //Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 

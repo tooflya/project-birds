@@ -27,7 +27,18 @@ Pause::~Pause()
 }
 
 Pause::Pause(CCNode* pParent) :
-    Popup(pParent, false)
+    Popup(pParent, false),
+	mIllustrationAnimationTime(0),
+	mIllustrationAnimationTimeElapsed(0),
+	mContinueButton(0),
+	mBackButton(0),
+	mSoundButton(0),
+	mMusicButton(0),
+	mLeaderBoardButton(0),
+	mAchievementsButton(0),
+	mShopButton(0),
+	mMenuButton(0),
+	mBirdsIllustrations()
     {
         this->mIllustrationAnimationTime = 0.5;
         this->mIllustrationAnimationTimeElapsed = 0;

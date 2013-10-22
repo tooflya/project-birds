@@ -20,7 +20,9 @@
 // ===========================================================
 
 Star::Star() :
-    Entity("end_lvl_star_sprite@2x.png", 3, 2)
+    Entity("end_lvl_star_sprite@2x.png", 3, 2),
+	mAnimationTimeElapsed(0),
+	mIsAnimationRunning(0)
     {
         
     }

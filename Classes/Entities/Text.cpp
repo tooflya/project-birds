@@ -61,47 +61,56 @@ Text::~Text()
 {
 }
 
-Text::Text(const char* pString, float pSize, CCNode* pParent)
-{
-    this->initWithString(pString, Options::FONT, Utils::coord(pSize), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-    this->enableShadow();
+Text::Text(const char* pString, float pSize, CCNode* pParent) :
+	mId(0),
+	mInitCenterX(0),
+	mInitCenterY(0)
+	{
+		this->initWithString(pString, Options::FONT, Utils::coord(pSize), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+		this->enableShadow();
     
-    this->mId = 0;
+		this->mId = 0;
     
-    pParent->addChild(this);
+		pParent->addChild(this);
     
-    TEXTES[ID] = this;
+		TEXTES[ID] = this;
     
-    ID++;
-}
+		ID++;
+	}
 
-Text::Text(Textes pParams, CCNode* pParent)
-{
-    this->initWithString(pParams.string, pParams.font, Utils::coord(pParams.size), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-    this->enableShadow();
+Text::Text(Textes pParams, CCNode* pParent) :
+	mId(0),
+	mInitCenterX(0),
+	mInitCenterY(0)
+	{
+		this->initWithString(pParams.string, pParams.font, Utils::coord(pParams.size), CCSize(0, 0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+		this->enableShadow();
     
-    this->mId = pParams.identifier;
+		this->mId = pParams.identifier;
     
-    pParent->addChild(this);
+		pParent->addChild(this);
     
-    TEXTES[ID] = this;
+		TEXTES[ID] = this;
     
-    ID++;
-}
+		ID++;
+	}
 
-Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent)
-{
-    this->initWithString(pParams.string, pParams.font, Utils::coord(pParams.size), pDimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-    this->enableShadow();
+Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
+	mId(0),
+	mInitCenterX(0),
+	mInitCenterY(0)
+	{
+		this->initWithString(pParams.string, pParams.font, Utils::coord(pParams.size), pDimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+		this->enableShadow();
     
-    this->mId = pParams.identifier;
+		this->mId = pParams.identifier;
     
-    pParent->addChild(this);
+		pParent->addChild(this);
     
-    TEXTES[ID] = this;
+		TEXTES[ID] = this;
     
-    ID++;
-}
+		ID++;
+	}
 
 Text* Text::create(const char* pString, float pSize, CCNode* pParent)
 {

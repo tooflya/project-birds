@@ -29,7 +29,10 @@ ResetProgress::~ResetProgress()
 }
 
 ResetProgress::ResetProgress(CCNode* pParent) :
-    Popup(pParent)
+    Popup(pParent),
+	mResetButton(0),
+	mAction(0),
+	mLights(0)
     {
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
     
