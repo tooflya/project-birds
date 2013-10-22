@@ -37,8 +37,13 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
         this->addChild(spriteBatch3);
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         SpriteBatch* spriteBatch11 = 0;
         
+=======
+        SpriteBatch* spriteBatch11;
+
+>>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
 =======
         SpriteBatch* spriteBatch11;
 
