@@ -25,7 +25,7 @@ Classic* Classic::m_Instance = NULL;
 
 Classic::~Classic()
 {
-    CC_SAFE_RELEASE_NULL(this->mConfetti);
+    CC_SAFE_RELEASE(this->mConfetti);
 }
 
 Classic::Classic() :
@@ -46,6 +46,8 @@ Classic::Classic() :
         SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas14");
         SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
         SpriteBatch* spriteBatch9 = SpriteBatch::create("TextureAtlas12");
+        this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
+        this->spriteBatch99->retain();
         
         this->mGameLayer->addChild(spriteBatch6);
         
@@ -56,6 +58,7 @@ Classic::Classic() :
         this->mGameLayer->addChild(spriteBatch1);
         this->mGameLayer->addChild(spriteBatch2);
         this->mGameLayer->addChild(spriteBatch3);
+        this->mGameLayer->addChild(this->spriteBatch99);
         this->mGameLayer->addChild(spriteBatch4);
         this->mGameLayer->addChild(spriteBatch5);
         this->mGameLayer->addChild(spriteBatch9);
@@ -142,6 +145,8 @@ Classic::Classic() :
         this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
         this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
         this->mGeneralExplosions = EntityManager::create(100, GeneralExplosion::create(), spriteBatch9);
+        this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
+        this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
         
         this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 
@@ -326,7 +331,7 @@ void Classic::startGame()
     
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
     
-    Game::HEALTH = 1; // Arcade?
+    Game::HEALTH = 1;
 }
 
 void Classic::levelUp()
@@ -400,6 +405,11 @@ void Classic::stopChalange()
 void Classic::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
+    
+    if(this->mPause)
+    {
+        return;
+    }
 
     if(this->mIsLevelUpAnimation)
     {
@@ -488,6 +498,8 @@ void Classic::update(float pDeltaTime)
     
     this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
     this->mCountText->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() / 2 - this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mGoldLifesCount->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mGoldLifesCount->getWidth() / 2 - Utils::coord(37), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 }
 
 void Classic::onGameStarted()

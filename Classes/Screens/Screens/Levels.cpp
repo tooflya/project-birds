@@ -673,11 +673,14 @@ int Levels::PRIZES[80] =
 
 Levels::~Levels()
 {
-    CC_SAFE_RELEASE_NULL(this->mMainList);
-    CC_SAFE_RELEASE_NULL(this->mGetLivesPopup);
-    CC_SAFE_RELEASE_NULL(this->mUnlockLevelPopup);
+    CC_SAFE_RELEASE(this->mMainList);
+    CC_SAFE_RELEASE(this->mGetLivesPopup);
+    CC_SAFE_RELEASE(this->mUnlockLevelPopup);
+    CC_SAFE_RELEASE(this->mSurpriseLevelPopup);
     
-    CC_SAFE_RELEASE_NULL(spriteBatch2);
+    CC_SAFE_RELEASE(spriteBatch2);
+    
+    this->cleanup();
 }
 
 Levels::Levels()

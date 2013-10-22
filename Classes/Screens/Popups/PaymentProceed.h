@@ -13,8 +13,6 @@ class PaymentProceed : public Popup
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static PaymentProceed* m_Instance;
 
         // ===========================================================
         // Fields
@@ -90,6 +88,8 @@ class PaymentProceed : public Popup
         // ===========================================================
     
         static PaymentProceed* create(CCNode* pParent);
+    
+        ~PaymentProceed();
 
         // ===========================================================
         // Methods

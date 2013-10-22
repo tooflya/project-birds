@@ -25,7 +25,7 @@ ResetProgress* ResetProgress::m_Instance = NULL;
 
 ResetProgress::~ResetProgress()
 {
-    CC_SAFE_RELEASE_NULL(this->mLights);
+    CC_SAFE_RELEASE(this->mLights);
 }
 
 ResetProgress::ResetProgress(CCNode* pParent) :
@@ -126,7 +126,7 @@ void ResetProgress::onHide()
 
     if(this->mAction)
     {
-        AppDelegate::install();
+        AppDelegate::install(true);
         static_cast<Levels*>(AppDelegate::screens->mScreens[Screen::SCREEN_LEVELS])->updateIcons();
         
         AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);

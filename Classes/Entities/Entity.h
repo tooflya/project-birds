@@ -200,7 +200,7 @@ class Entity : public CCSprite, public Touchable
         float getSpeed(float pDeltaTime);
 
         void setPosition(float pX, float pY);
-        void setCenterPosition(float pCenterX, float pCenterY);
+        virtual void setCenterPosition(float pCenterX, float pCenterY);
         void setX(float pX);
         void setY(float pY);
 

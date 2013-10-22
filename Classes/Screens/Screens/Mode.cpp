@@ -24,10 +24,10 @@
 
 Mode::~Mode()
 {
-    CC_SAFE_RELEASE_NULL(this->mHelpPopup);
-    CC_SAFE_RELEASE_NULL(this->mLivesPopup);
-    CC_SAFE_RELEASE_NULL(this->mTempPublisherRatingExplain);
-    CC_SAFE_RELEASE_NULL(this->mTempPublisherAchievementsExplain);
+    CC_SAFE_RELEASE(this->mHelpPopup);
+    CC_SAFE_RELEASE(this->mLivesPopup);
+    CC_SAFE_RELEASE(this->mTempPublisherRatingExplain);
+    CC_SAFE_RELEASE(this->mTempPublisherAchievementsExplain);
 }
 
 Mode::Mode()

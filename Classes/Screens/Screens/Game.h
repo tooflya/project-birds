@@ -23,6 +23,7 @@
 #include "ZombieExplosion.h"
 #include "GeneralExplosion.h"
 #include "Color.h"
+#include "KeyDisplay.h"
 
 #include "Pause.h"
 #include "GetLives.h"
@@ -276,6 +277,8 @@ class Game : public Screen
         EntityManager* mSchematicBig;
         EntityManager* mSchematicSmall;
         EntityManager* mColorsBlink;
+        EntityManager* mKeys;
+        EntityManager* mKeysLights;
     
         EntityManager* mColors;
     
@@ -300,6 +303,8 @@ class Game : public Screen
         static const int GAME_TYPE_CLASSIC = 0;
         static const int GAME_TYPE_ARCADE = 1;
         static const int GAME_TYPE_PROGRESS = 2;
+    
+        SpriteBatch* spriteBatch99;
 
         // ===========================================================
         // Constructors

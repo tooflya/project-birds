@@ -150,7 +150,6 @@
         <array>
             <filename>../../Graphics Sources/special_birds_sprite@2x.png</filename>
             <filename>../../Graphics Sources/pirate_box@2x.png</filename>
-            <filename>../../Graphics Sources/get_coins_light@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

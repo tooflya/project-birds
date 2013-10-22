@@ -23,12 +23,13 @@
 
 Menu::~Menu()
 {
-    CC_SAFE_RELEASE_NULL(this->mRatePopup);
-    CC_SAFE_RELEASE_NULL(this->mMapPopup);
+    CC_SAFE_RELEASE(this->mRatePopup);
+    CC_SAFE_RELEASE(this->mMapPopup);
+    CC_SAFE_RELEASE(this->mTempPublisherInAppExplainPopup);
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
-    CC_SAFE_RELEASE_NULL(this->mExitPopup);
+    CC_SAFE_RELEASE(this->mExitPopup);
     
     #endif
 }
@@ -65,6 +66,7 @@ Menu::Menu()
 
     this->mRatePopup = PleaseRate::create(this);
     this->mMapPopup = Map::create(this);
+    this->mTempPublisherInAppExplainPopup = TempPublisherInAppExplain::create(this);
 
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mShopButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(270));
@@ -72,8 +74,8 @@ Menu::Menu()
     this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(270), Utils::coord(100));
     this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
     this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(100));
-    this->mPlayDecoration[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(0), Options::CAMERA_CENTER_Y - Utils::coord(80));
-    this->mPlayDecoration[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(0), Options::CAMERA_CENTER_Y - Utils::coord(80));
+    this->mPlayDecoration[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(5), Options::CAMERA_CENTER_Y - Utils::coord(80));
+    this->mPlayDecoration[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(5), Options::CAMERA_CENTER_Y - Utils::coord(80));
     this->mPlayButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(80));
     
     this->mPlayDecoration[0]->setColor(ccc3(255.0, 0.0, 0.0));
@@ -197,21 +199,30 @@ void Menu::onExit()
 void Menu::onEnterTransitionDidFinish()
 {
     Screen::onEnterTransitionDidFinish();
+    
+    this->onShow();
+}
 
-    if(!AppDelegate::isRate() && AppDelegate::IS_ALREADY_PLAYED)
-    {
-        this->mRatePopup->show();
-
-        AppDelegate::IS_ALREADY_PLAYED = false;
-    }
-
+void Menu::onShow()
+{
     int dn = Utils::millisecondNow() / 1000 / 86400000;
     int dl = AppDelegate::getLastVisitDaysCount();
     
-    if(dn - dl > 0 && dl != 0)
+    if(!AppDelegate::isRate() && AppDelegate::IS_ALREADY_PLAYED)
+    {
+        this->mRatePopup->show();
+        
+        AppDelegate::IS_ALREADY_PLAYED = false;
+    } else if(dn - dl > 0 && dl != 0)
     {
         this->mMapPopup->day = (dn - dl) > 5 ? 1 : (dn - dl);
         this->mMapPopup->show();
+    } else if(!AppDelegate::tempPublisherInAppInformationShowed())
+    {
+        this->mTempPublisherInAppExplainPopup->show();
+        
+        CCUserDefault::sharedUserDefault()->setBoolForKey("temp_inapp_inf", true);
+        CCUserDefault::sharedUserDefault()->flush();
     }
 }
 

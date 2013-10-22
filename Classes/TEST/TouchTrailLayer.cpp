@@ -9,7 +9,7 @@
 
 TouchTrailLayer::~TouchTrailLayer()
 {
-    CC_SAFE_DELETE(this->mWeaponParticles);
+    CC_SAFE_RELEASE(this->mWeaponParticles);
 }
 
 TouchTrailLayer::TouchTrailLayer()

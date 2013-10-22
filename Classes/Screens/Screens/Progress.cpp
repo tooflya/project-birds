@@ -23,7 +23,7 @@ Progress* Progress::m_Instance = NULL;
 
 Progress::~Progress()
 {
-    CC_SAFE_RELEASE_NULL(this->mResetPopup);
+    CC_SAFE_RELEASE(this->mResetPopup);
 }
 
 Progress::Progress()

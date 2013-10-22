@@ -11,10 +11,14 @@
 // Constants
 // ===========================================================
 
+<<<<<<< HEAD
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 TextureStructure Loading::TEXTURE_LIBRARY[11] =
+=======
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+TextureStructure Loading::TEXTURE_LIBRARY[10] =
+>>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
 {
-    {"TextureAtlas1.png", "TextureAtlas1.plist"},
     {"TextureAtlas2.png", "TextureAtlas2.plist"},
     {"TextureAtlas3.png", "TextureAtlas3.plist"},
     {"TextureAtlas4.png", "TextureAtlas4.plist"},
@@ -27,9 +31,8 @@ TextureStructure Loading::TEXTURE_LIBRARY[11] =
     {"about_scroll_fill_small@2x.png", NULL}
 };
 #else
-TextureStructure Loading::TEXTURE_LIBRARY[11] =
+TextureStructure Loading::TEXTURE_LIBRARY[10] =
 {
-    {"TextureAtlas1.pvr.ccz", "TextureAtlas1.plist"},
     {"TextureAtlas2.pvr.ccz", "TextureAtlas2.plist"},
     {"TextureAtlas3.pvr.ccz", "TextureAtlas3.plist"},
     {"TextureAtlas4.pvr.ccz", "TextureAtlas4.plist"},
@@ -53,10 +56,6 @@ TextureStructure Loading::TEXTURE_LIBRARY[11] =
 
 Loading::~Loading()
 {
-    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    
-    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 Loading::Loading()
@@ -128,7 +127,6 @@ void Loading::loadingCallBack(CCObject *obj)
     }
     else
     {
-        CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     }
 }
 
@@ -177,7 +175,7 @@ void Loading::update(float pDeltaTime)
                 CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].frames);
                 
                 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-                //CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loading::loadingCallBack));
+                CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loading::loadingCallBack));
                 #else
                 //CCTextureCache::sharedTextureCache()->addPVRImage(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture);
                 

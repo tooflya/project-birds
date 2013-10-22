@@ -23,7 +23,6 @@
 
 Arcade::~Arcade()
 {
-    CC_SAFE_RELEASE_NULL(this->mStars);
 }
 
 Arcade::Arcade() :
@@ -44,6 +43,8 @@ Arcade::Arcade() :
         SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas14");
         SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
         SpriteBatch* spriteBatch9 = SpriteBatch::create("TextureAtlas12");
+        this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
+        this->spriteBatch99->retain();
         
         this->mGameLayer->addChild(spriteBatch6);
         
@@ -54,6 +55,7 @@ Arcade::Arcade() :
         this->mGameLayer->addChild(spriteBatch1);
         this->mGameLayer->addChild(spriteBatch2);
         this->mGameLayer->addChild(spriteBatch3);
+        this->mGameLayer->addChild(this->spriteBatch99);
         this->mGameLayer->addChild(spriteBatch4);
         this->mGameLayer->addChild(spriteBatch5);
         this->mGameLayer->addChild(spriteBatch9);
@@ -63,18 +65,23 @@ Arcade::Arcade() :
         this->mTimeIcon = Clock::create(this->mEventLayer);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
         
-        this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
-        this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
-        for(int i = 1; i < 4; i++)
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+        if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
         {
-            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
-            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+            this->mBackgroundLights[0] = Entity::create("bg_light_main@2x.png", spriteBatch6);
+            this->mBackgroundLights[0]->setAnchorPoint(ccp(0.0, 0.5));
+            for(int i = 1; i < 4; i++)
+            {
+                this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+                this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+            }
+            for(int i = 4; i < 7; i++)
+            {
+                this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
+                this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
+            }
         }
-        for(int i = 4; i < 7; i++)
-        {
-            this->mBackgroundLights[i] = Entity::create("bg_light_1.png", spriteBatch6);
-            this->mBackgroundLights[i]->setAnchorPoint(ccp(0.0, 0.5));
-        }
+        #endif
         
         this->mGamePanel = Entity::create("game_panel@2x.png", spriteBatch8);
         this->mTextAreas[0] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
@@ -85,10 +92,14 @@ Arcade::Arcade() :
         this->mTextIcons[1] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
         this->mTextIcons[2] = Entity::create("game_panel_time@2x.png", spriteBatch8);
         this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
+<<<<<<< HEAD
 
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 
         this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
+=======
+        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
+>>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
         
         this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -108,7 +119,12 @@ Arcade::Arcade() :
 
         this->mCountText = Text::create(textes1, this);
         this->mBestCountText = Text::create(Options::TEXT_GAME_BEST, this);
+<<<<<<< HEAD
         this->mTimeText = Text::create(textes2, this);
+=======
+        this->mTimeText = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+        this->mGoldLifesCount = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+>>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
 
         this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
         
@@ -132,9 +148,27 @@ Arcade::Arcade() :
         this->mRobotParts = EntityManager::create(8, RobotoPart::create(0), spriteBatch7);
         this->mGunLaser = Entity::create("gun_laser.png", 4, 1, spriteBatch7);
         this->mGun = RobotoGun::create(spriteBatch7);
+        this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
+        this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
         
         this->mGunLaser->setAnchorPoint(ccp(0.5, 1));
         this->mGunLaser->animate(0.04);
+        
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+        if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
+        {
+            this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
+            
+            for(int i = 1; i < 4; i++)
+            {
+                this->mBackgroundLights[i]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+            }
+            for(int i = 1; i < 4; i++)
+            {
+                this->mBackgroundLights[i + 3]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y + Utils::coord(50) * (i - 1));
+            }
+        }
+        #endif
 
         this->mEventPanel = EventPanel::create(this);
         
@@ -153,6 +187,7 @@ Arcade::Arcade() :
 
         this->mPausePopup = Pause::create(this);
         this->mEndScreen = End::create(Splash::TYPE_ARCADE, this);
+        this->mGetLivesPopup = GetLives::create(this, false);
 
         this->mAlgorithmBirdsRemainig = 6;
         this->mAlgorithmBirdsTime = 1.5;
@@ -188,6 +223,11 @@ void Arcade::onTouchButtonsCallback(const int pAction, const int pID)
                     this->mPausePopup->show();
 
                 break;
+                case Options::BUTTONS_ID_GAME_GET_LIVES:
+                    
+                    this->mGetLivesPopup->show();
+                    
+                break;
                 case Options::BUTTONS_ID_GAME_RESTART:
 
                     // TODO: Restart level.
@@ -209,6 +249,10 @@ void Arcade::startGame()
     Game::startGame();
 
     this->mTimeIcon->start();
+    
+    this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
+    
+    Game::HEALTH = 1;
 }
 
 // ===========================================================
@@ -218,6 +262,11 @@ void Arcade::startGame()
 void Arcade::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
+    
+    if(this->mPause)
+    {
+        return;
+    }
 
     if(this->mGamePaused)
     {
@@ -246,6 +295,8 @@ void Arcade::update(float pDeltaTime)
     
     this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
     this->mCountText->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() / 2 - this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mGoldLifesCount->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - this->mGoldLifesCount->getWidth() / 2 - Utils::coord(37), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 }
 
 void Arcade::onGameStarted()

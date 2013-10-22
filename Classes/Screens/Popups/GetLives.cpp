@@ -6,6 +6,9 @@
 #include "Shop.h"
 #include "Mode.h"
 
+#include "Loader.h"
+#include "Game.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -24,7 +27,7 @@
 
 GetLives::~GetLives()
 {
-    CC_SAFE_RELEASE_NULL(this->mLights);
+    CC_SAFE_RELEASE(this->mLights);
 }
 
 GetLives::GetLives(CCNode* pParent, bool pFirst) :
@@ -33,11 +36,16 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas3");
         this->addChild(spriteBatch3);
         
+<<<<<<< HEAD
         SpriteBatch* spriteBatch11 = 0;
         
+=======
+        SpriteBatch* spriteBatch11;
+
+>>>>>>> c1a258939ab4a35d1458de5df385aaa2f1e96f6a
         if(!pFirst)
         {
-            spriteBatch11 = SpriteBatch::create("TextureAtlas11");
+            spriteBatch11 = SpriteBatch::create("TextureAtlas9");
             this->addChild(spriteBatch11, -1);
         }
         
@@ -179,9 +187,21 @@ void GetLives::onHide()
             }
             else
             {
-                Shop::ACTION = 4;
+                Game* game = dynamic_cast<Game*>(this->mParent);
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                if(game != 0)
+                {
+                    Shop::ACTION = 5;
+                    Loader::ACTION = 5;
+                    
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                }
+                else
+                {
+                    Shop::ACTION = 4;
+                
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                }
             }
         }
         break;
@@ -191,6 +211,13 @@ void GetLives::onHide()
 void GetLives::show()
 {
     Popup::show();
+    
+    Game* game = dynamic_cast<Game*>(this->mParent);
+    
+    if(game != 0)
+    {
+        game->pause();
+    }
 }
 
 void GetLives::hide()
@@ -201,6 +228,13 @@ void GetLives::hide()
     {
         ((Entity*) this->mLights->objectAtIndex(i))->stopAllActions();
         ((Entity*) this->mLights->objectAtIndex(i))->runAction(CCFadeTo::create(0.3, 0.0));
+    }
+    
+    Game* game = dynamic_cast<Game*>(this->mParent);
+    
+    if(game != 0)
+    {
+        game->pause();
     }
 }
 

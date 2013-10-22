@@ -111,7 +111,7 @@ class AppDelegate : private CCApplication
         static int getSelectedLanguage();
 
         static bool isInstalled();
-        static void install();
+        static void install(bool soft);
 
         static bool isItemBought(int pItem);
         static void buyItem(int pItem);
@@ -149,6 +149,10 @@ class AppDelegate : private CCApplication
     
         static int getLastVisitDaysCount();
         static void setLastVisitDaysCount(int pCount);
+    
+        static string lastVersion();
+    
+        static bool tempPublisherInAppInformationShowed();
     
         // ===========================================================
         // Override Methods

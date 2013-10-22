@@ -30,6 +30,19 @@
                 <key>sourceSize</key>
                 <string>{2044,1434}</string>
             </dict>
+            <key>popup_key_ico_fall@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{259,1437},{54,65}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{54,65}}</string>
+                <key>sourceSize</key>
+                <string>{54,65}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -40,7 +53,7 @@
             <key>size</key>
             <string>{2046,1694}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:afee3e83c089312c4df9cd3eb54e7609:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:0ae694be4abf8fbc1f2146e540dbb6c5:1/1$</string>
             <key>textureFileName</key>
             <string>TextureAtlas10.pvr.ccz</string>
         </dict>

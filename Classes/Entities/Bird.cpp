@@ -38,9 +38,7 @@ ccColor3B Bird::COLORS[COUNT] =
 
 Bird::~Bird()
 {
-    this->mLife->release();
-    
-    this->removeAllChildrenWithCleanup(true);
+    CC_SAFE_RELEASE(this->mLife);
 }
 
 Bird::Bird(bool pBonus) :
@@ -314,6 +312,16 @@ void Bird::onDestroy()
         if(this->mType == TYPE_FLAYER)
         {
             Game::FLAYER_COUNT++;
+            
+            if(this->mLifeCount <= 0)
+            {
+                if(Utils::probably(40))
+                {
+                    game->mKeys->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+                    
+                    AppDelegate::addCoins(1, Options::SAVE_DATA_COINS_TYPE_KEYS);
+                }
+            }
         }
     }
     

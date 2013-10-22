@@ -21,7 +21,7 @@
 
 ModeHelp::~ModeHelp()
 {
-    CC_SAFE_RELEASE_NULL(this->mList);
+    CC_SAFE_RELEASE(this->mList);
 }
 
 ModeHelp::ModeHelp(CCNode* pParent) :

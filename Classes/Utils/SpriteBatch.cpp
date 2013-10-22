@@ -21,6 +21,7 @@
 
 SpriteBatch::~SpriteBatch()
 {
+    this->removeAllChildrenWithCleanup(true);
 }
 
 SpriteBatch::SpriteBatch()

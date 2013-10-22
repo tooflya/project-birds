@@ -5,7 +5,7 @@
 
 EntityManager::~EntityManager()
 {
-    
+    this->removeAllObjects();
 }
 
 void EntityManager::init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen, int pZOrder)

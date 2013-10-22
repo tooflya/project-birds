@@ -3,6 +3,8 @@
 
 #include "Map.h"
 
+#include "Menu.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -69,6 +71,7 @@ public:
     {
         BackgroundEntity* entity = new BackgroundEntity(pTextureFileName, pParent);
         entity->autorelease();
+        entity->retain();
         
         return entity;
     }
@@ -88,14 +91,17 @@ public:
 
 Map::~Map()
 {
-    CC_SAFE_RELEASE_NULL(this->mRipples);
-    CC_SAFE_RELEASE_NULL(this->mWays);
-    CC_SAFE_RELEASE_NULL(this->mStars);
-    CC_SAFE_RELEASE_NULL(this->mCoins);
-    CC_SAFE_RELEASE_NULL(this->mConfetti);
-    CC_SAFE_RELEASE_NULL(this->mSilverCoins);
-    CC_SAFE_RELEASE_NULL(this->mAnimatedCoins);
-    CC_SAFE_RELEASE_NULL(this->mSilverAnimatedCoins);
+    CC_SAFE_RELEASE(this->mRipples);
+    CC_SAFE_RELEASE(this->mWays);
+    CC_SAFE_RELEASE(this->mStars);
+    CC_SAFE_RELEASE(this->mCoins);
+    CC_SAFE_RELEASE(this->mConfetti);
+    CC_SAFE_RELEASE(this->mSilverCoins);
+    CC_SAFE_RELEASE(this->mAnimatedCoins);
+    CC_SAFE_RELEASE(this->mSilverAnimatedCoins);
+    CC_SAFE_RELEASE(this->mBackground);
+    
+    this->removeAllChildrenWithCleanup(true);
 }
 
 Map::Map(CCNode* pParent)
@@ -834,6 +840,8 @@ void Map::onExit()
     
     this->stopAllActions();
     this->unscheduleAllSelectors();
+    
+    static_cast<Menu*>(this->mParent)->onShow();
 }
 
 bool Map::ccTouchBegan(CCTouch* touch, CCEvent* event)

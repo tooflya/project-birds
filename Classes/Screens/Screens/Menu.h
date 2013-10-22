@@ -6,6 +6,7 @@
 #include "Exit.h"
 #include "Map.h"
 #include "PleaseRate.h"
+#include "TempPublisherInAppExplain.h"
 
 #include "PlayButton.h"
 
@@ -37,6 +38,7 @@ class Menu : public Screen
     
         Popup* mExitPopup;
         Popup* mRatePopup;
+        Popup* mTempPublisherInAppExplainPopup;
     
         Map* mMapPopup;
 
@@ -104,6 +106,8 @@ class Menu : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        void onShow();
         
         // ===========================================================
         // Override Methods

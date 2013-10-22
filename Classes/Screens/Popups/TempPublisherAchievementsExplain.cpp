@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-TempPublisherAchievementsExplain* TempPublisherAchievementsExplain::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -41,8 +39,6 @@ TempPublisherAchievementsExplain::TempPublisherAchievementsExplain(CCNode* pPare
 
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(250));
         text2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
-        
-        m_Instance = this;
     }
 
 TempPublisherAchievementsExplain* TempPublisherAchievementsExplain::create(CCNode* pParent)
@@ -60,8 +56,6 @@ TempPublisherAchievementsExplain* TempPublisherAchievementsExplain::create(CCNod
 
 void TempPublisherAchievementsExplain::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    TempPublisherAchievementsExplain* pSender = (TempPublisherAchievementsExplain*) TempPublisherAchievementsExplain::m_Instance;
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -69,7 +63,7 @@ void TempPublisherAchievementsExplain::onTouchButtonsCallback(const int pAction,
         {
             default:
                 
-                pSender->hide();
+                this->hide();
                 
             break;
         }

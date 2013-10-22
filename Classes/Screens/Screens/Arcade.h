@@ -28,6 +28,7 @@ class Arcade : public Game
         Text* mCountText;
         Text* mBestCountText;
         Text* mTimeText;
+        Text* mGoldLifesCount;
     
         // ===========================================================
         // Constructors
