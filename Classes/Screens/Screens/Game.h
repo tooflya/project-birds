@@ -59,7 +59,9 @@ class Game : public Screen
         {
             if(this->getOpacity() <= 0) return;
             
+			#if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
             glLineWidth(1);
+			#endif
             CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
             ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
         }

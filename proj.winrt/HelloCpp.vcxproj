@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{a4bd3c33-e173-4233-b52b-c5bfd57144c8}</ProjectGuid>
+    <RootNamespace>HelloCpp</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <ApplicationTypeRevision>8.1</ApplicationTypeRevision>
+    <ProjectName>ProjectBirds</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <PackageCertificateKeyFile>HelloCpp_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include;$(ProjectDir)..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common;$(ProjectDir)..\..\..\..\CocosDenshion\include;$(ProjectDir)..\..\..\..\cocos2dx;$(ProjectDir)..\..\..\..\cocos2dx\include;$(ProjectDir)..\..\..\..\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\..\cocos2dx\platform\winrt;$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\Entities;$(ProjectDir)..\Classes\Managers;$(ProjectDir)..\Classes\Graphics;$(ProjectDir)..\Classes\TEST;$(ProjectDir)..\Classes\Utils;$(ProjectDir)..\Classes\Screens;$(ProjectDir)..\Classes\Screens\Screens;$(ProjectDir)..\Classes\Screens\Popups;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4267;4251;4244;4453;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <PreprocessorDefinitions>WINRT;_WINRT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+      </AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">false</GenerateDebugInformation>
+    </Link>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateDebugInformation>
+    </Link>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">xcopy "$(ProjectDir)..\Resources" "$(ProjectDir)Assets\Resources" /s /y /i /q &amp; echo Copied Resource files to \Assets\Resources</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcopy "$(ProjectDir)..\Resources" "$(ProjectDir)Assets\Resources" /s /y /i /q &amp; echo Copied Resource files to \Assets\Resources</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">xcopy "$(ProjectDir)..\Resources" "$(ProjectDir)Assets\Resources" /s /y /i /q &amp; echo Copied Resource files to \Assets\Resources</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>WINRT;_WINRT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D "_CRT_SECURE_NO_WARNINGS" %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</WholeProgramOptimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+      </AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">xcopy "$(ProjectDir)..\Resources" "$(ProjectDir)Assets\Resources" /s /y /i /q &amp; echo Copied Resource files to \Assets\Resources</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Copy Resources to Assets folder</Message>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcopy "$(ProjectDir)..\Resources" "$(ProjectDir)Assets\Resources" /s /y /i /q &amp; echo Copied Resource files to \Assets\Resources</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">xcopy "$(ProjectDir)..\Resources" "$(ProjectDir)Assets\Resources" /s /y /i /q &amp; echo Copied Resource files to \Assets\Resources</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Entities\AnimatedCoin.h" />
+    <ClInclude Include="..\Classes\Entities\Bird.h" />
+    <ClInclude Include="..\Classes\Entities\Button.h" />
+    <ClInclude Include="..\Classes\Entities\Clock.h" />
+    <ClInclude Include="..\Classes\Entities\Color.h" />
+    <ClInclude Include="..\Classes\Entities\Confetti.h" />
+    <ClInclude Include="..\Classes\Entities\Dust.h" />
+    <ClInclude Include="..\Classes\Entities\Entity.h" />
+    <ClInclude Include="..\Classes\Entities\EventPanel.h" />
+    <ClInclude Include="..\Classes\Entities\Explosion.h" />
+    <ClInclude Include="..\Classes\Entities\ExplosionBasic.h" />
+    <ClInclude Include="..\Classes\Entities\Feather.h" />
+    <ClInclude Include="..\Classes\Entities\GeneralExplosion.h" />
+    <ClInclude Include="..\Classes\Entities\ImpulseEntity.h" />
+    <ClInclude Include="..\Classes\Entities\Item.h" />
+    <ClInclude Include="..\Classes\Entities\KeyParticle.h" />
+    <ClInclude Include="..\Classes\Entities\LiveParticle.h" />
+    <ClInclude Include="..\Classes\Entities\Mark.h" />
+    <ClInclude Include="..\Classes\Entities\PirateBox.h" />
+    <ClInclude Include="..\Classes\Entities\PlayButton.h" />
+    <ClInclude Include="..\Classes\Entities\Rain.h" />
+    <ClInclude Include="..\Classes\Entities\RainCircle.h" />
+    <ClInclude Include="..\Classes\Entities\Ripple.h" />
+    <ClInclude Include="..\Classes\Entities\RobotoGun.h" />
+    <ClInclude Include="..\Classes\Entities\RobotoPart.h" />
+    <ClInclude Include="..\Classes\Entities\SpecialBird.h" />
+    <ClInclude Include="..\Classes\Entities\Star.h" />
+    <ClInclude Include="..\Classes\Entities\StarParticle.h" />
+    <ClInclude Include="..\Classes\Entities\StarParticle2.h" />
+    <ClInclude Include="..\Classes\Entities\Text.h" />
+    <ClInclude Include="..\Classes\Entities\WeaponParticle.h" />
+    <ClInclude Include="..\Classes\Entities\ZombieExplosion.h" />
+    <ClInclude Include="..\Classes\Graphics\Texture.h" />
+    <ClInclude Include="..\Classes\Managers\BatchEntityManager.h" />
+    <ClInclude Include="..\Classes\Managers\BladeParticlesManager.h" />
+    <ClInclude Include="..\Classes\Managers\EntityManager.h" />
+    <ClInclude Include="..\Classes\Managers\ScreenManager.h" />
+    <ClInclude Include="..\Classes\Options.h" />
+    <ClInclude Include="..\Classes\Screens\Popup.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\BoughtItem.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\BuyItem.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\Exit.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\GetCoins.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\GetKeys.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\GetLives.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\Map.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\ModeHelp.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\Pause.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\PaymentProceed.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\PleaseRate.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\ResetProgress.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\SurpriseLevel.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\TempPublisherAchievementsExplain.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\UnlockLevel.h" />
+    <ClInclude Include="..\Classes\Screens\Screen.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Arcade.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Classic.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Credits.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\End.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Game.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Language.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Levels.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Loader.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Loading.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Menu.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Mode.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\More.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Progress.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Progresses.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Settings.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Shop.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Splash.h" />
+    <ClInclude Include="..\Classes\TEST\CCBlade.h" />
+    <ClInclude Include="..\Classes\TEST\TouchTrailLayer.h" />
+    <ClInclude Include="..\Classes\Utils\ButtonReceiver.h" />
+    <ClInclude Include="..\Classes\Utils\BuyItemList.h" />
+    <ClInclude Include="..\Classes\Utils\CreditsList.h" />
+    <ClInclude Include="..\Classes\Utils\List.h" />
+    <ClInclude Include="..\Classes\Utils\ModeHelpList.h" />
+    <ClInclude Include="..\Classes\Utils\SpriteBatch.h" />
+    <ClInclude Include="..\Classes\Utils\Touchable.h" />
+    <ClInclude Include="..\Classes\Utils\Utils.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="App.xaml.h">
+      <DependentUpon>App.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="MainPage.xaml.h">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Common\StandardStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="ProjectBirds_TemporaryKey.pfx" />
+    <None Include="..\..\..\..\cocos2dx\platform\third_party\winrt\libraries\vs2012\ARM\D3Dcompiler_46.dll">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">false</DeploymentContent>
+      <Link>%(OutputDir)%(FileName)%(Extension)</Link>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</DeploymentContent>
+    </None>
+    <None Include="..\..\..\..\cocos2dx\platform\third_party\winrt\libraries\vs2012\Win32\D3Dcompiler_46.dll">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</DeploymentContent>
+      <Link>%(OutputDir)%(FileName)%(Extension)</Link>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">false</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">false</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+      </PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+      </PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\AnimatedCoin.cpp" />
+    <ClCompile Include="..\Classes\Entities\Bird.cpp" />
+    <ClCompile Include="..\Classes\Entities\Button.cpp" />
+    <ClCompile Include="..\Classes\Entities\Clock.cpp" />
+    <ClCompile Include="..\Classes\Entities\Color.cpp" />
+    <ClCompile Include="..\Classes\Entities\Confetti.cpp" />
+    <ClCompile Include="..\Classes\Entities\Dust.cpp" />
+    <ClCompile Include="..\Classes\Entities\Entity.cpp" />
+    <ClCompile Include="..\Classes\Entities\EventPanel.cpp" />
+    <ClCompile Include="..\Classes\Entities\Explosion.cpp" />
+    <ClCompile Include="..\Classes\Entities\ExplosionBasic.cpp" />
+    <ClCompile Include="..\Classes\Entities\Feather.cpp" />
+    <ClCompile Include="..\Classes\Entities\GeneralExplosion.cpp" />
+    <ClCompile Include="..\Classes\Entities\ImpulseEntity.cpp" />
+    <ClCompile Include="..\Classes\Entities\Item.cpp" />
+    <ClCompile Include="..\Classes\Entities\KeyParticle.cpp" />
+    <ClCompile Include="..\Classes\Entities\LiveParticle.cpp" />
+    <ClCompile Include="..\Classes\Entities\Mark.cpp" />
+    <ClCompile Include="..\Classes\Entities\PirateBox.cpp" />
+    <ClCompile Include="..\Classes\Entities\PlayButton.cpp" />
+    <ClCompile Include="..\Classes\Entities\Rain.cpp" />
+    <ClCompile Include="..\Classes\Entities\RainCircle.cpp" />
+    <ClCompile Include="..\Classes\Entities\Ripple.cpp" />
+    <ClCompile Include="..\Classes\Entities\RobotoGun.cpp" />
+    <ClCompile Include="..\Classes\Entities\RobotoPart.cpp" />
+    <ClCompile Include="..\Classes\Entities\SpecialBird.cpp" />
+    <ClCompile Include="..\Classes\Entities\Star.cpp" />
+    <ClCompile Include="..\Classes\Entities\StarParticle.cpp" />
+    <ClCompile Include="..\Classes\Entities\StarParticle2.cpp" />
+    <ClCompile Include="..\Classes\Entities\Text.cpp" />
+    <ClCompile Include="..\Classes\Entities\WeaponParticle.cpp" />
+    <ClCompile Include="..\Classes\Entities\ZombieExplosion.cpp" />
+    <ClCompile Include="..\Classes\Graphics\Texture.cpp" />
+    <ClCompile Include="..\Classes\Managers\BatchEntityManager.cpp" />
+    <ClCompile Include="..\Classes\Managers\BladeParticlesManager.cpp" />
+    <ClCompile Include="..\Classes\Managers\EntityManager.cpp" />
+    <ClCompile Include="..\Classes\Managers\ScreenManager.cpp" />
+    <ClCompile Include="..\Classes\Options.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popup.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\BoughtItem.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\BuyItem.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\Exit.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\GetCoins.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\GetKeys.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\GetLives.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\Map.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\ModeHelp.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\Pause.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\PaymentProceed.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\PleaseRate.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\ResetProgress.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\SurpriseLevel.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\UnlockLevel.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screen.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Arcade.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Classic.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Credits.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\End.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Game.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Language.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Levels.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Loader.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Loading.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Menu.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Mode.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\More.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Progress.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Progresses.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Settings.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Shop.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Splash.cpp" />
+    <ClCompile Include="..\Classes\TEST\CCBlade.cpp" />
+    <ClCompile Include="..\Classes\TEST\TouchTrailLayer.cpp" />
+    <ClCompile Include="..\Classes\Utils\ButtonReceiver.cpp" />
+    <ClCompile Include="..\Classes\Utils\BuyItemList.cpp" />
+    <ClCompile Include="..\Classes\Utils\CreditsList.cpp" />
+    <ClCompile Include="..\Classes\Utils\List.cpp" />
+    <ClCompile Include="..\Classes\Utils\ModeHelpList.cpp" />
+    <ClCompile Include="..\Classes\Utils\SpriteBatch.cpp" />
+    <ClCompile Include="..\Classes\Utils\Touchable.cpp" />
+    <ClCompile Include="..\Classes\Utils\Utils.cpp" />
+    <ClCompile Include="App.xaml.cpp">
+      <DependentUpon>App.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="MainPage.xaml.cpp">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common\esUtil_winrt.vcxproj">
+      <Project>{44eedad2-d9ad-45dc-83b0-e5f50bd4377b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\src\compiler\preprocessor\preprocessor_winrt.vcxproj">
+      <Project>{e7b1d854-ad49-4662-8326-24579123f471}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\src\compiler\translator_common_winrt.vcxproj">
+      <Project>{3681e22c-f004-4048-a867-8dedd85ec601}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\src\compiler\translator_hlsl_winrt.vcxproj">
+      <Project>{f7cc3484-9bcf-4063-b842-02c0c621fc1b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\src\libEGL\libEGL_winrt.vcxproj">
+      <Project>{cd5990d7-2d62-490e-8436-ccd388893139}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\cocos2dx\proj.winrt\cocos2d.vcxproj">
+      <Project>{12155db2-c528-4c56-8292-5e87fc315769}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\CocosDenshion\proj.winrt\CocosDenshion.vcxproj">
+      <Project>{886fb3f1-cdbc-4b60-94c8-0f02eb583a1e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\extensions\proj.winrt\libExtensions.vcxproj">
+      <Project>{f8a69a16-14eb-4e5c-8f99-4cbfc5a6e089}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill_small%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\more_games_list%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_1%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_10%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_11%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_2%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_3%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_4%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_5%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_6%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_7%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_8%402x.png" />
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_9%402x.png" />
+    <Image Include="Assets\SplashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Resources\Fonts\Comic Sans MS.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Resources\intro.mp4" />
+    <Media Include="Assets\Resources\Music\music-1.mp3" />
+    <Media Include="Assets\Resources\Music\music-2.mp3" />
+    <Media Include="Assets\Resources\Sound\berry_count_ind_a.mp3" />
+    <Media Include="Assets\Resources\Sound\berry_count_ind_b.mp3" />
+    <Media Include="Assets\Resources\Sound\berry_count_ind_c.mp3" />
+    <Media Include="Assets\Resources\Sound\berry_count_ind_d.mp3" />
+    <Media Include="Assets\Resources\Sound\bird-blow.mp3" />
+    <Media Include="Assets\Resources\Sound\bomb-fuse.mp3" />
+    <Media Include="Assets\Resources\Sound\bonus-gong.mp3" />
+    <Media Include="Assets\Resources\Sound\bonus_banana_freeze.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-1.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-2.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-3.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-4.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-5.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-6.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-7.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-8.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-blitz-backing-end.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-blitz-backing-light.mp3" />
+    <Media Include="Assets\Resources\Sound\combo-blitz-backing.mp3" />
+    <Media Include="Assets\Resources\Sound\critical.mp3" />
+    <Media Include="Assets\Resources\Sound\equip-new-sword.mp3" />
+    <Media Include="Assets\Resources\Sound\equip-unlock.mp3" />
+    <Media Include="Assets\Resources\Sound\explosion.mp3" />
+    <Media Include="Assets\Resources\Sound\hit.mp3" />
+    <Media Include="Assets\Resources\Sound\lose_life.mp3" />
+    <Media Include="Assets\Resources\Sound\pome-rampdown.mp3" />
+    <Media Include="Assets\Resources\Sound\pome-zoomout.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-1.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-2.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-3.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-4.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-5.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-6.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-7.mp3" />
+    <Media Include="Assets\Resources\Sound\popup-8.mp3" />
+    <Media Include="Assets\Resources\Sound\progress_complete.mp3" />
+    <Media Include="Assets\Resources\Sound\swoosh.mp3" />
+    <Media Include="Assets\Resources\Sound\tap.wav" />
+    <Media Include="Assets\Resources\Sound\throw-bird.mp3" />
+    <Media Include="Assets\Resources\Sound\throw-bomb.mp3" />
+    <Media Include="Assets\Resources\Sound\upsell_whoosh.mp3" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

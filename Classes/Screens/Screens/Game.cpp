@@ -97,8 +97,8 @@ Game::Game() :
         array->retain();
         array->initWithCapacity(1000);
         
-        int sx = (int) round(Options::CAMERA_WIDTH / Utils::coord(64));
-        int sy = (int) round(Options::CAMERA_HEIGHT / Utils::coord(64));
+        int sx = (int) floor(Options::CAMERA_WIDTH / Utils::coord(64)); // I changed round to floor
+        int sy = (int) floor(Options::CAMERA_HEIGHT / Utils::coord(64)); // I changed round to floor
         
         MATRIX_SIZE_X = sx;
         MATRIX_SIZE_Y = sy;

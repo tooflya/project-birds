@@ -31,14 +31,19 @@ Progress::Progress()
     SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas2");
     SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas2");
     
-    spriteBatch1->setBlendFunc((ccBlendFunc){GL_ONE, GL_ZERO});
-    spriteBatch2->setBlendFunc((ccBlendFunc){GL_ONE, GL_ONE_MINUS_SRC_ALPHA});
+	ccBlendFunc function1 = {GL_ONE, GL_ZERO};
+	ccBlendFunc function2 = {GL_ONE, GL_ONE_MINUS_SRC_ALPHA};
+
+    spriteBatch1->setBlendFunc(function1);
+    spriteBatch2->setBlendFunc(function2);
     
     this->addChild(spriteBatch1);
     this->addChild(spriteBatch2);
 
+	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch1);
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch2, Options::BUTTONS_ID_PROGRESS_BACK, this);
+    this->mBackButton = Button::create(structure1, spriteBatch2, Options::BUTTONS_ID_PROGRESS_BACK, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     

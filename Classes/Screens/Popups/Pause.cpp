@@ -32,10 +32,15 @@ Pause::Pause(CCNode* pParent) :
         this->mIllustrationAnimationTime = 0.5;
         this->mIllustrationAnimationTimeElapsed = 0;
 
-        this->mBirdsIllustrations[1] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 0, 0, 200, 600}, this->mSpriteBatch);
-        this->mBirdsIllustrations[2] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 200, 0, 200, 600}, this->mSpriteBatch);
-        this->mBirdsIllustrations[3] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 2, 400, 0, 200, 600}, this->mSpriteBatch);
-        this->mBirdsIllustrations[0] = Entity::create((EntityStructure) {"pause_birds_sprite@2x.png", 1, 1, 0, 600, 600, 107}, this->mSpriteBatch);
+		EntityStructure structure1 = {"pause_birds_sprite@2x.png", 1, 2, 0, 0, 200, 600};
+		EntityStructure structure2 = {"pause_birds_sprite@2x.png", 1, 2, 200, 0, 200, 600};
+		EntityStructure structure3 = {"pause_birds_sprite@2x.png", 1, 2, 400, 0, 200, 600};
+		EntityStructure structure4 = {"pause_birds_sprite@2x.png", 1, 1, 0, 600, 600, 107};
+
+        this->mBirdsIllustrations[1] = Entity::create(structure1, this->mSpriteBatch);
+        this->mBirdsIllustrations[2] = Entity::create(structure2, this->mSpriteBatch);
+        this->mBirdsIllustrations[3] = Entity::create(structure3, this->mSpriteBatch);
+        this->mBirdsIllustrations[0] = Entity::create(structure4, this->mSpriteBatch);
 
         this->mBirdsIllustrations[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
         this->mBirdsIllustrations[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(155), Options::CAMERA_CENTER_Y + Utils::coord(480));

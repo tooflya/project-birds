@@ -33,7 +33,7 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas3");
         this->addChild(spriteBatch3);
         
-        SpriteBatch* spriteBatch11;
+        SpriteBatch* spriteBatch11 = 0;
         
         if(!pFirst)
         {
@@ -46,8 +46,11 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_glife_pic@2x.png", spriteBatch3);
         
-        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_glife_btn1@2x.png", 1, 1, 0, 0, 298, 230}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_1, this);
-        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_glife_btn2@2x.png", 1, 1, 0, 0, 309, 247}, spriteBatch3, Options::BUTTONS_ID_GETCOINS_2, this);
+		EntityStructure structure1 = {"popup_glife_btn1@2x.png", 1, 1, 0, 0, 298, 230};
+		EntityStructure structure2 = {"popup_glife_btn2@2x.png", 1, 1, 0, 0, 309, 247};
+
+        this->mGetCoinsButtons[0] = Button::create(structure1, spriteBatch3, Options::BUTTONS_ID_GETCOINS_1, this);
+        this->mGetCoinsButtons[1] = Button::create(structure2, spriteBatch3, Options::BUTTONS_ID_GETCOINS_2, this);
         
         for(int i = 0; i < 2; i++)
         {

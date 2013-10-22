@@ -140,6 +140,7 @@ CCBlade::CCBlade(const char *filePath, float stroke, int pointLimit)
     
     // shader stuff
     setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTexture_uColor));
+
     _uniformColor = glGetUniformLocation( getShaderProgram()->getProgram(), "u_color");
 }
 
@@ -261,16 +262,16 @@ void CCBlade::draw()
     if (_path.size() < POINT_LIMIT_MIN) {
         return;
     }
-    
+
     CC_NODE_DRAW_SETUP();
     ccGLEnableVertexAttribs(kCCVertexAttribFlag_Position | kCCVertexAttribFlag_TexCoords);
     GLfloat color[4] = { getColor().r/255.0f, getColor().g/255.0f, getColor().b/255.0f, getOpacity()/255.0f };
     getShaderProgram()->setUniformLocationWith4fv(_uniformColor, color, 1);
     ccGLBindTexture2D(_texture->getName());
-    
+
     glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, _vertices);
     glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, 0, _texCoords);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 2*_path.size()-2);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 2*_path.size()-2);
     
     CC_INCREMENT_GL_DRAWS(1);
 }

@@ -35,7 +35,9 @@ Settings::Settings()
 
     this->addChild(spriteBatch);
 
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, this);
+	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+
+    this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, this);
     this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_CREDITS, this);
     this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_RATE, this);
     this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_MORE, this);

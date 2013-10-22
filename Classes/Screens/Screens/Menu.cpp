@@ -37,19 +37,25 @@ Menu::Menu()
 {
     SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
+	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162};
+	EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162};
+	EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162};
+	EntityStructure structure4 = {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162};
+
     this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
     this->mPlayDecoration[0] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
     this->mPlayDecoration[1] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
     this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
-    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
-    this->mTwitterButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
-    this->mFacebookButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
+    this->mShopButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
+    this->mTwitterButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
+    this->mFacebookButton = Button::create(structure3, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
     this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, this);
-    this->mSettingsButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
+    this->mSettingsButton = Button::create(structure4, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
     
     this->addChild(spriteBatch);
     
-    this->mBackground->setBlendFunc((ccBlendFunc) {GL_ONE, GL_ZERO});
+	ccBlendFunc bf = {GL_ONE, GL_ZERO};
+    this->mBackground->setBlendFunc(bf);
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
@@ -77,7 +83,7 @@ Menu::Menu()
     
     this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
+    //SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
 
     if(!Options::MUSIC_ENABLE)
     {

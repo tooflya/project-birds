@@ -38,9 +38,15 @@ Mode::Mode()
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
     this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
 
-    this->mBackButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_BACK, this);
-    this->mHelpButton = Button::create((EntityStructure){"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MODE_HELP, this);
-    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
+	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+	EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 162, 324, 162, 162};
+	EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162};
+	EntityStructure structure4 = {"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 0, 200, 200};
+	EntityStructure structure5 = {"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 200, 200, 200};
+
+    this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_MODE_BACK, this);
+    this->mHelpButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MODE_HELP, this);
+    this->mShopButton = Button::create(structure3, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
 
     this->addChild(spriteBatch);
 
@@ -48,8 +54,8 @@ Mode::Mode()
     this->mArcadeMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_ARCADE, this);
     this->mProgressMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_PROGRESS, this);
 
-    this->mAchievementsButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 0, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, this);
-    this->mLeaderboardButton = Button::create((EntityStructure){"btn_sfx_mfx_ach_lead_sprite@2x.png", 1, 1, 400, 200, 200, 200}, spriteBatch, Options::BUTTONS_ID_MODE_LEADERBOARD, this);
+    this->mAchievementsButton = Button::create(structure4, spriteBatch, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, this);
+    this->mLeaderboardButton = Button::create(structure5, spriteBatch, Options::BUTTONS_ID_MODE_LEADERBOARD, this);
     
     this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));

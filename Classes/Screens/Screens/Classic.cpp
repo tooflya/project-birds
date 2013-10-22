@@ -91,7 +91,10 @@ Classic::Classic() :
         this->mHearts[0] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[1] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[2] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
-        this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
+
+		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
+
+        this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
         
         this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -113,13 +116,17 @@ Classic::Classic() :
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
 
-        this->mCountText = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+		Textes textes1 = {"0", Options::FONT, 32, -1};
+		Textes textes2 = {"0", Options::FONT, 32, -1};
+
+        this->mCountText = Text::create(textes1, this);
         this->mBestCountText = Text::create(Options::TEXT_GAME_BEST, this);
-        this->mGoldLifesCount = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+        this->mGoldLifesCount = Text::create(textes2, this);
 
         this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
 
-        this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
+		EntityStructure structure2 = {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72};
+		this->mPauseButton = Button::create(structure2, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
 
         this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
         this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);

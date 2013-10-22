@@ -390,6 +390,12 @@ bool AppDelegate::applicationDidFinishLaunching()
         searchPath.push_back(resources1280x720.directory);
     }
     
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_WP8
+    
+    searchPath.push_back(resources1280x720.directory);
+    
+    Options::DEVICE_TYPE = Options::DEVICE_TYPE_MAC;
+    
 #else
 
     searchPath.push_back(resources1280x720xPNG.directory);
@@ -403,7 +409,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->setProjection(kCCDirectorProjection2D);
 
     director->setAnimationInterval(1.0f / 60.0f);
-
+	
     if(!AppDelegate::isInstalled())
     {
         AppDelegate::install();

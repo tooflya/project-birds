@@ -168,7 +168,9 @@ void Color::onCreate()
     
     if(this->mPowerText == NULL)
     {
-        this->mPowerText = Text::create((Textes) {"+", Options::FONT, 20, -1}, this->getParent()->getParent()->getParent());
+		Textes textes1 = {"+", Options::FONT, 20, -1};
+
+        this->mPowerText = Text::create(textes1, this->getParent()->getParent()->getParent());
         this->mPowerText->setColor(ccc3(0, 255, 0));
     }
     

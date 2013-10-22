@@ -25,8 +25,10 @@ More::More()
 {
     SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
+	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+
     this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_MORE_BACK, this);
+    this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_MORE_BACK, this);
 
     this->addChild(spriteBatch);
     

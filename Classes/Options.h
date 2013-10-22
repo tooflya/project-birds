@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+USING_NS_CC;
+
 using namespace cocos2d;
 
 #define ccsf(...) CCString::createWithFormat(__VA_ARGS__)->getCString()

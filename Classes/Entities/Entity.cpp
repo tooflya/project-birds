@@ -658,7 +658,9 @@ bool Entity::containsTouchLocation(CCTouch* touch)
 
 Entity* Entity::deepCopy()
 {
-    return Entity::create((EntityStructure) {this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, 0, 0, -1, -1}, NULL);
+	EntityStructure st = { this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, 0, 0, -1, -1 };
+
+    return Entity::create(st, NULL);
 }
 
 void Entity::update(float pDeltaTime)

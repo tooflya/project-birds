@@ -27,7 +27,9 @@ public:
     {
         if(this->getOpacity() <= 0) return;
         
+		#if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
         glLineWidth(1);
+		#endif
         CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
         ccDrawSolidPoly(filledVertices, 4, ccc4f(0.0f, 0.0f, 0, this->getOpacity() / 255.0) );
     }
@@ -51,12 +53,15 @@ public:
     void visit()
     {
         kmGLPushMatrix();
+		#if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
         glEnable(GL_SCISSOR_TEST);
-        
+		#endif
         CCEGLView::sharedOpenGLView()->setScissorInPoints(this->getCenterX() - Options::CAMERA_CENTER_X, this->getCenterY() + (this->mHeight / 2) - (this->mHeight * this->p / 100), Options::CAMERA_WIDTH, this->mHeight + Utils::coord(150));
         
         Entity::visit();
+		#if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
         glDisable(GL_SCISSOR_TEST);
+		#endif
         kmGLPopMatrix();
     }
     
@@ -694,7 +699,7 @@ void Map::update(float pDeltaTime)
             
             if(this->mAnimationCount < 11 && Options::SOUND_ENABLE)
             {
-                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_POINTS[this->mAnimationCount]);
+                //SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_POINTS[this->mAnimationCount]);
             }
             
             switch(this->mAnimationCount)

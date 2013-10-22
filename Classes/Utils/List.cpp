@@ -254,6 +254,7 @@ void List::visit()
     }
 
     CCNode::visit();
+
     glDisable(GL_SCISSOR_TEST);
     kmGLPopMatrix();
 }

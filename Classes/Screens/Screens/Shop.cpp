@@ -281,7 +281,8 @@ Shop::Shop()
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
     this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
     
-    this->mBackground->setBlendFunc((ccBlendFunc){GL_ONE, GL_ZERO});
+	ccBlendFunc bf = {GL_ONE, GL_ZERO};
+    this->mBackground->setBlendFunc(bf);
     
     this->mPurchaseCoins = EntityManager::create(50, AnimatedCoin::create("coins@2x.png", 1.6), this->mSpriteBatch2, 3);
     this->mPurchaseSilverCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.6), this->mSpriteBatch2, 3);
@@ -307,20 +308,24 @@ Shop::Shop()
         this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
     }
     
-    this->mTextPluses[0] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
-    this->mTextPluses[1] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
-    this->mTextPluses[2] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
-    this->mTextPluses[3] = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
+	EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
+
+    this->mTextPluses[0] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
+    this->mTextPluses[1] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
+    this->mTextPluses[2] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
+    this->mTextPluses[3] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
     
     this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, this->mSpriteBatch2);
     this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, this->mSpriteBatch2);
     this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", this->mSpriteBatch2);
     this->mIcons[3] = Entity::create("popup_key_ico@2x.png", this->mSpriteBatch2);
     
-    this->mTextText[0] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
-    this->mTextText[1] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
-    this->mTextText[2] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
-    this->mTextText[3] = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
+	Textes textes1 = {"0", Options::FONT, 32, -1};
+
+    this->mTextText[0] = Text::create(textes1, this);
+    this->mTextText[1] = Text::create(textes1, this);
+    this->mTextText[2] = Text::create(textes1, this);
+    this->mTextText[3] = Text::create(textes1, this);
     
     this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
@@ -351,7 +356,10 @@ Shop::Shop()
     this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
     
     //this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, this->mSpriteBatch1, Options::BUTTONS_ID_SHOP_BACK, this);
+
+	EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+
+    this->mBackButton = Button::create(structure2, this->mSpriteBatch1, Options::BUTTONS_ID_SHOP_BACK, this);
     
     for(int i = 0; i < 9; i++)
     {

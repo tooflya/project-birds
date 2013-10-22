@@ -51,7 +51,9 @@ End::End(int pType, Screen* pParent) :
         this->addChild(this->mScaleLayer);
         this->mScaleLayer->setVisible(false);
         
-        this->mCoinsCountText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this->mScaleLayer);
+		Textes textes1 = {"0", Options::FONT, 64, -1};
+
+        this->mCoinsCountText = Text::create(textes1, this->mScaleLayer);
         
         this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 2, 1), spriteBatch1);
         

@@ -11,7 +11,7 @@
 // Constants
 // ===========================================================
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 TextureStructure Loading::TEXTURE_LIBRARY[11] =
 {
     {"TextureAtlas1.png", "TextureAtlas1.plist"},
@@ -61,7 +61,7 @@ Loading::~Loading()
 
 Loading::Loading()
 {
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
 
     SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas1");
 

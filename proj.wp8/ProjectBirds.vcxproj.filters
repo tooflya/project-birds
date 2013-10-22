@@ -1,0 +1,1111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Xml Include="WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bfb61bc5-07d9-499b-a9a6-f3fa78a9d9d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Entities">
+      <UniqueIdentifier>{863d98cf-dce2-49b1-9582-5d0c8a9d348f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Graphics">
+      <UniqueIdentifier>{9cdbb7cf-77be-4844-b3ac-418f450ded77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Managers">
+      <UniqueIdentifier>{90affb36-a8c2-4e3d-802e-0f31475e0cc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Screens">
+      <UniqueIdentifier>{96e63921-4a96-4b50-a99f-970db9edc24a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Screens\Screens">
+      <UniqueIdentifier>{df32d5f5-dc43-482f-b366-10908c8ea06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Screens\Popups">
+      <UniqueIdentifier>{4c1a275d-442b-48fa-bd43-baf93d7035c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\TEST">
+      <UniqueIdentifier>{af72b8c6-1292-4444-8ce2-8e2c6eb4a5e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Utils">
+      <UniqueIdentifier>{762e4d88-c9ea-4dc4-84ae-94a081c7c1d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{15886a61-e6ca-48cb-9201-22b973904ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Tiles">
+      <UniqueIdentifier>{bdc56e7c-d416-4886-a3cb-95a08e207540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Resources">
+      <UniqueIdentifier>{02d47146-d036-4df6-a469-dda27d9ba030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Resources\Graphics">
+      <UniqueIdentifier>{bfc20a4f-5c83-43db-be5f-b6de31d34e96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Resources\Music">
+      <UniqueIdentifier>{667353bc-a8ef-4fac-be0b-f1666d8b8fdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Resources\Sound">
+      <UniqueIdentifier>{75591357-4bd4-43eb-bb96-baf328d88f03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Resources\Graphics\1280x720-PNG">
+      <UniqueIdentifier>{21aea8b1-7add-49bb-975e-d973f3bd56e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Resources\Fonts">
+      <UniqueIdentifier>{9e312ea3-7822-4676-a591-450c0232a628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Resources\Graphics\1280x720">
+      <UniqueIdentifier>{813c1088-6d34-4495-9782-004ab4ba45b6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\Entities\AnimatedCoin.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Bird.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Button.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Clock.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Color.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Confetti.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Dust.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Entity.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\EventPanel.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Explosion.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\ExplosionBasic.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Feather.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\GeneralExplosion.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\ImpulseEntity.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Item.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\KeyParticle.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\LiveParticle.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Mark.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\PirateBox.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\PlayButton.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Rain.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\RainCircle.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Ripple.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\RobotoGun.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\RobotoPart.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\SpecialBird.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Star.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\StarParticle.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\StarParticle2.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Text.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\WeaponParticle.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\ZombieExplosion.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Graphics\Texture.cpp">
+      <Filter>Classes\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\BatchEntityManager.cpp">
+      <Filter>Classes\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\BladeParticlesManager.cpp">
+      <Filter>Classes\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\EntityManager.cpp">
+      <Filter>Classes\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\ScreenManager.cpp">
+      <Filter>Classes\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\ButtonReceiver.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\BuyItemList.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\CreditsList.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\List.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\ModeHelpList.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\SpriteBatch.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\Touchable.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\Utils.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TEST\CCBlade.cpp">
+      <Filter>Classes\TEST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TEST\TouchTrailLayer.cpp">
+      <Filter>Classes\TEST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popup.cpp">
+      <Filter>Classes\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screen.cpp">
+      <Filter>Classes\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\BoughtItem.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\BuyItem.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\Exit.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\GetCoins.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\GetKeys.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\GetLives.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\Map.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\ModeHelp.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\Pause.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\PaymentProceed.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\PleaseRate.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\ResetProgress.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\SurpriseLevel.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\UnlockLevel.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Arcade.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Classic.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Credits.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\End.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Game.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Language.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Levels.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Loader.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Loading.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Menu.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Mode.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\More.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Progress.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Progresses.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Settings.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Shop.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Screens\Splash.cpp">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Options.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectBirds.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\Entities\AnimatedCoin.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Bird.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Button.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Clock.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Color.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Confetti.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Dust.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Entity.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\EventPanel.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Explosion.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\ExplosionBasic.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Feather.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\GeneralExplosion.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\ImpulseEntity.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Item.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\KeyParticle.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\LiveParticle.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Mark.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\PirateBox.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\PlayButton.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Rain.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\RainCircle.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Ripple.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\RobotoGun.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\RobotoPart.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\SpecialBird.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Star.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\StarParticle.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\StarParticle2.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Text.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\WeaponParticle.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\ZombieExplosion.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Graphics\Texture.h">
+      <Filter>Classes\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\BatchEntityManager.h">
+      <Filter>Classes\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\BladeParticlesManager.h">
+      <Filter>Classes\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\EntityManager.h">
+      <Filter>Classes\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\ScreenManager.h">
+      <Filter>Classes\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\ButtonReceiver.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\BuyItemList.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\CreditsList.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\List.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\ModeHelpList.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\SpriteBatch.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\Touchable.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\Utils.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TEST\CCBlade.h">
+      <Filter>Classes\TEST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TEST\TouchTrailLayer.h">
+      <Filter>Classes\TEST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popup.h">
+      <Filter>Classes\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screen.h">
+      <Filter>Classes\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\BoughtItem.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\BuyItem.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\Exit.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\GetCoins.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\GetKeys.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\GetLives.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\Map.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\ModeHelp.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\Pause.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\PaymentProceed.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\PleaseRate.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\ResetProgress.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\SurpriseLevel.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\TempPublisherAchievementsExplain.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\UnlockLevel.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Arcade.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Classic.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Credits.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\End.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Game.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Language.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Levels.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Loader.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Loading.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Menu.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Mode.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\More.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Progress.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Progresses.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Settings.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Shop.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Screens\Splash.h">
+      <Filter>Classes\Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Options.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectBirds.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\AlignmentGrid.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\ApplicationIcon.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <Filter>Assets\Tiles</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <Filter>Assets\Tiles</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <Filter>Assets\Tiles</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <Filter>Assets\Tiles</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\IconicTileSmall.png">
+      <Filter>Assets\Tiles</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill_small%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\more_games_list%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_1%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_2%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_3%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_4%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_5%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_6%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_7%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_8%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_9%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_10%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_11%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\about_scroll_fill%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\about_scroll_fill_small%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\more_games_list%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_1%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_2%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_3%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_4%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_5%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_6%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_7%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_8%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_9%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_10%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+    <Image Include="Assets\Resources\Graphics\1280x720\wep_11%402x.png">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="Assets\Resources\Music\music-1.ogg">
+      <Filter>Assets\Resources\Music</Filter>
+    </None>
+    <None Include="Assets\Resources\Music\music-2.ogg">
+      <Filter>Assets\Resources\Music</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\bird-blow.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\bomb-fuse.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\bonus-banana-freeze.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\bonus-gong.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-1.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-2.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-3.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-4.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-5.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-6.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-7.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-8.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-blitz-backing.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-blitz-backing-end.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\combo-blitz-backing-light.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\critical.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\equip-new-sword.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\equip-unlock.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\explosion.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\hit.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\lose_life.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\pome-rampdown.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\pome-zoomout.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-1.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-2.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-3.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-4.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-5.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-6.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-7.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\popup-8.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\progress-complete.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\tap.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\throw-bird.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\throw-bomb.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Sound\upsell-whoosh.ogg">
+      <Filter>Assets\Resources\Sound</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas1.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas1.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas2.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas2.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas3.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas3.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas4.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas4.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas5.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas5.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas6.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas6.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas7.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas7.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas8.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas8.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas9.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas9.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas10.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas10.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas11.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas11.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas12.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas12.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas13.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas13.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas14.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas14.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas15.plist">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+    <None Include="Assets\Resources\Graphics\1280x720\TextureAtlas15.pvr.ccz">
+      <Filter>Assets\Resources\Graphics\1280x720</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Resources\Music\music-1.mp3">
+      <Filter>Assets\Resources\Music</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Music\music-2.mp3">
+      <Filter>Assets\Resources\Music</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\berry_count_ind_a.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\berry_count_ind_b.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\berry_count_ind_c.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\berry_count_ind_d.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\bird-blow.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\bomb-fuse.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\bonus_banana_freeze.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\bonus-gong.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-1.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-2.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-3.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-4.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-5.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-6.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-7.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-8.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-blitz-backing.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-blitz-backing-end.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\combo-blitz-backing-light.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\critical.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\equip-new-sword.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\equip-unlock.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\explosion.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\hit.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\lose_life.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\pome-rampdown.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\pome-zoomout.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-1.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-2.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-3.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-4.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-5.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-6.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-7.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\popup-8.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\progress_complete.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\swoosh.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\tap.wav">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\throw-bird.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\throw-bomb.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="Assets\Resources\Sound\upsell_whoosh.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Resources\Fonts\Comic Sans MS.ttf">
+      <Filter>Assets\Resources\Fonts</Filter>
+    </Font>
+  </ItemGroup>
+</Project>

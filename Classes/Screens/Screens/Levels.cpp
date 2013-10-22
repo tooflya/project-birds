@@ -29,9 +29,11 @@ class Effect : public CCNodeRGBA
     void draw()
     {
         if(this->getOpacity() <= 0) return;
-        
+       
+		#if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
         glLineWidth(1);
-        CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
+		#endif
+		CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
         ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
     }
 };
@@ -190,7 +192,9 @@ class LevelButton : public Entity
     {
         this->setRegisterAsTouchable(true);
         
-        this->mText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this);
+		Textes textes = {"0", Options::FONT, 64, -1};
+
+        this->mText = Text::create(textes, this);
     }
     
     static LevelButton* create(bool newest)
@@ -693,8 +697,11 @@ Levels::Levels()
     this->mLigts[0] = Entity::create("get_coins_light@2x.png", spriteBatch2);
     this->mLigts[1] = Entity::create("get_coins_light@2x.png", spriteBatch2);
     
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, this);
-    this->mShopButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162}, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
+	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+	EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162};
+
+    this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_LEVELS_BACK, this);
+    this->mShopButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
     this->mTablet = Entity::create("shop_money_bg@2x.png", this);
     this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
     
@@ -703,13 +710,17 @@ Levels::Levels()
         this->mSlides[i] = Entity::create("choose_box_navi_sprite@2x.png", 1, 2, spriteBatch);
     }
 
-    this->mStarsCountText = Text::create((Textes) {"0", Options::FONT, 64, -1}, this->mTablet);
+	Textes textes1 = {"0", Options::FONT, 64, -1};
+
+    this->mStarsCountText = Text::create(textes1, this->mTablet);
 
     this->addChild(this->mMainList->mLayers[0]);
     this->addChild(this->mMainList);
+    
+	EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162};
 
-    this->mSlidesArrows[0] = Entity::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, spriteBatch);
-    this->mSlidesArrows[1] = Entity::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162}, spriteBatch);
+    this->mSlidesArrows[0] = Entity::create(structure3, spriteBatch);
+    this->mSlidesArrows[1] = Entity::create(structure3, spriteBatch);
     
     this->mBackgroundDecorations[2] = Entity::create("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
     this->mBackgroundDecorations[3] = Entity::create("bg_detail_dark@2x.png", this);

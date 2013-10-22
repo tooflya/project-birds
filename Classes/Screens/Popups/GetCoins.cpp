@@ -34,10 +34,15 @@ GetCoins::GetCoins(CCNode* pParent) :
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_getcoins_picture@2x.png", this->mSpriteBatch);
         
-        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 36, 282, 207}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, this);
-        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 25, 279, 201}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, this);
-        this->mGetCoinsButtons[2] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 243, 285, 225}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_3, this);
-        this->mGetCoinsButtons[3] = Button::create((EntityStructure) {"popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 226, 279, 242}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_4, this);
+		EntityStructure st1 = { "popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 36, 282, 207 };
+		EntityStructure st2 = { "popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 25, 279, 201 };
+		EntityStructure st3 = { "popup_buy_coins_btn_sprite@2x.png", 1, 1, 14, 243, 285, 225 };
+		EntityStructure st4 = { "popup_buy_coins_btn_sprite@2x.png", 1, 1, 296, 226, 279, 242 };
+
+        this->mGetCoinsButtons[0] = Button::create(st1, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, this);
+        this->mGetCoinsButtons[1] = Button::create(st2, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, this);
+        this->mGetCoinsButtons[2] = Button::create(st3, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_3, this);
+        this->mGetCoinsButtons[3] = Button::create(st4, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_4, this);
         
         for(int i = 0; i < 2; i++)
         {

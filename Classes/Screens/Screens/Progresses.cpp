@@ -165,7 +165,9 @@ Progresses::Progresses() :
     this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
     this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
     this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
-    this->mGoldLifeButton = Button::create((EntityStructure) {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
+
+	EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
+	this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
     this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -179,17 +181,23 @@ Progresses::Progresses() :
     this->mTextIcons[3]->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() - this->mTextAreas[3]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
     this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-        
-    this->mBestCountText = Text::create((Textes) {"0", Options::FONT, 32, -1}, this);
-    this->mGoldLifesCount = Text::create((Textes) {"5", Options::FONT, 32, -1}, this);
-    this->mTimeText = Text::create((Textes) {"0:00", Options::FONT, 32, -1}, this);
-    this->mStarTimeText = Text::create((Textes) {"0:00", Options::FONT, 32, -1}, this);
+       
+	Textes textes1 = {"0", Options::FONT, 32, -1};
+	Textes textes2 = {"5", Options::FONT, 32, -1};
+	Textes textes3 = {"0:00", Options::FONT, 32, -1};
+	Textes textes4 = {"0:00", Options::FONT, 32, -1};
+	Textes textes5 = {"0/0", Options::FONT, 32, -1};
+
+    this->mBestCountText = Text::create(textes1, this);
+    this->mGoldLifesCount = Text::create(textes2, this);
+    this->mTimeText = Text::create(textes3, this);
+    this->mStarTimeText = Text::create(textes4, this);
         
     this->mGoldLifesCount->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
     for(int i = 0; i < 5; i++)
     {
-        this->mTaskText[i] = Text::create((Textes) {"0/0", Options::FONT, 32, -1}, this);
+        this->mTaskText[i] = Text::create(textes5, this);
         this->mTaskText[i]->setVisible(false);
     }
     
@@ -198,7 +206,9 @@ Progresses::Progresses() :
     
     this->mGameStartText = Text::create(Options::TEXT_GAME_START_STRING_1, this);
     
-    this->mPauseButton = Button::create((EntityStructure) {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72}, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
+	EntityStructure structure2 = {"game_panel_pause@2x.png", 1, 1, 0, 0, 78, 72};
+
+    this->mPauseButton = Button::create(structure2, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
     this->mSchematicBig = EntityManager::create(100, Entity::create("game_chess_bg@2x.png"), spriteBatch2);
     this->mSchematicSmall = EntityManager::create(100, Entity::create("game_chess@2x.png", 2, 1), spriteBatch2);
@@ -424,7 +434,7 @@ void Progresses::update(float pDeltaTime)
     int a;
     int b;
     
-    const char* str;
+    const char* str = 0;
     
     a = (int)(this->mTime / 60);
     b = (int)(this->mTime - (int)(this->mTime / 60) * 60);
@@ -678,9 +688,9 @@ void Progresses::onShow()
                 Entity* big = this->mSchematicBig->create();
                 big->setCenterPosition(Utils::coord(64) * i + Utils::coord(32) + Utils::coord(8), Utils::coord(81) * y + Utils::coord(40) + Utils::coord(15));
                 
-                Entity* small = this->mSchematicSmall->create();
-                small->setCenterPosition(Utils::coord(64) * i + Utils::coord(32) + Utils::coord(8), Utils::coord(81) * y + Utils::coord(40) + Utils::coord(15));
-                small->setCurrentFrameIndex(c);
+                Entity* small1 = this->mSchematicSmall->create();
+				small1->setCenterPosition(Utils::coord(64) * i + Utils::coord(32) + Utils::coord(8), Utils::coord(81) * y + Utils::coord(40) + Utils::coord(15));
+				small1->setCurrentFrameIndex(c);
             }
             
             y++;

@@ -55,7 +55,10 @@ UnlockLevel::UnlockLevel(CCNode* pParent) :
         this->mKey = Entity::create("popup_key_ico_fall_price@2x.png", spriteBatch3);
         
         Text* text1 = Text::create(Options::TEXT_UNLOCKLEVEL, this);
-        this->mPriceText = Text::create((Textes) {"5", Options::FONT, 64, -1}, this);
+
+		Textes textes1 = {"5", Options::FONT, 64, -1};
+
+        this->mPriceText = Text::create(textes1, this);
         this->mPriceText->setColor(ccc3(255, 200, 15));
         
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(150));

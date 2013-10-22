@@ -24,3 +24,13 @@ proj.android/obj
 proj.android/gen
 proj.linux/obj
 proj.linux/bin
+proj.wp8/Assets/Resources
+proj.winrt/Assets/Resources
+proj.wp8/Release
+proj.winrt/Release
+proj.wp8/Generated Files
+proj.winrt/Generated Files
+proj.wp8/Win32
+proj.winrt/Win32
+proj.wp8/ARM
+proj.winrt/ARM

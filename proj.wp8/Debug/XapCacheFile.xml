@@ -1,0 +1,25 @@
+﻿<xapCache source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\HelloCpp\HelloCpp_Debug_Win32.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="10/22/2013 12:50:36 AM">
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\HelloCpp\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="10/19/2013 8:18:27 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\HelloCpp\HelloCpp.exe" archivePath="HelloCpp.exe" lastWriteTime="10/22/2013 12:50:34 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\fonts\arial.ttf" archivePath="Assets\Resources\fonts\arial.ttf" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\fonts\Marker Felt.ttf" archivePath="Assets\Resources\fonts\Marker Felt.ttf" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\ipadhd\CloseNormal.png" archivePath="Assets\Resources\ipadhd\CloseNormal.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\ipadhd\CloseSelected.png" archivePath="Assets\Resources\ipadhd\CloseSelected.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\ipadhd\HelloWorld.png" archivePath="Assets\Resources\ipadhd\HelloWorld.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\ipad\CloseNormal.png" archivePath="Assets\Resources\ipad\CloseNormal.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\ipad\CloseSelected.png" archivePath="Assets\Resources\ipad\CloseSelected.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\ipad\HelloWorld.png" archivePath="Assets\Resources\ipad\HelloWorld.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\iphone\CloseNormal.png" archivePath="Assets\Resources\iphone\CloseNormal.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\iphone\CloseSelected.png" archivePath="Assets\Resources\iphone\CloseSelected.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Resources\iphone\HelloWorld.png" archivePath="Assets\Resources\iphone\HelloWorld.png" lastWriteTime="10/19/2013 8:02:11 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\samples\Cpp\HelloCpp\proj.wp8\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="10/19/2013 8:02:13 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libEGL_phone.dll" archivePath="libEGL_phone.dll" lastWriteTime="10/22/2013 12:31:54 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\redist\vs2012\Win32\Debug\libGLESv2_phone.dll" archivePath="libGLESv2_phone.dll" lastWriteTime="10/22/2013 12:31:51 AM" />
+  <file source="C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\WP8\Win32\Debug\libcocos2d\libcocos2d.dll" archivePath="libcocos2d.dll" lastWriteTime="10/22/2013 12:32:39 AM" />
+</xapCache>

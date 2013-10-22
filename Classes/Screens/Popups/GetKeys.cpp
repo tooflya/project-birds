@@ -34,8 +34,11 @@ GetKeys::GetKeys(CCNode* pParent) :
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_key_pic@2x.png", this->mSpriteBatch);
         
-        this->mGetCoinsButtons[0] = Button::create((EntityStructure) {"popup_key_btn1@2x.png", 1, 1, 0, 0, 265, 231}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, this);
-        this->mGetCoinsButtons[1] = Button::create((EntityStructure) {"popup_key_btn2@2x.png", 1, 1, 0, 0, 273, 232}, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, this);
+		EntityStructure st1 = {"popup_key_btn1@2x.png", 1, 1, 0, 0, 265, 231};
+		EntityStructure st2 = {"popup_key_btn2@2x.png", 1, 1, 0, 0, 273, 232};
+
+        this->mGetCoinsButtons[0] = Button::create(st1, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_1, this);
+		this->mGetCoinsButtons[1] = Button::create(st2, this->mSpriteBatch, Options::BUTTONS_ID_GETCOINS_2, this);
         
         for(int i = 0; i < 2; i++)
         {

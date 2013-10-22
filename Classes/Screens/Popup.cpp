@@ -27,7 +27,10 @@ class Background : public CCNodeRGBA
         {
             if(this->getOpacity() <= 0) return;
 
+			#if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
             glLineWidth(1);
+			#endif
+
             CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
             ccDrawSolidPoly(filledVertices, 4, ccc4f(0.0f, 0.0f, 0, this->getOpacity() / 255.0) );
         }

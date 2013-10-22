@@ -37,7 +37,10 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->addChild(this->mSpriteBatch);
 
         this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this->mSpriteBatch);
-        this->mDescriptionText = Text::create((Textes) {"", "Comic Sans MS", 24, -1}, ccp(Utils::coord(450), 0), this);
+
+		Textes textes1 = {"", "Comic Sans MS", 24, -1};
+
+        this->mDescriptionText = Text::create(textes1, ccp(Utils::coord(450), 0), this);
 
         this->mStars[0] = Entity::create("popup_item_rate_stars@2x.png", 1, 2, this->mSpriteBatch);
         this->mStars[1] = Entity::create("popup_item_rate_stars@2x.png", 1, 2, this->mSpriteBatch);
@@ -62,19 +65,24 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mPropertiesIcon = Entity::create("icon_properties@2x.png", 1, 2, this->mSpriteBatch);
         this->mPropertiesIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(15), Options::CAMERA_CENTER_Y + Utils::coord(112));
 
-        this->mPriceText = Text::create((Textes) {"0", "Comic Sans MS", 32, 0}, this);
+		Textes textes2 = {"0", "Comic Sans MS", 32, 0};
+		Textes textes3 = {"0", "Comic Sans MS", 32, 0};
+		Textes textes4 = {"112", "Comic Sans MS", 32, 0};
+		Textes textes5 = {"", "Comic Sans MS", 40, 0};
+
+        this->mPriceText = Text::create(textes2, this);
         this->mPriceText->setColor(ccc3(255.0, 130.0, 0.0));
         
-        this->mPriceGoldText = Text::create((Textes) {"0", "Comic Sans MS", 32, 0}, this);
+        this->mPriceGoldText = Text::create(textes3, this);
         this->mPriceGoldText->setColor(ccc3(255.0, 130.0, 0.0));
 
         this->mBoughtText = Text::create(Options::TEXT_ITEM_ALREADY_BOUGHT, this);
         this->mBoughtText->setColor(ccc3(255.0, 130.0, 0.0));
 
-        this->mPowerText = Text::create((Textes) {"112", "Comic Sans MS", 32, 0}, this);
+        this->mPowerText = Text::create(textes4, this);
         this->mPowerText->setColor(ccc3(255.0, 130.0, 0.0));
 
-        this->mNameText = Text::create((Textes) {"", "Comic Sans MS", 40, 0}, this);
+        this->mNameText = Text::create(textes5, this);
         this->mNameText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(260));
         this->mNameText->setColor(ccc3(170.0, 82.0, 5.0));
         

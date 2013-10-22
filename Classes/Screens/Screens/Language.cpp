@@ -30,7 +30,8 @@ Language::Language()
     this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
     this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
 
-    this->mBackButton = Button::create((EntityStructure) {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162}, spriteBatch, Options::BUTTONS_ID_LANGUAGE_BACK, this);
+	EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
+    this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_LANGUAGE_BACK, this);
 
     this->addChild(spriteBatch);
     this->addChild(spriteBatch2);
