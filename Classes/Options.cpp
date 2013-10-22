@@ -44,8 +44,8 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 
 #endif
 
-bool Options::MUSIC_ENABLE = false;
-bool Options::SOUND_ENABLE = false;
+bool Options::MUSIC_ENABLE = true;
+bool Options::SOUND_ENABLE = true;
 
 const char* Options::VERSION = "0.8.4";
 string Options::STRING_VERSION = "0.8.4";
@@ -464,8 +464,8 @@ void Options::init()
         }
     }
 
-    //Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
-    //Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
+    Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
+    Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 
