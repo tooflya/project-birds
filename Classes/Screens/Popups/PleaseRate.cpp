@@ -20,17 +20,22 @@
 // ===========================================================
 
 PleaseRate::~PleaseRate()
-{
-    CC_SAFE_RELEASE(this->mLights);
+{CCLog("O_O");
+    this->removeAllChildrenWithCleanup(true);
+    
+    delete this->mRateButton;
+    delete this->mLights;
+    delete this->text1;
 }
 
 PleaseRate::PleaseRate(CCNode* pParent) :
     Popup(pParent),
 	mRateButton(0),
-	mLights()
+	mLights(0),
+    text1(0)
     {
-        this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
-    
+        //this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
+
         this->mIllustration = Entity::create("popup_rate_picture@2x.png", this->mSpriteBatch);
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
     
@@ -38,16 +43,16 @@ PleaseRate::PleaseRate(CCNode* pParent) :
         
         this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
-        for(int i = 0; i < 2; i++)
+        /*for(int i = 0; i < 2; i++)
         {
             this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(340));
             ((Entity*) this->mLights->objectAtIndex(i))->setScale(3.0);
             ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
-        }
+        }*/
         
-        Text* text1 = Text::create(Options::TEXT_RATE_STRING_1, ccp(Utils::coord(512), 0), this);
+        this->text1 = Text::create(Options::TEXT_RATE_STRING_1, ccp(Utils::coord(512), 0), this);
         
-        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
+        this->text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
         
         this->mRateButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mRateButton->setText(Options::TEXT_RATE_NOW);
@@ -58,8 +63,8 @@ PleaseRate::PleaseRate(CCNode* pParent) :
 PleaseRate* PleaseRate::create(CCNode* pParent)
 {
     PleaseRate* popup = new PleaseRate(pParent);
-    popup->autorelease();
-    popup->retain();
+    /*popup->autorelease();
+    popup->retain();*/
     
     return popup;
 }

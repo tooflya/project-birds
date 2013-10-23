@@ -21,7 +21,8 @@
 
 List::~List()
 {
-    this->removeAllChildrenWithCleanup(true);
+    delete this->mListSroll;
+    delete this->mSpriteBatch;
 }
 
 List::List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float pListInitialCenterX, float pListInitialCenterY, const char* pListTextureFileName, CCNode* pParent) :

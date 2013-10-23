@@ -19,6 +19,10 @@
 // Constructors
 // ===========================================================
 
+PlayButton::~PlayButton()
+{
+}
+
 PlayButton::PlayButton(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender) :
 	Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender),
 	mAnimationTime(0),
@@ -29,7 +33,7 @@ PlayButton::PlayButton(const char* pTextureFileName, int pHorizontalFramesCount,
 PlayButton* PlayButton::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender)
 {
     PlayButton* button = new PlayButton(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender);
-    button->autorelease();
+    //button->autorelease();
     
     return button;
 }

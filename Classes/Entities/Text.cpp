@@ -115,7 +115,7 @@ Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
 Text* Text::create(const char* pString, float pSize, CCNode* pParent)
 {
     Text* text = new Text(pString, pSize, pParent);
-    text->autorelease();
+    //text->autorelease();
     
     return text;
 }
@@ -123,7 +123,7 @@ Text* Text::create(const char* pString, float pSize, CCNode* pParent)
 Text* Text::create(Textes pParams, CCNode* pParent)
 {
     Text* text = new Text(pParams, pParent);
-    text->autorelease();
+    //text->autorelease();
     
     return text;
 }
@@ -131,7 +131,7 @@ Text* Text::create(Textes pParams, CCNode* pParent)
 Text* Text::create(Textes pParams, const CCSize pDimensions, CCNode* pParent)
 {
     Text* text = new Text(pParams, pDimensions, pParent);
-    text->autorelease();
+    //text->autorelease();
     
     return text;
 }
@@ -157,7 +157,7 @@ void Text::setPosition(float pX, float pY)
 }
 
 void Text::changeLanguage()
-{
+{return;
     if(Options::TEXTES_HOLDER[this->mId].size != 0 && this->mId != -1)
     {
         this->setString(Options::TEXTES_HOLDER[this->mId].string);
@@ -218,8 +218,6 @@ void Text::disableShadow()
 void Text::onEnter()
 {
     CCLabelTTF::onEnter();
-    
-    this->retain();
 }
 
 void Text::onExit()

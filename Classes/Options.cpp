@@ -463,7 +463,7 @@ void Options::init()
             break;
         }
     }
-
+CURRENT_LANGUAGE = 1;
     Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
     Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
 

@@ -18,7 +18,7 @@ class Background : public CCNodeRGBA
         static Background* create()
         {
             Background* background = new Background();
-            background->autorelease();
+            //background->autorelease();
 
             return background;
         }
@@ -50,7 +50,16 @@ class Background : public CCNodeRGBA
 
 Popup::~Popup()
 {
-    this->removeAllChildrenWithCleanup(true);
+    delete this->mSpriteBatch;
+    delete this->mSpriteBatch2;
+    
+    delete this->mSquare;
+    
+    delete this->mBackground;
+    delete this->mDarkness;
+    delete this->mIllustration;
+    
+    delete this->mCloseButton;
 }
 
 Popup::Popup(CCNode* pParent, bool pFirst) :
@@ -71,7 +80,7 @@ Popup::Popup(CCNode* pParent, bool pFirst) :
 	mShowAnimationRunning(0),
 	mHideAnimationRunning(0),
 	mShowed(0)
-	{
+    {
 		this->init();
     
 		this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));

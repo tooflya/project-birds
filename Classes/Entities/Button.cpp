@@ -3,8 +3,6 @@
 
 #include "Button.h"
 
-USING_NS_CC;
-
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -20,6 +18,13 @@ USING_NS_CC;
 // ===========================================================
 // Constructors
 // ===========================================================
+
+Button::~Button()
+{
+    this->removeAllChildrenWithCleanup(true);
+    
+    delete this->mText;
+}
 
 void Button::constructor(const int pButtonID, ButtonReceiver* pSender)
 {
@@ -37,7 +42,7 @@ Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVe
     Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent),
 	mID(0),
 	mSender(0),
-	mText(0),
+	mText(NULL),
 	mIsModal(0)
     {
         this->constructor(pButtonID, pSender);
@@ -47,7 +52,7 @@ Button::Button(const char* pTextureFileName, int pHorizontalFramesCount, int mVe
     Entity(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount),
 	mID(0),
 	mSender(0),
-	mText(0),
+	mText(NULL),
 	mIsModal(0)
     {
         this->constructor(pButtonID, pSender);
@@ -57,7 +62,7 @@ Button::Button(const EntityStructure pEntityStructure, CCNode* pParent, const in
     Entity(pEntityStructure, pParent),
 	mID(0),
 	mSender(0),
-	mText(0),
+	mText(NULL),
 	mIsModal(0)
     {
         this->constructor(pButtonID, pSender);
@@ -68,7 +73,7 @@ Button::Button(const EntityStructure pEntityStructure, CCNode* pParent, const in
 Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender)
 {
     Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pParent, pButtonID, pSender);
-    button->autorelease();
+    //button->autorelease();
     
     return button;
 }
@@ -76,7 +81,7 @@ Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount,
 Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender)
 {
     Button* button = new Button(pTextureFileName, pHorizontalFramesCount, mVerticalFramesCount, pButtonID, pSender);
-    button->autorelease();
+    //button->autorelease();
     
     return button;
 }
@@ -84,7 +89,7 @@ Button* Button::create(const char* pTextureFileName, int pHorizontalFramesCount,
 Button* Button::create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender)
 {
     Button* button = new Button(pEntityStructure, pParent, pButtonID, pSender);
-    button->autorelease();
+    //button->autorelease();
     
     return button;
 }
@@ -111,6 +116,7 @@ void Button::setText(Textes pParams)
     if(this->mText != NULL)
     {
         this->mText->removeFromParent();
+        delete this->mText;
     }
 
     CCNode* parent;
@@ -146,7 +152,7 @@ void Button::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
 
-    if(this->mText)
+    if(this->mText != NULL)
     {
         this->mText->setScale(this->getScaleX());
         this->mText->setVisible(this->isVisible());

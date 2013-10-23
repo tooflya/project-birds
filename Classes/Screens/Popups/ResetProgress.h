@@ -21,8 +21,6 @@ class ResetProgress : public Popup
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static ResetProgress* m_Instance;
 
         // ===========================================================
         // Fields
@@ -30,9 +28,11 @@ class ResetProgress : public Popup
     
         Button* mResetButton;
     
-        bool mAction;
-    
         EntityManager* mLights;
+    
+        Text* text1;
+    
+        bool mAction;
 
         // ===========================================================
         // Constructors

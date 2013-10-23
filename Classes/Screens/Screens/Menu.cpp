@@ -23,9 +23,22 @@
 
 Menu::~Menu()
 {
-    CC_SAFE_RELEASE(this->mRatePopup);
-    CC_SAFE_RELEASE(this->mMapPopup);
-    CC_SAFE_RELEASE(this->mTempPublisherInAppExplainPopup);
+    this->removeAllChildrenWithCleanup(true);
+    
+    delete this->mSpriteBatch;
+    delete this->mBackground;
+    delete this->mPlayDecoration[0];
+    delete this->mPlayDecoration[1];
+    delete this->mPlayButton;
+    delete this->mShopButton;
+    delete this->mTwitterButton;
+    delete this->mFacebookButton;
+    delete this->mVkButton;
+    delete this->mSettingsButton;
+    
+    //delete this->mRatePopup;
+    //delete this->mMapPopup;
+    //delete this->mTempPublisherInAppExplainPopup;
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
@@ -35,6 +48,7 @@ Menu::~Menu()
 }
 
 Menu::Menu() :
+    mSpriteBatch(NULL),
 	mBackground(0),
 	mPlayDecoration(),
 	mPlayButton(0),
@@ -48,26 +62,26 @@ Menu::Menu() :
 	mTempPublisherInAppExplainPopup(0),
 	mMapPopup(0),
 	mPlayDecorationColorUpdateTimeElapsed(0)
-	{
-		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
-
+    {
+        this->mSpriteBatch = SpriteBatch::create("TextureAtlas2");
+        
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162};
 		EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162};
 		EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162};
 		EntityStructure structure4 = {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162};
 
-		this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
-		this->mPlayDecoration[0] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
-		this->mPlayDecoration[1] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
-		this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
-		this->mShopButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
-		this->mTwitterButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
-		this->mFacebookButton = Button::create(structure3, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
-		this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, this);
-		this->mSettingsButton = Button::create(structure4, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
+		this->mBackground = Entity::create("main_menu_bg@2x.png", this->mSpriteBatch);
+		this->mPlayDecoration[0] = Entity::create("main_menu_btn_bg_play@2x.png", this->mSpriteBatch);
+		this->mPlayDecoration[1] = Entity::create("main_menu_btn_bg_play@2x.png", this->mSpriteBatch);
+		this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, this->mSpriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
+		this->mShopButton = Button::create(structure1, this->mSpriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
+		this->mTwitterButton = Button::create(structure2, this->mSpriteBatch, Options::BUTTONS_ID_MENU_TWITTER, this);
+		this->mFacebookButton = Button::create(structure3, this->mSpriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
+		this->mVkButton = Button::create("vk@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_MENU_VK, this);
+		this->mSettingsButton = Button::create(structure4, this->mSpriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
     
-		this->addChild(spriteBatch);
-    
+		this->addChild(this->mSpriteBatch);
+
 		ccBlendFunc bf = {GL_ONE, GL_ZERO};
 		this->mBackground->setBlendFunc(bf);
 
@@ -77,9 +91,9 @@ Menu::Menu() :
 
 		#endif
 
-		this->mRatePopup = PleaseRate::create(this);
-		this->mMapPopup = Map::create(this);
-		this->mTempPublisherInAppExplainPopup = TempPublisherInAppExplain::create(this);
+		//this->mRatePopup = PleaseRate::create(this);
+		//this->mMapPopup = Map::create(this);
+		//this->mTempPublisherInAppExplainPopup = TempPublisherInAppExplain::create(this);
 
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 		this->mShopButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(270));
@@ -98,7 +112,7 @@ Menu::Menu() :
     
 		this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
-		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
+		SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true);
 
 		if(!Options::MUSIC_ENABLE)
 		{
@@ -109,8 +123,8 @@ Menu::Menu() :
 Menu* Menu::create()
 {
     Menu* screen = new Menu();
-    screen->autorelease();
-    screen->retain();
+    /*screen->autorelease();
+    screen->retain();*/
     
     return screen;
 }

@@ -33,17 +33,13 @@
 
 Screen::~Screen()
 {
-    this->removeAllChildrenWithCleanup(true);
-    
-    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    
-    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
-Screen::Screen()
-{
-}
+Screen::Screen() :
+    CCScene()
+    {
+        this->init();
+    }
 
 // ===========================================================
 // Getters
@@ -74,7 +70,7 @@ void Screen::onEnter()
 {
     CCScene::onEnter();
     
-    this->scheduleUpdate();
+    this->scheduleUpdate();CCLog("?");
 }
 
 void Screen::onExit()
@@ -82,9 +78,8 @@ void Screen::onExit()
     CCScene::onExit();
 
     this->stopAllActions();
+    this->unscheduleUpdate();
     this->unscheduleAllSelectors();
-
-    this->release();
 }
 
 void Screen::visit()

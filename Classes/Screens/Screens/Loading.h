@@ -27,6 +27,8 @@ class Loading : public Screen
         float mLoadingProgressTime;
         float mLoadingProgressTimeElapsed;
 
+        SpriteBatch* mSpriteBatch;
+    
         Entity* mBackground;
         Entity* mBarBackground;
         Entity* mBar;

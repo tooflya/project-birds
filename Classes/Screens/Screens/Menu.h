@@ -27,6 +27,8 @@ class Menu : public Screen
         // Fields
         // ===========================================================
     
+        SpriteBatch* mSpriteBatch;
+    
         Entity* mBackground;
         Entity* mPlayDecoration[2];
         Entity* mPlayButton;

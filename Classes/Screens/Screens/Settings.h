@@ -16,11 +16,11 @@ class Settings : public Screen
         // Constants
         // ===========================================================
 
-        static Settings* m_Instance;
-
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        SpriteBatch* mSpriteBatch;
     
         Entity* mBackground;
         Entity* mLanguage;

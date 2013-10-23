@@ -20,6 +20,8 @@ class Credits : public Screen
         // Fields
         // ===========================================================
     
+        SpriteBatch* spriteBatch;
+    
         Entity* mBackground;
         Entity* mBackButton;
         Entity* mListBorders[2];

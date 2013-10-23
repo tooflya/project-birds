@@ -11,8 +11,6 @@
 // Constants
 // ===========================================================
 
-Settings* Settings::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,9 +21,26 @@ Settings* Settings::m_Instance = NULL;
 
 Settings::~Settings()
 {
+    this->removeAllChildrenWithCleanup(true);
+    
+    delete this->mSpriteBatch;
+    
+    delete this->mBackground;
+    delete this->mLanguage;
+    delete this->mBackgroundDecorations[0];
+    delete this->mBackgroundDecorations[1];
+    
+    delete this->mBackButton;
+    delete this->mCreditsButton;
+    delete this->mProgressButton;
+    delete this->mMoreButton;
+    delete this->mLanguageButton;
+    delete this->mSoundButton;
+    delete this->mMusicButton;
 }
 
 Settings::Settings() :
+    mSpriteBatch(NULL),
 	mBackground(0),
 	mLanguage(0),
 	mBackgroundDecorations(),
@@ -37,23 +52,23 @@ Settings::Settings() :
 	mSoundButton(0),
 	mMusicButton(0)
 	{
-		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+		this->mSpriteBatch = SpriteBatch::create("TextureAtlas2");
 
-		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
-		this->mBackgroundDecorations[1] = Entity::create("bg_detail_settings@2x.png", spriteBatch);
+		this->mBackground = Entity::create("settings_bg@2x.png", this->mSpriteBatch);
+		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch);
+		this->mBackgroundDecorations[1] = Entity::create("bg_detail_settings@2x.png", this->mSpriteBatch);
 
-		this->addChild(spriteBatch);
+		this->addChild(this->mSpriteBatch);
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
-		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, this);
-		this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_CREDITS, this);
-		this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_RATE, this);
-		this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_MORE, this);
-		this->mLanguageButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_LANGUAGE, this);
-		this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, this);
-		this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, this);
+		this->mBackButton = Button::create(structure1, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, this);
+		this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_CREDITS, this);
+		this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_RATE, this);
+		this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_MORE, this);
+		this->mLanguageButton = Button::create("settings_btn_big@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_LANGUAGE, this);
+		this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, this);
+		this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, this->mSpriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, this);
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
@@ -86,15 +101,13 @@ Settings::Settings() :
 		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(165), Utils::coord(128));
     
 		this->mLanguage->create();
-    
-		m_Instance = this;
 	}
 
 Settings* Settings::create()
 {
     Settings* screen = new Settings();
-    screen->autorelease();
-    screen->retain();
+    /*screen->autorelease();
+    screen->retain();*/
     
     return screen;
 }
@@ -105,8 +118,6 @@ Settings* Settings::create()
 
 void Settings::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Settings* pSender = (Settings*) Settings::m_Instance;
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -130,13 +141,13 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 
-                        pSender->mMusicButton->setCurrentFrameIndex(0);
+                        this->mMusicButton->setCurrentFrameIndex(0);
                     }
                     else
                     {
                         SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 
-                        pSender->mMusicButton->setCurrentFrameIndex(3);
+                        this->mMusicButton->setCurrentFrameIndex(3);
                     }
 
                     AppDelegate::setMusicEnable(Options::MUSIC_ENABLE);
@@ -148,11 +159,11 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     
                     if(Options::SOUND_ENABLE)
                     {
-                        pSender->mSoundButton->setCurrentFrameIndex(1);
+                        this->mSoundButton->setCurrentFrameIndex(1);
                     }
                     else
                     {
-                        pSender->mSoundButton->setCurrentFrameIndex(4);
+                        this->mSoundButton->setCurrentFrameIndex(4);
                     }
 
                     AppDelegate::setSoundEnable(Options::SOUND_ENABLE);

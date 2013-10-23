@@ -24,13 +24,31 @@
 
 Mode::~Mode()
 {
-    CC_SAFE_RELEASE(this->mHelpPopup);
-    CC_SAFE_RELEASE(this->mLivesPopup);
-    CC_SAFE_RELEASE(this->mTempPublisherRatingExplain);
-    CC_SAFE_RELEASE(this->mTempPublisherAchievementsExplain);
+    this->removeAllChildrenWithCleanup(true);
+    
+    delete this->spriteBatch;
+    
+    delete this->mBackground;
+    delete this->mBackgroundDecorations[0];
+    delete this->mBackgroundDecorations[1];
+    
+    delete this->mBackButton;
+    delete this->mHelpButton;
+    delete this->mClassicMode;
+    delete this->mArcadeMode;
+    delete this->mProgressMode;
+    delete this->mAchievementsButton;
+    delete this->mLeaderboardButton;
+    delete this->mShopButton;
+    
+    //delete this->mHelpPopup;
+    //delete this->mLivesPopup;
+    //delete this->mTempPublisherRatingExplain;
+    //delete this->mTempPublisherAchievementsExplain;
 }
 
 Mode::Mode() :
+    spriteBatch(0),
 	mBackground(0),
 	mBackgroundDecorations(),
 	mBackButton(0),
@@ -46,7 +64,7 @@ Mode::Mode() :
 	mTempPublisherRatingExplain(0),
 	mTempPublisherAchievementsExplain(0)
 	{
-		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+		spriteBatch = SpriteBatch::create("TextureAtlas2");
 
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
 		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
@@ -90,17 +108,17 @@ Mode::Mode() :
 		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
 		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     
-		this->mHelpPopup = ModeHelp::create(this);
-		this->mLivesPopup = GetLives::create(this, true);
-		this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
-		this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
+		//this->mHelpPopup = ModeHelp::create(this);
+		//this->mLivesPopup = GetLives::create(this, true);
+		//this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
+		//this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
 	}
 
 Mode* Mode::create()
 {
     Mode* screen = new Mode();
-    screen->autorelease();
-    screen->retain();
+    /*screen->autorelease();
+    screen->retain();*/
     
     return screen;
 }
