@@ -126,6 +126,9 @@ const char* Options::SOUND_COMBO[8] = {"combo-1.mp3", "combo-2.mp3","combo-3.mp3
 const char* Options::SOUND_POINTS[12] = {"popup-1.mp3", "popup-2.mp3","popup-3.mp3","popup-4.mp3","popup-5.mp3","popup-6.mp3","popup-7.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3"};
 const char* Options::SOUND_PROGRESS = "progress_complete.mp3";
 const char* Options::SOUND_LEVEL_UNLOCK = "upsell_whoosh.mp3";
+const char* Options::SOUND_MISS = "miss.wav";
+const char* Options::SOUND_GEM = "gem-4.wav";
+const char* Options::SOUND_LEVEL_LOSE = "lose.mp3";
 
 #endif
 

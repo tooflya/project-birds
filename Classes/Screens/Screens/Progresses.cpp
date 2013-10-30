@@ -120,6 +120,7 @@ public:
 Progresses::~Progresses()
 {
     CC_SAFE_RELEASE(this->mColors);
+    CC_SAFE_RELEASE(this->mColorsParticles);
 }
 
 Progresses::Progresses() :
@@ -253,6 +254,7 @@ Progresses::Progresses() :
 		this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
 		this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
 		this->mColors = EntityManager::create(100, Color::create(), spriteBatch2);
+        this->mColorsParticles = EntityManager::create(1000, ColorParticle::create(), spriteBatch2);
 		this->mColorsBlink = EntityManager::create(100, Entity::create("egg light.png", 9, 1), spriteBatch2);
 		this->mTasksBackground = EntityManager::create(10, Entity::create("task-background@2x.png"), spriteBatch8);
 		this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 7, 1), spriteBatch8);
@@ -608,6 +610,14 @@ void Progresses::onBirBlow(int pType, float pX, float pY, bool pBonus)
             color->mType = pType;
             
             color->setCenterPositionWithCorrection(pX, pY);
+            
+            for(int i = 0; i < 30; i++)
+            {
+                Entity* particle = this->mColorsParticles->create();
+                
+                particle->setCenterPosition(color->getCenterX(), color->getCenterY());
+                particle->setColor(Bird::COLORS[pType]);
+            }
         }
     }
 }
@@ -764,6 +774,11 @@ void Progresses::onShow()
         
         if(c2 == 1) c2 = -1;
     }
+}
+
+void Progresses::removeLife()
+{
+    
 }
 
 #endif

@@ -245,6 +245,14 @@ void End::onShow()
             AppDelegate::setLevelStars(Game::LEVEL + 1, 0);
         }
         
+        if(Game::STARS <= 0)
+        {
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_LOSE);
+            }
+        }
+        
         if(AppDelegate::getLevelStars(Game::LEVEL + 1) >= 0)
         {
             this->mContinueButton->create()->setCurrentFrameIndex(2);

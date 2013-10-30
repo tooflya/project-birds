@@ -1,17 +1,9 @@
-#ifndef CONST_PROGRESSES_H
-#define CONST_PROGRESSES_H
+#ifndef CONST_COLORPARTICLE_H
+#define CONST_COLORPARTICLE_H
 
-#include "Game.h"
-#include "End.h"
+#include "Entity.h"
 
-#include "Pause.h"
-
-#include "AppDelegate.h"
-
-#include "Color.h"
-#include "ColorPArticle.h"
-
-class Progresses : public Game
+class ColorParticle : public Entity
 {
     protected:
         // ===========================================================
@@ -26,27 +18,24 @@ class Progresses : public Game
         // Fields
         // ===========================================================
     
-        Text* mBestCountText;
-        Text* mGoldLifesCount;
-        Text* mTimeText;
-        Text* mStarTimeText;
-        Text* mTaskText[5];
+        float mSpeedX;
+        float mSpeedY;
     
-        EntityManager* mColorsSmall;
-        EntityManager* mTasksBackground;
-    
+        float mTime;
+        float mTimeElapsed;
+
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Progresses();
+        ColorParticle();
 
         // ===========================================================
         // Methods
         // ===========================================================
 
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     private:
@@ -71,7 +60,7 @@ class Progresses : public Game
         // ===========================================================
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     public:
@@ -82,50 +71,31 @@ class Progresses : public Game
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static int TASK[80][10];
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        static Progresses* create();
-    
-        ~Progresses();
-    
-        EntityManager* mColorsParticles;
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static ColorParticle* create();
 
         // ===========================================================
         // Methods
         // ===========================================================
     
-        void onShow();
+        void update(float pDeltaTime);
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
     
-        void update(float pDeltaTime);
+        void onCreate();
+        void onDestroy();
     
-        void draw();
-
-        void onEnter();
-        void onExit();
-
-        void onGameStarted();
-        void onGameEnd();
-
-        void onBirBlow(int pType, float pX, float pY, bool pBonus);
-    
-        void onTaskComplete();
-    
-        void onTouchButtonsCallback(const int pAction, const int pID);
-    
-        void removeLife();
+        ColorParticle* deepCopy();
 };
 
 #endif

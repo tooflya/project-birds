@@ -4,6 +4,7 @@
 #include "Color.h"
 
 #include "Game.h"
+#include "Progresses.h"
 
 // ===========================================================
 // Inner Classes
@@ -141,6 +142,19 @@ void Color::runDestroy()
     this->mGoingToDestroy = true;
     this->mDestroyTime = 0;
     this->mDestroyTimeElapsed = 0;
+    
+    for(int i = 0; i < 30; i++)
+    {
+        Entity* particle = static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorsParticles->create();
+        
+        particle->setCenterPosition(this->getCenterX(), this->getCenterY());
+        particle->setColor(Bird::COLORS[this->getCurrentFrameIndex()]);
+    }
+    
+    if(Options::SOUND_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_GEM);
+    }
 }
 
 void Color::down()
@@ -170,7 +184,7 @@ void Color::onCreate()
     this->mBlinkTime = Utils::randomf(1.0, 6.0);
     this->mBlinkTimeElapsed = 0;
     
-    this->setScale(1.0);
+    this->setScale(0.1);
     this->mGoingToDestroy = false;
     
     this->mct = 0.5;
@@ -192,6 +206,8 @@ void Color::onCreate()
     }
     
     this->mPowerText->setVisible(false);
+    
+    this->runAction(CCScaleTo::create(0.5, 1));
 }
 
 void Color::onDestroy()
@@ -248,7 +264,14 @@ void Color::update(float pDeltaTime)
             
             if(this->d)
             {
-                this->runDestroy();
+                //this->runDestroy();
+                
+                this->destroy();
+                
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_MISS);
+                }
             }
         }
     }

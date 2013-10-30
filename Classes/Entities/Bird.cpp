@@ -198,7 +198,14 @@ void Bird::onCreate()
         }
         else
         {
-            this->mType = Utils::probably(Game::PREDICTION ? 30 : 15) ? TYPE_DANGER : Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
+            if(Loader::TYPE == 3)
+            {
+                this->mType = Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
+            }
+            else
+            {
+                this->mType = Utils::probably(Game::PREDICTION ? 30 : 15) ? TYPE_DANGER : Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
+            }
         
             this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -239,13 +246,6 @@ void Bird::onCreate()
     
     if(this->mType == TYPE_DANGER)
     {
-        if(Loader::ACTION == 3)
-        {
-            this->destroy();
-            
-            return;
-        }
-        
         if(Options::SOUND_ENABLE)
         {
             this->mSoundEffect = SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BOMB_FUSE);
