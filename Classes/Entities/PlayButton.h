@@ -82,8 +82,6 @@ class PlayButton : public Button
 		// ===========================================================
 
 		static PlayButton* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
-    
-        ~PlayButton();
 
 		// ===========================================================
 		// Methods

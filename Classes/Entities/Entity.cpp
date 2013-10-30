@@ -10,7 +10,6 @@ Entity::~Entity()
 {
     free(this->mFramesCoordinatesX);
     free(this->mFramesCoordinatesY);
-    
 }
 
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)
@@ -163,7 +162,7 @@ Entity::Entity() :
 	mAlphaParent(0),
 	mCreatedFromAtlas(0),
 	mTextureFileName(0),
-	mStartTouchPoint(CCPointZero),
+	//mStartTouchPoint(0),
 	mEntityManager(0),
 	mBatchEntityManager(0)
 	{
@@ -205,7 +204,7 @@ Entity::Entity(const char* pszFileName) :
 	mAlphaParent(0),
 	mCreatedFromAtlas(0),
 	mTextureFileName(0),
-	mStartTouchPoint(CCPointZero),
+	//mStartTouchPoint(0),
 	mEntityManager(0),
 	mBatchEntityManager(0)
 	{
@@ -248,7 +247,7 @@ Entity::Entity(const char* pszFileName, int pHorizontalFramesCount, int pVertica
 	mAlphaParent(0),
 	mCreatedFromAtlas(0),
 	mTextureFileName(0),
-	mStartTouchPoint(CCPointZero),
+	//mStartTouchPoint(0),
 	mEntityManager(0),
 	mBatchEntityManager(0)
 	{
@@ -291,7 +290,7 @@ Entity::Entity(const char* pszFileName, CCNode* pParent) :
 	mAlphaParent(0),
 	mCreatedFromAtlas(0),
 	mTextureFileName(0),
-	mStartTouchPoint(CCPointZero),
+	//mStartTouchPoint(0),
 	mEntityManager(0),
 	mBatchEntityManager(0)
 	{
@@ -334,7 +333,7 @@ Entity::Entity(const char* pszFileName, int pHorizontalFramesCount, int pVertica
 	mAlphaParent(0),
 	mCreatedFromAtlas(0),
 	mTextureFileName(0),
-	mStartTouchPoint(CCPointZero),
+	//mStartTouchPoint(0),
 	mEntityManager(0),
 	mBatchEntityManager(0)
 	{
@@ -377,7 +376,7 @@ Entity::Entity(EntityStructure pStructure, CCNode* pParent) :
 	mAlphaParent(0),
 	mCreatedFromAtlas(0),
 	mTextureFileName(0),
-    mStartTouchPoint(CCPointZero),
+	//mStartTouchPoint(0),
 	mEntityManager(0),
 	mBatchEntityManager(0)
 	{
@@ -387,15 +386,15 @@ Entity::Entity(EntityStructure pStructure, CCNode* pParent) :
 Entity* Entity::create(const char* pszFileName)
 {
     Entity* entity = new Entity(pszFileName);
-    //entity->autorelease();
-
+    entity->autorelease();
+    
     return entity;
 }
 
 Entity* Entity::create(const char* pszFileName, CCNode* pParent)
 {
     Entity* entity = new Entity(pszFileName, pParent);
-    //entity->autorelease();
+    entity->autorelease();
     
     return entity;
 }
@@ -403,7 +402,7 @@ Entity* Entity::create(const char* pszFileName, CCNode* pParent)
 Entity* Entity::create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount)
 {
     Entity* entity = new Entity(pszFileName, pHorizontalFramesCount, pVerticalFramesCount);
-    //entity->autorelease();
+    entity->autorelease();
     
     return entity;
 }
@@ -411,7 +410,7 @@ Entity* Entity::create(const char* pszFileName, int pHorizontalFramesCount, int 
 Entity* Entity::create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent)
 {
     Entity* entity = new Entity(pszFileName, pHorizontalFramesCount, pVerticalFramesCount, pParent);
-    //entity->autorelease();
+    entity->autorelease();
     
     return entity;
 }
@@ -419,7 +418,7 @@ Entity* Entity::create(const char* pszFileName, int pHorizontalFramesCount, int 
 Entity* Entity::create(EntityStructure pStructure, CCNode* pParent)
 {
     Entity* entity = new Entity(pStructure, pParent);
-    //entity->autorelease();
+    entity->autorelease();
     
     return entity;
 }
@@ -513,7 +512,7 @@ float Entity::getSpeed(float pDeltaTime)
 
 Entity* Entity::create()
 {
-    //this->scheduleUpdate();
+    this->scheduleUpdate();
     this->onCreate();
 
     return this;
@@ -521,10 +520,7 @@ Entity* Entity::create()
 
 bool Entity::destroy(bool pManage)
 {
-    this->stopAllActions();
     this->unscheduleUpdate();
-    this->unscheduleAllSelectors();
-    
     this->onDestroy();
 
     if(pManage)

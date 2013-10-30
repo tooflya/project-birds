@@ -18,9 +18,6 @@ class Language : public Screen
         // Fields
         // ===========================================================
 
-        SpriteBatch* spriteBatch;
-        SpriteBatch* spriteBatch2;
-    
         Entity* mBackground;
         Entity* mBackButton;
     
@@ -88,8 +85,6 @@ class Language : public Screen
         // ===========================================================
     
         static Language* create();
-    
-        ~Language();
 
         // ===========================================================
         // Methods

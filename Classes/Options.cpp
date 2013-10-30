@@ -47,10 +47,10 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.8.4";
-string Options::STRING_VERSION = "0.8.4";
+const char* Options::VERSION = "0.8.51";
+string Options::STRING_VERSION = "0.8.51";
 
-int Options::BUILD = 6615;
+int Options::BUILD = 7030;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -463,14 +463,14 @@ void Options::init()
             break;
         }
     }
-CURRENT_LANGUAGE = 1;
+
     Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
     Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 
-    CCDictionary* pConfInfo = CCDictionary::createWithContentsOfFile("Info.plist");
-    Options::BUILD = pConfInfo->valueForKey("CFBundleVersion")->intValue();
+    //CCDictionary* pConfInfo = CCDictionary::createWithContentsOfFile("Info.plist");
+    //Options::BUILD = pConfInfo->valueForKey("CFBundleVersion")->intValue();
 
     #endif
 

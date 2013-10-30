@@ -67,6 +67,8 @@ class SpecialBird : public Bird
         // ===========================================================
 
         static SpecialBird* create();
+    
+        static ccColor3B COLORS[10];
 
         // ===========================================================
         // Fields

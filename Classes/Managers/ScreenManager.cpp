@@ -79,7 +79,7 @@ ScreenManager* ScreenManager::create()
 void ScreenManager::generate()
 {
     this->load(3, -1);
-    //this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
+    this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)
@@ -97,6 +97,7 @@ void ScreenManager::load(int pAction, int pDo)
     switch(pAction)
     {
         case 3:
+        case 4:
         case 5:
             
             switch(pDo)
@@ -119,8 +120,8 @@ void ScreenManager::load(int pAction, int pDo)
                     this->mScreens[Screen::SCREEN_MORE] = More::create();
                     this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
                     this->mScreens[Screen::SCREEN_MODE] = Mode::create();
-                    //this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
-                    //this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
+                    this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
+                    this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 break;
             }
             

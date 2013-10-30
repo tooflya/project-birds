@@ -46,6 +46,8 @@ Splash::Splash(Screen* pParent) :
 		this->mShowBackground = false;
 		this->mHideBackground = false;
 		this->mShowed = false;
+        
+        this->setRegisterAsTouchable(true);
 	}
 
 // ===========================================================

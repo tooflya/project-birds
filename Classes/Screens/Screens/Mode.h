@@ -24,8 +24,6 @@ class Mode : public Screen
         // Fields
         // ===========================================================
     
-        SpriteBatch* spriteBatch;
-    
         Entity* mBackground;
         Entity* mBackgroundDecorations[2];
 

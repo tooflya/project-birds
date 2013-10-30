@@ -21,6 +21,7 @@
 
 SpriteBatch::~SpriteBatch()
 {
+    this->removeAllChildrenWithCleanup(true);
 }
 
 SpriteBatch::SpriteBatch()
@@ -30,7 +31,8 @@ SpriteBatch::SpriteBatch()
 SpriteBatch* SpriteBatch::create(const char* pTextureAtlas)
 {
     SpriteBatch* entity = new SpriteBatch();
-    entity->initWithFile(ccsf("%s%s", pTextureAtlas, Options::TEXTURES_EXTENSION), 0);
+    entity->initWithFile(ccsf("%s%s", pTextureAtlas, Options::TEXTURES_EXTENSION), 10);
+    entity->autorelease();
     
     return entity;
 }

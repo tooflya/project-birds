@@ -322,7 +322,7 @@ class Game : public Screen
         virtual void onGameStarted();
         virtual void onGameEnd();
         virtual void removeLife();
-        virtual void onBirBlow(int pType, float pX, float pY);
+        virtual void onBirBlow(int pType, float pX, float pY, bool pBonus);
         virtual void pause();
         virtual void onBonus(int pId, float pX, float pY);
         void startBoxAnimation();

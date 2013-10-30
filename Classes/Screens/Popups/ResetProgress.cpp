@@ -13,6 +13,8 @@
 // Constants
 // ===========================================================
 
+ResetProgress* ResetProgress::m_Instance = NULL;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -23,18 +25,14 @@
 
 ResetProgress::~ResetProgress()
 {
-    this->removeAllChildrenWithCleanup(true);
-    
-    delete this->mResetButton;
-    delete this->mLights;
+    CC_SAFE_RELEASE(this->mLights);
 }
 
 ResetProgress::ResetProgress(CCNode* pParent) :
     Popup(pParent),
 	mResetButton(0),
 	mAction(0),
-	mLights(0),
-    text1(0)
+	mLights(0)
     {
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
     
@@ -52,9 +50,9 @@ ResetProgress::ResetProgress(CCNode* pParent) :
             ((Entity*) this->mLights->objectAtIndex(i))->setOpacity(0.0);
         }
         
-        this->text1 = Text::create(Options::TEXT_RESET_STRING_1, ccp(Utils::coord(512), 0), this);
+        Text* text1 = Text::create(Options::TEXT_RESET_STRING_1, ccp(Utils::coord(512), 0), this);
         
-        this->text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(130));
         
         this->mResetButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(460));
         this->mResetButton->setText(Options::TEXT_RESET_RESET);
@@ -62,13 +60,15 @@ ResetProgress::ResetProgress(CCNode* pParent) :
         this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(340));
         
         this->mAction = false;
+        
+        m_Instance = this;
     }
 
 ResetProgress* ResetProgress::create(CCNode* pParent)
 {
     ResetProgress* popup = new ResetProgress(pParent);
-    /*popup->autorelease();
-    popup->retain();*/
+    popup->autorelease();
+    popup->retain();
     
     return popup;
 }
@@ -79,6 +79,8 @@ ResetProgress* ResetProgress::create(CCNode* pParent)
 
 void ResetProgress::onTouchButtonsCallback(const int pAction, const int pID)
 {
+    ResetProgress* pSender = (ResetProgress*) ResetProgress::m_Instance;
+    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -86,14 +88,14 @@ void ResetProgress::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_POPUP_CLOSE:
                 
-                this->hide();
+                pSender->hide();
                 
             break;
             case Options::BUTTONS_ID_RESET_RESET:
                 
-                this->mAction = true;
+                pSender->mAction = true;
                 
-                this->hide();
+                pSender->hide();
                 
             break;
         }

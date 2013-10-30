@@ -32,8 +32,20 @@ public:
 
 int Progresses::TASK[80][10] =
 {
-    {1, 10},
-    {1, 20, 2, 40}
+    {1, 1},
+    {1, 3},
+    {1, 3, 2, 3},
+    {1, 3, 2, 3},
+    {1, 10, 2, 10},
+    {1, 20, 2, 20},
+    {2, 30},
+    {1, 10, 2, 10, 3, 5},
+    {2, 40, 3, 5},
+    {1, 5, 2, 10, 3, 15},
+    {1, 10, 2, 10, 3, 10},
+    {1, 20, 2, 10, 3, 10},
+    {3, 100},
+    {1, 10, 2, 20, 3, 30, 4, 40}
 };
 
 class Grid : public CCNode
@@ -119,7 +131,9 @@ Progresses::Progresses() :
 	mTaskText(),
 	mColorsSmall(0),
 	mTasksBackground(0)
-	{
+    {
+        Loader::TYPE = 3;
+        
 		this->mEventLayer = CCLayer::create();
     
 		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
@@ -177,9 +191,10 @@ Progresses::Progresses() :
 		this->mTextIcons[0] = Entity::create("game_panel_time@2x.png", spriteBatch8);
 		this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
 		this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
+		this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
 
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
-		this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
+		this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
         
 		this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 		this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -348,8 +363,8 @@ Progresses::Progresses() :
     
 		//
     
-		mSpecialBirdsTime = 20000;
-		mCoinsBirdTime = 20000;
+		//mSpecialBirdsTime = 20000;
+		//mCoinsBirdTime = 20000;
         
 		this->mTime = 0;
 		this->mStarTime = 0;
@@ -428,6 +443,8 @@ void Progresses::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
     
+    if(this->mPause) return;
+    
     if(this->mGamePaused)
     {
         if(!this->mEndScreen->isShowed())
@@ -447,7 +464,7 @@ void Progresses::update(float pDeltaTime)
             this->mStarTime = 0;
         }
     
-        if(this->mTime <= 0 || this->mColors->getCount() <= 0)
+        if(this->mTime <= 0 || (this->mColors->getCount() <= 0 && this->mTaskDone))
         {
             this->onGameEnd();
         }
@@ -525,7 +542,7 @@ void Progresses::onGameStarted()
     this->mTime = 60.0;
     this->mStarTime = 60.0;
     
-    for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
+    /*for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
     {
         int y = 0;
         
@@ -543,7 +560,7 @@ void Progresses::onGameStarted()
             
             y++;
         }
-    }
+    }*/
 }
 
 void Progresses::onGameEnd()
@@ -575,11 +592,11 @@ void Progresses::onGameEnd()
     }
 }
 
-void Progresses::onBirBlow(int pType, float pX, float pY)
+void Progresses::onBirBlow(int pType, float pX, float pY, bool pBonus)
 {
     if(this->mGameRunning)
     {
-        if(pType == Bird::TYPE_DANGER)
+        if(pType == Bird::TYPE_DANGER || pType == Bird::TYPE_FLAYER || pBonus)
         {
             
         }
@@ -602,8 +619,6 @@ void Progresses::onEnter()
     this->onShow();
     
     GAME_TYPE = GAME_TYPE_PROGRESS;
-    
-    Loader::TYPE = 3;
 }
 
 void Progresses::onExit()
@@ -614,6 +629,9 @@ void Progresses::onExit()
 void Progresses::onShow()
 {
     STARS = 0;
+    
+    this->mTime = 0;
+    this->mStarTime = 0;
     
     this->mTimeText->setString("0:00");
     this->mStarTimeText->setString("0:00");
@@ -641,8 +659,25 @@ void Progresses::onShow()
                     break;
                     case 0:
                         MATRIX[i][j] = -1;
-                    break;
+                        break;
                     case 1:
+                        MATRIX[i][j] = -1;
+                    break;
+                    case 2:
+                        MATRIX[i][j] = -1;
+                        MATRIX[6][Game::MATRIX_SIZE_Y - 2] = -1;
+                        MATRIX[7][Game::MATRIX_SIZE_Y - 2] = -1;
+                        MATRIX[8][Game::MATRIX_SIZE_Y - 2] = -1;
+                    break;
+                    case 3:
+                        MATRIX[i][j] = -1;
+                        MATRIX[0][Game::MATRIX_SIZE_Y - 2] = -1;
+                        MATRIX[Game::MATRIX_SIZE_X - 1][Game::MATRIX_SIZE_Y - 2] = -1;
+                    break;
+                    case 4:
+                        MATRIX[i][j] = -1;
+                    break;
+                    case 5:
                         if(c == LEVEL_HEIGHT[LEVEL] - 1)
                         {
                             if(i == 0 || i == MATRIX_SIZE_X - 1)

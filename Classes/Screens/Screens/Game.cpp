@@ -21,13 +21,22 @@ int Game::LEVEL_TYPE[80] = {
     0, 1, 2
 };
 int Game::LEVEL_HEIGHT[80] = {
-    1, 2, 3
+    1, 1, 1, 1,
+    1, 2, 2, 2,
+    2, 3, 3, 3,
+    3, 3, 4, 4
 };
 int Game::LEVEL_COLORS[80] = {
-    2, 2, 3
+    1, 1, 2, 2,
+    2, 2, 3, 3,
+    3, 3, 3, 4,
+    4, 4, 4, 4
 };
 int Game::LEVEL_HEALTH[80] = {
-    12, 12, 15, 12, 12, 12, 12
+    12, 12, 12, 12,
+    12, 12, 12, 24,
+    24, 24, 24, 24,
+    24, 36, 36, 36
 };
 
 int Game::MATRIX_SIZE_X = 0;
@@ -302,8 +311,11 @@ void Game::startGame()
     this->mMarks->clear();
     this->mExplosions->clear();
     this->mExplosionsBasic->clear();
+    this->mKeys->clear();
+    this->mKeysLights->clear();
 
     HEALTH = LEVEL_HEALTH[LEVEL];
+    
     COMBO_COUNT = 0;
     FLAYER_COUNT = 0;
     CRITICAL_COUNT = 0;
@@ -332,7 +344,7 @@ void Game::onTaskComplete()
     
 }
 
-void Game::onBirBlow(int pType, float pX, float pY)
+void Game::onBirBlow(int pType, float pX, float pY, bool pBonus)
 {
     if(this->mGameRunning)
     {
@@ -467,6 +479,10 @@ void Game::onBonus(int pId, float pX, float pY)
             {
                 SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_FREEZEE);
             }
+            
+            // Experiments
+            
+            //this->runAction(CCShaky3D::create(50, CCSizeMake(15,10), 1, true));
         break;
         case 1:
             PREDICTION = true;
@@ -864,7 +880,7 @@ void Game::update(float pDeltaTime)
         this->mLastKillCount = 0;
     }
     
-    if(this->mEventLayer)
+    //if(this->mEventLayer)
     {
         //this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));
     }

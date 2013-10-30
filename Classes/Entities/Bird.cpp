@@ -6,6 +6,7 @@
 #include "Feather.h"
 
 #include "Game.h"
+#include "Loader.h"
 
 // ===========================================================
 // Inner Classes
@@ -238,6 +239,13 @@ void Bird::onCreate()
     
     if(this->mType == TYPE_DANGER)
     {
+        if(Loader::ACTION == 3)
+        {
+            this->destroy();
+            
+            return;
+        }
+        
         if(Options::SOUND_ENABLE)
         {
             this->mSoundEffect = SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_BOMB_FUSE);
@@ -313,12 +321,12 @@ void Bird::onDestroy()
                 {
                     if(this->mLifeCount <= 0)
                     {
-                        game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
+                        game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY(), this->mBonus);
                     }
                 }
                 else
                 {
-                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
+                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY(), this->mBonus);
                 }
 
                 if(this->mType == TYPE_DANGER)
@@ -553,16 +561,16 @@ void Bird::update(float pDeltaTime)
                 {
                     this->mLifeCount = 0;
                     
-                    if(!this->mBonus)
                     {
-                    Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
-                    Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
+                        Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
+                        Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 
-                    explosionBasic->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
+                        explosionBasic->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
 
-                    explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
-                    explosion->setColor(COLORS[this->mType]);
+                        explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
+                        explosion->setColor(this->mBonus ? SpecialBird::COLORS[this->mType] : COLORS[this->mType]);
                     }
+                    
 
                     if(this->mType != TYPE_DANGER && !this->mBonus)
                     {

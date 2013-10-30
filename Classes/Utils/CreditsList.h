@@ -27,7 +27,7 @@ class CreditsList : public List
         Entity* mGameLogo;
         Entity* mCompanyLogo;
         
-        Text* mText[13];
+        Text* mText[16];
 
         // ===========================================================
         // Constructors

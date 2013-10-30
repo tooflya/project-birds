@@ -21,8 +21,6 @@ class PleaseRate : public Popup
         Button* mRateButton;
     
         EntityManager* mLights;
-    
-        Text* text1;
 
         // ===========================================================
         // Constructors
