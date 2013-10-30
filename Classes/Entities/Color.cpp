@@ -14,6 +14,8 @@
 // Constants
 // ===========================================================
 
+int Color::SOUND_INDEX = -1;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -153,7 +155,7 @@ void Color::runDestroy()
     
     if(Options::SOUND_ENABLE)
     {
-        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_GEM);
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_GEM[SOUND_INDEX]);
     }
 }
 
@@ -264,14 +266,14 @@ void Color::update(float pDeltaTime)
             
             if(this->d)
             {
-                //this->runDestroy();
-                
                 this->destroy();
                 
-                if(Options::SOUND_ENABLE)
-                {
-                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_MISS);
-                }
+                SOUND_INDEX = -1;
+            }
+            
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_MISS);
             }
         }
     }

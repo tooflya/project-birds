@@ -136,8 +136,9 @@ class Options
         static const char* SOUND_COMBO[8];
         static const char* SOUND_LEVEL_UNLOCK;
         static const char* SOUND_MISS;
-        static const char* SOUND_GEM;
+        static const char* SOUND_GEM[5];
         static const char* SOUND_LEVEL_LOSE;
+        static const char* SOUND_LEVEL_STARS[3];
 
         static const char* VERSION;
         static std::string STRING_VERSION;

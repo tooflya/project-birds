@@ -616,6 +616,11 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
     {
         if(array->count() >= 3)
         {
+            if(Color::SOUND_INDEX < 4)
+            {
+                Color::SOUND_INDEX++;
+            }
+            
             for(int i = 0; i < array->count(); i++)
             {
                 Color* color = static_cast<Color*>(array->objectAtIndex(i));

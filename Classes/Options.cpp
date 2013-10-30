@@ -47,10 +47,10 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.8.51";
-string Options::STRING_VERSION = "0.8.51";
+const char* Options::VERSION = "0.8.6";
+string Options::STRING_VERSION = "0.8.6";
 
-int Options::BUILD = 7030;
+int Options::BUILD = 7077;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -127,9 +127,9 @@ const char* Options::SOUND_POINTS[12] = {"popup-1.mp3", "popup-2.mp3","popup-3.m
 const char* Options::SOUND_PROGRESS = "progress_complete.mp3";
 const char* Options::SOUND_LEVEL_UNLOCK = "upsell_whoosh.mp3";
 const char* Options::SOUND_MISS = "miss.wav";
-const char* Options::SOUND_GEM = "gem-4.wav";
+const char* Options::SOUND_GEM[5] = { "gem1.wav", "gem2.mp3", "gem3.mp3", "gem4.mp3", "gem5.mp3" };
 const char* Options::SOUND_LEVEL_LOSE = "lose.mp3";
-const char* Options::SOUND_LEVEL_STARS[3] = { "star.mp3", "star.mp3", "star.mp3" };
+const char* Options::SOUND_LEVEL_STARS[3] = { "star1.mp3", "star2.mp3", "star3.mp3" };
 
 #endif
 

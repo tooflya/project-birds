@@ -342,11 +342,15 @@ void End::onStartShow()
     this->mTextes[4]->setString(ccsf(Options::TEXT_END[4].string, 0));
     this->mTextes[5]->setString(ccsf(Options::TEXT_END[5].string, 0));
     this->mTextes[6]->setString(ccsf(Options::TEXT_END[6].string, 0));
+    
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.2);
 }
 
 void End::onStartHide()
 {
     Splash::onStartHide();
+    
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
 }
 
 void End::throwConfetti()
@@ -391,6 +395,11 @@ void End::update(float pDeltaTime)
                 
                 star->setCurrentFrameIndex(star->getCurrentFrameIndex() - 3);
                 star->animate();
+                
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_STARS[this->mAnimationCounter]);
+                }
                 
                 this->mAnimationCounter++;
                 
