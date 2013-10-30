@@ -217,6 +217,7 @@
 		78D3587618212D8F001450F3 /* gem-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 78D3587418212D8F001450F3 /* gem-4.wav */; };
 		78D3587718212D8F001450F3 /* miss.wav in Resources */ = {isa = PBXBuildFile; fileRef = 78D3587518212D8F001450F3 /* miss.wav */; };
 		78D358791821384D001450F3 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D358781821384D001450F3 /* lose.mp3 */; };
+		78D3587B18213FF7001450F3 /* star.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D3587A18213FF7001450F3 /* star.mp3 */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -572,6 +573,7 @@
 		78D3587418212D8F001450F3 /* gem-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "gem-4.wav"; sourceTree = "<group>"; };
 		78D3587518212D8F001450F3 /* miss.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = miss.wav; sourceTree = "<group>"; };
 		78D358781821384D001450F3 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		78D3587A18213FF7001450F3 /* star.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = star.mp3; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1037,6 +1039,7 @@
 		783E885E17C20CEC00FD49C1 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				78D3587A18213FF7001450F3 /* star.mp3 */,
 				78D358781821384D001450F3 /* lose.mp3 */,
 				78D3587418212D8F001450F3 /* gem-4.wav */,
 				78D3587518212D8F001450F3 /* miss.wav */,
@@ -1236,6 +1239,7 @@
 				783654AD180C5ED100AA9432 /* wep_3@2x.png in Resources */,
 				7869167117F1DF9F00184E9D /* pome-zoomout.mp3 in Resources */,
 				7869167217F1DF9F00184E9D /* popup-1.mp3 in Resources */,
+				78D3587B18213FF7001450F3 /* star.mp3 in Resources */,
 				7836549D180C5ED100AA9432 /* TextureAtlas4.plist in Resources */,
 				783654A7180C5ED100AA9432 /* TextureAtlas9.plist in Resources */,
 				7869167317F1DF9F00184E9D /* popup-2.mp3 in Resources */,

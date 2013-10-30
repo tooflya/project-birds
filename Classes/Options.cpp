@@ -129,6 +129,7 @@ const char* Options::SOUND_LEVEL_UNLOCK = "upsell_whoosh.mp3";
 const char* Options::SOUND_MISS = "miss.wav";
 const char* Options::SOUND_GEM = "gem-4.wav";
 const char* Options::SOUND_LEVEL_LOSE = "lose.mp3";
+const char* Options::SOUND_LEVEL_STARS[3] = { "star.mp3", "star.mp3", "star.mp3" };
 
 #endif
 
