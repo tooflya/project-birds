@@ -5,6 +5,7 @@
 
 #include "Game.h"
 #include "Loader.h"
+#include "Shop.h"
 
 // ===========================================================
 // Inner Classes
@@ -193,7 +194,11 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             break;
             case Options::BUTTONS_ID_END_SHOP:
                 
-            this->hide(); // TODO: Open shop screen.
+            this->hide();
+                    
+            Shop::ACTION = 0;
+                    
+            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
                 
             break;
             }
