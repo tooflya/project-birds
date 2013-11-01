@@ -519,7 +519,7 @@ void Bird::update(float pDeltaTime)
     {
         for(int i = 0; i < 10; i++)
         {
-            if(this->isCollideWithPoint(Options::TOUCH_INFORMATION[i]))
+            if(this->isCollideWithPoint(Options::TOUCH_INFORMATION[i]) && Options::TOUCH_INFORMATION[i].slice)
             {
                 this->mIsGoingToDestroy = true;
             }

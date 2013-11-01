@@ -77,7 +77,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
             endingLineNumber = "186"
-            landmarkName = "EntityManager::getCapacity()"
+            landmarkName = "EntityManager::clear()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

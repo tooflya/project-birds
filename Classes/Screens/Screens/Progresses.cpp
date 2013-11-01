@@ -243,7 +243,7 @@ Progresses::Progresses() :
 		this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
 		this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
 		this->mFeathers = EntityManager::create(300, Feather::create(), spriteBatch2);
-		this->mBirds = EntityManager::create(20, Bird::create(false), spriteBatch4);
+		this->mBirds = EntityManager::create(30, Bird::create(false), spriteBatch4);
 		this->mSpecialBirds = EntityManager::create(10, SpecialBird::create(), spriteBatch5);
 		this->mPirateBox = PirateBox::create(spriteBatch5);
 		this->mExplosions = EntityManager::create(20, Explosion::create(), spriteBatch2);

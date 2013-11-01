@@ -50,6 +50,7 @@ void TouchTrailLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
         blade->push(point);
         
         Options::TOUCH_INFORMATION[touch->getID()].last_sound_time = Utils::millisecondNow();
+        Options::TOUCH_INFORMATION[touch->getID()].slice = true;
     }
 }
 
@@ -84,7 +85,7 @@ void TouchTrailLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
         
         if(abs(ccpDistance(point, Options::TOUCH_INFORMATION[touch->getID()].last_slice_position)) > Options::CAMERA_WIDTH / 100.0)
         {
-             float dtime = 50.0;
+             float dtime = 200.0;
              
              if(Utils::millisecondNow() - Options::TOUCH_INFORMATION[touch->getID()].last_slice_time < dtime)
              {
@@ -135,9 +136,9 @@ void TouchTrailLayer::update(float pDeltaTime)
 
     this->mTimeBeforeNextBladeSoundElapsed += pDeltaTime;
     
-    /*for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 10; i++)
     {
-        float dtime = 5.0;
+        float dtime = 200.0;
         
         if(Utils::millisecondNow() - Options::TOUCH_INFORMATION[i].last_slice_time < dtime)
         {
@@ -147,7 +148,7 @@ void TouchTrailLayer::update(float pDeltaTime)
         {
             Options::TOUCH_INFORMATION[i].slice = false;
         }
-    }*/
+    }
 }
 
 void TouchTrailLayer::onEnter()
