@@ -71,6 +71,8 @@ class Color : public Entity
         // ===========================================================
     
         static int SOUND_INDEX;
+    
+        static bool ANIMATION_RUNNING;
 
         // ===========================================================
         // Fields

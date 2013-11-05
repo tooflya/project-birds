@@ -14,6 +14,9 @@
 // Constants
 // ===========================================================
 
+int Mode::UNLOCK_ACTION = -1;
+int Mode::PRICES[2] = {25, 40};
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -26,6 +29,7 @@ Mode::~Mode()
 {
     CC_SAFE_RELEASE(this->mHelpPopup);
     CC_SAFE_RELEASE(this->mLivesPopup);
+    CC_SAFE_RELEASE(this->mModesUnlockPopup);
     CC_SAFE_RELEASE(this->mTempPublisherRatingExplain);
     CC_SAFE_RELEASE(this->mTempPublisherAchievementsExplain);
 }
@@ -43,6 +47,7 @@ Mode::Mode() :
 	mShopButton(0),
 	mHelpPopup(0),
 	mLivesPopup(0),
+    mModesUnlockPopup(0),
 	mTempPublisherRatingExplain(0),
 	mTempPublisherAchievementsExplain(0)
 	{
@@ -76,9 +81,9 @@ Mode::Mode() :
 		this->mHelpButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(65), Options::CAMERA_HEIGHT - Utils::coord(65));
 		this->mShopButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(185), Options::CAMERA_HEIGHT - Utils::coord(65));
     
-		this->mClassicMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(350));
-		this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(140));
-		this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(70));
+		this->mClassicMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(140));
+		this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(70));
+		this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(350));
     
 		this->mAchievementsButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(300));
 		this->mLeaderboardButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(300));
@@ -92,6 +97,7 @@ Mode::Mode() :
     
 		this->mHelpPopup = ModeHelp::create(this);
 		this->mLivesPopup = GetLives::create(this, true);
+        this->mModesUnlockPopup = UnlockMode::create(this);
 		this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
 		this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
 	}
@@ -123,7 +129,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MODE_CLASSIC:
 
-                    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+                    if(true)
+                    {
+                        UNLOCK_ACTION = 0;
+                        
+                        this->mModesUnlockPopup->show();
+                    }
+                    else if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
                     {
                         this->mLivesPopup->show();
                     }
@@ -139,7 +151,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MODE_ARCADE:
                     
-                    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+                    if(true)
+                    {
+                        UNLOCK_ACTION = 1;
+                        
+                        this->mModesUnlockPopup->show();
+                    }
+                    else if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
                     {
                         this->mLivesPopup->show();
                     }

@@ -45,8 +45,10 @@ Menu::Menu() :
 	mSettingsButton(0),
 	mExitPopup(0),
 	mRatePopup(0),
+    mMapDescription(0),
 	mTempPublisherInAppExplainPopup(0),
 	mMapPopup(0),
+    mTutorial(0),
 	mPlayDecorationColorUpdateTimeElapsed(0)
 	{
 		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
@@ -79,6 +81,7 @@ Menu::Menu() :
 
 		this->mRatePopup = PleaseRate::create(this);
 		this->mMapPopup = Map::create(this);
+        this->mMapDescription = MapDescription::create(this);
 		this->mTempPublisherInAppExplainPopup = TempPublisherInAppExplain::create(this);
 
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
@@ -98,12 +101,21 @@ Menu::Menu() :
     
 		this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
-		SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true); 
+		SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true);
 
 		if(!Options::MUSIC_ENABLE)
 		{
 			SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 		}
+        
+        /** TUTORIAL **/
+        
+        /*this->mTutorial = Entity::create("tutorial.png", this);
+        this->mTutorial->setZOrder(10);
+        this->mTutorial->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+        this->mTutorial->setRotation(-45);
+        this->mTutorial->setScale(0.5);
+        this->mTutorial->setCenterPosition(this->mShopButton->getCenterX() + Utils::coord(40), this->mShopButton->getCenterY() - Utils::coord(50));*/
 	}
 
 Menu* Menu::create()

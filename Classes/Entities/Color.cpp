@@ -16,6 +16,8 @@
 
 int Color::SOUND_INDEX = -1;
 
+bool Color::ANIMATION_RUNNING = false;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -145,7 +147,7 @@ void Color::runDestroy()
     this->mDestroyTime = 0;
     this->mDestroyTimeElapsed = 0;
     
-    for(int i = 0; i < 30; i++)
+    for(int i = 0; i < 50; i++)
     {
         Entity* particle = static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorsParticles->create();
         
@@ -167,7 +169,9 @@ void Color::down()
     this->position_in_matrtix_y++;
     Game::MATRIX[this->position_in_matrtix_x][this->position_in_matrtix_y] = this->mType;
     
-    static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true);
+    static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true, this);
+    
+    ANIMATION_RUNNING = true;
 }
 
 // ===========================================================
@@ -262,7 +266,9 @@ void Color::update(float pDeltaTime)
         {
             this->mc = true;
             
-            static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true);
+            static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true, this);
+            
+            ANIMATION_RUNNING = true;
             
             if(this->d)
             {

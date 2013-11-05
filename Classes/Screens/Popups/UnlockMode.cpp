@@ -1,10 +1,10 @@
-#ifndef CONST_UNLOCKLEVEL
-#define CONST_UNLOCKLEVEL
+#ifndef CONST_UNLOCKMODE
+#define CONST_UNLOCKMODE
 
-#include "UnlockLevel.h"
+#include "UnlockMode.h"
 
 #include "Shop.h"
-#include "Levels.h"
+#include "Mode.h"
 #include "Game.h"
 
 // ===========================================================
@@ -23,12 +23,12 @@
 // Constructors
 // ===========================================================
 
-UnlockLevel::~UnlockLevel()
+UnlockMode::~UnlockMode()
 {
     CC_SAFE_RELEASE(this->mLights);
 }
 
-UnlockLevel::UnlockLevel(CCNode* pParent) :
+UnlockMode::UnlockMode(CCNode* pParent) :
     Popup(pParent),
 	mKey(0),
 	mUnlockButton(0),
@@ -59,7 +59,7 @@ UnlockLevel::UnlockLevel(CCNode* pParent) :
         
         this->mKey = Entity::create("popup_key_ico_fall_price@2x.png", spriteBatch3);
         
-        Text* text1 = Text::create(Options::TEXT_UNLOCKLEVEL, this);
+        Text* text1 = Text::create(Options::TEXT_UNLOCKMODE, this);
 
 		Textes textes1 = {"", Options::FONT, 64, -1};
 
@@ -73,9 +73,9 @@ UnlockLevel::UnlockLevel(CCNode* pParent) :
         this->mKey->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(310));
     }
 
-UnlockLevel* UnlockLevel::create(CCNode* pParent)
+UnlockMode* UnlockMode::create(CCNode* pParent)
 {
-    UnlockLevel* popup = new UnlockLevel(pParent);
+    UnlockMode* popup = new UnlockMode(pParent);
     popup->autorelease();
     popup->retain();
     
@@ -86,7 +86,7 @@ UnlockLevel* UnlockLevel::create(CCNode* pParent)
 // Methods
 // ===========================================================
 
-void UnlockLevel::onTouchButtonsCallback(const int pAction, const int pID)
+void UnlockMode::onTouchButtonsCallback(const int pAction, const int pID)
 {
     switch(pAction)
     {
@@ -120,7 +120,7 @@ void UnlockLevel::onTouchButtonsCallback(const int pAction, const int pID)
 // Override Methods
 // ===========================================================
 
-void UnlockLevel::update(float pDeltaTime)
+void UnlockMode::update(float pDeltaTime)
 {
     Popup::update(pDeltaTime);
     
@@ -132,7 +132,7 @@ void UnlockLevel::update(float pDeltaTime)
     }
 }
 
-void UnlockLevel::onShow()
+void UnlockMode::onShow()
 {
     Popup::onShow();
     
@@ -142,15 +142,15 @@ void UnlockLevel::onShow()
     }
 }
 
-void UnlockLevel::onHide()
+void UnlockMode::onHide()
 {
     if(this->action)
     {
         this->action = false;
         
-        if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_KEYS) >= Levels::PRICES[Game::LEVEL])
+        if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_KEYS) >= Mode::PRICES[Mode::UNLOCK_ACTION])
         {
-            static_cast<Levels*>(this->mParent)->unlock();
+            static_cast<Mode*>(this->mParent)->unlock();
         }
         else
         {
@@ -163,15 +163,15 @@ void UnlockLevel::onHide()
     Popup::onHide();
 }
 
-void UnlockLevel::show()
+void UnlockMode::show()
 {
     Popup::show();
     
     this->action = false;
     
-    this->mPriceText->setString(ccsf("%d", Levels::PRICES[Game::LEVEL]));
+    this->mPriceText->setString(ccsf("%d", Mode::PRICES[Mode::UNLOCK_ACTION]));
     
-    if(Levels::PRICES[Game::LEVEL] < 10)
+    if(Mode::PRICES[Mode::UNLOCK_ACTION] < 10)
     {
         this->mKey->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(20), Options::CAMERA_CENTER_Y - Utils::coord(310));
         this->mPriceText->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(20) + this->mPriceText->getWidth() / 2, Options::CAMERA_CENTER_Y - Utils::coord(310));
@@ -184,7 +184,7 @@ void UnlockLevel::show()
     
 }
 
-void UnlockLevel::hide()
+void UnlockMode::hide()
 {
     Popup::hide();
     

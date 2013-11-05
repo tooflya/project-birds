@@ -1,16 +1,13 @@
-#ifndef CONST_MODE_H
-#define CONST_MODE_H
+#ifndef CONST_MAPDESCRIPTIONLIST_H
+#define CONST_MAPDESCRIPTIONLIST_H
 
-#include "Screen.h"
+#include "Entity.h"
 
-#include "ModeHelp.h"
-#include "UnlockMode.h"
-#include "TempPublisherRatingExplain.h"
-#include "TempPublisherAchievementsExplain.h"
+#include "List.h"
 
-#include "AppDelegate.h"
+#include "Popup.h"
 
-class Mode : public Screen
+class MapDescriptionList : public List
 {
     protected:
         // ===========================================================
@@ -24,30 +21,23 @@ class Mode : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
+
+        Text* mTopText;
+        Text* mMiddleText;
+        Text* mBottomText;
     
-        Entity* mBackground;
-        Entity* mBackgroundDecorations[2];
-
-        Button* mBackButton;
-        Button* mHelpButton;
-        Button* mClassicMode;
-        Button* mArcadeMode;
-        Button* mProgressMode;
-        Button* mAchievementsButton;
-        Button* mLeaderboardButton;
-        Button* mShopButton;
-
-        Popup* mHelpPopup;
-        Popup* mLivesPopup;
-        Popup* mModesUnlockPopup;
-        Popup* mTempPublisherRatingExplain;
-        Popup* mTempPublisherAchievementsExplain;
+        Text* mSilverCoinsCountText;
+        Text* mGoldCoinsCountText;
+    
+        Entity* mIcon[5];
+        Entity* mSilverCoinsIcon;
+        Entity* mGoldCoinsIcon;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Mode();
+        MapDescriptionList(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -90,22 +80,18 @@ class Mode : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static int UNLOCK_ACTION;
-    
-        static int PRICES[2];
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        static Mode* create();
-    
-        ~Mode();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static MapDescriptionList* create(CCNode* pParent);
+    
+        ~MapDescriptionList();
 
         // ===========================================================
         // Methods
@@ -114,8 +100,8 @@ class Mode : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
-    
-        void onTouchButtonsCallback(const int pAction, const int pID);
+
+        void onEnter();
 };
 
 #endif

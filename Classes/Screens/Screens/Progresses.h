@@ -35,6 +35,9 @@ class Progresses : public Game
         EntityManager* mColorsSmall;
         EntityManager* mTasksBackground;
     
+        float mNewColorsTime;
+        float mNewColorsTimeElapsed;
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -126,6 +129,8 @@ class Progresses : public Game
         void onTouchButtonsCallback(const int pAction, const int pID);
     
         void removeLife();
+    
+        void onBonus(int pId, float pX, float pY);
 };
 
 #endif

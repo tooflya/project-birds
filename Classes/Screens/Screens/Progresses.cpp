@@ -238,8 +238,8 @@ Progresses::Progresses() :
 
 		this->mPauseButton = Button::create(structure2, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);
         
-		this->mSchematicBig = EntityManager::create(100, Entity::create("game_chess_bg@2x.png"), spriteBatch2);
-		this->mSchematicSmall = EntityManager::create(100, Entity::create("game_chess@2x.png", 2, 1), spriteBatch2);
+		this->mSchematicBig = EntityManager::create(200, Entity::create("game_chess_bg@2x.png"), spriteBatch2);
+		this->mSchematicSmall = EntityManager::create(200, Entity::create("game_chess@2x.png", 2, 1), spriteBatch2);
 		this->mDust = EntityManager::create(100, Dust::create(), spriteBatch2);
 		this->mMarks = EntityManager::create(300, Mark::create(), spriteBatch2);
 		this->mFeathers = EntityManager::create(300, Feather::create(), spriteBatch2);
@@ -253,8 +253,8 @@ Progresses::Progresses() :
 		this->mArrows = EntityManager::create(5, Entity::create("bomb_arrow.png"), spriteBatch2);
 		this->mPredictionIcons = EntityManager::create(5, Entity::create("bomb_ico.png"), spriteBatch2);
 		this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
-		this->mColors = EntityManager::create(100, Color::create(), spriteBatch2);
-        this->mColorsParticles = EntityManager::create(1000, ColorParticle::create(), spriteBatch2);
+		this->mColors = EntityManager::create(300, Color::create(), spriteBatch2); // TO MUCH NUMBER!!!
+        this->mColorsParticles = EntityManager::create(3000, ColorParticle::create(), spriteBatch2); // TO MUCH NUMBER!!!
 		this->mColorsBlink = EntityManager::create(100, Entity::create("egg light.png", 9, 1), spriteBatch2);
 		this->mTasksBackground = EntityManager::create(10, Entity::create("task-background@2x.png"), spriteBatch8);
 		this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 7, 1), spriteBatch8);
@@ -422,6 +422,11 @@ void Progresses::onTouchButtonsCallback(const int pAction, const int pID)
 // Override Methods
 // ===========================================================
 
+void Progresses::onBonus(int pId, float pX, float pY)
+{
+    
+}
+
 void Progresses::onTaskComplete()
 {
     if(this->mTaskDone) return;
@@ -445,7 +450,38 @@ void Progresses::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
     
-    if(this->mPause) return;
+    if(this->mPause || this->mEndScreen->getParent())
+    {
+        return;
+    }
+    
+    this->mNewColorsTimeElapsed += pDeltaTime;
+    
+    if(this->mNewColorsTimeElapsed >= 15.0)
+    {
+        this->mNewColorsTimeElapsed = 0;
+        
+        if(!this->mTaskDone)
+        for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
+        {
+         int y = 0;
+         
+         for(int j = Game::MATRIX_SIZE_Y - 1; j >= 0; j--)
+         {
+            if(MATRIX[i][j] == -1 && Utils::probably(50))
+            {
+             Color* color = static_cast<Color*>(this->mColors->create());
+         
+             color->setCurrentFrameIndex(Utils::random(0, LEVEL_COLORS[LEVEL] - 1));
+             color->mType = color->getCurrentFrameIndex();
+         
+             color->setCenterPositionWithCorrection(Utils::coord(64) * i, Utils::coord(81) * y);
+            }
+         
+             y++;
+            }
+         }
+    }
     
     if(this->mGamePaused)
     {
@@ -774,6 +810,8 @@ void Progresses::onShow()
         
         if(c2 == 1) c2 = -1;
     }
+    
+    //
 }
 
 void Progresses::removeLife()

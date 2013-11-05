@@ -290,6 +290,7 @@ class Game : public Screen
         Entity* mGunLaser;
     
         CCArray* array;
+        CCArray* marray;
         static int BURNED[10];
     
         static int LEVEL;
@@ -305,6 +306,9 @@ class Game : public Screen
         static const int GAME_TYPE_PROGRESS = 2;
     
         SpriteBatch* spriteBatch99;
+    
+        float mColorsBurnAnimationTimeoutElapsed;
+        float mLastColorTimeBurn;
 
         // ===========================================================
         // Constructors
@@ -328,7 +332,7 @@ class Game : public Screen
         void startBoxAnimation();
         void stopBoxAnimation();
     
-        bool deepFind(int x, int y, int index, bool recursive);
+        bool deepFind(int x, int y, int index, bool recursive, CCObject* pOptionalObject);
     
         void addTime(float pTime);
     

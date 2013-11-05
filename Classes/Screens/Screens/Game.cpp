@@ -197,13 +197,19 @@ Game::Game() :
 	mRainsCircles(0),
 	mRobotParts(0),
 	mGun(0),
-	mGunLaser(0),
-	array(0),
-	spriteBatch99(0)
+    mGunLaser(0),
+    array(0),
+    marray(0),
+    spriteBatch99(0),
+    mColorsBurnAnimationTimeoutElapsed(0),
+    mLastColorTimeBurn(0)
     {
         array = CCArray::create();
         array->retain();
         array->initWithCapacity(1000);
+        
+        marray = CCArray::create();
+        marray->retain();
         
         int sx = (int) floor(Options::CAMERA_WIDTH / Utils::coord(64)); // I changed round to floor
         int sy = (int) floor(Options::CAMERA_HEIGHT / Utils::coord(64)); // I changed round to floor
@@ -577,8 +583,15 @@ void Game::onBonus(int pId, float pX, float pY)
     this->mIsBonusAnimationRunningCount = 0;
 }
 
-bool Game::deepFind(int x, int y, int index, bool recursive)
+bool Game::deepFind(int x, int y, int index, bool recursive, CCObject* pOptionalObject)
 {
+    if(Color::ANIMATION_RUNNING)
+    {
+        marray->addObject(pOptionalObject);
+        
+        return false;
+    }
+    
     if(x < 0 || y < 0 || x >= MATRIX_SIZE_X || y >= MATRIX_SIZE_Y) return false;
     if(MATRIX[x][y] != index) return false;
     
@@ -600,17 +613,17 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
     if(!a) return false;
     
 	// Visit neighbours
-	deepFind(x + 1, y, index, false);
-	deepFind(x - 1, y, index, false);
-	deepFind(x, y + 1, index, false);
-	deepFind(x, y - 1, index, false);
+	deepFind(x + 1, y, index, false, 0);
+	deepFind(x - 1, y, index, false, 0);
+	deepFind(x, y + 1, index, false, 0);
+	deepFind(x, y - 1, index, false, 0);
     
     // Diagonal
     
-	deepFind(x + 1, y + 1, index, false);
-	deepFind(x - 1, y - 1, index, false);
-	deepFind(x + 1, y - 1, index, false);
-	deepFind(x - 1, y + 1, index, false);
+	deepFind(x + 1, y + 1, index, false, 0);
+	deepFind(x - 1, y - 1, index, false, 0);
+	deepFind(x + 1, y - 1, index, false, 0);
+	deepFind(x - 1, y + 1, index, false, 0);
     
     if(recursive)
     {
@@ -633,12 +646,18 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
             }
             
             this->addTime(0.5 * array->count());
+            
+            array->removeAllObjects();
+            
+            this->mLastColorTimeBurn = 0;
+            
+            return true;
         }
         
         array->removeAllObjects();
     }
     
-    return true;
+    return false;
 }
 
 void Game::addTime(float pTime)
@@ -654,9 +673,45 @@ void Game::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
     
-    if(this->mPause)
+    if(this->mPause || this->mEndScreen->getParent())
     {
         return;
+    }
+    
+    if(!Color::ANIMATION_RUNNING)
+    {
+        for(int i = 0; i < marray->count(); i++)
+        {
+            Color* color = static_cast<Color*>(marray->objectAtIndex(i));
+            marray->removeObjectAtIndex(i);
+            
+            if(this->deepFind(color->position_in_matrtix_x, color->position_in_matrtix_y, color->mType, true, 0))
+            {
+                Color::ANIMATION_RUNNING = true;
+            
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->mColorsBurnAnimationTimeoutElapsed += pDeltaTime;
+        
+        if(this->mColorsBurnAnimationTimeoutElapsed >= 1.0)
+        {
+            this->mColorsBurnAnimationTimeoutElapsed = 0;
+            
+            Color::ANIMATION_RUNNING = false;
+        }
+    }
+    
+    this->mLastColorTimeBurn += pDeltaTime;
+    
+    if(this->mLastColorTimeBurn >= 3.0)
+    {
+        this->mLastColorTimeBurn = 0;
+        
+        Color::SOUND_INDEX = -1;
     }
     
     if(this->mDust->getCount() < 30)

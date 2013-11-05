@@ -1,18 +1,11 @@
-#ifndef CONST_MODE_H
-#define CONST_MODE_H
+#ifndef CONST_UNLOCKMODE_H
+#define CONST_UNLOCKMODE_H
 
-#include "Screen.h"
+#include "Popup.h"
 
-#include "ModeHelp.h"
-#include "UnlockMode.h"
-#include "TempPublisherRatingExplain.h"
-#include "TempPublisherAchievementsExplain.h"
-
-#include "AppDelegate.h"
-
-class Mode : public Screen
+class UnlockMode : public Popup
 {
-    protected:
+        protected:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -25,29 +18,21 @@ class Mode : public Screen
         // Fields
         // ===========================================================
     
-        Entity* mBackground;
-        Entity* mBackgroundDecorations[2];
-
-        Button* mBackButton;
-        Button* mHelpButton;
-        Button* mClassicMode;
-        Button* mArcadeMode;
-        Button* mProgressMode;
-        Button* mAchievementsButton;
-        Button* mLeaderboardButton;
-        Button* mShopButton;
-
-        Popup* mHelpPopup;
-        Popup* mLivesPopup;
-        Popup* mModesUnlockPopup;
-        Popup* mTempPublisherRatingExplain;
-        Popup* mTempPublisherAchievementsExplain;
+        Entity* mKey;
+    
+        Button* mUnlockButton;
+    
+        Text* mPriceText;
+    
+        EntityManager* mLights;
+    
+        bool action;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Mode();
+        UnlockMode(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -57,7 +42,7 @@ class Mode : public Screen
         // Override Methods
         // ===========================================================
 
-    private:
+        private:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -90,22 +75,18 @@ class Mode : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static int UNLOCK_ACTION;
-    
-        static int PRICES[2];
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        static Mode* create();
-    
-        ~Mode();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static UnlockMode* create(CCNode* pParent);
+    
+        ~UnlockMode();
 
         // ===========================================================
         // Methods
@@ -114,6 +95,14 @@ class Mode : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        virtual void update(float pDeltaTime);
+    
+        virtual void hide();
+        virtual void show();
+    
+        virtual void onShow();
+        virtual void onHide();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
 };

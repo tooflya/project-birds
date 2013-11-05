@@ -1,16 +1,13 @@
-#ifndef CONST_MODE_H
-#define CONST_MODE_H
+#ifndef CONST_MAPDESCRIPTION_H
+#define CONST_MAPDESCRIPTION_H
 
-#include "Screen.h"
+#include "Popup.h"
 
-#include "ModeHelp.h"
-#include "UnlockMode.h"
-#include "TempPublisherRatingExplain.h"
-#include "TempPublisherAchievementsExplain.h"
+#include "Shop.h"
 
-#include "AppDelegate.h"
+#include "MapDescriptionList.h"
 
-class Mode : public Screen
+class MapDescription : public Popup
 {
     protected:
         // ===========================================================
@@ -25,29 +22,17 @@ class Mode : public Screen
         // Fields
         // ===========================================================
     
-        Entity* mBackground;
-        Entity* mBackgroundDecorations[2];
-
-        Button* mBackButton;
-        Button* mHelpButton;
-        Button* mClassicMode;
-        Button* mArcadeMode;
-        Button* mProgressMode;
-        Button* mAchievementsButton;
-        Button* mLeaderboardButton;
-        Button* mShopButton;
-
-        Popup* mHelpPopup;
-        Popup* mLivesPopup;
-        Popup* mModesUnlockPopup;
-        Popup* mTempPublisherRatingExplain;
-        Popup* mTempPublisherAchievementsExplain;
+        Button* mCloseButton;
+    
+        Entity* mListBorders[2];
+    
+        MapDescriptionList* mList;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Mode();
+        MapDescription(Screen* pScreen);
 
         // ===========================================================
         // Methods
@@ -90,22 +75,18 @@ class Mode : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static int UNLOCK_ACTION;
-    
-        static int PRICES[2];
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        static Mode* create();
-    
-        ~Mode();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static MapDescription* create(Screen* pScreen);
+    
+        ~MapDescription();
 
         // ===========================================================
         // Methods
@@ -114,6 +95,11 @@ class Mode : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
+    
+        void show();
+        
+        void onShow();
+        void onHide();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
 };
