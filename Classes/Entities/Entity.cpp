@@ -123,7 +123,7 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 
     this->destroy();
     
-    this->getTexture()->setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444);
+    // this->getTexture()->setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444); // Is that really need?
 }
 
 Entity::Entity() :

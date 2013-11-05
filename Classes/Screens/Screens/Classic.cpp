@@ -50,7 +50,8 @@ Classic::Classic() :
         this->mEventLayer = CCLayer::create();
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-        
+
+		SpriteBatch* spriteBatch0 = SpriteBatch::create("TextureAtlas16");
         SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
@@ -62,7 +63,8 @@ Classic::Classic() :
         SpriteBatch* spriteBatch9 = SpriteBatch::create("TextureAtlas12");
         this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
         this->spriteBatch99->retain();
-        
+
+		this->mGameLayer->addChild(spriteBatch0);
         this->mGameLayer->addChild(spriteBatch6);
         
         this->e2 = Effect::create();
@@ -78,7 +80,7 @@ Classic::Classic() :
         this->mGameLayer->addChild(spriteBatch9);
         this->mMenuLayer->addChild(spriteBatch8);
         
-        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
+        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
         
         #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
         if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
@@ -103,8 +105,8 @@ Classic::Classic() :
         this->mTextAreas[1] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
         this->mTextAreas[2] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
         this->mTextIcons[0] = Entity::create("game_panel_counter@2x.png", spriteBatch8);
-        this->mTextIcons[1] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
-        this->mTextIcons[2] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
+		this->mTextIcons[1] = Icon8::create("game_panel_counter_best@2x.png", spriteBatch8);
+        this->mTextIcons[2] = Icon8::create("game_panel_goldlife@2x.png", spriteBatch8);
         this->mHearts[0] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[1] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);
         this->mHearts[2] = Entity::create("game_panel_game_life@2x.png", 2, 1, spriteBatch8);

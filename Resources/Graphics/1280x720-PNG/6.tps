@@ -148,7 +148,6 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/temp_level_bg@2x.png</filename>
             <filename>../../Graphics Sources/bg_light_1.png</filename>
             <filename>../../Graphics Sources/bg_light_main@2x.png</filename>
             <filename>../../Graphics Sources/bonus-animation@2x.png</filename>

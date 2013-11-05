@@ -24,6 +24,7 @@
 #include "GeneralExplosion.h"
 #include "Color.h"
 #include "KeyDisplay.h"
+#include "Icon8.h"
 
 #include "Pause.h"
 #include "GetLives.h"

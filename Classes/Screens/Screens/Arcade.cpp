@@ -38,7 +38,8 @@ Arcade::Arcade() :
         this->mEventLayer = CCLayer::create();
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-        
+
+		SpriteBatch* spriteBatch0 = SpriteBatch::create("TextureAtlas16");
         SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
@@ -50,7 +51,8 @@ Arcade::Arcade() :
         SpriteBatch* spriteBatch9 = SpriteBatch::create("TextureAtlas12");
         this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
         this->spriteBatch99->retain();
-        
+
+		this->mGameLayer->addChild(spriteBatch0);
         this->mGameLayer->addChild(spriteBatch6);
         
         this->e2 = Effect::create();
@@ -66,7 +68,7 @@ Arcade::Arcade() :
         this->mGameLayer->addChild(spriteBatch9);
         this->mMenuLayer->addChild(spriteBatch8);
 
-        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
+        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
         this->mTimeIcon = Clock::create(this->mEventLayer);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
         
@@ -94,9 +96,9 @@ Arcade::Arcade() :
         this->mTextAreas[2] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
         this->mTextAreas[3] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
         this->mTextIcons[0] = Entity::create("game_panel_counter@2x.png", spriteBatch8);
-        this->mTextIcons[1] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
+		this->mTextIcons[1] = Icon8::create("game_panel_counter_best@2x.png", spriteBatch8);
         this->mTextIcons[2] = Entity::create("game_panel_time@2x.png", spriteBatch8);
-        this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
+		this->mTextIcons[3] = Icon8::create("game_panel_goldlife@2x.png", spriteBatch8);
 
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 

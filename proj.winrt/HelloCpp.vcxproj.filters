@@ -321,6 +321,21 @@
     <ClCompile Include="..\Classes\Entities\KeyDisplay.cpp">
       <Filter>Classes\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\MapDescription.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Screens\Popups\UnlockMode.cpp">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\ColorParticle.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils\MapDescriptionList.cpp">
+      <Filter>Classes\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Icon8.cpp">
+      <Filter>Classes\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -584,6 +599,21 @@
     <ClInclude Include="..\Classes\Entities\KeyDisplay.h">
       <Filter>Classes\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\MapDescription.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Screens\Popups\UnlockMode.h">
+      <Filter>Classes\Screens\Popups</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\ColorParticle.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\MapDescriptionList.h">
+      <Filter>Classes\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Icon8.h">
+      <Filter>Classes\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -635,6 +665,9 @@
       <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
     </None>
     <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.plist">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </None>
+    <None Include="..\Resources\Graphics\1280x720-PNG\TextureAtlas16.plist">
       <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
     </None>
   </ItemGroup>
@@ -732,6 +765,9 @@
     <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.png">
       <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
     </Image>
+    <Image Include="..\Resources\Graphics\1280x720-PNG\TextureAtlas16.png">
+      <Filter>Assets\Resources\Graphics\1280x720-PNG</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Resources\Fonts\Comic Sans MS.ttf">
@@ -739,137 +775,170 @@
     </Font>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Assets\Resources\intro.mp4">
-      <Filter>Assets\Resources</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\pome-zoomout.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-1.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-2.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-3.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-4.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-5.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-6.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-7.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\popup-8.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\progress_complete.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\swoosh.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\tap.wav">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\throw-bird.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\throw-bomb.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\upsell_whoosh.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\berry_count_ind_a.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\berry_count_ind_b.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\berry_count_ind_c.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\berry_count_ind_d.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\bird-blow.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\bomb-fuse.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\bonus_banana_freeze.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\bonus-gong.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-1.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-2.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-3.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-4.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-5.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-6.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-7.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-8.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-blitz-backing.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-blitz-backing-end.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\combo-blitz-backing-light.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\critical.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\equip-new-sword.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\equip-unlock.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\explosion.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\hit.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\lose_life.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
-    <Media Include="Assets\Resources\Sound\pome-rampdown.mp3">
-      <Filter>Assets\Resources\Sound</Filter>
-    </Media>
     <Media Include="Assets\Resources\Music\music-1.mp3">
       <Filter>Assets\Resources\Music</Filter>
     </Media>
     <Media Include="Assets\Resources\Music\music-2.mp3">
       <Filter>Assets\Resources\Music</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\berry_count_ind_a.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\berry_count_ind_b.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\berry_count_ind_c.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\berry_count_ind_d.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\bird-blow.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\bomb-fuse.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\bonus_banana_freeze.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\bonus-gong.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-1.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-2.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-3.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-4.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-5.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-6.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-7.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-8.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-blitz-backing.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-blitz-backing-end.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\combo-blitz-backing-light.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\critical.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\equip-new-sword.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\equip-unlock.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\explosion.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\gem1.wav">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\gem2.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\gem3.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\gem4.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\gem5.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\hit.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\lose.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\lose_life.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\miss.wav">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\pome-rampdown.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\pome-zoomout.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-1.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-2.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-3.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-4.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-5.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-6.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-7.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\popup-8.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\progress_complete.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\star1.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\star2.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\star3.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\swoosh.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\tap.wav">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\throw-bird.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\throw-bomb.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\timer.wav">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\upsell_whoosh.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
+    </Media>
+    <Media Include="..\Resources\Sound\tap.mp3">
+      <Filter>Assets\Resources\Sound</Filter>
     </Media>
   </ItemGroup>
 </Project>

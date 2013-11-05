@@ -25,6 +25,7 @@ Menu::~Menu()
 {
     CC_SAFE_RELEASE(this->mRatePopup);
     CC_SAFE_RELEASE(this->mMapPopup);
+	CC_SAFE_RELEASE(this->mMapDescription);
     CC_SAFE_RELEASE(this->mTempPublisherInAppExplainPopup);
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID

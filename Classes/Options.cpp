@@ -84,7 +84,7 @@ const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.ogg";
 const char* Options::MUSIC_1 = "Music/music-1.mp3";
 const char* Options::MUSIC_2 = "Music/music-2.mp3";
 
-const char* Options::SOUND_TAP = "Sound/tap.wav";
+const char* Options::SOUND_TAP = "Sound/tap.mp3";
 const char* Options::SOUND_UNLOCKED = "Sound/equip-unlock.mp3";
 const char* Options::SOUND_EQUIP_SWORD = "Sound/equip-new-sword.mp3";
 const char* Options::SOUND_BIRD_BLOW = "Sound/bird-blow.mp3";
@@ -103,6 +103,10 @@ const char* Options::SOUND_COMBO[8] = { "Sound/combo-1.mp3", "Sound/combo-2.mp3"
 const char* Options::SOUND_POINTS[12] = { "Sound/popup-1.mp3", "Sound/popup-2.mp3", "Sound/popup-3.mp3", "Sound/popup-4.mp3", "Sound/popup-5.mp3", "Sound/popup-6.mp3", "Sound/popup-7.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3", "Sound/popup-8.mp3" };
 const char* Options::SOUND_PROGRESS = "Sound/progress_complete.mp3";
 const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.mp3";
+const char* Options::SOUND_MISS = "Sound/Soundmiss.wav";
+const char* Options::SOUND_GEM[5] = { "Sound/Soundgem1.wav", "Sound/Soundgem2.mp3", "Sound/Soundgem3.mp3", "Sound/Soundgem4.mp3", "Sound/Soundgem5.mp3" };
+const char* Options::SOUND_LEVEL_LOSE = "Sound/lose.mp3";
+const char* Options::SOUND_LEVEL_STARS[3] = { "Sound/Soundstar1.mp3", "Sound/Soundstar2.mp3", "Sound/Soundstar3.mp3" };
 
 #else
 
@@ -486,6 +490,14 @@ void Options::init()
     #endif
 
     Options::changeLanguage();
+
+	/** Some problem with sound */
+	#if CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
+
+	Options::MUSIC_ENABLE = false;
+	Options::SOUND_ENABLE = false;
+
+	#endif
 }
 
 void Options::changeLanguage()

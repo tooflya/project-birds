@@ -367,8 +367,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCEGLView*  EGLView = CCEGLView::sharedOpenGLView();
     CCSize  screenSize = EGLView->getFrameSize();
     
-    director->setOpenGLView(EGLView);
-    director->setContentScaleFactor(designResolutionSize.height / screenSize.height);
+	director->setOpenGLView(EGLView);
+	director->setContentScaleFactor(designResolutionSize.height / screenSize.height);
     
     Options::SCREEN_WIDTH  = designResolutionSize.width;
     Options::SCREEN_HEIGHT = designResolutionSize.height;

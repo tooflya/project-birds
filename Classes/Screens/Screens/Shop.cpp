@@ -359,8 +359,8 @@ Shop::Shop() :
     
 		this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, this->mSpriteBatch2);
 		this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, this->mSpriteBatch2);
-		this->mIcons[2] = Entity::create("game_panel_goldlife@2x.png", this->mSpriteBatch2);
-		this->mIcons[3] = Entity::create("popup_key_ico@2x.png", this->mSpriteBatch2);
+		this->mIcons[2] = Icon8::create("game_panel_goldlife@2x.png", this->mSpriteBatch2);
+		this->mIcons[3] = Icon8::create("popup_key_ico@2x.png", this->mSpriteBatch2);
     
 		Textes textes1 = {"0", Options::FONT, 32, -1};
 

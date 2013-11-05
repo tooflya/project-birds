@@ -22,11 +22,11 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TextureAtlas6.pvr.ccz</filename>
+        <filename>TextureAtlas16.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">FloydSteinbergAlpha</enum>
+        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -48,7 +48,7 @@
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">pvr2ccz</enum>
+        <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
         <uint>2</uint>
         <key>maxTextureSize</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>1.java</filename>
+            <filename>../1280x720/1.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>TextureAtlas6.plist</filename>
+        <filename>TextureAtlas16.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -119,14 +119,14 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <false/>
+        <true/>
         <key>trimSpriteNames</key>
         <false/>
         <key>globalSpriteSettings</key>
@@ -148,24 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/bg_light_1.png</filename>
-            <filename>../../Graphics Sources/bg_light_main@2x.png</filename>
-            <filename>../../Graphics Sources/bonus-animation@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_game_life@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_pause@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_plus@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_textbox@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_counter_best@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_counter@2x.png</filename>
-            <filename>../../Graphics Sources/bonus_pirat_hat@2x.png</filename>
-            <filename>../../Graphics Sources/bonus_amigo_hat@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_time_star@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_time@2x.png</filename>
-            <filename>../../Graphics Sources/task-background@2x.png</filename>
-            <filename>../../Graphics Sources/colors_small@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_shoot_count@2x.png</filename>
+            <filename>../../Graphics Sources/Full HD/temp_level_bg@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

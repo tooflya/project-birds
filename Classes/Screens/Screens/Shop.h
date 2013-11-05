@@ -11,6 +11,7 @@
 #include "PaymentProceed.h"
 #include "KeyParticle.h"
 #include "LiveParticle.h"
+#include "Icon8.h"
 
 #include "Item.h"
 #include "AnimatedCoin.h"

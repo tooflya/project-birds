@@ -157,12 +157,14 @@
             <filename>../../Graphics Sources/btn_sfx_mfx_ach_lead_sprite@2x.png</filename>
             <filename>../../Graphics Sources/btn_sprite@2x.png</filename>
             <filename>../../Graphics Sources/choose_box_navi_sprite@2x.png</filename>
-            <filename>../../Graphics Sources/main_menu_bg@2x.png</filename>
             <filename>../../Graphics Sources/main_menu_btn_bg_play@2x.png</filename>
             <filename>../../Graphics Sources/play_btn_animation@2x.png</filename>
             <filename>../../Graphics Sources/settings_bg@2x.png</filename>
             <filename>../../Graphics Sources/settings_btn_big@2x.png</filename>
             <filename>../../Graphics Sources/vk@2x.png</filename>
+            <filename>../../../proj.winrt/Assets/Resources/Graphics Sources/lock@2x.png</filename>
+            <filename>../../../proj.winrt/Assets/Resources/Graphics Sources/unlock_mode_effect@2x.png</filename>
+            <filename>../../Graphics Sources/main_menu_bg@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -216,6 +216,7 @@
     <ClInclude Include="..\Classes\Entities\Button.h" />
     <ClInclude Include="..\Classes\Entities\Clock.h" />
     <ClInclude Include="..\Classes\Entities\Color.h" />
+    <ClInclude Include="..\Classes\Entities\ColorParticle.h" />
     <ClInclude Include="..\Classes\Entities\Confetti.h" />
     <ClInclude Include="..\Classes\Entities\Dust.h" />
     <ClInclude Include="..\Classes\Entities\Entity.h" />
@@ -224,6 +225,7 @@
     <ClInclude Include="..\Classes\Entities\ExplosionBasic.h" />
     <ClInclude Include="..\Classes\Entities\Feather.h" />
     <ClInclude Include="..\Classes\Entities\GeneralExplosion.h" />
+    <ClInclude Include="..\Classes\Entities\Icon8.h" />
     <ClInclude Include="..\Classes\Entities\ImpulseEntity.h" />
     <ClInclude Include="..\Classes\Entities\Item.h" />
     <ClInclude Include="..\Classes\Entities\KeyDisplay.h" />
@@ -258,6 +260,7 @@
     <ClInclude Include="..\Classes\Screens\Popups\GetKeys.h" />
     <ClInclude Include="..\Classes\Screens\Popups\GetLives.h" />
     <ClInclude Include="..\Classes\Screens\Popups\Map.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\MapDescription.h" />
     <ClInclude Include="..\Classes\Screens\Popups\ModeHelp.h" />
     <ClInclude Include="..\Classes\Screens\Popups\Pause.h" />
     <ClInclude Include="..\Classes\Screens\Popups\PaymentProceed.h" />
@@ -268,6 +271,7 @@
     <ClInclude Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.h" />
     <ClInclude Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.h" />
     <ClInclude Include="..\Classes\Screens\Popups\UnlockLevel.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\UnlockMode.h" />
     <ClInclude Include="..\Classes\Screens\Screen.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Arcade.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Classic.h" />
@@ -292,6 +296,7 @@
     <ClInclude Include="..\Classes\Utils\BuyItemList.h" />
     <ClInclude Include="..\Classes\Utils\CreditsList.h" />
     <ClInclude Include="..\Classes\Utils\List.h" />
+    <ClInclude Include="..\Classes\Utils\MapDescriptionList.h" />
     <ClInclude Include="..\Classes\Utils\ModeHelpList.h" />
     <ClInclude Include="..\Classes\Utils\SpriteBatch.h" />
     <ClInclude Include="..\Classes\Utils\Touchable.h" />
@@ -319,6 +324,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="..\Resources\Graphics\1280x720-PNG\TextureAtlas16.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
@@ -418,6 +426,7 @@
     <ClCompile Include="..\Classes\Entities\Button.cpp" />
     <ClCompile Include="..\Classes\Entities\Clock.cpp" />
     <ClCompile Include="..\Classes\Entities\Color.cpp" />
+    <ClCompile Include="..\Classes\Entities\ColorParticle.cpp" />
     <ClCompile Include="..\Classes\Entities\Confetti.cpp" />
     <ClCompile Include="..\Classes\Entities\Dust.cpp" />
     <ClCompile Include="..\Classes\Entities\Entity.cpp" />
@@ -426,6 +435,7 @@
     <ClCompile Include="..\Classes\Entities\ExplosionBasic.cpp" />
     <ClCompile Include="..\Classes\Entities\Feather.cpp" />
     <ClCompile Include="..\Classes\Entities\GeneralExplosion.cpp" />
+    <ClCompile Include="..\Classes\Entities\Icon8.cpp" />
     <ClCompile Include="..\Classes\Entities\ImpulseEntity.cpp" />
     <ClCompile Include="..\Classes\Entities\Item.cpp" />
     <ClCompile Include="..\Classes\Entities\KeyDisplay.cpp" />
@@ -460,6 +470,7 @@
     <ClCompile Include="..\Classes\Screens\Popups\GetKeys.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\GetLives.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\Map.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\MapDescription.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\ModeHelp.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\Pause.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\PaymentProceed.cpp" />
@@ -470,6 +481,7 @@
     <ClCompile Include="..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\UnlockLevel.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\UnlockMode.cpp" />
     <ClCompile Include="..\Classes\Screens\Screen.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Arcade.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Classic.cpp" />
@@ -494,6 +506,7 @@
     <ClCompile Include="..\Classes\Utils\BuyItemList.cpp" />
     <ClCompile Include="..\Classes\Utils\CreditsList.cpp" />
     <ClCompile Include="..\Classes\Utils\List.cpp" />
+    <ClCompile Include="..\Classes\Utils\MapDescriptionList.cpp" />
     <ClCompile Include="..\Classes\Utils\ModeHelpList.cpp" />
     <ClCompile Include="..\Classes\Utils\SpriteBatch.cpp" />
     <ClCompile Include="..\Classes\Utils\Touchable.cpp" />
@@ -535,6 +548,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\Graphics\1280x720-PNG\TextureAtlas16.png" />
     <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill%402x.png" />
     <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill_small%402x.png" />
     <Image Include="Assets\Resources\Graphics\1280x720-PNG\more_games_list%402x.png" />
@@ -570,50 +584,61 @@
     <Font Include="Assets\Resources\Fonts\Comic Sans MS.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Assets\Resources\intro.mp4" />
+    <Media Include="..\Resources\Sound\berry_count_ind_a.mp3" />
+    <Media Include="..\Resources\Sound\berry_count_ind_b.mp3" />
+    <Media Include="..\Resources\Sound\berry_count_ind_c.mp3" />
+    <Media Include="..\Resources\Sound\berry_count_ind_d.mp3" />
+    <Media Include="..\Resources\Sound\bird-blow.mp3" />
+    <Media Include="..\Resources\Sound\bomb-fuse.mp3" />
+    <Media Include="..\Resources\Sound\bonus-gong.mp3" />
+    <Media Include="..\Resources\Sound\bonus_banana_freeze.mp3" />
+    <Media Include="..\Resources\Sound\combo-1.mp3" />
+    <Media Include="..\Resources\Sound\combo-2.mp3" />
+    <Media Include="..\Resources\Sound\combo-3.mp3" />
+    <Media Include="..\Resources\Sound\combo-4.mp3" />
+    <Media Include="..\Resources\Sound\combo-5.mp3" />
+    <Media Include="..\Resources\Sound\combo-6.mp3" />
+    <Media Include="..\Resources\Sound\combo-7.mp3" />
+    <Media Include="..\Resources\Sound\combo-8.mp3" />
+    <Media Include="..\Resources\Sound\combo-blitz-backing-end.mp3" />
+    <Media Include="..\Resources\Sound\combo-blitz-backing-light.mp3" />
+    <Media Include="..\Resources\Sound\combo-blitz-backing.mp3" />
+    <Media Include="..\Resources\Sound\critical.mp3" />
+    <Media Include="..\Resources\Sound\equip-new-sword.mp3" />
+    <Media Include="..\Resources\Sound\equip-unlock.mp3" />
+    <Media Include="..\Resources\Sound\explosion.mp3" />
+    <Media Include="..\Resources\Sound\gem1.wav" />
+    <Media Include="..\Resources\Sound\gem2.mp3" />
+    <Media Include="..\Resources\Sound\gem3.mp3" />
+    <Media Include="..\Resources\Sound\gem4.mp3" />
+    <Media Include="..\Resources\Sound\gem5.mp3" />
+    <Media Include="..\Resources\Sound\hit.mp3" />
+    <Media Include="..\Resources\Sound\lose.mp3" />
+    <Media Include="..\Resources\Sound\lose_life.mp3" />
+    <Media Include="..\Resources\Sound\miss.wav" />
+    <Media Include="..\Resources\Sound\pome-rampdown.mp3" />
+    <Media Include="..\Resources\Sound\pome-zoomout.mp3" />
+    <Media Include="..\Resources\Sound\popup-1.mp3" />
+    <Media Include="..\Resources\Sound\popup-2.mp3" />
+    <Media Include="..\Resources\Sound\popup-3.mp3" />
+    <Media Include="..\Resources\Sound\popup-4.mp3" />
+    <Media Include="..\Resources\Sound\popup-5.mp3" />
+    <Media Include="..\Resources\Sound\popup-6.mp3" />
+    <Media Include="..\Resources\Sound\popup-7.mp3" />
+    <Media Include="..\Resources\Sound\popup-8.mp3" />
+    <Media Include="..\Resources\Sound\progress_complete.mp3" />
+    <Media Include="..\Resources\Sound\star1.mp3" />
+    <Media Include="..\Resources\Sound\star2.mp3" />
+    <Media Include="..\Resources\Sound\star3.mp3" />
+    <Media Include="..\Resources\Sound\swoosh.mp3" />
+    <Media Include="..\Resources\Sound\tap.mp3" />
+    <Media Include="..\Resources\Sound\tap.wav" />
+    <Media Include="..\Resources\Sound\throw-bird.mp3" />
+    <Media Include="..\Resources\Sound\throw-bomb.mp3" />
+    <Media Include="..\Resources\Sound\timer.wav" />
+    <Media Include="..\Resources\Sound\upsell_whoosh.mp3" />
     <Media Include="Assets\Resources\Music\music-1.mp3" />
     <Media Include="Assets\Resources\Music\music-2.mp3" />
-    <Media Include="Assets\Resources\Sound\berry_count_ind_a.mp3" />
-    <Media Include="Assets\Resources\Sound\berry_count_ind_b.mp3" />
-    <Media Include="Assets\Resources\Sound\berry_count_ind_c.mp3" />
-    <Media Include="Assets\Resources\Sound\berry_count_ind_d.mp3" />
-    <Media Include="Assets\Resources\Sound\bird-blow.mp3" />
-    <Media Include="Assets\Resources\Sound\bomb-fuse.mp3" />
-    <Media Include="Assets\Resources\Sound\bonus-gong.mp3" />
-    <Media Include="Assets\Resources\Sound\bonus_banana_freeze.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-1.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-2.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-3.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-4.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-5.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-6.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-7.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-8.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-blitz-backing-end.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-blitz-backing-light.mp3" />
-    <Media Include="Assets\Resources\Sound\combo-blitz-backing.mp3" />
-    <Media Include="Assets\Resources\Sound\critical.mp3" />
-    <Media Include="Assets\Resources\Sound\equip-new-sword.mp3" />
-    <Media Include="Assets\Resources\Sound\equip-unlock.mp3" />
-    <Media Include="Assets\Resources\Sound\explosion.mp3" />
-    <Media Include="Assets\Resources\Sound\hit.mp3" />
-    <Media Include="Assets\Resources\Sound\lose_life.mp3" />
-    <Media Include="Assets\Resources\Sound\pome-rampdown.mp3" />
-    <Media Include="Assets\Resources\Sound\pome-zoomout.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-1.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-2.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-3.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-4.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-5.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-6.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-7.mp3" />
-    <Media Include="Assets\Resources\Sound\popup-8.mp3" />
-    <Media Include="Assets\Resources\Sound\progress_complete.mp3" />
-    <Media Include="Assets\Resources\Sound\swoosh.mp3" />
-    <Media Include="Assets\Resources\Sound\tap.wav" />
-    <Media Include="Assets\Resources\Sound\throw-bird.mp3" />
-    <Media Include="Assets\Resources\Sound\throw-bomb.mp3" />
-    <Media Include="Assets\Resources\Sound\upsell_whoosh.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

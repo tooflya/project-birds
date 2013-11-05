@@ -138,7 +138,8 @@ Progresses::Progresses() :
 		this->mEventLayer = CCLayer::create();
     
 		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-    
+
+		SpriteBatch* spriteBatch0 = SpriteBatch::create("TextureAtlas16");
 		SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
 		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
 		SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
@@ -149,7 +150,8 @@ Progresses::Progresses() :
 		SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
 		this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
 		this->spriteBatch99->retain();
-    
+
+		this->mGameLayer->addChild(spriteBatch0);
 		this->mGameLayer->addChild(spriteBatch6);
     
 		this->e2 = Effect::create();
@@ -164,7 +166,7 @@ Progresses::Progresses() :
 		this->mGameLayer->addChild(spriteBatch5);
 		this->mMenuLayer->addChild(spriteBatch8);
     
-		this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch6);
+		this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
     
 		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
 		if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
@@ -191,12 +193,8 @@ Progresses::Progresses() :
 		this->mTextAreas[3] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
 		this->mTextIcons[0] = Entity::create("game_panel_time@2x.png", spriteBatch8);
 		this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
-		this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
-<<<<<<< HEAD
-		this->mTextIcons[3] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
-=======
-		this->mTextIcons[3] = Entity::create("game_panel_goldlife@2x.png", spriteBatch8);
->>>>>>> 3fb4e94dac17f9b2dd70b65c6d4fd531eb3f4426
+		this->mTextIcons[2] = Icon8::create("game_panel_counter_best@2x.png", spriteBatch8);
+		this->mTextIcons[3] = Icon8::create("game_panel_goldlife@2x.png", spriteBatch8);
 
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 		this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
