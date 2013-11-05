@@ -25,8 +25,14 @@ class Mode : public Screen
         // Fields
         // ===========================================================
     
+        float mUnlockAnimationTimeElapsed;
+    
+        bool mUnlockAnimationRunning;
+    
         Entity* mBackground;
         Entity* mBackgroundDecorations[2];
+        Entity* mLockes[2];
+        Entity* mUnlockStripe;
 
         Button* mBackButton;
         Button* mHelpButton;
@@ -110,12 +116,18 @@ class Mode : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-        
+    
+        void unlock();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        void update(float pDeltaTime);
+    
+        void onEnter();
 };
 
 #endif

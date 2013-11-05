@@ -60,6 +60,14 @@ ImpulseEntity::ImpulseEntity(const char* pTextureFileName, int pHorizontalFrames
         this->mRotateImpulse = 0;
     }
 
+ImpulseEntity* ImpulseEntity::create(const char *pTextureFileName)
+{
+    ImpulseEntity* entity = new ImpulseEntity(pTextureFileName);
+    entity->autorelease();
+
+    return entity;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -106,5 +114,10 @@ bool ImpulseEntity::isCollideWithPoint(CCTouchInformation pInformation)
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+ImpulseEntity* ImpulseEntity::deepCopy()
+{
+    return ImpulseEntity::create(this->mTextureFileName);
+}
 
 #endif

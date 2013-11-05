@@ -154,7 +154,7 @@ void UnlockMode::onHide()
         }
         else
         {
-            Shop::ACTION = 2;
+            Shop::ACTION = 6;
             
             AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
         }

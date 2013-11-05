@@ -178,11 +178,6 @@ void Bird::onCreate()
     }
     else
     {
-        if(Game::ZOMBIE_AREA)
-        {
-            this->mLifeCount--;
-        }
-        
         if(game->mChalange)
         {
             this->mType = Utils::random(0, this->count - 3);
@@ -374,6 +369,11 @@ void Bird::update(float pDeltaTime)
     
     if(this->mPTE >= this->mPT)
     {
+        if(Game::ZOMBIE_AREA)
+        {
+            this->mLifeCount -= 0.01;
+        }
+        
         if(this->mType == TYPE_DANGER && static_cast<Game*>(this->getParent()->getParent()->getParent())->mArrows->getCount() > 0 && !this->isVisible())
         {
             this->e1->destroy();

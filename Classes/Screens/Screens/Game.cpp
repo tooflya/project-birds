@@ -260,6 +260,14 @@ Game::Game() :
         this->mBackgroundLightsAnimationsReverse[6] = false;
         
         this->mIsBonusAnimationRunning = false;
+        this->mAmigoAnimation = false;
+        this->mPirateAnimation = false;
+        
+        this->mAmigoAnimationTime = 0.6;
+        this->mAmigoAnimationTimeElapsed = 0;
+        
+        this->mPirateAnimationTime = 0.6;
+        this->mPirateAnimationTimeElapsed = 0;
         
         this->mBonusAnimationTime = 0.0;
         this->mBonusAnimationTimeElapsed = 0;
@@ -455,6 +463,8 @@ void Game::stopBoxAnimation()
     
     this->mPirateBox->runAction(CCFadeOut::create(0.5));
     this->mPirateBox->runAction(CCScaleTo::create(0.5, 5));
+    
+    this->mPirateAnimation = false;
 }
 
 void Game::onBonus(int pId, float pX, float pY)
@@ -556,16 +566,31 @@ void Game::onBonus(int pId, float pX, float pY)
             this->mBonusSomeTimeUpdateCount = 0;
         break;
         case 3:
+            this->mPirateAnimation = true;
+            
             this->mPirateBox->create()->setCenterPosition(pX, pY);
+            
+            this->mEventPanel->setEvent(64)->show();
         break;
         case 4:
-        
+            this->mAmigoAnimation = true;
+            this->runChalange();
+            
+            this->mEventPanel->setEvent(65)->show();
+            
+            // Experiments
+            
+            //this->runAction(CCShaky3D::create(50, CCSizeMake(15, 10), 1, true));
         break;
         case 5:
             this->mGeneralExplosions->create()->setCenterPosition(pX, pY);
+            
+            this->mEventPanel->setEvent(66)->show();
         break;
         case 6:
             this->mZombieAnimation = true;
+            
+            this->mEventPanel->setEvent(67)->show();
             
             this->mZombieAnimationTime = 0.04;
             this->mZombieAnimationTimeElapsed = 0;
@@ -717,6 +742,42 @@ void Game::update(float pDeltaTime)
     if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
+    }
+    
+    if(this->mAmigoAnimation)
+    {
+        this->mAmigoAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mAmigoAnimationTimeElapsed >= this->mAmigoAnimationTime)
+        {
+            this->mAmigoAnimationTimeElapsed = 0;
+            
+            ImpulseEntity* entity = static_cast<ImpulseEntity*>(this->mMexicanoHats->create());
+            
+            entity->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
+            
+            entity->mWeight = Utils::coord(1500.0);
+            entity->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
+            entity->mRotateImpulse = Utils::coord(Utils::randomf(10.0, 100.0));
+        }
+    }
+    
+    if(this->mPirateAnimation)
+    {
+        this->mPirateAnimationTimeElapsed += pDeltaTime * Game::TIME_SLOW;
+        
+        if(this->mPirateAnimationTimeElapsed >= this->mPirateAnimationTime)
+        {
+            this->mPirateAnimationTimeElapsed = 0;
+            
+            ImpulseEntity* entity = static_cast<ImpulseEntity*>(this->mPirateHats->create());
+            
+            entity->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
+            
+            entity->mWeight = Utils::coord(1500.0);
+            entity->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
+            entity->mRotateImpulse = Utils::coord(Utils::randomf(10.0, 100.0));
+        }
     }
     
     if(this->mZombieAnimation)
@@ -1243,6 +1304,16 @@ void Game::onEnter()
 void Game::onExit()
 {
     Screen::onExit();
+}
+
+void Game::runChalange()
+{
+    
+}
+
+void Game::stopChalange()
+{
+    this->mAmigoAnimation = false;
 }
 
 #endif

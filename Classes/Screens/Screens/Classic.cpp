@@ -161,6 +161,8 @@ Classic::Classic() :
         this->mGeneralExplosions = EntityManager::create(100, GeneralExplosion::create(), spriteBatch9);
         this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
         this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
+        this->mPirateHats = EntityManager::create(10, ImpulseEntity::create("bonus_pirat_hat@2x.png"), spriteBatch8);
+        this->mMexicanoHats = EntityManager::create(10, ImpulseEntity::create("bonus_amigo_hat@2x.png"), spriteBatch8);
         
         this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 
@@ -386,6 +388,9 @@ void Classic::throwConfetti()
 
 void Classic::runChalange()
 {
+    this->mChalangeTimeElapsed = 0;
+    this->mLevelUpTimeElapsed = 0;
+    
     this->mChalange = true;
 
     this->mSoundChalangeTimeElapsed = 2.95;
@@ -410,6 +415,8 @@ void Classic::stopChalange()
     }
     
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
+    
+    Game::stopChalange();
 }
 
 // ===========================================================

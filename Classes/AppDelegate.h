@@ -118,6 +118,9 @@ class AppDelegate : private CCApplication
 
         static bool isItemSelected(int pItem);
         static void selectItem(int pItem);
+    
+        static bool isModeUnlocked(int pId);
+        static void setModeUnlocked(int pId);
 
         static int getLevelStars(int pLevel);
         static int getLevelStarsTotalCount();

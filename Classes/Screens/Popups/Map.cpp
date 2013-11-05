@@ -890,7 +890,7 @@ void Map::onExit()
 
 bool Map::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
-    if(this->mShowed)
+    if(this->mShowed && !this->mShowAnimationRunning && !this->mAnimation)
     {
         this->hide();
     }

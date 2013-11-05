@@ -110,7 +110,9 @@ class Game : public Screen
         float mBonusAnimationFrameTimeElapsed;
     
         bool mBonusSomeTimeUpdate;
+    
         int mBonusSomeTimeUpdateCount;
+    
         float mBonusSomeTime;
         float mBonusSomeTimeElapsed;
     
@@ -130,11 +132,20 @@ class Game : public Screen
         int mZombieAnimationCount;
     
         long mLastKillTime;
+    
         int mIsBonusAnimationRunningCount;
     
         bool mBackgroundLightsAnimationsReverse[7];
         bool mIsBonusAnimationRunning;
         bool mPirateBoxAnimation;
+        bool mAmigoAnimation;
+        bool mPirateAnimation;
+    
+        float mAmigoAnimationTime;
+        float mAmigoAnimationTimeElapsed;
+    
+        float mPirateAnimationTime;
+        float mPirateAnimationTimeElapsed;
     
         float mPirateBoxAnimationTime;
         float mPirateBoxAnimationTimeElapsed;
@@ -170,7 +181,6 @@ class Game : public Screen
         CCLayer* mEventLayer;
     
         CCNodeRGBA* e2;
-    
     
         // ===========================================================
         // Constructors
@@ -279,6 +289,8 @@ class Game : public Screen
         EntityManager* mColorsBlink;
         EntityManager* mKeys;
         EntityManager* mKeysLights;
+        EntityManager* mPirateHats;
+        EntityManager* mMexicanoHats;
     
         EntityManager* mColors;
     
@@ -337,6 +349,9 @@ class Game : public Screen
         void addTime(float pTime);
     
         void onTaskComplete();
+    
+        virtual void runChalange();
+        virtual void stopChalange();
     
         // ===========================================================
         // Override Methods
