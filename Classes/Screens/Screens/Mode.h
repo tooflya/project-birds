@@ -4,6 +4,7 @@
 #include "Screen.h"
 
 #include "ModeHelp.h"
+#include "UnlockMode.h"
 #include "TempPublisherRatingExplain.h"
 #include "TempPublisherAchievementsExplain.h"
 
@@ -24,10 +25,14 @@ class Mode : public Screen
         // Fields
         // ===========================================================
     
-        SpriteBatch* spriteBatch;
+        float mUnlockAnimationTimeElapsed;
+    
+        bool mUnlockAnimationRunning;
     
         Entity* mBackground;
         Entity* mBackgroundDecorations[2];
+        Entity* mLockes[2];
+        Entity* mUnlockStripe;
 
         Button* mBackButton;
         Button* mHelpButton;
@@ -40,6 +45,7 @@ class Mode : public Screen
 
         Popup* mHelpPopup;
         Popup* mLivesPopup;
+        Popup* mModesUnlockPopup;
         Popup* mTempPublisherRatingExplain;
         Popup* mTempPublisherAchievementsExplain;
 
@@ -90,6 +96,10 @@ class Mode : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static int UNLOCK_ACTION;
+    
+        static int PRICES[2];
 
         // ===========================================================
         // Fields
@@ -106,12 +116,18 @@ class Mode : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
-        
+    
+        void unlock();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        void update(float pDeltaTime);
+    
+        void onEnter();
 };
 
 #endif

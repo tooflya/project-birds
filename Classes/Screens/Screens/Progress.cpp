@@ -11,6 +11,8 @@
 // Constants
 // ===========================================================
 
+Progress* Progress::m_Instance = NULL;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -21,28 +23,17 @@
 
 Progress::~Progress()
 {
-    this->removeAllChildrenWithCleanup(true);
-    
-    delete this->text1;
-    delete this->spriteBatch1;
-    delete this->spriteBatch2;
-    delete this->mBackground;
-    delete this->mBackButton;
-    delete this->mResetButton;
-    //delete this->mResetPopup;
+    CC_SAFE_RELEASE(this->mResetPopup);
 }
 
 Progress::Progress() :
-    spriteBatch1(0),
-    spriteBatch2(0),
 	mBackground(0),
 	mBackButton(0),
 	mResetButton(0),
-	mResetPopup(0),
-    text1(0)
+	mResetPopup(0)
 	{
-		spriteBatch1 = SpriteBatch::create("TextureAtlas2");
-		spriteBatch2 = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas2");
     
 		ccBlendFunc function1 = {GL_ONE, GL_ZERO};
 		ccBlendFunc function2 = {GL_ONE, GL_ONE_MINUS_SRC_ALPHA};
@@ -67,18 +58,20 @@ Progress::Progress() :
 		this->mResetButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(200));
 		this->mResetButton->setText(Options::TEXT_PROGRESS_RESET);
     
-		text1 = Text::create(Options::TEXT_PROGRESS_STRING_1, CCSize(Utils::coord(700), 0), this);
+		Text* text1 = Text::create(Options::TEXT_PROGRESS_STRING_1, CCSize(Utils::coord(700), 0), this);
     
 		text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
     
-		//this->mResetPopup = ResetProgress::create(this);
+		this->mResetPopup = ResetProgress::create(this);
+    
+		m_Instance = this;
 	}
 
 Progress* Progress::create()
 {
     Progress* screen = new Progress();
-    /*screen->autorelease();
-    screen->retain();*/
+    screen->autorelease();
+    screen->retain();
     
     return screen;
 }
@@ -89,6 +82,8 @@ Progress* Progress::create()
 
 void Progress::onTouchButtonsCallback(const int pAction, const int pID)
 {
+    Progress* pSender = static_cast<Progress*>(Progress::m_Instance);
+    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -101,7 +96,7 @@ void Progress::onTouchButtonsCallback(const int pAction, const int pID)
             break;
             case Options::BUTTONS_ID_PROGRESS_RESET:
                 
-                this->mResetPopup->show();
+                pSender->mResetPopup->show();
                 
             break;
         }

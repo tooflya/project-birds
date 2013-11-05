@@ -19,50 +19,7 @@
 // Constructors
 // ===========================================================
 
-Language::~Language()
-{
-    this->removeAllChildrenWithCleanup(true);
-    
-    delete spriteBatch;
-    delete spriteBatch2;
-    
-    delete mBackground;
-    delete mBackButton;
-    
-    delete mLanguages[0];
-    delete mLanguages[1];
-    delete mLanguages[2];
-    delete mLanguages[3];
-    delete mLanguages[4];
-    delete mLanguages[5];
-    delete mLanguages[6];
-    delete mLanguages[7];
-    delete mLanguages[8];
-    delete mLanguages[9];
-    delete mLanguageIndicator;
-    delete mBackgroundDecorations[0];
-    delete mBackgroundDecorations[1];
-    delete mNotAvailableBackgrounds[0];
-    delete mNotAvailableBackgrounds[1];
-    delete mNotAvailableBackgrounds[2];
-    delete mNotAvailableBackgrounds[3];
-    delete mNotAvailableBackgrounds[4];
-    delete mNotAvailableBackgrounds[5];
-    delete mNotAvailableBackgrounds[6];
-    delete mNotAvailableBackgrounds[7];
-    delete mTextes[0];
-    delete mTextes[1];
-    delete mTextes[2];
-    delete mTextes[3];
-    delete mTextes[4];
-    delete mTextes[5];
-    delete mTextes[6];
-    delete mTextes[7];
-}
-
 Language::Language() :
-    spriteBatch(0),
-    spriteBatch2(0),
 	mBackground(0),
 	mBackButton(0),
 	mLanguages(),
@@ -71,18 +28,18 @@ Language::Language() :
 	mNotAvailableBackgrounds(),
 	mTextes()
 	{
-		this->spriteBatch = SpriteBatch::create("TextureAtlas2");
-		this->spriteBatch2 = SpriteBatch::create("TextureAtlas4");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas4");
 
-		this->mBackground = Entity::create("settings_bg@2x.png", this->spriteBatch);
-		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->spriteBatch);
-		this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", this->spriteBatch);
+		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
+		this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_LANGUAGE_BACK, this);
 
-		this->addChild(this->spriteBatch);
-		this->addChild(this->spriteBatch2);
+		this->addChild(spriteBatch);
+		this->addChild(spriteBatch2);
     
 		this->mLanguages[0] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_EN, this);
 		this->mLanguages[1] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_RU, this);
@@ -154,9 +111,9 @@ Language::Language() :
 Language* Language::create()
 {
     Language* screen = new Language();
-    /*screen->autorelease();
-    screen->retain();*/
-
+    screen->autorelease();
+    screen->retain();
+    
     return screen;
 }
 
@@ -268,8 +225,7 @@ void Language::update(float pDeltaTime)
 
 void Language::onEnter()
 {
-    Screen::onEnter();
-}
+    Screen::onEnter();}
 
 void Language::onExit()
 {

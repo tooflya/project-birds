@@ -13,6 +13,7 @@
 		7801630E18153DA9002A0CB7 /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7801630318153C35002A0CB7 /* libcocos2dx.a */; };
 		7801630F18153DAB002A0CB7 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7801630B18153C51002A0CB7 /* libCocosDenshion.a */; };
 		78016312181575E6002A0CB7 /* KeyDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78016310181575E6002A0CB7 /* KeyDisplay.cpp */; };
+		780163151821002C002A0CB7 /* ColorParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 780163131821002C002A0CB7 /* ColorParticle.cpp */; };
 		78365442180BF85200AA9432 /* SpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78365440180BF85200AA9432 /* SpriteBatch.cpp */; };
 		7836548A180C5ED100AA9432 /* about_scroll_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78365452180C5ED100AA9432 /* about_scroll_fill@2x.png */; };
 		7836548B180C5ED100AA9432 /* about_scroll_fill_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78365453180C5ED100AA9432 /* about_scroll_fill_small@2x.png */; };
@@ -213,6 +214,21 @@
 		78B38A56177E5D0600773C6A /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A52177E5D0600773C6A /* RootViewController.mm */; };
 		78BA557817F9A02E00C03E44 /* PirateBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78BA557617F9A02800C03E44 /* PirateBox.cpp */; };
 		78CA3A1A17F5830700FD7886 /* RobotoPart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78CA3A1817F582FC00FD7886 /* RobotoPart.cpp */; };
+		78D3587718212D8F001450F3 /* miss.wav in Resources */ = {isa = PBXBuildFile; fileRef = 78D3587518212D8F001450F3 /* miss.wav */; };
+		78D358791821384D001450F3 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D358781821384D001450F3 /* lose.mp3 */; };
+		78D358911821670D001450F3 /* gem1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 78D358881821670D001450F3 /* gem1.wav */; };
+		78D358921821670D001450F3 /* gem2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D358891821670D001450F3 /* gem2.mp3 */; };
+		78D358931821670D001450F3 /* gem3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D3588A1821670D001450F3 /* gem3.mp3 */; };
+		78D358941821670D001450F3 /* gem4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D3588B1821670D001450F3 /* gem4.mp3 */; };
+		78D358951821670D001450F3 /* gem5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D3588C1821670D001450F3 /* gem5.mp3 */; };
+		78D358961821670D001450F3 /* star1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D3588D1821670D001450F3 /* star1.mp3 */; };
+		78D358971821670D001450F3 /* star2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D3588E1821670D001450F3 /* star2.mp3 */; };
+		78D358981821670D001450F3 /* star3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78D3588F1821670D001450F3 /* star3.mp3 */; };
+		78D358991821670D001450F3 /* timer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 78D358901821670D001450F3 /* timer.wav */; };
+		78D3589C18279E96001450F3 /* MapDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D3589A18279E96001450F3 /* MapDescription.cpp */; };
+		78D3589F1827A0EA001450F3 /* MapDescriptionList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D3589D1827A0EA001450F3 /* MapDescriptionList.cpp */; };
+		78D358A11827C770001450F3 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D358A01827C770001450F3 /* tutorial.png */; };
+		78D358A41829111B001450F3 /* UnlockMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358A21829111B001450F3 /* UnlockMode.cpp */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -263,6 +279,8 @@
 		7801630618153C51002A0CB7 /* CocosDenshion.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocosDenshion.xcodeproj; path = ../../../CocosDenshion/proj.ios/CocosDenshion.xcodeproj; sourceTree = "<group>"; };
 		78016310181575E6002A0CB7 /* KeyDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyDisplay.cpp; sourceTree = "<group>"; };
 		78016311181575E6002A0CB7 /* KeyDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyDisplay.h; sourceTree = "<group>"; };
+		780163131821002C002A0CB7 /* ColorParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorParticle.cpp; sourceTree = "<group>"; };
+		780163141821002C002A0CB7 /* ColorParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorParticle.h; sourceTree = "<group>"; };
 		78365440180BF85200AA9432 /* SpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBatch.cpp; sourceTree = "<group>"; };
 		78365441180BF85200AA9432 /* SpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBatch.h; sourceTree = "<group>"; };
 		78365452180C5ED100AA9432 /* about_scroll_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill@2x.png"; sourceTree = "<group>"; };
@@ -563,6 +581,24 @@
 		78BA557717F9A02800C03E44 /* PirateBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PirateBox.h; sourceTree = "<group>"; };
 		78CA3A1817F582FC00FD7886 /* RobotoPart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RobotoPart.cpp; sourceTree = "<group>"; };
 		78CA3A1917F582FC00FD7886 /* RobotoPart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobotoPart.h; sourceTree = "<group>"; };
+		78D3587518212D8F001450F3 /* miss.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = miss.wav; sourceTree = "<group>"; };
+		78D358781821384D001450F3 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		78D358881821670D001450F3 /* gem1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gem1.wav; sourceTree = "<group>"; };
+		78D358891821670D001450F3 /* gem2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gem2.mp3; sourceTree = "<group>"; };
+		78D3588A1821670D001450F3 /* gem3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gem3.mp3; sourceTree = "<group>"; };
+		78D3588B1821670D001450F3 /* gem4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gem4.mp3; sourceTree = "<group>"; };
+		78D3588C1821670D001450F3 /* gem5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gem5.mp3; sourceTree = "<group>"; };
+		78D3588D1821670D001450F3 /* star1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = star1.mp3; sourceTree = "<group>"; };
+		78D3588E1821670D001450F3 /* star2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = star2.mp3; sourceTree = "<group>"; };
+		78D3588F1821670D001450F3 /* star3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = star3.mp3; sourceTree = "<group>"; };
+		78D358901821670D001450F3 /* timer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = timer.wav; sourceTree = "<group>"; };
+		78D3589A18279E96001450F3 /* MapDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapDescription.cpp; sourceTree = "<group>"; };
+		78D3589B18279E96001450F3 /* MapDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDescription.h; sourceTree = "<group>"; };
+		78D3589D1827A0EA001450F3 /* MapDescriptionList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapDescriptionList.cpp; sourceTree = "<group>"; };
+		78D3589E1827A0EA001450F3 /* MapDescriptionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDescriptionList.h; sourceTree = "<group>"; };
+		78D358A01827C770001450F3 /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
+		78D358A21829111B001450F3 /* UnlockMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnlockMode.cpp; sourceTree = "<group>"; };
+		78D358A31829111B001450F3 /* UnlockMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnlockMode.h; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -660,6 +696,7 @@
 		78365443180C5ED100AA9432 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				78D358A01827C770001450F3 /* tutorial.png */,
 				787AD7891810037900738DE3 /* TextureAtlas15.plist */,
 				787AD78A1810037900738DE3 /* TextureAtlas15.pvr.ccz */,
 				78365452180C5ED100AA9432 /* about_scroll_fill@2x.png */,
@@ -751,6 +788,8 @@
 		783E873117C20CEB00FD49C1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				780163131821002C002A0CB7 /* ColorParticle.cpp */,
+				780163141821002C002A0CB7 /* ColorParticle.h */,
 				78016310181575E6002A0CB7 /* KeyDisplay.cpp */,
 				78016311181575E6002A0CB7 /* KeyDisplay.h */,
 				787CC98C18057FFF00D54AD9 /* KeyParticle.cpp */,
@@ -861,6 +900,10 @@
 		783E876D17C20CEB00FD49C1 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				78D358A21829111B001450F3 /* UnlockMode.cpp */,
+				78D358A31829111B001450F3 /* UnlockMode.h */,
+				78D3589A18279E96001450F3 /* MapDescription.cpp */,
+				78D3589B18279E96001450F3 /* MapDescription.h */,
 				787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */,
 				787AD78E181007ED00738DE3 /* SurpriseLevel.h */,
 				785B4F2E180595A0008B444E /* UnlockLevel.cpp */,
@@ -963,6 +1006,8 @@
 		783E87BD17C20CEB00FD49C1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				78D3589D1827A0EA001450F3 /* MapDescriptionList.cpp */,
+				78D3589E1827A0EA001450F3 /* MapDescriptionList.h */,
 				78365440180BF85200AA9432 /* SpriteBatch.cpp */,
 				78365441180BF85200AA9432 /* SpriteBatch.h */,
 				78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */,
@@ -1026,6 +1071,17 @@
 		783E885E17C20CEC00FD49C1 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				78D358881821670D001450F3 /* gem1.wav */,
+				78D358891821670D001450F3 /* gem2.mp3 */,
+				78D3588A1821670D001450F3 /* gem3.mp3 */,
+				78D3588B1821670D001450F3 /* gem4.mp3 */,
+				78D3588C1821670D001450F3 /* gem5.mp3 */,
+				78D3588D1821670D001450F3 /* star1.mp3 */,
+				78D3588E1821670D001450F3 /* star2.mp3 */,
+				78D3588F1821670D001450F3 /* star3.mp3 */,
+				78D358901821670D001450F3 /* timer.wav */,
+				78D358781821384D001450F3 /* lose.mp3 */,
+				78D3587518212D8F001450F3 /* miss.wav */,
 				78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */,
 				7869166517F1DF9600184E9D /* pome-rampdown.mp3 */,
 				7869166617F1DF9600184E9D /* pome-zoomout.mp3 */,
@@ -1217,6 +1273,7 @@
 				7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */,
 				78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */,
 				78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */,
+				78D358921821670D001450F3 /* gem2.mp3 in Resources */,
 				787AD78C1810037900738DE3 /* TextureAtlas15.pvr.ccz in Resources */,
 				78397AE61807029200C999E7 /* Icon-152-ios7.png in Resources */,
 				783654AD180C5ED100AA9432 /* wep_3@2x.png in Resources */,
@@ -1227,19 +1284,26 @@
 				7869167317F1DF9F00184E9D /* popup-2.mp3 in Resources */,
 				7869167417F1DF9F00184E9D /* popup-3.mp3 in Resources */,
 				7836549C180C5ED100AA9432 /* TextureAtlas3.pvr.ccz in Resources */,
+				78D358791821384D001450F3 /* lose.mp3 in Resources */,
+				78D358A11827C770001450F3 /* tutorial.png in Resources */,
 				7869167517F1DF9F00184E9D /* popup-4.mp3 in Resources */,
+				78D358971821670D001450F3 /* star2.mp3 in Resources */,
 				7869167617F1DF9F00184E9D /* popup-5.mp3 in Resources */,
 				7869167717F1DF9F00184E9D /* popup-6.mp3 in Resources */,
 				7869167817F1DF9F00184E9D /* popup-7.mp3 in Resources */,
+				78D358961821670D001450F3 /* star1.mp3 in Resources */,
 				7869167917F1DF9F00184E9D /* popup-8.mp3 in Resources */,
 				783654B2180C5ED100AA9432 /* wep_8@2x.png in Resources */,
 				783654AF180C5ED100AA9432 /* wep_5@2x.png in Resources */,
 				7869167A17F1DF9F00184E9D /* progress_complete.mp3 in Resources */,
 				7869166117F06A1B00184E9D /* bonus_banana_freeze.mp3 in Resources */,
+				78D358981821670D001450F3 /* star3.mp3 in Resources */,
 				783654A9180C5ED100AA9432 /* wep_10@2x.png in Resources */,
 				78397AEA1807030000C999E7 /* Icon-50-ios6.png in Resources */,
 				78365490180C5ED100AA9432 /* TextureAtlas10.pvr.ccz in Resources */,
+				78D3587718212D8F001450F3 /* miss.wav in Resources */,
 				783654A5180C5ED100AA9432 /* TextureAtlas8.plist in Resources */,
+				78D358951821670D001450F3 /* gem5.mp3 in Resources */,
 				78397AE51807029200C999E7 /* Icon-120-ios7.png in Resources */,
 				78397AEC1807032400C999E7 /* Icon-100-ios6.png in Resources */,
 				78397AE31807029200C999E7 /* Icon-76-ios7.png in Resources */,
@@ -1254,14 +1318,17 @@
 				7836549B180C5ED100AA9432 /* TextureAtlas3.plist in Resources */,
 				78365492180C5ED100AA9432 /* TextureAtlas11.pvr.ccz in Resources */,
 				783654AC180C5ED100AA9432 /* wep_2@2x.png in Resources */,
+				78D358931821670D001450F3 /* gem3.mp3 in Resources */,
 				78397AE11807029200C999E7 /* Icon-40-ios7.png in Resources */,
 				78365498180C5ED100AA9432 /* TextureAtlas14.pvr.ccz in Resources */,
 				78582AEB17BBD93F00C96267 /* Default-Portrait~ipad.png in Resources */,
+				78D358911821670D001450F3 /* gem1.wav in Resources */,
 				78397ADF1807029200C999E7 /* Icon-29-ios6.png in Resources */,
 				78582AED17BBD94500C96267 /* Default-Portrait@2x~ipad.png in Resources */,
 				783E88DB17C20CEC00FD49C1 /* Comic Sans MS.ttf in Resources */,
 				7836548C180C5ED100AA9432 /* more_games_list@2x.png in Resources */,
 				783654AA180C5ED100AA9432 /* wep_11@2x.png in Resources */,
+				78D358941821670D001450F3 /* gem4.mp3 in Resources */,
 				783E895F17C20CEC00FD49C1 /* intro.mp4 in Resources */,
 				7836548B180C5ED100AA9432 /* about_scroll_fill_small@2x.png in Resources */,
 				78397AE01807029200C999E7 /* Icon-29-ios7.png in Resources */,
@@ -1303,6 +1370,7 @@
 				78365494180C5ED100AA9432 /* TextureAtlas12.pvr.ccz in Resources */,
 				783E898217C20CEC00FD49C1 /* combo-blitz-backing.mp3 in Resources */,
 				783E898417C20CEC00FD49C1 /* critical.mp3 in Resources */,
+				78D358991821670D001450F3 /* timer.wav in Resources */,
 				783E898617C20CEC00FD49C1 /* equip-new-sword.mp3 in Resources */,
 				783E898817C20CEC00FD49C1 /* equip-unlock.mp3 in Resources */,
 				783654A6180C5ED100AA9432 /* TextureAtlas8.pvr.ccz in Resources */,
@@ -1338,6 +1406,7 @@
 				787CC98B18056EF400D54AD9 /* GetKeys.cpp in Sources */,
 				7896A9DA18041A06001F8145 /* GetLives.cpp in Sources */,
 				78593F8417FDDCFE0015EC86 /* GeneralExplosion.cpp in Sources */,
+				78D358A41829111B001450F3 /* UnlockMode.cpp in Sources */,
 				78593F8117FC370D0015EC86 /* RobotoGun.cpp in Sources */,
 				78593F7E17FB079B0015EC86 /* ZombieExplosion.cpp in Sources */,
 				78BA557817F9A02E00C03E44 /* PirateBox.cpp in Sources */,
@@ -1362,6 +1431,7 @@
 				783E889717C20CEC00FD49C1 /* Color.cpp in Sources */,
 				783E889817C20CEC00FD49C1 /* Confetti.cpp in Sources */,
 				783E889917C20CEC00FD49C1 /* Dust.cpp in Sources */,
+				78D3589F1827A0EA001450F3 /* MapDescriptionList.cpp in Sources */,
 				783E889A17C20CEC00FD49C1 /* Entity.cpp in Sources */,
 				783E889B17C20CEC00FD49C1 /* EventPanel.cpp in Sources */,
 				783E889C17C20CEC00FD49C1 /* Explosion.cpp in Sources */,
@@ -1377,9 +1447,11 @@
 				783E88A617C20CEC00FD49C1 /* Text.cpp in Sources */,
 				783E88A717C20CEC00FD49C1 /* WeaponParticle.cpp in Sources */,
 				783E88A817C20CEC00FD49C1 /* Texture.cpp in Sources */,
+				780163151821002C002A0CB7 /* ColorParticle.cpp in Sources */,
 				783E88A917C20CEC00FD49C1 /* BatchEntityManager.cpp in Sources */,
 				783E88AA17C20CEC00FD49C1 /* BladeParticlesManager.cpp in Sources */,
 				783E88AB17C20CEC00FD49C1 /* EntityManager.cpp in Sources */,
+				78D3589C18279E96001450F3 /* MapDescription.cpp in Sources */,
 				783E88AC17C20CEC00FD49C1 /* ScreenManager.cpp in Sources */,
 				783E88AD17C20CEC00FD49C1 /* Options.cpp in Sources */,
 				783E88AE17C20CEC00FD49C1 /* Popup.cpp in Sources */,

@@ -34,6 +34,8 @@ int Options::SELECTED_WEAPON_ID = 0;
 
 int Options::DEVICE_TYPE = -1;
 
+bool Options::TUTORIAL = true;
+
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 
 const char* Options::TEXTURES_EXTENSION = ".png";
@@ -47,10 +49,10 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.8.4";
-string Options::STRING_VERSION = "0.8.4";
+const char* Options::VERSION = "0.8.6";
+string Options::STRING_VERSION = "0.8.6";
 
-int Options::BUILD = 6615;
+int Options::BUILD = 7077;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -126,6 +128,10 @@ const char* Options::SOUND_COMBO[8] = {"combo-1.mp3", "combo-2.mp3","combo-3.mp3
 const char* Options::SOUND_POINTS[12] = {"popup-1.mp3", "popup-2.mp3","popup-3.mp3","popup-4.mp3","popup-5.mp3","popup-6.mp3","popup-7.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3","popup-8.mp3"};
 const char* Options::SOUND_PROGRESS = "progress_complete.mp3";
 const char* Options::SOUND_LEVEL_UNLOCK = "upsell_whoosh.mp3";
+const char* Options::SOUND_MISS = "miss.wav";
+const char* Options::SOUND_GEM[5] = { "gem1.wav", "gem2.mp3", "gem3.mp3", "gem4.mp3", "gem5.mp3" };
+const char* Options::SOUND_LEVEL_LOSE = "lose.mp3";
+const char* Options::SOUND_LEVEL_STARS[3] = { "star1.mp3", "star2.mp3", "star3.mp3" };
 
 #endif
 
@@ -430,6 +436,11 @@ Textes Options::TEXT_UNLOCKLEVEL_OK = {"", Options::FONT, 0, 379};
 Textes Options::TEXT_SURPRISE_OK = {"", Options::FONT, 0, 380};
 Textes Options::TEXT_SURPRISE = {"", Options::FONT, 0, 381};
 Textes Options::TEXT_PUBLISHER_STRING_4 = {"", FONT, 36, 382};
+Textes Options::TEXT_MAPDESCRIPTION_CONTINUE = {"", FONT, 46, 383};
+Textes Options::TEXT_MAPDESCRIPTION_TOP = {"", FONT, 42, 384};
+Textes Options::TEXT_MAPDESCRIPTION_BOTTOM = {"", FONT, 32, 385};
+Textes Options::TEXT_MAPDESCRIPTION_MIDDLE = {"", FONT, 32, 386};
+Textes Options::TEXT_UNLOCKMODE = {"", FONT, 0, 387};
 
 // ===========================================================
 // Fields
@@ -463,7 +474,7 @@ void Options::init()
             break;
         }
     }
-CURRENT_LANGUAGE = 1;
+
     Options::MUSIC_ENABLE = AppDelegate::isMusicEnable();
     Options::SOUND_ENABLE = AppDelegate::isSoundEnable();
 
@@ -882,6 +893,9 @@ void Options::changeLanguage()
             TEXT_UNLOCKLEVEL.string = "You can unlock \n this level just for:";
             TEXT_UNLOCKLEVEL.size = 42;
             
+            TEXT_UNLOCKMODE.string = "You can unlock \n this mode just for:";
+            TEXT_UNLOCKMODE.size = 42;
+            
             TEXT_UNLOCKLEVEL_OK.string = "Unlock";
             TEXT_UNLOCKLEVEL_OK.size = 46;
             
@@ -926,6 +940,9 @@ void Options::changeLanguage()
             TEXT_COINS_BONUS[7].string = "50";
             TEXT_COINS_BONUS[8].string = "100";
             TEXT_COINS_BONUS[9].string = "500";
+            
+            TEXT_MAPDESCRIPTION_CONTINUE.string = "Continue";
+            TEXT_MAPDESCRIPTION_TOP.string = "Daily revenue";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1367,6 +1384,9 @@ void Options::changeLanguage()
             TEXT_UNLOCKLEVEL.string = "Вы можете открыть этот \n уровень всего лишь за \n несколько игровых ключей:";
             TEXT_UNLOCKLEVEL.size = 38;
             
+            TEXT_UNLOCKMODE.string = "Вы можете открыть этот \n режим всего лишь за \n несколько игровых ключей:";
+            TEXT_UNLOCKMODE.size = 38;
+            
             TEXT_UNLOCKLEVEL_OK.string = "Открыть";
             TEXT_UNLOCKLEVEL_OK.size = 46;
             
@@ -1375,6 +1395,11 @@ void Options::changeLanguage()
             
             TEXT_SURPRISE.string = "Каждый подарочный \n уровень дает вам \n возможность завладеть \n уникальным артефактом!";
             TEXT_SURPRISE.size = 42;
+            
+            TEXT_MAPDESCRIPTION_CONTINUE.string = "Далее";
+            TEXT_MAPDESCRIPTION_TOP.string = "Ежедневное\nвознаграждение";
+            TEXT_MAPDESCRIPTION_BOTTOM.string = "Играйте каждый день и\nполучайте больше призов\nи подарков, отмеченых\nна карте!";
+            TEXT_MAPDESCRIPTION_MIDDLE.string = "День - %d";
         break;
     }
     
@@ -1761,8 +1786,13 @@ void Options::changeLanguage()
     TEXTES_HOLDER[380] = TEXT_SURPRISE_OK;
     TEXTES_HOLDER[381] = TEXT_SURPRISE;
     TEXTES_HOLDER[382] = TEXT_PUBLISHER_STRING_4;
+    TEXTES_HOLDER[383] = TEXT_MAPDESCRIPTION_CONTINUE;
+    TEXTES_HOLDER[384] = TEXT_MAPDESCRIPTION_TOP;
+    TEXTES_HOLDER[385] = TEXT_MAPDESCRIPTION_BOTTOM;
+    TEXTES_HOLDER[386] = TEXT_MAPDESCRIPTION_MIDDLE;
+    TEXTES_HOLDER[387] = TEXT_UNLOCKMODE;
     
-    for(int i = 0; i <= 382; i++)
+    for(int i = 0; i <= 387; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

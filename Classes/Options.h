@@ -111,6 +111,8 @@ class Options
     
         static const char* TEXTURES_EXTENSION;
     
+        static bool TUTORIAL;
+    
         static int SELECTED_WEAPON_ID;
 
         static const char* MUSIC_1;
@@ -135,6 +137,10 @@ class Options
         static const char* SOUND_PROGRESS;
         static const char* SOUND_COMBO[8];
         static const char* SOUND_LEVEL_UNLOCK;
+        static const char* SOUND_MISS;
+        static const char* SOUND_GEM[5];
+        static const char* SOUND_LEVEL_LOSE;
+        static const char* SOUND_LEVEL_STARS[3];
 
         static const char* VERSION;
         static std::string STRING_VERSION;
@@ -334,6 +340,11 @@ class Options
         static Textes TEXT_UNLOCKLEVEL_OK;
         static Textes TEXT_SURPRISE_OK;
         static Textes TEXT_SURPRISE;
+        static Textes TEXT_MAPDESCRIPTION_CONTINUE;
+        static Textes TEXT_MAPDESCRIPTION_TOP;
+        static Textes TEXT_MAPDESCRIPTION_BOTTOM;
+        static Textes TEXT_MAPDESCRIPTION_MIDDLE;
+        static Textes TEXT_UNLOCKMODE;
 
         // ===========================================================
         // Fields

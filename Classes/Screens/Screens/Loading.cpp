@@ -51,18 +51,9 @@ TextureStructure Loading::TEXTURE_LIBRARY[10] =
 
 Loading::~Loading()
 {
-    this->removeAllChildrenWithCleanup(true);
-    
-    delete this->mSpriteBatch;
-    delete this->mBackground;
-    delete this->mBarBackground;
-    delete this->mBar;
-    
-    delete this->mLoadingText;
 }
 
 Loading::Loading() :
-    mSpriteBatch(NULL),
 	mNumberOfSprites(0),
 	mNumberOfLoadedSprites(0),
 	mLoadingPauseTime(0),
@@ -78,11 +69,11 @@ Loading::Loading() :
 	{
 		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas1.plist");
 
-		this->mSpriteBatch = SpriteBatch::create("TextureAtlas1");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas1");
 
-		this->mBackground = Entity::create("start_preloader_bg@2x.png", this->mSpriteBatch);
-		this->mBarBackground = Entity::create("start_preload_bar@2x.png", this->mSpriteBatch);
-		this->mBar = Entity::create("start_preload_bar_fill@2x.png", this->mSpriteBatch);
+		this->mBackground = Entity::create("start_preloader_bg@2x.png", spriteBatch);
+		this->mBarBackground = Entity::create("start_preload_bar@2x.png", spriteBatch);
+		this->mBar = Entity::create("start_preload_bar_fill@2x.png", spriteBatch);
 
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 		this->mBarBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
@@ -92,7 +83,7 @@ Loading::Loading() :
 		this->mNumberOfLoadedSprites = -1;
 		this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
     
-		this->addChild(this->mSpriteBatch);
+		this->addChild(spriteBatch);
 
 		this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
 		this->mLoadingText->setCenterPosition(this->mBar->getCenterX(), this->mBar->getCenterY());
@@ -107,7 +98,7 @@ Loading::Loading() :
 Loading* Loading::create()
 {
     Loading* screen = new Loading();
-    //screen->autorelease();
+    screen->autorelease();
 
     return screen;
 }
@@ -132,7 +123,7 @@ void Loading::loadingCallBack(CCObject *obj)
         this->mLoadingProgress = false;
         
         AppDelegate::screens = ScreenManager::create();
-
+        
         {
             Options::changeLanguage();
     
@@ -210,13 +201,6 @@ void Loading::onEnter()
 void Loading::onExit()
 {
     Screen::onExit();
-    
-    delete this;
-    
-    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    
-    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 #endif

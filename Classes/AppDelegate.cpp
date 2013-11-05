@@ -101,6 +101,9 @@ void AppDelegate::install(bool soft)
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[1], 0);
 
+    CCUserDefault::sharedUserDefault()->setBoolForKey("mode_0_unlocked", false);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("mode_1_unlocked", false);
+    
     int id = -1;
     for(int i = 1; i < 4; i++)
     {
@@ -334,6 +337,24 @@ string AppDelegate::lastVersion()
 bool AppDelegate::tempPublisherInAppInformationShowed()
 {
     return CCUserDefault::sharedUserDefault()->getBoolForKey("temp_inapp_inf");
+}
+
+bool AppDelegate::isModeUnlocked(int pId)
+{
+    char text[64];
+    
+    sprintf(text, "mode_%d_unlocked", pId);
+    
+    return CCUserDefault::sharedUserDefault()->getBoolForKey(text);
+}
+
+void AppDelegate::setModeUnlocked(int pId)
+{
+    char text[64];
+    
+    sprintf(text, "mode_%d_unlocked", pId);
+    
+    return CCUserDefault::sharedUserDefault()->setBoolForKey(text, true);
 }
 
 // ===========================================================

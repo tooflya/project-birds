@@ -19,28 +19,18 @@
 // Constructors
 // ===========================================================
 
-More::~More()
-{
-    this->removeAllChildrenWithCleanup(true);
-    
-    delete this->mSpriteBatch;
-    delete this->mBackground;
-    delete this->mBackButton;
-}
-
 More::More() :
-    mSpriteBatch(NULL),
-	mBackground(NULL),
-	mBackButton(NULL)
+	mBackground(0),
+	mBackButton(0)
 	{
-		this->mSpriteBatch = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
-		this->mBackground = Entity::create("settings_bg@2x.png", this->mSpriteBatch);
-		this->mBackButton = Button::create(structure1, this->mSpriteBatch, Options::BUTTONS_ID_MORE_BACK, this);
+		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
+		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_MORE_BACK, this);
 
-		this->addChild(this->mSpriteBatch);
+		this->addChild(spriteBatch);
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
@@ -50,8 +40,8 @@ More::More() :
 More* More::create()
 {
     More* screen = new More();
-    /*screen->autorelease();
-    screen->retain();*/
+    screen->autorelease();
+    screen->retain();
     
     return screen;
 }

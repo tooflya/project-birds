@@ -161,6 +161,8 @@ class Map : public CCLayer, public Touchable, public ButtonReceiver
         virtual void onShow();
         virtual void onHide();
     
+        void onAnimationEnd();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

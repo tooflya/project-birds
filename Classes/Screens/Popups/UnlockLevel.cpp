@@ -61,7 +61,7 @@ UnlockLevel::UnlockLevel(CCNode* pParent) :
         
         Text* text1 = Text::create(Options::TEXT_UNLOCKLEVEL, this);
 
-		Textes textes1 = {"5", Options::FONT, 64, -1};
+		Textes textes1 = {"", Options::FONT, 64, -1};
 
         this->mPriceText = Text::create(textes1, this);
         this->mPriceText->setColor(ccc3(255, 200, 15));

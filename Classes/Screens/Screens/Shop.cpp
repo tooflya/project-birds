@@ -560,6 +560,10 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
                     }
+                    else if(ACTION == 6)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    }
 
                     ACTION = -1;
 
@@ -952,7 +956,7 @@ void Shop::onEnterTransitionDidFinish()
 {
     Screen::onEnterTransitionDidFinish();
     
-    if(ACTION == 2)
+    if(ACTION == 2 || ACTION == 6)
     {
         this->mGetKeysPopup->show();
     }

@@ -139,6 +139,10 @@ EventPanel* EventPanel::setEvent(int pEvent)
     {
         this->mIcon->setCurrentFrameIndex(2);
     }
+    else if(pEvent >= 60)
+    {
+        this->mIcon->setCurrentFrameIndex(1);
+    }
     else
     {
         this->mIcon->setVisible(false);

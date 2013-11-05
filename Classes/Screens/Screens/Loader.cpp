@@ -371,6 +371,7 @@ void Loader::update(float pDeltaTime)
                 
                     break;
                 case 3:
+                case 4:
                 case 5:
                     this->mNumberOfSprites = sizeof(Loading::TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
                 

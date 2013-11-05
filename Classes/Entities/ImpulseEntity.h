@@ -17,11 +17,6 @@ class ImpulseEntity : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        float mImpulsePower;
-        float mSideImpulse;
-        float mRotateImpulse;
-        float mWeight;
 
         // ===========================================================
         // Constructors
@@ -72,6 +67,11 @@ class ImpulseEntity : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        float mImpulsePower;
+        float mSideImpulse;
+        float mRotateImpulse;
+        float mWeight;
 
         // ===========================================================
         // Constructors
@@ -80,6 +80,8 @@ class ImpulseEntity : public Entity
         ImpulseEntity(const char* pTextureFileName);
         ImpulseEntity(const char* pTextureFileName, CCNode* pParent);
         ImpulseEntity(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
+    
+        static ImpulseEntity* create(const char* pTextureFileName);
 
         // ===========================================================
         // Methods
@@ -92,6 +94,8 @@ class ImpulseEntity : public Entity
         // ===========================================================
     
         void update(float pDelta);
+    
+        ImpulseEntity* deepCopy();
 };
 
 #endif

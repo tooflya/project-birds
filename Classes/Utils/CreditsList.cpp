@@ -21,24 +21,7 @@
 
 CreditsList::~CreditsList()
 {
-    this->removeAllChildrenWithCleanup(true);
     
-    delete this->mGameLogo;
-    delete this->mCompanyLogo;
-    
-    delete this->mText[0];
-    delete this->mText[1];
-    delete this->mText[2];
-    delete this->mText[3];
-    delete this->mText[4];
-    delete this->mText[5];
-    delete this->mText[6];
-    delete this->mText[7];
-    delete this->mText[8];
-    delete this->mText[9];
-    delete this->mText[10];
-    delete this->mText[11];
-    delete this->mText[12];
 }
 
 CreditsList::CreditsList(CCNode* pParent) :
@@ -107,8 +90,8 @@ CreditsList::CreditsList(CCNode* pParent) :
 CreditsList* CreditsList::create(CCNode* pParent)
 {
     CreditsList* list = new CreditsList(pParent);
-    /*list->autorelease();
-    list->retain();*/
+    list->autorelease();
+    list->retain();
     
     return list;
 }

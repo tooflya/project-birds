@@ -21,26 +21,16 @@
 
 Credits::~Credits()
 {
-    this->removeAllChildrenWithCleanup(true);
-    
-    delete this->spriteBatch;
-    
-    delete this->mBackground;
-    delete this->mBackButton;
-    delete this->mListBorders[0];
-    delete this->mListBorders[1];
-    
-    delete this->mList;
+    CC_SAFE_RELEASE(this->mList);
 }
 
 Credits::Credits() :
-    spriteBatch(0),
 	mBackground(0),
 	mBackButton(0),
 	mListBorders(),
 	mList(0)
 	{
-		this->spriteBatch = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
@@ -68,8 +58,8 @@ Credits::Credits() :
 Credits* Credits::create()
 {
     Credits* screen = new Credits();
-    /*screen->autorelease();
-    screen->retain();*/
+    screen->autorelease();
+    screen->retain();
     
     return screen;
 }

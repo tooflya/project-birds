@@ -110,7 +110,9 @@ class Game : public Screen
         float mBonusAnimationFrameTimeElapsed;
     
         bool mBonusSomeTimeUpdate;
+    
         int mBonusSomeTimeUpdateCount;
+    
         float mBonusSomeTime;
         float mBonusSomeTimeElapsed;
     
@@ -130,11 +132,20 @@ class Game : public Screen
         int mZombieAnimationCount;
     
         long mLastKillTime;
+    
         int mIsBonusAnimationRunningCount;
     
         bool mBackgroundLightsAnimationsReverse[7];
         bool mIsBonusAnimationRunning;
         bool mPirateBoxAnimation;
+        bool mAmigoAnimation;
+        bool mPirateAnimation;
+    
+        float mAmigoAnimationTime;
+        float mAmigoAnimationTimeElapsed;
+    
+        float mPirateAnimationTime;
+        float mPirateAnimationTimeElapsed;
     
         float mPirateBoxAnimationTime;
         float mPirateBoxAnimationTimeElapsed;
@@ -170,7 +181,6 @@ class Game : public Screen
         CCLayer* mEventLayer;
     
         CCNodeRGBA* e2;
-    
     
         // ===========================================================
         // Constructors
@@ -279,6 +289,8 @@ class Game : public Screen
         EntityManager* mColorsBlink;
         EntityManager* mKeys;
         EntityManager* mKeysLights;
+        EntityManager* mPirateHats;
+        EntityManager* mMexicanoHats;
     
         EntityManager* mColors;
     
@@ -290,6 +302,7 @@ class Game : public Screen
         Entity* mGunLaser;
     
         CCArray* array;
+        CCArray* marray;
         static int BURNED[10];
     
         static int LEVEL;
@@ -305,6 +318,9 @@ class Game : public Screen
         static const int GAME_TYPE_PROGRESS = 2;
     
         SpriteBatch* spriteBatch99;
+    
+        float mColorsBurnAnimationTimeoutElapsed;
+        float mLastColorTimeBurn;
 
         // ===========================================================
         // Constructors
@@ -322,17 +338,20 @@ class Game : public Screen
         virtual void onGameStarted();
         virtual void onGameEnd();
         virtual void removeLife();
-        virtual void onBirBlow(int pType, float pX, float pY);
+        virtual void onBirBlow(int pType, float pX, float pY, bool pBonus);
         virtual void pause();
         virtual void onBonus(int pId, float pX, float pY);
         void startBoxAnimation();
         void stopBoxAnimation();
     
-        bool deepFind(int x, int y, int index, bool recursive);
+        bool deepFind(int x, int y, int index, bool recursive, CCObject* pOptionalObject);
     
         void addTime(float pTime);
     
         void onTaskComplete();
+    
+        virtual void runChalange();
+        virtual void stopChalange();
     
         // ===========================================================
         // Override Methods

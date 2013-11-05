@@ -6,6 +6,7 @@
 #include "Feather.h"
 
 #include "Game.h"
+#include "Loader.h"
 
 // ===========================================================
 // Inner Classes
@@ -177,11 +178,6 @@ void Bird::onCreate()
     }
     else
     {
-        if(Game::ZOMBIE_AREA)
-        {
-            this->mLifeCount--;
-        }
-        
         if(game->mChalange)
         {
             this->mType = Utils::random(0, this->count - 3);
@@ -197,7 +193,14 @@ void Bird::onCreate()
         }
         else
         {
-            this->mType = Utils::probably(Game::PREDICTION ? 30 : 15) ? TYPE_DANGER : Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
+            if(Loader::TYPE == 3)
+            {
+                this->mType = Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
+            }
+            else
+            {
+                this->mType = Utils::probably(Game::PREDICTION ? 30 : 15) ? TYPE_DANGER : Utils::random(0, Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS ? (Game::LEVEL_COLORS[Game::LEVEL] - 1) : (this->count - 3));
+            }
         
             this->setCurrentFrameIndex(this->mType * this->mHorizontalFramesCount);
 
@@ -313,12 +316,12 @@ void Bird::onDestroy()
                 {
                     if(this->mLifeCount <= 0)
                     {
-                        game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
+                        game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY(), this->mBonus);
                     }
                 }
                 else
                 {
-                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY());
+                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY(), this->mBonus);
                 }
 
                 if(this->mType == TYPE_DANGER)
@@ -366,6 +369,11 @@ void Bird::update(float pDeltaTime)
     
     if(this->mPTE >= this->mPT)
     {
+        if(Game::ZOMBIE_AREA)
+        {
+            this->mLifeCount -= 0.01;
+        }
+        
         if(this->mType == TYPE_DANGER && static_cast<Game*>(this->getParent()->getParent()->getParent())->mArrows->getCount() > 0 && !this->isVisible())
         {
             this->e1->destroy();
@@ -511,7 +519,7 @@ void Bird::update(float pDeltaTime)
     {
         for(int i = 0; i < 10; i++)
         {
-            if(this->isCollideWithPoint(Options::TOUCH_INFORMATION[i]))
+            if(this->isCollideWithPoint(Options::TOUCH_INFORMATION[i]) && Options::TOUCH_INFORMATION[i].slice)
             {
                 this->mIsGoingToDestroy = true;
             }
@@ -553,16 +561,16 @@ void Bird::update(float pDeltaTime)
                 {
                     this->mLifeCount = 0;
                     
-                    if(!this->mBonus)
                     {
-                    Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
-                    Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
+                        Entity* explosionBasic = static_cast<Entity*>(game->mExplosionsBasic->create());
+                        Entity* explosion = static_cast<Entity*>(game->mExplosions->create());
 
-                    explosionBasic->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
+                        explosionBasic->setCenterPosition(this->getCenterX(), this->getCenterY() - Utils::coord(15));
 
-                    explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
-                    explosion->setColor(COLORS[this->mType]);
+                        explosion->setCenterPosition(this->getCenterX(), this->getCenterY());
+                        explosion->setColor(this->mBonus ? SpecialBird::COLORS[this->mType] : COLORS[this->mType]);
                     }
+                    
 
                     if(this->mType != TYPE_DANGER && !this->mBonus)
                     {

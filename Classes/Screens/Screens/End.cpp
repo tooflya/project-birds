@@ -5,6 +5,7 @@
 
 #include "Game.h"
 #include "Loader.h"
+#include "Shop.h"
 
 // ===========================================================
 // Inner Classes
@@ -145,14 +146,6 @@ End::End(int pType, Screen* pParent) :
         this->mTextes[4] = Text::create(Options::TEXT_END[4], this->mScaleLayer);
         this->mTextes[5] = Text::create(Options::TEXT_END[5], this->mScaleLayer);
         this->mTextes[6] = Text::create(Options::TEXT_END[6], this->mScaleLayer);
-
-        this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
-        this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200));
-        this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
-        this->mTextes[3]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100));
-        this->mTextes[4]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50));
-        this->mTextes[5]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0));
-        this->mTextes[6]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
         
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
         this->mCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.5), spriteBatch4);
@@ -201,7 +194,11 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             break;
             case Options::BUTTONS_ID_END_SHOP:
                 
-            this->hide(); // TODO: Open shop screen.
+            this->hide();
+                    
+            Shop::ACTION = 0;
+                    
+            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
                 
             break;
             }
@@ -253,6 +250,14 @@ void End::onShow()
             AppDelegate::setLevelStars(Game::LEVEL + 1, 0);
         }
         
+        if(Game::STARS <= 0)
+        {
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_LOSE);
+            }
+        }
+        
         if(AppDelegate::getLevelStars(Game::LEVEL + 1) >= 0)
         {
             this->mContinueButton->create()->setCurrentFrameIndex(2);
@@ -275,6 +280,14 @@ void End::onShow()
             this->mMenuButton->create()->setCurrentFrameIndex(0);
             this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
         }
+        
+        this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(330));
+        this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200) - Utils::coord(150));
+        this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150) - Utils::coord(150));
+        this->mTextes[3]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100) - Utils::coord(150));
+        this->mTextes[4]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50) - Utils::coord(150));
+        this->mTextes[5]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0) - Utils::coord(150));
+        this->mTextes[6]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50) - Utils::coord(150));
     }
     else
     {
@@ -286,6 +299,14 @@ void End::onShow()
         
         this->mContinueButton->create()->setCurrentFrameIndex(2);
         this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
+        
+        this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
+        this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200));
+        this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
+        this->mTextes[3]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100));
+        this->mTextes[4]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50));
+        this->mTextes[5]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0));
+        this->mTextes[6]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
     }
 }
 
@@ -326,11 +347,15 @@ void End::onStartShow()
     this->mTextes[4]->setString(ccsf(Options::TEXT_END[4].string, 0));
     this->mTextes[5]->setString(ccsf(Options::TEXT_END[5].string, 0));
     this->mTextes[6]->setString(ccsf(Options::TEXT_END[6].string, 0));
+    
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.2);
 }
 
 void End::onStartHide()
 {
     Splash::onStartHide();
+    
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
 }
 
 void End::throwConfetti()
@@ -375,6 +400,11 @@ void End::update(float pDeltaTime)
                 
                 star->setCurrentFrameIndex(star->getCurrentFrameIndex() - 3);
                 star->animate();
+                
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_STARS[this->mAnimationCounter]);
+                }
                 
                 this->mAnimationCounter++;
                 

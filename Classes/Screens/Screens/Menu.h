@@ -6,6 +6,7 @@
 #include "Exit.h"
 #include "Map.h"
 #include "PleaseRate.h"
+#include "MapDescription.h"
 #include "TempPublisherInAppExplain.h"
 
 #include "PlayButton.h"
@@ -27,7 +28,7 @@ class Menu : public Screen
         // Fields
         // ===========================================================
     
-        SpriteBatch* mSpriteBatch;
+        Entity* mTutorial;
     
         Entity* mBackground;
         Entity* mPlayDecoration[2];
@@ -37,12 +38,6 @@ class Menu : public Screen
         Entity* mFacebookButton;
         Entity* mVkButton;
         Entity* mSettingsButton;
-    
-        Popup* mExitPopup;
-        Popup* mRatePopup;
-        Popup* mTempPublisherInAppExplainPopup;
-    
-        Map* mMapPopup;
 
         float mPlayDecorationColorUpdateTimeElapsed;
 
@@ -95,6 +90,13 @@ class Menu : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        Popup* mExitPopup;
+        Popup* mRatePopup;
+        Popup* mMapDescription;
+        Popup* mTempPublisherInAppExplainPopup;
+    
+        Map* mMapPopup;
 
         // ===========================================================
         // Constructors

@@ -97,6 +97,7 @@ void ScreenManager::load(int pAction, int pDo)
     switch(pAction)
     {
         case 3:
+        case 4:
         case 5:
             
             switch(pDo)
@@ -133,8 +134,8 @@ void ScreenManager::load(int pAction, int pDo)
                     this->mScreens[Screen::SCREEN_MORE] = More::create();
                     this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
                     this->mScreens[Screen::SCREEN_MODE] = Mode::create();
-                    //this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
-                    //this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
+                    this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
+                    this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 break;
             }
             

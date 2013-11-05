@@ -14,6 +14,9 @@
 // Constants
 // ===========================================================
 
+int Mode::UNLOCK_ACTION = -1;
+int Mode::PRICES[2] = {25, 40};
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -24,31 +27,14 @@
 
 Mode::~Mode()
 {
-    this->removeAllChildrenWithCleanup(true);
-    
-    delete this->spriteBatch;
-    
-    delete this->mBackground;
-    delete this->mBackgroundDecorations[0];
-    delete this->mBackgroundDecorations[1];
-    
-    delete this->mBackButton;
-    delete this->mHelpButton;
-    delete this->mClassicMode;
-    delete this->mArcadeMode;
-    delete this->mProgressMode;
-    delete this->mAchievementsButton;
-    delete this->mLeaderboardButton;
-    delete this->mShopButton;
-    
-    //delete this->mHelpPopup;
-    //delete this->mLivesPopup;
-    //delete this->mTempPublisherRatingExplain;
-    //delete this->mTempPublisherAchievementsExplain;
+    CC_SAFE_RELEASE(this->mHelpPopup);
+    CC_SAFE_RELEASE(this->mLivesPopup);
+    CC_SAFE_RELEASE(this->mModesUnlockPopup);
+    CC_SAFE_RELEASE(this->mTempPublisherRatingExplain);
+    CC_SAFE_RELEASE(this->mTempPublisherAchievementsExplain);
 }
 
 Mode::Mode() :
-    spriteBatch(0),
 	mBackground(0),
 	mBackgroundDecorations(),
 	mBackButton(0),
@@ -61,10 +47,12 @@ Mode::Mode() :
 	mShopButton(0),
 	mHelpPopup(0),
 	mLivesPopup(0),
+    mModesUnlockPopup(0),
+    mLockes(),
 	mTempPublisherRatingExplain(0),
 	mTempPublisherAchievementsExplain(0)
 	{
-		spriteBatch = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
 		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
@@ -85,6 +73,15 @@ Mode::Mode() :
 		this->mClassicMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_CLASSIC, this);
 		this->mArcadeMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_ARCADE, this);
 		this->mProgressMode = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MODE_PROGRESS, this);
+        
+        
+        {
+            this->mUnlockStripe = Entity::create("unlock_mode_effect@2x.png", this);
+            this->mUnlockStripe->setZOrder(10);
+            
+            this->mLockes[0] = Entity::create("lock@2x.png", this->mClassicMode);
+            this->mLockes[1] = Entity::create("lock@2x.png", this->mArcadeMode);
+        }
 
 		this->mAchievementsButton = Button::create(structure4, spriteBatch, Options::BUTTONS_ID_MODE_ACHIEVEMENTS, this);
 		this->mLeaderboardButton = Button::create(structure5, spriteBatch, Options::BUTTONS_ID_MODE_LEADERBOARD, this);
@@ -94,9 +91,9 @@ Mode::Mode() :
 		this->mHelpButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(65), Options::CAMERA_HEIGHT - Utils::coord(65));
 		this->mShopButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(185), Options::CAMERA_HEIGHT - Utils::coord(65));
     
-		this->mClassicMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(350));
-		this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(140));
-		this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(70));
+		this->mClassicMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(140));
+		this->mArcadeMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(70));
+		this->mProgressMode->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(350));
     
 		this->mAchievementsButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(300));
 		this->mLeaderboardButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(300));
@@ -108,17 +105,22 @@ Mode::Mode() :
 		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
 		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
     
-		//this->mHelpPopup = ModeHelp::create(this);
-		//this->mLivesPopup = GetLives::create(this, true);
-		//this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
-		//this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
+		this->mHelpPopup = ModeHelp::create(this);
+		this->mLivesPopup = GetLives::create(this, true);
+        this->mModesUnlockPopup = UnlockMode::create(this);
+		this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
+		this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
+        
+        this->mUnlockAnimationTimeElapsed = 0;
+        
+        this->mUnlockAnimationRunning = false;
 	}
 
 Mode* Mode::create()
 {
     Mode* screen = new Mode();
-    /*screen->autorelease();
-    screen->retain();*/
+    screen->autorelease();
+    screen->retain();
     
     return screen;
 }
@@ -129,6 +131,8 @@ Mode* Mode::create()
 
 void Mode::onTouchButtonsCallback(const int pAction, const int pID)
 {
+    if(this->mUnlockAnimationRunning) return;
+    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -141,7 +145,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MODE_CLASSIC:
 
-                    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+                    if(!AppDelegate::isModeUnlocked(0))
+                    {
+                        UNLOCK_ACTION = 0;
+                        
+                        this->mModesUnlockPopup->show();
+                    }
+                    else if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
                     {
                         this->mLivesPopup->show();
                     }
@@ -157,7 +167,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MODE_ARCADE:
                     
-                    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+                    if(!AppDelegate::isModeUnlocked(1))
+                    {
+                        UNLOCK_ACTION = 1;
+                        
+                        this->mModesUnlockPopup->show();
+                    }
+                    else if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
                     {
                         this->mLivesPopup->show();
                     }
@@ -214,8 +230,73 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
     }
 }
 
+void Mode::unlock()
+{
+    if(UNLOCK_ACTION == 0)
+    this->mUnlockStripe->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(140));
+    else
+    this->mUnlockStripe->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(70));
+    
+    this->mUnlockStripe->setOpacity(255);
+    this->mUnlockStripe->setScale(1.0);
+    
+    this->mUnlockStripe->runAction(CCScaleTo::create(1.0, 1.0, 10.0));
+    this->mUnlockStripe->runAction(CCFadeTo::create(2.0, 0));
+    
+    this->mLockes[UNLOCK_ACTION]->runAction(CCScaleTo::create(1.0, 3.0));
+    this->mLockes[UNLOCK_ACTION]->runAction(CCFadeTo::create(1.0, 0));
+    
+    this->mUnlockAnimationRunning = true;
+    
+    AppDelegate::removeCoins(PRICES[UNLOCK_ACTION], Options::SAVE_DATA_COINS_TYPE_KEYS);
+    AppDelegate::setModeUnlocked(UNLOCK_ACTION);
+    
+    if(Options::SOUND_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
+    }
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Mode::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+    
+    if(this->mUnlockAnimationRunning)
+    {
+        this->mUnlockAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mUnlockAnimationTimeElapsed >= 2.0)
+        {
+            this->mUnlockStripe->destroy();
+            this->mLockes[UNLOCK_ACTION]->destroy();
+            
+            this->mUnlockAnimationTimeElapsed = 0;
+            this->mUnlockAnimationRunning = false;
+        }
+    }
+}
+
+void Mode::onEnter()
+{
+    Screen::onEnter();
+    
+    if(!AppDelegate::isModeUnlocked(0) && !this->mLockes[0]->isVisible())
+    {
+        this->mLockes[0]->create()->setCenterPosition(Utils::coord(10), this->mClassicMode->getHeight() / 2);
+        this->mLockes[0]->setOpacity(255);
+        this->mLockes[0]->setScale(1);
+    }
+    
+    if(!AppDelegate::isModeUnlocked(1) && !this->mLockes[1]->isVisible())
+    {
+        this->mLockes[1]->create()->setCenterPosition(Utils::coord(10), this->mArcadeMode->getHeight() / 2);
+        this->mLockes[1]->setOpacity(255);
+        this->mLockes[1]->setScale(1);
+    }
+}
 
 #endif

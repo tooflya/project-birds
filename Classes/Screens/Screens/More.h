@@ -20,8 +20,6 @@ class More : public Screen
         // Fields
         // ===========================================================
     
-        SpriteBatch* mSpriteBatch;
-    
         Entity* mBackground;
     
         Button* mBackButton;
@@ -83,8 +81,6 @@ class More : public Screen
         // ===========================================================
     
         static More* create();
-    
-        ~More();
 
         // ===========================================================
         // Methods

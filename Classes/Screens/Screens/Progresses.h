@@ -9,6 +9,7 @@
 #include "AppDelegate.h"
 
 #include "Color.h"
+#include "ColorPArticle.h"
 
 class Progresses : public Game
 {
@@ -33,6 +34,9 @@ class Progresses : public Game
     
         EntityManager* mColorsSmall;
         EntityManager* mTasksBackground;
+    
+        float mNewColorsTime;
+        float mNewColorsTimeElapsed;
     
         // ===========================================================
         // Constructors
@@ -91,6 +95,8 @@ class Progresses : public Game
         static Progresses* create();
     
         ~Progresses();
+    
+        EntityManager* mColorsParticles;
 
         // ===========================================================
         // Constructors
@@ -116,11 +122,15 @@ class Progresses : public Game
         void onGameStarted();
         void onGameEnd();
 
-        void onBirBlow(int pType, float pX, float pY);
+        void onBirBlow(int pType, float pX, float pY, bool pBonus);
     
         void onTaskComplete();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        void removeLife();
+    
+        void onBonus(int pId, float pX, float pY);
 };
 
 #endif

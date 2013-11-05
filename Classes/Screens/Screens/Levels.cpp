@@ -246,7 +246,6 @@ class LevelButton : public Entity
         if(prize)
         {
             this->setCurrentFrameIndex(this->getCurrentFrameIndex() + 1);
-            this->mText->setVisible(false);
         }
     }
     

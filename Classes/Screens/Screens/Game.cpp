@@ -21,13 +21,22 @@ int Game::LEVEL_TYPE[80] = {
     0, 1, 2
 };
 int Game::LEVEL_HEIGHT[80] = {
-    1, 2, 3
+    1, 1, 1, 1,
+    1, 2, 2, 2,
+    2, 3, 3, 3,
+    3, 3, 4, 4
 };
 int Game::LEVEL_COLORS[80] = {
-    2, 2, 3
+    1, 1, 2, 2,
+    2, 2, 3, 3,
+    3, 3, 3, 4,
+    4, 4, 4, 4
 };
 int Game::LEVEL_HEALTH[80] = {
-    12, 12, 15, 12, 12, 12, 12
+    12, 12, 12, 12,
+    12, 12, 12, 24,
+    24, 24, 24, 24,
+    24, 36, 36, 36
 };
 
 int Game::MATRIX_SIZE_X = 0;
@@ -188,13 +197,19 @@ Game::Game() :
 	mRainsCircles(0),
 	mRobotParts(0),
 	mGun(0),
-	mGunLaser(0),
-	array(0),
-	spriteBatch99(0)
+    mGunLaser(0),
+    array(0),
+    marray(0),
+    spriteBatch99(0),
+    mColorsBurnAnimationTimeoutElapsed(0),
+    mLastColorTimeBurn(0)
     {
         array = CCArray::create();
         array->retain();
         array->initWithCapacity(1000);
+        
+        marray = CCArray::create();
+        marray->retain();
         
         int sx = (int) floor(Options::CAMERA_WIDTH / Utils::coord(64)); // I changed round to floor
         int sy = (int) floor(Options::CAMERA_HEIGHT / Utils::coord(64)); // I changed round to floor
@@ -245,6 +260,14 @@ Game::Game() :
         this->mBackgroundLightsAnimationsReverse[6] = false;
         
         this->mIsBonusAnimationRunning = false;
+        this->mAmigoAnimation = false;
+        this->mPirateAnimation = false;
+        
+        this->mAmigoAnimationTime = 0.6;
+        this->mAmigoAnimationTimeElapsed = 0;
+        
+        this->mPirateAnimationTime = 0.6;
+        this->mPirateAnimationTimeElapsed = 0;
         
         this->mBonusAnimationTime = 0.0;
         this->mBonusAnimationTimeElapsed = 0;
@@ -302,8 +325,11 @@ void Game::startGame()
     this->mMarks->clear();
     this->mExplosions->clear();
     this->mExplosionsBasic->clear();
+    this->mKeys->clear();
+    this->mKeysLights->clear();
 
     HEALTH = LEVEL_HEALTH[LEVEL];
+    
     COMBO_COUNT = 0;
     FLAYER_COUNT = 0;
     CRITICAL_COUNT = 0;
@@ -332,7 +358,7 @@ void Game::onTaskComplete()
     
 }
 
-void Game::onBirBlow(int pType, float pX, float pY)
+void Game::onBirBlow(int pType, float pX, float pY, bool pBonus)
 {
     if(this->mGameRunning)
     {
@@ -437,6 +463,8 @@ void Game::stopBoxAnimation()
     
     this->mPirateBox->runAction(CCFadeOut::create(0.5));
     this->mPirateBox->runAction(CCScaleTo::create(0.5, 5));
+    
+    this->mPirateAnimation = false;
 }
 
 void Game::onBonus(int pId, float pX, float pY)
@@ -467,6 +495,10 @@ void Game::onBonus(int pId, float pX, float pY)
             {
                 SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_FREEZEE);
             }
+            
+            // Experiments
+            
+            //this->runAction(CCShaky3D::create(50, CCSizeMake(15,10), 1, true));
         break;
         case 1:
             PREDICTION = true;
@@ -534,16 +566,31 @@ void Game::onBonus(int pId, float pX, float pY)
             this->mBonusSomeTimeUpdateCount = 0;
         break;
         case 3:
+            this->mPirateAnimation = true;
+            
             this->mPirateBox->create()->setCenterPosition(pX, pY);
+            
+            this->mEventPanel->setEvent(64)->show();
         break;
         case 4:
-        
+            this->mAmigoAnimation = true;
+            this->runChalange();
+            
+            this->mEventPanel->setEvent(65)->show();
+            
+            // Experiments
+            
+            //this->runAction(CCShaky3D::create(50, CCSizeMake(15, 10), 1, true));
         break;
         case 5:
             this->mGeneralExplosions->create()->setCenterPosition(pX, pY);
+            
+            this->mEventPanel->setEvent(66)->show();
         break;
         case 6:
             this->mZombieAnimation = true;
+            
+            this->mEventPanel->setEvent(67)->show();
             
             this->mZombieAnimationTime = 0.04;
             this->mZombieAnimationTimeElapsed = 0;
@@ -561,8 +608,15 @@ void Game::onBonus(int pId, float pX, float pY)
     this->mIsBonusAnimationRunningCount = 0;
 }
 
-bool Game::deepFind(int x, int y, int index, bool recursive)
+bool Game::deepFind(int x, int y, int index, bool recursive, CCObject* pOptionalObject)
 {
+    if(Color::ANIMATION_RUNNING)
+    {
+        marray->addObject(pOptionalObject);
+        
+        return false;
+    }
+    
     if(x < 0 || y < 0 || x >= MATRIX_SIZE_X || y >= MATRIX_SIZE_Y) return false;
     if(MATRIX[x][y] != index) return false;
     
@@ -584,22 +638,27 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
     if(!a) return false;
     
 	// Visit neighbours
-	deepFind(x + 1, y, index, false);
-	deepFind(x - 1, y, index, false);
-	deepFind(x, y + 1, index, false);
-	deepFind(x, y - 1, index, false);
+	deepFind(x + 1, y, index, false, 0);
+	deepFind(x - 1, y, index, false, 0);
+	deepFind(x, y + 1, index, false, 0);
+	deepFind(x, y - 1, index, false, 0);
     
     // Diagonal
     
-	deepFind(x + 1, y + 1, index, false);
-	deepFind(x - 1, y - 1, index, false);
-	deepFind(x + 1, y - 1, index, false);
-	deepFind(x - 1, y + 1, index, false);
+	deepFind(x + 1, y + 1, index, false, 0);
+	deepFind(x - 1, y - 1, index, false, 0);
+	deepFind(x + 1, y - 1, index, false, 0);
+	deepFind(x - 1, y + 1, index, false, 0);
     
     if(recursive)
     {
         if(array->count() >= 3)
         {
+            if(Color::SOUND_INDEX < 4)
+            {
+                Color::SOUND_INDEX++;
+            }
+            
             for(int i = 0; i < array->count(); i++)
             {
                 Color* color = static_cast<Color*>(array->objectAtIndex(i));
@@ -612,12 +671,18 @@ bool Game::deepFind(int x, int y, int index, bool recursive)
             }
             
             this->addTime(0.5 * array->count());
+            
+            array->removeAllObjects();
+            
+            this->mLastColorTimeBurn = 0;
+            
+            return true;
         }
         
         array->removeAllObjects();
     }
     
-    return true;
+    return false;
 }
 
 void Game::addTime(float pTime)
@@ -633,14 +698,86 @@ void Game::update(float pDeltaTime)
 {
     Screen::update(pDeltaTime);
     
-    if(this->mPause)
+    if(this->mPause || this->mEndScreen->getParent())
     {
         return;
+    }
+    
+    if(!Color::ANIMATION_RUNNING)
+    {
+        for(int i = 0; i < marray->count(); i++)
+        {
+            Color* color = static_cast<Color*>(marray->objectAtIndex(i));
+            marray->removeObjectAtIndex(i);
+            
+            if(this->deepFind(color->position_in_matrtix_x, color->position_in_matrtix_y, color->mType, true, 0))
+            {
+                Color::ANIMATION_RUNNING = true;
+            
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->mColorsBurnAnimationTimeoutElapsed += pDeltaTime;
+        
+        if(this->mColorsBurnAnimationTimeoutElapsed >= 1.0)
+        {
+            this->mColorsBurnAnimationTimeoutElapsed = 0;
+            
+            Color::ANIMATION_RUNNING = false;
+        }
+    }
+    
+    this->mLastColorTimeBurn += pDeltaTime;
+    
+    if(this->mLastColorTimeBurn >= 3.0)
+    {
+        this->mLastColorTimeBurn = 0;
+        
+        Color::SOUND_INDEX = -1;
     }
     
     if(this->mDust->getCount() < 30)
     {
         this->mDust->create();
+    }
+    
+    if(this->mAmigoAnimation)
+    {
+        this->mAmigoAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mAmigoAnimationTimeElapsed >= this->mAmigoAnimationTime)
+        {
+            this->mAmigoAnimationTimeElapsed = 0;
+            
+            ImpulseEntity* entity = static_cast<ImpulseEntity*>(this->mMexicanoHats->create());
+            
+            entity->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
+            
+            entity->mWeight = Utils::coord(1500.0);
+            entity->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
+            entity->mRotateImpulse = Utils::coord(Utils::randomf(10.0, 100.0));
+        }
+    }
+    
+    if(this->mPirateAnimation)
+    {
+        this->mPirateAnimationTimeElapsed += pDeltaTime * Game::TIME_SLOW;
+        
+        if(this->mPirateAnimationTimeElapsed >= this->mPirateAnimationTime)
+        {
+            this->mPirateAnimationTimeElapsed = 0;
+            
+            ImpulseEntity* entity = static_cast<ImpulseEntity*>(this->mPirateHats->create());
+            
+            entity->setCenterPosition(Utils::randomf(0.0, Options::CAMERA_WIDTH), 0.0);
+            
+            entity->mWeight = Utils::coord(1500.0);
+            entity->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
+            entity->mRotateImpulse = Utils::coord(Utils::randomf(10.0, 100.0));
+        }
     }
     
     if(this->mZombieAnimation)
@@ -864,7 +1001,7 @@ void Game::update(float pDeltaTime)
         this->mLastKillCount = 0;
     }
     
-    if(this->mEventLayer)
+    //if(this->mEventLayer)
     {
         //this->mEventLayer->setPosition(ccp(0, this->mEventPanel->getCenterY() + Utils::coord(100)));
     }
@@ -1167,6 +1304,16 @@ void Game::onEnter()
 void Game::onExit()
 {
     Screen::onExit();
+}
+
+void Game::runChalange()
+{
+    
+}
+
+void Game::stopChalange()
+{
+    this->mAmigoAnimation = false;
 }
 
 #endif

@@ -4,6 +4,7 @@
 #include "Color.h"
 
 #include "Game.h"
+#include "Progresses.h"
 
 // ===========================================================
 // Inner Classes
@@ -12,6 +13,10 @@
 // ===========================================================
 // Constants
 // ===========================================================
+
+int Color::SOUND_INDEX = -1;
+
+bool Color::ANIMATION_RUNNING = false;
 
 // ===========================================================
 // Fields
@@ -141,6 +146,19 @@ void Color::runDestroy()
     this->mGoingToDestroy = true;
     this->mDestroyTime = 0;
     this->mDestroyTimeElapsed = 0;
+    
+    for(int i = 0; i < 50; i++)
+    {
+        Entity* particle = static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorsParticles->create();
+        
+        particle->setCenterPosition(this->getCenterX(), this->getCenterY());
+        particle->setColor(Bird::COLORS[this->getCurrentFrameIndex()]);
+    }
+    
+    if(Options::SOUND_ENABLE)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_GEM[SOUND_INDEX]);
+    }
 }
 
 void Color::down()
@@ -151,7 +169,9 @@ void Color::down()
     this->position_in_matrtix_y++;
     Game::MATRIX[this->position_in_matrtix_x][this->position_in_matrtix_y] = this->mType;
     
-    static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true);
+    static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true, this);
+    
+    ANIMATION_RUNNING = true;
 }
 
 // ===========================================================
@@ -170,7 +190,7 @@ void Color::onCreate()
     this->mBlinkTime = Utils::randomf(1.0, 6.0);
     this->mBlinkTimeElapsed = 0;
     
-    this->setScale(1.0);
+    this->setScale(0.1);
     this->mGoingToDestroy = false;
     
     this->mct = 0.5;
@@ -192,6 +212,8 @@ void Color::onCreate()
     }
     
     this->mPowerText->setVisible(false);
+    
+    this->runAction(CCScaleTo::create(0.5, 1));
 }
 
 void Color::onDestroy()
@@ -244,11 +266,20 @@ void Color::update(float pDeltaTime)
         {
             this->mc = true;
             
-            static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true);
+            static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true, this);
+            
+            ANIMATION_RUNNING = true;
             
             if(this->d)
             {
-                this->runDestroy();
+                this->destroy();
+                
+                SOUND_INDEX = -1;
+            }
+            
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_MISS);
             }
         }
     }

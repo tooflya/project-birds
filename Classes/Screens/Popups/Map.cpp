@@ -501,6 +501,11 @@ void Map::onHide()
     }
 }
 
+void Map::onAnimationEnd()
+{
+    static_cast<Menu*>(this->mParent)->mMapDescription->show();
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -518,6 +523,8 @@ void Map::update(float pDeltaTime)
             this->mAnimatedCoinsAnimationTimeElpased = 0;
             
             this->mAnimatedCoinsAnimation = false;
+            
+            this->onAnimationEnd();
         }
         
         if(Utils::probably(5 * this->day))
@@ -883,7 +890,7 @@ void Map::onExit()
 
 bool Map::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
-    if(this->mShowed)
+    if(this->mShowed && !this->mShowAnimationRunning && !this->mAnimation)
     {
         this->hide();
     }

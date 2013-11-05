@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Shop.cpp"
-            timestampString = "403626572.267677"
+            timestampString = "404294194.841722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "Shop::Shop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -77,7 +77,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
             endingLineNumber = "186"
-            landmarkName = "EntityManager::getCapacity()"
+            landmarkName = "EntityManager::clear()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Game.cpp"
-            timestampString = "404060009.972294"
+            timestampString = "405280284.810173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "Game::Game()"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Progresses.cpp"
-            timestampString = "404067030.181385"
+            timestampString = "405331657.200472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "577"
-            endingLineNumber = "577">
+            startingLineNumber = "613"
+            endingLineNumber = "613"
+            landmarkName = "Progresses::onGameEnd()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -192,11 +194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/AppDelegate.cpp"
-            timestampString = "403785246.709512"
+            timestampString = "405350470.098908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "AppDelegate::applicationDidFinishLaunching()"
             landmarkType = "5">
          </BreakpointContent>
@@ -240,13 +242,71 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Managers/ScreenManager.cpp"
-            timestampString = "404242282.076002"
+            timestampString = "404292266.001003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "ScreenManager::load(int pAction, int pDo)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScreenManager::load(int, int)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Managers/ScreenManager.cpp"
+                  timestampString = "405277614.464867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScreenManager::load(int, int)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Managers/ScreenManager.cpp"
+                  timestampString = "405277614.465333"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScreenManager::load(int, int)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Managers/ScreenManager.cpp"
+                  timestampString = "405277614.465693"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScreenManager::load(int, int)"
+                  moduleName = "Project Birds"
+                  urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Managers/ScreenManager.cpp"
+                  timestampString = "405277614.466029"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "250">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -6,11 +6,6 @@
 EntityManager::~EntityManager()
 {
     this->removeAllObjects();
-    
-    for(int i = 0; i < this->getCapacity(); i++)
-    {
-        //delete this->objectAtIndex(i);
-    }
 }
 
 void EntityManager::init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen, int pZOrder)
@@ -25,8 +20,8 @@ void EntityManager::init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNod
     for(int i = 0; i < pCreateCount; i++)
     {
         Entity* currentEntity = pEntity->deepCopy();
-        /*currentEntity->autorelease();
-        currentEntity->retain();*/
+        currentEntity->autorelease();
+        currentEntity->retain();
         
         currentEntity->setEntityManager(this);
         currentEntity->setEntityManagerId(i);
@@ -84,8 +79,8 @@ EntityManager::EntityManager() :
 EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pEntity);
-    /*manager->autorelease();
-    manager->retain();*/
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -93,8 +88,8 @@ EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity)
 EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* pScreen)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pEntity, pScreen);
-    /*manager->autorelease();
-    manager->retain();*/
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -102,8 +97,8 @@ EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* 
 EntityManager* EntityManager::create(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pMaxCount, pEntity, pScreen);
-    /*manager->autorelease();
-    manager->retain();*/
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -111,8 +106,8 @@ EntityManager* EntityManager::create(int pCreateCount, int pMaxCount, Entity* pE
 EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder)
 {
     EntityManager* manager = new EntityManager(pCreateCount, pEntity, pScreen, pZOrder);
-    /*manager->autorelease();
-    manager->retain();*/
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }
@@ -120,8 +115,8 @@ EntityManager* EntityManager::create(int pCreateCount, Entity* pEntity, CCNode* 
 EntityManager* EntityManager::create(int a)
 {
     EntityManager* manager = new EntityManager();
-    /*manager->autorelease();
-    manager->retain();*/
+    manager->autorelease();
+    manager->retain();
     
     return manager;
 }

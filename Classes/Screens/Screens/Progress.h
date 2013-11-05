@@ -18,12 +18,11 @@ class Progress : public Screen
         // Constants
         // ===========================================================
     
+        static Progress* m_Instance;
+    
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        SpriteBatch* spriteBatch1;
-        SpriteBatch* spriteBatch2;
     
         Entity* mBackground;
         Entity* mBackButton;
@@ -31,8 +30,6 @@ class Progress : public Screen
         Button* mResetButton;
     
         Popup* mResetPopup;
-    
-        Text* text1;
 
         // ===========================================================
         // Constructors
