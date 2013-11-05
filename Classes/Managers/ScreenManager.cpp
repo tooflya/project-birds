@@ -79,7 +79,7 @@ ScreenManager* ScreenManager::create()
 void ScreenManager::generate()
 {
     this->load(3, -1);
-    //this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
+    this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)
@@ -111,7 +111,21 @@ void ScreenManager::load(int pAction, int pDo)
                     CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
                 break;
                 
-                default:
+				default:
+					for (int i = 0; i < 100; i++)
+					{
+						this->mScreens[Screen::SCREEN_MENU] = Menu::create();
+						this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
+						this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();
+						this->mScreens[Screen::SCREEN_PROGRESS] = Progress::create();
+						this->mScreens[Screen::SCREEN_MORE] = More::create();
+
+						delete this->mScreens[Screen::SCREEN_MENU];
+						delete this->mScreens[Screen::SCREEN_SETTINGS];
+						delete this->mScreens[Screen::SCREEN_CREDITS];
+						delete this->mScreens[Screen::SCREEN_PROGRESS];
+						delete this->mScreens[Screen::SCREEN_MORE];
+					}
                     this->mScreens[Screen::SCREEN_MENU] = Menu::create();
                     this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
                     this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();

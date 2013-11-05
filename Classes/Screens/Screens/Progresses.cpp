@@ -177,6 +177,7 @@ Progresses::Progresses() :
 		this->mTextIcons[0] = Entity::create("game_panel_time@2x.png", spriteBatch8);
 		this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
 		this->mTextIcons[2] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
+		this->mTextIcons[3] = Entity::create("game_panel_counter_best@2x.png", spriteBatch8);
 
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 		this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_PAUSE, this);

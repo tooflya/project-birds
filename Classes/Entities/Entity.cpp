@@ -821,6 +821,9 @@ void Entity::onEnter()
 void Entity::onExit()
 {
     CCSprite::onExit();
+
+	//if(this->isVisible())
+	//this->destroy();
 }
 
 void Entity::onTouch(CCTouch* touch, CCEvent* event)

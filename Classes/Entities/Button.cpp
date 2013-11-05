@@ -181,7 +181,7 @@ Entity* Button::create()
 
 Button* Button::deepCopy()
 {
-    return new Button(this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mID, this->mSender);
+    return Button::create(this->mTextureFileName, this->mHorizontalFramesCount, this->mVerticalFramesCount, this->mID, this->mSender);
 }
 
 #endif

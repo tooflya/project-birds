@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
   <Identity Name="716D0546-1A26-408E-800F-553F1864A4BE" Publisher="CN=dalestam" Version="2.1.0.3" />
   <Properties>
-    <DisplayName>TestCpp</DisplayName>
+    <DisplayName>ProjectBirds</DisplayName>
     <PublisherDisplayName>dalestam</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -14,8 +14,8 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="TestCpp.App">
-      <m2:VisualElements DisplayName="TestCpp" Description="TestCpp" BackgroundColor="#464646" ForegroundText="light" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ProjectBirds.App">
+      <m2:VisualElements DisplayName="ProjectBirds" Description="ProjectBirds" BackgroundColor="#464646" ForegroundText="light" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
         <m2:DefaultTile Wide310x150Logo="Assets\WideLogo.png">
           <m2:ShowNameOnTiles>
             <m2:ShowOn Tile="square150x150Logo" />
