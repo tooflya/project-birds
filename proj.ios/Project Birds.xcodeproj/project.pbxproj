@@ -229,6 +229,12 @@
 		78D3589F1827A0EA001450F3 /* MapDescriptionList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D3589D1827A0EA001450F3 /* MapDescriptionList.cpp */; };
 		78D358A11827C770001450F3 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D358A01827C770001450F3 /* tutorial.png */; };
 		78D358A41829111B001450F3 /* UnlockMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358A21829111B001450F3 /* UnlockMode.cpp */; };
+		78D358A7182A3DDD001450F3 /* TextureAtlas16.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D358A5182A3DDD001450F3 /* TextureAtlas16.plist */; };
+		78D358A8182A3DDD001450F3 /* TextureAtlas16.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78D358A6182A3DDD001450F3 /* TextureAtlas16.pvr.ccz */; };
+		78D358AB182A3DF1001450F3 /* Icon8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358A9182A3DF1001450F3 /* Icon8.cpp */; };
+		78D358AE182A69BD001450F3 /* splash_logo_abs.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D358AC182A69BD001450F3 /* splash_logo_abs.png */; };
+		78D358AF182A69BD001450F3 /* splash_logo_tfl.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D358AD182A69BD001450F3 /* splash_logo_tfl.png */; };
+		78D358B5182A6A0E001450F3 /* SplashScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358B2182A6A0E001450F3 /* SplashScreen.cpp */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -599,6 +605,14 @@
 		78D358A01827C770001450F3 /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
 		78D358A21829111B001450F3 /* UnlockMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnlockMode.cpp; sourceTree = "<group>"; };
 		78D358A31829111B001450F3 /* UnlockMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnlockMode.h; sourceTree = "<group>"; };
+		78D358A5182A3DDD001450F3 /* TextureAtlas16.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas16.plist; sourceTree = "<group>"; };
+		78D358A6182A3DDD001450F3 /* TextureAtlas16.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas16.pvr.ccz; sourceTree = "<group>"; };
+		78D358A9182A3DF1001450F3 /* Icon8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Icon8.cpp; sourceTree = "<group>"; };
+		78D358AA182A3DF1001450F3 /* Icon8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon8.h; sourceTree = "<group>"; };
+		78D358AC182A69BD001450F3 /* splash_logo_abs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_logo_abs.png; sourceTree = "<group>"; };
+		78D358AD182A69BD001450F3 /* splash_logo_tfl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_logo_tfl.png; sourceTree = "<group>"; };
+		78D358B2182A6A0E001450F3 /* SplashScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScreen.cpp; sourceTree = "<group>"; };
+		78D358B3182A6A0E001450F3 /* SplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreen.h; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -696,6 +710,10 @@
 		78365443180C5ED100AA9432 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				78D358AC182A69BD001450F3 /* splash_logo_abs.png */,
+				78D358AD182A69BD001450F3 /* splash_logo_tfl.png */,
+				78D358A5182A3DDD001450F3 /* TextureAtlas16.plist */,
+				78D358A6182A3DDD001450F3 /* TextureAtlas16.pvr.ccz */,
 				78D358A01827C770001450F3 /* tutorial.png */,
 				787AD7891810037900738DE3 /* TextureAtlas15.plist */,
 				787AD78A1810037900738DE3 /* TextureAtlas15.pvr.ccz */,
@@ -788,6 +806,8 @@
 		783E873117C20CEB00FD49C1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78D358A9182A3DF1001450F3 /* Icon8.cpp */,
+				78D358AA182A3DF1001450F3 /* Icon8.h */,
 				780163131821002C002A0CB7 /* ColorParticle.cpp */,
 				780163141821002C002A0CB7 /* ColorParticle.h */,
 				78016310181575E6002A0CB7 /* KeyDisplay.cpp */,
@@ -945,6 +965,8 @@
 		783E879217C20CEB00FD49C1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				78D358B2182A6A0E001450F3 /* SplashScreen.cpp */,
+				78D358B3182A6A0E001450F3 /* SplashScreen.h */,
 				783E879317C20CEB00FD49C1 /* Arcade.cpp */,
 				783E879417C20CEB00FD49C1 /* Arcade.h */,
 				783E879517C20CEB00FD49C1 /* Classic.cpp */,
@@ -1310,6 +1332,8 @@
 				7836548F180C5ED100AA9432 /* TextureAtlas10.plist in Resources */,
 				78582AE117BBD91A00C96267 /* Default.png in Resources */,
 				78582AE317BBD92400C96267 /* Default@2x.png in Resources */,
+				78D358A8182A3DDD001450F3 /* TextureAtlas16.pvr.ccz in Resources */,
+				78D358AF182A69BD001450F3 /* splash_logo_tfl.png in Resources */,
 				78582AE517BBD92D00C96267 /* Default-568h@2x.png in Resources */,
 				78582AE717BBD93700C96267 /* Default-Landscape~ipad.png in Resources */,
 				78397AE8180702D100C999E7 /* Icon-58-ios6.png in Resources */,
@@ -1354,6 +1378,7 @@
 				783E897417C20CEC00FD49C1 /* combo-4.mp3 in Resources */,
 				7836548D180C5ED100AA9432 /* TextureAtlas1.plist in Resources */,
 				783E897617C20CEC00FD49C1 /* combo-5.mp3 in Resources */,
+				78D358AE182A69BD001450F3 /* splash_logo_abs.png in Resources */,
 				783E897817C20CEC00FD49C1 /* combo-6.mp3 in Resources */,
 				783654A1180C5ED100AA9432 /* TextureAtlas6.plist in Resources */,
 				783E897A17C20CEC00FD49C1 /* combo-7.mp3 in Resources */,
@@ -1382,6 +1407,7 @@
 				783654B0180C5ED100AA9432 /* wep_6@2x.png in Resources */,
 				78365497180C5ED100AA9432 /* TextureAtlas14.plist in Resources */,
 				78365499180C5ED100AA9432 /* TextureAtlas2.plist in Resources */,
+				78D358A7182A3DDD001450F3 /* TextureAtlas16.plist in Resources */,
 				78397AE21807029200C999E7 /* Icon-58-ios7.png in Resources */,
 				783E899217C20CEC00FD49C1 /* tap.wav in Resources */,
 				783E899317C20CEC00FD49C1 /* throw-bird.mp3 in Resources */,
@@ -1451,6 +1477,7 @@
 				783E88A917C20CEC00FD49C1 /* BatchEntityManager.cpp in Sources */,
 				783E88AA17C20CEC00FD49C1 /* BladeParticlesManager.cpp in Sources */,
 				783E88AB17C20CEC00FD49C1 /* EntityManager.cpp in Sources */,
+				78D358B5182A6A0E001450F3 /* SplashScreen.cpp in Sources */,
 				78D3589C18279E96001450F3 /* MapDescription.cpp in Sources */,
 				783E88AC17C20CEC00FD49C1 /* ScreenManager.cpp in Sources */,
 				783E88AD17C20CEC00FD49C1 /* Options.cpp in Sources */,
@@ -1459,6 +1486,7 @@
 				783E88B217C20CEC00FD49C1 /* BuyItem.cpp in Sources */,
 				783E88B517C20CEC00FD49C1 /* Exit.cpp in Sources */,
 				783E88B617C20CEC00FD49C1 /* GetCoins.cpp in Sources */,
+				78D358AB182A3DF1001450F3 /* Icon8.cpp in Sources */,
 				783E88B717C20CEC00FD49C1 /* ModeHelp.cpp in Sources */,
 				783E88B817C20CEC00FD49C1 /* Pause.cpp in Sources */,
 				783E88B917C20CEC00FD49C1 /* PaymentProceed.cpp in Sources */,

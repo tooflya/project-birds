@@ -18,6 +18,8 @@ class GetLives : public Popup
         // Fields
         // ===========================================================
     
+        Text* mExpireTimeText;
+    
         int mPurchaseId;
 
         Button* mGetCoinsButtons[2];

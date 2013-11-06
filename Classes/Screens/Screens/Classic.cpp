@@ -129,6 +129,7 @@ Classic::Classic() :
         this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() * 2 + Utils::coord(65), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
         this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextIcons[2]->setCenterPosition(this->mTextIcons[2]->getCenterX(), this->mTextIcons[2]->getCenterY() + Utils::coord(3));
         
         this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 
@@ -330,6 +331,13 @@ void Classic::onTouchButtonsCallback(const int pAction, const int pID)
 
 void Classic::startGame()
 {
+    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+    {
+        this->mGetLivesPopup->show();
+        
+        return;
+    }
+    
     Game::startGame();
     
     this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));

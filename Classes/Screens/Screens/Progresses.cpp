@@ -191,11 +191,11 @@ Progresses::Progresses() :
 		this->mTextAreas[1] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
 		this->mTextAreas[2] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
 		this->mTextAreas[3] = Entity::create("game_panel_textbox@2x.png", spriteBatch8);
-		this->mTextIcons[0] = Entity::create("game_panel_time@2x.png", spriteBatch8);
+		this->mTextIcons[0] = Entity::create("game_panel_shoot_count@2x.png", spriteBatch8);
 		this->mTextIcons[1] = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
 		this->mTextIcons[2] = Icon8::create("game_panel_counter_best@2x.png", spriteBatch8);
 		this->mTextIcons[3] = Icon8::create("game_panel_goldlife@2x.png", spriteBatch8);
-
+        this->mTextIcons[0]->setScale(0.8);
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 		this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
         
@@ -208,7 +208,7 @@ Progresses::Progresses() :
 		this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 		this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 		this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextIcons[3]->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() - this->mTextAreas[3]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextIcons[3]->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() - this->mTextAreas[3]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(3));
         
 		this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
        
@@ -691,6 +691,13 @@ void Progresses::onShow()
     this->mColorsSmall->clear();
     
     this->mTaskDone = false;
+    
+    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+    {
+        this->mGetLivesPopup->show();
+        
+        return;
+    }
 
     for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
     {

@@ -337,11 +337,11 @@ Shop::Shop() :
 		this->mTextBackgrounds[1] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
 		this->mTextBackgrounds[2] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
 		this->mTextBackgrounds[3] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
-    
+
 		this->mTextBackgrounds[1]->setScaleX(0.9);
 		this->mTextBackgrounds[2]->setScaleX(0.8);
 		this->mTextBackgrounds[3]->setScaleX(0.8);
-    
+
 		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
 		{
 			this->mTextBackgrounds[0]->setScaleX(this->mTextBackgrounds[0]->getScaleX() + 0.2);
@@ -349,7 +349,7 @@ Shop::Shop() :
 			this->mTextBackgrounds[2]->setScaleX(this->mTextBackgrounds[2]->getScaleX() + 0.2);
 			this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
 		}
-    
+
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 
 		this->mTextPluses[0] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
@@ -396,6 +396,9 @@ Shop::Shop() :
 		this->mIcons[1]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() - this->mTextBackgrounds[1]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[1]->getCenterY());
 		this->mIcons[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() - this->mTextBackgrounds[2]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[2]->getCenterY());
 		this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
+        
+        this->mIcons[2]->setCenterPosition(this->mIcons[2]->getCenterX(), this->mIcons[2]->getCenterY() + Utils::coord(3));
+        this->mIcons[3]->setCenterPosition(this->mIcons[3]->getCenterX(), this->mIcons[3]->getCenterY() + Utils::coord(3));
     
 		//this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
 
@@ -564,6 +567,18 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
                     }
+                    else if(ACTION == 10)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    }
+                    else if(ACTION == 11)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    }
+                    else if(ACTION == 12)
+                    {
+                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    }
 
                     ACTION = -1;
 
@@ -581,11 +596,11 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_LIVES:
                     
-                    //if(pSender->mTextPluses[1]->getOpacity() == 255)
+                    if(this->mTextPluses[1]->getOpacity() == 255)
                     {
                         this->mGetLivesPopup->show();
                     }
-                    break;
+                break;
                 case Options::BUTTONS_ID_SHOP_GET_KEYS:
                     
                      this->mGetKeysPopup->show();
@@ -708,13 +723,13 @@ void Shop::onPurchase(bool pProceed)
                 this->mIsAnimationPurchaseTime = 3.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.1;
                 
-                AppDelegate::addCoins(10, Options::SAVE_DATA_COINS_TYPE_LIVES);
+                AppDelegate::addCoins(5 - AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES), Options::SAVE_DATA_COINS_TYPE_LIVES);
             break;
             case 5:
                 this->mIsAnimationPurchaseTime = 5.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.05;
                 
-                AppDelegate::addCoins(25, Options::SAVE_DATA_COINS_TYPE_LIVES);
+                AppDelegate::addCoins(5 - AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES), Options::SAVE_DATA_COINS_TYPE_LIVES);
             break;
             case 6:
                 this->mIsAnimationPurchaseTime = 3.0;
@@ -883,6 +898,12 @@ void Shop::update(float pDeltaTime)
 
     //this->mCoinsCountText->setScale(this->mTablet->getScaleX());
     //this->mCoin->setScale(this->mTablet->getScaleX() + 0.3);
+    
+    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+    {
+        this->mTextText[2]->setString("10:00");
+        this->mTextText[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2 - this->mTextText[2]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[2]->getCenterY());
+    }
 }
 
 void Shop::onEnter()
@@ -923,7 +944,6 @@ void Shop::onEnter()
     
     this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
     this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[3]->getCenterY());
-    
 }
 
 void Shop::onExit()
@@ -963,6 +983,18 @@ void Shop::onEnterTransitionDidFinish()
     else if(ACTION == 3 || ACTION == 4 || ACTION == 5)
     {
         this->mPaymentProceed->show();
+    }
+    else if(ACTION == 10)
+    {
+        this->mGetCoinsPopup->show();
+    }
+    else if(ACTION == 11)
+    {
+        this->mGetLivesPopup->show();
+    }
+    else if(ACTION == 12)
+    {
+        this->mGetKeysPopup->show();
     }
 }
 

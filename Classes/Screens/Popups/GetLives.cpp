@@ -33,6 +33,7 @@ GetLives::~GetLives()
 GetLives::GetLives(CCNode* pParent, bool pFirst) :
     Popup(pParent, pFirst),
 	mPurchaseId(0),
+    mExpireTimeText(0),
 	mGetCoinsButtons(),
 	mLights(0)
     {
@@ -52,11 +53,9 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_glife_pic@2x.png", spriteBatch3);
         
-		EntityStructure structure1 = {"popup_glife_btn1@2x.png", 1, 1, 0, 0, 298, 230};
-		EntityStructure structure2 = {"popup_glife_btn2@2x.png", 1, 1, 0, 0, 309, 247};
+		EntityStructure structure1 = {"popup_glife_btn@2x.png", 1, 1, 0, 0, 305, 327};
 
         this->mGetCoinsButtons[0] = Button::create(structure1, spriteBatch3, Options::BUTTONS_ID_GETCOINS_1, this);
-        this->mGetCoinsButtons[1] = Button::create(structure2, spriteBatch3, Options::BUTTONS_ID_GETCOINS_2, this);
         
         for(int i = 0; i < 2; i++)
         {
@@ -68,13 +67,15 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
         this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
         Text* text1 = Text::create(Options::TEXT_GETLIVES_STRING_1, this);
+        this->mExpireTimeText = Text::create((Textes) {"10:17", Options::FONT, 48, -1}, this);
         
-        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(160));
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(220));
+        this->mExpireTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(260));
+        this->mExpireTimeText->setColor(ccc3(28, 84, 179));
         
-        this->mGetCoinsButtons[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(160), Options::CAMERA_CENTER_Y - Utils::coord(350));
-        this->mGetCoinsButtons[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(120), Options::CAMERA_CENTER_Y - Utils::coord(338));
+        this->mGetCoinsButtons[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(430));
         
-        this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(230));
+        this->mIllustration->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(190));
 
         this->mPurchaseId = -1;
     }
@@ -161,6 +162,15 @@ void GetLives::onHide()
     
     switch(this->mPurchaseId)
     {
+        case -1:
+            
+            Game* game = dynamic_cast<Game*>(this->mParent);
+            
+            if(game != 0)
+            {
+                
+            }
+        break;
         case 4:
         case 5:
         Shop* shop = dynamic_cast<Shop*>(this->mParent);
@@ -215,6 +225,15 @@ void GetLives::show()
     if(game != 0)
     {
         game->pause();
+    }
+    
+    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) > 0)
+    {
+        this->mExpireTimeText->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
+    }
+    else
+    {
+        this->mExpireTimeText->setString("17:56");
     }
 }
 

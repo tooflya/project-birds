@@ -3,7 +3,7 @@
 
 #include "AppDelegate.h"
 
-#include "Loading.h"
+#include "SplashScreen.h"
 
 // ===========================================================
 // Inner Classes
@@ -452,7 +452,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     Options::init();
 
-    Screen* pScene = Loading::create();
+    Screen* pScene = SplashScreen::create();
 
     director->runWithScene(pScene);
 

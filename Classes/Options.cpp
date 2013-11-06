@@ -564,8 +564,8 @@ void Options::changeLanguage()
             TEXT_GETCOINS_STRING_1.string = "You need to buy\nsome coins!";
             TEXT_GETCOINS_STRING_1.size = 48;
             
-            TEXT_GETLIVES_STRING_1.string = "You need to buy\nsome extra lives!";
-            TEXT_GETLIVES_STRING_1.size = 48;
+            TEXT_GETLIVES_STRING_1.string = "You have run out of extra lives!\nRestore them or wait\nuntil they recover.";
+            TEXT_GETLIVES_STRING_1.size = 32;
             
             TEXT_GETKEYS_STRING_1.string = "You need to buy\nsome keys for unclock!";
             TEXT_GETKEYS_STRING_1.size = 48;
@@ -1011,8 +1011,8 @@ void Options::changeLanguage()
             TEXT_RATE_STRING_4.string = "";
             TEXT_RATE_STRING_4.size = 48;
             
-            TEXT_GETLIVES_STRING_1.string = "Желаете купить\n экстра жизней?";
-            TEXT_GETLIVES_STRING_1.size = 48;
+            TEXT_GETLIVES_STRING_1.string = "У вас закончились экстра жизни!\nВосстановите их или подождите\nпока они восстановятся.";
+            TEXT_GETLIVES_STRING_1.size = 32;
             
             TEXT_GETCOINS_STRING_1.string = "Желаете купить\nнесколько монет?";
             TEXT_GETCOINS_STRING_1.size = 48;

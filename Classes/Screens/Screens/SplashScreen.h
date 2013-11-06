@@ -1,16 +1,11 @@
-#ifndef CONST_MODE_H
-#define CONST_MODE_H
+#ifndef CONST_SPLASHSCREEN2_H
+#define CONST_SPLASHSCREEN2_H
 
 #include "Screen.h"
 
-#include "ModeHelp.h"
-#include "UnlockMode.h"
-#include "TempPublisherRatingExplain.h"
-#include "TempPublisherAchievementsExplain.h"
-
 #include "AppDelegate.h"
 
-class Mode : public Screen
+class SplashScreen : public Screen
 {
     protected:
         // ===========================================================
@@ -25,43 +20,22 @@ class Mode : public Screen
         // Fields
         // ===========================================================
     
-        int mPanelItems[4];
+        int mAnimationCounter;
     
-        float mUnlockAnimationTimeElapsed;
+        bool mAnimation;
     
-        bool mUnlockAnimationRunning;
+        float mAnimationTime;
+        float mAnimationTimeElapsed;
     
-        Entity* mGamePanel;
-        Entity* mBackground;
-        Entity* mBackgroundDecorations[2];
-        Entity* mLockes[2];
-        Entity* mUnlockStripe;
-        Entity* mTextBackgrounds[4];
-        Entity* mIcons[4];
-        Button* mTextPluses[4];
-
-        Button* mBackButton;
-        Button* mHelpButton;
-        Button* mClassicMode;
-        Button* mArcadeMode;
-        Button* mProgressMode;
-        Button* mAchievementsButton;
-        Button* mLeaderboardButton;
-        Button* mShopButton;
-
-        Popup* mHelpPopup;
-        Popup* mLivesPopup;
-        Popup* mModesUnlockPopup;
-        Popup* mTempPublisherRatingExplain;
-        Popup* mTempPublisherAchievementsExplain;
+        Entity* mLogos[2];
     
-        Text* mTextText[4];
-
+        Screen* mNextScreen;
+    
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Mode();
+        SplashScreen();
 
         // ===========================================================
         // Methods
@@ -104,38 +78,31 @@ class Mode : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static int UNLOCK_ACTION;
-    
-        static int PRICES[2];
 
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        static Mode* create();
-    
-        ~Mode();
 
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        static SplashScreen* create();
+    
+        ~SplashScreen();
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void unlock();
-    
+        
         // ===========================================================
         // Override Methods
         // ===========================================================
     
-        void onTouchButtonsCallback(const int pAction, const int pID);
+        void onEnter();
+        void onExit();
     
         void update(float pDeltaTime);
-    
-        void onEnter();
 };
 
 #endif

@@ -17,6 +17,9 @@ class Icon8 : public Entity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        float mAnimationTime;
+        float mAnimationTimeElapsed;
 
         // ===========================================================
         // Constructors
@@ -88,6 +91,8 @@ class Icon8 : public Entity
 
         void onCreate();
         void onDestroy();
+    
+        void onAnimationEnd();
 };
 
 #endif

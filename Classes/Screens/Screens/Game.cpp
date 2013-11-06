@@ -1297,7 +1297,7 @@ void Game::update(float pDeltaTime)
 void Game::onEnter()
 {
     Screen::onEnter();
-
+    
     this->startGame();
 }
 

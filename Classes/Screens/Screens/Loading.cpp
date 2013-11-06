@@ -91,7 +91,7 @@ Loading::Loading() :
 		this->mLoading = false;
 		this->mLoadingProgress = false;
 
-		this->mLoadingPauseTime = 0;
+		this->mLoadingPauseTime = 1.0;
 		this->mLoadingPauseTimeElapsed = 0.0;
 	}
 

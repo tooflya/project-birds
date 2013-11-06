@@ -22,6 +22,11 @@
 Icon8::Icon8(const char* pTextureFileName, CCNode* pParent) :
     Entity(pTextureFileName, 3, 3, pParent)
     {
+        this->mAnimationTime = Utils::randomf(0, 5.0);
+        this->mAnimationTimeElapsed = 0;
+        
+        this->setStartFrame(0);
+        this->setFinishFrame(7);
     }
 
 Icon8* Icon8::create(const char* pTextureFileName, CCNode* pParent)
@@ -43,6 +48,23 @@ Icon8* Icon8::create(const char* pTextureFileName, CCNode* pParent)
 void Icon8::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
+    
+    this->mAnimationTimeElapsed += pDeltaTime;
+    
+    if(this->mAnimationTimeElapsed >= this->mAnimationTime)
+    {
+        this->animate(0.06, 1);
+        
+        this->mAnimationTime = Utils::randomf(0, 5.0);
+        this->mAnimationTimeElapsed = 0;
+    }
+}
+
+void Icon8::onAnimationEnd()
+{
+    Entity::onAnimationEnd();
+    
+    this->setCurrentFrameIndex(0);
 }
 
 void Icon8::onCreate()
