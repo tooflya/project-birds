@@ -235,6 +235,7 @@
 		78D358AE182A69BD001450F3 /* splash_logo_abs.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D358AC182A69BD001450F3 /* splash_logo_abs.png */; };
 		78D358AF182A69BD001450F3 /* splash_logo_tfl.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D358AD182A69BD001450F3 /* splash_logo_tfl.png */; };
 		78D358B5182A6A0E001450F3 /* SplashScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358B2182A6A0E001450F3 /* SplashScreen.cpp */; };
+		78D358B9182AB050001450F3 /* intro2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 78D358B8182AB050001450F3 /* intro2.mp4 */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -613,6 +614,7 @@
 		78D358AD182A69BD001450F3 /* splash_logo_tfl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_logo_tfl.png; sourceTree = "<group>"; };
 		78D358B2182A6A0E001450F3 /* SplashScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScreen.cpp; sourceTree = "<group>"; };
 		78D358B3182A6A0E001450F3 /* SplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreen.h; sourceTree = "<group>"; };
+		78D358B8182AB050001450F3 /* intro2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro2.mp4; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1061,6 +1063,7 @@
 				783E885D17C20CEC00FD49C1 /* Shaders */,
 				783E885617C20CEB00FD49C1 /* Info.plist */,
 				783E885717C20CEB00FD49C1 /* intro.mp4 */,
+				78D358B8182AB050001450F3 /* intro2.mp4 */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -1328,6 +1331,7 @@
 				78D358951821670D001450F3 /* gem5.mp3 in Resources */,
 				78397AE51807029200C999E7 /* Icon-120-ios7.png in Resources */,
 				78397AEC1807032400C999E7 /* Icon-100-ios6.png in Resources */,
+				78D358B9182AB050001450F3 /* intro2.mp4 in Resources */,
 				78397AE31807029200C999E7 /* Icon-76-ios7.png in Resources */,
 				7836548F180C5ED100AA9432 /* TextureAtlas10.plist in Resources */,
 				78582AE117BBD91A00C96267 /* Default.png in Resources */,

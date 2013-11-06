@@ -144,6 +144,33 @@ void GetLives::update(float pDeltaTime)
         
         light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
     }
+    
+    if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
+    {
+        long time = (AppDelegate::getLiveNearestReleaseTime(0) + (30 * 60 * 1000) - Utils::millisecondNow());
+        
+        int minutes = floor((time / 1000) / 60);
+        long seconds = (time / 1000) - (minutes * 60);
+        
+        char text[256];
+        
+        sprintf(text, "%d:%lu", minutes, seconds);
+        
+        if(minutes < 10)
+        {
+            sprintf(text, "0%d:%lu", minutes, seconds);
+        }
+        if(seconds < 10)
+        {
+            sprintf(text, "%d:0%lu", minutes, seconds);
+        }
+        if(minutes < 10 && seconds < 10)
+        {
+            sprintf(text, "0%d:0%lu", minutes, seconds);
+        }
+        
+        this->mExpireTimeText->setString(text);
+    }
 }
 
 void GetLives::onShow()
@@ -162,17 +189,9 @@ void GetLives::onHide()
     
     switch(this->mPurchaseId)
     {
-        case -1:
-            
-            Game* game = dynamic_cast<Game*>(this->mParent);
-            
-            if(game != 0)
-            {
-                
-            }
-        break;
         case 4:
         case 5:
+        {
         Shop* shop = dynamic_cast<Shop*>(this->mParent);
         
         Shop::PURCHASE_ID = this->mPurchaseId;
@@ -212,6 +231,22 @@ void GetLives::onHide()
                 }
             }
         }
+        }
+        break;
+        case -1:
+        {
+            if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) > 0) break;
+            
+            Game* game = dynamic_cast<Game*>(this->mParent);
+            
+            if(game != 0)
+            {
+                Shop::ACTION = 11;
+                Loader::ACTION = 5;
+                
+                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+            }
+        }
         break;
     }
 }
@@ -231,10 +266,10 @@ void GetLives::show()
     {
         this->mExpireTimeText->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
     }
-    else
+    /*else
     {
-        this->mExpireTimeText->setString("17:56");
-    }
+        this->mExpireTimeText->setString(ccsf("%d", AppDelegate::getLiveNearestReleaseTime(0)));
+    }*/
 }
 
 void GetLives::hide()

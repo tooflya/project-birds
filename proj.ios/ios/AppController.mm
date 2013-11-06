@@ -133,7 +133,7 @@ int g_iPlayVideoState=0;
     NSLog(@"PlayVideo start");
     
     NSString *url = [[NSBundle mainBundle]
-                     pathForResource:@"intro"
+                     pathForResource:@"intro2"
                      ofType:@"mp4"];
     
     MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:url]];

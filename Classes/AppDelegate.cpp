@@ -49,10 +49,49 @@ void AppDelegate::removeCoins(int pCount, int pType)
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[pType], newCoinsCount);
 
     CCUserDefault::sharedUserDefault()->flush();
+    
+    if(pType == Options::SAVE_DATA_COINS_TYPE_LIVES)
+    {
+        int index = 4;
+        
+        while(index >= 0)
+        {
+            if(AppDelegate::isLiveRestoring(index))
+            {
+                index--;
+            }
+            else
+            {
+                AppDelegate::setLivesMustRestore(index, true);
+                
+                index = -1;
+            }
+        }
+    }
 }
 
 int AppDelegate::getCoins(int pType)
 {
+    if(pType == Options::SAVE_DATA_COINS_TYPE_LIVES)
+    {
+        int index = 4;
+        
+        while(index > -1)
+        {
+            if(AppDelegate::isLiveRestoring(index))
+            {
+                if(Utils::millisecondNow() - AppDelegate::getLivesRestoreTime(index) >= (30 * 60 * 1000))
+                {
+                    AppDelegate::setLivesMustRestore(index, false);
+                    
+                    AppDelegate::addCoins(1, pType);
+                }
+            }
+            
+            index--;
+        }
+    }
+    
     return CCUserDefault::sharedUserDefault()->getIntegerForKey(Options::SAVE_DATA_COINS_ID[pType]);
 } 
 
@@ -103,6 +142,18 @@ void AppDelegate::install(bool soft)
 
     CCUserDefault::sharedUserDefault()->setBoolForKey("mode_0_unlocked", false);
     CCUserDefault::sharedUserDefault()->setBoolForKey("mode_1_unlocked", false);
+    
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restoring", false);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restoring", false);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restoring", false);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restoring", false);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restoring", false);
+    
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restore_time", 0);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restore_time", 0);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restore_time", 0);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restore_time", 0);
+    CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restore_time", 0);
     
     int id = -1;
     for(int i = 1; i < 4; i++)
@@ -354,7 +405,66 @@ void AppDelegate::setModeUnlocked(int pId)
     
     sprintf(text, "mode_%d_unlocked", pId);
     
-    return CCUserDefault::sharedUserDefault()->setBoolForKey(text, true);
+    CCUserDefault::sharedUserDefault()->setBoolForKey(text, true);
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+void AppDelegate::setLivesMustRestore(int pIndex, bool pMust)
+{
+    char text[64];
+    
+    sprintf(text, "live_%d_restore_time", pIndex);
+    
+    if(pMust)
+    {
+        CCUserDefault::sharedUserDefault()->setIntegerForKey(text, Utils::millisecondNow());
+        sprintf(text, "live_%d_restoring", pIndex);
+        CCUserDefault::sharedUserDefault()->setBoolForKey(text, true);
+    }
+    else
+    {
+        CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 0);
+        sprintf(text, "live_%d_restoring", pIndex);
+        CCUserDefault::sharedUserDefault()->setBoolForKey(text, false);
+    }
+    
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+int AppDelegate::getLivesRestoreTime(int pIndex)
+{
+    char text[64];
+
+    sprintf(text, "live_%d_restore_time", pIndex);
+
+    int t = CCUserDefault::sharedUserDefault()->getIntegerForKey(text);
+    /**sprintf(text, "live_%d_restoring", pIndex);
+    CCUserDefault::sharedUserDefault()->setBoolForKey(text, false);*/
+    return t;
+}
+
+bool AppDelegate::isLiveRestoring(int pIndex)
+{
+    char text[64];
+    
+    sprintf(text, "live_%d_restoring", pIndex);
+    
+    return CCUserDefault::sharedUserDefault()->getBoolForKey(text);
+}
+
+int AppDelegate::getLiveNearestReleaseTime(int pIndex)
+{
+    int index = 4;
+    
+    while(index >= 0)
+    {
+        if(AppDelegate::isLiveRestoring(index))
+        {
+            return getLivesRestoreTime(index);
+        }
+    }
+    
+    return -1;
 }
 
 // ===========================================================

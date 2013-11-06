@@ -117,6 +117,8 @@ Menu::Menu() :
         this->mTutorial->setRotation(-45);
         this->mTutorial->setScale(0.5);
         this->mTutorial->setCenterPosition(this->mShopButton->getCenterX() + Utils::coord(40), this->mShopButton->getCenterY() - Utils::coord(50));*/
+        
+        t1 = Text::create((Textes) {"", Options::FONT, 100, -1}, this);
 	}
 
 Menu* Menu::create()
@@ -147,8 +149,9 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
                 case Options::BUTTONS_ID_MENU_PLAY:
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    AppDelegate::removeCoins(1, Options::SAVE_DATA_COINS_TYPE_LIVES);
+                    t1->setString(ccsf("%d\n%d\n%d\n%d\n%d", AppDelegate::getLivesRestoreTime(0),AppDelegate::getLivesRestoreTime(1),AppDelegate::getLivesRestoreTime(2),AppDelegate::getLivesRestoreTime(3),AppDelegate::getLivesRestoreTime(4)));
+                    //AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
 
                 break;
                 case Options::BUTTONS_ID_MENU_SETTINGS:
@@ -215,6 +218,8 @@ void Menu::onEnter()
         this->mVkButton->setVisible(false);
         this->mFacebookButton->setVisible(true);
     }
+    
+    t1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 }
 
 void Menu::onExit()

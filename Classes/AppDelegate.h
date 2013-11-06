@@ -162,6 +162,11 @@ class AppDelegate : private CCApplication
     
         static bool tempPublisherInAppInformationShowed();
     
+        static void setLivesMustRestore(int pIndex, bool pMust);
+        static int getLivesRestoreTime(int pIndex);
+        static bool isLiveRestoring(int pIndex);
+        static int getLiveNearestReleaseTime(int pIndex);
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

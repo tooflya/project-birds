@@ -901,7 +901,29 @@ void Shop::update(float pDeltaTime)
     
     if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
     {
-        this->mTextText[2]->setString("10:00");
+        long time = (AppDelegate::getLiveNearestReleaseTime(0) + (30 * 60 * 1000) - Utils::millisecondNow());
+
+        int minutes = floor((time / 1000) / 60);
+        long seconds = (time / 1000) - (minutes * 60);
+
+        char text[256];
+
+        sprintf(text, "%d:%lu", minutes, seconds);
+
+        if(minutes < 10)
+        {
+            sprintf(text, "0%d:%lu", minutes, seconds);
+        }
+        if(seconds < 10)
+        {
+            sprintf(text, "%d:0%lu", minutes, seconds);
+        }
+        if(minutes < 10 && seconds < 10)
+        {
+            sprintf(text, "0%d:0%lu", minutes, seconds);
+        }
+
+        this->mTextText[2]->setString(text);
         this->mTextText[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2 - this->mTextText[2]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[2]->getCenterY());
     }
 }
