@@ -246,6 +246,8 @@ void Arcade::onTouchButtonsCallback(const int pAction, const int pID)
 
 void Arcade::startGame()
 {
+    this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
+    
     if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
     {
         this->mGetLivesPopup->show();
@@ -256,8 +258,6 @@ void Arcade::startGame()
     Game::startGame();
 
     this->mTimeIcon->start();
-    
-    this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
     
     Game::HEALTH = 1;
 }

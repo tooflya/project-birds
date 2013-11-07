@@ -236,6 +236,8 @@
 		78D358AF182A69BD001450F3 /* splash_logo_tfl.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D358AD182A69BD001450F3 /* splash_logo_tfl.png */; };
 		78D358B5182A6A0E001450F3 /* SplashScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358B2182A6A0E001450F3 /* SplashScreen.cpp */; };
 		78D358B9182AB050001450F3 /* intro2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 78D358B8182AB050001450F3 /* intro2.mp4 */; };
+		78D358BC182B9342001450F3 /* TextureAtlas17.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D358BA182B9342001450F3 /* TextureAtlas17.plist */; };
+		78D358BD182B9342001450F3 /* TextureAtlas17.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78D358BB182B9342001450F3 /* TextureAtlas17.pvr.ccz */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -615,6 +617,8 @@
 		78D358B2182A6A0E001450F3 /* SplashScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScreen.cpp; sourceTree = "<group>"; };
 		78D358B3182A6A0E001450F3 /* SplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreen.h; sourceTree = "<group>"; };
 		78D358B8182AB050001450F3 /* intro2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro2.mp4; sourceTree = "<group>"; };
+		78D358BA182B9342001450F3 /* TextureAtlas17.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas17.plist; sourceTree = "<group>"; };
+		78D358BB182B9342001450F3 /* TextureAtlas17.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas17.pvr.ccz; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -712,6 +716,8 @@
 		78365443180C5ED100AA9432 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				78D358BA182B9342001450F3 /* TextureAtlas17.plist */,
+				78D358BB182B9342001450F3 /* TextureAtlas17.pvr.ccz */,
 				78D358AC182A69BD001450F3 /* splash_logo_abs.png */,
 				78D358AD182A69BD001450F3 /* splash_logo_tfl.png */,
 				78D358A5182A3DDD001450F3 /* TextureAtlas16.plist */,
@@ -1338,6 +1344,7 @@
 				78582AE317BBD92400C96267 /* Default@2x.png in Resources */,
 				78D358A8182A3DDD001450F3 /* TextureAtlas16.pvr.ccz in Resources */,
 				78D358AF182A69BD001450F3 /* splash_logo_tfl.png in Resources */,
+				78D358BD182B9342001450F3 /* TextureAtlas17.pvr.ccz in Resources */,
 				78582AE517BBD92D00C96267 /* Default-568h@2x.png in Resources */,
 				78582AE717BBD93700C96267 /* Default-Landscape~ipad.png in Resources */,
 				78397AE8180702D100C999E7 /* Icon-58-ios6.png in Resources */,
@@ -1353,6 +1360,7 @@
 				78D358911821670D001450F3 /* gem1.wav in Resources */,
 				78397ADF1807029200C999E7 /* Icon-29-ios6.png in Resources */,
 				78582AED17BBD94500C96267 /* Default-Portrait@2x~ipad.png in Resources */,
+				78D358BC182B9342001450F3 /* TextureAtlas17.plist in Resources */,
 				783E88DB17C20CEC00FD49C1 /* Comic Sans MS.ttf in Resources */,
 				7836548C180C5ED100AA9432 /* more_games_list@2x.png in Resources */,
 				783654AA180C5ED100AA9432 /* wep_11@2x.png in Resources */,

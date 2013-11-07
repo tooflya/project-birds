@@ -28,8 +28,6 @@ class Menu : public Screen
         // Fields
         // ===========================================================
     
-        Text* t1;
-    
         Entity* mTutorial;
     
         Entity* mBackground;

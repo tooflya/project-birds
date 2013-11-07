@@ -97,6 +97,8 @@ class Progresses : public Game
         ~Progresses();
     
         EntityManager* mColorsParticles;
+        EntityManager* mColorEffectClearHorizontal;
+        EntityManager* mColorEffectClearVertical;
 
         // ===========================================================
         // Constructors

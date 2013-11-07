@@ -169,7 +169,18 @@ void GetLives::update(float pDeltaTime)
             sprintf(text, "0%d:0%lu", minutes, seconds);
         }
         
-        this->mExpireTimeText->setString(text);
+        if(minutes <= 0 && seconds <= 0)
+        {
+            this->mExpireTimeText->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
+        }
+        else
+        {
+            this->mExpireTimeText->setString(text);
+        }
+    }
+    else
+    {
+        this->mExpireTimeText->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
     }
 }
 

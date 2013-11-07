@@ -455,16 +455,22 @@ bool AppDelegate::isLiveRestoring(int pIndex)
 int AppDelegate::getLiveNearestReleaseTime(int pIndex)
 {
     int index = 4;
+    int time = INT_MAX;
     
     while(index >= 0)
     {
         if(AppDelegate::isLiveRestoring(index))
         {
-            return getLivesRestoreTime(index);
+            if(getLivesRestoreTime(index) < time)
+            {
+                time = getLivesRestoreTime(index);
+            }
         }
+        
+        index--;
     }
     
-    return -1;
+    return time;
 }
 
 // ===========================================================

@@ -485,6 +485,7 @@ void Options::init()
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 
     CCDictionary* pConfInfo = CCDictionary::createWithContentsOfFile("Info.plist");
+    pConfInfo->retain(); // It's really need?
     Options::BUILD = pConfInfo->valueForKey("CFBundleVersion")->intValue();
 
     #endif

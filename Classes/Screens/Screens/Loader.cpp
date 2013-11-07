@@ -34,7 +34,7 @@ const char* Loader::WEAPON_TEXTURE[11] =
 };
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-TextureStructure Loader::TEXTURE_LIBRARY[10] =
+TextureStructure Loader::TEXTURE_LIBRARY[11] =
 {
 	{"TextureAtlas16.png", "TextureAtlas16.plist"},
     {"TextureAtlas6.png", "TextureAtlas6.plist"},
@@ -45,10 +45,11 @@ TextureStructure Loader::TEXTURE_LIBRARY[10] =
     {"TextureAtlas11.png", "TextureAtlas11.plist"},
     {"TextureAtlas12.png", "TextureAtlas12.plist"},
     {"TextureAtlas14.png", "TextureAtlas14.plist"},
+	{"TextureAtlas17.png", "TextureAtlas17.plist"},
     {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
 #else
-TextureStructure Loader::TEXTURE_LIBRARY[10] =
+TextureStructure Loader::TEXTURE_LIBRARY[11] =
 {
 	{"TextureAtlas16.pvr.ccz", "TextureAtlas16.plist"},
     {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
@@ -59,6 +60,7 @@ TextureStructure Loader::TEXTURE_LIBRARY[10] =
     {"TextureAtlas11.pvr.ccz", "TextureAtlas11.plist"},
     {"TextureAtlas12.pvr.ccz", "TextureAtlas12.plist"},
     {"TextureAtlas14.pvr.ccz", "TextureAtlas14.plist"},
+    {"TextureAtlas17.pvr.ccz", "TextureAtlas17.plist"},
     {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
 #endif

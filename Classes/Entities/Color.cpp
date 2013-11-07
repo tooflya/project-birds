@@ -27,7 +27,7 @@ bool Color::ANIMATION_RUNNING = false;
 // ===========================================================
 
 Color::Color() :
-    Entity("colors@2x.png", 7, 1),
+    Entity("colors@2x.png", 7, 3),
 	position(0),
 	mType(0),
 	mGoingToDestroy(0),
@@ -44,10 +44,13 @@ Color::Color() :
 	mBlinkTimeElapsed(0),
 	mBlinking(0),
 	mBlink(0),
-	mPowerText(0)
+	mPowerText(0),
+    mIsSoftAnimationRunning(0)
     {
         this->mBlink = NULL;
         this->mPowerText = NULL;
+        
+        this->mIsSoftAnimationRunning = false;
     }
 
 Color* Color::create()
@@ -61,6 +64,16 @@ Color* Color::create()
 // ===========================================================
 // Methods
 // ===========================================================
+
+int Color::getCurrentFrameIndex()
+{
+    int index = Entity::getCurrentFrameIndex();
+    
+    if(index > 6) return (index - 7);
+    if(index > 13) return (index - 14);
+    
+    return index; // TODO: Some problems here!
+}
 
 void Color::setCenterPositionWithCorrection(float pCenterX, float pCenterY)
 {
@@ -151,13 +164,63 @@ void Color::runDestroy()
     {
         Entity* particle = static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorsParticles->create();
         
-        particle->setCenterPosition(this->getCenterX(), this->getCenterY());
-        particle->setColor(Bird::COLORS[this->getCurrentFrameIndex()]);
+        if(particle != NULL)
+        {
+            particle->setCenterPosition(this->getCenterX(), this->getCenterY());
+            particle->setColor(Bird::COLORS[this->getCurrentFrameIndex()]);
+        }
     }
     
     if(Options::SOUND_ENABLE)
     {
         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_GEM[SOUND_INDEX]);
+    }
+    
+    // Special
+    
+    if(Entity::getCurrentFrameIndex() > 6 && Entity::getCurrentFrameIndex() < 14)
+    {
+        static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorEffectClearVertical->clear();
+        
+        Entity* line = static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorEffectClearVertical->create();
+        
+        line->setCenterPosition(this->getCenterX(), this->getCenterY());
+        line->runAction(CCScaleTo::create(0.8, 1, 100));
+        line->runAction(CCFadeOut::create(0.8));
+        
+        for(int i = 0; i < static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->getCount(); i++)
+        {
+            Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
+            
+            if(color->position_in_matrtix_x == this->position_in_matrtix_x && (color->position_in_matrtix_y != this->position_in_matrtix_y))
+            {
+                color->runDestroy();
+                
+                Game::MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
+            }
+        }
+    }
+    else if(Entity::getCurrentFrameIndex() > 13)
+    {
+        static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorEffectClearHorizontal->clear();
+        
+        Entity* line = static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorEffectClearHorizontal->create();
+        
+        line->setCenterPosition(this->getCenterX(), this->getCenterY());
+        line->runAction(CCScaleTo::create(0.8, 100, 1));
+        line->runAction(CCFadeOut::create(0.8));
+        
+        for(int i = 0; i < static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->getCount(); i++)
+        {
+            Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
+            
+            if(color->position_in_matrtix_y == this->position_in_matrtix_y && (color->position_in_matrtix_x != this->position_in_matrtix_x))
+            {
+                color->runDestroy();
+                
+                Game::MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
+            }
+        }
     }
 }
 
@@ -181,28 +244,35 @@ void Color::down()
 void Color::onCreate()
 {
     Entity::onCreate();
+
+    this->mIsSoftAnimationTime = 0.1;
+    this->mIsSoftAnimationTimeElapsed = 0.1; // TODO: Do something with it!
     
+    this->mIsSoftAnimationRunning = false;
+
+    this->mIsSoftAnimationCounter = 0;
+
     this->d = false;
     this->mBlinking = false;
-    
+
     this->mPower = 1;
-    
+
     this->mBlinkTime = Utils::randomf(1.0, 6.0);
     this->mBlinkTimeElapsed = 0;
-    
+
     this->setScale(0.1);
     this->mGoingToDestroy = false;
-    
+
     this->mct = 0.5;
     this->mcte = 0;
     this->mc = false;
-    
+
     this->position = 0;
-    
+
     this->mBlink = static_cast<Game*>(this->getParent()->getParent()->getParent())->mColorsBlink->create();
     this->mBlink->animate(0.1);
     this->mBlink->setOpacity(0);
-    
+
     if(this->mPowerText == NULL)
     {
 		Textes textes1 = {"+", Options::FONT, 20, -1};
@@ -210,9 +280,9 @@ void Color::onCreate()
         this->mPowerText = Text::create(textes1, this->getParent()->getParent()->getParent());
         this->mPowerText->setColor(ccc3(0, 255, 0));
     }
-    
+
     this->mPowerText->setVisible(false);
-    
+
     this->runAction(CCScaleTo::create(0.5, 1));
 }
 
@@ -232,6 +302,28 @@ void Color::onDestroy()
 void Color::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
+    
+    if(this->mIsSoftAnimationRunning)
+    {
+        this->mIsSoftAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mIsSoftAnimationTimeElapsed >= this->mIsSoftAnimationTime)
+        {
+            this->mIsSoftAnimationTimeElapsed = 0;
+            
+            switch(++this->mIsSoftAnimationCounter)
+            {
+                case 1:
+                this->runAction(CCScaleTo::create(this->mIsSoftAnimationTime, 1.0, 0.9));
+                break;
+                case 2:
+                this->runAction(CCScaleTo::create(this->mIsSoftAnimationTime, 1.0, 1.0));
+                    
+                this->mIsSoftAnimationRunning = false;
+                break;
+            }
+        }
+    }
     
     if(this->mBlinking)
     {
@@ -281,6 +373,8 @@ void Color::update(float pDeltaTime)
             {
                 SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_MISS);
             }
+            
+            this->mIsSoftAnimationRunning = true;
         }
     }
     if(this->mGoingToDestroy)

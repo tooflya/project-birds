@@ -162,6 +162,7 @@ class Game : public Screen
         Button* mGoldLifeButton;
         Entity* e3[4];
         Entity* e4[8];
+        Entity* e5;
     
         PirateBox* mPirateBox;
     

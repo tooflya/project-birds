@@ -183,7 +183,7 @@ class Entity : public CCSprite, public Touchable
         int getEntityManagerId();
         int hasEntityManager();
 
-        int getCurrentFrameIndex();
+        virtual int getCurrentFrameIndex();
         
         float getWidth();
         float getHeight();

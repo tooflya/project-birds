@@ -196,6 +196,7 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
                 
             this->hide();
                     
+            Loader::ACTION = 5;
             Shop::ACTION = 0;
                     
             AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);

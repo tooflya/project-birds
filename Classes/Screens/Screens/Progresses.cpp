@@ -121,6 +121,8 @@ Progresses::~Progresses()
 {
     CC_SAFE_RELEASE(this->mColors);
     CC_SAFE_RELEASE(this->mColorsParticles);
+    CC_SAFE_RELEASE(this->mColorEffectClearVertical);
+    CC_SAFE_RELEASE(this->mColorEffectClearHorizontal);
 }
 
 Progresses::Progresses() :
@@ -130,7 +132,9 @@ Progresses::Progresses() :
 	mTimeText(0),
 	mStarTimeText(0),
 	mTaskText(),
-	mColorsSmall(0),
+    mColorsSmall(0),
+    mColorEffectClearVertical(0),
+    mColorEffectClearHorizontal(0),
 	mTasksBackground(0)
     {
         Loader::TYPE = 3;
@@ -148,6 +152,7 @@ Progresses::Progresses() :
 		SpriteBatch* spriteBatch6 = SpriteBatch::create("TextureAtlas6");
 		SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas14");
 		SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
+        SpriteBatch* spriteBatch17 = SpriteBatch::create("TextureAtlas17");
 		this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
 		this->spriteBatch99->retain();
 
@@ -165,6 +170,9 @@ Progresses::Progresses() :
 		this->mGameLayer->addChild(spriteBatch4);
 		this->mGameLayer->addChild(spriteBatch5);
 		this->mMenuLayer->addChild(spriteBatch8);
+        this->mMenuLayer->addChild(spriteBatch17);
+        
+        this->e5 = Entity::create("board_migalka@2x.png", spriteBatch17);
     
 		this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
     
@@ -257,6 +265,8 @@ Progresses::Progresses() :
 		this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
 		this->mColors = EntityManager::create(300, Color::create(), spriteBatch2); // TO MUCH NUMBER!!!
         this->mColorsParticles = EntityManager::create(3000, ColorParticle::create(), spriteBatch2); // TO MUCH NUMBER!!!
+        this->mColorEffectClearVertical = EntityManager::create(3, Entity::create("colors_vertical_line@2x.png"), spriteBatch8);
+        this->mColorEffectClearHorizontal = EntityManager::create(3, Entity::create("colors_horizontal_line@2x.png"), spriteBatch8);
 		this->mColorsBlink = EntityManager::create(100, Entity::create("egg light.png", 9, 1), spriteBatch2);
 		this->mTasksBackground = EntityManager::create(10, Entity::create("task-background@2x.png"), spriteBatch8);
 		this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 7, 1), spriteBatch8);
@@ -683,15 +693,17 @@ void Progresses::onShow()
     
     this->mTimeText->setString("0:00");
     this->mStarTimeText->setString("0:00");
-    
+
     this->mColors->clear();
     this->mSchematicBig->clear();
     this->mSchematicSmall->clear();
     this->mTasksBackground->clear();
     this->mColorsSmall->clear();
-    
+
     this->mTaskDone = false;
-    
+
+    this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
+
     if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
     {
         this->mGetLivesPopup->show();

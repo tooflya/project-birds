@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TextureAtlas6.pvr.ccz</filename>
+        <filename>TextureAtlas17.pvr.ccz</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>TextureAtlas6.plist</filename>
+        <filename>TextureAtlas17.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,26 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/bg_light_1.png</filename>
-            <filename>../../Graphics Sources/bg_light_main@2x.png</filename>
-            <filename>../../Graphics Sources/bonus-animation@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_game_life@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_pause@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_plus@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_textbox@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_counter_best@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_counter@2x.png</filename>
-            <filename>../../Graphics Sources/bonus_pirat_hat@2x.png</filename>
-            <filename>../../Graphics Sources/bonus_amigo_hat@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_time_star@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_time@2x.png</filename>
-            <filename>../../Graphics Sources/task-background@2x.png</filename>
-            <filename>../../Graphics Sources/colors_small@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel_shoot_count@2x.png</filename>
-            <filename>../../Graphics Sources/colors_horizontal_line@2x.png</filename>
-            <filename>../../Graphics Sources/colors_vertical_line@2x.png</filename>
+            <filename>../../Graphics Sources/board_migalka@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

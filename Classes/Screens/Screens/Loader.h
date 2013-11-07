@@ -99,7 +99,7 @@ class Loader : public Screen
         static int TYPE;
         static int T;
     
-        static TextureStructure TEXTURE_LIBRARY[10];
+        static TextureStructure TEXTURE_LIBRARY[11];
         static const char* WEAPON_TEXTURE[11];
 
         // ===========================================================

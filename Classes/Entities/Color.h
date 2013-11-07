@@ -100,6 +100,12 @@ class Color : public Entity
         float mBlinkTimeElapsed;
     
         bool mBlinking;
+        bool mIsSoftAnimationRunning;
+    
+        float mIsSoftAnimationTime;
+        float mIsSoftAnimationTimeElapsed;
+    
+        int mIsSoftAnimationCounter;
     
         Entity* mBlink;
     
@@ -119,7 +125,9 @@ class Color : public Entity
     
         void runDestroy();
     
-		void down();
+        void down();
+    
+        int getCurrentFrameIndex();
     
         // ===========================================================
         // Override Methods

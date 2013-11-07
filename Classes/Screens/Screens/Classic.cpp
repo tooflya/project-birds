@@ -61,6 +61,7 @@ Classic::Classic() :
         SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas14");
         SpriteBatch* spriteBatch8 = SpriteBatch::create("TextureAtlas6");
         SpriteBatch* spriteBatch9 = SpriteBatch::create("TextureAtlas12");
+        SpriteBatch* spriteBatch17 = SpriteBatch::create("TextureAtlas17");
         this->spriteBatch99 = SpriteBatch::create("TextureAtlas9");
         this->spriteBatch99->retain();
 
@@ -79,6 +80,9 @@ Classic::Classic() :
         this->mGameLayer->addChild(spriteBatch5);
         this->mGameLayer->addChild(spriteBatch9);
         this->mMenuLayer->addChild(spriteBatch8);
+        this->mMenuLayer->addChild(spriteBatch17);
+        
+        this->e5 = Entity::create("board_migalka@2x.png", spriteBatch17);
         
         this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
         
@@ -331,6 +335,8 @@ void Classic::onTouchButtonsCallback(const int pAction, const int pID)
 
 void Classic::startGame()
 {
+    this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
+    
     if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
     {
         this->mGetLivesPopup->show();
@@ -339,8 +345,6 @@ void Classic::startGame()
     }
     
     Game::startGame();
-    
-    this->mGoldLifesCount->setString(ccsf("%d", AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES)));
     
     this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;

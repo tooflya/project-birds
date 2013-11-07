@@ -300,6 +300,11 @@ Game* Game::create()
 
 void Game::startGame()
 {
+    ZOMBIE_AREA = false;
+    
+    this->e5->stopAllActions();
+    this->e5->setOpacity(0);
+    
     CURRENT_COUNT = 0;
     RECORD_BEATEAN = 0;
 
@@ -583,11 +588,27 @@ void Game::onBonus(int pId, float pX, float pY)
             //this->runAction(CCShaky3D::create(50, CCSizeMake(15, 10), 1, true));
         break;
         case 5:
+        {
             this->mGeneralExplosions->create()->setCenterPosition(pX, pY);
             
             this->mEventPanel->setEvent(66)->show();
+            
+            if(this->e5->isVisible()) this->e5->destroy();
+            
+            this->e5->stopAllActions();
+            this->e5->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+            this->e5->setOpacity(0);
+            
+            CCFadeTo *fadeIn = CCFadeTo::create(0.5, 127);
+            CCFadeTo *fadeOut = CCFadeTo::create(0.5, 255);
+            
+            CCSequence *pulseSequence = CCSequence::create(fadeIn, fadeOut);
+            CCRepeatForever *repeat = CCRepeatForever::create(pulseSequence);
+            this->runAction(repeat);
+        }
         break;
         case 6:
+        {
             this->mZombieAnimation = true;
             
             this->mEventPanel->setEvent(67)->show();
@@ -601,6 +622,15 @@ void Game::onBonus(int pId, float pX, float pY)
             this->mZombieAnimationY = pY;
             
             ZOMBIE_AREA = true;
+            
+            if(this->e5->isVisible()) this->e5->destroy();
+            
+            this->e5->stopAllActions();
+            this->e5->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+            this->e5->setOpacity(0);
+            
+            this->e5->runAction(CCRepeatForever::create(CCSequence::create(CCFadeTo::create(0.5, 50), CCFadeTo::create(0.5, 150), NULL)));
+        }
         break;
     }
     
@@ -659,13 +689,34 @@ bool Game::deepFind(int x, int y, int index, bool recursive, CCObject* pOptional
                 Color::SOUND_INDEX++;
             }
             
+            bool isHaveSpecial = false;
+            
             for(int i = 0; i < array->count(); i++)
             {
                 Color* color = static_cast<Color*>(array->objectAtIndex(i));
                 
-                color->runDestroy();
+                if(color->getCurrentFrameIndex() > 6)
+                {
+                    isHaveSpecial = true;
+                    
+                    break;
+                }
+            }
+            
+            for(int i = 0; i < array->count(); i++)
+            {
+                Color* color = static_cast<Color*>(array->objectAtIndex(i));
                 
-                MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
+                if(i == 0 && array->count() >= 4 && !isHaveSpecial)
+                {
+                    color->setCurrentFrameIndex(color->getCurrentFrameIndex() + (Utils::probably(50) ? 7 : 14));
+                }
+                else
+                {
+                    color->runDestroy();
+                
+                    MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
+                }
                 
                 Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
             }
@@ -807,6 +858,9 @@ void Game::update(float pDeltaTime)
                 this->mZombieAnimation = false;
                 
                 ZOMBIE_AREA = false;
+                
+                this->e5->stopAllActions();
+                this->e5->runAction(CCFadeTo::create(0.5, 0));
             }
         }
     }

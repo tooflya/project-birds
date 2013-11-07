@@ -339,7 +339,7 @@ Shop::Shop() :
 		this->mTextBackgrounds[3] = Entity::create("shop_panel_textbox@2x.png", this->mSpriteBatch2);
 
 		this->mTextBackgrounds[1]->setScaleX(0.9);
-		this->mTextBackgrounds[2]->setScaleX(0.8);
+		this->mTextBackgrounds[2]->setScaleX(1.0);
 		this->mTextBackgrounds[3]->setScaleX(0.8);
 
 		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
@@ -356,7 +356,7 @@ Shop::Shop() :
 		this->mTextPluses[1] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_LIVES, this);
 		this->mTextPluses[2] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
 		this->mTextPluses[3] = Button::create(structure1, this->mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
-    
+
 		this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, this->mSpriteBatch2);
 		this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, this->mSpriteBatch2);
 		this->mIcons[2] = Icon8::create("game_panel_goldlife@2x.png", this->mSpriteBatch2);
@@ -371,10 +371,10 @@ Shop::Shop() :
     
 		this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
-		this->mTextBackgrounds[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getWidth() / 2 + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextBackgrounds[1]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextBackgrounds[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextBackgrounds[3]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidth() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getWidthScaled() / 2 + Utils::coord(15), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[1]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() + Utils::coord(25), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() + Utils::coord(55), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextBackgrounds[3]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() + Utils::coord(35), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
 		this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
 		this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
@@ -724,12 +724,36 @@ void Shop::onPurchase(bool pProceed)
                 this->mIsAnimationPurchaseTimeEpisode = 0.1;
                 
                 AppDelegate::addCoins(5 - AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES), Options::SAVE_DATA_COINS_TYPE_LIVES);
+                
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restoring", false); // TODO: Transfer it to the own method;
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restoring", false);
+                
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restore_time", 0);
             break;
             case 5:
                 this->mIsAnimationPurchaseTime = 5.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.05;
                 
                 AppDelegate::addCoins(5 - AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES), Options::SAVE_DATA_COINS_TYPE_LIVES);
+                
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restoring", false);
+                
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restore_time", 0);
             break;
             case 6:
                 this->mIsAnimationPurchaseTime = 3.0;

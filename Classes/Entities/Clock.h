@@ -90,7 +90,7 @@ class Clock : public CCNode
 
         void updateTime(float pDeltaTime);
         void pause();
-        
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
