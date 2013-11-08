@@ -91,7 +91,7 @@ class Levels : public Screen
         // Constants
         // ===========================================================
 
-        static const int LEVEL_PACKS_COUNT = 6;
+        static const int LEVEL_PACKS_COUNT = 5;
     
         static bool SHOULD_START_AFTER_UNLOCK;
     

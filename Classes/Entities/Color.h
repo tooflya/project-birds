@@ -128,6 +128,7 @@ class Color : public Entity
         void down();
     
         int getCurrentFrameIndex();
+        int getRealCurrentFrameIndex();
     
         // ===========================================================
         // Override Methods

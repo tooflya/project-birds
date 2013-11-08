@@ -75,6 +75,11 @@ int Color::getCurrentFrameIndex()
     return index; // TODO: Some problems here!
 }
 
+int Color::getRealCurrentFrameIndex()
+{
+    return Entity::getCurrentFrameIndex();
+}
+
 void Color::setCenterPositionWithCorrection(float pCenterX, float pCenterY)
 {
     int cpx = (pCenterX + Utils::coord(8)) / Utils::coord(64);
@@ -192,12 +197,17 @@ void Color::runDestroy()
         {
             Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
             
-            if(color->position_in_matrtix_x == this->position_in_matrtix_x && (color->position_in_matrtix_y != this->position_in_matrtix_y))
+            if(color->position_in_matrtix_x == this->position_in_matrtix_x && (color->position_in_matrtix_y != this->position_in_matrtix_y) && !color->mGoingToDestroy)
             {
                 color->runDestroy();
-                
-                Game::MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
+
+                Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
             }
+        }
+
+        if(Options::SOUND_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
         }
     }
     else if(Entity::getCurrentFrameIndex() > 13)
@@ -214,12 +224,17 @@ void Color::runDestroy()
         {
             Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
             
-            if(color->position_in_matrtix_y == this->position_in_matrtix_y && (color->position_in_matrtix_x != this->position_in_matrtix_x))
+            if(color->position_in_matrtix_y == this->position_in_matrtix_y && (color->position_in_matrtix_x != this->position_in_matrtix_x) && !color->mGoingToDestroy)
             {
                 color->runDestroy();
                 
-                Game::MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
+                Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
             }
+        }
+        
+        if(Options::SOUND_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
         }
     }
 }
@@ -245,7 +260,7 @@ void Color::onCreate()
 {
     Entity::onCreate();
 
-    this->mIsSoftAnimationTime = 0.1;
+    this->mIsSoftAnimationTime = 0.0; // TODO: Time?
     this->mIsSoftAnimationTimeElapsed = 0.1; // TODO: Do something with it!
     
     this->mIsSoftAnimationRunning = false;
@@ -297,6 +312,8 @@ void Color::onDestroy()
     }
     
     Entity::onDestroy();
+    
+    Game::MATRIX[this->position_in_matrtix_x][this->position_in_matrtix_y] = -1;
 }
 
 void Color::update(float pDeltaTime)

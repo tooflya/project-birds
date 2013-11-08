@@ -345,6 +345,7 @@ class Options
         static Textes TEXT_MAPDESCRIPTION_BOTTOM;
         static Textes TEXT_MAPDESCRIPTION_MIDDLE;
         static Textes TEXT_UNLOCKMODE;
+        static Textes TEXT_BONUS[12];
 
         // ===========================================================
         // Fields

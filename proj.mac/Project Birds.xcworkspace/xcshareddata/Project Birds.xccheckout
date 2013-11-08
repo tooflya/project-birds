@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B773EA3F-F294-4E96-9815-9526CB93E7A4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Project Birds</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>26EC9852-A6FE-4FC4-8D07-6B2314D9D34C</key>
+		<string>ssh://github.com/tooflya/project-birds.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proj.mac/Project Birds.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>26EC9852-A6FE-4FC4-8D07-6B2314D9D34C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/tooflya/project-birds.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>26EC9852-A6FE-4FC4-8D07-6B2314D9D34C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>26EC9852-A6FE-4FC4-8D07-6B2314D9D34C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>project-birds</string>
+		</dict>
+	</array>
+</dict>
+</plist>

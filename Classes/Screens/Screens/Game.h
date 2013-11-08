@@ -355,6 +355,8 @@ class Game : public Screen
         virtual void runChalange();
         virtual void stopChalange();
     
+        virtual void onMatch(int count, float a, float b);
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

@@ -31,12 +31,17 @@ class Progresses : public Game
         Text* mTimeText;
         Text* mStarTimeText;
         Text* mTaskText[5];
+        Text* mAwesomeText;
     
         EntityManager* mColorsSmall;
         EntityManager* mTasksBackground;
     
         float mNewColorsTime;
         float mNewColorsTimeElapsed;
+    
+        float mAwesoneAnimationTimeElapsed;
+    
+        bool mAwesoneAnimation;
     
         // ===========================================================
         // Constructors
@@ -133,6 +138,8 @@ class Progresses : public Game
         void removeLife();
     
         void onBonus(int pId, float pX, float pY);
+    
+        void onMatch(int count, float a, float b);
 };
 
 #endif

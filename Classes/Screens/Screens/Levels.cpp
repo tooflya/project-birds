@@ -395,7 +395,7 @@ class MainList : public CCLayer
             
             //ListLayer* a = new ListLayer();
 
-            for(int i = 1; i < Levels::LEVEL_PACKS_COUNT; i++)
+            for(int i = 1; i < Levels::LEVEL_PACKS_COUNT + 1; i++)
             {
                 this->mLayers[i] = CCLayer::create();
 
@@ -432,7 +432,7 @@ class MainList : public CCLayer
             //text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(390));
 
             this->mMinWidth = Options::CAMERA_CENTER_X / 2;
-            this->mMaxWidth = -Options::CAMERA_WIDTH * Levels::LEVEL_PACKS_COUNT + Options::CAMERA_WIDTH * 1.5;
+            this->mMaxWidth = -Options::CAMERA_WIDTH * Levels::LEVEL_PACKS_COUNT + Options::CAMERA_WIDTH * 1.5 - Utils::coord(60) * (Levels::LEVEL_PACKS_COUNT + 1);
 
             this->mPostUpdate = false;
         }
@@ -534,7 +534,7 @@ class MainList : public CCLayer
 
         float n = x;
 
-        while((int)n % (int)(Options::CAMERA_CENTER_X* 1.66) != 0)
+        while((int)n % (int)(Options::CAMERA_CENTER_X * 1.66 + Utils::coord(60)) != 0)
         {
             n += this->mLastDistanceX > 0 ? -1 : 1;
         }
@@ -545,27 +545,27 @@ class MainList : public CCLayer
 
 
         if(n < this->mMinWidth)
-         {
-         }
+        {
+        }
         else
-         {
+        {
             n = 0;
-         }
+        }
 
         if(n > this->mMaxWidth)
-         {
-         }
+        {
+        }
         else
-         {
+        {
             n = this->mMaxWidth + Options::CAMERA_CENTER_X * 0.7;
-         }
+        }
 
         for(int i = 0; i < Levels::LEVEL_PACKS_COUNT; i++)
         {
             this->mParent->mSlides[i]->setCurrentFrameIndex(0);
         }
         
-        int index = abs((int)n / (int)(Options::CAMERA_CENTER_X* 1.66));
+        int index = abs((int)n / (int)(Options::CAMERA_CENTER_X * 1.66));
 
         this->mParent->mSlides[index]->setCurrentFrameIndex(1);
 
@@ -578,7 +578,7 @@ class MainList : public CCLayer
             this->mParent->mSlidesArrows[0]->runAction(CCFadeTo::create(0.5, 255.0));
         }
 
-        if(index == Levels::LEVEL_PACKS_COUNT-1)
+        if(index == Levels::LEVEL_PACKS_COUNT - 1)
         {
             this->mParent->mSlidesArrows[1]->runAction(CCFadeTo::create(0.5, 0.0));
         }
@@ -586,7 +586,7 @@ class MainList : public CCLayer
         {
             this->mParent->mSlidesArrows[1]->runAction(CCFadeTo::create(0.5, 255.0));
         }
-        t= 0;
+        t = 0;
         this->runAction(CCMoveTo::create(this->mSpeedX, ccp(n, 0)));
     }
     float t;
@@ -594,9 +594,9 @@ class MainList : public CCLayer
     {
             for(int i = 0; i < Levels::LEVEL_PACKS_COUNT; i++)
             {
-                float rotation = (this->getPosition().x + this->mLayers[i]->getPosition().x) / 10.0;
-                float alpha = 255.0 - abs(this->getPosition().x + this->mLayers[i]->getPosition().x) / 1.0;
-                float scale = 1.0 - abs(this->getPosition().x + this->mLayers[i]->getPosition().x) / 500.0;
+                float rotation = 0;//(this->getPosition().x + this->mLayers[i]->getPosition().x) / 10.0;
+                float alpha = 255.0;// - abs(this->getPosition().x + this->mLayers[i]->getPosition().x) / 1.0;
+                float scale = 1.0;// - abs(this->getPosition().x + this->mLayers[i]->getPosition().x) / 500.0;
 
                 scale = scale > 1.0 ? 1.0 : scale;
                 scale = scale < 0.0 ? 0.0 : scale;
@@ -794,7 +794,7 @@ Levels::Levels() :
 		int id = 0;
     
 		int t = -1;
-		for(int o = 1; o < LEVEL_PACKS_COUNT; o++)
+		for(int o = 1; o < LEVEL_PACKS_COUNT + 1; o++)
 		{
 			for(int i = 0; i < 4; i++)
 			{
@@ -802,6 +802,12 @@ Levels::Levels() :
             
 				for(int j = 0; j < 4; j++)
 				{
+                    if(j == 0 && i == 0)
+                    {
+                        Text* t = Text::create((Textes) {ccsf("Episode %d", (o + 1)), Options::FONT, 42, -1}, this->mMainList->mLayers[o]);
+                        t->setCenterPosition(x + t->getWidth() / 2 - Utils::coord(55), y + Utils::coord(130));
+                    }
+                    
 					t++;
                 
 					this->mLevels[t] = LevelButton::create(true);
@@ -816,6 +822,8 @@ Levels::Levels() :
 				y -= Utils::coord(180);
 			}
 
+            startX += Utils::coord(60);
+            
 			x = startX;
 			y = startY;
 		}
@@ -826,9 +834,9 @@ Levels::Levels() :
 		y = Options::CAMERA_CENTER_Y - Utils::coord(400);
 
 		t = 0;
-		for(int i = -LEVEL_PACKS_COUNT / 2; i < LEVEL_PACKS_COUNT / 2; i++)
+		for(int i = -LEVEL_PACKS_COUNT / 2; i < LEVEL_PACKS_COUNT / 2 + 1; i++)
 		{
-			x = Options::CAMERA_CENTER_X + Utils::coord(25) + Utils::coord(50) * i;
+			x = Options::CAMERA_CENTER_X + Utils::coord(25) + Utils::coord(60) * i;
 
 			this->mSlides[t++]->create()->setCenterPosition(x, y);
 		}
@@ -981,7 +989,7 @@ void Levels::onEnter()
 
     this->mMainList->setPosition(ccp(0, 0)); // this->mMainList->setPosition(ccp(-Options::CAMERA_CENTER_X * 1.66, 0));
 
-    for(int i = 0; i < LEVEL_PACKS_COUNT; i++)
+    for(int i = 0; i < LEVEL_PACKS_COUNT + 1; i++)
     {
         this->mSlides[i]->setCurrentFrameIndex(0);
     }

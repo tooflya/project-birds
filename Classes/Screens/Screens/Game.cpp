@@ -21,13 +21,13 @@ int Game::LEVEL_TYPE[80] = {
     0, 1, 2
 };
 int Game::LEVEL_HEIGHT[80] = {
-    1, 1, 1, 1,
+    6, 1, 1, 1,
     1, 2, 2, 2,
     2, 3, 3, 3,
     3, 3, 4, 4
 };
 int Game::LEVEL_COLORS[80] = {
-    1, 1, 2, 2,
+    3, 1, 2, 2,
     2, 2, 3, 3,
     3, 3, 3, 4,
     4, 4, 4, 4
@@ -301,6 +301,7 @@ Game* Game::create()
 void Game::startGame()
 {
     ZOMBIE_AREA = false;
+    this->mZombieAnimation = false;
     
     this->e5->stopAllActions();
     this->e5->setOpacity(0);
@@ -630,6 +631,7 @@ void Game::onBonus(int pId, float pX, float pY)
             this->e5->setOpacity(0);
             
             this->e5->runAction(CCRepeatForever::create(CCSequence::create(CCFadeTo::create(0.5, 50), CCFadeTo::create(0.5, 150), NULL)));
+            this->e5->setColor(ccc3(102, 220, 0));
         }
         break;
     }
@@ -684,6 +686,8 @@ bool Game::deepFind(int x, int y, int index, bool recursive, CCObject* pOptional
     {
         if(array->count() >= 3)
         {
+            this->onMatch(array->count(), static_cast<Color*>(array->objectAtIndex(0))->getCenterX(), static_cast<Color*>(array->objectAtIndex(0))->getCenterY());
+            
             if(Color::SOUND_INDEX < 4)
             {
                 Color::SOUND_INDEX++;
@@ -694,8 +698,8 @@ bool Game::deepFind(int x, int y, int index, bool recursive, CCObject* pOptional
             for(int i = 0; i < array->count(); i++)
             {
                 Color* color = static_cast<Color*>(array->objectAtIndex(i));
-                
-                if(color->getCurrentFrameIndex() > 6)
+
+                if(color->getRealCurrentFrameIndex() > 6)
                 {
                     isHaveSpecial = true;
                     
@@ -714,8 +718,6 @@ bool Game::deepFind(int x, int y, int index, bool recursive, CCObject* pOptional
                 else
                 {
                     color->runDestroy();
-                
-                    MATRIX[color->position_in_matrtix_x][color->position_in_matrtix_y] = -1;
                 }
                 
                 Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
@@ -734,6 +736,11 @@ bool Game::deepFind(int x, int y, int index, bool recursive, CCObject* pOptional
     }
     
     return false;
+}
+
+void Game::onMatch(int count, float a, float b)
+{
+    
 }
 
 void Game::addTime(float pTime)
@@ -830,7 +837,7 @@ void Game::update(float pDeltaTime)
             entity->mRotateImpulse = Utils::coord(Utils::randomf(10.0, 100.0));
         }
     }
-    
+
     if(this->mZombieAnimation)
     {
         this->mZombieAnimationTimeElapsed += pDeltaTime;

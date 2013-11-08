@@ -50,18 +50,18 @@ Progress::Progress() :
 		this->mBackButton = Button::create(structure1, spriteBatch2, Options::BUTTONS_ID_PROGRESS_BACK, this);
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    
+
 		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     
 		this->mResetButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch2, Options::BUTTONS_ID_PROGRESS_RESET, this);
-    
+
 		this->mResetButton->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(200));
 		this->mResetButton->setText(Options::TEXT_PROGRESS_RESET);
-    
+
 		Text* text1 = Text::create(Options::TEXT_PROGRESS_STRING_1, CCSize(Utils::coord(700), 0), this);
-    
+
 		text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
-    
+
 		this->mResetPopup = ResetProgress::create(this);
     
 		m_Instance = this;

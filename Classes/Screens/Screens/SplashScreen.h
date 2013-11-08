@@ -1,5 +1,5 @@
-#ifndef CONST_SPLASHSCREEN2_H
-#define CONST_SPLASHSCREEN2_H
+#ifndef CONST_SPLASHSCREEN_H
+#define CONST_SPLASHSCREEN_H
 
 #include "Screen.h"
 

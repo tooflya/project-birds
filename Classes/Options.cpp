@@ -445,6 +445,21 @@ Textes Options::TEXT_MAPDESCRIPTION_TOP = {"", FONT, 42, 384};
 Textes Options::TEXT_MAPDESCRIPTION_BOTTOM = {"", FONT, 32, 385};
 Textes Options::TEXT_MAPDESCRIPTION_MIDDLE = {"", FONT, 32, 386};
 Textes Options::TEXT_UNLOCKMODE = {"", FONT, 0, 387};
+Textes Options::TEXT_BONUS[12] =
+{
+    {"", FONT, 36, 388},
+    {"", FONT, 36, 389},
+    {"", FONT, 36, 390},
+    {"", FONT, 36, 391},
+    {"", FONT, 36, 392},
+    {"", FONT, 36, 393},
+    {"", FONT, 36, 394},
+    {"", FONT, 36, 395},
+    {"", FONT, 36, 396},
+    {"", FONT, 36, 397},
+    {"", FONT, 36, 398},
+    {"", FONT, 36, 399}
+};
 
 // ===========================================================
 // Fields
@@ -1413,6 +1428,19 @@ void Options::changeLanguage()
             TEXT_MAPDESCRIPTION_TOP.string = "Ежедневное\nвознаграждение";
             TEXT_MAPDESCRIPTION_BOTTOM.string = "Играйте каждый день и\nполучайте больше призов\nи подарков, отмеченых\nна карте!";
             TEXT_MAPDESCRIPTION_MIDDLE.string = "День - %d";
+            
+            TEXT_BONUS[0].string = "Good";
+            TEXT_BONUS[1].string = "Cool";
+            TEXT_BONUS[2].string = "Sweet";
+            TEXT_BONUS[3].string = "Great";
+            TEXT_BONUS[4].string = "Fantastic";
+            TEXT_BONUS[5].string = "Super";
+            TEXT_BONUS[6].string = "Awesome";
+            TEXT_BONUS[7].string = "Crazy";
+            TEXT_BONUS[8].string = "Wild";
+            TEXT_BONUS[9].string = "Killer";
+            TEXT_BONUS[10].string = "Unbelievable";
+            TEXT_BONUS[11].string = "Amazing";
         break;
     }
     
@@ -1804,8 +1832,20 @@ void Options::changeLanguage()
     TEXTES_HOLDER[385] = TEXT_MAPDESCRIPTION_BOTTOM;
     TEXTES_HOLDER[386] = TEXT_MAPDESCRIPTION_MIDDLE;
     TEXTES_HOLDER[387] = TEXT_UNLOCKMODE;
+    TEXTES_HOLDER[388] = TEXT_BONUS[0];
+    TEXTES_HOLDER[389] = TEXT_BONUS[1];
+    TEXTES_HOLDER[390] = TEXT_BONUS[2];
+    TEXTES_HOLDER[391] = TEXT_BONUS[3];
+    TEXTES_HOLDER[392] = TEXT_BONUS[4];
+    TEXTES_HOLDER[393] = TEXT_BONUS[5];
+    TEXTES_HOLDER[394] = TEXT_BONUS[6];
+    TEXTES_HOLDER[395] = TEXT_BONUS[7];
+    TEXTES_HOLDER[396] = TEXT_BONUS[8];
+    TEXTES_HOLDER[397] = TEXT_BONUS[9];
+    TEXTES_HOLDER[398] = TEXT_BONUS[10];
+    TEXTES_HOLDER[399] = TEXT_BONUS[11];
     
-    for(int i = 0; i <= 387; i++)
+    for(int i = 0; i <= 399; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

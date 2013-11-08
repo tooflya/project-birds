@@ -139,6 +139,10 @@ Progresses::Progresses() :
     {
         Loader::TYPE = 3;
         
+        this->mAwesomeText = Text::create((Textes) {"Incredible", Options::FONT, 42, -1}, this);
+        this->mAwesomeText->setZOrder(10);
+        this->mAwesomeText->setScale(0);
+        
 		this->mEventLayer = CCLayer::create();
     
 		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
@@ -161,7 +165,7 @@ Progresses::Progresses() :
     
 		this->e2 = Effect::create();
 		this->mGameLayer->addChild(this->e2);
-    
+
 		this->mGameLayer->addChild(spriteBatch7);
 		this->mGameLayer->addChild(spriteBatch1);
 		this->mGameLayer->addChild(spriteBatch2);
@@ -374,6 +378,8 @@ Progresses::Progresses() :
     
 		this->addChild(this->mEventLayer);
 		//this->addChild(new Grid());
+        
+        this->mAwesoneAnimation = false;
     
 		//
     
@@ -434,6 +440,20 @@ void Progresses::onTouchButtonsCallback(const int pAction, const int pID)
 // Override Methods
 // ===========================================================
 
+void Progresses::onMatch(int count, float a, float b)
+{
+    this->mAwesomeText->setString(Options::TEXT_BONUS[Utils::random(0, 11)].string);
+    this->mAwesomeText->setScale(0);
+    this->mAwesomeText->setColor(Confetti::COLORS[Utils::random(0, 2)]);
+    this->mAwesomeText->runAction(CCScaleTo::create(0.5, 1.0));
+    this->mAwesomeText->setCenterPosition(a, b);
+    
+    this->mAwesomeText->runAction(CCRepeat::create(CCSequence::create(CCRotateTo::create(0.1, -5), CCRotateTo::create(0.1, 5), CCRotateTo::create(0.1, 0), NULL), 5));
+    
+    this->mAwesoneAnimation = true;
+    this->mAwesoneAnimationTimeElapsed = 0;
+}
+
 void Progresses::onBonus(int pId, float pX, float pY)
 {
     
@@ -467,7 +487,19 @@ void Progresses::update(float pDeltaTime)
         return;
     }
     
-    this->mNewColorsTimeElapsed += pDeltaTime;
+    if(this->mAwesoneAnimation)
+    {
+        this->mAwesoneAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mAwesoneAnimationTimeElapsed >= 1.0)
+        {
+            this->mAwesoneAnimation = false;
+            
+            this->mAwesomeText->runAction(CCScaleTo::create(0.5, 0));
+        }
+    }
+    
+    /*this->mNewColorsTimeElapsed += pDeltaTime;
     
     if(this->mNewColorsTimeElapsed >= 15.0)
     {
@@ -493,7 +525,7 @@ void Progresses::update(float pDeltaTime)
              y++;
             }
          }
-    }
+    }*/
     
     if(this->mGamePaused)
     {

@@ -29,7 +29,8 @@ class Icon8 : public Entity
         // Methods
         // ===========================================================
 
-		Icon8(const char* pTextureFileName, CCNode* pParent);
+        Icon8(const char* pTextureFileName, CCNode* pParent);
+        Icon8(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
 
         // ===========================================================
         // Override Methods
@@ -77,7 +78,8 @@ class Icon8 : public Entity
         // Constructors
         // ===========================================================
 
-		static Icon8* create(const char* pTextureFileName, CCNode* pParent);
+        static Icon8* create(const char* pTextureFileName, CCNode* pParent);
+        static Icon8* create(const char* pTextureFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
 
         // ===========================================================
         // Methods

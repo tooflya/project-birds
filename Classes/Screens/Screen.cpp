@@ -35,10 +35,10 @@ Screen::~Screen()
 {
     this->removeAllChildrenWithCleanup(true);
     
-    //CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    //CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     
-    //CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 Screen::Screen()
