@@ -9,7 +9,9 @@
 #include "AppDelegate.h"
 
 #include "Color.h"
-#include "ColorPArticle.h"
+#include "ColorParticle.h"
+
+class TaskPanel;
 
 class Progresses : public Game
 {
@@ -42,6 +44,8 @@ class Progresses : public Game
         float mAwesoneAnimationTimeElapsed;
     
         bool mAwesoneAnimation;
+    
+        TaskPanel* mTaskPanel;
     
         // ===========================================================
         // Constructors
@@ -140,6 +144,8 @@ class Progresses : public Game
         void onBonus(int pId, float pX, float pY);
     
         void onMatch(int count, float a, float b);
+    
+        void startGame();
 };
 
 #endif

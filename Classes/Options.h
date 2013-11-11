@@ -346,6 +346,11 @@ class Options
         static Textes TEXT_MAPDESCRIPTION_MIDDLE;
         static Textes TEXT_UNLOCKMODE;
         static Textes TEXT_BONUS[12];
+        static Textes TEXT_LEVELS_EPISODE;
+        static Textes TEXT_LEVELS_LOCKED;
+        static Textes TEXT_PROGRESS_TAP_TO_CONTINUE;
+        static Textes TEXT_PROGRESS_LEVEL_NUMBER;
+        static Textes TEXT_PROGRESS_LEVEL_TASK;
 
         // ===========================================================
         // Fields

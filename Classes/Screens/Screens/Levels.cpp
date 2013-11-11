@@ -38,6 +38,201 @@ class Effect : public CCNodeRGBA
     }
 };
 
+class UnlockPanel : public CCLayerColor
+{
+    public:
+    CCNode* mParent;
+    
+    Entity* mStarsCountIcon;
+    Text* mStarsCountText;
+    
+    float mStarsCountIconAnimationTime;
+    
+    bool mStarsCountIconAnimationReverse;
+    
+    bool mDownAnimation;
+    
+    int mDownAnimationStep;
+    float mDownAnimationStepTimeElapsed;
+    float mDownAnimationStepTime;
+    
+    bool mUpAnimation;
+    
+    int mUpAnimationStep;
+    float mUpAnimationStepTimeElapsed;
+    float mUpAnimationStepTime;
+    
+    UnlockPanel(CCNode* pParent)
+    {
+        this->mParent = pParent;
+        
+        this->initWithColor(ccc4(0, 0, 0, 200), Options::CAMERA_WIDTH, Options::CAMERA_HEIGHT / 4);
+        this->ignoreAnchorPointForPosition(false);
+        this->setAnchorPoint(ccp(0.5, 0.5));
+        this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
+        
+        this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this);
+        this->mStarsCountIcon->setScale(0.5);
+        this->mStarsCountIcon->setCurrentFrameIndex(1);
+        Text* text1 = Text::create(Options::TEXT_LEVELS_LOCKED, this);
+        this->mStarsCountText = Text::create((Textes) {"36", Options::FONT, 36, -1}, this);
+        this->mStarsCountIcon->create()->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - Utils::coord(80));
+        text1->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + Utils::coord(50));
+        this->mStarsCountText->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - Utils::coord(80));
+        
+        this->mStarsCountIconAnimationTime = 2.0;
+        this->mStarsCountIconAnimationReverse = false;
+        
+        this->mDownAnimation = false;
+        this->mDownAnimationStepTime = 0;
+        this->mDownAnimationStepTimeElapsed = 0;
+        this->mDownAnimationStep = -1;
+        
+        this->mUpAnimation = false;
+        this->mUpAnimationStepTime = 0;
+        this->mUpAnimationStepTimeElapsed = 0;
+        this->mUpAnimationStep = -1;
+    }
+    
+    static UnlockPanel* create(CCNode* pParent)
+    {
+        UnlockPanel* background = new UnlockPanel(pParent);
+        background->autorelease();
+        background->retain();
+        
+        return background;
+    }
+    
+    void up(int pIndex)
+    {
+        if(AppDelegate::getLevelStarsTotalCount() < Levels::STARS[pIndex])
+        {
+            if(this->mUpAnimation || this->getParent()) return;
+            
+            this->mParent->addChild(this, 1000);
+            
+            this->mUpAnimation = true;
+            this->mUpAnimationStepTime = 0;
+            this->mUpAnimationStepTimeElapsed = 0;
+            this->mUpAnimationStep = -1;
+            
+            this->stopAllActions();
+            
+            this->setPosition(ccp(Options::CAMERA_CENTER_X, -Options::CAMERA_HEIGHT / 4));
+        }
+    }
+    
+    void down()
+    {
+        if(this->mDownAnimation || !this->getParent()) return;
+        
+        this->mDownAnimation = true;
+        this->mDownAnimationStepTime = 0;
+        this->mDownAnimationStepTimeElapsed = 0;
+        this->mDownAnimationStep = -1;
+        
+        this->stopAllActions();
+        
+        this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
+    }
+    
+    void update(float pDeltaTime)
+    {
+        if(this->mUpAnimation)
+        {
+            this->mUpAnimationStepTimeElapsed += pDeltaTime;
+            
+            if(this->mUpAnimationStepTimeElapsed >= this->mUpAnimationStepTime)
+            {
+                this->mUpAnimationStepTimeElapsed = 0;
+                
+                switch(++this->mUpAnimationStep)
+                {
+                    case 0:
+                    this->runAction(CCSequence::create(CCMoveTo::create(0.3, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200))), CCMoveTo::create(0.1, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y)), NULL));
+                    this->mUpAnimationStepTime = 0.3;
+                    break;
+                    case 1:
+                    //this->runAction(CCMoveTo::create(0.1, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y)));
+                    this->mUpAnimationStepTime = 0.1;
+                    break;
+                    case 2:
+                    this->mUpAnimation = false;
+                        
+                    for(int i = 0 ; i < 80; i++)
+                    {
+                        static_cast<Levels*>(this->mParent)->mLevels[i]->setRegisterAsTouchable(false);
+                    }
+                    break;
+                }
+            }
+        }
+        
+        if(this->mDownAnimation)
+        {
+            this->mDownAnimationStepTimeElapsed += pDeltaTime;
+            
+            if(this->mDownAnimationStepTimeElapsed >= this->mDownAnimationStepTime)
+            {
+                this->mDownAnimationStepTimeElapsed = 0;
+                
+                switch(++this->mDownAnimationStep)
+                {
+                    case 0:
+                    this->runAction(CCSequence::create(CCMoveTo::create(0.1, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100))), CCMoveTo::create(0.3, ccp(Options::CAMERA_CENTER_X, -Options::CAMERA_HEIGHT / 4)), NULL));
+                    this->mDownAnimationStepTime = 0.1;
+                    break;
+                    case 1:
+                    this->mDownAnimationStepTime = 0.3;
+                    break;
+                    case 2:
+                    this->mDownAnimation = false;
+                    this->removeFromParentAndCleanup(false);
+                        
+                    for(int i = 0 ; i < 80; i++)
+                    {
+                        static_cast<Levels*>(this->mParent)->mLevels[i]->setRegisterAsTouchable(true);
+                    }
+                    break;
+                }
+            }
+        }
+        
+        this->mStarsCountIconAnimationTime += pDeltaTime;
+        
+        if(this->mStarsCountIconAnimationTime >= 2.0)
+        {
+            this->mStarsCountIconAnimationTime = 0;
+            
+            if(this->mStarsCountIconAnimationReverse)
+            {
+                this->mStarsCountIcon->runAction(CCRotateTo::create(2.0, 15));
+            }
+            else
+            {
+                this->mStarsCountIcon->runAction(CCRotateTo::create(2.0, -15));
+            }
+            
+            this->mStarsCountIconAnimationReverse = !this->mStarsCountIconAnimationReverse;
+        }
+    }
+    
+    void onEnter()
+    {
+        CCLayer::onEnter();
+        
+        this->scheduleUpdate();
+    }
+    
+    void onExit()
+    {
+        CCLayer::onExit();
+        
+        this->unscheduleAllSelectors();
+        this->unscheduleUpdate();
+    }
+};
+
 class ListLayer : public CCLayer
 {
     public:
@@ -331,8 +526,7 @@ class LevelButton : public Entity
 
 class MainList : public CCLayer
 {
-    public:
-
+        public:
         CCLayer* mLayers[Levels::LEVEL_PACKS_COUNT];
 
         float mListInitialCenterX;
@@ -518,6 +712,8 @@ class MainList : public CCLayer
             }
             
             this->setPosition(ccp(x, y));
+            
+            this->mParent->mUnlockPanel->down();
         }
     }
 
@@ -588,8 +784,11 @@ class MainList : public CCLayer
         }
         t = 0;
         this->runAction(CCMoveTo::create(this->mSpeedX, ccp(n, 0)));
+        
+        ci=index;
     }
     float t;
+    int ci;
     void update(float pDeltaTime)
     {
             for(int i = 0; i < Levels::LEVEL_PACKS_COUNT; i++)
@@ -644,11 +843,17 @@ class MainList : public CCLayer
 
                 if(t >= 0.5)
                 {
-                    this->mParent->mBackgroundDecorations[2]->setCurrentFrameIndex(0);
-                    this->mParent->mBackgroundDecorations[3]->setVisible(true);
-                    this->mParent->mDarkness->setOpacity(0);
+                    if(AppDelegate::getLevelStarsTotalCount() >= Levels::STARS[ci])
+                    {
+                        this->mParent->mBackgroundDecorations[2]->setCurrentFrameIndex(0);
+                        this->mParent->mBackgroundDecorations[3]->setVisible(true);
+                        this->mParent->mDarkness->setOpacity(0);
+                    }
 
                     this->mPostUpdate = false;
+                    
+                    this->mParent->mUnlockPanel->mStarsCountText->setString(ccsf("%d", Levels::STARS[ci] - AppDelegate::getLevelStarsTotalCount()));
+                    this->mParent->mUnlockPanel->up(ci);
                 }
             }
     }
@@ -684,6 +889,11 @@ int Levels::PRIZES[80] =
     0, 0, 0, 0, 0, 0, 0, 0, 1, 0
 };
 
+int Levels::STARS[5] =
+{
+    0, 24, 57, 123, 251
+};
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -700,6 +910,8 @@ Levels::~Levels()
     CC_SAFE_RELEASE(this->mSurpriseLevelPopup);
 
     CC_SAFE_RELEASE(spriteBatch2);
+    
+    CC_SAFE_RELEASE(this->mUnlockPanel);
 
 	this->removeAllChildrenWithCleanup(true);
 }
@@ -720,7 +932,7 @@ Levels::Levels() :
 	spriteBatch2(0)
 	{
 		this->mMainList = MainList::create(this);
-    
+
 		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 		spriteBatch2 = SpriteBatch::create("TextureAtlas9");
 		spriteBatch2->retain();
@@ -728,12 +940,12 @@ Levels::Levels() :
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
 		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
 		this->mBackgroundDecorations[1] = Entity::create("bg_detail_choose_bird@2x.png", spriteBatch);
-    
+
 		this->addChild(spriteBatch);
-    
+
 		this->mLigts[0] = Entity::create("get_coins_light@2x.png", spriteBatch2);
 		this->mLigts[1] = Entity::create("get_coins_light@2x.png", spriteBatch2);
-    
+
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 		EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 324, 324, 162, 162};
 
@@ -741,7 +953,7 @@ Levels::Levels() :
 		this->mShopButton = Button::create(structure2, spriteBatch, Options::BUTTONS_ID_MENU_SHOP, this);
 		this->mTablet = Entity::create("shop_money_bg@2x.png", this);
 		this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this->mTablet);
-    
+
 		for(int i = 0; i < 6; i++)
 		{
 			this->mSlides[i] = Entity::create("choose_box_navi_sprite@2x.png", 1, 2, spriteBatch);
@@ -756,8 +968,8 @@ Levels::Levels() :
     
 		EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 324, 162, 162, 162};
 
-		this->mSlidesArrows[0] = Entity::create(structure3, spriteBatch);
-		this->mSlidesArrows[1] = Entity::create(structure3, spriteBatch);
+		this->mSlidesArrows[0] = Entity::create(structure3, this);
+		this->mSlidesArrows[1] = Entity::create(structure3, this);
     
 		this->mBackgroundDecorations[2] = Entity::create("bg_detail_lamp@2x.png", 1, 2, spriteBatch);
 		this->mBackgroundDecorations[3] = Entity::create("bg_detail_dark@2x.png", this);
@@ -794,6 +1006,7 @@ Levels::Levels() :
 		int id = 0;
     
 		int t = -1;
+        int yu = 0;
 		for(int o = 1; o < LEVEL_PACKS_COUNT + 1; o++)
 		{
 			for(int i = 0; i < 4; i++)
@@ -804,8 +1017,10 @@ Levels::Levels() :
 				{
                     if(j == 0 && i == 0)
                     {
-                        Text* t = Text::create((Textes) {ccsf("Episode %d", (o + 1)), Options::FONT, 42, -1}, this->mMainList->mLayers[o]);
-                        t->setCenterPosition(x + t->getWidth() / 2 - Utils::coord(55), y + Utils::coord(130));
+                        tt[yu] = Text::create(Options::TEXT_LEVELS_EPISODE, this->mMainList->mLayers[o]);
+                        tt[yu]->setCenterPosition(x + tt[yu]->getWidth() / 2 - Utils::coord(60), y + Utils::coord(130));
+                        
+                        yu++;
                     }
                     
 					t++;
@@ -855,6 +1070,8 @@ Levels::Levels() :
 		this->mSurpriseLevelPopup = SurpriseLevel::create(this);
 
 		/** Experiments */
+        
+        this->mUnlockPanel = UnlockPanel::create(this);
 	}
 
 Levels* Levels::create()
@@ -1004,11 +1221,23 @@ void Levels::onEnter()
     this->mDarkness->setOpacity(0);
     
     this->mStarsCountText->setString(ccsf("%d", AppDelegate::getLevelStarsTotalCount()));
+    
+    for(int i = 0; i < 5; i++)
+    {
+        tt[i]->setString(ccsf(Options::TEXT_LEVELS_EPISODE.string, i+1));
+    }
 }
 
 void Levels::onExit()
 {
     Screen::onExit();
+    
+    this->mUnlockPanel->removeFromParentAndCleanup(false);
+    
+    for(int i = 0 ; i < 80; i++)
+    {
+        mLevels[i]->setRegisterAsTouchable(true);
+    }
 }
 
 #endif

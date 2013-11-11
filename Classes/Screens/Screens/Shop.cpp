@@ -379,7 +379,7 @@ Shop::Shop() :
 		this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
 		this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
     
-		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4) // TODO: Check for iPhone 4
 		{
 			this->mTextBackgrounds[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + Utils::coord(30), this->mTextBackgrounds[0]->getCenterY());
 			this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(60), this->mTextBackgrounds[1]->getCenterY());

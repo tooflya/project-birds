@@ -460,6 +460,11 @@ Textes Options::TEXT_BONUS[12] =
     {"", FONT, 36, 398},
     {"", FONT, 36, 399}
 };
+Textes Options::TEXT_LEVELS_EPISODE = {"", FONT, 42, 400};
+Textes Options::TEXT_LEVELS_LOCKED = {"", FONT, 32, 401};
+Textes Options::TEXT_PROGRESS_TAP_TO_CONTINUE = {"", FONT, 24, 402};
+Textes Options::TEXT_PROGRESS_LEVEL_NUMBER = {"", FONT, 32, 403};
+Textes Options::TEXT_PROGRESS_LEVEL_TASK = {"", FONT, 32, 404};
 
 // ===========================================================
 // Fields
@@ -971,6 +976,28 @@ void Options::changeLanguage()
             
             TEXT_MAPDESCRIPTION_CONTINUE.string = "Continue";
             TEXT_MAPDESCRIPTION_TOP.string = "Daily revenue";
+            TEXT_MAPDESCRIPTION_BOTTOM.string = "Play everyday and\nget more bonuses\nand prizes, which marked\n on the map!";
+            TEXT_MAPDESCRIPTION_MIDDLE.string = "Day - %d";
+            
+            TEXT_BONUS[0].string = "Good";
+            TEXT_BONUS[1].string = "Cool";
+            TEXT_BONUS[2].string = "Sweet";
+            TEXT_BONUS[3].string = "Great";
+            TEXT_BONUS[4].string = "Fantastic";
+            TEXT_BONUS[5].string = "Super";
+            TEXT_BONUS[6].string = "Awesome";
+            TEXT_BONUS[7].string = "Crazy";
+            TEXT_BONUS[8].string = "Wild";
+            TEXT_BONUS[9].string = "Killer";
+            TEXT_BONUS[10].string = "Unbelievable";
+            TEXT_BONUS[11].string = "Amazing";
+            
+            TEXT_LEVELS_EPISODE.string = "Episode %d";
+            TEXT_LEVELS_LOCKED.string = "This episode is locked!\nTo unclock this episode you must\ncollect some stars\nat the previous levels:";
+            
+            TEXT_PROGRESS_TAP_TO_CONTINUE.string = "Tap to continue";
+            TEXT_PROGRESS_LEVEL_NUMBER.string = "-= Level - %d =-";
+            TEXT_PROGRESS_LEVEL_TASK.string = "Complete the quest and collect\nas many stars to go\nto the next level.";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1429,18 +1456,25 @@ void Options::changeLanguage()
             TEXT_MAPDESCRIPTION_BOTTOM.string = "Играйте каждый день и\nполучайте больше призов\nи подарков, отмеченых\nна карте!";
             TEXT_MAPDESCRIPTION_MIDDLE.string = "День - %d";
             
-            TEXT_BONUS[0].string = "Good";
-            TEXT_BONUS[1].string = "Cool";
-            TEXT_BONUS[2].string = "Sweet";
-            TEXT_BONUS[3].string = "Great";
-            TEXT_BONUS[4].string = "Fantastic";
-            TEXT_BONUS[5].string = "Super";
-            TEXT_BONUS[6].string = "Awesome";
-            TEXT_BONUS[7].string = "Crazy";
-            TEXT_BONUS[8].string = "Wild";
-            TEXT_BONUS[9].string = "Killer";
-            TEXT_BONUS[10].string = "Unbelievable";
-            TEXT_BONUS[11].string = "Amazing";
+            TEXT_BONUS[0].string = "Хорошо";
+            TEXT_BONUS[1].string = "Круто";
+            TEXT_BONUS[2].string = "Мило";
+            TEXT_BONUS[3].string = "Великолепно";
+            TEXT_BONUS[4].string = "Фантастически";
+            TEXT_BONUS[5].string = "Супер";
+            TEXT_BONUS[6].string = "Превосходно";
+            TEXT_BONUS[7].string = "Сумасшедше";
+            TEXT_BONUS[8].string = "Дико";
+            TEXT_BONUS[9].string = "Фантастика";
+            TEXT_BONUS[10].string = "Невероятно";
+            TEXT_BONUS[11].string = "Красота";
+            
+            TEXT_LEVELS_EPISODE.string = "Эпизод %d";
+            TEXT_LEVELS_LOCKED.string = "Этот эпизод недоступен!\nЧтобы открыть доступ необходимо\nсобрать несколько звезд\nв предыдущих уровнях:";
+            
+            TEXT_PROGRESS_TAP_TO_CONTINUE.string = "Нажмите для продолжения";
+            TEXT_PROGRESS_LEVEL_NUMBER.string = "-= Уровень - %d =-";
+            TEXT_PROGRESS_LEVEL_TASK.string = "Выполните задание и соберите\nкак можно больше звезд\nчтобы пройти к следующему уровню.";
         break;
     }
     
@@ -1844,8 +1878,13 @@ void Options::changeLanguage()
     TEXTES_HOLDER[397] = TEXT_BONUS[9];
     TEXTES_HOLDER[398] = TEXT_BONUS[10];
     TEXTES_HOLDER[399] = TEXT_BONUS[11];
+    TEXTES_HOLDER[400] = TEXT_LEVELS_EPISODE;
+    TEXTES_HOLDER[401] = TEXT_LEVELS_LOCKED;
+    TEXTES_HOLDER[402] = TEXT_PROGRESS_TAP_TO_CONTINUE;
+    TEXTES_HOLDER[403] = TEXT_PROGRESS_LEVEL_NUMBER;
+    TEXTES_HOLDER[404] = TEXT_PROGRESS_LEVEL_TASK;
     
-    for(int i = 0; i <= 399; i++)
+    for(int i = 0; i <= 404; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

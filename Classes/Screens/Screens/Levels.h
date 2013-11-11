@@ -8,6 +8,7 @@
 #include "SurpriseLevel.h"
 
 class MainList;
+class UnlockPanel;
 
 class Levels : public Screen
 {
@@ -97,10 +98,13 @@ class Levels : public Screen
     
         static int PRICES[80];
         static int PRIZES[80];
+        static int STARS[5];
 
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        UnlockPanel* mUnlockPanel;
 
         Entity* mSlides[6];
         Entity* mSlidesArrows[2];
@@ -113,6 +117,8 @@ class Levels : public Screen
         CCNodeRGBA* mDarkness;
     
         Entity* mLevels[80]; // TODO: return 6.
+    
+        Text* tt[5];
 
         // ===========================================================
         // Constructors

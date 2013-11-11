@@ -26,6 +26,270 @@ public:
     }
 };
 
+class TaskPanel : public CCLayer
+{
+    public:
+    CCNode* mParent;
+    
+    Entity* mStarsCountIcon[9];
+    
+    float mStarsCountIconAnimationTime;
+    
+    bool mStarsCountIconAnimationReverse;
+    
+    bool mDownAnimation;
+    
+    int mDownAnimationStep;
+    float mDownAnimationStepTimeElapsed;
+    float mDownAnimationStepTime;
+    
+    bool mUpAnimation;
+    
+    int mUpAnimationStep;
+    float mUpAnimationStepTimeElapsed;
+    float mUpAnimationStepTime;
+    
+    Text* mTaskText[6];
+    
+    TaskPanel(CCNode* pParent)
+    {
+        SpriteBatch* sb1 = SpriteBatch::create("TextureAtlas6");
+        
+        Entity* u = Entity::create("popup_cloud@2x.png", sb1);
+        Entity* u2 = Entity::create("bg_detail_choose_bird@2x.png", sb1);
+        u->create()->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - Utils::coord(50));
+        u2->create()->setCenterPosition(this->getContentSize().width / 2 + Utils::coord(200), u2->getHeight() / 2 - Options::CAMERA_CENTER_Y);
+        u->setOpacity(200);
+        this->addChild(sb1);
+        
+        this->mParent = pParent;
+        
+        this->ignoreAnchorPointForPosition(false);
+        this->setAnchorPoint(ccp(0.5, 0.5));
+        this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
+        
+        //
+        
+        const char* tasks[10][3] = {
+            { "Соберите все яйца", "Успейте за 60 секунд", "Используйте только\nодин удар" } //
+        };
+        
+        //
+        
+        int count = 0;
+        int t_Count = 2;
+        
+        for(int j = 0; j < 3; j++)
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                int frame = 0;
+                
+                if(j == 0) switch(i) { case 0: frame = 1; break; case 1: frame = 1; break; case 2: frame = 1; break; }
+                if(j == 1) switch(i) { case 0: frame = 4; break; case 1: frame = 1; break; case 2: frame = 1; break; }
+                if(j == 2) switch(i) { case 0: frame = 4; break; case 1: frame = 4; break; case 2: frame = 1; break; }
+                
+                this->mStarsCountIcon[count] = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this);
+                this->mStarsCountIcon[count]->setScale(0.5);
+                this->mStarsCountIcon[count]->setCurrentFrameIndex(frame);
+                
+                count++;
+            }
+            
+            this->mTaskText[t_Count] = Text::create((Textes) {tasks[0][t_Count - 2], Options::FONT, 32, -1}, this);
+            this->mTaskText[t_Count]->setCenterPosition(this->getContentSize().width / 2 - Utils::coord(100) + this->mTaskText[t_Count]->getWidth() / 2, this->getContentSize().height / 2 - Utils::coord(100) * j + Utils::coord(40));
+            
+            t_Count++;
+        }
+        
+        this->mTaskText[0] = Text::create(Options::TEXT_PROGRESS_LEVEL_NUMBER, this);
+        this->mTaskText[1] = Text::create(Options::TEXT_PROGRESS_LEVEL_TASK, this);
+        this->mTaskText[0]->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + Utils::coord(260));
+        this->mTaskText[1]->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + Utils::coord(170));
+        
+        count = 0;
+        
+        for(int j = 2; j >= 0; j--)
+        {
+            for(int i = 2; i >= 0; i--)
+            {
+                this->mStarsCountIcon[count]->create()->setCenterPosition(this->getContentSize().width / 2 - Utils::coord(200) + Utils::coord(20) * i, this->getContentSize().height / 2 - Utils::coord(100) * j + Utils::coord(40));
+                
+                count++;
+            }
+        }
+        
+        this->mTaskText[5] = Text::create(Options::TEXT_PROGRESS_TAP_TO_CONTINUE, this);
+        this->mTaskText[5]->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - Utils::coord(260));
+        
+        this->mStarsCountIconAnimationTime = 2.0;
+        this->mStarsCountIconAnimationReverse = false;
+        
+        this->mDownAnimation = false;
+        this->mDownAnimationStepTime = 0;
+        this->mDownAnimationStepTimeElapsed = 0;
+        this->mDownAnimationStep = -1;
+        
+        this->mUpAnimation = false;
+        this->mUpAnimationStepTime = 0;
+        this->mUpAnimationStepTimeElapsed = 0;
+        this->mUpAnimationStep = -1;
+        
+        this->mTaskText[5]->runAction(CCRepeatForever::create(CCSequence::create(CCFadeTo::create(1.0, 0), CCFadeTo::create(1.0, 255.0), NULL)));
+    }
+    
+    static TaskPanel* create(CCNode* pParent)
+    {
+        TaskPanel* background = new TaskPanel(pParent);
+        background->autorelease();
+        background->retain();
+        
+        return background;
+    }
+    
+    void up()
+    {
+        {
+            if(this->mUpAnimation || this->getParent()) return;
+            
+            this->mParent->addChild(this, 1000);
+            
+            this->mUpAnimation = true;
+            this->mUpAnimationStepTime = 0;
+            this->mUpAnimationStepTimeElapsed = 0;
+            this->mUpAnimationStep = -1;
+            
+            this->stopAllActions();
+            
+            this->setPosition(ccp(Options::CAMERA_CENTER_X, -Options::CAMERA_HEIGHT / 4));
+        }
+    }
+    
+    void down()
+    {
+        if(this->mDownAnimation || !this->getParent()) return;
+        
+        this->mDownAnimation = true;
+        this->mDownAnimationStepTime = 0;
+        this->mDownAnimationStepTimeElapsed = 0;
+        this->mDownAnimationStep = -1;
+        
+        this->stopAllActions();
+        
+        this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
+    }
+    
+    void update(float pDeltaTime)
+    {
+        if(this->mUpAnimation)
+        {
+            this->mUpAnimationStepTimeElapsed += pDeltaTime;
+            
+            if(this->mUpAnimationStepTimeElapsed >= this->mUpAnimationStepTime)
+            {
+                this->mUpAnimationStepTimeElapsed = 0;
+                
+                switch(++this->mUpAnimationStep)
+                {
+                    case 0:
+                        this->runAction(CCSequence::create(CCMoveTo::create(0.3, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200))), CCMoveTo::create(0.1, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y)), NULL));
+                        this->mUpAnimationStepTime = 0.3;
+                        break;
+                    case 1:
+                        //this->runAction(CCMoveTo::create(0.1, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y)));
+                        this->mUpAnimationStepTime = 0.1;
+                        break;
+                    case 2:
+                        this->mUpAnimation = false;
+                        break;
+                }
+            }
+        }
+        
+        if(this->mDownAnimation)
+        {
+            this->mDownAnimationStepTimeElapsed += pDeltaTime;
+            
+            if(this->mDownAnimationStepTimeElapsed >= this->mDownAnimationStepTime)
+            {
+                this->mDownAnimationStepTimeElapsed = 0;
+                
+                switch(++this->mDownAnimationStep)
+                {
+                    case 0:
+                        this->runAction(CCSequence::create(CCMoveTo::create(0.1, ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100))), CCMoveTo::create(0.3, ccp(Options::CAMERA_CENTER_X, -Options::CAMERA_HEIGHT / 4)), NULL));
+                        this->mDownAnimationStepTime = 0.1;
+                        break;
+                    case 1:
+                        this->mDownAnimationStepTime = 0.3;
+                        break;
+                    case 2:
+                        this->mDownAnimation = false;
+                        this->removeFromParentAndCleanup(false);
+                        break;
+                }
+            }
+        }
+        
+        this->mStarsCountIconAnimationTime += pDeltaTime;
+        
+        if(this->mStarsCountIconAnimationTime >= 2.0)
+        {
+            this->mStarsCountIconAnimationTime = 0;
+            
+            if(this->mStarsCountIconAnimationReverse)
+            {
+                for(int i = 0; i < 9; i++)
+                {
+                    this->mStarsCountIcon[i]->runAction(CCRotateTo::create(2.0, 15));
+                }
+            }
+            else
+            {
+                for(int i = 0; i < 9; i++)
+                {
+                    this->mStarsCountIcon[i]->runAction(CCRotateTo::create(2.0, -15));
+                }
+            }
+            
+            this->mStarsCountIconAnimationReverse = !this->mStarsCountIconAnimationReverse;
+        }
+    }
+    
+    void onEnter()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+        
+        CCLayer::onEnter();
+        
+        this->scheduleUpdate();
+    }
+    
+    void onExit()
+    {
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->removeDelegate(this);
+        
+        CCLayer::onExit();
+        
+        this->unscheduleAllSelectors();
+        this->unscheduleUpdate();
+    }
+    
+    bool ccTouchBegan(CCTouch* touch, CCEvent* event)
+    {
+        return true;
+    }
+    
+    void ccTouchEnded(CCTouch* touch, CCEvent* event)
+    {
+        this->down();
+        
+        static_cast<Game*>(this->mParent)->mPause = false;
+    }
+};
+
 // ===========================================================
 // Constants
 // ===========================================================
@@ -137,6 +401,8 @@ Progresses::Progresses() :
     mColorEffectClearHorizontal(0),
 	mTasksBackground(0)
     {
+        this->mTaskPanel = TaskPanel::create(this);
+        
         Loader::TYPE = 3;
         
         this->mAwesomeText = Text::create((Textes) {"Incredible", Options::FONT, 42, -1}, this);
@@ -210,20 +476,22 @@ Progresses::Progresses() :
         this->mTextIcons[0]->setScale(0.8);
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 		this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
-        
+
+        this->mTextAreas[3]->setScaleX(1.3);
+
 		this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextAreas[1]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextAreas[3]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-        
-		this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-		this->mTextIcons[3]->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() - this->mTextAreas[3]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(3));
-        
-		this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-       
+		this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidthScaled() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextAreas[1]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidthScaled() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidthScaled() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextAreas[3]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidthScaled() + Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+
+		this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidthScaled() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidthScaled() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidthScaled() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+		this->mTextIcons[3]->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() - this->mTextAreas[3]->getWidthScaled() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(3));
+
+		this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidthScaled() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+
 		Textes textes1 = {"0", Options::FONT, 32, -1};
 		Textes textes2 = {"5", Options::FONT, 32, -1};
 		Textes textes3 = {"0:00", Options::FONT, 32, -1};
@@ -234,8 +502,8 @@ Progresses::Progresses() :
 		this->mGoldLifesCount = Text::create(textes2, this);
 		this->mTimeText = Text::create(textes3, this);
 		this->mStarTimeText = Text::create(textes4, this);
-        
-		this->mGoldLifesCount->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidth() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+
+		this->mGoldLifesCount->setCenterPosition(this->mTextAreas[3]->getCenterX() + this->mTextAreas[3]->getWidthScaled() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
 		for(int i = 0; i < 5; i++)
 		{
@@ -718,8 +986,13 @@ void Progresses::onExit()
 
 void Progresses::onShow()
 {
+    this->mTaskPanel->up();
+    
     STARS = 0;
     
+    this->mAwesomeText->stopAllActions();
+    this->mAwesomeText->setScale(0);
+
     this->mTime = 0;
     this->mStarTime = 0;
     
@@ -815,7 +1088,7 @@ void Progresses::onShow()
     }
     
     int c = 0;
-    for(int i = 0; i < 10; i += 2)
+    /*for(int i = 0; i < 10; i += 2)
     {
         if(TASK[Game::LEVEL][i] != 0)
         {
@@ -831,18 +1104,18 @@ void Progresses::onShow()
             
             c++;
         }
-    }
+    }*/
     
     int c2 = -1;
     c = -1;
-    
+
     for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
     {
         int y = 0;
-        
+
         c2++;
         c = c2;
-        
+
         for(int j = Game::MATRIX_SIZE_Y - 1; j >= 0; j--)
         {
             if(MATRIX[i][j] >= -1)
@@ -854,7 +1127,7 @@ void Progresses::onShow()
 				small1->setCenterPosition(Utils::coord(64) * i + Utils::coord(32) + Utils::coord(8), Utils::coord(81) * y + Utils::coord(40) + Utils::coord(15));
 				small1->setCurrentFrameIndex(c);
             }
-            
+
             y++;
             c++;
             
@@ -864,12 +1137,23 @@ void Progresses::onShow()
         if(c2 == 1) c2 = -1;
     }
     
-    //
+    this->mPause = true;
+    
+    this->mTimeText->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidthScaled() / 2 - this->mTimeText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mStarTimeText->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidthScaled() / 2 - this->mStarTimeText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    
+    this->mBestCountText->setString("0"); // TODO: ? O_o
+    this->mBestCountText->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidthScaled() / 2 - this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 }
 
 void Progresses::removeLife()
 {
     
+}
+
+void Progresses::startGame()
+{
+    Game::startGame();
 }
 
 #endif

@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Progresses.cpp"
-            timestampString = "405600342.828665"
+            timestampString = "405877646.414079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "655"
-            endingLineNumber = "655"
+            startingLineNumber = "923"
+            endingLineNumber = "923"
             landmarkName = "Progresses::onGameEnd()"
             landmarkType = "5">
          </BreakpointContent>

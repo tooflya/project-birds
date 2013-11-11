@@ -4,10 +4,23 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>bg_detail_choose_bird@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1658,2},{310,276}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{310,276}}</string>
+                <key>sourceSize</key>
+                <string>{310,276}</string>
+            </dict>
             <key>bg_light_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1137,603}}</string>
+                <string>{{2,870},{1137,603}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +33,7 @@
             <key>bg_light_main@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,607},{1002,866}}</string>
+                <string>{{2,2},{1002,866}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +46,7 @@
             <key>bonus-animation@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,607},{682,664}}</string>
+                <string>{{1149,827},{682,664}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>bonus_amigo_hat@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1371,1440},{131,75}}</string>
+                <string>{{1833,1214},{131,75}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +72,7 @@
             <key>bonus_pirat_hat@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1346,1273},{124,87}}</string>
+                <string>{{1833,1125},{124,87}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +85,7 @@
             <key>colors_horizontal_line@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1072,1470},{63,60}}</string>
+                <string>{{1912,280},{63,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +98,7 @@
             <key>colors_small@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1137,1470},{232,42}}</string>
+                <string>{{1658,328},{232,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +111,7 @@
             <key>colors_vertical_line@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1472,1273},{56,81}}</string>
+                <string>{{1833,1365},{56,81}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +124,7 @@
             <key>game_panel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1475},{1000,66}}</string>
+                <string>{{1006,759},{1000,66}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>game_panel_counter@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,1422},{252,46}}</string>
+                <string>{{1658,280},{252,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>game_panel_counter_best@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1176,1273},{168,147}}</string>
+                <string>{{1833,976},{168,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>game_panel_game_life@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1260,1422},{96,40}}</string>
+                <string>{{1892,342},{96,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +176,7 @@
             <key>game_panel_goldlife@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,1273},{168,147}}</string>
+                <string>{{1833,827},{168,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +189,7 @@
             <key>game_panel_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1581,1309},{78,72}}</string>
+                <string>{{1913,1291},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +202,7 @@
             <key>game_panel_plus@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1501,1356},{78,72}}</string>
+                <string>{{1833,1291},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +215,7 @@
             <key>game_panel_shoot_count@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1004,1475},{66,66}}</string>
+                <string>{{1891,1365},{66,66}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +228,7 @@
             <key>game_panel_textbox@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1376,1362},{123,35}}</string>
+                <string>{{1833,1448},{123,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +241,7 @@
             <key>game_panel_time@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1358,1401},{22,37}}</string>
+                <string>{{1959,1164},{22,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +254,7 @@
             <key>game_panel_time_star@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1346,1362},{28,37}}</string>
+                <string>{{1959,1125},{28,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -251,10 +264,23 @@
                 <key>sourceSize</key>
                 <string>{28,37}</string>
             </dict>
+            <key>popup_cloud@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1006,2},{650,755}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{650,755}}</string>
+                <key>sourceSize</key>
+                <string>{650,755}</string>
+            </dict>
             <key>task-background@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1530,1273},{141,34}}</string>
+                <string>{{1006,827},{141,34}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -272,9 +298,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas6.pvr.ccz</string>
             <key>size</key>
-            <string>{1690,1543}</string>
+            <string>{2008,1493}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b4a16b8adb789ad93972810821633cc8:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:a97d3015147ced1702a736e3cc45090b:3c1051df6db9f74556046660da280888:f33f7d177fc4a61253b8dfcbf542a179$</string>
             <key>textureFileName</key>
             <string>TextureAtlas6.pvr.ccz</string>
         </dict>
