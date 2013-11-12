@@ -1,9 +1,12 @@
-#ifndef CONST_LOADING_H
-#define CONST_LOADING_H
+#ifndef CONST_EPISODES_H
+#define CONST_EPISODES_H
 
 #include "Screen.h"
 
-class Loading : public Screen
+#include "AppDelegate.h"
+#include "CCScrollView.h"
+
+class Episodes : public Screen
 {
     protected:
         // ===========================================================
@@ -17,34 +20,29 @@ class Loading : public Screen
         // ===========================================================
         // Fields
         // ===========================================================
-
-        int mNumberOfSprites;
-        int mNumberOfLoadedSprites;
-
-        float mLoadingPauseTime;
-        float mLoadingPauseTimeElapsed;
     
-        float mLoadingProgressTime;
-        float mLoadingProgressTimeElapsed;
-
-        Entity* mBackground;
-        Entity* mBarBackground;
-        Entity* mBar;
+        Entity* mEpisodes[5];
     
-        Text* mLoadingText;
-
-        bool mLoading;
-        bool mLoadingProgress;
-
+        EntityManager* mPoints;
+        EntityManager* mStars;
+        EntityManager* mDots;
+    
+        CCLayerColor* mDarkLayers[5];
+    
+        Text* mEpisodeText[6];
+        Text* mEpisodeNameText[6];
+        Text* mStarsText[6];
+        Text* mUnlockText[6];
+    
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Episodes();
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void loadingCallBack(CCObject *obj);
 
         // ===========================================================
         // Override Methods
@@ -66,9 +64,6 @@ class Loading : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
-    
-        Loading();
-        ~Loading();
 
         // ===========================================================
         // Methods
@@ -86,8 +81,6 @@ class Loading : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static TextureStructure TEXTURE_LIBRARY[11];
 
         // ===========================================================
         // Fields
@@ -96,23 +89,23 @@ class Loading : public Screen
         // ===========================================================
         // Constructors
         // ===========================================================
-
-        static Loading* create();
+    
+        static Episodes* create();
+    
+        ~Episodes();
 
         // ===========================================================
         // Methods
         // ===========================================================
-
-        void startLoading();
         
         // ===========================================================
         // Override Methods
         // ===========================================================
-
-        void update(float pDeltaTime);
-
+    
         void onEnter();
         void onExit();
+    
+        void onTouchButtonsCallback(const int pAction, const int pID);
 };
 
 #endif

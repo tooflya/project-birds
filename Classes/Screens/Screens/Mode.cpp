@@ -166,15 +166,7 @@ Mode::Mode() :
         
 		this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
 		this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
-        
-		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
-		{
-			this->mTextBackgrounds[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + Utils::coord(30), this->mTextBackgrounds[0]->getCenterY());
-			this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(60), this->mTextBackgrounds[1]->getCenterY());
-			this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + Utils::coord(95), this->mTextBackgrounds[2]->getCenterY());
-			this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + Utils::coord(120), this->mTextBackgrounds[3]->getCenterY());
-		}
-        
+
 		this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2, this->mTextBackgrounds[0]->getCenterY());
 		this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2, this->mTextBackgrounds[1]->getCenterY());
 		this->mTextPluses[1]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() + this->mTextBackgrounds[2]->getWidthScaled() / 2, this->mTextBackgrounds[2]->getCenterY());
@@ -185,8 +177,13 @@ Mode::Mode() :
 		this->mIcons[2]->create()->setCenterPosition(this->mTextBackgrounds[2]->getCenterX() - this->mTextBackgrounds[2]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[2]->getCenterY());
 		this->mIcons[3]->create()->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - this->mTextBackgrounds[3]->getWidthScaled() / 2 + Utils::coord(5), this->mTextBackgrounds[3]->getCenterY());
         
-        this->mIcons[2]->setCenterPosition(this->mIcons[2]->getCenterX(), this->mIcons[2]->getCenterY() + Utils::coord(3));
-        this->mIcons[3]->setCenterPosition(this->mIcons[3]->getCenterX(), this->mIcons[3]->getCenterY() + Utils::coord(3));
+        this->mIcons[2]->setCenterPosition(this->mIcons[2]->getCenterX(), this->mIcons[2]->getCenterY() + Utils::coord(2));
+        this->mIcons[3]->setCenterPosition(this->mIcons[3]->getCenterX(), this->mIcons[3]->getCenterY() + Utils::coord(2));
+        
+        this->mTextPluses[0]->setCenterPosition(this->mTextPluses[0]->getCenterX(), this->mTextPluses[0]->getCenterY() + Utils::coord(1));
+        this->mTextPluses[1]->setCenterPosition(this->mTextPluses[1]->getCenterX(), this->mTextPluses[1]->getCenterY() + Utils::coord(1));
+        this->mTextPluses[2]->setCenterPosition(this->mTextPluses[2]->getCenterX(), this->mTextPluses[2]->getCenterY() + Utils::coord(1));
+        this->mTextPluses[3]->setCenterPosition(this->mTextPluses[3]->getCenterX(), this->mTextPluses[3]->getCenterY() + Utils::coord(1));
         
 		this->mIcons[0]->setRotation(-45);
 		this->mIcons[0]->setScale(0.75);
@@ -274,7 +271,7 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                     Loader::T = 3;
                     Loader::TYPE = -1;
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_EPISODES);
 
                 break;
                 case Options::BUTTONS_ID_MODE_HELP:

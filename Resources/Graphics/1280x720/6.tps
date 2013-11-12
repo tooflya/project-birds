@@ -90,9 +90,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
-            <false/>
+            <true/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -195,6 +195,7 @@
             <filename>../../Graphics Sources/colors_vertical_line@2x.png</filename>
             <filename>../../Graphics Sources/popup_cloud@2x.png</filename>
             <filename>../../Graphics Sources/bg_detail_choose_bird@2x.png</filename>
+            <filename>../../Graphics Sources/popup_stars@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

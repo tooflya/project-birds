@@ -106,7 +106,7 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
     this->mAnimationScaleDownTime = 0.2;
     this->mAnimationScaleUpTime = 0.2;
 
-    this->mAnimationScaleDownFactor = 0.9;
+    this->mAnimationScaleDownFactor = 0.1;
     this->mAnimationScaleUpFactor = 1.0;
 
     this->mIsRegisterAsTouchable = false;
@@ -840,7 +840,7 @@ bool Entity::ccTouchBegan(CCTouch* touch, CCEvent* event)
     {
         this->mWasTouched = true;
 
-        this->runAction(CCScaleTo::create(this->mAnimationScaleDownTime, this->mAnimationScaleDownFactor));
+        this->runAction(CCScaleTo::create(this->mAnimationScaleDownTime, (this->mAnimationScaleUpFactor - this->mAnimationScaleDownFactor)));
 
         return true;
     }

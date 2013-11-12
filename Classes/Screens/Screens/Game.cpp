@@ -20,14 +20,17 @@ int** Game::MATRIX = NULL;
 int Game::LEVEL_TYPE[80] = {
     0, 1, 2
 };
+int Game::LEVEL_SHOOT_COUNT[80] = {
+    5, 1, 1, 1
+};
 int Game::LEVEL_HEIGHT[80] = {
-    6, 1, 1, 1,
+    1, 1, 1, 1,
     1, 2, 2, 2,
     2, 3, 3, 3,
     3, 3, 4, 4
 };
 int Game::LEVEL_COLORS[80] = {
-    3, 1, 2, 2,
+    1, 1, 2, 2,
     2, 2, 3, 3,
     3, 3, 3, 4,
     4, 4, 4, 4

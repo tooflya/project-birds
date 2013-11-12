@@ -152,6 +152,7 @@ void Button::update(float pDeltaTime)
         this->mText->setVisible(this->isVisible());
     }
 }
+
 void Button::onEnter()
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
@@ -171,6 +172,13 @@ void Button::onExit()
 Entity* Button::create()
 {
     return Entity::create();
+}
+
+void Button::setScale(float pScale)
+{
+    Entity::setScale(pScale);
+    
+    this->mAnimationScaleUpFactor = pScale;
 }
 
 Button* Button::deepCopy()

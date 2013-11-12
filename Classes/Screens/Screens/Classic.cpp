@@ -120,24 +120,33 @@ Classic::Classic() :
         this->mGoldLifeButton = Button::create(structure1, spriteBatch8, Options::BUTTONS_ID_GAME_GET_LIVES, this);
         
         this->mGamePanel->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-        this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-        this->mTextAreas[1]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
-        this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-        this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[2]->setScaleX(1.3);
         
-        this->mHearts[0]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() - Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(3));
-        this->mHearts[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(20), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(3));
-        this->mHearts[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() + Utils::coord(70), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(3));
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPHONE4 || Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPOD4)
+		{
+			this->mTextAreas[0]->setScaleX(this->mTextAreas[0]->getScaleX() + 0.3);
+			this->mTextAreas[1]->setScaleX(this->mTextAreas[1]->getScaleX() + 0.3);
+			this->mTextAreas[2]->setScaleX(this->mTextAreas[2]->getScaleX() + 0.3);
+		}
         
-        this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() * 2 + Utils::coord(65), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[0]->create()->setCenterPosition(this->mTextAreas[0]->getWidthScaled() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[1]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidthScaled() + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextAreas[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidthScaled() + Utils::coord(200), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
-        this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-        this->mTextIcons[0]->setCenterPosition(this->mTextIcons[0]->getCenterX(), this->mTextIcons[0]->getCenterY() + Utils::coord(3));
-        this->mTextIcons[1]->setCenterPosition(this->mTextIcons[1]->getCenterX(), this->mTextIcons[1]->getCenterY() + Utils::coord(3));
-        this->mTextIcons[2]->setCenterPosition(this->mTextIcons[2]->getCenterX(), this->mTextIcons[2]->getCenterY() + Utils::coord(3));
+        this->mTextIcons[0]->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() - this->mTextAreas[0]->getWidthScaled() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextIcons[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() - this->mTextAreas[1]->getWidthScaled() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mTextIcons[2]->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() - this->mTextAreas[2]->getWidthScaled() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
-        this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mHearts[0]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidthScaled() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mHearts[1]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidthScaled() / 2 + Utils::coord(80), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mHearts[2]->create()->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidthScaled() / 2 + Utils::coord(130), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        
+        this->mTextIcons[0]->setCenterPosition(this->mTextIcons[0]->getCenterX(), this->mTextIcons[0]->getCenterY() + Utils::coord(1));
+        this->mTextIcons[1]->setCenterPosition(this->mTextIcons[1]->getCenterX(), this->mTextIcons[1]->getCenterY() + Utils::coord(2));
+        this->mTextIcons[2]->setCenterPosition(this->mTextIcons[2]->getCenterX(), this->mTextIcons[2]->getCenterY() + Utils::coord(1));
+        
+        this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidthScaled() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(1));
 
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
@@ -200,7 +209,7 @@ Classic::Classic() :
         
         ((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
 
-        this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(1));
 
         this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         this->mBestCountText->setCenterPosition(Utils::coord(10) + this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
@@ -209,7 +218,7 @@ Classic::Classic() :
         this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
         this->mBonusTimeText->setOpacity(0);
         
-        this->mGoldLifesCount->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+        this->mGoldLifesCount->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidthScaled() / 2 - Utils::coord(50), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
         
         this->e4[0] = Entity::create("box_laser_green@2x.png", spriteBatch7);
         this->e4[1] = Entity::create("box_laser_red@2x.png", spriteBatch7);
@@ -531,12 +540,12 @@ void Classic::update(float pDeltaTime)
     }
 
     this->mBestCountText->setString((Options::TEXT_GAME_BEST.string + Utils::intToString(BEST_COUNT)).c_str());
-    this->mBestCountText->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidth() / 2 - this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mBestCountText->setCenterPosition(this->mTextAreas[1]->getCenterX() + this->mTextAreas[1]->getWidthScaled() / 2 - this->mBestCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
     this->mCountText->setString(Utils::intToString(CURRENT_COUNT).c_str());
-    this->mCountText->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() / 2 - this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mCountText->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidthScaled() / 2 - this->mCountText->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     
-    this->mGoldLifesCount->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidth() / 2 - this->mGoldLifesCount->getWidth() / 2 - Utils::coord(37), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
+    this->mGoldLifesCount->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidthScaled() / 2 - this->mGoldLifesCount->getWidth() / 2 - Utils::coord(37), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
 }
 
 void Classic::onGameStarted()

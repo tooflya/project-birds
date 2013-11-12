@@ -28,20 +28,30 @@ class Progresses : public Game
         // Fields
         // ===========================================================
     
-        Text* mBestCountText;
-        Text* mGoldLifesCount;
-        Text* mTimeText;
-        Text* mStarTimeText;
+        int mShootCount;
+    
+        Entity* mPanelStars[3];
+        Entity* mTaskTimeIcon;
+        Entity* mTaskShootsIcon;
+    
+        Text* mPanelText0;
+        Text* mPanelText1;
+        Text* mPanelText2;
         Text* mTaskText[5];
         Text* mAwesomeText;
     
+        Button* mShootsButton;
+        Button* mKeysButton;
+    
         EntityManager* mColorsSmall;
         EntityManager* mTasksBackground;
+        EntityManager* mShootsDecorations;
     
         float mNewColorsTime;
         float mNewColorsTimeElapsed;
     
         float mAwesoneAnimationTimeElapsed;
+        float mShootsCountAnimationTimeElapsed;
     
         bool mAwesoneAnimation;
     
@@ -118,7 +128,12 @@ class Progresses : public Game
         // ===========================================================
     
         void onShow();
-        
+    
+        void setGamePanelTopLevelIcons();
+        void setGamePanelLeftLevelIcons();
+    
+        void checkStarsRuntime();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

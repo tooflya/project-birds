@@ -98,6 +98,7 @@ class Screen : public CCScene, public Touchable, public ButtonReceiver
         static const int SCREEN_ARCADE_GAME = 10;
         static const int SCREEN_PROGRESS_GAME = 11;
         static const int SCREEN_MORE = 12;
+        static const int SCREEN_EPISODES = 13;
 
         // ===========================================================
         // Fields

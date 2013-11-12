@@ -351,6 +351,8 @@ class Options
         static Textes TEXT_PROGRESS_TAP_TO_CONTINUE;
         static Textes TEXT_PROGRESS_LEVEL_NUMBER;
         static Textes TEXT_PROGRESS_LEVEL_TASK;
+    
+        static const char* TEXT_LEVELS_TASKS[80][3];
 
         // ===========================================================
         // Fields

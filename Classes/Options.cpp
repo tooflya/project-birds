@@ -466,6 +466,15 @@ Textes Options::TEXT_PROGRESS_TAP_TO_CONTINUE = {"", FONT, 24, 402};
 Textes Options::TEXT_PROGRESS_LEVEL_NUMBER = {"", FONT, 32, 403};
 Textes Options::TEXT_PROGRESS_LEVEL_TASK = {"", FONT, 32, 404};
 
+
+
+const char* Options::TEXT_LEVELS_TASKS[80][3] = {
+    { "Соберите все яйца", "Успейте за 20 секунд", "Используйте только\nодин удар" },
+    { "Соберите все яйца", "Соберите 4 в ряд", "Уничтожте все яйца\nпосле выполнения задания" },
+    { "Соберите все яйца", "Соберите 4 в ряд", "Успейте за 60 секунд" },
+    { "Спасите 3 звездочки", "Соберите все яйца", "Уничтожте все яйца\nпосле выполнения задания" }
+};
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -997,7 +1006,7 @@ void Options::changeLanguage()
             
             TEXT_PROGRESS_TAP_TO_CONTINUE.string = "Tap to continue";
             TEXT_PROGRESS_LEVEL_NUMBER.string = "-= Level - %d =-";
-            TEXT_PROGRESS_LEVEL_TASK.string = "Complete the quest and collect\nas many stars to go\nto the next level.";
+            TEXT_PROGRESS_LEVEL_TASK.string = "Complete the quest and collect\nas many stars to go to the next level.";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";

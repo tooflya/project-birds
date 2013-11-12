@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TextureAtlas16.pvr.ccz</filename>
+        <filename>TextureAtlas18.pvr.ccz</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -129,7 +129,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>TextureAtlas16.plist</filename>
+                <filename>TextureAtlas18.plist</filename>
             </struct>
             <key>java</key>
             <struct type="DataFile">
@@ -173,7 +173,14 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/temp_level_bg@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_dot@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_episode1@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_episode2@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_episode3@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_episode4@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_episode5@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_fbico@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_point_sprite@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

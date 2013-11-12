@@ -312,6 +312,7 @@ class Game : public Screen
         static int LEVEL_HEIGHT[80];
         static int LEVEL_COLORS[80];
         static int LEVEL_HEALTH[80];
+        static int LEVEL_SHOOT_COUNT[80];
     
         static int GAME_TYPE;
     

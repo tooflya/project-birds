@@ -197,6 +197,9 @@
 		7869167917F1DF9F00184E9D /* popup-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166E17F1DF9600184E9D /* popup-8.mp3 */; };
 		7869167A17F1DF9F00184E9D /* progress_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166F17F1DF9600184E9D /* progress_complete.mp3 */; };
 		7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7869167B17F2D84A00184E9D /* StarParticle2.cpp */; };
+		78791F5518326D1200821057 /* Episodes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78791F5318326D1200821057 /* Episodes.cpp */; };
+		78791F581832711B00821057 /* TextureAtlas18.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78791F561832711B00821057 /* TextureAtlas18.plist */; };
+		78791F591832711B00821057 /* TextureAtlas18.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78791F571832711B00821057 /* TextureAtlas18.pvr.ccz */; };
 		787AD78B1810037900738DE3 /* TextureAtlas15.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787AD7891810037900738DE3 /* TextureAtlas15.plist */; };
 		787AD78C1810037900738DE3 /* TextureAtlas15.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 787AD78A1810037900738DE3 /* TextureAtlas15.pvr.ccz */; };
 		787AD78F181007ED00738DE3 /* SurpriseLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */; };
@@ -207,6 +210,10 @@
 		7896A9DA18041A06001F8145 /* GetLives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7896A9D8180418CB001F8145 /* GetLives.cpp */; };
 		7897DA9E17F312260023C1F9 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7897DA9A17F3120D0023C1F9 /* Rain.cpp */; };
 		7897DA9F17F312260023C1F9 /* RainCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7897DA9C17F3120D0023C1F9 /* RainCircle.cpp */; };
+		78A1F2841832921C00435951 /* CCScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F27C1832921C00435951 /* CCScrollView.cpp */; };
+		78A1F2851832921C00435951 /* CCSorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F27E1832921C00435951 /* CCSorting.cpp */; };
+		78A1F2861832921C00435951 /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F2801832921C00435951 /* CCTableView.cpp */; };
+		78A1F2871832921C00435951 /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F2821832921C00435951 /* CCTableViewCell.cpp */; };
 		78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */; };
 		78AE448018081EF300FBABDD /* ButtonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */; };
 		78B38A53177E5D0600773C6A /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4D177E5D0600773C6A /* AppController.mm */; };
@@ -555,6 +562,10 @@
 		7869166F17F1DF9600184E9D /* progress_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = progress_complete.mp3; sourceTree = "<group>"; };
 		7869167B17F2D84A00184E9D /* StarParticle2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StarParticle2.cpp; sourceTree = "<group>"; };
 		7869167C17F2D84A00184E9D /* StarParticle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StarParticle2.h; sourceTree = "<group>"; };
+		78791F5318326D1200821057 /* Episodes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Episodes.cpp; sourceTree = "<group>"; };
+		78791F5418326D1200821057 /* Episodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Episodes.h; sourceTree = "<group>"; };
+		78791F561832711B00821057 /* TextureAtlas18.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas18.plist; sourceTree = "<group>"; };
+		78791F571832711B00821057 /* TextureAtlas18.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas18.pvr.ccz; sourceTree = "<group>"; };
 		787AD7891810037900738DE3 /* TextureAtlas15.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas15.plist; sourceTree = "<group>"; };
 		787AD78A1810037900738DE3 /* TextureAtlas15.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas15.pvr.ccz; sourceTree = "<group>"; };
 		787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurpriseLevel.cpp; sourceTree = "<group>"; };
@@ -573,6 +584,14 @@
 		7897DA9B17F3120D0023C1F9 /* Rain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rain.h; sourceTree = "<group>"; };
 		7897DA9C17F3120D0023C1F9 /* RainCircle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RainCircle.cpp; sourceTree = "<group>"; };
 		7897DA9D17F3120D0023C1F9 /* RainCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RainCircle.h; sourceTree = "<group>"; };
+		78A1F27C1832921C00435951 /* CCScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCScrollView.cpp; sourceTree = "<group>"; };
+		78A1F27D1832921C00435951 /* CCScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCScrollView.h; sourceTree = "<group>"; };
+		78A1F27E1832921C00435951 /* CCSorting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSorting.cpp; sourceTree = "<group>"; };
+		78A1F27F1832921C00435951 /* CCSorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSorting.h; sourceTree = "<group>"; };
+		78A1F2801832921C00435951 /* CCTableView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTableView.cpp; sourceTree = "<group>"; };
+		78A1F2811832921C00435951 /* CCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTableView.h; sourceTree = "<group>"; };
+		78A1F2821832921C00435951 /* CCTableViewCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTableViewCell.cpp; sourceTree = "<group>"; };
+		78A1F2831832921C00435951 /* CCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTableViewCell.h; sourceTree = "<group>"; };
 		78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = upsell_whoosh.mp3; sourceTree = "<group>"; };
 		78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonReceiver.cpp; sourceTree = "<group>"; };
 		78AE447F18081EF300FBABDD /* ButtonReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonReceiver.h; sourceTree = "<group>"; };
@@ -716,6 +735,8 @@
 		78365443180C5ED100AA9432 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				78791F561832711B00821057 /* TextureAtlas18.plist */,
+				78791F571832711B00821057 /* TextureAtlas18.pvr.ccz */,
 				78D358BA182B9342001450F3 /* TextureAtlas17.plist */,
 				78D358BB182B9342001450F3 /* TextureAtlas17.pvr.ccz */,
 				78D358AC182A69BD001450F3 /* splash_logo_abs.png */,
@@ -973,6 +994,8 @@
 		783E879217C20CEB00FD49C1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				78791F5318326D1200821057 /* Episodes.cpp */,
+				78791F5418326D1200821057 /* Episodes.h */,
 				78D358B2182A6A0E001450F3 /* SplashScreen.cpp */,
 				78D358B3182A6A0E001450F3 /* SplashScreen.h */,
 				783E879317C20CEB00FD49C1 /* Arcade.cpp */,
@@ -1025,6 +1048,14 @@
 		783E87B817C20CEB00FD49C1 /* TEST */ = {
 			isa = PBXGroup;
 			children = (
+				78A1F27C1832921C00435951 /* CCScrollView.cpp */,
+				78A1F27D1832921C00435951 /* CCScrollView.h */,
+				78A1F27E1832921C00435951 /* CCSorting.cpp */,
+				78A1F27F1832921C00435951 /* CCSorting.h */,
+				78A1F2801832921C00435951 /* CCTableView.cpp */,
+				78A1F2811832921C00435951 /* CCTableView.h */,
+				78A1F2821832921C00435951 /* CCTableViewCell.cpp */,
+				78A1F2831832921C00435951 /* CCTableViewCell.h */,
 				783E87B917C20CEB00FD49C1 /* CCBlade.cpp */,
 				783E87BA17C20CEB00FD49C1 /* CCBlade.h */,
 				783E87BB17C20CEB00FD49C1 /* TouchTrailLayer.cpp */,
@@ -1335,6 +1366,7 @@
 				78D3587718212D8F001450F3 /* miss.wav in Resources */,
 				783654A5180C5ED100AA9432 /* TextureAtlas8.plist in Resources */,
 				78D358951821670D001450F3 /* gem5.mp3 in Resources */,
+				78791F591832711B00821057 /* TextureAtlas18.pvr.ccz in Resources */,
 				78397AE51807029200C999E7 /* Icon-120-ios7.png in Resources */,
 				78397AEC1807032400C999E7 /* Icon-100-ios6.png in Resources */,
 				78D358B9182AB050001450F3 /* intro2.mp4 in Resources */,
@@ -1420,6 +1452,7 @@
 				78365497180C5ED100AA9432 /* TextureAtlas14.plist in Resources */,
 				78365499180C5ED100AA9432 /* TextureAtlas2.plist in Resources */,
 				78D358A7182A3DDD001450F3 /* TextureAtlas16.plist in Resources */,
+				78791F581832711B00821057 /* TextureAtlas18.plist in Resources */,
 				78397AE21807029200C999E7 /* Icon-58-ios7.png in Resources */,
 				783E899217C20CEC00FD49C1 /* tap.wav in Resources */,
 				783E899317C20CEC00FD49C1 /* throw-bird.mp3 in Resources */,
@@ -1441,9 +1474,11 @@
 				785B4F30180595AC008B444E /* UnlockLevel.cpp in Sources */,
 				787CC990180580AE00D54AD9 /* KeyParticle.cpp in Sources */,
 				787CC991180580AE00D54AD9 /* LiveParticle.cpp in Sources */,
+				78A1F2841832921C00435951 /* CCScrollView.cpp in Sources */,
 				787CC98B18056EF400D54AD9 /* GetKeys.cpp in Sources */,
 				7896A9DA18041A06001F8145 /* GetLives.cpp in Sources */,
 				78593F8417FDDCFE0015EC86 /* GeneralExplosion.cpp in Sources */,
+				78A1F2871832921C00435951 /* CCTableViewCell.cpp in Sources */,
 				78D358A41829111B001450F3 /* UnlockMode.cpp in Sources */,
 				78593F8117FC370D0015EC86 /* RobotoGun.cpp in Sources */,
 				78593F7E17FB079B0015EC86 /* ZombieExplosion.cpp in Sources */,
@@ -1454,6 +1489,7 @@
 				7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */,
 				783EBF9817E87CA800536895 /* Ripple.cpp in Sources */,
 				783EBF9717E87C9B00536895 /* Map.cpp in Sources */,
+				78A1F2861832921C00435951 /* CCTableView.cpp in Sources */,
 				78B38A53177E5D0600773C6A /* AppController.mm in Sources */,
 				78B38A55177E5D0600773C6A /* main.m in Sources */,
 				78B38A56177E5D0600773C6A /* RootViewController.mm in Sources */,
@@ -1485,6 +1521,7 @@
 				783E88A617C20CEC00FD49C1 /* Text.cpp in Sources */,
 				783E88A717C20CEC00FD49C1 /* WeaponParticle.cpp in Sources */,
 				783E88A817C20CEC00FD49C1 /* Texture.cpp in Sources */,
+				78A1F2851832921C00435951 /* CCSorting.cpp in Sources */,
 				780163151821002C002A0CB7 /* ColorParticle.cpp in Sources */,
 				783E88A917C20CEC00FD49C1 /* BatchEntityManager.cpp in Sources */,
 				783E88AA17C20CEC00FD49C1 /* BladeParticlesManager.cpp in Sources */,
@@ -1533,6 +1570,7 @@
 				783E88D717C20CEC00FD49C1 /* List.cpp in Sources */,
 				783E88D817C20CEC00FD49C1 /* ModeHelpList.cpp in Sources */,
 				783E88D917C20CEC00FD49C1 /* Touchable.cpp in Sources */,
+				78791F5518326D1200821057 /* Episodes.cpp in Sources */,
 				783E88DA17C20CEC00FD49C1 /* Utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

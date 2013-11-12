@@ -19,6 +19,7 @@
 #include "Arcade.h"
 #include "Progresses.h"
 #include "More.h"
+#include "Episodes.h"
 
 // ===========================================================
 // Inner Classes
@@ -120,6 +121,7 @@ void ScreenManager::load(int pAction, int pDo)
                     this->mScreens[Screen::SCREEN_MORE] = More::create();
                     this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
                     this->mScreens[Screen::SCREEN_MODE] = Mode::create();
+                    this->mScreens[Screen::SCREEN_EPISODES] = Episodes::create();
                     this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
                     this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 break;
@@ -140,6 +142,7 @@ void ScreenManager::load(int pAction, int pDo)
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LANGUAGE]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MODE]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SHOP]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_EPISODES]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LEVELS]);
                     
                 break;

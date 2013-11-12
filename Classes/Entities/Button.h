@@ -116,6 +116,8 @@ class Button : public Entity
         void onEnter();
         void onExit();
     
+        void setScale(float pScale);
+    
         Button* deepCopy();
     
         Entity* create();
