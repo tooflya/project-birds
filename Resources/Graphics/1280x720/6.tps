@@ -196,6 +196,7 @@
             <filename>../../Graphics Sources/popup_cloud@2x.png</filename>
             <filename>../../Graphics Sources/bg_detail_choose_bird@2x.png</filename>
             <filename>../../Graphics Sources/popup_stars@2x.png</filename>
+            <filename>../../Graphics Sources/move_circle@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

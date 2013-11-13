@@ -1,14 +1,9 @@
-#ifndef CONST_EPISODES_H
-#define CONST_EPISODES_H
+#ifndef CONST_GETSHOOTS_H
+#define CONST_GETSHOOTS_H
 
-#include "Screen.h"
+#include "Popup.h"
 
-#include "AppDelegate.h"
-#include "CCScrollView.h"
-
-using namespace cocos2d::extension;
-
-class Episodes : public Screen
+class GetShoots : public Popup
 {
     protected:
         // ===========================================================
@@ -23,37 +18,19 @@ class Episodes : public Screen
         // Fields
         // ===========================================================
     
-        Entity* mEpisodes[10];
-        Entity* mPersonage;
-        Entity* mShareIcon;
+        Text* mExpireTimeText;
     
-        EntityManager* mPoints;
-        EntityManager* mStars;
-        EntityManager* mDots;
+        int mPurchaseId;
+
+        Button* mGetCoinsButtons[2];
     
-        CCLayerColor* mDarkLayers[5];
-        CCLayerColor* mComingSoon;
-    
-        Text* mEpisodeText[6];
-        Text* mEpisodeNameText[6];
-        Text* mStarsText[6];
-        Text* mUnlockText[6];
-        Text* mFacebookText[2];
-    
-        CCScrollView* mScroll;
-    
-        float mScale;
-        float mPointsAnimationTimeElapsed;
-    
-        bool mPointsAnimationRunning;
-    
-        int mPointsAnimationCounter;
-    
+        EntityManager* mLights;
+
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Episodes();
+        GetShoots(CCNode* pParent, bool pFirst);
 
         // ===========================================================
         // Methods
@@ -96,8 +73,6 @@ class Episodes : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static int ACTION;
 
         // ===========================================================
         // Fields
@@ -107,9 +82,9 @@ class Episodes : public Screen
         // Constructors
         // ===========================================================
     
-        static Episodes* create();
+        static GetShoots* create(CCNode* pParent, bool pFirst);
     
-        ~Episodes();
+        ~GetShoots();
 
         // ===========================================================
         // Methods
@@ -119,10 +94,13 @@ class Episodes : public Screen
         // Override Methods
         // ===========================================================
     
-        void update(float pDeltaTime);
+        virtual void update(float pDeltaTime);
     
-        void onEnter();
-        void onExit();
+        virtual void hide();
+        virtual void show();
+    
+        virtual void onShow();
+        virtual void onHide();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
 };

@@ -28,7 +28,7 @@ SplashScreen::~SplashScreen()
 SplashScreen::SplashScreen() :
 mLogos()
 {
-    this->mAnimationCounter = 0;
+    this->mAnimationCounter = Options::IS_BUILD_FOR_ABSOLUTIST ? 0 : 4;
     
     this->mAnimation = false;
     

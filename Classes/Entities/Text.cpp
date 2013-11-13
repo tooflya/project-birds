@@ -231,6 +231,8 @@ void Text::onExit()
     //TEXTES[this->mId] = NULL;
     
     //this->release();
+    
+    ID--;
 }
 
 #endif

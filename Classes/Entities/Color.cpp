@@ -283,6 +283,8 @@ void Color::onCreate()
     this->mc = false;
 
     this->position = 0;
+    this->position_in_matrtix_x = -1;
+    this->position_in_matrtix_y = -1;
 
     this->mBlink = static_cast<Game*>(this->getParent()->getParent()->getParent())->mColorsBlink->create();
     this->mBlink->animate(0.1);
@@ -313,7 +315,7 @@ void Color::onDestroy()
     
     Entity::onDestroy();
     
-    Game::MATRIX[this->position_in_matrtix_x][this->position_in_matrtix_y] = -1;
+    if(this->position_in_matrtix_x >= 0 && this->position_in_matrtix_y >= 0) Game::MATRIX[this->position_in_matrtix_x][this->position_in_matrtix_y] = -1;
 }
 
 void Color::update(float pDeltaTime)

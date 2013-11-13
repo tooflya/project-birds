@@ -605,6 +605,8 @@ bool CCScrollView::ccTouchBegan(CCTouch* touch, CCEvent* event)
         return false;
     }
     
+    this->getContainer()->stopAllActions();
+    
     CCRect frame = getViewRect();
 
     //dispatcher does not know about clipping. reject touches outside visible bounds.

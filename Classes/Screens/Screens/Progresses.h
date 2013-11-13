@@ -10,6 +10,7 @@
 
 #include "Color.h"
 #include "ColorParticle.h"
+#include "GetShoots.h"
 
 class TaskPanel;
 
@@ -46,6 +47,8 @@ class Progresses : public Game
         EntityManager* mColorsSmall;
         EntityManager* mTasksBackground;
         EntityManager* mShootsDecorations;
+    
+        Popup* mGetShootsPopup;
     
         float mNewColorsTime;
         float mNewColorsTimeElapsed;
@@ -133,6 +136,7 @@ class Progresses : public Game
         void setGamePanelLeftLevelIcons();
     
         void checkStarsRuntime();
+        void lookAtTheTasks();
     
         // ===========================================================
         // Override Methods

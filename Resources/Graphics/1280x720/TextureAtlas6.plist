@@ -85,7 +85,7 @@
             <key>colors_horizontal_line@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1977,368},{63,60}}</string>
+                <string>{{1951,582},{63,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>colors_small@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1801},{232,42}}</string>
+                <string>{{1006,683},{232,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>colors_vertical_line@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1951,578},{56,81}}</string>
+                <string>{{1923,644},{56,81}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>game_panel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,683},{1000,66}}</string>
+                <string>{{1006,727},{1000,66}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>game_panel_counter@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1753},{252,46}}</string>
+                <string>{{1240,668},{252,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>game_panel_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1958,504},{78,72}}</string>
+                <string>{{1958,508},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>game_panel_plus@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1968,430},{78,72}}</string>
+                <string>{{1968,434},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -264,10 +264,23 @@
                 <key>sourceSize</key>
                 <string>{28,37}</string>
             </dict>
+            <key>move_circle@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1977,368},{64,64}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{64,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
             <key>popup_cloud@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1006,751},{650,755}}</string>
+                <string>{{1006,795},{650,755}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -313,7 +326,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:347ae31ec2653a473c42fae90b65d860:fd747e966239e5aefefef4a7b3b333e3:f33f7d177fc4a61253b8dfcbf542a179$</string>
+            <string>$TexturePacker:SmartUpdate:7f2de3bc44358c86242cd1d3b9134941:a996556e1f6208957f9f2b839a24ba8a:f33f7d177fc4a61253b8dfcbf542a179$</string>
             <key>textureFileName</key>
             <string>TextureAtlas6.pvr.ccz</string>
         </dict>

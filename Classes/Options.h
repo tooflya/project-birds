@@ -90,6 +90,8 @@ class Options
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static bool IS_BUILD_FOR_ABSOLUTIST;
 
         static int CENTER_X;
         static int CENTER_Y;
@@ -257,6 +259,16 @@ class Options
         static const int BUTTONS_ID_SHARE_TWITTER = 2102;
         static const int BUTTONS_ID_SHARE_FACEBOOK = 2103;
         static const int BUTTONS_ID_SHARE_VK = 2104;
+        static const int BUTTONS_EPISODE_1 = 2201;
+        static const int BUTTONS_EPISODE_2 = 2202;
+        static const int BUTTONS_EPISODE_3 = 2203;
+        static const int BUTTONS_EPISODE_4 = 2204;
+        static const int BUTTONS_EPISODE_5 = 2205;
+        static const int BUTTONS_EPISODE_FACEBOOK_CONNECT = 2206;
+        static const int BUTTONS_EPISODE_GOOGLE_PLUS = 2207;
+        static const int BUTTONS_EPISODE_VK = 2208;
+        static const int BUTTONS_EPISODE_TWITTER = 2209;
+        static const int BUTTONS_EPISODE_FACEBOOK = 2210;
     
         static Textes TEXT_SETTINGS_CREDITS;
         static Textes TEXT_SETTINGS_PROGRESS;
@@ -351,6 +363,8 @@ class Options
         static Textes TEXT_PROGRESS_TAP_TO_CONTINUE;
         static Textes TEXT_PROGRESS_LEVEL_NUMBER;
         static Textes TEXT_PROGRESS_LEVEL_TASK;
+        static Textes TEXT_EPISODES_NAMES[6];
+        static Textes TEXT_NEED_TO_UNLOCK;
     
         static const char* TEXT_LEVELS_TASKS[80][3];
 

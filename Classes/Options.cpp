@@ -15,6 +15,8 @@
 // Constants
 // ===========================================================
 
+bool Options::IS_BUILD_FOR_ABSOLUTIST = true;
+
 int Options::CENTER_X = 0;
 int Options::CENTER_Y = 0;
 
@@ -465,8 +467,16 @@ Textes Options::TEXT_LEVELS_LOCKED = {"", FONT, 32, 401};
 Textes Options::TEXT_PROGRESS_TAP_TO_CONTINUE = {"", FONT, 24, 402};
 Textes Options::TEXT_PROGRESS_LEVEL_NUMBER = {"", FONT, 32, 403};
 Textes Options::TEXT_PROGRESS_LEVEL_TASK = {"", FONT, 32, 404};
-
-
+Textes Options::TEXT_EPISODES_NAMES[6] =
+{
+    {"", FONT, 32, 405},
+    {"", FONT, 32, 406},
+    {"", FONT, 32, 407},
+    {"", FONT, 32, 408},
+    {"", FONT, 32, 409},
+    {"", FONT, 52, 410}
+};
+Textes Options::TEXT_NEED_TO_UNLOCK = {"", FONT, 22, 411};
 
 const char* Options::TEXT_LEVELS_TASKS[80][3] = {
     { "Соберите все яйца", "Успейте за 20 секунд", "Используйте только\nодин удар" },
@@ -1007,6 +1017,15 @@ void Options::changeLanguage()
             TEXT_PROGRESS_TAP_TO_CONTINUE.string = "Tap to continue";
             TEXT_PROGRESS_LEVEL_NUMBER.string = "-= Level - %d =-";
             TEXT_PROGRESS_LEVEL_TASK.string = "Complete the quest and collect\nas many stars to go to the next level.";
+            
+            TEXT_EPISODES_NAMES[0].string = "Home";
+            TEXT_EPISODES_NAMES[1].string = "Robbed";
+            TEXT_EPISODES_NAMES[2].string = "Packing";
+            TEXT_EPISODES_NAMES[3].string = "Delivery";
+            TEXT_EPISODES_NAMES[4].string = "Selling";
+            TEXT_EPISODES_NAMES[5].string = "Coming soon";
+            
+            TEXT_NEED_TO_UNLOCK.string = "You need\n \nto unlock";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1484,6 +1503,15 @@ void Options::changeLanguage()
             TEXT_PROGRESS_TAP_TO_CONTINUE.string = "Нажмите для продолжения";
             TEXT_PROGRESS_LEVEL_NUMBER.string = "-= Уровень - %d =-";
             TEXT_PROGRESS_LEVEL_TASK.string = "Выполните задание и соберите\nкак можно больше звезд\nчтобы пройти к следующему уровню.";
+            
+            TEXT_EPISODES_NAMES[0].string = "Дом";
+            TEXT_EPISODES_NAMES[1].string = "Похищение";
+            TEXT_EPISODES_NAMES[2].string = "Упаковка";
+            TEXT_EPISODES_NAMES[3].string = "Доставка";
+            TEXT_EPISODES_NAMES[4].string = "Продажа";
+            TEXT_EPISODES_NAMES[5].string = "Новые эпизоды\nсовсем скоро!";
+            
+            TEXT_NEED_TO_UNLOCK.string = "Вам необоходимо\n \nдля доступа";
         break;
     }
     
@@ -1892,8 +1920,15 @@ void Options::changeLanguage()
     TEXTES_HOLDER[402] = TEXT_PROGRESS_TAP_TO_CONTINUE;
     TEXTES_HOLDER[403] = TEXT_PROGRESS_LEVEL_NUMBER;
     TEXTES_HOLDER[404] = TEXT_PROGRESS_LEVEL_TASK;
+    TEXTES_HOLDER[405] = TEXT_EPISODES_NAMES[0];
+    TEXTES_HOLDER[406] = TEXT_EPISODES_NAMES[1];
+    TEXTES_HOLDER[407] = TEXT_EPISODES_NAMES[2];
+    TEXTES_HOLDER[408] = TEXT_EPISODES_NAMES[3];
+    TEXTES_HOLDER[409] = TEXT_EPISODES_NAMES[4];
+    TEXTES_HOLDER[410] = TEXT_EPISODES_NAMES[5];
+    TEXTES_HOLDER[411] = TEXT_NEED_TO_UNLOCK;
     
-    for(int i = 0; i <= 404; i++)
+    for(int i = 0; i <= 411; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

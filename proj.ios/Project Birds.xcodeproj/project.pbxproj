@@ -184,6 +184,7 @@
 		78593F8417FDDCFE0015EC86 /* GeneralExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78593F8217FDDCF60015EC86 /* GeneralExplosion.cpp */; };
 		785B4F30180595AC008B444E /* UnlockLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785B4F2E180595A0008B444E /* UnlockLevel.cpp */; };
 		785B4F321806F39F008B444E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785B4F311806F39F008B444E /* Media.xcassets */; };
+		785D1A4F1833F66F00A36DB8 /* GetShoots.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A4D1833F66F00A36DB8 /* GetShoots.cpp */; };
 		7869166117F06A1B00184E9D /* bonus_banana_freeze.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166017F06A0F00184E9D /* bonus_banana_freeze.mp3 */; };
 		7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166517F1DF9600184E9D /* pome-rampdown.mp3 */; };
 		7869167117F1DF9F00184E9D /* pome-zoomout.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166617F1DF9600184E9D /* pome-zoomout.mp3 */; };
@@ -548,6 +549,8 @@
 		785B4F331806F3DA008B444E /* Project Birds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Project Birds.entitlements"; path = "Project Birds/Project Birds.entitlements"; sourceTree = "<group>"; };
 		785B4F341806F3DF008B444E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		785B4F361806F3E3008B444E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		785D1A4D1833F66F00A36DB8 /* GetShoots.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetShoots.cpp; sourceTree = "<group>"; };
+		785D1A4E1833F66F00A36DB8 /* GetShoots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetShoots.h; sourceTree = "<group>"; };
 		7869166017F06A0F00184E9D /* bonus_banana_freeze.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bonus_banana_freeze.mp3; sourceTree = "<group>"; };
 		7869166517F1DF9600184E9D /* pome-rampdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pome-rampdown.mp3"; sourceTree = "<group>"; };
 		7869166617F1DF9600184E9D /* pome-zoomout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pome-zoomout.mp3"; sourceTree = "<group>"; };
@@ -949,6 +952,8 @@
 		783E876D17C20CEB00FD49C1 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				785D1A4D1833F66F00A36DB8 /* GetShoots.cpp */,
+				785D1A4E1833F66F00A36DB8 /* GetShoots.h */,
 				78D358A21829111B001450F3 /* UnlockMode.cpp */,
 				78D358A31829111B001450F3 /* UnlockMode.h */,
 				78D3589A18279E96001450F3 /* MapDescription.cpp */,
@@ -1473,6 +1478,7 @@
 			files = (
 				785B4F30180595AC008B444E /* UnlockLevel.cpp in Sources */,
 				787CC990180580AE00D54AD9 /* KeyParticle.cpp in Sources */,
+				785D1A4F1833F66F00A36DB8 /* GetShoots.cpp in Sources */,
 				787CC991180580AE00D54AD9 /* LiveParticle.cpp in Sources */,
 				78A1F2841832921C00435951 /* CCScrollView.cpp in Sources */,
 				787CC98B18056EF400D54AD9 /* GetKeys.cpp in Sources */,

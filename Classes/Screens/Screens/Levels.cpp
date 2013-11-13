@@ -4,6 +4,7 @@
 #include "Levels.h"
 
 #include "Game.h"
+#include "Episodes.h"
 
 // ===========================================================
 // Inner Classe
@@ -789,6 +790,78 @@ class MainList : public CCLayer
     }
     float t;
     int ci;
+    
+    void check()
+    {
+        float x = this->getPosition().x;
+        float y = this->getPosition().y;
+        
+        this->mLastDistanceX = this->mStartPositionCoordinateX - x;
+        this->mLastDistanceY = this->mStartPositionCoordinateY - y;
+        
+        this->mSpeedX = abs(this->mLastDistanceX) / 1000.0;
+        this->mSpeedY = abs(this->mLastDistanceY) / 1000.0;
+        
+        float n = x;
+        
+        while((int)n % (int)(Options::CAMERA_CENTER_X * 1.66 + Utils::coord(60)) != 0)
+        {
+            n += this->mLastDistanceX > 0 ? -1 : 1;
+        }
+        
+        this->mPostUpdate = true;
+        
+        mSpeedX = 0.5;
+        
+        
+        if(n < this->mMinWidth)
+        {
+        }
+        else
+        {
+            n = 0;
+        }
+        
+        if(n > this->mMaxWidth)
+        {
+        }
+        else
+        {
+            n = this->mMaxWidth + Options::CAMERA_CENTER_X * 0.7;
+        }
+        
+        for(int i = 0; i < Levels::LEVEL_PACKS_COUNT; i++)
+        {
+            this->mParent->mSlides[i]->setCurrentFrameIndex(0);
+        }
+        
+        int index = abs((int)n / (int)(Options::CAMERA_CENTER_X * 1.66));
+        
+        this->mParent->mSlides[index]->setCurrentFrameIndex(1);
+        
+        if(index == 0)
+        {
+            this->mParent->mSlidesArrows[0]->runAction(CCFadeTo::create(0.5, 0.0));
+        }
+        else
+        {
+            this->mParent->mSlidesArrows[0]->runAction(CCFadeTo::create(0.5, 255.0));
+        }
+        
+        if(index == Levels::LEVEL_PACKS_COUNT - 1)
+        {
+            this->mParent->mSlidesArrows[1]->runAction(CCFadeTo::create(0.5, 0.0));
+        }
+        else
+        {
+            this->mParent->mSlidesArrows[1]->runAction(CCFadeTo::create(0.5, 255.0));
+        }
+        t = 0;
+        this->runAction(CCMoveTo::create(this->mSpeedX, ccp(n, 0)));
+        
+        ci=index;
+    }
+    
     void update(float pDeltaTime)
     {
             for(int i = 0; i < Levels::LEVEL_PACKS_COUNT; i++)
@@ -1204,7 +1277,7 @@ void Levels::onEnter()
 {
     Screen::onEnter();
 
-    this->mMainList->setPosition(ccp(0, 0)); // this->mMainList->setPosition(ccp(-Options::CAMERA_CENTER_X * 1.66, 0));
+    this->mMainList->setPosition(ccp(-Options::CAMERA_CENTER_X * 1.66 * (Episodes::ACTION - 1) - Utils::coord(60) * (Episodes::ACTION - 1), 0));
 
     for(int i = 0; i < LEVEL_PACKS_COUNT + 1; i++)
     {
@@ -1226,14 +1299,16 @@ void Levels::onEnter()
     {
         tt[i]->setString(ccsf(Options::TEXT_LEVELS_EPISODE.string, i+1));
     }
+    
+    this->mMainList->check();
 }
 
 void Levels::onExit()
 {
     Screen::onExit();
-    
+
     this->mUnlockPanel->removeFromParentAndCleanup(false);
-    
+
     for(int i = 0 ; i < 80; i++)
     {
         mLevels[i]->setRegisterAsTouchable(true);

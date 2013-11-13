@@ -181,6 +181,12 @@
             <filename>../../Graphics Sources/progress_map_episode5@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_fbico@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_point_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_fb_share@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_fbconnect@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_gplus_share@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_tw_share@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_vk_share@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_share_ico@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
