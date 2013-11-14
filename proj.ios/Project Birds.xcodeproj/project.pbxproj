@@ -187,7 +187,94 @@
 		785D1A4F1833F66F00A36DB8 /* GetShoots.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A4D1833F66F00A36DB8 /* GetShoots.cpp */; };
 		785D1A521834BA1C00A36DB8 /* TextureAtlas19.plist in Resources */ = {isa = PBXBuildFile; fileRef = 785D1A501834BA1C00A36DB8 /* TextureAtlas19.plist */; };
 		785D1A531834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 785D1A511834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz */; };
-		785D1A561834E9AE00A36DB8 /* InAppPurchasesList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A541834E9AE00A36DB8 /* InAppPurchasesList.cpp */; };
+		785D1A671834ECC900A36DB8 /* CCSoomlaNdkBridgeIos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A591834ECC900A36DB8 /* CCSoomlaNdkBridgeIos.mm */; };
+		785D1A681834ECC900A36DB8 /* EventDispatcherBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A5C1834ECC900A36DB8 /* EventDispatcherBridge.mm */; };
+		785D1A691834ECC900A36DB8 /* SoomlaNDKGlue.mm in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A5E1834ECC900A36DB8 /* SoomlaNDKGlue.mm */; };
+		785D1A6A1834ECC900A36DB8 /* StoreAssetsBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A601834ECC900A36DB8 /* StoreAssetsBridge.mm */; };
+		785D1A6B1834ECC900A36DB8 /* StoreControllerBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A621834ECC900A36DB8 /* StoreControllerBridge.mm */; };
+		785D1A6C1834ECC900A36DB8 /* StoreInfoBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A641834ECC900A36DB8 /* StoreInfoBridge.mm */; };
+		785D1A6D1834ECC900A36DB8 /* StoreInventoryBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A661834ECC900A36DB8 /* StoreInventoryBridge.mm */; };
+		7861BFE91834ED5D00B2A896 /* CCSoomla.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFB01834ED5D00B2A896 /* CCSoomla.cpp */; };
+		7861BFEA1834ED5D00B2A896 /* CCSoomlaError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFB21834ED5D00B2A896 /* CCSoomlaError.cpp */; };
+		7861BFEB1834ED5D00B2A896 /* CCSoomlaJsonHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFB41834ED5D00B2A896 /* CCSoomlaJsonHelper.cpp */; };
+		7861BFEC1834ED5D00B2A896 /* CCSoomlaNdkBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFB61834ED5D00B2A896 /* CCSoomlaNdkBridge.cpp */; };
+		7861BFED1834ED5D00B2A896 /* CCStoreController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFB81834ED5D00B2A896 /* CCStoreController.cpp */; };
+		7861BFEE1834ED5D00B2A896 /* CCStoreInventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFBA1834ED5D00B2A896 /* CCStoreInventory.cpp */; };
+		7861BFEF1834ED5D00B2A896 /* CCStoreUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFBC1834ED5D00B2A896 /* CCStoreUtils.cpp */; };
+		7861BFF01834ED5D00B2A896 /* CCStoreInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFBF1834ED5D00B2A896 /* CCStoreInfo.cpp */; };
+		7861BFF11834ED5D00B2A896 /* SoomlaJSONConsts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFC11834ED5D00B2A896 /* SoomlaJSONConsts.cpp */; };
+		7861BFF21834ED5D00B2A896 /* CCMarketItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFC41834ED5D00B2A896 /* CCMarketItem.cpp */; };
+		7861BFF31834ED5D00B2A896 /* CCNonConsumableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFC61834ED5D00B2A896 /* CCNonConsumableItem.cpp */; };
+		7861BFF41834ED5D00B2A896 /* CCPurchasableVirtualItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFC81834ED5D00B2A896 /* CCPurchasableVirtualItem.cpp */; };
+		7861BFF51834ED5D00B2A896 /* CCVirtualCategory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFCA1834ED5D00B2A896 /* CCVirtualCategory.cpp */; };
+		7861BFF61834ED5D00B2A896 /* CCVirtualItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFCC1834ED5D00B2A896 /* CCVirtualItem.cpp */; };
+		7861BFF71834ED5D00B2A896 /* CCVirtualCurrency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFCF1834ED5D00B2A896 /* CCVirtualCurrency.cpp */; };
+		7861BFF81834ED5D00B2A896 /* CCVirtualCurrencyPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFD11834ED5D00B2A896 /* CCVirtualCurrencyPack.cpp */; };
+		7861BFF91834ED5D00B2A896 /* CCEquippableVG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFD41834ED5D00B2A896 /* CCEquippableVG.cpp */; };
+		7861BFFA1834ED5D00B2A896 /* CCLifetimeVG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFD61834ED5D00B2A896 /* CCLifetimeVG.cpp */; };
+		7861BFFB1834ED5D00B2A896 /* CCSingleUsePackVG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFD81834ED5D00B2A896 /* CCSingleUsePackVG.cpp */; };
+		7861BFFC1834ED5D00B2A896 /* CCSingleUseVG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFDA1834ED5D00B2A896 /* CCSingleUseVG.cpp */; };
+		7861BFFD1834ED5D00B2A896 /* CCUpgradeVG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFDC1834ED5D00B2A896 /* CCUpgradeVG.cpp */; };
+		7861BFFE1834ED5D00B2A896 /* CCVirtualGood.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFDE1834ED5D00B2A896 /* CCVirtualGood.cpp */; };
+		7861BFFF1834ED5D00B2A896 /* CCPurchaseType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFE11834ED5D00B2A896 /* CCPurchaseType.cpp */; };
+		7861C0001834ED5D00B2A896 /* CCPurchaseWithMarket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFE31834ED5D00B2A896 /* CCPurchaseWithMarket.cpp */; };
+		7861C0011834ED5D00B2A896 /* CCPurchaseWithVirtualItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861BFE51834ED5D00B2A896 /* CCPurchaseWithVirtualItem.cpp */; };
+		7861C05D1834ED7800B2A896 /* JSONConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0051834ED7800B2A896 /* JSONConsts.m */; };
+		7861C05E1834ED7800B2A896 /* KeyValDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0071834ED7800B2A896 /* KeyValDatabase.m */; };
+		7861C05F1834ED7800B2A896 /* KeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0091834ED7800B2A896 /* KeyValueStorage.m */; };
+		7861C0601834ED7800B2A896 /* NonConsumableStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C00B1834ED7800B2A896 /* NonConsumableStorage.m */; };
+		7861C0611834ED7800B2A896 /* ObscuredNSUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C00D1834ED7800B2A896 /* ObscuredNSUserDefaults.m */; };
+		7861C0621834ED7800B2A896 /* StorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C00F1834ED7800B2A896 /* StorageManager.m */; };
+		7861C0631834ED7800B2A896 /* StoreEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0111834ED7800B2A896 /* StoreEncryptor.m */; };
+		7861C0641834ED7800B2A896 /* StorefrontInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0131834ED7800B2A896 /* StorefrontInfo.m */; };
+		7861C0651834ED7800B2A896 /* StoreInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0151834ED7800B2A896 /* StoreInfo.m */; };
+		7861C0661834ED7800B2A896 /* VirtualCurrencyStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0171834ED7800B2A896 /* VirtualCurrencyStorage.m */; };
+		7861C0671834ED7800B2A896 /* VirtualGoodStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0191834ED7800B2A896 /* VirtualGoodStorage.m */; };
+		7861C0681834ED7800B2A896 /* VirtualItemStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C01B1834ED7800B2A896 /* VirtualItemStorage.m */; };
+		7861C0691834ED7800B2A896 /* AppStoreItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C01E1834ED7800B2A896 /* AppStoreItem.m */; };
+		7861C06A1834ED7800B2A896 /* NonConsumableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0201834ED7800B2A896 /* NonConsumableItem.m */; };
+		7861C06B1834ED7800B2A896 /* PurchasableVirtualItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0221834ED7800B2A896 /* PurchasableVirtualItem.m */; };
+		7861C06C1834ED7800B2A896 /* VirtualCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0241834ED7800B2A896 /* VirtualCategory.m */; };
+		7861C06D1834ED7800B2A896 /* VirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0271834ED7800B2A896 /* VirtualCurrency.m */; };
+		7861C06E1834ED7800B2A896 /* VirtualCurrencyPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0291834ED7800B2A896 /* VirtualCurrencyPack.m */; };
+		7861C06F1834ED7800B2A896 /* EquippableVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C02C1834ED7800B2A896 /* EquippableVG.m */; };
+		7861C0701834ED7800B2A896 /* LifetimeVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C02E1834ED7800B2A896 /* LifetimeVG.m */; };
+		7861C0711834ED7800B2A896 /* SingleUsePackVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0301834ED7800B2A896 /* SingleUsePackVG.m */; };
+		7861C0721834ED7800B2A896 /* SingleUseVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0321834ED7800B2A896 /* SingleUseVG.m */; };
+		7861C0731834ED7800B2A896 /* UpgradeVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0341834ED7800B2A896 /* UpgradeVG.m */; };
+		7861C0741834ED7800B2A896 /* VirtualGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0361834ED7800B2A896 /* VirtualGood.m */; };
+		7861C0751834ED7800B2A896 /* VirtualItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0381834ED7800B2A896 /* VirtualItem.m */; };
+		7861C0761834ED7800B2A896 /* EventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C03A1834ED7800B2A896 /* EventHandling.m */; };
+		7861C0771834ED7800B2A896 /* InsufficientFundsException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C03D1834ED7800B2A896 /* InsufficientFundsException.m */; };
+		7861C0781834ED7800B2A896 /* NotEnoughGoodsException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C03F1834ED7800B2A896 /* NotEnoughGoodsException.m */; };
+		7861C0791834ED7800B2A896 /* VirtualItemNotFoundException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0411834ED7800B2A896 /* VirtualItemNotFoundException.m */; };
+		7861C07A1834ED7800B2A896 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0441834ED7800B2A896 /* FBEncryptorAES.m */; };
+		7861C07B1834ED7800B2A896 /* NSData-Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0461834ED7800B2A896 /* NSData-Base64.m */; };
+		7861C07C1834ED7800B2A896 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C04A1834ED7800B2A896 /* OpenUDID.m */; };
+		7861C07D1834ED7800B2A896 /* PurchaseType.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C04D1834ED7800B2A896 /* PurchaseType.m */; };
+		7861C07E1834ED7800B2A896 /* PurchaseWithMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C04F1834ED7800B2A896 /* PurchaseWithMarket.m */; };
+		7861C07F1834ED7800B2A896 /* PurchaseWithVirtualItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0511834ED7800B2A896 /* PurchaseWithVirtualItem.m */; };
+		7861C0801834ED7800B2A896 /* SoomlaVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0541834ED7800B2A896 /* SoomlaVerification.m */; };
+		7861C0811834ED7800B2A896 /* StoreConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0561834ED7800B2A896 /* StoreConfig.m */; };
+		7861C0821834ED7800B2A896 /* StoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0581834ED7800B2A896 /* StoreController.m */; };
+		7861C0831834ED7800B2A896 /* StoreInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C05A1834ED7800B2A896 /* StoreInventory.m */; };
+		7861C0841834ED7800B2A896 /* StoreUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7861C05C1834ED7800B2A896 /* StoreUtils.m */; };
+		7861C0891834EE6600B2A896 /* InAppPurchasesList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0871834EE6600B2A896 /* InAppPurchasesList.cpp */; };
+		7861C08C1834EE8100B2A896 /* InAppPurchaseEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7861C08A1834EE8100B2A896 /* InAppPurchaseEventHandler.cpp */; };
+		7861C09F1834EF9C00B2A896 /* dump.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C08E1834EF9C00B2A896 /* dump.c */; };
+		7861C0A01834EF9C00B2A896 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C08F1834EF9C00B2A896 /* error.c */; };
+		7861C0A11834EF9C00B2A896 /* hashtable.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0901834EF9C00B2A896 /* hashtable.c */; };
+		7861C0A21834EF9C00B2A896 /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0951834EF9C00B2A896 /* load.c */; };
+		7861C0A31834EF9C00B2A896 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0961834EF9C00B2A896 /* memory.c */; };
+		7861C0A41834EF9C00B2A896 /* pack_unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0971834EF9C00B2A896 /* pack_unpack.c */; };
+		7861C0A51834EF9C00B2A896 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7861C0981834EF9C00B2A896 /* README.md */; };
+		7861C0A61834EF9C00B2A896 /* strbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C0991834EF9C00B2A896 /* strbuffer.c */; };
+		7861C0A71834EF9C00B2A896 /* strconv.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C09B1834EF9C00B2A896 /* strconv.c */; };
+		7861C0A81834EF9C00B2A896 /* utf.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C09C1834EF9C00B2A896 /* utf.c */; };
+		7861C0A91834EF9C00B2A896 /* value.c in Sources */ = {isa = PBXBuildFile; fileRef = 7861C09E1834EF9C00B2A896 /* value.c */; };
+		7861C0AB1834EFBB00B2A896 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7861C0AA1834EFBB00B2A896 /* Security.framework */; };
+		7861C0AD1834EFCF00B2A896 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7861C0AC1834EFCF00B2A896 /* libsqlite3.0.dylib */; };
+		7861C0AE1834EFD600B2A896 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785B4F361806F3E3008B444E /* StoreKit.framework */; };
 		7869166117F06A1B00184E9D /* bonus_banana_freeze.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166017F06A0F00184E9D /* bonus_banana_freeze.mp3 */; };
 		7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166517F1DF9600184E9D /* pome-rampdown.mp3 */; };
 		7869167117F1DF9F00184E9D /* pome-zoomout.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166617F1DF9600184E9D /* pome-zoomout.mp3 */; };
@@ -556,8 +643,179 @@
 		785D1A4E1833F66F00A36DB8 /* GetShoots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetShoots.h; sourceTree = "<group>"; };
 		785D1A501834BA1C00A36DB8 /* TextureAtlas19.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas19.plist; sourceTree = "<group>"; };
 		785D1A511834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas19.pvr.ccz; sourceTree = "<group>"; };
-		785D1A541834E9AE00A36DB8 /* InAppPurchasesList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InAppPurchasesList.cpp; sourceTree = "<group>"; };
-		785D1A551834E9AE00A36DB8 /* InAppPurchasesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchasesList.h; sourceTree = "<group>"; };
+		785D1A581834ECC900A36DB8 /* CCSoomlaNdkBridgeIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaNdkBridgeIos.h; sourceTree = "<group>"; };
+		785D1A591834ECC900A36DB8 /* CCSoomlaNdkBridgeIos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCSoomlaNdkBridgeIos.mm; sourceTree = "<group>"; };
+		785D1A5B1834ECC900A36DB8 /* EventDispatcherBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDispatcherBridge.h; sourceTree = "<group>"; };
+		785D1A5C1834ECC900A36DB8 /* EventDispatcherBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EventDispatcherBridge.mm; sourceTree = "<group>"; };
+		785D1A5D1834ECC900A36DB8 /* SoomlaNDKGlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaNDKGlue.h; sourceTree = "<group>"; };
+		785D1A5E1834ECC900A36DB8 /* SoomlaNDKGlue.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoomlaNDKGlue.mm; sourceTree = "<group>"; };
+		785D1A5F1834ECC900A36DB8 /* StoreAssetsBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreAssetsBridge.h; sourceTree = "<group>"; };
+		785D1A601834ECC900A36DB8 /* StoreAssetsBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StoreAssetsBridge.mm; sourceTree = "<group>"; };
+		785D1A611834ECC900A36DB8 /* StoreControllerBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreControllerBridge.h; sourceTree = "<group>"; };
+		785D1A621834ECC900A36DB8 /* StoreControllerBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StoreControllerBridge.mm; sourceTree = "<group>"; };
+		785D1A631834ECC900A36DB8 /* StoreInfoBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreInfoBridge.h; sourceTree = "<group>"; };
+		785D1A641834ECC900A36DB8 /* StoreInfoBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StoreInfoBridge.mm; sourceTree = "<group>"; };
+		785D1A651834ECC900A36DB8 /* StoreInventoryBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreInventoryBridge.h; sourceTree = "<group>"; };
+		785D1A661834ECC900A36DB8 /* StoreInventoryBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StoreInventoryBridge.mm; sourceTree = "<group>"; };
+		7861BFAE1834ED5D00B2A896 /* CCEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCEventHandler.h; sourceTree = "<group>"; };
+		7861BFAF1834ED5D00B2A896 /* CCIStoreAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCIStoreAssets.h; sourceTree = "<group>"; };
+		7861BFB01834ED5D00B2A896 /* CCSoomla.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomla.cpp; sourceTree = "<group>"; };
+		7861BFB11834ED5D00B2A896 /* CCSoomla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomla.h; sourceTree = "<group>"; };
+		7861BFB21834ED5D00B2A896 /* CCSoomlaError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaError.cpp; sourceTree = "<group>"; };
+		7861BFB31834ED5D00B2A896 /* CCSoomlaError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaError.h; sourceTree = "<group>"; };
+		7861BFB41834ED5D00B2A896 /* CCSoomlaJsonHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaJsonHelper.cpp; sourceTree = "<group>"; };
+		7861BFB51834ED5D00B2A896 /* CCSoomlaJsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaJsonHelper.h; sourceTree = "<group>"; };
+		7861BFB61834ED5D00B2A896 /* CCSoomlaNdkBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaNdkBridge.cpp; sourceTree = "<group>"; };
+		7861BFB71834ED5D00B2A896 /* CCSoomlaNdkBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaNdkBridge.h; sourceTree = "<group>"; };
+		7861BFB81834ED5D00B2A896 /* CCStoreController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCStoreController.cpp; sourceTree = "<group>"; };
+		7861BFB91834ED5D00B2A896 /* CCStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCStoreController.h; sourceTree = "<group>"; };
+		7861BFBA1834ED5D00B2A896 /* CCStoreInventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCStoreInventory.cpp; sourceTree = "<group>"; };
+		7861BFBB1834ED5D00B2A896 /* CCStoreInventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCStoreInventory.h; sourceTree = "<group>"; };
+		7861BFBC1834ED5D00B2A896 /* CCStoreUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCStoreUtils.cpp; sourceTree = "<group>"; };
+		7861BFBD1834ED5D00B2A896 /* CCStoreUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCStoreUtils.h; sourceTree = "<group>"; };
+		7861BFBF1834ED5D00B2A896 /* CCStoreInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCStoreInfo.cpp; sourceTree = "<group>"; };
+		7861BFC01834ED5D00B2A896 /* CCStoreInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCStoreInfo.h; sourceTree = "<group>"; };
+		7861BFC11834ED5D00B2A896 /* SoomlaJSONConsts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoomlaJSONConsts.cpp; sourceTree = "<group>"; };
+		7861BFC21834ED5D00B2A896 /* SoomlaJSONConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaJSONConsts.h; sourceTree = "<group>"; };
+		7861BFC41834ED5D00B2A896 /* CCMarketItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCMarketItem.cpp; sourceTree = "<group>"; };
+		7861BFC51834ED5D00B2A896 /* CCMarketItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMarketItem.h; sourceTree = "<group>"; };
+		7861BFC61834ED5D00B2A896 /* CCNonConsumableItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNonConsumableItem.cpp; sourceTree = "<group>"; };
+		7861BFC71834ED5D00B2A896 /* CCNonConsumableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNonConsumableItem.h; sourceTree = "<group>"; };
+		7861BFC81834ED5D00B2A896 /* CCPurchasableVirtualItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPurchasableVirtualItem.cpp; sourceTree = "<group>"; };
+		7861BFC91834ED5D00B2A896 /* CCPurchasableVirtualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPurchasableVirtualItem.h; sourceTree = "<group>"; };
+		7861BFCA1834ED5D00B2A896 /* CCVirtualCategory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCVirtualCategory.cpp; sourceTree = "<group>"; };
+		7861BFCB1834ED5D00B2A896 /* CCVirtualCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVirtualCategory.h; sourceTree = "<group>"; };
+		7861BFCC1834ED5D00B2A896 /* CCVirtualItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCVirtualItem.cpp; sourceTree = "<group>"; };
+		7861BFCD1834ED5D00B2A896 /* CCVirtualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVirtualItem.h; sourceTree = "<group>"; };
+		7861BFCF1834ED5D00B2A896 /* CCVirtualCurrency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCVirtualCurrency.cpp; sourceTree = "<group>"; };
+		7861BFD01834ED5D00B2A896 /* CCVirtualCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVirtualCurrency.h; sourceTree = "<group>"; };
+		7861BFD11834ED5D00B2A896 /* CCVirtualCurrencyPack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCVirtualCurrencyPack.cpp; sourceTree = "<group>"; };
+		7861BFD21834ED5D00B2A896 /* CCVirtualCurrencyPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVirtualCurrencyPack.h; sourceTree = "<group>"; };
+		7861BFD41834ED5D00B2A896 /* CCEquippableVG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCEquippableVG.cpp; sourceTree = "<group>"; };
+		7861BFD51834ED5D00B2A896 /* CCEquippableVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCEquippableVG.h; sourceTree = "<group>"; };
+		7861BFD61834ED5D00B2A896 /* CCLifetimeVG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCLifetimeVG.cpp; sourceTree = "<group>"; };
+		7861BFD71834ED5D00B2A896 /* CCLifetimeVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLifetimeVG.h; sourceTree = "<group>"; };
+		7861BFD81834ED5D00B2A896 /* CCSingleUsePackVG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSingleUsePackVG.cpp; sourceTree = "<group>"; };
+		7861BFD91834ED5D00B2A896 /* CCSingleUsePackVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSingleUsePackVG.h; sourceTree = "<group>"; };
+		7861BFDA1834ED5D00B2A896 /* CCSingleUseVG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSingleUseVG.cpp; sourceTree = "<group>"; };
+		7861BFDB1834ED5D00B2A896 /* CCSingleUseVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSingleUseVG.h; sourceTree = "<group>"; };
+		7861BFDC1834ED5D00B2A896 /* CCUpgradeVG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCUpgradeVG.cpp; sourceTree = "<group>"; };
+		7861BFDD1834ED5D00B2A896 /* CCUpgradeVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUpgradeVG.h; sourceTree = "<group>"; };
+		7861BFDE1834ED5D00B2A896 /* CCVirtualGood.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCVirtualGood.cpp; sourceTree = "<group>"; };
+		7861BFDF1834ED5D00B2A896 /* CCVirtualGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVirtualGood.h; sourceTree = "<group>"; };
+		7861BFE11834ED5D00B2A896 /* CCPurchaseType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPurchaseType.cpp; sourceTree = "<group>"; };
+		7861BFE21834ED5D00B2A896 /* CCPurchaseType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPurchaseType.h; sourceTree = "<group>"; };
+		7861BFE31834ED5D00B2A896 /* CCPurchaseWithMarket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPurchaseWithMarket.cpp; sourceTree = "<group>"; };
+		7861BFE41834ED5D00B2A896 /* CCPurchaseWithMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPurchaseWithMarket.h; sourceTree = "<group>"; };
+		7861BFE51834ED5D00B2A896 /* CCPurchaseWithVirtualItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPurchaseWithVirtualItem.cpp; sourceTree = "<group>"; };
+		7861BFE61834ED5D00B2A896 /* CCPurchaseWithVirtualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPurchaseWithVirtualItem.h; sourceTree = "<group>"; };
+		7861BFE71834ED5D00B2A896 /* SoomlaIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaIncludes.h; sourceTree = "<group>"; };
+		7861BFE81834ED5D00B2A896 /* SoomlaMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaMacros.h; sourceTree = "<group>"; };
+		7861C0041834ED7800B2A896 /* JSONConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONConsts.h; sourceTree = "<group>"; };
+		7861C0051834ED7800B2A896 /* JSONConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONConsts.m; sourceTree = "<group>"; };
+		7861C0061834ED7800B2A896 /* KeyValDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValDatabase.h; sourceTree = "<group>"; };
+		7861C0071834ED7800B2A896 /* KeyValDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValDatabase.m; sourceTree = "<group>"; };
+		7861C0081834ED7800B2A896 /* KeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueStorage.h; sourceTree = "<group>"; };
+		7861C0091834ED7800B2A896 /* KeyValueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueStorage.m; sourceTree = "<group>"; };
+		7861C00A1834ED7800B2A896 /* NonConsumableStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonConsumableStorage.h; sourceTree = "<group>"; };
+		7861C00B1834ED7800B2A896 /* NonConsumableStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonConsumableStorage.m; sourceTree = "<group>"; };
+		7861C00C1834ED7800B2A896 /* ObscuredNSUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObscuredNSUserDefaults.h; sourceTree = "<group>"; };
+		7861C00D1834ED7800B2A896 /* ObscuredNSUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObscuredNSUserDefaults.m; sourceTree = "<group>"; };
+		7861C00E1834ED7800B2A896 /* StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageManager.h; sourceTree = "<group>"; };
+		7861C00F1834ED7800B2A896 /* StorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageManager.m; sourceTree = "<group>"; };
+		7861C0101834ED7800B2A896 /* StoreEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreEncryptor.h; sourceTree = "<group>"; };
+		7861C0111834ED7800B2A896 /* StoreEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreEncryptor.m; sourceTree = "<group>"; };
+		7861C0121834ED7800B2A896 /* StorefrontInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorefrontInfo.h; sourceTree = "<group>"; };
+		7861C0131834ED7800B2A896 /* StorefrontInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorefrontInfo.m; sourceTree = "<group>"; };
+		7861C0141834ED7800B2A896 /* StoreInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreInfo.h; sourceTree = "<group>"; };
+		7861C0151834ED7800B2A896 /* StoreInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreInfo.m; sourceTree = "<group>"; };
+		7861C0161834ED7800B2A896 /* VirtualCurrencyStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualCurrencyStorage.h; sourceTree = "<group>"; };
+		7861C0171834ED7800B2A896 /* VirtualCurrencyStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualCurrencyStorage.m; sourceTree = "<group>"; };
+		7861C0181834ED7800B2A896 /* VirtualGoodStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualGoodStorage.h; sourceTree = "<group>"; };
+		7861C0191834ED7800B2A896 /* VirtualGoodStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualGoodStorage.m; sourceTree = "<group>"; };
+		7861C01A1834ED7800B2A896 /* VirtualItemStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualItemStorage.h; sourceTree = "<group>"; };
+		7861C01B1834ED7800B2A896 /* VirtualItemStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualItemStorage.m; sourceTree = "<group>"; };
+		7861C01D1834ED7800B2A896 /* AppStoreItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStoreItem.h; sourceTree = "<group>"; };
+		7861C01E1834ED7800B2A896 /* AppStoreItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStoreItem.m; sourceTree = "<group>"; };
+		7861C01F1834ED7800B2A896 /* NonConsumableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonConsumableItem.h; sourceTree = "<group>"; };
+		7861C0201834ED7800B2A896 /* NonConsumableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonConsumableItem.m; sourceTree = "<group>"; };
+		7861C0211834ED7800B2A896 /* PurchasableVirtualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasableVirtualItem.h; sourceTree = "<group>"; };
+		7861C0221834ED7800B2A896 /* PurchasableVirtualItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasableVirtualItem.m; sourceTree = "<group>"; };
+		7861C0231834ED7800B2A896 /* VirtualCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualCategory.h; sourceTree = "<group>"; };
+		7861C0241834ED7800B2A896 /* VirtualCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualCategory.m; sourceTree = "<group>"; };
+		7861C0261834ED7800B2A896 /* VirtualCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualCurrency.h; sourceTree = "<group>"; };
+		7861C0271834ED7800B2A896 /* VirtualCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualCurrency.m; sourceTree = "<group>"; };
+		7861C0281834ED7800B2A896 /* VirtualCurrencyPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualCurrencyPack.h; sourceTree = "<group>"; };
+		7861C0291834ED7800B2A896 /* VirtualCurrencyPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualCurrencyPack.m; sourceTree = "<group>"; };
+		7861C02B1834ED7800B2A896 /* EquippableVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquippableVG.h; sourceTree = "<group>"; };
+		7861C02C1834ED7800B2A896 /* EquippableVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquippableVG.m; sourceTree = "<group>"; };
+		7861C02D1834ED7800B2A896 /* LifetimeVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifetimeVG.h; sourceTree = "<group>"; };
+		7861C02E1834ED7800B2A896 /* LifetimeVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifetimeVG.m; sourceTree = "<group>"; };
+		7861C02F1834ED7800B2A896 /* SingleUsePackVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleUsePackVG.h; sourceTree = "<group>"; };
+		7861C0301834ED7800B2A896 /* SingleUsePackVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleUsePackVG.m; sourceTree = "<group>"; };
+		7861C0311834ED7800B2A896 /* SingleUseVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleUseVG.h; sourceTree = "<group>"; };
+		7861C0321834ED7800B2A896 /* SingleUseVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleUseVG.m; sourceTree = "<group>"; };
+		7861C0331834ED7800B2A896 /* UpgradeVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeVG.h; sourceTree = "<group>"; };
+		7861C0341834ED7800B2A896 /* UpgradeVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeVG.m; sourceTree = "<group>"; };
+		7861C0351834ED7800B2A896 /* VirtualGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualGood.h; sourceTree = "<group>"; };
+		7861C0361834ED7800B2A896 /* VirtualGood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualGood.m; sourceTree = "<group>"; };
+		7861C0371834ED7800B2A896 /* VirtualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualItem.h; sourceTree = "<group>"; };
+		7861C0381834ED7800B2A896 /* VirtualItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualItem.m; sourceTree = "<group>"; };
+		7861C0391834ED7800B2A896 /* EventHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandling.h; sourceTree = "<group>"; };
+		7861C03A1834ED7800B2A896 /* EventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHandling.m; sourceTree = "<group>"; };
+		7861C03C1834ED7800B2A896 /* InsufficientFundsException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsufficientFundsException.h; sourceTree = "<group>"; };
+		7861C03D1834ED7800B2A896 /* InsufficientFundsException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsufficientFundsException.m; sourceTree = "<group>"; };
+		7861C03E1834ED7800B2A896 /* NotEnoughGoodsException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotEnoughGoodsException.h; sourceTree = "<group>"; };
+		7861C03F1834ED7800B2A896 /* NotEnoughGoodsException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotEnoughGoodsException.m; sourceTree = "<group>"; };
+		7861C0401834ED7800B2A896 /* VirtualItemNotFoundException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualItemNotFoundException.h; sourceTree = "<group>"; };
+		7861C0411834ED7800B2A896 /* VirtualItemNotFoundException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualItemNotFoundException.m; sourceTree = "<group>"; };
+		7861C0431834ED7800B2A896 /* FBEncryptorAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBEncryptorAES.h; sourceTree = "<group>"; };
+		7861C0441834ED7800B2A896 /* FBEncryptorAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBEncryptorAES.m; sourceTree = "<group>"; };
+		7861C0451834ED7800B2A896 /* NSData-Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData-Base64.h"; sourceTree = "<group>"; };
+		7861C0461834ED7800B2A896 /* NSData-Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData-Base64.m"; sourceTree = "<group>"; };
+		7861C0471834ED7800B2A896 /* IStoreAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IStoreAssets.h; sourceTree = "<group>"; };
+		7861C0491834ED7800B2A896 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		7861C04A1834ED7800B2A896 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		7861C04C1834ED7800B2A896 /* PurchaseType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseType.h; sourceTree = "<group>"; };
+		7861C04D1834ED7800B2A896 /* PurchaseType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseType.m; sourceTree = "<group>"; };
+		7861C04E1834ED7800B2A896 /* PurchaseWithMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseWithMarket.h; sourceTree = "<group>"; };
+		7861C04F1834ED7800B2A896 /* PurchaseWithMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseWithMarket.m; sourceTree = "<group>"; };
+		7861C0501834ED7800B2A896 /* PurchaseWithVirtualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseWithVirtualItem.h; sourceTree = "<group>"; };
+		7861C0511834ED7800B2A896 /* PurchaseWithVirtualItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseWithVirtualItem.m; sourceTree = "<group>"; };
+		7861C0521834ED7800B2A896 /* SoomlaiOSStore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SoomlaiOSStore-Prefix.pch"; sourceTree = "<group>"; };
+		7861C0531834ED7800B2A896 /* SoomlaVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaVerification.h; sourceTree = "<group>"; };
+		7861C0541834ED7800B2A896 /* SoomlaVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaVerification.m; sourceTree = "<group>"; };
+		7861C0551834ED7800B2A896 /* StoreConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreConfig.h; sourceTree = "<group>"; };
+		7861C0561834ED7800B2A896 /* StoreConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreConfig.m; sourceTree = "<group>"; };
+		7861C0571834ED7800B2A896 /* StoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreController.h; sourceTree = "<group>"; };
+		7861C0581834ED7800B2A896 /* StoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreController.m; sourceTree = "<group>"; };
+		7861C0591834ED7800B2A896 /* StoreInventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreInventory.h; sourceTree = "<group>"; };
+		7861C05A1834ED7800B2A896 /* StoreInventory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreInventory.m; sourceTree = "<group>"; };
+		7861C05B1834ED7800B2A896 /* StoreUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreUtils.h; sourceTree = "<group>"; };
+		7861C05C1834ED7800B2A896 /* StoreUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreUtils.m; sourceTree = "<group>"; };
+		7861C0871834EE6600B2A896 /* InAppPurchasesList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InAppPurchasesList.cpp; sourceTree = "<group>"; };
+		7861C0881834EE6600B2A896 /* InAppPurchasesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchasesList.h; sourceTree = "<group>"; };
+		7861C08A1834EE8100B2A896 /* InAppPurchaseEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InAppPurchaseEventHandler.cpp; sourceTree = "<group>"; };
+		7861C08B1834EE8100B2A896 /* InAppPurchaseEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchaseEventHandler.h; sourceTree = "<group>"; };
+		7861C08E1834EF9C00B2A896 /* dump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dump.c; path = ../../../../external/jansson/dump.c; sourceTree = "<group>"; };
+		7861C08F1834EF9C00B2A896 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = error.c; path = ../../../../external/jansson/error.c; sourceTree = "<group>"; };
+		7861C0901834EF9C00B2A896 /* hashtable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hashtable.c; path = ../../../../external/jansson/hashtable.c; sourceTree = "<group>"; };
+		7861C0911834EF9C00B2A896 /* hashtable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hashtable.h; path = ../../../../external/jansson/hashtable.h; sourceTree = "<group>"; };
+		7861C0921834EF9C00B2A896 /* jansson_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jansson_config.h; path = ../../../../external/jansson/jansson_config.h; sourceTree = "<group>"; };
+		7861C0931834EF9C00B2A896 /* jansson_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jansson_private.h; path = ../../../../external/jansson/jansson_private.h; sourceTree = "<group>"; };
+		7861C0941834EF9C00B2A896 /* jansson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jansson.h; path = ../../../../external/jansson/jansson.h; sourceTree = "<group>"; };
+		7861C0951834EF9C00B2A896 /* load.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = load.c; path = ../../../../external/jansson/load.c; sourceTree = "<group>"; };
+		7861C0961834EF9C00B2A896 /* memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memory.c; path = ../../../../external/jansson/memory.c; sourceTree = "<group>"; };
+		7861C0971834EF9C00B2A896 /* pack_unpack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pack_unpack.c; path = ../../../../external/jansson/pack_unpack.c; sourceTree = "<group>"; };
+		7861C0981834EF9C00B2A896 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../../../external/jansson/README.md; sourceTree = "<group>"; };
+		7861C0991834EF9C00B2A896 /* strbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strbuffer.c; path = ../../../../external/jansson/strbuffer.c; sourceTree = "<group>"; };
+		7861C09A1834EF9C00B2A896 /* strbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = strbuffer.h; path = ../../../../external/jansson/strbuffer.h; sourceTree = "<group>"; };
+		7861C09B1834EF9C00B2A896 /* strconv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strconv.c; path = ../../../../external/jansson/strconv.c; sourceTree = "<group>"; };
+		7861C09C1834EF9C00B2A896 /* utf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utf.c; path = ../../../../external/jansson/utf.c; sourceTree = "<group>"; };
+		7861C09D1834EF9C00B2A896 /* utf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utf.h; path = ../../../../external/jansson/utf.h; sourceTree = "<group>"; };
+		7861C09E1834EF9C00B2A896 /* value.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = value.c; path = ../../../../external/jansson/value.c; sourceTree = "<group>"; };
+		7861C0AA1834EFBB00B2A896 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7861C0AC1834EFCF00B2A896 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		7869166017F06A0F00184E9D /* bonus_banana_freeze.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bonus_banana_freeze.mp3; sourceTree = "<group>"; };
 		7869166517F1DF9600184E9D /* pome-rampdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pome-rampdown.mp3"; sourceTree = "<group>"; };
 		7869166617F1DF9600184E9D /* pome-zoomout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pome-zoomout.mp3"; sourceTree = "<group>"; };
@@ -663,6 +921,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7861C0AE1834EFD600B2A896 /* StoreKit.framework in Frameworks */,
+				7861C0AD1834EFCF00B2A896 /* libsqlite3.0.dylib in Frameworks */,
+				7861C0AB1834EFBB00B2A896 /* Security.framework in Frameworks */,
 				7801630F18153DAB002A0CB7 /* libCocosDenshion.a in Frameworks */,
 				7801630E18153DA9002A0CB7 /* libcocos2dx.a in Frameworks */,
 				78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */,
@@ -709,6 +970,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7861C0AC1834EFCF00B2A896 /* libsqlite3.0.dylib */,
+				7861C0AA1834EFBB00B2A896 /* Security.framework */,
 				785B4F361806F3E3008B444E /* StoreKit.framework */,
 				785B4F341806F3DF008B444E /* GameKit.framework */,
 				78E205DA177E73A6002CA285 /* MediaPlayer.framework */,
@@ -832,8 +1095,7 @@
 				783E873017C20CEB00FD49C1 /* AppDelegate.h */,
 				783E876817C20CEB00FD49C1 /* Options.cpp */,
 				783E876917C20CEB00FD49C1 /* Options.h */,
-				785D1A541834E9AE00A36DB8 /* InAppPurchasesList.cpp */,
-				785D1A551834E9AE00A36DB8 /* InAppPurchasesList.h */,
+				7861C0861834EE6600B2A896 /* InApp */,
 				783E873117C20CEB00FD49C1 /* Entities */,
 				783E875C17C20CEB00FD49C1 /* Graphics */,
 				783E875F17C20CEB00FD49C1 /* Managers */,
@@ -1228,9 +1490,342 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		785D1A571834ECC900A36DB8 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				785D1A581834ECC900A36DB8 /* CCSoomlaNdkBridgeIos.h */,
+				785D1A591834ECC900A36DB8 /* CCSoomlaNdkBridgeIos.mm */,
+				785D1A5A1834ECC900A36DB8 /* StoreBridge */,
+			);
+			name = ios;
+			path = "../../../../extensions/cocos2dx-store/ios";
+			sourceTree = "<group>";
+		};
+		785D1A5A1834ECC900A36DB8 /* StoreBridge */ = {
+			isa = PBXGroup;
+			children = (
+				785D1A5B1834ECC900A36DB8 /* EventDispatcherBridge.h */,
+				785D1A5C1834ECC900A36DB8 /* EventDispatcherBridge.mm */,
+				785D1A5D1834ECC900A36DB8 /* SoomlaNDKGlue.h */,
+				785D1A5E1834ECC900A36DB8 /* SoomlaNDKGlue.mm */,
+				785D1A5F1834ECC900A36DB8 /* StoreAssetsBridge.h */,
+				785D1A601834ECC900A36DB8 /* StoreAssetsBridge.mm */,
+				785D1A611834ECC900A36DB8 /* StoreControllerBridge.h */,
+				785D1A621834ECC900A36DB8 /* StoreControllerBridge.mm */,
+				785D1A631834ECC900A36DB8 /* StoreInfoBridge.h */,
+				785D1A641834ECC900A36DB8 /* StoreInfoBridge.mm */,
+				785D1A651834ECC900A36DB8 /* StoreInventoryBridge.h */,
+				785D1A661834ECC900A36DB8 /* StoreInventoryBridge.mm */,
+			);
+			path = StoreBridge;
+			sourceTree = "<group>";
+		};
+		7861BFAC1834ED3A00B2A896 /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				7861C08D1834EF8B00B2A896 /* external */,
+				7861C0021834ED7800B2A896 /* SoomlaiOSStore */,
+				7861BFAD1834ED5D00B2A896 /* Soomla */,
+				785D1A571834ECC900A36DB8 /* ios */,
+			);
+			name = InAppPurchase;
+			sourceTree = "<group>";
+		};
+		7861BFAD1834ED5D00B2A896 /* Soomla */ = {
+			isa = PBXGroup;
+			children = (
+				7861BFAE1834ED5D00B2A896 /* CCEventHandler.h */,
+				7861BFAF1834ED5D00B2A896 /* CCIStoreAssets.h */,
+				7861BFB01834ED5D00B2A896 /* CCSoomla.cpp */,
+				7861BFB11834ED5D00B2A896 /* CCSoomla.h */,
+				7861BFB21834ED5D00B2A896 /* CCSoomlaError.cpp */,
+				7861BFB31834ED5D00B2A896 /* CCSoomlaError.h */,
+				7861BFB41834ED5D00B2A896 /* CCSoomlaJsonHelper.cpp */,
+				7861BFB51834ED5D00B2A896 /* CCSoomlaJsonHelper.h */,
+				7861BFB61834ED5D00B2A896 /* CCSoomlaNdkBridge.cpp */,
+				7861BFB71834ED5D00B2A896 /* CCSoomlaNdkBridge.h */,
+				7861BFB81834ED5D00B2A896 /* CCStoreController.cpp */,
+				7861BFB91834ED5D00B2A896 /* CCStoreController.h */,
+				7861BFBA1834ED5D00B2A896 /* CCStoreInventory.cpp */,
+				7861BFBB1834ED5D00B2A896 /* CCStoreInventory.h */,
+				7861BFBC1834ED5D00B2A896 /* CCStoreUtils.cpp */,
+				7861BFBD1834ED5D00B2A896 /* CCStoreUtils.h */,
+				7861BFBE1834ED5D00B2A896 /* data */,
+				7861BFC31834ED5D00B2A896 /* domain */,
+				7861BFE01834ED5D00B2A896 /* PurchaseTypes */,
+				7861BFE71834ED5D00B2A896 /* SoomlaIncludes.h */,
+				7861BFE81834ED5D00B2A896 /* SoomlaMacros.h */,
+			);
+			name = Soomla;
+			path = "../../../../extensions/cocos2dx-store/Soomla";
+			sourceTree = "<group>";
+		};
+		7861BFBE1834ED5D00B2A896 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				7861BFBF1834ED5D00B2A896 /* CCStoreInfo.cpp */,
+				7861BFC01834ED5D00B2A896 /* CCStoreInfo.h */,
+				7861BFC11834ED5D00B2A896 /* SoomlaJSONConsts.cpp */,
+				7861BFC21834ED5D00B2A896 /* SoomlaJSONConsts.h */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		7861BFC31834ED5D00B2A896 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				7861BFC41834ED5D00B2A896 /* CCMarketItem.cpp */,
+				7861BFC51834ED5D00B2A896 /* CCMarketItem.h */,
+				7861BFC61834ED5D00B2A896 /* CCNonConsumableItem.cpp */,
+				7861BFC71834ED5D00B2A896 /* CCNonConsumableItem.h */,
+				7861BFC81834ED5D00B2A896 /* CCPurchasableVirtualItem.cpp */,
+				7861BFC91834ED5D00B2A896 /* CCPurchasableVirtualItem.h */,
+				7861BFCA1834ED5D00B2A896 /* CCVirtualCategory.cpp */,
+				7861BFCB1834ED5D00B2A896 /* CCVirtualCategory.h */,
+				7861BFCC1834ED5D00B2A896 /* CCVirtualItem.cpp */,
+				7861BFCD1834ED5D00B2A896 /* CCVirtualItem.h */,
+				7861BFCE1834ED5D00B2A896 /* virtualCurrencies */,
+				7861BFD31834ED5D00B2A896 /* virtualGoods */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		7861BFCE1834ED5D00B2A896 /* virtualCurrencies */ = {
+			isa = PBXGroup;
+			children = (
+				7861BFCF1834ED5D00B2A896 /* CCVirtualCurrency.cpp */,
+				7861BFD01834ED5D00B2A896 /* CCVirtualCurrency.h */,
+				7861BFD11834ED5D00B2A896 /* CCVirtualCurrencyPack.cpp */,
+				7861BFD21834ED5D00B2A896 /* CCVirtualCurrencyPack.h */,
+			);
+			path = virtualCurrencies;
+			sourceTree = "<group>";
+		};
+		7861BFD31834ED5D00B2A896 /* virtualGoods */ = {
+			isa = PBXGroup;
+			children = (
+				7861BFD41834ED5D00B2A896 /* CCEquippableVG.cpp */,
+				7861BFD51834ED5D00B2A896 /* CCEquippableVG.h */,
+				7861BFD61834ED5D00B2A896 /* CCLifetimeVG.cpp */,
+				7861BFD71834ED5D00B2A896 /* CCLifetimeVG.h */,
+				7861BFD81834ED5D00B2A896 /* CCSingleUsePackVG.cpp */,
+				7861BFD91834ED5D00B2A896 /* CCSingleUsePackVG.h */,
+				7861BFDA1834ED5D00B2A896 /* CCSingleUseVG.cpp */,
+				7861BFDB1834ED5D00B2A896 /* CCSingleUseVG.h */,
+				7861BFDC1834ED5D00B2A896 /* CCUpgradeVG.cpp */,
+				7861BFDD1834ED5D00B2A896 /* CCUpgradeVG.h */,
+				7861BFDE1834ED5D00B2A896 /* CCVirtualGood.cpp */,
+				7861BFDF1834ED5D00B2A896 /* CCVirtualGood.h */,
+			);
+			path = virtualGoods;
+			sourceTree = "<group>";
+		};
+		7861BFE01834ED5D00B2A896 /* PurchaseTypes */ = {
+			isa = PBXGroup;
+			children = (
+				7861BFE11834ED5D00B2A896 /* CCPurchaseType.cpp */,
+				7861BFE21834ED5D00B2A896 /* CCPurchaseType.h */,
+				7861BFE31834ED5D00B2A896 /* CCPurchaseWithMarket.cpp */,
+				7861BFE41834ED5D00B2A896 /* CCPurchaseWithMarket.h */,
+				7861BFE51834ED5D00B2A896 /* CCPurchaseWithVirtualItem.cpp */,
+				7861BFE61834ED5D00B2A896 /* CCPurchaseWithVirtualItem.h */,
+			);
+			path = PurchaseTypes;
+			sourceTree = "<group>";
+		};
+		7861C0021834ED7800B2A896 /* SoomlaiOSStore */ = {
+			isa = PBXGroup;
+			children = (
+				7861C0031834ED7800B2A896 /* data */,
+				7861C01C1834ED7800B2A896 /* domain */,
+				7861C0391834ED7800B2A896 /* EventHandling.h */,
+				7861C03A1834ED7800B2A896 /* EventHandling.m */,
+				7861C03B1834ED7800B2A896 /* exceptions */,
+				7861C0421834ED7800B2A896 /* FBEncryptor */,
+				7861C0471834ED7800B2A896 /* IStoreAssets.h */,
+				7861C0481834ED7800B2A896 /* OpenUDID */,
+				7861C04B1834ED7800B2A896 /* PurchaseTypes */,
+				7861C0521834ED7800B2A896 /* SoomlaiOSStore-Prefix.pch */,
+				7861C0531834ED7800B2A896 /* SoomlaVerification.h */,
+				7861C0541834ED7800B2A896 /* SoomlaVerification.m */,
+				7861C0551834ED7800B2A896 /* StoreConfig.h */,
+				7861C0561834ED7800B2A896 /* StoreConfig.m */,
+				7861C0571834ED7800B2A896 /* StoreController.h */,
+				7861C0581834ED7800B2A896 /* StoreController.m */,
+				7861C0591834ED7800B2A896 /* StoreInventory.h */,
+				7861C05A1834ED7800B2A896 /* StoreInventory.m */,
+				7861C05B1834ED7800B2A896 /* StoreUtils.h */,
+				7861C05C1834ED7800B2A896 /* StoreUtils.m */,
+			);
+			name = SoomlaiOSStore;
+			path = "../../../../extensions/cocos2dx-store/submodules/ios-store/SoomlaiOSStore";
+			sourceTree = "<group>";
+		};
+		7861C0031834ED7800B2A896 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				7861C0041834ED7800B2A896 /* JSONConsts.h */,
+				7861C0051834ED7800B2A896 /* JSONConsts.m */,
+				7861C0061834ED7800B2A896 /* KeyValDatabase.h */,
+				7861C0071834ED7800B2A896 /* KeyValDatabase.m */,
+				7861C0081834ED7800B2A896 /* KeyValueStorage.h */,
+				7861C0091834ED7800B2A896 /* KeyValueStorage.m */,
+				7861C00A1834ED7800B2A896 /* NonConsumableStorage.h */,
+				7861C00B1834ED7800B2A896 /* NonConsumableStorage.m */,
+				7861C00C1834ED7800B2A896 /* ObscuredNSUserDefaults.h */,
+				7861C00D1834ED7800B2A896 /* ObscuredNSUserDefaults.m */,
+				7861C00E1834ED7800B2A896 /* StorageManager.h */,
+				7861C00F1834ED7800B2A896 /* StorageManager.m */,
+				7861C0101834ED7800B2A896 /* StoreEncryptor.h */,
+				7861C0111834ED7800B2A896 /* StoreEncryptor.m */,
+				7861C0121834ED7800B2A896 /* StorefrontInfo.h */,
+				7861C0131834ED7800B2A896 /* StorefrontInfo.m */,
+				7861C0141834ED7800B2A896 /* StoreInfo.h */,
+				7861C0151834ED7800B2A896 /* StoreInfo.m */,
+				7861C0161834ED7800B2A896 /* VirtualCurrencyStorage.h */,
+				7861C0171834ED7800B2A896 /* VirtualCurrencyStorage.m */,
+				7861C0181834ED7800B2A896 /* VirtualGoodStorage.h */,
+				7861C0191834ED7800B2A896 /* VirtualGoodStorage.m */,
+				7861C01A1834ED7800B2A896 /* VirtualItemStorage.h */,
+				7861C01B1834ED7800B2A896 /* VirtualItemStorage.m */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		7861C01C1834ED7800B2A896 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				7861C01D1834ED7800B2A896 /* AppStoreItem.h */,
+				7861C01E1834ED7800B2A896 /* AppStoreItem.m */,
+				7861C01F1834ED7800B2A896 /* NonConsumableItem.h */,
+				7861C0201834ED7800B2A896 /* NonConsumableItem.m */,
+				7861C0211834ED7800B2A896 /* PurchasableVirtualItem.h */,
+				7861C0221834ED7800B2A896 /* PurchasableVirtualItem.m */,
+				7861C0231834ED7800B2A896 /* VirtualCategory.h */,
+				7861C0241834ED7800B2A896 /* VirtualCategory.m */,
+				7861C0251834ED7800B2A896 /* virtualCurrencies */,
+				7861C02A1834ED7800B2A896 /* virtualGoods */,
+				7861C0371834ED7800B2A896 /* VirtualItem.h */,
+				7861C0381834ED7800B2A896 /* VirtualItem.m */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		7861C0251834ED7800B2A896 /* virtualCurrencies */ = {
+			isa = PBXGroup;
+			children = (
+				7861C0261834ED7800B2A896 /* VirtualCurrency.h */,
+				7861C0271834ED7800B2A896 /* VirtualCurrency.m */,
+				7861C0281834ED7800B2A896 /* VirtualCurrencyPack.h */,
+				7861C0291834ED7800B2A896 /* VirtualCurrencyPack.m */,
+			);
+			path = virtualCurrencies;
+			sourceTree = "<group>";
+		};
+		7861C02A1834ED7800B2A896 /* virtualGoods */ = {
+			isa = PBXGroup;
+			children = (
+				7861C02B1834ED7800B2A896 /* EquippableVG.h */,
+				7861C02C1834ED7800B2A896 /* EquippableVG.m */,
+				7861C02D1834ED7800B2A896 /* LifetimeVG.h */,
+				7861C02E1834ED7800B2A896 /* LifetimeVG.m */,
+				7861C02F1834ED7800B2A896 /* SingleUsePackVG.h */,
+				7861C0301834ED7800B2A896 /* SingleUsePackVG.m */,
+				7861C0311834ED7800B2A896 /* SingleUseVG.h */,
+				7861C0321834ED7800B2A896 /* SingleUseVG.m */,
+				7861C0331834ED7800B2A896 /* UpgradeVG.h */,
+				7861C0341834ED7800B2A896 /* UpgradeVG.m */,
+				7861C0351834ED7800B2A896 /* VirtualGood.h */,
+				7861C0361834ED7800B2A896 /* VirtualGood.m */,
+			);
+			path = virtualGoods;
+			sourceTree = "<group>";
+		};
+		7861C03B1834ED7800B2A896 /* exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				7861C03C1834ED7800B2A896 /* InsufficientFundsException.h */,
+				7861C03D1834ED7800B2A896 /* InsufficientFundsException.m */,
+				7861C03E1834ED7800B2A896 /* NotEnoughGoodsException.h */,
+				7861C03F1834ED7800B2A896 /* NotEnoughGoodsException.m */,
+				7861C0401834ED7800B2A896 /* VirtualItemNotFoundException.h */,
+				7861C0411834ED7800B2A896 /* VirtualItemNotFoundException.m */,
+			);
+			path = exceptions;
+			sourceTree = "<group>";
+		};
+		7861C0421834ED7800B2A896 /* FBEncryptor */ = {
+			isa = PBXGroup;
+			children = (
+				7861C0431834ED7800B2A896 /* FBEncryptorAES.h */,
+				7861C0441834ED7800B2A896 /* FBEncryptorAES.m */,
+				7861C0451834ED7800B2A896 /* NSData-Base64.h */,
+				7861C0461834ED7800B2A896 /* NSData-Base64.m */,
+			);
+			path = FBEncryptor;
+			sourceTree = "<group>";
+		};
+		7861C0481834ED7800B2A896 /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				7861C0491834ED7800B2A896 /* OpenUDID.h */,
+				7861C04A1834ED7800B2A896 /* OpenUDID.m */,
+			);
+			path = OpenUDID;
+			sourceTree = "<group>";
+		};
+		7861C04B1834ED7800B2A896 /* PurchaseTypes */ = {
+			isa = PBXGroup;
+			children = (
+				7861C04C1834ED7800B2A896 /* PurchaseType.h */,
+				7861C04D1834ED7800B2A896 /* PurchaseType.m */,
+				7861C04E1834ED7800B2A896 /* PurchaseWithMarket.h */,
+				7861C04F1834ED7800B2A896 /* PurchaseWithMarket.m */,
+				7861C0501834ED7800B2A896 /* PurchaseWithVirtualItem.h */,
+				7861C0511834ED7800B2A896 /* PurchaseWithVirtualItem.m */,
+			);
+			path = PurchaseTypes;
+			sourceTree = "<group>";
+		};
+		7861C0861834EE6600B2A896 /* InApp */ = {
+			isa = PBXGroup;
+			children = (
+				7861C0871834EE6600B2A896 /* InAppPurchasesList.cpp */,
+				7861C0881834EE6600B2A896 /* InAppPurchasesList.h */,
+				7861C08A1834EE8100B2A896 /* InAppPurchaseEventHandler.cpp */,
+				7861C08B1834EE8100B2A896 /* InAppPurchaseEventHandler.h */,
+			);
+			path = InApp;
+			sourceTree = "<group>";
+		};
+		7861C08D1834EF8B00B2A896 /* external */ = {
+			isa = PBXGroup;
+			children = (
+				7861C08E1834EF9C00B2A896 /* dump.c */,
+				7861C08F1834EF9C00B2A896 /* error.c */,
+				7861C0901834EF9C00B2A896 /* hashtable.c */,
+				7861C0911834EF9C00B2A896 /* hashtable.h */,
+				7861C0921834EF9C00B2A896 /* jansson_config.h */,
+				7861C0931834EF9C00B2A896 /* jansson_private.h */,
+				7861C0941834EF9C00B2A896 /* jansson.h */,
+				7861C0951834EF9C00B2A896 /* load.c */,
+				7861C0961834EF9C00B2A896 /* memory.c */,
+				7861C0971834EF9C00B2A896 /* pack_unpack.c */,
+				7861C0981834EF9C00B2A896 /* README.md */,
+				7861C0991834EF9C00B2A896 /* strbuffer.c */,
+				7861C09A1834EF9C00B2A896 /* strbuffer.h */,
+				7861C09B1834EF9C00B2A896 /* strconv.c */,
+				7861C09C1834EF9C00B2A896 /* utf.c */,
+				7861C09D1834EF9C00B2A896 /* utf.h */,
+				7861C09E1834EF9C00B2A896 /* value.c */,
+			);
+			name = external;
+			sourceTree = "<group>";
+		};
 		78B38A4B177E5D0600773C6A /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				7861BFAC1834ED3A00B2A896 /* InAppPurchase */,
 				78582AEC17BBD94500C96267 /* Default-Portrait@2x~ipad.png */,
 				78582AEA17BBD93F00C96267 /* Default-Portrait~ipad.png */,
 				78582AE817BBD93B00C96267 /* Default-Landscape@2x~ipad.png */,
@@ -1285,7 +1880,7 @@
 								enabled = 0;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 0;
@@ -1387,6 +1982,7 @@
 				78397AEC1807032400C999E7 /* Icon-100-ios6.png in Resources */,
 				78D358B9182AB050001450F3 /* intro2.mp4 in Resources */,
 				78397AE31807029200C999E7 /* Icon-76-ios7.png in Resources */,
+				7861C0A51834EF9C00B2A896 /* README.md in Resources */,
 				7836548F180C5ED100AA9432 /* TextureAtlas10.plist in Resources */,
 				78582AE117BBD91A00C96267 /* Default.png in Resources */,
 				78582AE317BBD92400C96267 /* Default@2x.png in Resources */,
@@ -1490,80 +2086,141 @@
 			buildActionMask = 2147483647;
 			files = (
 				785B4F30180595AC008B444E /* UnlockLevel.cpp in Sources */,
+				7861C0A71834EF9C00B2A896 /* strconv.c in Sources */,
 				787CC990180580AE00D54AD9 /* KeyParticle.cpp in Sources */,
+				7861C0691834ED7800B2A896 /* AppStoreItem.m in Sources */,
+				7861C0711834ED7800B2A896 /* SingleUsePackVG.m in Sources */,
 				785D1A4F1833F66F00A36DB8 /* GetShoots.cpp in Sources */,
 				787CC991180580AE00D54AD9 /* LiveParticle.cpp in Sources */,
 				78A1F2841832921C00435951 /* CCScrollView.cpp in Sources */,
+				7861C0811834ED7800B2A896 /* StoreConfig.m in Sources */,
 				787CC98B18056EF400D54AD9 /* GetKeys.cpp in Sources */,
 				7896A9DA18041A06001F8145 /* GetLives.cpp in Sources */,
 				78593F8417FDDCFE0015EC86 /* GeneralExplosion.cpp in Sources */,
+				7861C07A1834ED7800B2A896 /* FBEncryptorAES.m in Sources */,
 				78A1F2871832921C00435951 /* CCTableViewCell.cpp in Sources */,
+				7861C06A1834ED7800B2A896 /* NonConsumableItem.m in Sources */,
+				785D1A6A1834ECC900A36DB8 /* StoreAssetsBridge.mm in Sources */,
 				78D358A41829111B001450F3 /* UnlockMode.cpp in Sources */,
+				7861C05D1834ED7800B2A896 /* JSONConsts.m in Sources */,
 				78593F8117FC370D0015EC86 /* RobotoGun.cpp in Sources */,
+				7861C0831834ED7800B2A896 /* StoreInventory.m in Sources */,
+				7861BFFE1834ED5D00B2A896 /* CCVirtualGood.cpp in Sources */,
 				78593F7E17FB079B0015EC86 /* ZombieExplosion.cpp in Sources */,
+				7861C0641834ED7800B2A896 /* StorefrontInfo.m in Sources */,
+				7861C0771834ED7800B2A896 /* InsufficientFundsException.m in Sources */,
 				78BA557817F9A02E00C03E44 /* PirateBox.cpp in Sources */,
 				78CA3A1A17F5830700FD7886 /* RobotoPart.cpp in Sources */,
 				7897DA9E17F312260023C1F9 /* Rain.cpp in Sources */,
+				7861C0601834ED7800B2A896 /* NonConsumableStorage.m in Sources */,
 				7897DA9F17F312260023C1F9 /* RainCircle.cpp in Sources */,
+				7861C06E1834ED7800B2A896 /* VirtualCurrencyPack.m in Sources */,
 				7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */,
 				783EBF9817E87CA800536895 /* Ripple.cpp in Sources */,
 				783EBF9717E87C9B00536895 /* Map.cpp in Sources */,
+				7861BFFC1834ED5D00B2A896 /* CCSingleUseVG.cpp in Sources */,
 				78A1F2861832921C00435951 /* CCTableView.cpp in Sources */,
+				7861BFF01834ED5D00B2A896 /* CCStoreInfo.cpp in Sources */,
+				7861BFED1834ED5D00B2A896 /* CCStoreController.cpp in Sources */,
 				78B38A53177E5D0600773C6A /* AppController.mm in Sources */,
+				785D1A671834ECC900A36DB8 /* CCSoomlaNdkBridgeIos.mm in Sources */,
 				78B38A55177E5D0600773C6A /* main.m in Sources */,
 				78B38A56177E5D0600773C6A /* RootViewController.mm in Sources */,
 				787AD78F181007ED00738DE3 /* SurpriseLevel.cpp in Sources */,
+				7861C0841834ED7800B2A896 /* StoreUtils.m in Sources */,
 				78AE448018081EF300FBABDD /* ButtonReceiver.cpp in Sources */,
 				787AD792181140FD00738DE3 /* TempPublisherInAppExplain.cpp in Sources */,
 				78365442180BF85200AA9432 /* SpriteBatch.cpp in Sources */,
 				783E889217C20CEC00FD49C1 /* AppDelegate.cpp in Sources */,
+				7861C06C1834ED7800B2A896 /* VirtualCategory.m in Sources */,
+				785D1A681834ECC900A36DB8 /* EventDispatcherBridge.mm in Sources */,
+				7861BFF41834ED5D00B2A896 /* CCPurchasableVirtualItem.cpp in Sources */,
+				7861C0001834ED5D00B2A896 /* CCPurchaseWithMarket.cpp in Sources */,
+				7861C0A41834EF9C00B2A896 /* pack_unpack.c in Sources */,
+				7861BFF61834ED5D00B2A896 /* CCVirtualItem.cpp in Sources */,
 				783E889317C20CEC00FD49C1 /* AnimatedCoin.cpp in Sources */,
 				783E889417C20CEC00FD49C1 /* Bird.cpp in Sources */,
 				783E889517C20CEC00FD49C1 /* Button.cpp in Sources */,
 				783E889617C20CEC00FD49C1 /* Clock.cpp in Sources */,
 				783E889717C20CEC00FD49C1 /* Color.cpp in Sources */,
+				7861C09F1834EF9C00B2A896 /* dump.c in Sources */,
 				783E889817C20CEC00FD49C1 /* Confetti.cpp in Sources */,
+				7861BFF51834ED5D00B2A896 /* CCVirtualCategory.cpp in Sources */,
 				783E889917C20CEC00FD49C1 /* Dust.cpp in Sources */,
 				78D3589F1827A0EA001450F3 /* MapDescriptionList.cpp in Sources */,
 				783E889A17C20CEC00FD49C1 /* Entity.cpp in Sources */,
 				783E889B17C20CEC00FD49C1 /* EventPanel.cpp in Sources */,
 				783E889C17C20CEC00FD49C1 /* Explosion.cpp in Sources */,
+				7861C0761834ED7800B2A896 /* EventHandling.m in Sources */,
+				7861C0A81834EF9C00B2A896 /* utf.c in Sources */,
 				783E889D17C20CEC00FD49C1 /* ExplosionBasic.cpp in Sources */,
+				7861BFE91834ED5D00B2A896 /* CCSoomla.cpp in Sources */,
 				783E889E17C20CEC00FD49C1 /* Feather.cpp in Sources */,
 				783E889F17C20CEC00FD49C1 /* ImpulseEntity.cpp in Sources */,
 				783E88A017C20CEC00FD49C1 /* Item.cpp in Sources */,
+				7861C0701834ED7800B2A896 /* LifetimeVG.m in Sources */,
+				7861C0801834ED7800B2A896 /* SoomlaVerification.m in Sources */,
+				7861C07B1834ED7800B2A896 /* NSData-Base64.m in Sources */,
+				7861BFFD1834ED5D00B2A896 /* CCUpgradeVG.cpp in Sources */,
+				7861C0611834ED7800B2A896 /* ObscuredNSUserDefaults.m in Sources */,
+				7861BFF71834ED5D00B2A896 /* CCVirtualCurrency.cpp in Sources */,
 				783E88A117C20CEC00FD49C1 /* Mark.cpp in Sources */,
 				783E88A217C20CEC00FD49C1 /* PlayButton.cpp in Sources */,
+				7861C0651834ED7800B2A896 /* StoreInfo.m in Sources */,
+				785D1A691834ECC900A36DB8 /* SoomlaNDKGlue.mm in Sources */,
 				783E88A317C20CEC00FD49C1 /* SpecialBird.cpp in Sources */,
 				783E88A417C20CEC00FD49C1 /* Star.cpp in Sources */,
 				783E88A517C20CEC00FD49C1 /* StarParticle.cpp in Sources */,
+				7861C0621834ED7800B2A896 /* StorageManager.m in Sources */,
+				7861BFEF1834ED5D00B2A896 /* CCStoreUtils.cpp in Sources */,
 				783E88A617C20CEC00FD49C1 /* Text.cpp in Sources */,
+				7861C0791834ED7800B2A896 /* VirtualItemNotFoundException.m in Sources */,
 				783E88A717C20CEC00FD49C1 /* WeaponParticle.cpp in Sources */,
+				7861C07C1834ED7800B2A896 /* OpenUDID.m in Sources */,
 				783E88A817C20CEC00FD49C1 /* Texture.cpp in Sources */,
+				7861C0A91834EF9C00B2A896 /* value.c in Sources */,
 				78A1F2851832921C00435951 /* CCSorting.cpp in Sources */,
+				7861C05F1834ED7800B2A896 /* KeyValueStorage.m in Sources */,
 				780163151821002C002A0CB7 /* ColorParticle.cpp in Sources */,
 				783E88A917C20CEC00FD49C1 /* BatchEntityManager.cpp in Sources */,
+				7861C0A01834EF9C00B2A896 /* error.c in Sources */,
 				783E88AA17C20CEC00FD49C1 /* BladeParticlesManager.cpp in Sources */,
-				785D1A561834E9AE00A36DB8 /* InAppPurchasesList.cpp in Sources */,
+				7861C06F1834ED7800B2A896 /* EquippableVG.m in Sources */,
+				7861C0631834ED7800B2A896 /* StoreEncryptor.m in Sources */,
+				7861C0681834ED7800B2A896 /* VirtualItemStorage.m in Sources */,
 				783E88AB17C20CEC00FD49C1 /* EntityManager.cpp in Sources */,
 				78D358B5182A6A0E001450F3 /* SplashScreen.cpp in Sources */,
+				7861C0A61834EF9C00B2A896 /* strbuffer.c in Sources */,
+				7861C06D1834ED7800B2A896 /* VirtualCurrency.m in Sources */,
 				78D3589C18279E96001450F3 /* MapDescription.cpp in Sources */,
 				783E88AC17C20CEC00FD49C1 /* ScreenManager.cpp in Sources */,
 				783E88AD17C20CEC00FD49C1 /* Options.cpp in Sources */,
+				7861BFF81834ED5D00B2A896 /* CCVirtualCurrencyPack.cpp in Sources */,
 				783E88AE17C20CEC00FD49C1 /* Popup.cpp in Sources */,
 				783E88B117C20CEC00FD49C1 /* BoughtItem.cpp in Sources */,
 				783E88B217C20CEC00FD49C1 /* BuyItem.cpp in Sources */,
+				7861BFFF1834ED5D00B2A896 /* CCPurchaseType.cpp in Sources */,
+				7861C0721834ED7800B2A896 /* SingleUseVG.m in Sources */,
 				783E88B517C20CEC00FD49C1 /* Exit.cpp in Sources */,
 				783E88B617C20CEC00FD49C1 /* GetCoins.cpp in Sources */,
+				7861C0741834ED7800B2A896 /* VirtualGood.m in Sources */,
+				7861C0821834ED7800B2A896 /* StoreController.m in Sources */,
+				7861C0A21834EF9C00B2A896 /* load.c in Sources */,
 				78D358AB182A3DF1001450F3 /* Icon8.cpp in Sources */,
+				7861BFF11834ED5D00B2A896 /* SoomlaJSONConsts.cpp in Sources */,
 				783E88B717C20CEC00FD49C1 /* ModeHelp.cpp in Sources */,
 				783E88B817C20CEC00FD49C1 /* Pause.cpp in Sources */,
+				7861C0671834ED7800B2A896 /* VirtualGoodStorage.m in Sources */,
+				7861BFFA1834ED5D00B2A896 /* CCLifetimeVG.cpp in Sources */,
+				7861C0011834ED5D00B2A896 /* CCPurchaseWithVirtualItem.cpp in Sources */,
 				783E88B917C20CEC00FD49C1 /* PaymentProceed.cpp in Sources */,
 				783E88BA17C20CEC00FD49C1 /* PleaseRate.cpp in Sources */,
 				783E88BD17C20CEC00FD49C1 /* ResetProgress.cpp in Sources */,
+				7861BFEA1834ED5D00B2A896 /* CCSoomlaError.cpp in Sources */,
 				783E88BE17C20CEC00FD49C1 /* TempPublisherAchievementsExplain.cpp in Sources */,
 				783E88BF17C20CEC00FD49C1 /* TempPublisherRatingExplain.cpp in Sources */,
 				783E88C017C20CEC00FD49C1 /* Screen.cpp in Sources */,
+				7861BFEE1834ED5D00B2A896 /* CCStoreInventory.cpp in Sources */,
 				783E88C117C20CEC00FD49C1 /* Arcade.cpp in Sources */,
 				783E88C217C20CEC00FD49C1 /* Classic.cpp in Sources */,
 				783E88C317C20CEC00FD49C1 /* Credits.cpp in Sources */,
@@ -1572,25 +2229,47 @@
 				78016312181575E6002A0CB7 /* KeyDisplay.cpp in Sources */,
 				783E88C617C20CEC00FD49C1 /* Language.cpp in Sources */,
 				783E88C717C20CEC00FD49C1 /* Levels.cpp in Sources */,
+				7861C0751834ED7800B2A896 /* VirtualItem.m in Sources */,
 				783E88C817C20CEC00FD49C1 /* Loader.cpp in Sources */,
+				7861C07E1834ED7800B2A896 /* PurchaseWithMarket.m in Sources */,
 				783E88C917C20CEC00FD49C1 /* Loading.cpp in Sources */,
 				783E88CA17C20CEC00FD49C1 /* Menu.cpp in Sources */,
+				785D1A6B1834ECC900A36DB8 /* StoreControllerBridge.mm in Sources */,
 				783E88CB17C20CEC00FD49C1 /* Mode.cpp in Sources */,
 				783E88CC17C20CEC00FD49C1 /* More.cpp in Sources */,
 				783E88CD17C20CEC00FD49C1 /* Progress.cpp in Sources */,
+				7861BFF91834ED5D00B2A896 /* CCEquippableVG.cpp in Sources */,
 				783E88CE17C20CEC00FD49C1 /* Progresses.cpp in Sources */,
+				7861C0781834ED7800B2A896 /* NotEnoughGoodsException.m in Sources */,
+				785D1A6D1834ECC900A36DB8 /* StoreInventoryBridge.mm in Sources */,
 				783E88CF17C20CEC00FD49C1 /* Settings.cpp in Sources */,
 				783E88D017C20CEC00FD49C1 /* Shop.cpp in Sources */,
+				7861C07F1834ED7800B2A896 /* PurchaseWithVirtualItem.m in Sources */,
+				7861C0661834ED7800B2A896 /* VirtualCurrencyStorage.m in Sources */,
+				7861C05E1834ED7800B2A896 /* KeyValDatabase.m in Sources */,
 				783E88D117C20CEC00FD49C1 /* Splash.cpp in Sources */,
+				7861BFEC1834ED5D00B2A896 /* CCSoomlaNdkBridge.cpp in Sources */,
+				7861C07D1834ED7800B2A896 /* PurchaseType.m in Sources */,
+				7861C0731834ED7800B2A896 /* UpgradeVG.m in Sources */,
 				783E88D217C20CEC00FD49C1 /* Template.cpp in Sources */,
+				7861BFF31834ED5D00B2A896 /* CCNonConsumableItem.cpp in Sources */,
 				783E88D317C20CEC00FD49C1 /* CCBlade.cpp in Sources */,
+				7861C08C1834EE8100B2A896 /* InAppPurchaseEventHandler.cpp in Sources */,
 				783E88D417C20CEC00FD49C1 /* TouchTrailLayer.cpp in Sources */,
 				783E88D517C20CEC00FD49C1 /* BuyItemList.cpp in Sources */,
 				783E88D617C20CEC00FD49C1 /* CreditsList.cpp in Sources */,
+				7861BFFB1834ED5D00B2A896 /* CCSingleUsePackVG.cpp in Sources */,
+				7861C0A11834EF9C00B2A896 /* hashtable.c in Sources */,
+				7861C06B1834ED7800B2A896 /* PurchasableVirtualItem.m in Sources */,
+				7861BFEB1834ED5D00B2A896 /* CCSoomlaJsonHelper.cpp in Sources */,
 				783E88D717C20CEC00FD49C1 /* List.cpp in Sources */,
+				7861BFF21834ED5D00B2A896 /* CCMarketItem.cpp in Sources */,
 				783E88D817C20CEC00FD49C1 /* ModeHelpList.cpp in Sources */,
+				7861C0A31834EF9C00B2A896 /* memory.c in Sources */,
+				7861C0891834EE6600B2A896 /* InAppPurchasesList.cpp in Sources */,
 				783E88D917C20CEC00FD49C1 /* Touchable.cpp in Sources */,
 				78791F5518326D1200821057 /* Episodes.cpp in Sources */,
+				785D1A6C1834ECC900A36DB8 /* StoreInfoBridge.mm in Sources */,
 				783E88DA17C20CEC00FD49C1 /* Utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1671,7 +2350,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;

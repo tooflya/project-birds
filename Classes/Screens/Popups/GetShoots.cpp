@@ -46,7 +46,7 @@ GetShoots::GetShoots(CCNode* pParent) :
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mIllustration = Entity::create("popup_gshoot_pic@2x.png", spriteBatch19);
         
-		EntityStructure structure1 = {"popup_gshoot_btn@2x.png", 1, 1, 0, 0, 305, 327};
+		EntityStructure structure1 = {"popup_gshoot_btn@2x.png", 1, 1, 0, 0, 290, 211};
 
         this->mCoinsButton = Button::create(structure1, spriteBatch19, Options::BUTTONS_ID_GETCOINS_1, this);
         
@@ -59,7 +59,7 @@ GetShoots::GetShoots(CCNode* pParent) :
         
         this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
-        Text* text1 = Text::create(Options::TEXT_GETLIVES_STRING_1, this);
+        Text* text1 = Text::create(Options::TEXT_GETSHOOTS_STRING_1, this);
         
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(220));
         

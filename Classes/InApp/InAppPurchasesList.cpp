@@ -19,7 +19,7 @@ USING_NS_CC;
 using namespace soomla;
 
 #define MUFFIN_CURRENCY_ITEM_ID "currency_muffin"
-#define TENMUFF_PACK_PRODUCT_ID "android.test.refunded"
+#define TENMUFF_PACK_PRODUCT_ID "first_purchase"
 #define FIFTYMUFF_PACK_PRODUCT_ID "android.test.canceled"
 #define FOURHUNDMUFF_PACK_PRODUCT_ID "android.test.purchased"
 #define THOUSANDMUFF_PACK_PRODUCT_ID "android.test.item_unavailable"
@@ -54,7 +54,7 @@ bool InAppPurchasesList::init() {
                                                                        CCString::create("10 Muffins"),                                   // name
                                                                        CCString::create("Test refund of an item"),                       // description
                                                                        CCString::create("muffins_10"),                                   // item id
-                                                                       CCInteger::create(10),												// number of currencies in the pack
+                                                                       CCInteger::create(10),                                                                                                // number of currencies in the pack
                                                                        CCString::create(MUFFIN_CURRENCY_ITEM_ID),                        // the currency associated with this pack
                                                                        CCPurchaseWithMarket::create(CCString::create(TENMUFF_PACK_PRODUCT_ID), CCDouble::create(0.99))
                                                                        );
@@ -63,7 +63,7 @@ bool InAppPurchasesList::init() {
                                                                          CCString::create("50 Muffins"),                                   // name
                                                                          CCString::create("Test cancellation of an item"),                 // description
                                                                          CCString::create("muffins_50"),                                   // item id
-                                                                         CCInteger::create(50),												// number of currencies in the pack
+                                                                         CCInteger::create(50),                                                                                                // number of currencies in the pack
                                                                          CCString::create(MUFFIN_CURRENCY_ITEM_ID),                        // the currency associated with this pack
                                                                          CCPurchaseWithMarket::create(CCString::create(FIFTYMUFF_PACK_PRODUCT_ID), CCDouble::create(1.99))
                                                                          );
@@ -72,7 +72,7 @@ bool InAppPurchasesList::init() {
                                                                             CCString::create("400 Muffins"),                                   // name
                                                                             CCString::create("Test purchase of an item"),                 // description
                                                                             CCString::create("muffins_400"),                                   // item id
-                                                                            CCInteger::create(400),												// number of currencies in the pack
+                                                                            CCInteger::create(400),                                                                                                // number of currencies in the pack
                                                                             CCString::create(MUFFIN_CURRENCY_ITEM_ID),                        // the currency associated with this pack
                                                                             CCPurchaseWithMarket::create(CCString::create(FOURHUNDMUFF_PACK_PRODUCT_ID), CCDouble::create(4.99))
                                                                             );
@@ -81,7 +81,7 @@ bool InAppPurchasesList::init() {
                                                                             CCString::create("1000 Muffins"),                                   // name
                                                                             CCString::create("Test item unavailable"),                 // description
                                                                             CCString::create("muffins_1000"),                                   // item id
-                                                                            CCInteger::create(1000),												// number of currencies in the pack
+                                                                            CCInteger::create(1000),                                                                                                // number of currencies in the pack
                                                                             CCString::create(MUFFIN_CURRENCY_ITEM_ID),                        // the currency associated with this pack
                                                                             CCPurchaseWithMarket::create(CCString::create(THOUSANDMUFF_PACK_PRODUCT_ID), CCDouble::create(8.99))
                                                                             );
@@ -149,7 +149,7 @@ bool InAppPurchasesList::init() {
                                                        CCString::create(""),
                                                        CCString::create("show_room_0"),
                                                        CCPurchaseWithVirtualItem::create(CCString::create(MUFFIN_CURRENCY_ITEM_ID), CCInteger::create(220)));
-	
+    
     CCVirtualGood *showRoomGood1 = CCUpgradeVG::create(
                                                        CCString::create("show_room"),
                                                        CCString::create("show_room_0"),
@@ -159,7 +159,7 @@ bool InAppPurchasesList::init() {
                                                        CCString::create("show_room_1"),
                                                        CCPurchaseWithVirtualItem::create(CCString::create(MUFFIN_CURRENCY_ITEM_ID), CCInteger::create(220)));
     
-	CCVirtualGood *showRoomGood2 = CCUpgradeVG::create(
+    CCVirtualGood *showRoomGood2 = CCUpgradeVG::create(
                                                        CCString::create("show_room"),
                                                        CCString::create("show_room_1"),
                                                        CCString::create("show_room_3"),
@@ -168,7 +168,7 @@ bool InAppPurchasesList::init() {
                                                        CCString::create("show_room_2"),
                                                        CCPurchaseWithVirtualItem::create(CCString::create(MUFFIN_CURRENCY_ITEM_ID), CCInteger::create(220)));
     
-	CCVirtualGood *showRoomGood3 = CCUpgradeVG::create(
+    CCVirtualGood *showRoomGood3 = CCUpgradeVG::create(
                                                        CCString::create("show_room"),
                                                        CCString::create("show_room_2"),
                                                        CCString::create("show_room_4"),
@@ -177,7 +177,7 @@ bool InAppPurchasesList::init() {
                                                        CCString::create("show_room_3"),
                                                        CCPurchaseWithVirtualItem::create(CCString::create(MUFFIN_CURRENCY_ITEM_ID), CCInteger::create(220)));
     
-	CCVirtualGood *showRoomGood4 = CCUpgradeVG::create(
+    CCVirtualGood *showRoomGood4 = CCUpgradeVG::create(
                                                        CCString::create("show_room"),
                                                        CCString::create("show_room_3"),
                                                        NULL,
@@ -185,7 +185,7 @@ bool InAppPurchasesList::init() {
                                                        CCString::create(""),
                                                        CCString::create("show_room_4"),
                                                        CCPurchaseWithVirtualItem::create(CCString::create(MUFFIN_CURRENCY_ITEM_ID), CCInteger::create(220)));
-	
+    
     CCVirtualGood *deliveryVehicleGood =
     CCLifetimeVG::create(CCString::create("Delivery Vehicle"), // name
                          CCString::create("Delivery Vehicle"), // description
@@ -228,7 +228,7 @@ bool InAppPurchasesList::init() {
                                                               CCString::create("delivery_vehicle_3"),
                                                               CCPurchaseWithVirtualItem::create(CCString::create(MUFFIN_CURRENCY_ITEM_ID), CCInteger::create(20)));
     
-	CCVirtualGood *deliveryVehicleGood4 = CCUpgradeVG::create(
+    CCVirtualGood *deliveryVehicleGood4 = CCUpgradeVG::create(
                                                               CCString::create("delivery_vehicle"),
                                                               CCString::create("delivery_vehicle_3"),
                                                               NULL,
@@ -236,7 +236,7 @@ bool InAppPurchasesList::init() {
                                                               CCString::create(""),
                                                               CCString::create("delivery_vehicle_4"),
                                                               CCPurchaseWithVirtualItem::create(CCString::create(MUFFIN_CURRENCY_ITEM_ID), CCInteger::create(20)));
-	
+    
     CCVirtualGood *fatCatGood = CCEquippableVG::create(
                                                        CCInteger::create(CCEquippableVG::kCategory),
                                                        CCString::create("Fat Cat"),
@@ -307,9 +307,9 @@ bool InAppPurchasesList::init() {
     mCurrencies->retain();
     
     mGoods = CCArray::create(muffincakeGood, pavlovaGood, tenPavlovaGoods, choclatecakeGood, creamcupGood, tenCreamcupGoods,
-							 showRoomGood, showRoomGood0, showRoomGood1, showRoomGood2, showRoomGood3, showRoomGood4,
-							 deliveryVehicleGood, deliveryVehicleGood0, deliveryVehicleGood1, deliveryVehicleGood2,
-							 deliveryVehicleGood3, deliveryVehicleGood4, fatCatGood, happiHippoGood, funkeyMonkeyGood, NULL);
+                             showRoomGood, showRoomGood0, showRoomGood1, showRoomGood2, showRoomGood3, showRoomGood4,
+                             deliveryVehicleGood, deliveryVehicleGood0, deliveryVehicleGood1, deliveryVehicleGood2,
+                             deliveryVehicleGood3, deliveryVehicleGood4, fatCatGood, happiHippoGood, funkeyMonkeyGood, NULL);
     mGoods->retain();
     
     mCurrencyPacks = CCArray::create(tenmuffPack, fiftymuffPack, fourhundmuffPack, thousandmuffPack, NULL);
@@ -355,3 +355,5 @@ cocos2d::CCArray *InAppPurchasesList::getCategories() {
 cocos2d::CCArray *InAppPurchasesList::getNonConsumableItems() {
     return mNonConsumableItems;
 }
+
+#endif

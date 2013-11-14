@@ -365,8 +365,8 @@ class Options
         static Textes TEXT_PROGRESS_LEVEL_TASK;
         static Textes TEXT_EPISODES_NAMES[6];
         static Textes TEXT_NEED_TO_UNLOCK;
-    
-        static const char* TEXT_LEVELS_TASKS[80][3];
+        static Textes TEXT_GETSHOOTS_STRING_1;
+        static Textes TEXT_LEVELS_TASKS[80][3];
 
         // ===========================================================
         // Fields

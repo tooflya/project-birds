@@ -81,6 +81,19 @@
 #include "ButtonReceiver.cpp"
 #include "KeyParticle.cpp"
 #include "LiveParticle.cpp"
+#include "SplashScreen.cpp"
+#include "InAppPurchasesList.cpp"
+#include "Episodes.cpp"
+#include "KeyDisplay.cpp"
+#include "Icon8.cpp"
+#include "GetShoots.cpp"
+#include "UnlockMode.cpp"
+#include "TempPublisherInAppExplain.cpp"
+#include "MapDescription.cpp"
+#include "ColorParticle.cpp"
+#include "MapDescriptionList.cpp"
+#include "SurpriseLevel.cpp"
+#include "InAppPurchaseEventHandler.cpp"
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
 #include <platform/CCPlatformConfig.h>
@@ -118,7 +131,7 @@ void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thi
         
         CCShaderCache::sharedShaderCache()->reloadDefaultShaders();
         CCTextureCache::reloadAllTextures();
-        CCNotificationCenter::sharedNotificationCenter()->postNotification(EVNET_COME_TO_FOREGROUND, NULL);
+        CCNotificationCenter::sharedNotificationCenter()->postNotification(EVENT_COME_TO_FOREGROUND, NULL);
         CCDirector::sharedDirector()->setGLDefaultValues(); 
     }
 }

@@ -34,7 +34,7 @@ bool AppDelegate::IS_IPOD = true;
 
 AppDelegate::AppDelegate()
 {
-    handler = new ExampleEventHandler();
+    handler = new InAppPurchaseEventHandler();
 }
 
 AppDelegate::~AppDelegate()
@@ -501,9 +501,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     // We initialize CCStoreController and the event handler before
     // we open the store.
-    soomla::CCSoomla::sharedSoomla()->addEventHandler(handler);
+    /*soomla::CCSoomla::sharedSoomla()->addEventHandler(handler);
     
-    MuffinRushAssets *assets = MuffinRushAssets::create();
+    InAppPurchasesList *assets = InAppPurchasesList::create();
     CCDictionary *storeParams = CCDictionary::create();
     storeParams->setObject(CCString::create("ExampleSoomSecret"), "soomSec");
     storeParams->setObject(CCString::create("ExamplePublicKey"), "androidPublicKey");
@@ -514,27 +514,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     storeParams->setObject(CCBool::create(true), "androidTestMode");
     
     // This is the call to initialize CCStoreController
-    soomla::CCStoreController::createShared(assets, storeParams);
-    
-    /*
-     * ** Set the amount of each currency to 10,000 if the **
-     * ** balance drops under 1,000                        **
-     *
-     * ** Of course, this is just for testing...           **
-     */
-    
-    CCArray *currencies = soomla::CCStoreInfo::sharedStoreInfo()->getVirtualCurrencies();
-    CCObject *currencyObject;
-    CCARRAY_FOREACH(currencies, currencyObject) {
-        soomla::CCVirtualCurrency *vc =
-        dynamic_cast<soomla::CCVirtualCurrency *>(currencyObject);
-        int balance = soomla::CCStoreInventory::sharedStoreInventory()->
-        getItemBalance(vc->getItemId()->getCString(), NULL);
-        if (balance < 1000) {
-            soomla::CCStoreInventory::sharedStoreInventory()->
-            giveItem(vc->getItemId()->getCString(), 10000 - balance, NULL);
-        }
-    }
+    soomla::CCStoreController::createShared(assets, storeParams);*/
     
 	director->setOpenGLView(EGLView);
 	director->setContentScaleFactor(designResolutionSize.height / screenSize.height);

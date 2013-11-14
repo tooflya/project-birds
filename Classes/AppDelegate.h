@@ -9,6 +9,8 @@
 #include "Options.h"
 #include "ScreenManager.h"
 
+#include "InAppPurchaseEventHandler.h"
+
 using namespace std;
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -32,7 +34,7 @@ static CCSize designResolutionSize = CCSizeMake(720, 1280);
 
 class AppDelegate : private CCApplication
 {
-    protected:
+        protected:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -57,7 +59,7 @@ class AppDelegate : private CCApplication
         // Override Methods
         // ===========================================================
 
-    private:
+        private:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -69,6 +71,8 @@ class AppDelegate : private CCApplication
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        InAppPurchaseEventHandler* handler;
 
         // ===========================================================
         // Constructors
@@ -82,7 +86,7 @@ class AppDelegate : private CCApplication
         // Override Methods
         // ===========================================================
 
-    public:
+        public:
         // ===========================================================
         // Inner Classes
         // ===========================================================
@@ -102,6 +106,9 @@ class AppDelegate : private CCApplication
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        AppDelegate();
+        ~AppDelegate();
 
         // ===========================================================
         // Methods

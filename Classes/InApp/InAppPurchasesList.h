@@ -11,7 +11,7 @@ class InAppPurchasesList: public soomla::CCIStoreAssets {
     cocos2d::CCArray *mCategories;
     cocos2d::CCArray *mNonConsumableItems;
 public:
-    MuffinRushAssets():
+    InAppPurchasesList():
     mCurrencies(NULL),
     mGoods(NULL),
     mCurrencyPacks(NULL),
@@ -19,9 +19,9 @@ public:
     mNonConsumableItems(NULL)
     {}
     
-    virtual ~MuffinRushAssets();
+    virtual ~InAppPurchasesList();
     
-    static MuffinRushAssets *create();
+    static InAppPurchasesList *create();
     bool init();
     
     virtual int getVersion();
@@ -36,3 +36,5 @@ public:
     
     virtual cocos2d::CCArray *getNonConsumableItems();
 };
+
+#endif

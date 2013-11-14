@@ -76,11 +76,11 @@
 	<key>CFBundlePackageType</key>
 	<string>AAPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.8.6</string>
+	<string>0.8.7</string>
 	<key>CFBundleSignature</key>
 	<string>AAPL</string>
 	<key>CFBundleVersion</key>
-	<string>8050</string>
+	<string>8133</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.games</string>
 	<key>LSRequiresIPhoneOS</key>

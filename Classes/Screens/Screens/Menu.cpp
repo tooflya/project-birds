@@ -4,6 +4,10 @@
 #include "Menu.h"
 
 #include "Shop.h"
+#include "CCStoreInventory.h"
+#include "CCStoreController.h"
+#include "CCSoomlaError.h"
+#include "CCStoreUtils.h"
 
 // ===========================================================
 // Inner Classes
@@ -250,6 +254,13 @@ void Menu::onShow()
         CCUserDefault::sharedUserDefault()->setBoolForKey("temp_inapp_inf", true);
         CCUserDefault::sharedUserDefault()->flush();
     }
+    
+    /*soomla::CCSoomlaError *soomlaError = NULL;
+    soomla::CCStoreInventory::sharedStoreInventory()->buyItem("muffins_10", &soomlaError);
+    if (soomlaError) {
+        soomla::CCStoreUtils::logException("???", soomlaError);
+        return;
+    }*/
 }
 
 void Menu::onExitTransitionDidStart()

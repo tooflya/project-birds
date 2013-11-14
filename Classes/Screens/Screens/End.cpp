@@ -329,6 +329,9 @@ void End::onHide()
     this->mMenuButton->isVisible() ? this->mMenuButton->destroy() : false;
     this->mRestartButton->isVisible() ? this->mRestartButton->destroy() : false;
     this->mContinueButton->isVisible() ? this->mContinueButton->destroy() : false;
+    
+    this->mIsAnimationRunning = false;
+    this->mIsCoinsAnimationRunning = false;
 }
 
 void End::onStartShow()
@@ -409,7 +412,7 @@ void End::update(float pDeltaTime)
                 
                 this->mAnimationCounter++;
                 
-                if(this->mAnimationCounter >= Game::STARS)
+                if(this->mAnimationCounter >= Game::STARS || (this->mAnimationCounter >= 3))
                 {
                     this->mIsAnimationRunning = false;
                 }

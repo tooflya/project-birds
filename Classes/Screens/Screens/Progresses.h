@@ -139,6 +139,7 @@ class Progresses : public Game
     
         void checkStarsRuntime();
         void lookAtTheTasks();
+        void standStartEggs();
     
         // ===========================================================
         // Override Methods

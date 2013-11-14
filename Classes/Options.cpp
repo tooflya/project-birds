@@ -15,7 +15,7 @@
 // Constants
 // ===========================================================
 
-bool Options::IS_BUILD_FOR_ABSOLUTIST = true;
+bool Options::IS_BUILD_FOR_ABSOLUTIST = false;
 
 int Options::CENTER_X = 0;
 int Options::CENTER_Y = 0;
@@ -51,10 +51,10 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.8.6";
-string Options::STRING_VERSION = "0.8.6";
+const char* Options::VERSION = "0.8.7";
+string Options::STRING_VERSION = "0.8.7";
 
-int Options::BUILD = 7077;
+int Options::BUILD = 8130;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -80,6 +80,10 @@ const char* Options::SOUND_COMBO[8] = {"Sound/combo-1.ogg", "Sound/combo-2.ogg",
 const char* Options::SOUND_POINTS[12] = {"Sound/popup-1.ogg", "Sound/popup-2.ogg","Sound/popup-3.ogg","Sound/popup-4.ogg","Sound/popup-5.ogg","Sound/popup-6.ogg","Sound/popup-7.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg"};
 const char* Options::SOUND_PROGRESS = "Sound/progress_complete.ogg";
 const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.ogg";
+const char* Options::SOUND_MISS = "Sound/Soundmiss.wav";
+const char* Options::SOUND_GEM[5] = { "Sound/Soundgem1.wav", "Sound/Soundgem2.mp3", "Sound/Soundgem3.mp3", "Sound/Soundgem4.mp3", "Sound/Soundgem5.mp3" };
+const char* Options::SOUND_LEVEL_LOSE = "Sound/lose.mp3";
+const char* Options::SOUND_LEVEL_STARS[3] = { "Sound/Soundstar1.mp3", "Sound/Soundstar2.mp3", "Sound/Soundstar3.mp3" };
 
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 
@@ -477,12 +481,14 @@ Textes Options::TEXT_EPISODES_NAMES[6] =
     {"", FONT, 52, 410}
 };
 Textes Options::TEXT_NEED_TO_UNLOCK = {"", FONT, 22, 411};
+Textes Options::TEXT_GETSHOOTS_STRING_1 = {"", Options::FONT, 0, 412};
 
-const char* Options::TEXT_LEVELS_TASKS[80][3] = {
-    { "Соберите все яйца", "Успейте за 20 секунд", "Используйте только\nодин удар" },
-    { "Соберите все яйца", "Соберите 4 в ряд", "Уничтожте все яйца\nпосле выполнения задания" },
-    { "Соберите все яйца", "Соберите 4 в ряд", "Успейте за 60 секунд" },
-    { "Спасите 3 звездочки", "Соберите все яйца", "Уничтожте все яйца\nпосле выполнения задания" }
+Textes Options::TEXT_LEVELS_TASKS[80][3] = {
+    { {"", FONT, 32, 413}, {"", FONT, 32, 414}, {"", FONT, 32, 415} },
+    { {"", FONT, 32, 416}, {"", FONT, 32, 417}, {"", FONT, 32, 418} },
+    { {"", FONT, 32, 419}, {"", FONT, 32, 420}, {"", FONT, 32, 421} },
+    { {"", FONT, 32, 422}, {"", FONT, 32, 423}, {"", FONT, 32, 424} },
+    { {"", FONT, 32, 425}, {"", FONT, 32, 426}, {"", FONT, 32, 427} }
 };
 
 // ===========================================================
@@ -606,6 +612,9 @@ void Options::changeLanguage()
             
             TEXT_GETLIVES_STRING_1.string = "You have run out of extra lives!\nRestore them or wait\nuntil they recover.";
             TEXT_GETLIVES_STRING_1.size = 32;
+            
+            TEXT_GETSHOOTS_STRING_1.string = "You have run out of moves!\nRestore them and compelete\nthis level or you lose!";
+            TEXT_GETSHOOTS_STRING_1.size = 32;
             
             TEXT_GETKEYS_STRING_1.string = "You need to buy\nsome keys for unclock!";
             TEXT_GETKEYS_STRING_1.size = 48;
@@ -1026,6 +1035,26 @@ void Options::changeLanguage()
             TEXT_EPISODES_NAMES[5].string = "Coming soon";
             
             TEXT_NEED_TO_UNLOCK.string = "You need\n \nto unlock";
+            
+            TEXT_LEVELS_TASKS[0][0].string = "Gather all the eggs";
+            TEXT_LEVELS_TASKS[0][1].string = "Have time to 20 seconds";
+            TEXT_LEVELS_TASKS[0][2].string = "Use only one strike";
+            
+            TEXT_LEVELS_TASKS[1][0].string = "Gather all the eggs";
+            TEXT_LEVELS_TASKS[1][1].string = "Collect 4 in a row";
+            TEXT_LEVELS_TASKS[1][2].string = "Destroy all the eggs\nafter the previous tasks";
+            
+            TEXT_LEVELS_TASKS[2][0].string = "Gather all the eggs";
+            TEXT_LEVELS_TASKS[2][1].string = "Collect 4 in a row";
+            TEXT_LEVELS_TASKS[2][2].string = "Have time to 60 seconds";
+            
+            TEXT_LEVELS_TASKS[3][0].string = "Gather all the eggs";
+            TEXT_LEVELS_TASKS[3][1].string = "Collect 4 in a row";
+            TEXT_LEVELS_TASKS[3][2].string = "Have time to 60 seconds";
+            
+            TEXT_LEVELS_TASKS[4][0].string = "Save 3 stars";
+            TEXT_LEVELS_TASKS[4][1].string = "Gather all the eggs";
+            TEXT_LEVELS_TASKS[4][2].string = "Destroy all the eggs\nafter the previous tasks";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1084,13 +1113,16 @@ void Options::changeLanguage()
             
             TEXT_GETLIVES_STRING_1.string = "У вас закончились экстра жизни!\nВосстановите их или подождите\nпока они восстановятся.";
             TEXT_GETLIVES_STRING_1.size = 32;
-            
+
+            TEXT_GETSHOOTS_STRING_1.string = "У вас закончились удары!\nВосстановите их и получите\nвозможность закончить уровень!";
+            TEXT_GETSHOOTS_STRING_1.size = 32;
+
             TEXT_GETCOINS_STRING_1.string = "Желаете купить\nнесколько монет?";
             TEXT_GETCOINS_STRING_1.size = 48;
-            
+
             TEXT_GETKEYS_STRING_1.string = "Желаете купить\nнесколько ключей?";
             TEXT_GETKEYS_STRING_1.size = 48;
-            
+
             TEXT_GETCOINS_STRING_2.string = "Любая покупка\nуберет рекламу!";
             TEXT_GETCOINS_STRING_2.size = 36;
             
@@ -1512,6 +1544,26 @@ void Options::changeLanguage()
             TEXT_EPISODES_NAMES[5].string = "Новые эпизоды\nсовсем скоро!";
             
             TEXT_NEED_TO_UNLOCK.string = "Вам необоходимо\n \nдля доступа";
+            
+            TEXT_LEVELS_TASKS[0][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[0][1].string = "Успейте за 20 секунд";
+            TEXT_LEVELS_TASKS[0][2].string = "Используйте только\nодин удар";
+            
+            TEXT_LEVELS_TASKS[1][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[1][1].string = "Соберите 4 в ряд";
+            TEXT_LEVELS_TASKS[1][2].string = "Уничтожте все яйца\nпосле выполнения задания";
+            
+            TEXT_LEVELS_TASKS[2][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[2][1].string = "Соберите 4 в ряд";
+            TEXT_LEVELS_TASKS[2][2].string = "Успейте за 60 секунд";
+            
+            TEXT_LEVELS_TASKS[3][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[3][1].string = "Соберите 4 в ряд";
+            TEXT_LEVELS_TASKS[3][2].string = "Успейте за 60 секунд";
+            
+            TEXT_LEVELS_TASKS[4][0].string = "Спасите 3 звездочки";
+            TEXT_LEVELS_TASKS[4][1].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[4][2].string = "Уничтожте все яйца\nпосле выполнения задания";
         break;
     }
     
@@ -1927,8 +1979,24 @@ void Options::changeLanguage()
     TEXTES_HOLDER[409] = TEXT_EPISODES_NAMES[4];
     TEXTES_HOLDER[410] = TEXT_EPISODES_NAMES[5];
     TEXTES_HOLDER[411] = TEXT_NEED_TO_UNLOCK;
+    TEXTES_HOLDER[412] = TEXT_GETSHOOTS_STRING_1;
+    TEXTES_HOLDER[413] = TEXT_LEVELS_TASKS[0][0];
+    TEXTES_HOLDER[414] = TEXT_LEVELS_TASKS[0][1];
+    TEXTES_HOLDER[415] = TEXT_LEVELS_TASKS[0][2];
+    TEXTES_HOLDER[416] = TEXT_LEVELS_TASKS[1][0];
+    TEXTES_HOLDER[417] = TEXT_LEVELS_TASKS[1][1];
+    TEXTES_HOLDER[418] = TEXT_LEVELS_TASKS[1][2];
+    TEXTES_HOLDER[419] = TEXT_LEVELS_TASKS[2][0];
+    TEXTES_HOLDER[420] = TEXT_LEVELS_TASKS[2][1];
+    TEXTES_HOLDER[421] = TEXT_LEVELS_TASKS[2][2];
+    TEXTES_HOLDER[422] = TEXT_LEVELS_TASKS[3][0];
+    TEXTES_HOLDER[423] = TEXT_LEVELS_TASKS[3][1];
+    TEXTES_HOLDER[424] = TEXT_LEVELS_TASKS[3][2];
+    TEXTES_HOLDER[425] = TEXT_LEVELS_TASKS[4][0];
+    TEXTES_HOLDER[426] = TEXT_LEVELS_TASKS[4][1];
+    TEXTES_HOLDER[427] = TEXT_LEVELS_TASKS[4][2];
     
-    for(int i = 0; i <= 411; i++)
+    for(int i = 0; i <= 427; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

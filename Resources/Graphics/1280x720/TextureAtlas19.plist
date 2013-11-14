@@ -7,28 +7,28 @@
             <key>popup_gshoot_btn@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{682,2},{305,327}}</string>
+                <string>{{2,615},{290,211}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{305,327}}</string>
+                <string>{{0,0},{290,211}}</string>
                 <key>sourceSize</key>
-                <string>{305,327}</string>
+                <string>{290,211}</string>
             </dict>
             <key>popup_gshoot_pic@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{678,604}}</string>
+                <string>{{2,2},{590,611}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{678,604}}</string>
+                <string>{{0,0},{590,611}}</string>
                 <key>sourceSize</key>
-                <string>{678,604}</string>
+                <string>{590,611}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -38,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas19.pvr.ccz</string>
             <key>size</key>
-            <string>{989,608}</string>
+            <string>{594,828}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ac358512b1e13e1e84266ad1af3e7114:e87039f9cc316a396085780061519ff5:cd7535742f3cb5a8db4720bea4dd583b$</string>
+            <string>$TexturePacker:SmartUpdate:f679b17e8fcc788423495893bc4e2268:76781e21cb47145bab14b5ba4143172c:cd7535742f3cb5a8db4720bea4dd583b$</string>
             <key>textureFileName</key>
             <string>TextureAtlas19.pvr.ccz</string>
         </dict>

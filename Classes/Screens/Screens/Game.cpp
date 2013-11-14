@@ -21,10 +21,10 @@ int Game::LEVEL_TYPE[80] = {
     0, 1, 2
 };
 int Game::LEVEL_SHOOT_COUNT[80] = {
-    5, 1, 1, 1
+    5, 10, 15, 1
 };
 int Game::LEVEL_HEIGHT[80] = {
-    1, 1, 1, 1,
+    1, 1, 1, 2,
     1, 2, 2, 2,
     2, 3, 3, 3,
     3, 3, 4, 4
