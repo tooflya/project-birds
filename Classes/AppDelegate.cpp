@@ -3,6 +3,12 @@
 
 #include "AppDelegate.h"
 
+#include "CCStoreController.h"
+#include "CCStoreInventory.h"
+#include "CCStoreInfo.h"
+#include "CCSoomla.h"
+#include "InAppPurchasesList.h"
+
 #include "SplashScreen.h"
 
 // ===========================================================
@@ -25,6 +31,16 @@ bool AppDelegate::IS_IPOD = true;
 // ===========================================================
 // Constructors
 // ===========================================================
+
+AppDelegate::AppDelegate()
+{
+    handler = new ExampleEventHandler();
+}
+
+AppDelegate::~AppDelegate()
+{
+    soomla::CCSoomla::sharedSoomla()->removeEventHandler(handler);
+}
 
 // ===========================================================
 // Methods
@@ -483,6 +499,43 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCEGLView*  EGLView = CCEGLView::sharedOpenGLView();
     CCSize  screenSize = EGLView->getFrameSize();
     
+    // We initialize CCStoreController and the event handler before
+    // we open the store.
+    soomla::CCSoomla::sharedSoomla()->addEventHandler(handler);
+    
+    MuffinRushAssets *assets = MuffinRushAssets::create();
+    CCDictionary *storeParams = CCDictionary::create();
+    storeParams->setObject(CCString::create("ExampleSoomSecret"), "soomSec");
+    storeParams->setObject(CCString::create("ExamplePublicKey"), "androidPublicKey");
+    storeParams->setObject(CCString::create("ExampleCustomSecret"), "customSecret");
+    
+    // Set Android Test Mode for debugging your store purchases on Android
+    // REMOVE THIS BEFORE YOU PUBLISH YOUR GAME!
+    storeParams->setObject(CCBool::create(true), "androidTestMode");
+    
+    // This is the call to initialize CCStoreController
+    soomla::CCStoreController::createShared(assets, storeParams);
+    
+    /*
+     * ** Set the amount of each currency to 10,000 if the **
+     * ** balance drops under 1,000                        **
+     *
+     * ** Of course, this is just for testing...           **
+     */
+    
+    CCArray *currencies = soomla::CCStoreInfo::sharedStoreInfo()->getVirtualCurrencies();
+    CCObject *currencyObject;
+    CCARRAY_FOREACH(currencies, currencyObject) {
+        soomla::CCVirtualCurrency *vc =
+        dynamic_cast<soomla::CCVirtualCurrency *>(currencyObject);
+        int balance = soomla::CCStoreInventory::sharedStoreInventory()->
+        getItemBalance(vc->getItemId()->getCString(), NULL);
+        if (balance < 1000) {
+            soomla::CCStoreInventory::sharedStoreInventory()->
+            giveItem(vc->getItemId()->getCString(), 10000 - balance, NULL);
+        }
+    }
+    
 	director->setOpenGLView(EGLView);
 	director->setContentScaleFactor(designResolutionSize.height / screenSize.height);
     
@@ -500,7 +553,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     vector <string> searchPath;
     
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 
     {
         searchPath.push_back(resources1280x720.directory);
@@ -520,13 +573,13 @@ bool AppDelegate::applicationDidFinishLaunching()
         }
     }
     
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     
     searchPath.push_back(resources1280x720xPNG.directory);
     
     Options::DEVICE_TYPE = Options::DEVICE_TYPE_MAC;
 
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
     if(Options::CAMERA_WIDTH == 720)
     {
@@ -541,17 +594,17 @@ bool AppDelegate::applicationDidFinishLaunching()
         searchPath.push_back(resources1280x720.directory);
     }
     
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_WP8
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_WP8
     
     searchPath.push_back(resources1280x720.directory);
     
     Options::DEVICE_TYPE = Options::DEVICE_TYPE_MAC;
     
-#else
+    #else
 
     searchPath.push_back(resources1280x720xPNG.directory);
 
-#endif
+    #endif
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 

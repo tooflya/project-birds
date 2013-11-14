@@ -252,6 +252,7 @@ class Game : public Screen
         static int COMBO_COUNT;
         static int FLAYER_COUNT;
         static int CRITICAL_COUNT;
+        static int EGGS_4_COUNT;
     
         static int STARS;
 

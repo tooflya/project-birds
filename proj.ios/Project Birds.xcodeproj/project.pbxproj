@@ -185,6 +185,9 @@
 		785B4F30180595AC008B444E /* UnlockLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785B4F2E180595A0008B444E /* UnlockLevel.cpp */; };
 		785B4F321806F39F008B444E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785B4F311806F39F008B444E /* Media.xcassets */; };
 		785D1A4F1833F66F00A36DB8 /* GetShoots.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A4D1833F66F00A36DB8 /* GetShoots.cpp */; };
+		785D1A521834BA1C00A36DB8 /* TextureAtlas19.plist in Resources */ = {isa = PBXBuildFile; fileRef = 785D1A501834BA1C00A36DB8 /* TextureAtlas19.plist */; };
+		785D1A531834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 785D1A511834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz */; };
+		785D1A561834E9AE00A36DB8 /* InAppPurchasesList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785D1A541834E9AE00A36DB8 /* InAppPurchasesList.cpp */; };
 		7869166117F06A1B00184E9D /* bonus_banana_freeze.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166017F06A0F00184E9D /* bonus_banana_freeze.mp3 */; };
 		7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166517F1DF9600184E9D /* pome-rampdown.mp3 */; };
 		7869167117F1DF9F00184E9D /* pome-zoomout.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166617F1DF9600184E9D /* pome-zoomout.mp3 */; };
@@ -551,6 +554,10 @@
 		785B4F361806F3E3008B444E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		785D1A4D1833F66F00A36DB8 /* GetShoots.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetShoots.cpp; sourceTree = "<group>"; };
 		785D1A4E1833F66F00A36DB8 /* GetShoots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetShoots.h; sourceTree = "<group>"; };
+		785D1A501834BA1C00A36DB8 /* TextureAtlas19.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas19.plist; sourceTree = "<group>"; };
+		785D1A511834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas19.pvr.ccz; sourceTree = "<group>"; };
+		785D1A541834E9AE00A36DB8 /* InAppPurchasesList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InAppPurchasesList.cpp; sourceTree = "<group>"; };
+		785D1A551834E9AE00A36DB8 /* InAppPurchasesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchasesList.h; sourceTree = "<group>"; };
 		7869166017F06A0F00184E9D /* bonus_banana_freeze.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bonus_banana_freeze.mp3; sourceTree = "<group>"; };
 		7869166517F1DF9600184E9D /* pome-rampdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pome-rampdown.mp3"; sourceTree = "<group>"; };
 		7869166617F1DF9600184E9D /* pome-zoomout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pome-zoomout.mp3"; sourceTree = "<group>"; };
@@ -738,6 +745,8 @@
 		78365443180C5ED100AA9432 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				785D1A501834BA1C00A36DB8 /* TextureAtlas19.plist */,
+				785D1A511834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz */,
 				78791F561832711B00821057 /* TextureAtlas18.plist */,
 				78791F571832711B00821057 /* TextureAtlas18.pvr.ccz */,
 				78D358BA182B9342001450F3 /* TextureAtlas17.plist */,
@@ -823,6 +832,8 @@
 				783E873017C20CEB00FD49C1 /* AppDelegate.h */,
 				783E876817C20CEB00FD49C1 /* Options.cpp */,
 				783E876917C20CEB00FD49C1 /* Options.h */,
+				785D1A541834E9AE00A36DB8 /* InAppPurchasesList.cpp */,
+				785D1A551834E9AE00A36DB8 /* InAppPurchasesList.h */,
 				783E873117C20CEB00FD49C1 /* Entities */,
 				783E875C17C20CEB00FD49C1 /* Graphics */,
 				783E875F17C20CEB00FD49C1 /* Managers */,
@@ -1397,6 +1408,7 @@
 				78D358911821670D001450F3 /* gem1.wav in Resources */,
 				78397ADF1807029200C999E7 /* Icon-29-ios6.png in Resources */,
 				78582AED17BBD94500C96267 /* Default-Portrait@2x~ipad.png in Resources */,
+				785D1A521834BA1C00A36DB8 /* TextureAtlas19.plist in Resources */,
 				78D358BC182B9342001450F3 /* TextureAtlas17.plist in Resources */,
 				783E88DB17C20CEC00FD49C1 /* Comic Sans MS.ttf in Resources */,
 				7836548C180C5ED100AA9432 /* more_games_list@2x.png in Resources */,
@@ -1449,6 +1461,7 @@
 				783E898817C20CEC00FD49C1 /* equip-unlock.mp3 in Resources */,
 				783654A6180C5ED100AA9432 /* TextureAtlas8.pvr.ccz in Resources */,
 				783E898A17C20CEC00FD49C1 /* explosion.mp3 in Resources */,
+				785D1A531834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz in Resources */,
 				78365495180C5ED100AA9432 /* TextureAtlas13.plist in Resources */,
 				783E898C17C20CEC00FD49C1 /* hit.mp3 in Resources */,
 				783E898E17C20CEC00FD49C1 /* lose_life.mp3 in Resources */,
@@ -1531,6 +1544,7 @@
 				780163151821002C002A0CB7 /* ColorParticle.cpp in Sources */,
 				783E88A917C20CEC00FD49C1 /* BatchEntityManager.cpp in Sources */,
 				783E88AA17C20CEC00FD49C1 /* BladeParticlesManager.cpp in Sources */,
+				785D1A561834E9AE00A36DB8 /* InAppPurchasesList.cpp in Sources */,
 				783E88AB17C20CEC00FD49C1 /* EntityManager.cpp in Sources */,
 				78D358B5182A6A0E001450F3 /* SplashScreen.cpp in Sources */,
 				78D3589C18279E96001450F3 /* MapDescription.cpp in Sources */,

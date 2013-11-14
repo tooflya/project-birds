@@ -655,7 +655,7 @@ Progresses::Progresses() :
 		this->mPausePopup = Pause::create(this);
 		this->mEndScreen = End::create(Splash::TYPE_PROGRESS, this);
 		this->mGetLivesPopup = GetLives::create(this, false);
-		this->mGetShootsPopup = GetShoots::create(this, false);
+		this->mGetShootsPopup = GetShoots::create(this);
     
 		//this->mLevelUpTime = 30.0;
 		//this->mLevelUpTimeElapsed = 0;
@@ -740,6 +740,8 @@ void Progresses::onTouchButtonsCallback(const int pAction, const int pID)
 
 void Progresses::onMatch(int count, float a, float b)
 {
+    if(count >= 4) Game::EGGS_4_COUNT++;
+    
     this->mAwesomeText->setString(Options::TEXT_BONUS[Utils::random(0, 11)].string);
     this->mAwesomeText->setScale(0);
     this->mAwesomeText->setColor(Confetti::COLORS[Utils::random(0, 2)]);
@@ -807,7 +809,7 @@ void Progresses::update(float pDeltaTime)
         }
     }
     
-    if(this->mPause || this->mEndScreen->getParent())
+    if(this->mPause || this->mEndScreen->isShowed())
     {
         return;
     }
@@ -852,12 +854,12 @@ void Progresses::update(float pDeltaTime)
          }
     }*/
     
-    if(this->mGamePaused)
+    if(this->mGamePaused) // Is that is really need here?
     {
         if(!this->mEndScreen->isShowed())
         {
             this->onShow();
-            
+
             this->startGame();
         }
     }
@@ -877,6 +879,18 @@ void Progresses::update(float pDeltaTime)
         }*/
         
         this->lookAtTheTasks();
+        
+        if(this->mShootCount <= 0 && !Color::ANIMATION_RUNNING)
+        {
+            this->mGetShootsPopup->show();
+        }
+        
+        if(this->mMustShowTask)
+        {
+            this->onShow();
+            
+            this->startGame();
+        }
     }
     
     /*int a;
@@ -1002,7 +1016,7 @@ void Progresses::onBirBlow(int pType, float pX, float pY, bool pBonus)
 {
     if(this->mGameRunning)
     {
-        if(pType == Bird::TYPE_DANGER || pType == Bird::TYPE_FLAYER || pBonus)
+        if(pType == Bird::TYPE_DANGER || pType == Bird::TYPE_FLAYER || pBonus || pType < 0)
         {
             
         }
@@ -1022,15 +1036,12 @@ void Progresses::onBirBlow(int pType, float pX, float pY, bool pBonus)
                 particle->setCenterPosition(color->getCenterX(), color->getCenterY());
                 particle->setColor(Bird::COLORS[pType]);
             }
-            
-            this->mPanelText0->setString(ccsf("%d", --this->mShootCount));
-            this->mPanelText0->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidthScaled() / 2 - this->mPanelText0->getWidth() / 2 - Utils::coord(40), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-            
-            if(this->mShootCount <= 0)
-            {
-                //this->mPause = true;
-            }
         }
+        
+        this->mShootMakeCount++;
+        
+        this->mPanelText0->setString(ccsf("%d", --this->mShootCount));
+        this->mPanelText0->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidthScaled() / 2 - this->mPanelText0->getWidth() / 2 - Utils::coord(40), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
     }
 }
 
@@ -1050,9 +1061,8 @@ void Progresses::onExit()
 
 void Progresses::onShow()
 {
-    this->mTaskPanel->up();
-    
     STARS = 0;
+    Game::EGGS_4_COUNT = 0;
     
     this->mAwesomeText->stopAllActions();
     this->mAwesomeText->setScale(0);
@@ -1067,6 +1077,22 @@ void Progresses::onShow()
     this->mColorsSmall->clear();
 
     this->mTaskDone = false;
+    this->mMustShowTask = true;
+
+    if(this->mTaskTimeIcon->isVisible()) this->mTaskTimeIcon->destroy();
+    if(this->mTaskShootsIcon->isVisible()) this->mTaskShootsIcon->destroy();
+    
+    for(int i = 0; i < 10; i++)
+    {
+        BURNED[i] = 0;
+    }
+
+    for(int i = 0; i < 5; i++)
+    {
+        this->mTaskText[i]->setVisible(false);
+    }
+    
+    this->setGamePanelTopLevelIcons();
 
     if(AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES) <= 0)
     {
@@ -1074,6 +1100,10 @@ void Progresses::onShow()
         
         return;
     }
+
+    this->mMustShowTask = false;
+    
+    this->mTaskPanel->up();
 
     for(int i = Game::MATRIX_SIZE_X - 1; i >= 0; i--)
     {
@@ -1136,16 +1166,6 @@ void Progresses::onShow()
         }
     }
     
-    for(int i = 0; i < 10; i++)
-    {
-        BURNED[i] = 0;
-    }
-    
-    for(int i = 0; i < 5; i++)
-    {
-        this->mTaskText[i]->setVisible(false);
-    }
-    
     int c2 = -1;
     int c = -1;
 
@@ -1180,6 +1200,7 @@ void Progresses::onShow()
     this->mPause = true;
     
     this->setGamePanelTopLevelIcons();
+    this->setGamePanelLeftLevelIcons();
 }
 
 void Progresses::removeLife()
@@ -1195,6 +1216,7 @@ void Progresses::startGame()
 void Progresses::setGamePanelTopLevelIcons()
 {
     this->mShootCount = Game::LEVEL_SHOOT_COUNT[Game::LEVEL];
+    this->mShootMakeCount = 0;
     
     this->mPanelStars[0]->setColor(ccc3(255, 255, 255));
     this->mPanelStars[1]->setColor(ccc3(255, 255, 255));
@@ -1212,8 +1234,6 @@ void Progresses::setGamePanelTopLevelIcons()
     this->mPanelStars[0]->setCurrentFrameIndex(3);
     this->mPanelStars[1]->setCurrentFrameIndex(4);
     this->mPanelStars[2]->setCurrentFrameIndex(5);
-    
-    this->setGamePanelLeftLevelIcons();
 }
 
 void Progresses::setGamePanelLeftLevelIcons()
@@ -1306,12 +1326,13 @@ void Progresses::checkStarsRuntime()
             if(this->mTaskDone) {
                 STARS++;
                 if(this->mTime > 0) STARS++;
-                if(this->mShootCount >= Game::LEVEL_SHOOT_COUNT[0] - 1) STARS++;
+                if(this->mShootMakeCount <= 1) STARS++;
                 
                 this->onGameEnd();
             }
+            if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); if(this->mTime <= 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); } }
             if(this->mTime <= 0) { this->mPanelStars[1]->setColor(ccc3(100, 100, 100)); this->mTaskText[1]->setColor(ccc3(255, 0, 0)); }
-            if(Game::LEVEL_SHOOT_COUNT[0] - this->mShootCount >= 1) { this->mPanelStars[2]->setColor(ccc3(100, 100, 100)); this->mTaskText[2]->setColor(ccc3(255, 0, 0)); }
+            if(this->mShootMakeCount > 1) { this->mPanelStars[2]->setColor(ccc3(100, 100, 100)); this->mTaskText[2]->setColor(ccc3(255, 0, 0)); }
         break;
     }
 }

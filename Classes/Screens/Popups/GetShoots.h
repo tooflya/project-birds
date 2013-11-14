@@ -17,20 +17,18 @@ class GetShoots : public Popup
         // ===========================================================
         // Fields
         // ===========================================================
-    
-        Text* mExpireTimeText;
-    
-        int mPurchaseId;
 
-        Button* mGetCoinsButtons[2];
+        Button* mCoinsButton;
     
         EntityManager* mLights;
+    
+        bool mDoAction;
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        GetShoots(CCNode* pParent, bool pFirst);
+        GetShoots(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -82,7 +80,7 @@ class GetShoots : public Popup
         // Constructors
         // ===========================================================
     
-        static GetShoots* create(CCNode* pParent, bool pFirst);
+        static GetShoots* create(CCNode* pParent);
     
         ~GetShoots();
 

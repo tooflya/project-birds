@@ -59,6 +59,7 @@ int Game::RECORD_BEATEAN = 0;
 int Game::COMBO_COUNT = 0;
 int Game::FLAYER_COUNT = 0;
 int Game::CRITICAL_COUNT = 0;
+int Game::EGGS_4_COUNT = 0;
 
 int Game::BURNED[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 

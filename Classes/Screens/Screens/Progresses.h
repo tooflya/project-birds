@@ -29,8 +29,6 @@ class Progresses : public Game
         // Fields
         // ===========================================================
     
-        int mShootCount;
-    
         Entity* mPanelStars[3];
         Entity* mTaskTimeIcon;
         Entity* mTaskShootsIcon;
@@ -57,6 +55,7 @@ class Progresses : public Game
         float mShootsCountAnimationTimeElapsed;
     
         bool mAwesoneAnimation;
+        bool mMustShowTask;
     
         TaskPanel* mTaskPanel;
     
@@ -113,6 +112,9 @@ class Progresses : public Game
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        int mShootCount;
+        int mShootMakeCount;
     
         static Progresses* create();
     
