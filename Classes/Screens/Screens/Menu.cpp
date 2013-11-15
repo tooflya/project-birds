@@ -151,8 +151,17 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
                 case Options::BUTTONS_ID_MENU_PLAY:
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                {
+                    //AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    
+                    soomla::CCStoreController::sharedStoreController()->storeOpening();
+                    soomla::CCSoomlaError *soomlaError = NULL;
+                    soomla::CCStoreInventory::sharedStoreInventory()->buyItem("muffins_10", &soomlaError);
+                    if (soomlaError) {
+                        soomla::CCStoreUtils::logException("???", soomlaError);
+                    }
+                    
+            }
 
                 break;
                 case Options::BUTTONS_ID_MENU_SETTINGS:
@@ -254,13 +263,6 @@ void Menu::onShow()
         CCUserDefault::sharedUserDefault()->setBoolForKey("temp_inapp_inf", true);
         CCUserDefault::sharedUserDefault()->flush();
     }
-    
-    /*soomla::CCSoomlaError *soomlaError = NULL;
-    soomla::CCStoreInventory::sharedStoreInventory()->buyItem("muffins_10", &soomlaError);
-    if (soomlaError) {
-        soomla::CCStoreUtils::logException("???", soomlaError);
-        return;
-    }*/
 }
 
 void Menu::onExitTransitionDidStart()

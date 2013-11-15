@@ -499,22 +499,19 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCEGLView*  EGLView = CCEGLView::sharedOpenGLView();
     CCSize  screenSize = EGLView->getFrameSize();
     
-    // We initialize CCStoreController and the event handler before
-    // we open the store.
-    /*soomla::CCSoomla::sharedSoomla()->addEventHandler(handler);
+    #if 1
+    soomla::CCSoomla::sharedSoomla()->addEventHandler(handler);
     
     InAppPurchasesList *assets = InAppPurchasesList::create();
     CCDictionary *storeParams = CCDictionary::create();
+    
     storeParams->setObject(CCString::create("ExampleSoomSecret"), "soomSec");
     storeParams->setObject(CCString::create("ExamplePublicKey"), "androidPublicKey");
     storeParams->setObject(CCString::create("ExampleCustomSecret"), "customSecret");
-    
-    // Set Android Test Mode for debugging your store purchases on Android
-    // REMOVE THIS BEFORE YOU PUBLISH YOUR GAME!
     storeParams->setObject(CCBool::create(true), "androidTestMode");
     
-    // This is the call to initialize CCStoreController
-    soomla::CCStoreController::createShared(assets, storeParams);*/
+    soomla::CCStoreController::createShared(assets, storeParams);
+    #endif
     
 	director->setOpenGLView(EGLView);
 	director->setContentScaleFactor(designResolutionSize.height / screenSize.height);

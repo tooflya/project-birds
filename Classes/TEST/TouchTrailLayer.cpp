@@ -42,10 +42,6 @@ void TouchTrailLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
         _map[touch] = blade;
         addChild(blade);
         
-        
-        
-        blade->setDrainInterval(1.0 / 60.0);
-        
         CCPoint point = convertTouchToNodeSpace(touch);
         blade->push(point);
         
@@ -119,7 +115,7 @@ void TouchTrailLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
         i++;
         
         CCTouch *touch = (CCTouch *)*it;
-        if (_map.find(touch) == _map.end()) continue;
+        //if (_map.find(touch) == _map.end()) continue;
         
         CCBlade *blade = _map[touch];
         blade->autoCleanup();

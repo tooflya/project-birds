@@ -15,7 +15,7 @@
 // Constants
 // ===========================================================
 
-bool Options::IS_BUILD_FOR_ABSOLUTIST = false;
+bool Options::IS_BUILD_FOR_ABSOLUTIST = true;
 
 int Options::CENTER_X = 0;
 int Options::CENTER_Y = 0;

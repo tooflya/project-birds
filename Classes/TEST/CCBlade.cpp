@@ -252,9 +252,9 @@ void CCBlade::setDrainInterval(float drainInterval)
 void CCBlade::autoCleanup()
 {
     _autoCleanup = true;
-    if (_drainInterval <= 0) {
-        setDrainInterval(1.0/60);
-    }
+    //if (_drainInterval <= 0) {
+        setDrainInterval(1.0 / 120.0);
+    //}
 }
 
 void CCBlade::draw()
