@@ -35,6 +35,7 @@ class Splash : public CCLayer, public Touchable, public ButtonReceiver
         bool mHideBackground;
 
         bool mShowed;
+        bool mShowedCompleted;
     
         Screen* mParent;
 
@@ -115,6 +116,7 @@ class Splash : public CCLayer, public Touchable, public ButtonReceiver
         void hide();
 
         bool isShowed();
+        bool isShowedCompleted();
 
         virtual void onStartShow();
         virtual void onStartHide();

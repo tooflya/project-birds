@@ -1011,12 +1011,13 @@ void Options::changeLanguage()
             TEXT_PAYMENT_STRING[5].string = "Cancel";
             
             TEXT_END[0].string = "Excellent!";
-            TEXT_END[1].string = "Birds kills: %d";
-            TEXT_END[2].string = "Best record: %d";
-            TEXT_END[3].string = "Flyers kills: %d";
-            TEXT_END[4].string = "Combo hits: %d";
-            TEXT_END[5].string = "Critical hits: %d";
-            TEXT_END[6].string = "Total coins earned: %d";
+            TEXT_END[1].string = "Amazing!";
+            TEXT_END[2].string = "Good!";
+            TEXT_END[3].string = "Try again!";
+            
+            TEXT_END[4].string = "Combo hits";
+            TEXT_END[5].string = "Flyers kills";
+            TEXT_END[6].string = "Total coins earned";
             
             TEXT_DAILY_MAP.string = "Daily revenue";
             

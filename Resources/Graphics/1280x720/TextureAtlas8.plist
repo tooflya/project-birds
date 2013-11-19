@@ -7,7 +7,7 @@
             <key>bar_remove@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1258,747},{738,49}}</string>
+                <string>{{1262,747},{738,49}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,15 +20,15 @@
             <key>end_lvl_bg_popup@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,747},{652,930}}</string>
+                <string>{{2,747},{656,931}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{652,930}}</string>
+                <string>{{0,0},{656,931}}</string>
                 <key>sourceSize</key>
-                <string>{652,930}</string>
+                <string>{656,931}</string>
             </dict>
             <key>end_lvl_bg_sprite@2x.png</key>
             <dict>
@@ -46,7 +46,7 @@
             <key>end_lvl_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{656,1149},{800,200}}</string>
+                <string>{{660,1371},{800,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>end_lvl_star_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{656,747},{600,400}}</string>
+                <string>{{660,747},{600,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,23 +69,36 @@
                 <key>sourceSize</key>
                 <string>{600,400}</string>
             </dict>
-            <key>shop_money_bg@2x.png</key>
+            <key>end_star_glow@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{656,1351},{305,125}}</string>
+                <string>{{660,1149},{214,220}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{305,125}}</string>
+                <string>{{0,0},{214,220}}</string>
                 <key>sourceSize</key>
-                <string>{305,125}</string>
+                <string>{214,220}</string>
+            </dict>
+            <key>end_star_particle@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{876,1149},{115,110}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{115,110}}</string>
+                <key>sourceSize</key>
+                <string>{115,110}</string>
             </dict>
             <key>star_particle@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{656,1478},{32,31}}</string>
+                <string>{{660,1573},{32,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -103,9 +116,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas8.pvr.ccz</string>
             <key>size</key>
-            <string>{2004,1679}</string>
+            <string>{2004,1680}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f51f17f112b9733ef39701af838b5741:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:e843952d2a1074b382fe0fb34bedea56:113d9d182cfa55b227a7c32cca2c178f:04d5813c1013d9c54e1039dcb428156a$</string>
             <key>textureFileName</key>
             <string>TextureAtlas8.pvr.ccz</string>
         </dict>

@@ -90,6 +90,9 @@ Text::Text(const char* pString, float pSize, CCNode* pParent) :
         pParent->addChild(this->mShadow);
         
 		pParent->addChild(this);
+        
+        this->mType1AnimationRunning = false;
+        this->mType2AnimationRunning = false;
 	}
 
 Text::Text(Textes pParams, CCNode* pParent) :
@@ -113,6 +116,9 @@ Text::Text(Textes pParams, CCNode* pParent) :
         pParent->addChild(this->mShadow);
         
 		pParent->addChild(this);
+        
+        this->mType1AnimationRunning = false;
+        this->mType2AnimationRunning = false;
 	}
 
 Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
@@ -136,6 +142,9 @@ Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
         pParent->addChild(this->mShadow);
         
 		pParent->addChild(this);
+        
+        this->mType1AnimationRunning = false;
+        this->mType2AnimationRunning = false;
 	}
 
 Text* Text::create(const char* pString, float pSize, CCNode* pParent)
@@ -318,15 +327,106 @@ void Text::disableShadow()
     }
 }
 
+void Text::animate(int pType)
+{
+    switch(pType)
+    {
+        case 0:
+            this->mType1AnimationRunning = true;
+            
+            this->mType1AnimationCount = 0;
+            this->mType1AnimationTimeElapsed = 0;
+            
+            this->mType1AnimationTime = 0.2;
+            this->runAction(CCScaleTo::create(this->mType1AnimationTime, 1.1));
+            this->mShadow->runAction(CCScaleTo::create(this->mType1AnimationTime, 1.1));
+            break;
+        case 1:
+            this->mType2AnimationCount = 0;
+            this->mType2AnimationTimeElapsed = 0;
+            
+            this->mType2AnimationTime = 0.2;
+            
+            this->mType2AnimationRunning = true;
+            this->runAction(CCScaleTo::create(this->mType2AnimationTime, 1.1));
+            this->mShadow->runAction(CCScaleTo::create(this->mType2AnimationTime, 1.1));
+            break;
+    }
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Text::update(float pDeltaTime)
+{
+    CCLabelTTF::update(pDeltaTime);
+    
+    if(this->mType1AnimationRunning)
+    {
+        this->mType1AnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mType1AnimationTimeElapsed >= this->mType1AnimationTime)
+        {
+            this->mType1AnimationTimeElapsed = 0;
+            
+            switch(this->mType1AnimationCount)
+            {
+                case 0:
+                    this->mType1AnimationTime = 0.2;
+                    this->runAction(CCScaleTo::create(this->mType1AnimationTime, 0.9, 0.8));
+                    this->mShadow->runAction(CCScaleTo::create(this->mType1AnimationTime, 0.9, 0.8));
+                    break;
+                case 1:
+                    this->mType1AnimationTime = 0.2;
+                    this->runAction(CCScaleTo::create(this->mType1AnimationTime, 1.0, 1.0));
+                    this->mShadow->runAction(CCScaleTo::create(this->mType1AnimationTime, 1.0, 1.0));
+                    break;
+                case 2:
+                    this->mType1AnimationRunning = false;
+                    
+                    //this->onShow();
+                    break;
+            }
+            
+            this->mType1AnimationCount++;
+        }
+    }
+    
+    if(this->mType2AnimationRunning)
+    {
+        this->mType2AnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mType2AnimationTimeElapsed >= this->mType2AnimationTime)
+        {
+            this->mType2AnimationTimeElapsed = 0;
+            
+            switch(this->mType2AnimationCount)
+            {
+                case 0:
+                    this->mType2AnimationTime = 0.2;
+                    this->runAction(CCScaleTo::create(this->mType2AnimationTime, 1.0));
+                    this->mShadow->runAction(CCScaleTo::create(this->mType2AnimationTime, 1.0));
+                    break;
+                case 1:
+                    this->mType2AnimationRunning = false;
+                    
+                    //this->onHide();
+                    break;
+            }
+            
+            this->mType2AnimationCount++;
+        }
+    }
+}
 
 void Text::onEnter()
 {
     CCLabelTTF::onEnter();
     
     this->retain();
+    
+    this->scheduleUpdate();
 }
 
 void Text::onExit()
@@ -340,6 +440,9 @@ void Text::onExit()
     //this->release();
     
     ID--;
+    
+    this->unscheduleUpdate();
+    this->unscheduleAllSelectors();
 }
 
 void Text::draw()

@@ -46,6 +46,7 @@ Splash::Splash(Screen* pParent) :
 		this->mShowBackground = false;
 		this->mHideBackground = false;
 		this->mShowed = false;
+        this->mShowedCompleted = false;
         
         this->setRegisterAsTouchable(true);
 	}
@@ -60,15 +61,15 @@ void Splash::show()
 
     Entity* part;
     part = (Entity*) this->mParts->objectAtIndex(0);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT - part->getContentSize().height / 2)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT - part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
     
     part = (Entity*) this->mParts->objectAtIndex(1);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, part->getContentSize().height / 2)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
                                               
     this->mScaleLayer->setScale(3.0);
     
     this->mShowBackground = true;
-    this->mShowBackgroundTime = 0.3;
+    this->mShowBackgroundTime = 0.5;
     this->mShowBackgroundTimeElapsed = 0;
     
     this->setVisible(true);
@@ -80,10 +81,10 @@ void Splash::hide()
 {
     Entity* part;
     part = (Entity*) this->mParts->objectAtIndex(0);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT + part->getContentSize().height / 2)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT + part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
     
     part = (Entity*) this->mParts->objectAtIndex(1);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, -part->getContentSize().height / 2)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, -part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
     
     this->mScaleLayer->runAction(CCScaleTo::create(0.1, 0.0));
     
@@ -96,6 +97,7 @@ void Splash::hide()
 
 void Splash::onShow()
 {
+    this->mShowedCompleted = true;
 }
 
 void Splash::onHide()
@@ -111,6 +113,7 @@ void Splash::onStartShow()
 void Splash::onStartHide()
 {
     this->mShowed = false;
+    this->mShowedCompleted = false;
 }
 
 void Splash::setType(int pType)
@@ -121,6 +124,11 @@ void Splash::setType(int pType)
 bool Splash::isShowed()
 {
     return this->mShowed;
+}
+
+bool Splash::isShowedCompleted()
+{
+    return this->mShowedCompleted;
 }
 
 // ===========================================================
@@ -140,7 +148,7 @@ void Splash::update(float pDeltaTime)
             this->mShowBackgroundTimeElapsed = 0;
             
             this->mScaleLayer->setVisible(true);
-            this->mScaleLayer->runAction(CCScaleTo::create(0.1, 1.0));
+            this->mScaleLayer->runAction(CCScaleTo::create(0.3, 1.0));
             
             this->mShowBackground = false;
             

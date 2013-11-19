@@ -10,8 +10,6 @@ using namespace cocos2d;
 class EntityManager : public CCArray
 {
 	protected:
-		CCNode* mParent;
-
 		int mLastElementNumber;
 		int mCapacity;
     int mZOrder;
@@ -22,7 +20,9 @@ class EntityManager : public CCArray
     EntityManager(int pCreateCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
     EntityManager();
 
-	public:
+    public:
+        CCNode* mParent;
+
 		void init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNode* pScreen, int pZOrder);
 		
         ~EntityManager();

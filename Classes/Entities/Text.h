@@ -21,6 +21,18 @@ class Text : public CCLabelTTF
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        bool mType1AnimationRunning;
+        bool mType2AnimationRunning;
+    
+        int mType1AnimationCount;
+        int mType2AnimationCount;
+    
+        float mType1AnimationTime;
+        float mType2AnimationTime;
+    
+        float mType1AnimationTimeElapsed;
+        float mType2AnimationTimeElapsed;
 
         // ===========================================================
         // Constructors
@@ -116,12 +128,16 @@ class Text : public CCLabelTTF
         void enableShadow();
         void disableShadow();
     
+        void animate(int pType);
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
     
         void onEnter();
         void onExit();
+    
+        void update(float pDeltaTime);
     
         void draw();
     

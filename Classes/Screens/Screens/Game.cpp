@@ -1383,7 +1383,7 @@ void Game::stopChalange()
 
 void Game::visit()
 {
-    if(this->mEndScreen->isShowed())
+    if(this->mEndScreen->isShowedCompleted())
     {
         this->mEndScreen->visit();
     }
