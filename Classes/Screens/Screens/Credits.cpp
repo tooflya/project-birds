@@ -77,7 +77,7 @@ void Credits::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_CREDITS_BACK:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+                    this->keyBackClicked(false);
 
                 break;
             }
@@ -106,6 +106,13 @@ void Credits::onEnter()
 void Credits::onExit()
 {
     Screen::onExit();
+}
+
+void Credits::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
 }
 
 #endif

@@ -138,6 +138,12 @@ Mode::Mode() :
 			this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
 		}
         
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_NEXUS3)
+		{
+			this->mTextBackgrounds[1]->setScaleX(this->mTextBackgrounds[1]->getScaleX() + 0.2);
+			this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
+		}
+        
 		EntityStructure structure = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
         
 		this->mTextPluses[0] = Button::create(structure, mSpriteBatch2, Options::BUTTONS_ID_SHOP_GET_SILVER_COINS, this);
@@ -166,6 +172,12 @@ Mode::Mode() :
         
 		this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
 		this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
+        
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_NEXUS3)
+		{
+            this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(15), this->mTextBackgrounds[1]->getCenterY());
+            this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
+		}
 
 		this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2, this->mTextBackgrounds[0]->getCenterY());
 		this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2, this->mTextBackgrounds[1]->getCenterY());
@@ -218,7 +230,7 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_MODE_BACK:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                    this->keyBackClicked(false);
 
                 break;
                 case Options::BUTTONS_ID_MODE_CLASSIC:
@@ -442,7 +454,37 @@ void Mode::onEnter()
     
     this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
     this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[3]->getCenterY());
-
 }
+
+void Mode::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    if(this->mHelpPopup->getParent())
+    {
+        this->mHelpPopup->hide();
+    }
+    else if(this->mTempPublisherAchievementsExplain->getParent())
+    {
+        this->mTempPublisherAchievementsExplain->hide();
+    }
+    else if(this->mTempPublisherRatingExplain->getParent())
+    {
+        this->mTempPublisherRatingExplain->hide();
+    }
+    else if(this->mLivesPopup->getParent())
+    {
+        this->mLivesPopup->hide();
+    }
+    else if(this->mModesUnlockPopup->getParent())
+    {
+        this->mModesUnlockPopup->hide();
+    }
+    else
+    {
+       AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+    }
+}
+
 
 #endif

@@ -92,6 +92,8 @@ class Touchable : public CCTargetedTouchDelegate
 		void setRegisterAsTouchable(bool pTouchable);
 
 		virtual void onTouch(CCTouch* touch, CCEvent* event);
+    
+        bool isRegisteredAsTouchable();
 		
 		// ===========================================================
 		// Override Methods

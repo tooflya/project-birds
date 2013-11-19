@@ -14,6 +14,7 @@
 		7801630F18153DAB002A0CB7 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7801630B18153C51002A0CB7 /* libCocosDenshion.a */; };
 		78016312181575E6002A0CB7 /* KeyDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78016310181575E6002A0CB7 /* KeyDisplay.cpp */; };
 		780163151821002C002A0CB7 /* ColorParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 780163131821002C002A0CB7 /* ColorParticle.cpp */; };
+		781432D3183B669000784217 /* preloader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 781432D2183B669000784217 /* preloader@2x.png */; };
 		78365442180BF85200AA9432 /* SpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78365440180BF85200AA9432 /* SpriteBatch.cpp */; };
 		7836548A180C5ED100AA9432 /* about_scroll_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78365452180C5ED100AA9432 /* about_scroll_fill@2x.png */; };
 		7836548B180C5ED100AA9432 /* about_scroll_fill_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78365453180C5ED100AA9432 /* about_scroll_fill_small@2x.png */; };
@@ -388,6 +389,7 @@
 		78016311181575E6002A0CB7 /* KeyDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyDisplay.h; sourceTree = "<group>"; };
 		780163131821002C002A0CB7 /* ColorParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorParticle.cpp; sourceTree = "<group>"; };
 		780163141821002C002A0CB7 /* ColorParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorParticle.h; sourceTree = "<group>"; };
+		781432D2183B669000784217 /* preloader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preloader@2x.png"; sourceTree = "<group>"; };
 		78365440180BF85200AA9432 /* SpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBatch.cpp; sourceTree = "<group>"; };
 		78365441180BF85200AA9432 /* SpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBatch.h; sourceTree = "<group>"; };
 		78365452180C5ED100AA9432 /* about_scroll_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill@2x.png"; sourceTree = "<group>"; };
@@ -1008,6 +1010,7 @@
 		78365443180C5ED100AA9432 /* 1280x720 */ = {
 			isa = PBXGroup;
 			children = (
+				781432D2183B669000784217 /* preloader@2x.png */,
 				785D1A501834BA1C00A36DB8 /* TextureAtlas19.plist */,
 				785D1A511834BA1C00A36DB8 /* TextureAtlas19.pvr.ccz */,
 				78791F561832711B00821057 /* TextureAtlas18.plist */,
@@ -1959,6 +1962,7 @@
 				7836549C180C5ED100AA9432 /* TextureAtlas3.pvr.ccz in Resources */,
 				78D358791821384D001450F3 /* lose.mp3 in Resources */,
 				78D358A11827C770001450F3 /* tutorial.png in Resources */,
+				781432D3183B669000784217 /* preloader@2x.png in Resources */,
 				7869167517F1DF9F00184E9D /* popup-4.mp3 in Resources */,
 				78D358971821670D001450F3 /* star2.mp3 in Resources */,
 				7869167617F1DF9F00184E9D /* popup-5.mp3 in Resources */,

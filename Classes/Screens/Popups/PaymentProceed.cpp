@@ -57,6 +57,12 @@ PaymentProceed::PaymentProceed(CCNode* pParent) :
         this->mUpdateTimeElapsed = 0;
 
         this->mUpdateTimeTotal = 0;
+        
+        this->mPostShow = false;
+        this->mPostShowTime = 1.5;
+        this->mPostShowTimeElapsed = 0;
+        
+        Options::PAYMENT_PROCEED_HANDLER = this;
     }
 
 PaymentProceed* PaymentProceed::create(CCNode* pParent)
@@ -126,7 +132,19 @@ void PaymentProceed::update(float pDeltaTime)
             this->mUpdateTimeTotal = 0;
             this->mWaitingPurchase = false;
 
-            static_cast<Shop*>(this->mParent)->onPurchase(true);
+            this->onItemPurchased();
+        }
+    }
+    
+    if(this->mPostShow)
+    {
+        this->mPostShowTimeElapsed += pDeltaTime;
+        
+        if(this->mPostShowTimeElapsed >= this->mPostShowTime)
+        {
+            this->mPostShow = false;
+            
+            this->onPostShow();
         }
     }
 }
@@ -134,8 +152,57 @@ void PaymentProceed::update(float pDeltaTime)
 void PaymentProceed::onShow()
 {
     Popup::onShow();
-    
+
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    this->mPostShow = true;
+    this->mPostShowTimeElapsed = 0;
+    #else
     this->mWaitingPurchase = true;
+    #endif
+}
+
+void PaymentProceed::onPostShow()
+{
+    const char* id = "";
+    
+    switch(Shop::PURCHASE_ID)
+    {
+        case 0:
+            id = Options::IN_APP_COINS_PACK_1_ID;
+            break;
+        case 1:
+            id = Options::IN_APP_COINS_PACK_2_ID;
+            break;
+        case 2:
+            id = Options::IN_APP_COINS_PACK_3_ID;
+            break;
+        case 3:
+            id = Options::IN_APP_COINS_PACK_4_ID;
+            break;
+        case 4:
+            id = Options::IN_APP_RESTORE_LIVES_ID;
+            break;
+        case 5:
+            id = Options::IN_APP_RESTORE_LIVES_ID;
+            break;
+        case 6:
+            id = Options::IN_APP_KEYS_PACK_1_ID;
+            break;
+        case 7:
+            id = Options::IN_APP_KEYS_PACK_2_ID;
+            break;
+            
+        default:
+            return;
+            break;
+    }
+    
+    soomla::CCSoomlaError *soomlaError = NULL;
+    soomla::CCStoreInventory::sharedStoreInventory()->buyItem(id, &soomlaError);
+    if (soomlaError)
+    {
+        soomla::CCStoreUtils::logException("In-App", soomlaError);
+    }
 }
 
 void PaymentProceed::onHide()
@@ -151,6 +218,13 @@ void PaymentProceed::show()
 void PaymentProceed::hide()
 {
     Popup::hide();
+}
+
+void PaymentProceed::onItemPurchased()
+{
+    this->hide();
+    
+    static_cast<Shop*>(this->mParent)->onPurchase(true);
 }
 
 #endif

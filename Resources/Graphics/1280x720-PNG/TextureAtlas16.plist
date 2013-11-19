@@ -7,15 +7,15 @@
             <key>temp_level_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1920,1080}}</string>
+                <string>{{2,2},{1000,1280}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1920,1080}}</string>
+                <string>{{0,0},{1000,1280}}</string>
                 <key>sourceSize</key>
-                <string>{1920,1080}</string>
+                <string>{1000,1280}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -25,9 +25,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas16.png</string>
             <key>size</key>
-            <string>{1924,1084}</string>
+            <string>{1004,1284}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8c5b7818750ddd08c5a51de9eaea0c75:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:f557b0c98848a2b9711d63a9dd7ed3e0:fd6600aadc24c51d556470fe26731db6:32847a47a619e8ea3f2ac8c6130ab6fa$</string>
             <key>textureFileName</key>
             <string>TextureAtlas16.png</string>
         </dict>

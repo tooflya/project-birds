@@ -59,8 +59,7 @@ void KeyParticle::onCreate()
     
     if(Options::SOUND_ENABLE)
     {
-        const char* a[] = {"berry_count_ind_a.mp3", "berry_count_ind_b.mp3", "berry_count_ind_c.mp3", "berry_count_ind_d.mp3"};
-        SimpleAudioEngine::sharedEngine()->playEffect(a[Utils::random(0, 3)]);
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_COINS[Utils::random(0, 3)]);
     }
 }
 

@@ -607,7 +607,7 @@ void Game::onBonus(int pId, float pX, float pY)
             CCFadeTo *fadeIn = CCFadeTo::create(0.5, 127);
             CCFadeTo *fadeOut = CCFadeTo::create(0.5, 255);
             
-            CCSequence *pulseSequence = CCSequence::create(fadeIn, fadeOut);
+            CCSequence *pulseSequence = CCSequence::create(fadeIn, fadeOut, NULL);
             CCRepeatForever *repeat = CCRepeatForever::create(pulseSequence);
             this->runAction(repeat);
         }
@@ -1379,6 +1379,18 @@ void Game::runChalange()
 void Game::stopChalange()
 {
     this->mAmigoAnimation = false;
+}
+
+void Game::visit()
+{
+    if(this->mEndScreen->isShowed())
+    {
+        this->mEndScreen->visit();
+    }
+    else
+    {
+        Screen::visit();
+    }
 }
 
 #endif

@@ -29,6 +29,11 @@ class BuyItem : public Popup
         Entity* mListBorders[2];
     
         BuyItemList* mList;
+    
+        bool mShowDescriptionAnimation;
+    
+        float mShowDescriptionTime;
+        float mShowDescrpionTimeElased;
 
         // ===========================================================
         // Constructors
@@ -104,6 +109,8 @@ class BuyItem : public Popup
         void onHide();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        void update(float pDeltaTime);
 };
 
 #endif

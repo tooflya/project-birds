@@ -3,11 +3,13 @@
 
 #include "AppDelegate.h"
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include "CCStoreController.h"
 #include "CCStoreInventory.h"
 #include "CCStoreInfo.h"
 #include "CCSoomla.h"
 #include "InAppPurchasesList.h"
+#endif
 
 #include "SplashScreen.h"
 
@@ -34,12 +36,16 @@ bool AppDelegate::IS_IPOD = true;
 
 AppDelegate::AppDelegate()
 {
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     handler = new InAppPurchaseEventHandler();
+    #endif
 }
 
 AppDelegate::~AppDelegate()
 {
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     soomla::CCSoomla::sharedSoomla()->removeEventHandler(handler);
+    #endif
 }
 
 // ===========================================================
@@ -499,16 +505,19 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCEGLView*  EGLView = CCEGLView::sharedOpenGLView();
     CCSize  screenSize = EGLView->getFrameSize();
     
-    #if 1
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     soomla::CCSoomla::sharedSoomla()->addEventHandler(handler);
     
     InAppPurchasesList *assets = InAppPurchasesList::create();
     CCDictionary *storeParams = CCDictionary::create();
     
-    storeParams->setObject(CCString::create("ExampleSoomSecret"), "soomSec");
-    storeParams->setObject(CCString::create("ExamplePublicKey"), "androidPublicKey");
-    storeParams->setObject(CCString::create("ExampleCustomSecret"), "customSecret");
+    storeParams->setObject(CCString::create(Options::SOOMLA_BASE_64_KEY), "soomSec");
+    storeParams->setObject(CCString::create(Options::GOOGLE_PLAY_BASE_64_KEY), "androidPublicKey");
+    storeParams->setObject(CCString::create(Options::SOOMLA_CUSTOM_BASE_64_KEY), "customSecret");
+    
+    #if COCOS2D_DEBUG >= 1
     storeParams->setObject(CCBool::create(true), "androidTestMode");
+    #endif
     
     soomla::CCStoreController::createShared(assets, storeParams);
     #endif
@@ -558,9 +567,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
-    if(Options::CAMERA_WIDTH == 720)
+    if(Options::CAMERA_HEIGHT == 1184)
     {
-        //Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
+        Options::DEVICE_TYPE = Options::DEVICE_TYPE_NEXUS3;
         
         searchPath.push_back(resources1280x720.directory);
     }
@@ -608,7 +617,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 void AppDelegate::applicationDidEnterBackground()
 {
     CCDirector::sharedDirector()->stopAnimation();
-    CCDirector::sharedDirector()->pause();
+    SimpleAudioEngine::sharedEngine()->pauseAllEffects();
 
     SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 }
@@ -616,7 +625,7 @@ void AppDelegate::applicationDidEnterBackground()
 void AppDelegate::applicationWillEnterForeground()
 {
     CCDirector::sharedDirector()->startAnimation();
-    CCDirector::sharedDirector()->resume();
+    SimpleAudioEngine::sharedEngine()->resumeAllEffects();
 
     if(Options::MUSIC_ENABLE)
     {

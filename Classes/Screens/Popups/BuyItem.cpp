@@ -52,6 +52,11 @@ BuyItem::BuyItem(Screen* pScreen) :
         this->mList = BuyItemList::create(this);
         
         this->mYesPressed = false;
+        
+        this->mShowDescriptionAnimation = false;
+        
+        this->mShowDescriptionTime = 0.5;
+        this->mShowDescrpionTimeElased = 0;
     }
 
 BuyItem* BuyItem::create(Screen* pScreen)
@@ -126,6 +131,9 @@ void BuyItem::show()
 void BuyItem::onShow()
 {
     Popup::onShow();
+    
+    this->mShowDescriptionAnimation = true;
+    this->mShowDescrpionTimeElased = 0;
 }
 
 void BuyItem::onHide()
@@ -152,5 +160,22 @@ void BuyItem::onHide()
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void BuyItem::update(float pDeltaTime)
+{
+    Popup::update(pDeltaTime);
+    
+    if(this->mShowDescriptionAnimation)
+    {
+        this->mShowDescrpionTimeElased += pDeltaTime;
+        
+        if(this->mShowDescrpionTimeElased >= this->mShowDescriptionTime)
+        {
+            this->mShowDescriptionAnimation = false;
+            
+            this->mList->showDescription();
+        }
+    }
+}
 
 #endif

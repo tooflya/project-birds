@@ -4,10 +4,6 @@
 #include "Menu.h"
 
 #include "Shop.h"
-#include "CCStoreInventory.h"
-#include "CCStoreController.h"
-#include "CCSoomlaError.h"
-#include "CCStoreUtils.h"
 
 // ===========================================================
 // Inner Classes
@@ -151,17 +147,8 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
                 case Options::BUTTONS_ID_MENU_PLAY:
-                {
-                    //AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
-                    
-                    soomla::CCStoreController::sharedStoreController()->storeOpening();
-                    soomla::CCSoomlaError *soomlaError = NULL;
-                    soomla::CCStoreInventory::sharedStoreInventory()->buyItem("muffins_10", &soomlaError);
-                    if (soomlaError) {
-                        soomla::CCStoreUtils::logException("???", soomlaError);
-                    }
-                    
-            }
+
+                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
 
                 break;
                 case Options::BUTTONS_ID_MENU_SETTINGS:
@@ -258,7 +245,9 @@ void Menu::onShow()
         this->mMapPopup->show();
     } else if(!AppDelegate::tempPublisherInAppInformationShowed())
     {
+        #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
         this->mTempPublisherInAppExplainPopup->show();
+        #endif
         
         CCUserDefault::sharedUserDefault()->setBoolForKey("temp_inapp_inf", true);
         CCUserDefault::sharedUserDefault()->flush();
@@ -269,5 +258,35 @@ void Menu::onExitTransitionDidStart()
 {
     Screen::onExitTransitionDidStart();
 }
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+void Menu::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    if(this->mMapPopup->getParent())
+    {
+        if(this->mMapDescription->getParent())
+        {
+            this->mMapDescription->hide();
+        }
+    }
+    else if(this->mRatePopup->getParent())
+    {
+        this->mRatePopup->hide();
+    }
+    else
+    {
+        if(this->mExitPopup->getParent())
+        {
+            this->mExitPopup->hide();
+        }
+        else
+        {
+            this->mExitPopup->show();
+        }
+    }
+}
+#endif
 
 #endif

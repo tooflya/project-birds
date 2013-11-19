@@ -270,7 +270,7 @@ void List::visit()
     }
     else if(this->mParentType == PARENT_TYPE_POPUP)
     {
-        CCEGLView::sharedOpenGLView()->setScissorInPoints(Options::CAMERA_CENTER_X - (this->mWidth / 2) * this->mParent->getScale(), Options::CAMERA_CENTER_Y - (this->mHeight / 2) * this->mParent->getScale(), this->mWidth * this->mParent->getScale(), this->mHeight * this->mParent->getScale());
+        CCEGLView::sharedOpenGLView()->setScissorInPoints(Options::CAMERA_CENTER_X - (this->mWidth / 2) * this->mParent->getScaleX(), Options::CAMERA_CENTER_Y - (this->mHeight / 2) * this->mParent->getScaleY(), this->mWidth * this->mParent->getScaleX(), this->mHeight * this->mParent->getScaleY());
     }
 
     CCNode::visit();

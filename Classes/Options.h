@@ -92,6 +92,12 @@ class Options
         // ===========================================================
     
         static bool IS_BUILD_FOR_ABSOLUTIST;
+    
+        static const char* GOOGLE_PLAY_BASE_64_KEY;
+        static const char* SOOMLA_BASE_64_KEY;
+        static const char* SOOMLA_CUSTOM_BASE_64_KEY;
+    
+        static CCObject* PAYMENT_PROCEED_HANDLER;
 
         static int CENTER_X;
         static int CENTER_Y;
@@ -143,6 +149,7 @@ class Options
         static const char* SOUND_GEM[5];
         static const char* SOUND_LEVEL_LOSE;
         static const char* SOUND_LEVEL_STARS[3];
+        static const char* SOUND_COINS[4];
 
         static const char* VERSION;
         static std::string STRING_VERSION;
@@ -367,6 +374,15 @@ class Options
         static Textes TEXT_NEED_TO_UNLOCK;
         static Textes TEXT_GETSHOOTS_STRING_1;
         static Textes TEXT_LEVELS_TASKS[80][3];
+    
+        static const char* IN_APP_COINS_PACK_1_ID;
+        static const char* IN_APP_COINS_PACK_2_ID;
+        static const char* IN_APP_COINS_PACK_3_ID;
+        static const char* IN_APP_COINS_PACK_4_ID;
+        static const char* IN_APP_KEYS_PACK_1_ID;
+        static const char* IN_APP_KEYS_PACK_2_ID;
+        static const char* IN_APP_RESTORE_LIVES_ID;
+        static const char* IN_APP_RESTORE_HITS_ID;
 
         // ===========================================================
         // Fields

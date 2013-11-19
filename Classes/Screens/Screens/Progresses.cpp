@@ -573,16 +573,16 @@ Progresses::Progresses() :
         
         this->mTaskTimeIcon = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
         this->mTaskShootsIcon = Entity::create("game_panel_shoot_count@2x.png", spriteBatch8);
-    
+
 		this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
-    
+
 		//this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
 		//this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
-    
+
 		this->mEventPanel = EventPanel::create(this);
-        
+
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    
+
 		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
 		if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
 		{
@@ -599,15 +599,15 @@ Progresses::Progresses() :
 		#endif
 
 		((Entity*) this->mEventPanel)->create()->setCenterPosition(Options::CAMERA_CENTER_X, -Utils::coord(100));
-    
+
 		this->mPauseButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(32), Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(1));
-    
+
 		this->mGameStartText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 		//this->mLevelUpText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
 		//this->mLevelUpText->setOpacity(0);
 		//this->mBonusTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(400));
 		//this->mBonusTimeText->setOpacity(0);
-    
+
 		this->e4[0] = Entity::create("box_laser_green@2x.png", spriteBatch7);
 		this->e4[1] = Entity::create("box_laser_red@2x.png", spriteBatch7);
 		this->e4[2] = Entity::create("box_laser_green@2x.png", spriteBatch7);
@@ -1456,6 +1456,31 @@ void Progresses::standStartEggs()
             color = static_cast<Color*>(this->mColors->create());
             color->setCenterPositionWithCorrection(Options::CAMERA_CENTER_X + Utils::coord(64), Utils::coord(81));
             break;
+    }
+}
+
+void Progresses::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    if(this->mGetShootsPopup->getParent())
+    {
+        this->mGetShootsPopup->hide();
+    }
+    if(this->mGetLivesPopup->getParent())
+    {
+        this->mGetLivesPopup->hide();
+    }
+    else
+    {
+        if(this->mPausePopup->getParent())
+        {
+            this->mPausePopup->hide();
+        }
+        else
+        {
+            this->mPausePopup->show();
+        }
     }
 }
 

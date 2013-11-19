@@ -75,6 +75,10 @@ void Screen::onEnter()
     CCScene::onEnter();
     
     this->scheduleUpdate();
+
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(this);
+    #endif
 }
 
 void Screen::onExit()
@@ -85,11 +89,30 @@ void Screen::onExit()
     this->unscheduleAllSelectors();
 
     this->release();
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    CCDirector::sharedDirector()->getKeypadDispatcher()->removeDelegate(this);
+    #endif
 }
 
 void Screen::visit()
 {
     CCScene::visit();
+}
+
+void Screen::keyBackClicked()
+{
+    this->keyBackClicked(true);
+}
+
+void Screen::keyBackClicked(bool pSound)
+{
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    if(Options::SOUND_ENABLE && pSound)
+    {
+        SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_TAP);
+    }
+    #endif
 }
 
 #endif

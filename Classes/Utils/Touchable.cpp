@@ -103,4 +103,9 @@ bool Touchable::containsTouchLocation(CCTouch* touch)
 	return true;
 }
 
+bool Touchable::isRegisteredAsTouchable()
+{
+    return this->mIsRegisterAsTouchable;
+}
+
 #endif

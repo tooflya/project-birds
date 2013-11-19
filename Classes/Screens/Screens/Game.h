@@ -367,6 +367,8 @@ class Game : public Screen
         
         void onEnter();
         void onExit();
+    
+        void visit();
 };
 
 #endif

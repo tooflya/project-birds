@@ -4,6 +4,8 @@
 #include <string>
 #include "CCEventHandler.h"
 
+#include "Options.h"
+
 #define EVENT_ON_CURRENCY_BALANCE_CHANGED "onCurrencyBalanceChanged"
 #define EVENT_ON_GOOD_BALANCE_CHANGED "onGoodBalanceChanged"
 #define EVENT_ON_GOOD_EQUIPPED "onGoodEquipped"

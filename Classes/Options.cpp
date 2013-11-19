@@ -15,7 +15,33 @@
 // Constants
 // ===========================================================
 
-bool Options::IS_BUILD_FOR_ABSOLUTIST = true;
+bool Options::IS_BUILD_FOR_ABSOLUTIST = false;
+
+const char* Options::GOOGLE_PLAY_BASE_64_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnxTibzwKbgWhSfNuVJmKOWXmRmCAsxT8Z8+jf5DRTKcsIm6BTJOC27d2wKeuH9Uw/7i39KmRUgg+zwAFxT3X8TLpC/pM/mSLpUSfv85iN3yRE85zCrW4NQsxLbyHqjPNNxoMzC5bLBh3pqSB0qSp/2ZC+woOncQKs/J6i3O/vDFuAmnyuJVUaNDTRYYpmOPmcZiMU/hC0PLiVQAnWcM/WDFmWm6h5lBmhRvTYnRdU2Ha+cax8UpAliceS+URRmeFCM0kV2hBhHRLNCXycGa9L4vCErJnH2mcBwOztHV5x7ZIHxMFxq4Kx7h1EyI6gzorrF28m5gP9TBTihAUXaC0XQIDAQAB";
+const char* Options::SOOMLA_BASE_64_KEY = "?";
+const char* Options::SOOMLA_CUSTOM_BASE_64_KEY = "?";
+
+#if COCOS2D_DEBUG >= 1
+const char* Options::IN_APP_COINS_PACK_1_ID = "android.test.purchased";
+const char* Options::IN_APP_COINS_PACK_2_ID = "android.test.purchased";
+const char* Options::IN_APP_COINS_PACK_3_ID = "android.test.purchased";
+const char* Options::IN_APP_COINS_PACK_4_ID = "android.test.purchased";
+const char* Options::IN_APP_KEYS_PACK_1_ID = "android.test.purchased";
+const char* Options::IN_APP_KEYS_PACK_2_ID = "android.test.purchased";
+const char* Options::IN_APP_RESTORE_LIVES_ID = "android.test.purchased";
+const char* Options::IN_APP_RESTORE_HITS_ID = "android.test.purchased";
+#else
+const char* Options::IN_APP_COINS_PACK_1_ID = "purchase_coins_pack_1";
+const char* Options::IN_APP_COINS_PACK_2_ID = "purchase_coins_pack_2";
+const char* Options::IN_APP_COINS_PACK_3_ID = "purchase_coins_pack_3";
+const char* Options::IN_APP_COINS_PACK_4_ID = "purchase_coins_pack_4";
+const char* Options::IN_APP_KEYS_PACK_1_ID = "purchase_keys_pack_1";
+const char* Options::IN_APP_KEYS_PACK_2_ID = "purchase_keys_pack_2";
+const char* Options::IN_APP_RESTORE_LIVES_ID = "restore_gold_lifes_full";
+const char* Options::IN_APP_RESTORE_HITS_ID = "restore_level_hits_full";
+#endif
+
+CCObject* Options::PAYMENT_PROCEED_HANDLER = NULL;
 
 int Options::CENTER_X = 0;
 int Options::CENTER_Y = 0;
@@ -73,17 +99,18 @@ const char* Options::SOUND_HIT = "Sound/hit.ogg";
 const char* Options::SOUND_BONUS_GONG = "Sound/bonus-gong.ogg";
 const char* Options::SOUND_BOMB_FUSE = "Sound/bomb-fuse.ogg";
 const char* Options::SOUND_BONUS_TIME[3] = { "Sound/combo-blitz-backing-light.ogg", "Sound/combo-blitz-backing.ogg", "Sound/combo-blitz-backing-end.ogg" };
-const char* Options::SOUND_SWOOSH = "Sound/swoosh.mp3";
-const char* Options::SOUND_FREEZEE = "Sound/bonus_banana_freeze.ogg";
+const char* Options::SOUND_SWOOSH = "Sound/swoosh.ogg";
+const char* Options::SOUND_FREEZEE = "Sound/bonus-banana-freeze.ogg";
 const char* Options::SOUND_PREDICTION = "Sound/pome-rampdown.ogg";
-const char* Options::SOUND_COMBO[8] = {"Sound/combo-1.ogg", "Sound/combo-2.ogg","Sound/combo-3.ogg","Sound/combo-4.ogg","Sound/combo-5.ogg","Sound/combo-6.ogg","Sound/combo-7.ogg","Sound/combo-8.ogg"};
-const char* Options::SOUND_POINTS[12] = {"Sound/popup-1.ogg", "Sound/popup-2.ogg","Sound/popup-3.ogg","Sound/popup-4.ogg","Sound/popup-5.ogg","Sound/popup-6.ogg","Sound/popup-7.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg","Sound/popup-8.ogg"};
-const char* Options::SOUND_PROGRESS = "Sound/progress_complete.ogg";
-const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.ogg";
-const char* Options::SOUND_MISS = "Sound/Soundmiss.wav";
-const char* Options::SOUND_GEM[5] = { "Sound/Soundgem1.wav", "Sound/Soundgem2.mp3", "Sound/Soundgem3.mp3", "Sound/Soundgem4.mp3", "Sound/Soundgem5.mp3" };
-const char* Options::SOUND_LEVEL_LOSE = "Sound/lose.mp3";
-const char* Options::SOUND_LEVEL_STARS[3] = { "Sound/Soundstar1.mp3", "Sound/Soundstar2.mp3", "Sound/Soundstar3.mp3" };
+const char* Options::SOUND_COMBO[8] = {"Sound/combo-1.ogg", "Sound/combo-2.ogg", "Sound/combo-3.ogg", "Sound/combo-4.ogg", "Sound/combo-5.ogg", "Sound/combo-6.ogg", "Sound/combo-7.ogg", "Sound/combo-8.ogg"};
+const char* Options::SOUND_POINTS[12] = { "Sound/popup-1.ogg", "Sound/popup-2.ogg", "Sound/popup-3.ogg", "Sound/popup-4.ogg", "Sound/popup-5.ogg", "Sound/popup-6.ogg", "Sound/popup-7.ogg", "Sound/popup-8.ogg", "Sound/popup-8.ogg", "Sound/popup-8.ogg", "Sound/popup-8.ogg", "Sound/popup-8.ogg" };
+const char* Options::SOUND_PROGRESS = "Sound/progress-complete.ogg";
+const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell-whoosh.ogg";
+const char* Options::SOUND_MISS = "Sound/miss.ogg";
+const char* Options::SOUND_GEM[5] = { "Sound/gem1.ogg", "Sound/gem2.ogg", "Sound/gem3.ogg", "Sound/gem4.ogg", "Sound/gem5.ogg" };
+const char* Options::SOUND_LEVEL_LOSE = "Sound/lose.ogg";
+const char* Options::SOUND_LEVEL_STARS[3] = { "Sound/star1.ogg", "Sound/star2.ogg", "Sound/star3.ogg" };
+const char* Options::SOUND_COINS[4] = { "Sound/berry_count_ind_a.ogg", "Sound/berry_count_ind_b.ogg", "Sound/berry_count_ind_c.ogg", "Sound/berry_count_ind_d.ogg" };
 
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 
@@ -110,9 +137,10 @@ const char* Options::SOUND_POINTS[12] = { "Sound/popup-1.mp3", "Sound/popup-2.mp
 const char* Options::SOUND_PROGRESS = "Sound/progress_complete.mp3";
 const char* Options::SOUND_LEVEL_UNLOCK = "Sound/upsell_whoosh.mp3";
 const char* Options::SOUND_MISS = "Sound/Soundmiss.wav";
-const char* Options::SOUND_GEM[5] = { "Sound/Soundgem1.wav", "Sound/Soundgem2.mp3", "Sound/Soundgem3.mp3", "Sound/Soundgem4.mp3", "Sound/Soundgem5.mp3" };
+const char* Options::SOUND_GEM[5] = { "gem1.wav", "gem2.mp3", "gem3.mp3", "gem4.mp3", "gem5.mp3" };
 const char* Options::SOUND_LEVEL_LOSE = "Sound/lose.mp3";
 const char* Options::SOUND_LEVEL_STARS[3] = { "Sound/Soundstar1.mp3", "Sound/Soundstar2.mp3", "Sound/Soundstar3.mp3" };
+const char* Options::SOUND_COINS[4] = { "Sound/berry_count_ind_a.mp3", "Sound/berry_count_ind_b.mp3", "Sound/berry_count_ind_c.mp3", "Sound/berry_count_ind_d.mp3" };
 
 #else
 
@@ -142,6 +170,7 @@ const char* Options::SOUND_MISS = "miss.wav";
 const char* Options::SOUND_GEM[5] = { "gem1.wav", "gem2.mp3", "gem3.mp3", "gem4.mp3", "gem5.mp3" };
 const char* Options::SOUND_LEVEL_LOSE = "lose.mp3";
 const char* Options::SOUND_LEVEL_STARS[3] = { "star1.mp3", "star2.mp3", "star3.mp3" };
+const char* Options::SOUND_COINS[4] = { "berry_count_ind_a.mp3", "berry_count_ind_b.mp3", "berry_count_ind_c.mp3", "berry_count_ind_d.mp3" };
 
 #endif
 
@@ -981,7 +1010,7 @@ void Options::changeLanguage()
             TEXT_PAYMENT_STRING[4].string = "Your request is \n being processed...";
             TEXT_PAYMENT_STRING[5].string = "Cancel";
             
-            TEXT_END[0].string = "Results";
+            TEXT_END[0].string = "Excellent!";
             TEXT_END[1].string = "Birds kills: %d";
             TEXT_END[2].string = "Best record: %d";
             TEXT_END[3].string = "Flyers kills: %d";

@@ -94,7 +94,7 @@ Popup::Popup(CCNode* pParent, bool pFirst) :
 		this->ignoreAnchorPointForPosition(false);
 		this->setAnchorPoint(ccp(0.5, 0.5));
     
-		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID1
 		this->setScale(0.0);
 		#endif
     
@@ -116,7 +116,7 @@ void Popup::show()
     
     this->mShowed = true;
 
-    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID1
     this->onShow();
     
     this->mSquare->setOpacity(200);
@@ -126,10 +126,10 @@ void Popup::show()
     this->mShowAnimationCount = 0;
     this->mShowAnimationTimeElapsed = 0;
     
-    this->mShowAnimationTime = 0.3;
+    this->mShowAnimationTime = 0.2;
     this->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.2));
     
-    this->mSquare->runAction(CCFadeTo::create(0.5, 200));
+    this->mSquare->runAction(CCFadeTo::create(0.2, 200));
     #endif
 }
 
@@ -142,7 +142,7 @@ void Popup::hide()
     
     this->mHideAnimationTime = 0.1;
     
-    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID1
     this->mSquare->setOpacity(0);
     
     this->onHide();
@@ -150,7 +150,7 @@ void Popup::hide()
     this->mHideAnimationRunning = true;
     
     this->runAction(CCScaleTo::create(this->mHideAnimationTime, 1.2));
-    this->mSquare->runAction(CCFadeTo::create(0.5, 0));
+    this->mSquare->runAction(CCFadeTo::create(0.2, 0));
     #endif
 }
 
@@ -194,11 +194,11 @@ void Popup::update(float pDeltaTime)
             {
                 case 0:
                     this->mShowAnimationTime = 0.2;
-                    this->runAction(CCScaleTo::create(this->mShowAnimationTime, 0.8));
+                    this->runAction(CCScaleTo::create(this->mShowAnimationTime, 0.9, 0.8));
                 break;
                 case 1:
                     this->mShowAnimationTime = 0.2;
-                    this->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.0));
+                    this->runAction(CCScaleTo::create(this->mShowAnimationTime, 1.0, 1.0));
                 break;
                 case 2:
                     this->mShowAnimationRunning = false;

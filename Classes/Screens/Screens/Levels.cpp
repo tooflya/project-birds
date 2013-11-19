@@ -698,6 +698,14 @@ class MainList : public CCLayer
     {
         if(this->containsTouchLocation(touch))
         {
+            if(this->mParent->mLevels[0]->isRegisteredAsTouchable())
+            {
+                for(int i = 0 ; i < 80; i++)
+                {
+                    this->mParent->mLevels[i]->setRegisterAsTouchable(false);
+                }
+            }
+
             float x, y;
             
             x = this->mStartPositionCoordinateX + touch->getLocation().x - this->mStartCoordinateX;
@@ -1169,7 +1177,7 @@ void Levels::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_LEVELS_BACK:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    this->keyBackClicked(false);
 
                 break;
             }
@@ -1312,6 +1320,28 @@ void Levels::onExit()
     for(int i = 0 ; i < 80; i++)
     {
         mLevels[i]->setRegisterAsTouchable(true);
+    }
+}
+
+void Levels::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    if(this->mGetLivesPopup->getParent())
+    {
+        this->mGetLivesPopup->hide();
+    }
+    else if(this->mUnlockLevelPopup->getParent())
+    {
+        this->mUnlockLevelPopup->hide();
+    }
+    else if(this->mSurpriseLevelPopup->getParent())
+    {
+        this->mSurpriseLevelPopup->hide();
+    }
+    else
+    {
+        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
     }
 }
 

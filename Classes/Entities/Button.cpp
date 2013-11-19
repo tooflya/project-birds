@@ -110,7 +110,8 @@ void Button::setText(Textes pParams)
 {
     if(this->mText != NULL)
     {
-        this->mText->removeFromParent();
+        this->mText->removeFromParentAndCleanup(true);
+        this->mText->mShadow->removeFromParentAndCleanup(true);
     }
 
     CCNode* parent;

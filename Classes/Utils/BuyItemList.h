@@ -27,6 +27,7 @@ class BuyItemList : public List
         Entity* mCoinsIcon;
         Entity* mPropertiesIcon;
         Entity* mStars[2];
+        Entity* mPreloaderSprite;
 
         Text* mNameText;
         Text* mDescriptionText;
@@ -98,7 +99,9 @@ class BuyItemList : public List
         // ===========================================================
         // Methods
         // ===========================================================
-        
+    
+        void showDescription();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

@@ -4,6 +4,8 @@
 #include "CCIStoreAssets.h"
 #include "cocos2d.h"
 
+#include "Options.h"
+
 class InAppPurchasesList: public soomla::CCIStoreAssets {
     cocos2d::CCArray *mCurrencies;
     cocos2d::CCArray *mGoods;

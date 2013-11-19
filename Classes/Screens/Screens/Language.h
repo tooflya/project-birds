@@ -100,6 +100,8 @@ class Language : public Screen
         void onExit();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        void keyBackClicked(bool pSound);
 };
 
 #endif

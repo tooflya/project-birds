@@ -366,7 +366,7 @@ void Loader::update(float pDeltaTime)
                             CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].frames);
                         
                             #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-                            //CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                            CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loader::loadingCallBack));
                             #else
                             //CCTextureCache::sharedTextureCache()->addPVRImage(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture);
                         
@@ -391,7 +391,7 @@ void Loader::update(float pDeltaTime)
                             CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(Loading::TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].frames);
                         
                             #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-                            //CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[i].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                            CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loader::loadingCallBack));
                             #else
                             //CCTextureCache::sharedTextureCache()->addPVRImage(Loading::TEXTURE_LIBRARY[i].texture);
                         

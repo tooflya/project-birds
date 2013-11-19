@@ -172,6 +172,8 @@ class Shop : public Screen
         void onEnterTransitionDidFinish();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        void keyBackClicked(bool pSound);
 };
 
 #endif

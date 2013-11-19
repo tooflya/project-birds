@@ -617,4 +617,25 @@ void Classic::onExit()
     Game::onExit();
 }
 
+void Classic::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    if(this->mGetLivesPopup->getParent())
+    {
+        this->mGetLivesPopup->hide();
+    }
+    else
+    {
+        if(this->mPausePopup->getParent())
+        {
+            this->mPausePopup->hide();
+        }
+        else
+        {
+            this->mPausePopup->show();
+        }
+    }
+}
+
 #endif

@@ -2,13 +2,29 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>1</int>
-        <key>variation</key>
-        <string>main</string>
-        <key>verbose</key>
-        <false/>
+        <int>3</int>
+        <key>texturePackerVersion</key>
+        <string>3.2.0</string>
         <key>autoSDSettings</key>
-        <array/>
+        <array>
+            <struct type="AutoSDSettings">
+                <key>scale</key>
+                <double>1</double>
+                <key>extension</key>
+                <string></string>
+                <key>spriteFilter</key>
+                <string></string>
+                <key>acceptFractionalValues</key>
+                <false/>
+                <key>maxTextureSize</key>
+                <QSize>
+                    <key>width</key>
+                    <int>-1</int>
+                    <key>height</key>
+                    <int>-1</int>
+                </QSize>
+            </struct>
+        </array>
         <key>allowRotation</key>
         <false/>
         <key>quiet</key>
@@ -98,8 +114,6 @@
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
             <string>Texture</string>
-            <key>javaFileName</key>
-            <filename>../1280x720/1.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -110,12 +124,21 @@
             <key>magFilter</key>
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
-        <key>dataFileName</key>
-        <filename>TextureAtlas6.plist</filename>
+        <key>dataFileNames</key>
+        <map type="GFileNameMap">
+            <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>TextureAtlas6.plist</filename>
+            </struct>
+            <key>java</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../1280x720/1.java</filename>
+            </struct>
+        </map>
         <key>multiPack</key>
         <false/>
-        <key>mainExtension</key>
-        <string></string>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -129,6 +152,8 @@
         <false/>
         <key>trimSpriteNames</key>
         <false/>
+        <key>cleanTransparentPixels</key>
+        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -165,6 +190,13 @@
             <filename>../../Graphics Sources/game_panel_time@2x.png</filename>
             <filename>../../Graphics Sources/task-background@2x.png</filename>
             <filename>../../Graphics Sources/colors_small@2x.png</filename>
+            <filename>../../Graphics Sources/popup_cloud@2x.png</filename>
+            <filename>../../Graphics Sources/bg_detail_choose_bird@2x.png</filename>
+            <filename>../../Graphics Sources/popup_stars@2x.png</filename>
+            <filename>../../Graphics Sources/colors_horizontal_line@2x.png</filename>
+            <filename>../../Graphics Sources/colors_vertical_line@2x.png</filename>
+            <filename>../../Graphics Sources/move_circle@2x.png</filename>
+            <filename>../../Graphics Sources/game_panel_shoot_count@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

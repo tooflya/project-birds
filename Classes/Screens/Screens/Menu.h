@@ -126,6 +126,10 @@ class Menu : public Screen
         void onEnterTransitionDidFinish();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        void keyBackClicked(bool pSound);
+        #endif
 };
 
 #endif

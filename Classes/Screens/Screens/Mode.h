@@ -136,6 +136,8 @@ class Mode : public Screen
         void update(float pDeltaTime);
     
         void onEnter();
+    
+        void keyBackClicked(bool pSound);
 };
 
 #endif

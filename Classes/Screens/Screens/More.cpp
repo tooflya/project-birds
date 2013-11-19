@@ -59,7 +59,7 @@ void More::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_MORE_BACK:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+                    this->keyBackClicked(false);
 
                 break;
             }
@@ -85,6 +85,13 @@ void More::onEnter()
 void More::onExit()
 {
     Screen::onExit();
+}
+
+void More::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
 }
 
 #endif

@@ -9,7 +9,9 @@
 #include "Options.h"
 #include "ScreenManager.h"
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include "InAppPurchaseEventHandler.h"
+#endif
 
 using namespace std;
 using namespace cocos2d;
@@ -26,8 +28,8 @@ static Resource resources480x320 = { CCSizeMake(320, 480),  "Graphics/480x320" }
 static Resource resources1280x720 = { CCSizeMake(720, 1280),  "Graphics/1280x720" };
 static Resource resources1280x720xPNG = { CCSizeMake(720, 1280),  "Graphics/1280x720-PNG" };
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
-static CCSize designResolutionSize = CCSizeMake(1920, 1080);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WINRT || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+static CCSize designResolutionSize = CCSizeMake(720, 1280);
 #else
 static CCSize designResolutionSize = CCSizeMake(720, 1280);
 #endif
@@ -72,7 +74,9 @@ class AppDelegate : private CCApplication
         // Fields
         // ===========================================================
     
+        #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         InAppPurchaseEventHandler* handler;
+        #endif;
 
         // ===========================================================
         // Constructors

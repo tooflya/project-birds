@@ -100,13 +100,15 @@ class Settings : public Screen
         // ===========================================================
         // Override Methods
         // ===========================================================
-    
+
         void update(float pDeltaTime);
-    
+
         void onEnter();
         void onExit();
-    
+
         void onTouchButtonsCallback(const int pAction, const int pID);
+
+        void keyBackClicked(bool pSound);
 };
 
 #endif

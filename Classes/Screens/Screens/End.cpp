@@ -37,13 +37,9 @@ End::End(int pType, Screen* pParent) :
 	mMenuButton(0),
 	mRestartButton(0),
 	mContinueButton(0),
-	mCoinsPanel(0),
-	mCoin(0),
 	mStars(0),
 	mConfetti(0),
 	mCoins(0),
-	mCoinsCountText(0),
-	mTextes(),
 	mAnimationCounter(0),
 	mCoinsAnimationCounter(0),
 	mCurrentCount(0),
@@ -81,9 +77,7 @@ End::End(int pType, Screen* pParent) :
         this->addChild(this->mScaleLayer);
         this->mScaleLayer->setVisible(false);
         
-		Textes textes1 = {"0", Options::FONT, 64, -1};
-
-        this->mCoinsCountText = Text::create(textes1, this->mScaleLayer);
+		Textes textes1 = {"-------", Options::FONT, 64, -1};
         
         this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 2, 1), spriteBatch1);
         
@@ -99,18 +93,7 @@ End::End(int pType, Screen* pParent) :
         
         this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", spriteBatch3);
         
-        this->mCoinsPanel = Entity::create("shop_money_bg@2x.png", spriteBatch3);
-        this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch4);
-        
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-        this->mCoinsPanel->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(170), Options::CAMERA_HEIGHT - Utils::coord(90));
-        
-        this->mCoin->create()->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(105), this->mCoinsPanel->getCenterY());
-        this->mCoin->setRotation(-45);
-        this->mCoin->setScale(1.3);
-        this->mCoin->animate(0.05);
-        
-        this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
         
         this->mShopButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_SHOP, this);
         this->mMenuButton = Button::create("end_lvl_btn_sprite@2x.png", 4, 1, spriteBatch3, Options::BUTTONS_ID_END_MENU, this);
@@ -138,14 +121,10 @@ End::End(int pType, Screen* pParent) :
         
         this->mCoinsAnimationTime = 0.3;
         this->mCoinsAnimationCurrentTime = 0.05;
-
-        this->mTextes[0] = Text::create(Options::TEXT_END[0], this->mScaleLayer);
-        this->mTextes[1] = Text::create(Options::TEXT_END[1], this->mScaleLayer);
-        this->mTextes[2] = Text::create(Options::TEXT_END[2], this->mScaleLayer);
-        this->mTextes[3] = Text::create(Options::TEXT_END[3], this->mScaleLayer);
-        this->mTextes[4] = Text::create(Options::TEXT_END[4], this->mScaleLayer);
-        this->mTextes[5] = Text::create(Options::TEXT_END[5], this->mScaleLayer);
-        this->mTextes[6] = Text::create(Options::TEXT_END[6], this->mScaleLayer);
+        
+        this->mTextLevel = Text::create(Options::TEXT_END[0], this->mScaleLayer);
+        this->mTextName = Text::create(textes1, this->mScaleLayer);
+        this->mTextValue = Text::create(textes1, this->mScaleLayer);
         
         this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
         this->mCoins = EntityManager::create(50, AnimatedCoin::create("coins_silver@2x.png", 1.5), spriteBatch4);
@@ -281,14 +260,6 @@ void End::onShow()
             this->mMenuButton->create()->setCurrentFrameIndex(0);
             this->mMenuButton->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
         }
-        
-        this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(330));
-        this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200) - Utils::coord(150));
-        this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150) - Utils::coord(150));
-        this->mTextes[3]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100) - Utils::coord(150));
-        this->mTextes[4]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50) - Utils::coord(150));
-        this->mTextes[5]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0) - Utils::coord(150));
-        this->mTextes[6]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50) - Utils::coord(150));
     }
     else
     {
@@ -300,15 +271,11 @@ void End::onShow()
         
         this->mContinueButton->create()->setCurrentFrameIndex(2);
         this->mContinueButton->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(200), Options::CAMERA_CENTER_Y - Utils::coord(320));
-        
-        this->mTextes[0]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
-        this->mTextes[1]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(200));
-        this->mTextes[2]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(150));
-        this->mTextes[3]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(100));
-        this->mTextes[4]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(50));
-        this->mTextes[5]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0));
-        this->mTextes[6]->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(50));
     }
+    
+    this->mTextLevel->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(330));
+    this->mTextName->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0));
+    this->mTextValue->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(150));
 }
 
 void End::onHide()
@@ -341,16 +308,6 @@ void End::onStartShow()
     if(Game::STARS > 0) this->throwConfetti();
     
     int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
-    
-    this->mCoinsCountText->setString(Utils::intToString(coins).c_str());
-    this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
-    
-    this->mTextes[1]->setString(ccsf(Options::TEXT_END[1].string, 0));
-    this->mTextes[2]->setString(ccsf(Options::TEXT_END[2].string, 0));
-    this->mTextes[3]->setString(ccsf(Options::TEXT_END[3].string, 0));
-    this->mTextes[4]->setString(ccsf(Options::TEXT_END[4].string, 0));
-    this->mTextes[5]->setString(ccsf(Options::TEXT_END[5].string, 0));
-    this->mTextes[6]->setString(ccsf(Options::TEXT_END[6].string, 0));
     
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.2);
 }
@@ -445,9 +402,6 @@ void End::update(float pDeltaTime)
                 
                 int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
                 
-                this->mCoinsCountText->setString(Utils::intToString(coins).c_str());
-                this->mCoinsCountText->setCenterPosition(this->mCoinsPanel->getCenterX() - Utils::coord(70) + this->mCoinsCountText->getWidth() / 2, this->mCoinsPanel->getCenterY());
-                
                 switch(this->mCoinsAnimationCounter)
                 {
                     case 1:
@@ -458,7 +412,7 @@ void End::update(float pDeltaTime)
                         
                         AppDelegate::addCoins(1, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
-                        this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
+                        //this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }
                     else
                     {
@@ -466,7 +420,7 @@ void End::update(float pDeltaTime)
                         this->mIsCoinsAnimationCurrentRunning = false;
                     }
                         
-                    this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mCurrentCount));
+                    //this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mCurrentCount));
                         
                     break;
                         
@@ -479,7 +433,7 @@ void End::update(float pDeltaTime)
                     this->mIsCoinsAnimationRunning = true;
                     this->mIsCoinsAnimationCurrentRunning = false;
                     
-                    this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mBestCurrentCount));
+                    //this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mBestCurrentCount));
                         
                     break;
                         
@@ -493,7 +447,7 @@ void End::update(float pDeltaTime)
                         
                         AppDelegate::addCoins(10, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
-                        this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
+                        //this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }
                     else
                     {
@@ -501,7 +455,7 @@ void End::update(float pDeltaTime)
                         this->mIsCoinsAnimationCurrentRunning = false;
                     }
                         
-                    this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mFlayerCount));
+                    //this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mFlayerCount));
                         
                     break;
                         
@@ -515,7 +469,7 @@ void End::update(float pDeltaTime)
                         
                         AppDelegate::addCoins(2, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
-                        this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
+                        //this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }
                     else
                     {
@@ -523,7 +477,7 @@ void End::update(float pDeltaTime)
                         this->mIsCoinsAnimationCurrentRunning = false;
                     }
                         
-                    this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mComboCount));
+                    //this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mComboCount));
                         
                     break;
                         
@@ -537,7 +491,7 @@ void End::update(float pDeltaTime)
                         
                         AppDelegate::addCoins(5, Options::SAVE_DATA_COINS_TYPE_SILVER);
                         
-                        this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
+                        //this->mCoins->create()->setCenterPosition(this->mTextes[this->mCoinsAnimationCounter]->getCenterX(), this->mTextes[this->mCoinsAnimationCounter]->getCenterY());
                     }
                     else
                     {
@@ -545,7 +499,7 @@ void End::update(float pDeltaTime)
                         this->mIsCoinsAnimationCurrentRunning = false;
                     }
                         
-                    this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mCriticalCount));
+                    //this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mCriticalCount));
                         
                     break;
                         
@@ -563,7 +517,7 @@ void End::update(float pDeltaTime)
                         this->mIsCoinsAnimationCurrentRunning = false;
                     }
                         
-                    this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mEarnedCoins));
+                    //this->mTextes[this->mCoinsAnimationCounter]->setString(ccsf(Options::TEXT_END[this->mCoinsAnimationCounter].string, this->mEarnedCoins));
                         
                     break;
                 }

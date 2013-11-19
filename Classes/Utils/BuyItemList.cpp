@@ -76,10 +76,10 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mPropertiesIcon = Entity::create("icon_properties@2x.png", 1, 2, this->mSpriteBatch);
         this->mPropertiesIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(15), Options::CAMERA_CENTER_Y + Utils::coord(112));
 
-		Textes textes2 = {"0", "Comic Sans MS", 32, 0};
-		Textes textes3 = {"0", "Comic Sans MS", 32, 0};
-		Textes textes4 = {"112", "Comic Sans MS", 32, 0};
-		Textes textes5 = {"", "Comic Sans MS", 40, 0};
+		Textes textes2 = {"0", Options::FONT, 32, 0};
+		Textes textes3 = {"0", Options::FONT, 32, 0};
+		Textes textes4 = {"112", Options::FONT, 32, 0};
+		Textes textes5 = {"", Options::FONT, 40, 0};
 
         this->mPriceText = Text::create(textes2, this);
         this->mPriceText->setColor(ccc3(255.0, 130.0, 0.0));
@@ -100,6 +100,9 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mDescriptionText->setColor(ccc3(204.0, 102.0, 51.0));
 
         this->mIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(120), Options::CAMERA_CENTER_Y + Utils::coord(120));
+        
+        this->mPreloaderSprite = Entity::create("preloader@2x.png", this);
+        this->mPreloaderSprite->runAction(CCRepeatForever::create(CCRotateTo::create(1.0, 720)));
     }
 
 BuyItemList* BuyItemList::create(CCNode* pParent)
@@ -115,6 +118,15 @@ BuyItemList* BuyItemList::create(CCNode* pParent)
 // Methods
 // ===========================================================
 
+void BuyItemList::showDescription()
+{
+    this->mPreloaderSprite->setVisible(false);
+    
+    this->mDescriptionText->setVisible(true);
+    this->mDescriptionText->setString(Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[Shop::CLICKED_ITEM_ID].string);
+    this->mDescriptionText->setCenterPosition(this->mParent->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(5) - this->mDescriptionText->getHeight() / 2);
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -124,9 +136,11 @@ void BuyItemList::onEnter()
     List::onEnter();
 
     this->mIcon->setCurrentFrameIndex(Shop::CLICKED_ITEM_ID);
-
-    this->mDescriptionText->setString(Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[Shop::CLICKED_ITEM_ID].string);
-    this->mDescriptionText->setCenterPosition(this->mParent->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(5) - this->mDescriptionText->getHeight() / 2);
+    
+    this->mDescriptionText->setVisible(false);
+    
+    this->mPreloaderSprite->setVisible(true);
+    this->mPreloaderSprite->setCenterPosition(this->mParent->getWidth() / 2, Options::CAMERA_CENTER_Y - Utils::coord(100));
 
     this->mNameText->setString(Options::TEXT_SHOP_ITEMS[Shop::CLICKED_ITEM_ID].string);
 
@@ -138,7 +152,7 @@ void BuyItemList::onEnter()
     {
         this->mPriceGoldText->setVisible(true);
         this->mCoinsIcon->setVisible(true);
-        
+
         this->mCoinsIcon->setCenterPosition(this->mPriceText->getCenterX() + this->mPriceText->getWidth() / 2 + Utils::coord(30), Options::CAMERA_CENTER_Y + Utils::coord(170));
         this->mPriceGoldText->setCenterPosition(this->mCoinsIcon->getCenterX() + Utils::coord(25) + this->mPriceGoldText->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(170));
     }

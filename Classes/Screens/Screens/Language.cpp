@@ -7,6 +7,35 @@
 // Inner Classes
 // ===========================================================
 
+class Dark : public CCNodeRGBA
+{
+    public:
+    Dark()
+    {
+        this->setColor(ccc3(0, 0, 0));
+        this->setOpacity(50);
+    }
+    
+    static Dark* create()
+    {
+        Dark* background = new Dark();
+        background->autorelease();
+        
+        return background;
+    }
+
+    void draw()
+    {
+        if(this->getOpacity() <= 0) return;
+
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
+        glLineWidth(1);
+        #endif
+		CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
+        ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
+    }
+};
+
 // ===========================================================
 // Constants
 // ===========================================================
@@ -130,7 +159,7 @@ void Language::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_LANGUAGE_BACK:
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+                this->keyBackClicked(false);
                 
             break;
             case Options::BUTTONS_ID_LANGUAGE_L_RU:
@@ -230,6 +259,13 @@ void Language::onEnter()
 void Language::onExit()
 {
     Screen::onExit();
+}
+
+void Language::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
 }
 
 #endif

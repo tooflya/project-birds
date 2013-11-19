@@ -70,7 +70,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
-            endingLineNumber = "81">
+            endingLineNumber = "81"
+            landmarkName = "Loading::Loading()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -84,7 +86,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
-            endingLineNumber = "83">
+            endingLineNumber = "83"
+            landmarkName = "Loading::Loading()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -128,7 +132,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "661"
-            endingLineNumber = "661">
+            endingLineNumber = "661"
+            landmarkName = "Entity::changeTexture(Texture* pTexture)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -143,7 +149,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "669"
             endingLineNumber = "669"
-            landmarkName = "Entity::update(float pDeltaTime)"
+            landmarkName = "Entity::changeTexture(Texture* pTexture)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,9 +164,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "Loader::~Loader()"
-            landmarkType = "5">
+            endingLineNumber = "55">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -349,6 +349,12 @@ Shop::Shop() :
 			this->mTextBackgrounds[2]->setScaleX(this->mTextBackgrounds[2]->getScaleX() + 0.2);
 			this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
 		}
+        
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_NEXUS3)
+		{
+			this->mTextBackgrounds[1]->setScaleX(this->mTextBackgrounds[1]->getScaleX() + 0.2);
+			this->mTextBackgrounds[3]->setScaleX(this->mTextBackgrounds[3]->getScaleX() + 0.2);
+		}
 
 		EntityStructure structure1 = {"game_panel_plus@2x.png", 1, 1, 0, 0, 78, 72};
 
@@ -378,6 +384,12 @@ Shop::Shop() :
     
 		this->mTextBackgrounds[2]->setCenterPosition(this->mTextBackgrounds[2]->getCenterX(), this->mTextBackgrounds[2]->getCenterY());
 		this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() - Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
+        
+		if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_NEXUS3)
+		{
+            this->mTextBackgrounds[1]->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + Utils::coord(15), this->mTextBackgrounds[1]->getCenterY());
+            this->mTextBackgrounds[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + Utils::coord(10), this->mTextBackgrounds[3]->getCenterY());
+		}
     
 		this->mTextPluses[0]->create()->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2, this->mTextBackgrounds[0]->getCenterY());
 		this->mTextPluses[2]->create()->setCenterPosition(this->mTextBackgrounds[1]->getCenterX() + this->mTextBackgrounds[1]->getWidthScaled() / 2, this->mTextBackgrounds[1]->getCenterY());
@@ -535,49 +547,8 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
             switch(pID)
             {
                 case Options::BUTTONS_ID_SHOP_BACK:
-
-                    if(ACTION == 0)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
-                    }
-                    else if(ACTION == 1)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
-                    }
-                    else if(ACTION == 2)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
-                    }
-                    else if(ACTION == 3)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
-                    }
-                    else if(ACTION == 4)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
-                    }
-                    else if(ACTION == 5)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
-                    }
-                    else if(ACTION == 6)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
-                    }
-                    else if(ACTION == 10)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
-                    }
-                    else if(ACTION == 11)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
-                    }
-                    else if(ACTION == 12)
-                    {
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
-                    }
-
-                    ACTION = -1;
+                    
+                    this->keyBackClicked(false);
 
                 break;
                 case Options::BUTTONS_ID_SHOP_ITEM:
@@ -987,6 +958,10 @@ void Shop::onEnter()
     
     this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
     this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[3]->getCenterY());
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    soomla::CCStoreController::sharedStoreController()->storeOpening();
+    #endif
 }
 
 void Shop::onExit()
@@ -1003,6 +978,10 @@ void Shop::onExit()
     this->mPurchaseSilverCoins->clear();
     this->mPurchaseLives->clear();
     this->mPurchaseKeys->clear();
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    soomla::CCStoreController::sharedStoreController()->storeClosing();
+    #endif
 }
 
 void Shop::draw()
@@ -1038,6 +1017,77 @@ void Shop::onEnterTransitionDidFinish()
     else if(ACTION == 12)
     {
         this->mGetKeysPopup->show();
+    }
+}
+
+void Shop::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    if(this->mGetCoinsPopup->getParent())
+    {
+        this->mGetCoinsPopup->hide();
+    }
+    else if(this->mGetLivesPopup->getParent())
+    {
+        this->mGetLivesPopup->hide();
+    }
+    else if(this->mGetKeysPopup->getParent())
+    {
+        this->mGetKeysPopup->hide();
+    }
+    else if(this->mBuyItemPopup->getParent())
+    {
+        this->mBuyItemPopup->hide();
+    }
+    else if(this->mBoughtItem->getParent())
+    {
+        this->mBoughtItem->hide();
+    }
+    else
+    {
+        if(ACTION == 0)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+        }
+        else if(ACTION == 1)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+        }
+        else if(ACTION == 2)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+        }
+        else if(ACTION == 3)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+        }
+        else if(ACTION == 4)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+        }
+        else if(ACTION == 5)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+        }
+        else if(ACTION == 6)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+        }
+        else if(ACTION == 10)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+        }
+        else if(ACTION == 11)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+        }
+        else if(ACTION == 12)
+        {
+            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+        }
+    
+        ACTION = -1;
     }
 }
 

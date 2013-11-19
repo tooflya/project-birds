@@ -207,8 +207,6 @@ void GetLives::onHide()
         
         Shop::PURCHASE_ID = this->mPurchaseId;
             
-        this->mPurchaseId = -1;
-            
         if(shop != 0)
         {
             shop->mPaymentProceed->show();
@@ -260,6 +258,8 @@ void GetLives::onHide()
         }
         break;
     }
+    
+    this->mPurchaseId = -1;
 }
 
 void GetLives::show()

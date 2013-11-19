@@ -113,8 +113,8 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
             switch(pID)
             {
                 case Options::BUTTONS_ID_SETTINGS_BACK:
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                    
+                    this->keyBackClicked(false);
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_RATE:
@@ -209,6 +209,13 @@ void Settings::onEnter()
 void Settings::onExit()
 {
     Screen::onExit();
+}
+
+void Settings::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
 }
 
 #endif

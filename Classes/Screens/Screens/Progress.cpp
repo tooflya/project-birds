@@ -91,7 +91,7 @@ void Progress::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_PROGRESS_BACK:
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+                this->keyBackClicked(false);
                 
             break;
             case Options::BUTTONS_ID_PROGRESS_RESET:
@@ -113,5 +113,19 @@ void Progress::onTouchButtonsCallback(const int pAction, const int pID)
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Progress::keyBackClicked(bool pSound)
+{
+    Screen::keyBackClicked(pSound);
+    
+    if(this->mResetPopup->getParent())
+    {
+        this->mResetPopup->hide();
+    }
+    else
+    {
+        AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+    }
+}
 
 #endif

@@ -25,6 +25,8 @@ class Exit : public Popup
         Entity* mLight;
     
         EntityManager* mLights;
+    
+        bool mDoAction;
 
         // ===========================================================
         // Constructors

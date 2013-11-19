@@ -146,6 +146,8 @@ void GetKeys::onHide()
 
     Shop* shop = static_cast<Shop*>(this->mParent);
     
+    Shop::PURCHASE_ID = this->mPurchaseId;
+    
     switch(this->mPurchaseId)
     {
         case 7:
@@ -153,8 +155,6 @@ void GetKeys::onHide()
             shop->mPaymentProceed->show();
         break;
     }
-
-    Shop::PURCHASE_ID = this->mPurchaseId;
 
     this->mPurchaseId = -1;
 }

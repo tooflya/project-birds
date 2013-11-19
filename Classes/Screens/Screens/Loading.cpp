@@ -20,7 +20,7 @@ TextureStructure Loading::TEXTURE_LIBRARY[11] =
     {"TextureAtlas5.png", "TextureAtlas5.plist"},
     {"TextureAtlas9.png", "TextureAtlas9.plist"},
     {"TextureAtlas13.png", "TextureAtlas13.plist"},
-    {"TextureAtlas15.png", "TextureAtlas15.plist"},
+    {"TextureAtlas18.png", "TextureAtlas18.plist"},
     {"TextureAtlas15.png", "TextureAtlas15.plist"},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},

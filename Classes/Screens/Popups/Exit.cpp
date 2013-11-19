@@ -32,8 +32,8 @@ Exit::Exit(CCNode* pParent) :
 	mLights(0)
     {
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
-        this->mLight = Entity::create("popup_quit_picture_light_main@2x.png", this->mSpriteBatch);
-        this->mLights = EntityManager::create(3, Entity::create("popup_quit_picture_light_2@2x.png"), this->mSpriteBatch);
+        this->mLight = Entity::create("popup_quit_picture_light_main@2x.png", this->mSpriteBatch2);
+        this->mLights = EntityManager::create(3, Entity::create("popup_quit_picture_light_2@2x.png"), this->mSpriteBatch2);
         this->mIllustration = Entity::create("popup_quit_picture@2x.png", this->mSpriteBatch);
     
         this->mYesButton = Button::create("popup_btn@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_EXIT_YES, this);
@@ -43,9 +43,9 @@ Exit::Exit(CCNode* pParent) :
         
         this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
-        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(70), Options::CAMERA_HEIGHT);
-        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(70), Options::CAMERA_HEIGHT);
-        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT);
+        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(70), Options::CAMERA_HEIGHT + Utils::coord(10));
+        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(70), Options::CAMERA_HEIGHT + Utils::coord(10));
+        this->mLights->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT + Utils::coord(10));
         
         ((Entity*) this->mLights->objectAtIndex(0))->setOpacity(0.0);
         ((Entity*) this->mLights->objectAtIndex(1))->setOpacity(0.0);
@@ -71,6 +71,8 @@ Exit::Exit(CCNode* pParent) :
         {
             this->mLightsAnimationReverse[i] = Utils::probably(50);
         }
+        
+        this->mDoAction = false;
     }
 
 // ===========================================================
@@ -90,6 +92,8 @@ void Exit::onTouchButtonsCallback(const int pAction, const int pID)
                 
                 break;
             case Options::BUTTONS_ID_EXIT_YES:
+                
+                this->mDoAction = true;
                 
                 this->hide();
                 
@@ -198,6 +202,13 @@ void Exit::onShow()
 void Exit::onHide()
 {
     Popup::onHide();
+    
+    if(this->mDoAction)
+    {
+        CCDirector::sharedDirector()->end();
+    }
+    
+    this->mDoAction = false;
 }
 
 #endif

@@ -18,9 +18,16 @@
 
 #include "AppDelegate.h"
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#include "CCStoreInventory.h"
+#include "CCStoreController.h"
+#include "CCSoomlaError.h"
+#include "CCStoreUtils.h"
+#endif
+
 using namespace cocos2d;
 
-class Screen : public CCScene, public Touchable, public ButtonReceiver
+class Screen : public CCScene, public Touchable, public ButtonReceiver, public CCKeypadDelegate
 {
         protected:
         // ===========================================================
@@ -124,6 +131,9 @@ class Screen : public CCScene, public Touchable, public ButtonReceiver
         void onExit();
     
         void visit();
+
+        virtual void keyBackClicked();
+        virtual void keyBackClicked(bool pSound);
 };
 
 #endif

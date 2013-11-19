@@ -400,6 +400,8 @@ Episodes::Episodes() :
         this->mFacebookText[1]->setCenterPosition(this->mEpisodes[5]->getWidth() / 2 + Utils::coord(60), this->mEpisodes[5]->getHeight() / 2 - Utils::coord(60));
         this->mFacebookText[0]->setZOrder(3);
         this->mFacebookText[1]->setZOrder(3);
+        
+        this->mPointsAnimationRunning = false;
 	}
 
 Episodes* Episodes::create()
@@ -560,9 +562,9 @@ void Episodes::onEnter()
             float w = this->mComingSoon->getContentSize().width;
             float h = this->mComingSoon->getContentSize().height * this->mScale;
             
-            this->mEpisodeText[i]->removeFromParent();
-            this->mUnlockText[i]->removeFromParent();
-            this->mStarsText[i]->removeFromParent();
+            this->mEpisodeText[i]->setVisible(false);
+            this->mUnlockText[i]->setVisible(false);
+            this->mStarsText[i]->setVisible(false);
             
             this->mEpisodeNameText[i]->setCenterPosition(x - this->mEpisodeNameText[i]->getWidth() / 2 + w / 2, y - this->mEpisodeNameText[i]->getHeight() / 2 + h / 2);
         }
@@ -606,6 +608,13 @@ void Episodes::onExit()
     this->mStars->clear();
     
     this->mScroll->getContainer()->stopAllActions();
+}
+
+void Episodes::keyBackClicked()
+{
+    Screen::keyBackClicked();
+    
+    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
 }
 
 #endif

@@ -4,6 +4,7 @@
 #include "InAppPurchaseEventHandler.h"
 #include "CCStoreUtils.h"
 #include "cocos2d.h"
+#include "PaymentProceed.h"
 
 #define TAG "InAppPurchaseEventHandler"
 
@@ -54,6 +55,37 @@ void InAppPurchaseEventHandler::onGoodUpgrade(soomla::CCVirtualGood *virtualGood
 
 void InAppPurchaseEventHandler::onItemPurchased(soomla::CCPurchasableVirtualItem *purchasableVirtualItem) {
     soomla::CCStoreUtils::logDebug(TAG, "ItemPurchased");
+    
+    int id = -1;
+    
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_COINS_PACK_1_ID) == 0)  id = 1;
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_COINS_PACK_2_ID) == 0)  id = 2;
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_COINS_PACK_3_ID) == 0)  id = 3;
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_COINS_PACK_4_ID) == 0)  id = 4;
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_KEYS_PACK_1_ID) == 0)   id = 5;
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_KEYS_PACK_2_ID) == 0)   id = 6;
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_RESTORE_LIVES_ID) == 0) id = 7;
+    if(purchasableVirtualItem->getItemId()->compare(Options::IN_APP_RESTORE_HITS_ID) == 0)  id = 8;
+
+    switch(id)
+    {
+        default:
+        soomla::CCStoreUtils::logDebug(TAG, "ItemPurchased but id is not identificated.");
+        break;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        if(Options::PAYMENT_PROCEED_HANDLER != NULL)
+        {
+            static_cast<PaymentProceed*>(Options::PAYMENT_PROCEED_HANDLER)->onItemPurchased();
+        }
+        break;
+    }
 }
 
 void InAppPurchaseEventHandler::onItemPurchaseStarted(soomla::CCPurchasableVirtualItem *purchasableVirtualItem) {
@@ -62,6 +94,11 @@ void InAppPurchaseEventHandler::onItemPurchaseStarted(soomla::CCPurchasableVirtu
 
 void InAppPurchaseEventHandler::onMarketPurchaseCancelled(soomla::CCPurchasableVirtualItem *purchasableVirtualItem) {
     soomla::CCStoreUtils::logDebug(TAG, "MarketPurchaseCancelled");
+    
+    if(Options::PAYMENT_PROCEED_HANDLER != NULL)
+    {
+        static_cast<PaymentProceed*>(Options::PAYMENT_PROCEED_HANDLER)->hide();
+    }
 }
 
 void InAppPurchaseEventHandler::onMarketPurchase(soomla::CCPurchasableVirtualItem *purchasableVirtualItem) {
@@ -86,6 +123,11 @@ void InAppPurchaseEventHandler::onRestoreTransactionsStarted() {
 
 void InAppPurchaseEventHandler::onUnexpectedErrorInStore() {
     soomla::CCStoreUtils::logDebug(TAG, "UnexpectedErrorInStore");
+    
+    if(Options::PAYMENT_PROCEED_HANDLER != NULL)
+    {
+        static_cast<PaymentProceed*>(Options::PAYMENT_PROCEED_HANDLER)->hide();
+    }
 }
 
 void InAppPurchaseEventHandler::onStoreControllerInitialized() {

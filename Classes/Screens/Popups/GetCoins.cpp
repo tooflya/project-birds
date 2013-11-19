@@ -167,6 +167,8 @@ void GetCoins::onHide()
     Popup::onHide();
 
     Shop* shop = static_cast<Shop*>(this->mParent);
+    
+    Shop::PURCHASE_ID = this->mPurchaseId;
 
     switch(this->mPurchaseId)
     {
@@ -177,8 +179,6 @@ void GetCoins::onHide()
             shop->mPaymentProceed->show();
         break;
     }
-
-    Shop::PURCHASE_ID = this->mPurchaseId;
 
     this->mPurchaseId = -1;
 }

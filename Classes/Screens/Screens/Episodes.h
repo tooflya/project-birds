@@ -125,6 +125,8 @@ class Episodes : public Screen
         void onExit();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        void keyBackClicked();
 };
 
 #endif

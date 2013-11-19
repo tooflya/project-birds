@@ -168,6 +168,8 @@ class Progresses : public Game
         void onMatch(int count, float a, float b);
     
         void startGame();
+    
+        void keyBackClicked(bool pSound);
 };
 
 #endif

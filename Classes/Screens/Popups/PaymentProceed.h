@@ -30,6 +30,11 @@ class PaymentProceed : public Popup
         Button* mCancelButton;
 
         Text* mTextes[3];
+    
+        bool mPostShow;
+    
+        float mPostShowTime;
+        float mPostShowTimeElapsed;
 
         // ===========================================================
         // Constructors
@@ -94,7 +99,11 @@ class PaymentProceed : public Popup
         // ===========================================================
         // Methods
         // ===========================================================
-        
+    
+        void onItemPurchased();
+    
+        void onPostShow();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================

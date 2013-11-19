@@ -30,15 +30,13 @@ class End : public Splash
         Button* mRestartButton;
         Button* mContinueButton;
     
-        Entity* mCoinsPanel;
-        Entity* mCoin;
-    
         EntityManager* mStars;
         EntityManager* mConfetti;
         EntityManager* mCoins;
     
-        Text* mCoinsCountText;
-        Text* mTextes[7];
+        Text* mTextLevel;
+        Text* mTextName;
+        Text* mTextValue;
     
         int mAnimationCounter;
         int mCoinsAnimationCounter;
