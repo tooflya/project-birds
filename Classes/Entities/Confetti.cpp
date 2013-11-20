@@ -55,7 +55,7 @@ void Confetti::onCreate()
 {
     Entity::onCreate();
     
-    this->setColor(COLORS[Utils::random(0, 2)]);
+    this->setColor(Confetti::COLORS[Utils::random(0, 2)]);
 
     this->setOpacity(255.0);
     this->setRotation(0.0);

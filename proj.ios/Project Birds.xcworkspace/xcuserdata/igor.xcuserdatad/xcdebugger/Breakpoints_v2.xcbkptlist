@@ -102,11 +102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Progresses.cpp"
-            timestampString = "406118144.221861"
+            timestampString = "406632206.740127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "857"
-            endingLineNumber = "857"
+            startingLineNumber = "867"
+            endingLineNumber = "867"
             landmarkName = "Progresses::update(float pDeltaTime)"
             landmarkType = "5">
          </BreakpointContent>

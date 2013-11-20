@@ -24,6 +24,10 @@ class End : public Splash
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        int mPanelItems[4];
+    
+        CCLayer* mPanelLayer;
 
         Button* mShopButton;
         Button* mMenuButton;
@@ -39,6 +43,16 @@ class End : public Splash
         Text* mTextName;
         Text* mTextValue;
         Text* mTextCountValue;
+    
+        Entity* mGamePanel;
+        Entity* mBackground;
+        Entity* mIcons[4];
+        Entity* mTextBackgrounds[4];
+        Entity* mPrize;
+    
+        Text* mTextText[4];
+    
+        Button* mTextPluses[4];
     
         int mAnimationCounter;
         int mCoinsAnimationCounter;

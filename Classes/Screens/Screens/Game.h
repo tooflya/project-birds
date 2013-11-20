@@ -325,6 +325,8 @@ class Game : public Screen
     
         float mColorsBurnAnimationTimeoutElapsed;
         float mLastColorTimeBurn;
+    
+        static bool mShouldShowEndScreen;
 
         // ===========================================================
         // Constructors

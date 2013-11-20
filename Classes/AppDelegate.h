@@ -76,7 +76,7 @@ class AppDelegate : private CCApplication
     
         #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         InAppPurchaseEventHandler* handler;
-        #endif;
+        #endif
 
         // ===========================================================
         // Constructors

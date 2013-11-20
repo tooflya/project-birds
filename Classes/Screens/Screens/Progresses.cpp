@@ -782,6 +782,16 @@ void Progresses::update(float pDeltaTime)
 {
     Game::update(pDeltaTime);
     
+    if(Game::mShouldShowEndScreen)
+    {
+        if(this->mAwesomeText->getScaleX() <= 0)
+        {
+            Game::mShouldShowEndScreen = false;
+            
+            this->onGameEnd();
+        }
+    }
+    
     this->mShootsCountAnimationTimeElapsed += pDeltaTime;
     
     if(this->mShootsCountAnimationTimeElapsed >= 1.0)
@@ -1357,7 +1367,7 @@ void Progresses::checkStarsRuntime()
                 if(this->mTime > 0) STARS++;
                 if(this->mShootMakeCount <= 1) STARS++;
                 
-                this->onGameEnd();
+                Game::mShouldShowEndScreen = true;
             }
             if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); if(this->mTime <= 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); } }
             if(this->mTime <= 0) { this->mPanelStars[1]->setColor(ccc3(100, 100, 100)); this->mTaskText[1]->setColor(ccc3(255, 0, 0)); }
@@ -1371,7 +1381,7 @@ void Progresses::checkStarsRuntime()
                     if(Game::EGGS_4_COUNT > 0) STARS++;
                     if(this->mColors->getCount() <= 0) STARS++;
 
-                    this->onGameEnd();
+                    Game::mShouldShowEndScreen = true;
                 }
             }
             if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); }
@@ -1379,12 +1389,12 @@ void Progresses::checkStarsRuntime()
             if(this->mTaskDone) if(this->mColors->getCount() <= 0) { this->mPanelStars[2]->setCurrentFrameIndex(2); this->mTaskText[2]->setColor(ccc3(0, 255, 0)); }
             break;
         case 2:
-            if(this->mTaskDone) {
+            if(this->mTaskDone && Game::EGGS_4_COUNT > 0) {
                 STARS++;
                 if(this->mTime > 0) STARS++;
                 if(Game::EGGS_4_COUNT > 0) STARS++;
                 
-                this->onGameEnd();
+                Game::mShouldShowEndScreen = true;
             }
             if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); if(this->mTime <= 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); } }
             if(Game::EGGS_4_COUNT > 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); this->mTaskText[2]->setColor(ccc3(0, 255, 0)); }
@@ -1395,7 +1405,7 @@ void Progresses::checkStarsRuntime()
 
 void Progresses::lookAtTheTasks()
 {
-    this->checkStarsRuntime();
+    if(!Game::mShouldShowEndScreen) this->checkStarsRuntime();
     
     switch(Game::LEVEL)
     {

@@ -51,6 +51,8 @@ bool Game::PREDICTION = false;
 bool Game::LASERGUN = false;
 bool Game::ZOMBIE_AREA = false;
 
+bool Game::mShouldShowEndScreen = false;
+
 int Game::CURRENT_COUNT = 0;
 int Game::BEST_COUNT = 0;
 int Game::LIFES = 0;
@@ -278,6 +280,8 @@ Game::Game() :
         
         this->mBonusAnimationFrameTime = 0;
         this->mBonusAnimationFrameTimeElapsed = 0;
+        
+        Game::mShouldShowEndScreen = false;
 
         this->mGameLayer->addChild(TouchTrailLayer::create(), 10);
         
@@ -304,6 +308,8 @@ Game* Game::create()
 
 void Game::startGame()
 {
+    Game::mShouldShowEndScreen = false;
+    
     ZOMBIE_AREA = false;
     this->mZombieAnimation = false;
     

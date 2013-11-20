@@ -177,9 +177,11 @@ Text* Text::create(Textes pParams, const CCSize pDimensions, CCNode* pParent)
 
 void Text::setCenterPosition(float pCenterX, float pCenterY)
 {
-    #if  CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     pCenterX -= 1.0;
     pCenterY += 4.0;
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    pCenterX -= 2.0;
     #endif
     
     this->mInitCenterX = pCenterX;

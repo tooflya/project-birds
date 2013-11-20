@@ -515,7 +515,7 @@ void Bird::update(float pDeltaTime)
 
     /** Collisions and destroy animation **/
 
-    if(!this->mIsGoingToDestroy)
+        if(!this->mIsGoingToDestroy && !Game::mShouldShowEndScreen)
     {
         for(int i = 0; i < 10; i++)
         {

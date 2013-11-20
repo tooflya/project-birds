@@ -148,7 +148,12 @@ void Splash::update(float pDeltaTime)
             this->mShowBackgroundTimeElapsed = 0;
             
             this->mScaleLayer->setVisible(true);
-            this->mScaleLayer->runAction(CCScaleTo::create(0.3, 1.0));
+            this->mScaleLayer->runAction(CCSequence::create(
+                                                            CCScaleTo::create(0.3, 0.9, 1.1),
+                                                            CCScaleTo::create(0.1, 1.1, 0.9),
+                                                            CCScaleTo::create(0.1, 1.0, 1.0),
+                                                            NULL)
+                                         );
             
             this->mShowBackground = false;
             

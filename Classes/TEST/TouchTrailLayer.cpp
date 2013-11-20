@@ -118,6 +118,7 @@ void TouchTrailLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
         //if (_map.find(touch) == _map.end()) continue;
         
         CCBlade *blade = _map[touch];
+        if(blade != NULL)
         blade->autoCleanup();
         _map.erase(touch);
         

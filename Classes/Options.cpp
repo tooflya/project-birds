@@ -447,9 +447,9 @@ Textes Options::TEXT_PAYMENT_STRING[6] =
 Textes Options::TEXT_END[7] =
 {
     {"", FONT, 64, 358},
-    {"", FONT, 42, 359},
-    {"", FONT, 42, 360},
-    {"", FONT, 42, 361},
+    {"", FONT, 64, 359},
+    {"", FONT, 64, 360},
+    {"", FONT, 64, 361},
     {"", FONT, 42, 362},
     {"", FONT, 42, 363},
     {"", FONT, 42, 364}
@@ -1011,13 +1011,17 @@ void Options::changeLanguage()
             TEXT_PAYMENT_STRING[5].string = "Cancel";
             
             TEXT_END[0].string = "Excellent!";
-            TEXT_END[1].string = "Amazing!";
+            TEXT_END[1].string = "Nice!";
             TEXT_END[2].string = "Good!";
             TEXT_END[3].string = "Try again!";
             
             TEXT_END[4].string = "Combo hits";
             TEXT_END[5].string = "Flyers kills";
             TEXT_END[6].string = "Total coins earned";
+            
+            TEXT_END[4].size = 42;
+            TEXT_END[5].size = 42;
+            TEXT_END[6].size = 42;
             
             TEXT_DAILY_MAP.string = "Daily revenue";
             
@@ -1505,13 +1509,18 @@ void Options::changeLanguage()
             TEXT_PAYMENT_STRING[4].string = "Ваш запрос \n обрабатывается...";
             TEXT_PAYMENT_STRING[5].string = "Отмена";
             
-            TEXT_END[0].string = "Результаты";
-            TEXT_END[1].string = "Результат: %d";
-            TEXT_END[2].string = "Рекорд: %d";
-            TEXT_END[3].string = "Убито летчиков: %d";
-            TEXT_END[4].string = "Комбо ударов: %d";
-            TEXT_END[5].string = "Критических ударов: %d";
-            TEXT_END[6].string = "Заработано монет: %d";
+            TEXT_END[0].string = "Отлично!";
+            TEXT_END[1].string = "Неплохо!";
+            TEXT_END[2].string = "Хорошо!";
+            TEXT_END[3].string = "Попробуйте еще раз!";
+            
+            TEXT_END[4].string = "Комбо ударов";
+            TEXT_END[5].string = "Птицы летчики";
+            TEXT_END[6].string = "Всего монет заработано";
+            
+            TEXT_END[4].size = 36;
+            TEXT_END[5].size = 36;
+            TEXT_END[6].size = 36;
             
             TEXT_DAILY_MAP.string = "Вознаграждение";
             
