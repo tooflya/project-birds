@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.2.0</string>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -26,8 +26,6 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
         <false/>
@@ -173,7 +171,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/board_migalka@2x.png</filename>
+            <filename>../../Graphics Sources/Full HD/board_migalka@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

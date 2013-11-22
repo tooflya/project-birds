@@ -7,20 +7,20 @@
             <key>bg_detail_dark@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1000,418}}</string>
+                <string>{{2,2},{1920,801}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1000,418}}</string>
+                <string>{{0,0},{1920,801}}</string>
                 <key>sourceSize</key>
-                <string>{1000,418}</string>
+                <string>{1920,801}</string>
             </dict>
             <key>popup_key_pic_wander@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,422},{604,540}}</string>
+                <string>{{2,805},{604,540}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -38,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas15.png</string>
             <key>size</key>
-            <string>{1004,964}</string>
+            <string>{1924,1347}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:60f642f5bae47b751b88b64a3856f974:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:be32cd981d3960836650b8fe74bddb7d:2711a8a78252a6338b8509e542e1ce7e:ba9f793355ade8a79e1fd8091954586a$</string>
             <key>textureFileName</key>
             <string>TextureAtlas15.png</string>
         </dict>

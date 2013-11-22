@@ -306,6 +306,63 @@
 		78A1F2851832921C00435951 /* CCSorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F27E1832921C00435951 /* CCSorting.cpp */; };
 		78A1F2861832921C00435951 /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F2801832921C00435951 /* CCTableView.cpp */; };
 		78A1F2871832921C00435951 /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F2821832921C00435951 /* CCTableViewCell.cpp */; };
+		78AE318D183E01A100E148E5 /* about_scroll_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3143183E01A100E148E5 /* about_scroll_fill@2x.png */; };
+		78AE318E183E01A100E148E5 /* about_scroll_fill_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3144183E01A100E148E5 /* about_scroll_fill_small@2x.png */; };
+		78AE318F183E01A100E148E5 /* more_games_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3145183E01A100E148E5 /* more_games_list@2x.png */; };
+		78AE3190183E01A100E148E5 /* preloader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3146183E01A100E148E5 /* preloader@2x.png */; };
+		78AE3191183E01A100E148E5 /* splash_logo_abs.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3147183E01A100E148E5 /* splash_logo_abs.png */; };
+		78AE3192183E01A100E148E5 /* splash_logo_tfl.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3148183E01A100E148E5 /* splash_logo_tfl.png */; };
+		78AE3193183E01A100E148E5 /* TextureAtlas1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3149183E01A100E148E5 /* TextureAtlas1.plist */; };
+		78AE3194183E01A100E148E5 /* TextureAtlas1.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE314A183E01A100E148E5 /* TextureAtlas1.pvr.ccz */; };
+		78AE3195183E01A100E148E5 /* TextureAtlas10.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE314B183E01A100E148E5 /* TextureAtlas10.plist */; };
+		78AE3196183E01A100E148E5 /* TextureAtlas10.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE314C183E01A100E148E5 /* TextureAtlas10.pvr.ccz */; };
+		78AE3197183E01A100E148E5 /* TextureAtlas11.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE314D183E01A100E148E5 /* TextureAtlas11.plist */; };
+		78AE3198183E01A100E148E5 /* TextureAtlas11.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE314E183E01A100E148E5 /* TextureAtlas11.pvr.ccz */; };
+		78AE3199183E01A100E148E5 /* TextureAtlas12.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE314F183E01A100E148E5 /* TextureAtlas12.plist */; };
+		78AE319A183E01A100E148E5 /* TextureAtlas12.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3150183E01A100E148E5 /* TextureAtlas12.pvr.ccz */; };
+		78AE319B183E01A100E148E5 /* TextureAtlas13.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3151183E01A100E148E5 /* TextureAtlas13.plist */; };
+		78AE319C183E01A100E148E5 /* TextureAtlas13.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3152183E01A100E148E5 /* TextureAtlas13.pvr.ccz */; };
+		78AE319D183E01A100E148E5 /* TextureAtlas14.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3153183E01A100E148E5 /* TextureAtlas14.plist */; };
+		78AE319E183E01A100E148E5 /* TextureAtlas14.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3154183E01A100E148E5 /* TextureAtlas14.pvr.ccz */; };
+		78AE319F183E01A100E148E5 /* TextureAtlas15.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3155183E01A100E148E5 /* TextureAtlas15.plist */; };
+		78AE31A0183E01A100E148E5 /* TextureAtlas15.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3156183E01A100E148E5 /* TextureAtlas15.pvr.ccz */; };
+		78AE31A1183E01A100E148E5 /* TextureAtlas16.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3157183E01A100E148E5 /* TextureAtlas16.plist */; };
+		78AE31A2183E01A100E148E5 /* TextureAtlas16.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3158183E01A100E148E5 /* TextureAtlas16.pvr.ccz */; };
+		78AE31A3183E01A100E148E5 /* TextureAtlas17.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3159183E01A100E148E5 /* TextureAtlas17.plist */; };
+		78AE31A4183E01A100E148E5 /* TextureAtlas17.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE315A183E01A100E148E5 /* TextureAtlas17.pvr.ccz */; };
+		78AE31A5183E01A100E148E5 /* TextureAtlas18.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE315B183E01A100E148E5 /* TextureAtlas18.plist */; };
+		78AE31A6183E01A100E148E5 /* TextureAtlas18.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE315C183E01A100E148E5 /* TextureAtlas18.pvr.ccz */; };
+		78AE31A7183E01A100E148E5 /* TextureAtlas19.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE315D183E01A100E148E5 /* TextureAtlas19.plist */; };
+		78AE31A8183E01A100E148E5 /* TextureAtlas19.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE315E183E01A100E148E5 /* TextureAtlas19.pvr.gz */; };
+		78AE31A9183E01A100E148E5 /* TextureAtlas2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE315F183E01A100E148E5 /* TextureAtlas2.plist */; };
+		78AE31AA183E01A100E148E5 /* TextureAtlas2.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3160183E01A100E148E5 /* TextureAtlas2.pvr.ccz */; };
+		78AE31AB183E01A100E148E5 /* TextureAtlas3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3161183E01A100E148E5 /* TextureAtlas3.plist */; };
+		78AE31AC183E01A100E148E5 /* TextureAtlas3.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3162183E01A100E148E5 /* TextureAtlas3.pvr.ccz */; };
+		78AE31AD183E01A100E148E5 /* TextureAtlas4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3163183E01A100E148E5 /* TextureAtlas4.plist */; };
+		78AE31AE183E01A100E148E5 /* TextureAtlas4.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3164183E01A100E148E5 /* TextureAtlas4.pvr.ccz */; };
+		78AE31AF183E01A100E148E5 /* TextureAtlas5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3165183E01A100E148E5 /* TextureAtlas5.plist */; };
+		78AE31B0183E01A100E148E5 /* TextureAtlas5.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3166183E01A100E148E5 /* TextureAtlas5.pvr.ccz */; };
+		78AE31B1183E01A100E148E5 /* TextureAtlas6.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3167183E01A100E148E5 /* TextureAtlas6.plist */; };
+		78AE31B2183E01A100E148E5 /* TextureAtlas6.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3168183E01A100E148E5 /* TextureAtlas6.pvr.ccz */; };
+		78AE31B3183E01A100E148E5 /* TextureAtlas7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3169183E01A100E148E5 /* TextureAtlas7.plist */; };
+		78AE31B4183E01A100E148E5 /* TextureAtlas7.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE316A183E01A100E148E5 /* TextureAtlas7.pvr.ccz */; };
+		78AE31B5183E01A100E148E5 /* TextureAtlas8.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE316B183E01A100E148E5 /* TextureAtlas8.plist */; };
+		78AE31B6183E01A100E148E5 /* TextureAtlas8.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE316C183E01A100E148E5 /* TextureAtlas8.pvr.ccz */; };
+		78AE31B7183E01A100E148E5 /* TextureAtlas9.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78AE316D183E01A100E148E5 /* TextureAtlas9.plist */; };
+		78AE31B8183E01A100E148E5 /* TextureAtlas9.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 78AE316E183E01A100E148E5 /* TextureAtlas9.pvr.ccz */; };
+		78AE31B9183E01A100E148E5 /* wep_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE316F183E01A100E148E5 /* wep_10@2x.png */; };
+		78AE31BA183E01A100E148E5 /* wep_11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3170183E01A100E148E5 /* wep_11@2x.png */; };
+		78AE31BB183E01A100E148E5 /* wep_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3171183E01A100E148E5 /* wep_1@2x.png */; };
+		78AE31BC183E01A100E148E5 /* wep_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3172183E01A100E148E5 /* wep_2@2x.png */; };
+		78AE31BD183E01A100E148E5 /* wep_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3173183E01A100E148E5 /* wep_3@2x.png */; };
+		78AE31BE183E01A100E148E5 /* wep_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3174183E01A100E148E5 /* wep_4@2x.png */; };
+		78AE31BF183E01A100E148E5 /* wep_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3175183E01A100E148E5 /* wep_5@2x.png */; };
+		78AE31C0183E01A100E148E5 /* wep_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3176183E01A100E148E5 /* wep_6@2x.png */; };
+		78AE31C1183E01A100E148E5 /* wep_7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3177183E01A100E148E5 /* wep_7@2x.png */; };
+		78AE31C2183E01A100E148E5 /* wep_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3178183E01A100E148E5 /* wep_8@2x.png */; };
+		78AE31C3183E01A100E148E5 /* wep_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE3179183E01A100E148E5 /* wep_9@2x.png */; };
+		78AE31C6183E0B4200E148E5 /* Icon-52-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE31C4183E0B4200E148E5 /* Icon-52-ios6.png */; };
+		78AE31C7183E0B4200E148E5 /* Icon-57-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE31C5183E0B4200E148E5 /* Icon-57-ios6.png */; };
 		78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */; };
 		78AE448018081EF300FBABDD /* ButtonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */; };
 		78B38A53177E5D0600773C6A /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B38A4D177E5D0600773C6A /* AppController.mm */; };
@@ -862,6 +919,63 @@
 		78A1F2811832921C00435951 /* CCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTableView.h; sourceTree = "<group>"; };
 		78A1F2821832921C00435951 /* CCTableViewCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTableViewCell.cpp; sourceTree = "<group>"; };
 		78A1F2831832921C00435951 /* CCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTableViewCell.h; sourceTree = "<group>"; };
+		78AE3143183E01A100E148E5 /* about_scroll_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill@2x.png"; sourceTree = "<group>"; };
+		78AE3144183E01A100E148E5 /* about_scroll_fill_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill_small@2x.png"; sourceTree = "<group>"; };
+		78AE3145183E01A100E148E5 /* more_games_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_games_list@2x.png"; sourceTree = "<group>"; };
+		78AE3146183E01A100E148E5 /* preloader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preloader@2x.png"; sourceTree = "<group>"; };
+		78AE3147183E01A100E148E5 /* splash_logo_abs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_logo_abs.png; sourceTree = "<group>"; };
+		78AE3148183E01A100E148E5 /* splash_logo_tfl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_logo_tfl.png; sourceTree = "<group>"; };
+		78AE3149183E01A100E148E5 /* TextureAtlas1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas1.plist; sourceTree = "<group>"; };
+		78AE314A183E01A100E148E5 /* TextureAtlas1.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas1.pvr.ccz; sourceTree = "<group>"; };
+		78AE314B183E01A100E148E5 /* TextureAtlas10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas10.plist; sourceTree = "<group>"; };
+		78AE314C183E01A100E148E5 /* TextureAtlas10.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas10.pvr.ccz; sourceTree = "<group>"; };
+		78AE314D183E01A100E148E5 /* TextureAtlas11.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas11.plist; sourceTree = "<group>"; };
+		78AE314E183E01A100E148E5 /* TextureAtlas11.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas11.pvr.ccz; sourceTree = "<group>"; };
+		78AE314F183E01A100E148E5 /* TextureAtlas12.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas12.plist; sourceTree = "<group>"; };
+		78AE3150183E01A100E148E5 /* TextureAtlas12.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas12.pvr.ccz; sourceTree = "<group>"; };
+		78AE3151183E01A100E148E5 /* TextureAtlas13.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas13.plist; sourceTree = "<group>"; };
+		78AE3152183E01A100E148E5 /* TextureAtlas13.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas13.pvr.ccz; sourceTree = "<group>"; };
+		78AE3153183E01A100E148E5 /* TextureAtlas14.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas14.plist; sourceTree = "<group>"; };
+		78AE3154183E01A100E148E5 /* TextureAtlas14.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas14.pvr.ccz; sourceTree = "<group>"; };
+		78AE3155183E01A100E148E5 /* TextureAtlas15.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas15.plist; sourceTree = "<group>"; };
+		78AE3156183E01A100E148E5 /* TextureAtlas15.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas15.pvr.ccz; sourceTree = "<group>"; };
+		78AE3157183E01A100E148E5 /* TextureAtlas16.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas16.plist; sourceTree = "<group>"; };
+		78AE3158183E01A100E148E5 /* TextureAtlas16.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas16.pvr.ccz; sourceTree = "<group>"; };
+		78AE3159183E01A100E148E5 /* TextureAtlas17.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas17.plist; sourceTree = "<group>"; };
+		78AE315A183E01A100E148E5 /* TextureAtlas17.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas17.pvr.ccz; sourceTree = "<group>"; };
+		78AE315B183E01A100E148E5 /* TextureAtlas18.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas18.plist; sourceTree = "<group>"; };
+		78AE315C183E01A100E148E5 /* TextureAtlas18.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas18.pvr.ccz; sourceTree = "<group>"; };
+		78AE315D183E01A100E148E5 /* TextureAtlas19.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas19.plist; sourceTree = "<group>"; };
+		78AE315E183E01A100E148E5 /* TextureAtlas19.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = TextureAtlas19.pvr.gz; sourceTree = "<group>"; };
+		78AE315F183E01A100E148E5 /* TextureAtlas2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas2.plist; sourceTree = "<group>"; };
+		78AE3160183E01A100E148E5 /* TextureAtlas2.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas2.pvr.ccz; sourceTree = "<group>"; };
+		78AE3161183E01A100E148E5 /* TextureAtlas3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas3.plist; sourceTree = "<group>"; };
+		78AE3162183E01A100E148E5 /* TextureAtlas3.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas3.pvr.ccz; sourceTree = "<group>"; };
+		78AE3163183E01A100E148E5 /* TextureAtlas4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas4.plist; sourceTree = "<group>"; };
+		78AE3164183E01A100E148E5 /* TextureAtlas4.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas4.pvr.ccz; sourceTree = "<group>"; };
+		78AE3165183E01A100E148E5 /* TextureAtlas5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas5.plist; sourceTree = "<group>"; };
+		78AE3166183E01A100E148E5 /* TextureAtlas5.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas5.pvr.ccz; sourceTree = "<group>"; };
+		78AE3167183E01A100E148E5 /* TextureAtlas6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas6.plist; sourceTree = "<group>"; };
+		78AE3168183E01A100E148E5 /* TextureAtlas6.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas6.pvr.ccz; sourceTree = "<group>"; };
+		78AE3169183E01A100E148E5 /* TextureAtlas7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas7.plist; sourceTree = "<group>"; };
+		78AE316A183E01A100E148E5 /* TextureAtlas7.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas7.pvr.ccz; sourceTree = "<group>"; };
+		78AE316B183E01A100E148E5 /* TextureAtlas8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas8.plist; sourceTree = "<group>"; };
+		78AE316C183E01A100E148E5 /* TextureAtlas8.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas8.pvr.ccz; sourceTree = "<group>"; };
+		78AE316D183E01A100E148E5 /* TextureAtlas9.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextureAtlas9.plist; sourceTree = "<group>"; };
+		78AE316E183E01A100E148E5 /* TextureAtlas9.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TextureAtlas9.pvr.ccz; sourceTree = "<group>"; };
+		78AE316F183E01A100E148E5 /* wep_10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_10@2x.png"; sourceTree = "<group>"; };
+		78AE3170183E01A100E148E5 /* wep_11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_11@2x.png"; sourceTree = "<group>"; };
+		78AE3171183E01A100E148E5 /* wep_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_1@2x.png"; sourceTree = "<group>"; };
+		78AE3172183E01A100E148E5 /* wep_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_2@2x.png"; sourceTree = "<group>"; };
+		78AE3173183E01A100E148E5 /* wep_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_3@2x.png"; sourceTree = "<group>"; };
+		78AE3174183E01A100E148E5 /* wep_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_4@2x.png"; sourceTree = "<group>"; };
+		78AE3175183E01A100E148E5 /* wep_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_5@2x.png"; sourceTree = "<group>"; };
+		78AE3176183E01A100E148E5 /* wep_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_6@2x.png"; sourceTree = "<group>"; };
+		78AE3177183E01A100E148E5 /* wep_7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_7@2x.png"; sourceTree = "<group>"; };
+		78AE3178183E01A100E148E5 /* wep_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_8@2x.png"; sourceTree = "<group>"; };
+		78AE3179183E01A100E148E5 /* wep_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wep_9@2x.png"; sourceTree = "<group>"; };
+		78AE31C4183E0B4200E148E5 /* Icon-52-ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-52-ios6.png"; sourceTree = "<group>"; };
+		78AE31C5183E0B4200E148E5 /* Icon-57-ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57-ios6.png"; sourceTree = "<group>"; };
 		78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = upsell_whoosh.mp3; sourceTree = "<group>"; };
 		78AE447E18081EF300FBABDD /* ButtonReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonReceiver.cpp; sourceTree = "<group>"; };
 		78AE447F18081EF300FBABDD /* ButtonReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonReceiver.h; sourceTree = "<group>"; };
@@ -1073,6 +1187,8 @@
 		78397AC41807014A00C999E7 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				78AE31C4183E0B4200E148E5 /* Icon-52-ios6.png */,
+				78AE31C5183E0B4200E148E5 /* Icon-57-ios6.png */,
 				78397AEB1807032400C999E7 /* Icon-100-ios6.png */,
 				78397AE91807030000C999E7 /* Icon-50-ios6.png */,
 				78397AE7180702D100C999E7 /* Icon-58-ios6.png */,
@@ -1473,6 +1589,7 @@
 		783EBF9917E8916D00536895 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				78AE312F183E01A100E148E5 /* 2048x1536 */,
 				78365443180C5ED100AA9432 /* 1280x720 */,
 				783EC03F17E8916E00536895 /* Resources */,
 			);
@@ -1825,6 +1942,68 @@
 			name = external;
 			sourceTree = "<group>";
 		};
+		78AE312F183E01A100E148E5 /* 2048x1536 */ = {
+			isa = PBXGroup;
+			children = (
+				78AE3143183E01A100E148E5 /* about_scroll_fill@2x.png */,
+				78AE3144183E01A100E148E5 /* about_scroll_fill_small@2x.png */,
+				78AE3145183E01A100E148E5 /* more_games_list@2x.png */,
+				78AE3146183E01A100E148E5 /* preloader@2x.png */,
+				78AE3147183E01A100E148E5 /* splash_logo_abs.png */,
+				78AE3148183E01A100E148E5 /* splash_logo_tfl.png */,
+				78AE3149183E01A100E148E5 /* TextureAtlas1.plist */,
+				78AE314A183E01A100E148E5 /* TextureAtlas1.pvr.ccz */,
+				78AE314B183E01A100E148E5 /* TextureAtlas10.plist */,
+				78AE314C183E01A100E148E5 /* TextureAtlas10.pvr.ccz */,
+				78AE314D183E01A100E148E5 /* TextureAtlas11.plist */,
+				78AE314E183E01A100E148E5 /* TextureAtlas11.pvr.ccz */,
+				78AE314F183E01A100E148E5 /* TextureAtlas12.plist */,
+				78AE3150183E01A100E148E5 /* TextureAtlas12.pvr.ccz */,
+				78AE3151183E01A100E148E5 /* TextureAtlas13.plist */,
+				78AE3152183E01A100E148E5 /* TextureAtlas13.pvr.ccz */,
+				78AE3153183E01A100E148E5 /* TextureAtlas14.plist */,
+				78AE3154183E01A100E148E5 /* TextureAtlas14.pvr.ccz */,
+				78AE3155183E01A100E148E5 /* TextureAtlas15.plist */,
+				78AE3156183E01A100E148E5 /* TextureAtlas15.pvr.ccz */,
+				78AE3157183E01A100E148E5 /* TextureAtlas16.plist */,
+				78AE3158183E01A100E148E5 /* TextureAtlas16.pvr.ccz */,
+				78AE3159183E01A100E148E5 /* TextureAtlas17.plist */,
+				78AE315A183E01A100E148E5 /* TextureAtlas17.pvr.ccz */,
+				78AE315B183E01A100E148E5 /* TextureAtlas18.plist */,
+				78AE315C183E01A100E148E5 /* TextureAtlas18.pvr.ccz */,
+				78AE315D183E01A100E148E5 /* TextureAtlas19.plist */,
+				78AE315E183E01A100E148E5 /* TextureAtlas19.pvr.gz */,
+				78AE315F183E01A100E148E5 /* TextureAtlas2.plist */,
+				78AE3160183E01A100E148E5 /* TextureAtlas2.pvr.ccz */,
+				78AE3161183E01A100E148E5 /* TextureAtlas3.plist */,
+				78AE3162183E01A100E148E5 /* TextureAtlas3.pvr.ccz */,
+				78AE3163183E01A100E148E5 /* TextureAtlas4.plist */,
+				78AE3164183E01A100E148E5 /* TextureAtlas4.pvr.ccz */,
+				78AE3165183E01A100E148E5 /* TextureAtlas5.plist */,
+				78AE3166183E01A100E148E5 /* TextureAtlas5.pvr.ccz */,
+				78AE3167183E01A100E148E5 /* TextureAtlas6.plist */,
+				78AE3168183E01A100E148E5 /* TextureAtlas6.pvr.ccz */,
+				78AE3169183E01A100E148E5 /* TextureAtlas7.plist */,
+				78AE316A183E01A100E148E5 /* TextureAtlas7.pvr.ccz */,
+				78AE316B183E01A100E148E5 /* TextureAtlas8.plist */,
+				78AE316C183E01A100E148E5 /* TextureAtlas8.pvr.ccz */,
+				78AE316D183E01A100E148E5 /* TextureAtlas9.plist */,
+				78AE316E183E01A100E148E5 /* TextureAtlas9.pvr.ccz */,
+				78AE316F183E01A100E148E5 /* wep_10@2x.png */,
+				78AE3170183E01A100E148E5 /* wep_11@2x.png */,
+				78AE3171183E01A100E148E5 /* wep_1@2x.png */,
+				78AE3172183E01A100E148E5 /* wep_2@2x.png */,
+				78AE3173183E01A100E148E5 /* wep_3@2x.png */,
+				78AE3174183E01A100E148E5 /* wep_4@2x.png */,
+				78AE3175183E01A100E148E5 /* wep_5@2x.png */,
+				78AE3176183E01A100E148E5 /* wep_6@2x.png */,
+				78AE3177183E01A100E148E5 /* wep_7@2x.png */,
+				78AE3178183E01A100E148E5 /* wep_8@2x.png */,
+				78AE3179183E01A100E148E5 /* wep_9@2x.png */,
+			);
+			path = 2048x1536;
+			sourceTree = "<group>";
+		};
 		78B38A4B177E5D0600773C6A /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -1943,29 +2122,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78AE31BC183E01A100E148E5 /* wep_2@2x.png in Resources */,
+				78AE31B4183E01A100E148E5 /* TextureAtlas7.pvr.ccz in Resources */,
 				783654A3180C5ED100AA9432 /* TextureAtlas7.plist in Resources */,
 				783654A2180C5ED100AA9432 /* TextureAtlas6.pvr.ccz in Resources */,
+				78AE31B7183E01A100E148E5 /* TextureAtlas9.plist in Resources */,
 				78397AD51807014A00C999E7 /* Icon-72-ios6.png in Resources */,
 				7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */,
+				78AE31A6183E01A100E148E5 /* TextureAtlas18.pvr.ccz in Resources */,
 				78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */,
 				78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */,
+				78AE31B5183E01A100E148E5 /* TextureAtlas8.plist in Resources */,
+				78AE31B3183E01A100E148E5 /* TextureAtlas7.plist in Resources */,
 				78D358921821670D001450F3 /* gem2.mp3 in Resources */,
 				787AD78C1810037900738DE3 /* TextureAtlas15.pvr.ccz in Resources */,
 				78397AE61807029200C999E7 /* Icon-152-ios7.png in Resources */,
 				783654AD180C5ED100AA9432 /* wep_3@2x.png in Resources */,
 				7869167117F1DF9F00184E9D /* pome-zoomout.mp3 in Resources */,
 				7869167217F1DF9F00184E9D /* popup-1.mp3 in Resources */,
+				78AE3198183E01A100E148E5 /* TextureAtlas11.pvr.ccz in Resources */,
 				7836549D180C5ED100AA9432 /* TextureAtlas4.plist in Resources */,
+				78AE319D183E01A100E148E5 /* TextureAtlas14.plist in Resources */,
 				783654A7180C5ED100AA9432 /* TextureAtlas9.plist in Resources */,
 				7869167317F1DF9F00184E9D /* popup-2.mp3 in Resources */,
+				78AE318E183E01A100E148E5 /* about_scroll_fill_small@2x.png in Resources */,
 				7869167417F1DF9F00184E9D /* popup-3.mp3 in Resources */,
 				7836549C180C5ED100AA9432 /* TextureAtlas3.pvr.ccz in Resources */,
+				78AE3191183E01A100E148E5 /* splash_logo_abs.png in Resources */,
 				78D358791821384D001450F3 /* lose.mp3 in Resources */,
 				78D358A11827C770001450F3 /* tutorial.png in Resources */,
 				781432D3183B669000784217 /* preloader@2x.png in Resources */,
 				7869167517F1DF9F00184E9D /* popup-4.mp3 in Resources */,
 				78D358971821670D001450F3 /* star2.mp3 in Resources */,
+				78AE31BF183E01A100E148E5 /* wep_5@2x.png in Resources */,
 				7869167617F1DF9F00184E9D /* popup-5.mp3 in Resources */,
+				78AE31AF183E01A100E148E5 /* TextureAtlas5.plist in Resources */,
+				78AE319C183E01A100E148E5 /* TextureAtlas13.pvr.ccz in Resources */,
 				7869167717F1DF9F00184E9D /* popup-6.mp3 in Resources */,
 				7869167817F1DF9F00184E9D /* popup-7.mp3 in Resources */,
 				78D358961821670D001450F3 /* star1.mp3 in Resources */,
@@ -1973,21 +2165,33 @@
 				783654B2180C5ED100AA9432 /* wep_8@2x.png in Resources */,
 				783654AF180C5ED100AA9432 /* wep_5@2x.png in Resources */,
 				7869167A17F1DF9F00184E9D /* progress_complete.mp3 in Resources */,
+				78AE3199183E01A100E148E5 /* TextureAtlas12.plist in Resources */,
 				7869166117F06A1B00184E9D /* bonus_banana_freeze.mp3 in Resources */,
 				78D358981821670D001450F3 /* star3.mp3 in Resources */,
 				783654A9180C5ED100AA9432 /* wep_10@2x.png in Resources */,
+				78AE3196183E01A100E148E5 /* TextureAtlas10.pvr.ccz in Resources */,
 				78397AEA1807030000C999E7 /* Icon-50-ios6.png in Resources */,
+				78AE31BA183E01A100E148E5 /* wep_11@2x.png in Resources */,
+				78AE319E183E01A100E148E5 /* TextureAtlas14.pvr.ccz in Resources */,
 				78365490180C5ED100AA9432 /* TextureAtlas10.pvr.ccz in Resources */,
+				78AE31A2183E01A100E148E5 /* TextureAtlas16.pvr.ccz in Resources */,
 				78D3587718212D8F001450F3 /* miss.wav in Resources */,
 				783654A5180C5ED100AA9432 /* TextureAtlas8.plist in Resources */,
 				78D358951821670D001450F3 /* gem5.mp3 in Resources */,
+				78AE31BE183E01A100E148E5 /* wep_4@2x.png in Resources */,
 				78791F591832711B00821057 /* TextureAtlas18.pvr.ccz in Resources */,
 				78397AE51807029200C999E7 /* Icon-120-ios7.png in Resources */,
 				78397AEC1807032400C999E7 /* Icon-100-ios6.png in Resources */,
+				78AE31A0183E01A100E148E5 /* TextureAtlas15.pvr.ccz in Resources */,
 				78D358B9182AB050001450F3 /* intro2.mp4 in Resources */,
 				78397AE31807029200C999E7 /* Icon-76-ios7.png in Resources */,
 				7861C0A51834EF9C00B2A896 /* README.md in Resources */,
+				78AE319B183E01A100E148E5 /* TextureAtlas13.plist in Resources */,
+				78AE31AD183E01A100E148E5 /* TextureAtlas4.plist in Resources */,
+				78AE31BD183E01A100E148E5 /* wep_3@2x.png in Resources */,
 				7836548F180C5ED100AA9432 /* TextureAtlas10.plist in Resources */,
+				78AE31C2183E01A100E148E5 /* wep_8@2x.png in Resources */,
+				78AE31B9183E01A100E148E5 /* wep_10@2x.png in Resources */,
 				78582AE117BBD91A00C96267 /* Default.png in Resources */,
 				78582AE317BBD92400C96267 /* Default@2x.png in Resources */,
 				78D358A8182A3DDD001450F3 /* TextureAtlas16.pvr.ccz in Resources */,
@@ -1998,15 +2202,23 @@
 				78397AE8180702D100C999E7 /* Icon-58-ios6.png in Resources */,
 				7836549A180C5ED100AA9432 /* TextureAtlas2.pvr.ccz in Resources */,
 				78582AE917BBD93B00C96267 /* Default-Landscape@2x~ipad.png in Resources */,
+				78AE3190183E01A100E148E5 /* preloader@2x.png in Resources */,
+				78AE318D183E01A100E148E5 /* about_scroll_fill@2x.png in Resources */,
 				7836549B180C5ED100AA9432 /* TextureAtlas3.plist in Resources */,
+				78AE31C1183E01A100E148E5 /* wep_7@2x.png in Resources */,
 				78365492180C5ED100AA9432 /* TextureAtlas11.pvr.ccz in Resources */,
 				783654AC180C5ED100AA9432 /* wep_2@2x.png in Resources */,
 				78D358931821670D001450F3 /* gem3.mp3 in Resources */,
 				78397AE11807029200C999E7 /* Icon-40-ios7.png in Resources */,
 				78365498180C5ED100AA9432 /* TextureAtlas14.pvr.ccz in Resources */,
+				78AE31A5183E01A100E148E5 /* TextureAtlas18.plist in Resources */,
+				78AE31C7183E0B4200E148E5 /* Icon-57-ios6.png in Resources */,
 				78582AEB17BBD93F00C96267 /* Default-Portrait~ipad.png in Resources */,
 				78D358911821670D001450F3 /* gem1.wav in Resources */,
+				78AE31AA183E01A100E148E5 /* TextureAtlas2.pvr.ccz in Resources */,
 				78397ADF1807029200C999E7 /* Icon-29-ios6.png in Resources */,
+				78AE319F183E01A100E148E5 /* TextureAtlas15.plist in Resources */,
+				78AE31AE183E01A100E148E5 /* TextureAtlas4.pvr.ccz in Resources */,
 				78582AED17BBD94500C96267 /* Default-Portrait@2x~ipad.png in Resources */,
 				785D1A521834BA1C00A36DB8 /* TextureAtlas19.plist in Resources */,
 				78D358BC182B9342001450F3 /* TextureAtlas17.plist in Resources */,
@@ -2016,30 +2228,44 @@
 				78D358941821670D001450F3 /* gem4.mp3 in Resources */,
 				783E895F17C20CEC00FD49C1 /* intro.mp4 in Resources */,
 				7836548B180C5ED100AA9432 /* about_scroll_fill_small@2x.png in Resources */,
+				78AE31AC183E01A100E148E5 /* TextureAtlas3.pvr.ccz in Resources */,
 				78397AE01807029200C999E7 /* Icon-29-ios7.png in Resources */,
 				783E896017C20CEC00FD49C1 /* music-1.mp3 in Resources */,
 				783654A4180C5ED100AA9432 /* TextureAtlas7.pvr.ccz in Resources */,
+				78AE31AB183E01A100E148E5 /* TextureAtlas3.plist in Resources */,
 				783E896217C20CEC00FD49C1 /* music-2.mp3 in Resources */,
+				78AE31B2183E01A100E148E5 /* TextureAtlas6.pvr.ccz in Resources */,
 				783E896417C20CEC00FD49C1 /* berry_count_ind_a.mp3 in Resources */,
 				78365493180C5ED100AA9432 /* TextureAtlas12.plist in Resources */,
 				7836549E180C5ED100AA9432 /* TextureAtlas4.pvr.ccz in Resources */,
 				783654AB180C5ED100AA9432 /* wep_1@2x.png in Resources */,
 				783654B1180C5ED100AA9432 /* wep_7@2x.png in Resources */,
+				78AE31C3183E01A100E148E5 /* wep_9@2x.png in Resources */,
+				78AE31A1183E01A100E148E5 /* TextureAtlas16.plist in Resources */,
 				783E896517C20CEC00FD49C1 /* berry_count_ind_b.mp3 in Resources */,
 				783E896617C20CEC00FD49C1 /* berry_count_ind_c.mp3 in Resources */,
+				78AE3193183E01A100E148E5 /* TextureAtlas1.plist in Resources */,
 				783654AE180C5ED100AA9432 /* wep_4@2x.png in Resources */,
 				783E896717C20CEC00FD49C1 /* berry_count_ind_d.mp3 in Resources */,
+				78AE3192183E01A100E148E5 /* splash_logo_tfl.png in Resources */,
+				78AE31A8183E01A100E148E5 /* TextureAtlas19.pvr.gz in Resources */,
 				783E896817C20CEC00FD49C1 /* bird-blow.mp3 in Resources */,
 				783E896A17C20CEC00FD49C1 /* bomb-fuse.mp3 in Resources */,
+				78AE31A3183E01A100E148E5 /* TextureAtlas17.plist in Resources */,
 				787AD78B1810037900738DE3 /* TextureAtlas15.plist in Resources */,
 				783E896C17C20CEC00FD49C1 /* bonus-gong.mp3 in Resources */,
 				783E896E17C20CEC00FD49C1 /* combo-1.mp3 in Resources */,
+				78AE31A7183E01A100E148E5 /* TextureAtlas19.plist in Resources */,
 				783E897017C20CEC00FD49C1 /* combo-2.mp3 in Resources */,
+				78AE31B0183E01A100E148E5 /* TextureAtlas5.pvr.ccz in Resources */,
 				783E897217C20CEC00FD49C1 /* combo-3.mp3 in Resources */,
+				78AE31B1183E01A100E148E5 /* TextureAtlas6.plist in Resources */,
 				783E897417C20CEC00FD49C1 /* combo-4.mp3 in Resources */,
 				7836548D180C5ED100AA9432 /* TextureAtlas1.plist in Resources */,
 				783E897617C20CEC00FD49C1 /* combo-5.mp3 in Resources */,
+				78AE31A9183E01A100E148E5 /* TextureAtlas2.plist in Resources */,
 				78D358AE182A69BD001450F3 /* splash_logo_abs.png in Resources */,
+				78AE31C6183E0B4200E148E5 /* Icon-52-ios6.png in Resources */,
 				783E897817C20CEC00FD49C1 /* combo-6.mp3 in Resources */,
 				783654A1180C5ED100AA9432 /* TextureAtlas6.plist in Resources */,
 				783E897A17C20CEC00FD49C1 /* combo-7.mp3 in Resources */,
@@ -2047,6 +2273,7 @@
 				783E897C17C20CEC00FD49C1 /* combo-8.mp3 in Resources */,
 				785B4F321806F39F008B444E /* Media.xcassets in Resources */,
 				78397AE41807029200C999E7 /* Icon-80-ios7.png in Resources */,
+				78AE3194183E01A100E148E5 /* TextureAtlas1.pvr.ccz in Resources */,
 				7836549F180C5ED100AA9432 /* TextureAtlas5.plist in Resources */,
 				783E897E17C20CEC00FD49C1 /* combo-blitz-backing-end.mp3 in Resources */,
 				783654B3180C5ED100AA9432 /* wep_9@2x.png in Resources */,
@@ -2055,6 +2282,8 @@
 				7836548E180C5ED100AA9432 /* TextureAtlas1.pvr.ccz in Resources */,
 				78365494180C5ED100AA9432 /* TextureAtlas12.pvr.ccz in Resources */,
 				783E898217C20CEC00FD49C1 /* combo-blitz-backing.mp3 in Resources */,
+				78AE3195183E01A100E148E5 /* TextureAtlas10.plist in Resources */,
+				78AE31A4183E01A100E148E5 /* TextureAtlas17.pvr.ccz in Resources */,
 				783E898417C20CEC00FD49C1 /* critical.mp3 in Resources */,
 				78D358991821670D001450F3 /* timer.wav in Resources */,
 				783E898617C20CEC00FD49C1 /* equip-new-sword.mp3 in Resources */,
@@ -2066,16 +2295,23 @@
 				783E898C17C20CEC00FD49C1 /* hit.mp3 in Resources */,
 				783E898E17C20CEC00FD49C1 /* lose_life.mp3 in Resources */,
 				783E899017C20CEC00FD49C1 /* swoosh.mp3 in Resources */,
+				78AE3197183E01A100E148E5 /* TextureAtlas11.plist in Resources */,
+				78AE318F183E01A100E148E5 /* more_games_list@2x.png in Resources */,
 				783654B0180C5ED100AA9432 /* wep_6@2x.png in Resources */,
 				78365497180C5ED100AA9432 /* TextureAtlas14.plist in Resources */,
+				78AE31B6183E01A100E148E5 /* TextureAtlas8.pvr.ccz in Resources */,
+				78AE319A183E01A100E148E5 /* TextureAtlas12.pvr.ccz in Resources */,
 				78365499180C5ED100AA9432 /* TextureAtlas2.plist in Resources */,
+				78AE31C0183E01A100E148E5 /* wep_6@2x.png in Resources */,
 				78D358A7182A3DDD001450F3 /* TextureAtlas16.plist in Resources */,
 				78791F581832711B00821057 /* TextureAtlas18.plist in Resources */,
 				78397AE21807029200C999E7 /* Icon-58-ios7.png in Resources */,
 				783E899217C20CEC00FD49C1 /* tap.wav in Resources */,
+				78AE31BB183E01A100E148E5 /* wep_1@2x.png in Resources */,
 				783E899317C20CEC00FD49C1 /* throw-bird.mp3 in Resources */,
 				783E899517C20CEC00FD49C1 /* throw-bomb.mp3 in Resources */,
 				7836548A180C5ED100AA9432 /* about_scroll_fill@2x.png in Resources */,
+				78AE31B8183E01A100E148E5 /* TextureAtlas9.pvr.ccz in Resources */,
 				783654A0180C5ED100AA9432 /* TextureAtlas5.pvr.ccz in Resources */,
 				78397ACE1807014A00C999E7 /* Icon-114-ios6.png in Resources */,
 				783654A8180C5ED100AA9432 /* TextureAtlas9.pvr.ccz in Resources */,

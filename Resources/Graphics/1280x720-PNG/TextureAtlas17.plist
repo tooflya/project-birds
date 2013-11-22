@@ -7,15 +7,15 @@
             <key>board_migalka@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{720,1280}}</string>
+                <string>{{2,2},{1920,1080}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{720,1280}}</string>
+                <string>{{0,0},{1920,1080}}</string>
                 <key>sourceSize</key>
-                <string>{720,1280}</string>
+                <string>{1920,1080}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -25,9 +25,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas17.png</string>
             <key>size</key>
-            <string>{724,1284}</string>
+            <string>{1924,1084}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5ca6c466b12bb16e90532411e294fd9a:6dfc214f8e4d10d71f5c2217489f7f19:e5546a54826da59986dd7b41ea757cc3$</string>
+            <string>$TexturePacker:SmartUpdate:a9d2eebdff671065726e2b0a9b2386f1:4ad15aa3721cfb040492c8c841bed0d5:e5546a54826da59986dd7b41ea757cc3$</string>
             <key>textureFileName</key>
             <string>TextureAtlas17.png</string>
         </dict>

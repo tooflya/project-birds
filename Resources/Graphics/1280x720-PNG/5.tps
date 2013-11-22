@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.2.0</string>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -26,8 +26,6 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
         <false/>
@@ -191,10 +189,10 @@
             <filename>../../Graphics Sources/shop_money_bg@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
             <filename>../../Graphics Sources/shop_panel_textbox@2x.png</filename>
-            <filename>../../Graphics Sources/shop_panel@2x.png</filename>
             <filename>../../Graphics Sources/popup_key_ico@2x.png</filename>
             <filename>../../Graphics Sources/popup_glife_pic_fall@2x.png</filename>
             <filename>../../Graphics Sources/popup_key_ico_fall@2x.png</filename>
+            <filename>../../Graphics Sources/Full HD/shop_panel@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

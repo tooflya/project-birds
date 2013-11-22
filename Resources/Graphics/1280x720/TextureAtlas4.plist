@@ -108,19 +108,6 @@
                 <key>sourceSize</key>
                 <string>{648,988}</string>
             </dict>
-            <key>popup_btn@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1692,236},{265,147}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{265,147}}</string>
-                <key>sourceSize</key>
-                <string>{265,147}</string>
-            </dict>
             <key>popup_buy_coins_btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
@@ -251,6 +238,19 @@
                 <key>sourceSize</key>
                 <string>{169,182}</string>
             </dict>
+            <key>simple-popup-btn@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1692,236},{265,147}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{265,147}}</string>
+                <key>sourceSize</key>
+                <string>{265,147}</string>
+            </dict>
             <key>twitter_icon@2x.png</key>
             <dict>
                 <key>frame</key>
@@ -287,7 +287,7 @@
             <key>size</key>
             <string>{2017,2023}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fdbf431f5d7570f8c58c091dd038f3ac:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:45396e87e02e313c0518cc89764f20b7:e6c6f4e2035c18c8032cf3c31ebcd85b:0311bb16bc6349ec94201f930c4694e7$</string>
             <key>textureFileName</key>
             <string>TextureAtlas4.pvr.ccz</string>
         </dict>

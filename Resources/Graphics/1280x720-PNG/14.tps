@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.2.0</string>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -26,8 +26,6 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
         <false/>
@@ -72,7 +70,7 @@
             <key>width</key>
             <int>2048</int>
             <key>height</key>
-            <int>2048</int>
+            <int>4096</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -173,7 +171,6 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/freeze_bg.png</filename>
             <filename>../../Graphics Sources/rain_circle.png</filename>
             <filename>../../Graphics Sources/rain.png</filename>
             <filename>../../Graphics Sources/gun.png</filename>
@@ -183,6 +180,7 @@
             <filename>../../Graphics Sources/box_laser_red@2x.png</filename>
             <filename>../../Graphics Sources/box@2x.png</filename>
             <filename>../../Graphics Sources/explosion-zombi@2x.png</filename>
+            <filename>../../Graphics Sources/Full HD/freeze_bg.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

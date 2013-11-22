@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.2.0</string>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -26,8 +26,6 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
         <false/>
@@ -175,8 +173,6 @@
         <array>
             <filename>../../Graphics Sources/bg_light_1.png</filename>
             <filename>../../Graphics Sources/bg_light_main@2x.png</filename>
-            <filename>../../Graphics Sources/bonus-animation@2x.png</filename>
-            <filename>../../Graphics Sources/game_panel@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_game_life@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_goldlife@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_pause@2x.png</filename>
@@ -197,6 +193,9 @@
             <filename>../../Graphics Sources/colors_vertical_line@2x.png</filename>
             <filename>../../Graphics Sources/move_circle@2x.png</filename>
             <filename>../../Graphics Sources/game_panel_shoot_count@2x.png</filename>
+            <filename>../../Graphics Sources/shop_panel_textbox@2x.png</filename>
+            <filename>../../Graphics Sources/popup_key_ico@2x.png</filename>
+            <filename>../../Graphics Sources/Full HD/game_panel@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

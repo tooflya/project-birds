@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.2.0</string>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -26,8 +26,6 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
         <false/>
@@ -173,11 +171,11 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/preload-lvl-bg@2x.png</filename>
             <filename>../../Graphics Sources/preload-lvl-bird@2x.png</filename>
             <filename>../../Graphics Sources/preload-lvl-wave@2x.png</filename>
             <filename>../../Graphics Sources/popup_glife_pic@2x.png</filename>
             <filename>../../Graphics Sources/popup_glife_btn@2x.png</filename>
+            <filename>../../Graphics Sources/Full HD/preload-lvl-bg@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

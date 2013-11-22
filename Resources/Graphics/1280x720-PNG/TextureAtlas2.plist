@@ -7,7 +7,7 @@
             <key>about_scroll_border@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1004,1284},{678,33}}</string>
+                <string>{{309,2932},{678,33}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>bg_detail_choose_bird@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1348,1638},{310,276}}</string>
+                <string>{{1092,2166},{310,276}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>bg_detail_lamp@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{604,1321},{254,372}}</string>
+                <string>{{995,2568},{254,372}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>bg_detail_settings@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1684,1284},{329,256}}</string>
+                <string>{{1251,2564},{329,256}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>bg_detail_stripe@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1660,1542},{383,207}}</string>
+                <string>{{1404,2355},{383,207}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>btn_sfx_mfx_ach_lead_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1321},{600,400}}</string>
+                <string>{{490,2166},{600,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>btn_sfx_mfx_ach_lead_sprite_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1660,1751},{301,200}}</string>
+                <string>{{1582,2564},{301,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>btn_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{860,1321},{486,486}}</string>
+                <string>{{2,2166},{486,486}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>choose_box_navi_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1963,1751},{48,96}}</string>
+                <string>{{1092,2444},{48,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>lock@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1963,1849},{64,64}}</string>
+                <string>{{490,2568},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,20 +137,20 @@
             <key>main_menu_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1004,2},{1000,1280}}</string>
+                <string>{{2,1084},{1920,1080}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1000,1280}}</string>
+                <string>{{0,0},{1920,1080}}</string>
                 <key>sourceSize</key>
-                <string>{1000,1280}</string>
+                <string>{1920,1080}</string>
             </dict>
             <key>main_menu_btn_bg_play@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1348,1319},{305,317}}</string>
+                <string>{{2,2654},{305,317}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>play_btn_animation@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1723},{684,276}}</string>
+                <string>{{309,2654},{684,276}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,20 +176,20 @@
             <key>settings_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1000,1280}}</string>
+                <string>{{2,2},{1920,1080}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{1000,1280}}</string>
+                <string>{{0,0},{1920,1080}}</string>
                 <key>sourceSize</key>
-                <string>{1000,1280}</string>
+                <string>{1920,1080}</string>
             </dict>
             <key>settings_btn_big@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{688,1809},{435,187}}</string>
+                <string>{{1404,2166},{435,187}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>unlock_mode_effect@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1284},{1000,35}}</string>
+                <string>{{2,2973},{1000,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>vk@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1125,1809},{169,182}}</string>
+                <string>{{1251,2822},{169,182}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -233,9 +233,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas2.png</string>
             <key>size</key>
-            <string>{2045,2001}</string>
+            <string>{1924,3010}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cd8751197e35bbebe7239790f2e007bf:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:30f49092653ad1fa953e234acab7dcb9:9176288a1f03633b5900ee1fe5363815:5057db23c659907ba80a0b2c0ba2a8aa$</string>
             <key>textureFileName</key>
             <string>TextureAtlas2.png</string>
         </dict>
