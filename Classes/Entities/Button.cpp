@@ -26,7 +26,7 @@ void Button::constructor(const int pButtonID, ButtonReceiver* pSender)
     this->mSender = pSender;
 
     this->mID = pButtonID;
-
+    
     this->mText = NULL;
     this->mIsModal = false;
 
@@ -111,7 +111,13 @@ void Button::setText(Textes pParams)
     if(this->mText != NULL)
     {
         this->mText->removeFromParentAndCleanup(true);
-        this->mText->mShadow->removeFromParentAndCleanup(true);
+        
+        if(this->mText->mShadow != NULL)
+        {
+            this->mText->mShadow->removeFromParentAndCleanup(true);
+        }
+        
+        this->mText = NULL;
     }
 
     CCNode* parent;
@@ -126,7 +132,7 @@ void Button::setText(Textes pParams)
     }
     
     this->mText = Text::create(pParams, parent);
-    this->mText->setCenterPosition(this->getCenterX(), this->getCenterY());
+    this->mText->setCenterPosition(this->getCenterX(), this->getCenterY()); // Some problem here;
 }
 
 void Button::setString(const char* pString)

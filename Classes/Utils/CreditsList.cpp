@@ -30,6 +30,8 @@ CreditsList::CreditsList(CCNode* pParent) :
 	mCompanyLogo(0),
 	mText()
     {
+        SpriteBatch::create("TextureAtlas5");
+        
         this->setListType(List::TYPE_VERTICAL);
 
         this->mText[0] = Text::create(Options::TEXT_CREDITS_STRING_1, this);

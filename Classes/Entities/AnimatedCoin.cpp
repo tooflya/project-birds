@@ -59,6 +59,11 @@ void AnimatedCoin::onCreate()
     this->mImpulsePower = Utils::coord(Utils::randomf(200.0f, 800.0f));
     this->mSideImpulse = Utils::coord(Utils::randomf(-200.0f, 500.0f));
     this->mRotateImpulse = Utils::randomf(-160.0, 160.0);
+    
+    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+    {
+        this->mSideImpulse *= 2.0;
+    }
 
     this->setScale(0);
     this->runAction(CCScaleTo::create(1.0, this->mScaleFactor));

@@ -61,10 +61,10 @@ void Splash::show()
 
     Entity* part;
     part = (Entity*) this->mParts->objectAtIndex(0);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT - part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT - part->getHeightScaled() / 2 - Options::CAMERA_CENTER_Y)));
     
     part = (Entity*) this->mParts->objectAtIndex(1);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, part->getHeightScaled() / 2 - Options::CAMERA_CENTER_Y)));
                                               
     this->mScaleLayer->setScale(3.0);
     
@@ -81,10 +81,10 @@ void Splash::hide()
 {
     Entity* part;
     part = (Entity*) this->mParts->objectAtIndex(0);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT + part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, Options::CAMERA_HEIGHT + part->getHeightScaled() / 2 - Options::CAMERA_CENTER_Y)));
     
     part = (Entity*) this->mParts->objectAtIndex(1);
-    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, -part->getContentSize().height / 2 - Options::CAMERA_CENTER_Y)));
+    part->runAction(CCMoveTo::create(0.2, ccp(part->getPosition().x, -part->getHeightScaled() / 2 - Options::CAMERA_CENTER_Y)));
     
     this->mScaleLayer->runAction(CCScaleTo::create(0.1, 0.0));
     

@@ -19,6 +19,7 @@
 		41CD6C9415BF7793005E6F29 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8C15BF7793005E6F29 /* OpenAL.framework */; };
 		41CD6C9515BF7793005E6F29 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8D15BF7793005E6F29 /* OpenGL.framework */; };
 		41CD6C9615BF7793005E6F29 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD6C8E15BF7793005E6F29 /* QuartzCore.framework */; };
+		780A2C8B183CE16B007E62B3 /* preloader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 780A2C8A183CE16B007E62B3 /* preloader@2x.png */; };
 		7814319718369F8E00784217 /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7814319618369F8E00784217 /* libcocos2dx.a */; };
 		7814329A183A3B0E00784217 /* about_scroll_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78143251183A3B0E00784217 /* about_scroll_fill@2x.png */; };
 		7814329B183A3B0E00784217 /* about_scroll_fill_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78143252183A3B0E00784217 /* about_scroll_fill_small@2x.png */; };
@@ -272,6 +273,7 @@
 		41CD6C8C15BF7793005E6F29 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		41CD6C8D15BF7793005E6F29 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		41CD6C8E15BF7793005E6F29 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		780A2C8A183CE16B007E62B3 /* preloader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preloader@2x.png"; sourceTree = "<group>"; };
 		7814319018369E1C00784217 /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../cocos2dx/proj.mac/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		7814319618369F8E00784217 /* libcocos2dx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcocos2dx.a; sourceTree = "<group>"; };
 		78143251183A3B0E00784217 /* about_scroll_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_scroll_fill@2x.png"; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 		7814323D183A3B0D00784217 /* 1280x720-PNG */ = {
 			isa = PBXGroup;
 			children = (
+				780A2C8A183CE16B007E62B3 /* preloader@2x.png */,
 				78143251183A3B0E00784217 /* about_scroll_fill@2x.png */,
 				78143252183A3B0E00784217 /* about_scroll_fill_small@2x.png */,
 				78143253183A3B0E00784217 /* more_games_list@2x.png */,
@@ -1288,6 +1291,7 @@
 				7873616417CDF54E006C1C9B /* bird-blow.mp3 in Resources */,
 				7873616617CDF54E006C1C9B /* bomb-fuse.mp3 in Resources */,
 				78D35A74182D2638001450F3 /* miss.wav in Resources */,
+				780A2C8B183CE16B007E62B3 /* preloader@2x.png in Resources */,
 				7873616817CDF54E006C1C9B /* bonus-gong.mp3 in Resources */,
 				781432C2183A3B0E00784217 /* TextureAtlas8.png in Resources */,
 				7873616A17CDF54E006C1C9B /* combo-1.mp3 in Resources */,

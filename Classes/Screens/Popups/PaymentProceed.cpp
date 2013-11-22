@@ -197,12 +197,14 @@ void PaymentProceed::onPostShow()
             break;
     }
     
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     soomla::CCSoomlaError *soomlaError = NULL;
     soomla::CCStoreInventory::sharedStoreInventory()->buyItem(id, &soomlaError);
     if (soomlaError)
     {
         soomla::CCStoreUtils::logException("In-App", soomlaError);
     }
+    #endif
 }
 
 void PaymentProceed::onHide()

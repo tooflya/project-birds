@@ -191,7 +191,7 @@
             <filename>../../Graphics Sources/popup_key_btn1@2x.png</filename>
             <filename>../../Graphics Sources/popup_key_btn2@2x.png</filename>
             <filename>../../Graphics Sources/popup_key_pic@2x.png</filename>
-            <filename>../../Graphics Sources/simple-popup-btn@2x.png</filename>
+            <filename>../../Graphics Sources/popup_btn@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

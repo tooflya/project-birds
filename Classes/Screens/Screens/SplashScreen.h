@@ -29,8 +29,6 @@ class SplashScreen : public Screen
     
         Entity* mLogos[2];
     
-        Screen* mNextScreen;
-    
         // ===========================================================
         // Constructors
         // ===========================================================

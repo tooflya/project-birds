@@ -5,6 +5,8 @@
 
 #include "Loader.h"
 #include "Shop.h"
+#include "Menu.h"
+#include "Episodes.h"
 
 // ===========================================================
 // Inner Classes
@@ -204,13 +206,19 @@ Mode::Mode() :
 		this->mIcons[1]->setRotation(-45);
 		this->mIcons[1]->setScale(0.75);
 		this->mIcons[1]->animate(0.05);
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Mode* Mode::create()
 {
     Mode* screen = new Mode();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -251,7 +259,7 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                         Loader::T = 1;
                         Loader::TYPE = -1;
 
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                        AppDelegate::screens->set(Loader::create());
                     }
 
                 break;
@@ -273,7 +281,7 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                         Loader::T = 2;
                         Loader::TYPE = -1;
                         
-                        AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                        AppDelegate::screens->set(Loader::create());
                     }
 
                 break;
@@ -283,7 +291,7 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                     Loader::T = 3;
                     Loader::TYPE = -1;
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_EPISODES);
+                    AppDelegate::screens->set(Episodes::create());
 
                 break;
                 case Options::BUTTONS_ID_MODE_HELP:
@@ -305,7 +313,7 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
 
                     Shop::ACTION = 1;
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                    AppDelegate::screens->set(Shop::create());
 
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_SILVER_COINS:
@@ -313,21 +321,21 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                     
                     Shop::ACTION = 10;
                     
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                    AppDelegate::screens->set(Shop::create());
                     
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_LIVES:
                     
                     Shop::ACTION = 11;
                     
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                    AppDelegate::screens->set(Shop::create());
                     
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_KEYS:
                     
                     Shop::ACTION = 12;
                     
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                    AppDelegate::screens->set(Shop::create());
                     
                 break;
 
@@ -352,7 +360,8 @@ void Mode::unlock()
     this->mUnlockStripe->setOpacity(255);
     this->mUnlockStripe->setScale(1.0);
     
-    this->mUnlockStripe->runAction(CCScaleTo::create(1.0, 1.0, 10.0));
+    this->mUnlockStripe->setScaleX(Options::CAMERA_WIDTH / this->mUnlockStripe->getWidth());
+    this->mUnlockStripe->runAction(CCScaleTo::create(1.0, Options::CAMERA_WIDTH / this->mUnlockStripe->getWidth(), 10.0));
     this->mUnlockStripe->runAction(CCFadeTo::create(2.0, 0));
     
     this->mLockes[UNLOCK_ACTION]->runAction(CCScaleTo::create(1.0, 3.0));
@@ -481,8 +490,7 @@ void Mode::keyBackClicked(bool pSound)
         this->mModesUnlockPopup->hide();
     }
     else
-    {
-       AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+    {AppDelegate::screens->set(Menu::create());
     }
 }
 

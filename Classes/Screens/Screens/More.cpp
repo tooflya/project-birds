@@ -3,6 +3,8 @@
 
 #include "More.h"
 
+#include "Settings.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -35,13 +37,20 @@ More::More() :
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
 		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 More* More::create()
 {
     More* screen = new More();
     screen->autorelease();
-    screen->retain();
+    //screen->retain();
     
     return screen;
 }
@@ -91,7 +100,7 @@ void More::keyBackClicked(bool pSound)
 {
     Screen::keyBackClicked(pSound);
     
-    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+    AppDelegate::screens->set(Settings::create());
 }
 
 #endif

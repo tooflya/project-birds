@@ -109,7 +109,7 @@ class Bird : public ImpulseEntity
         static const int TYPE_PIRATE = 14;
         static const int TYPE_NINJA = 16;
 
-        static ccColor3B COLORS[COUNT];
+        static ccColor3B COLORS[9];
 
         // ===========================================================
         // Fields

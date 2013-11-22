@@ -13,8 +13,6 @@
 // Constants
 // ===========================================================
 
-Classic* Classic::m_Instance = NULL;
-
 // ===========================================================
 // Fields
 // ===========================================================
@@ -181,8 +179,6 @@ Classic::Classic() :
         this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
         this->mPirateHats = EntityManager::create(10, ImpulseEntity::create("bonus_pirat_hat@2x.png"), spriteBatch8);
         this->mMexicanoHats = EntityManager::create(10, ImpulseEntity::create("bonus_amigo_hat@2x.png"), spriteBatch8);
-        
-        this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
 
         this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
         this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
@@ -191,7 +187,7 @@ Classic::Classic() :
         
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         
-        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID && CC_TARGET_PLATFORM != CC_PLATFORM_MAC
         if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
         {
             this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
@@ -296,13 +292,17 @@ Classic::Classic() :
         else
         {
         }
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
     }
 
 Classic* Classic::create()
 {
     Classic* screen = new Classic();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -400,7 +400,7 @@ void Classic::throwConfetti()
 
     for(int i = 0; i < 10; i++)
     {
-        for(int j = -10; j <= 10; j++)
+        for(int j = -(Options::CAMERA_CENTER_X / Utils::coord(40)); j <= (Options::CAMERA_CENTER_X / Utils::coord(40)); j++)
         {
             x = Utils::coord(Utils::randomf(40.0, 40.0)) * j;
 

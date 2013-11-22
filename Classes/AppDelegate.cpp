@@ -522,6 +522,21 @@ bool AppDelegate::applicationDidFinishLaunching()
     soomla::CCStoreController::createShared(assets, storeParams);
     #endif
     
+    CCSize designResolutionSize;
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    if(screenSize.width >= 2048)
+    {
+        designResolutionSize = CCSizeMake(1920, 1280);
+    }
+    else
+    {
+        designResolutionSize = CCSizeMake(720, 1280);
+    }
+    #else
+    designResolutionSize = CCSizeMake(720, 1280);
+    #endif
+
 	director->setOpenGLView(EGLView);
 	director->setContentScaleFactor(designResolutionSize.height / screenSize.height);
     
@@ -540,22 +555,30 @@ bool AppDelegate::applicationDidFinishLaunching()
     vector <string> searchPath;
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-
     {
-        searchPath.push_back(resources1280x720.directory);
-        
-        if(Options::CAMERA_HEIGHT == 960)
+        if(Options::CAMERA_WIDTH >= 2048)
         {
-            Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
+            searchPath.push_back(resources2048x1536.directory);
             
-            if(AppDelegate::IS_IPOD)
-            {
-                Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPOD4;
-            }
+            Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPAD_RETINA;
         }
         else
         {
-            Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE5;
+            searchPath.push_back(resources1280x720.directory);
+            
+            if(Options::CAMERA_HEIGHT == 960)
+            {
+                Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
+            
+                if(AppDelegate::IS_IPOD)
+                {
+                    Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPOD4;
+                }
+            }
+            else
+            {
+                Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE5;
+            }
         }
     }
     
@@ -631,6 +654,18 @@ void AppDelegate::applicationWillEnterForeground()
     {
         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
     }
+}
+
+//===
+
+void AppDelegate::clearCache()
+{
+    //CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    
+    CCDirector::sharedDirector()->purgeCachedData();
+    
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 #endif

@@ -3,6 +3,8 @@
 
 #include "Credits.h"
 
+#include "Settings.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -53,13 +55,19 @@ Credits::Credits() :
 		this->mListBorders[1]->setScaleY(-1);
     
 		this->mList = CreditsList::create(this);
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Credits* Credits::create()
 {
     Credits* screen = new Credits();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -112,7 +120,7 @@ void Credits::keyBackClicked(bool pSound)
 {
     Screen::keyBackClicked(pSound);
     
-    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+    AppDelegate::screens->set(Settings::create());
 }
 
 #endif

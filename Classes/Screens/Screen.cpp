@@ -34,11 +34,6 @@
 Screen::~Screen()
 {
     this->removeAllChildrenWithCleanup(true);
-    
-    CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    
-    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
 }
 
 Screen::Screen()
@@ -88,11 +83,16 @@ void Screen::onExit()
     this->stopAllActions();
     this->unscheduleAllSelectors();
 
-    this->release();
+    //this->release();
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     CCDirector::sharedDirector()->getKeypadDispatcher()->removeDelegate(this);
     #endif
+}
+
+void Screen::onEnterTransitionDidFinish()
+{
+    CCScene::onEnterTransitionDidFinish();
 }
 
 void Screen::visit()

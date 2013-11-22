@@ -5,6 +5,11 @@
 
 #include "Loading.h"
 #include "Shop.h"
+#include "Menu.h"
+#include "Mode.h"
+#include "Classic.h"
+#include "Arcade.h"
+#include "Progresses.h"
 
 // ===========================================================
 // Inner Classes
@@ -149,13 +154,17 @@ Loader::Loader() :
 		this->mLoadingProgress = false;
     
 		this->setRegisterAsTouchable(true);
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
 	}
 
 Loader* Loader::create()
 {
     Loader* screen = new Loader();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -239,34 +248,34 @@ void Loader::onTouch(CCTouch* touch, CCEvent* event)
         {
             case 0:
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_CLASSIC_GAME);
+                AppDelegate::screens->set(Classic::create());
                 
             break;
             case 1:
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_ARCADE_GAME);
+                AppDelegate::screens->set(Arcade::create());
                 
             break;
             case 2:
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_PROGRESS_GAME);
+                AppDelegate::screens->set(Progresses::create());
                 
             break;
             case 3:
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+                AppDelegate::screens->set(Menu::create());
                 
             break;
             case 4:
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                AppDelegate::screens->set(Mode::create());
                 
             break;
             case 5:
 
                 //Shop::ACTION = 0;
-
-                AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                
+                AppDelegate::screens->set(Shop::create());
                 
             break;
         }

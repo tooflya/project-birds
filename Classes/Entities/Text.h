@@ -22,6 +22,8 @@ class Text : public CCLabelTTF
         // Fields
         // ===========================================================
     
+        bool mIsAnyAnimationRunning;
+    
         bool mType1AnimationRunning;
         bool mType2AnimationRunning;
     

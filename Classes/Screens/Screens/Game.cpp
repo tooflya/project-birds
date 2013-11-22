@@ -95,7 +95,6 @@ Game::~Game()
     CC_SAFE_RELEASE(this->mRains);
     CC_SAFE_RELEASE(this->mRainsCircles);
     CC_SAFE_RELEASE(this->mRobotParts);
-    CC_SAFE_RELEASE(this->mBonusCircles);
     CC_SAFE_RELEASE(this->mKeys);
     CC_SAFE_RELEASE(this->mKeysLights);
     
@@ -161,7 +160,6 @@ Game::Game() :
 	e4(),
 	mPirateBox(0),
 	mBackgroundLights(),
-	mBonusCircles(0),
 	mEventPanel(0),
 	mPauseButton(0),
 	mGameStartText(0),
@@ -297,7 +295,6 @@ Game* Game::create()
 {
     Game* screen = new Game();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -491,6 +488,11 @@ void Game::onBonus(int pId, float pX, float pY)
     
     this->mBonusAnimationTimeElapsed = 0;
     
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    this->e1->setScale(1.185);
+    this->e5->setScale(1.185);
+    #endif
+    
     switch(pId)
     {
         case 0:
@@ -502,7 +504,13 @@ void Game::onBonus(int pId, float pX, float pY)
             
             this->e1->setScale(2);
             this->e1->setOpacity(0);
+            
+            #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+            this->e1->runAction(CCScaleTo::create(0.5, 1.0, 1.185));
+            #else
             this->e1->runAction(CCScaleTo::create(0.5, 1.0));
+            #endif
+            
             this->e1->runAction(CCFadeTo::create(0.5, 255.0));
             
             this->mBonusAnimationTime = 6.0;
@@ -1335,16 +1343,16 @@ void Game::update(float pDeltaTime)
                             y = -100;
                             break;
                     }
-                    Entity* circle = (Entity*) this->mBonusCircles->create();
+                    /*Entity* circle = (Entity*) this->mBonusCircles->create();
                     circle->setCenterPosition(x, y);
                     circle->setRotation(0.0);
                     circle->setScale(0.0);
                     circle->setOpacity(255.0);
-                    //circle->setColor(ccc3(Utils::randomf(0, 255.0), Utils::randomf(0, 255.0), Utils::randomf(0, 255.0)));
+                    //circle->setColor(ccc3(Utils::randomf(0, 255.0), Utils::randomf(0, 255.0), Utils::randomf(0, 255.0)));*/
                 }
             }
             
-            for(int i = 0; i < this->mBonusCircles->getCount(); i++)
+            /*for(int i = 0; i < this->mBonusCircles->getCount(); i++)
             {this->mBonusAnimationFrameTime=0.4;
                 Entity* circle = static_cast<Entity*>(this->mBonusCircles->objectAtIndex(i));
                 
@@ -1360,7 +1368,7 @@ void Game::update(float pDeltaTime)
                 {
                     circle->destroy();
                 }
-            }
+            }*/
         }
     }
 }

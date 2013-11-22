@@ -50,7 +50,10 @@ List::List(float pWidth, float pHeight, float pMaxWidth, float pMaxHeight, float
 
 		this->mParent->addChild(this);
     
-		this->mListSroll = Entity::create(pListTextureFileName, this);
+        int size = -1;
+        
+        if(strcmp(pListTextureFileName, "about_scroll_fill_small@2x.png")) size = 1024; else size = 512;
+		this->mListSroll = Entity::create(pListTextureFileName, 0, 0, size, size, this);
 		this->mListSroll->create()->setRepeatTexture(true);
 
 		this->mWidth = pWidth;

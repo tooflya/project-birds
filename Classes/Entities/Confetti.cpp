@@ -11,11 +11,11 @@
 // Constants
 // ===========================================================
 
-ccColor3B Confetti::COLORS[3] =
+ccColor3B Confetti::CONFETTI_COLORS[3] =
 {
-    ccc3(255.0, 0.0, 0.0),
-    ccc3(0.0, 255.0, 0.0),
-    ccc3(0.0, 0.0, 255.0)
+    ccRED,
+    ccGREEN,
+    ccBLUE
 };
 
 // ===========================================================
@@ -37,6 +37,8 @@ Confetti::Confetti() :
 	mAppear(0)
     {
         this->mAppear = false;
+        
+        this->setColor(Confetti::CONFETTI_COLORS[Utils::random(0, 2)]);
     }
 
 Confetti* Confetti::create()
@@ -55,8 +57,6 @@ void Confetti::onCreate()
 {
     Entity::onCreate();
     
-    this->setColor(Confetti::COLORS[Utils::random(0, 2)]);
-
     this->setOpacity(255.0);
     this->setRotation(0.0);
     

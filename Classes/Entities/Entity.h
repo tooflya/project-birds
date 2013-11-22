@@ -111,6 +111,7 @@ class Entity : public CCSprite, public Touchable
         Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
         Entity(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
         Entity(EntityStructure pStructure, CCNode* pParent);
+        Entity(const char* pszFileName, int pX, int pY, float pWidth, float pHeight, CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -173,6 +174,7 @@ class Entity : public CCSprite, public Touchable
         static Entity* create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount);
         static Entity* create(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, CCNode* pParent);
         static Entity* create(EntityStructure pStructure, CCNode* pParent);
+        static Entity* create(const char* pszFileName, int pX, int pY, float pWidth, float pHeight, CCNode* pParent);
 
         ~Entity();
 

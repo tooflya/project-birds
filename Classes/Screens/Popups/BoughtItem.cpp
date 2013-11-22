@@ -58,7 +58,7 @@ BoughtItem::BoughtItem(CCNode* pParent) :
 		this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this);
 		this->mIcon->setZOrder(2);
     
-		this->mConfetti = EntityManager::create(210, Confetti::create(), spriteBatch3);
+		this->mConfetti = EntityManager::create(600, Confetti::create(), spriteBatch3);
     
 		this->mShareButton = Button::create("share@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE, this);
 		this->mTwitterButton = Button::create("twitter_icon@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SHARE_TWITTER, this);
@@ -220,7 +220,7 @@ void BoughtItem::throwConfetti()
     
     for(int i = 0; i < 10; i++)
     {
-        for(int j = -10; j <= 10; j++)
+        for(int j = -(Options::CAMERA_CENTER_X / Utils::coord(40)); j <= (Options::CAMERA_CENTER_X / Utils::coord(40)); j++)
         {
             x = Utils::coord(Utils::randomf(40.0, 40.0)) * j;
             

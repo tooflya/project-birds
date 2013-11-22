@@ -328,7 +328,7 @@ Map::Map(CCNode* pParent) :
 		this->mParent->addChild(this->mSquare);
     
 		this->mStars = EntityManager::create(100, StarParticle2::create(), this->mBackground);
-		this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
+		this->mConfetti = EntityManager::create(600, Confetti::create(), spriteBatch2);
 		this->mCoins = EntityManager::create(5, Entity::create("coins@2x.png", 5, 4), spriteBatch3);
 		this->mSilverCoins = EntityManager::create(5, Entity::create("coins_silver@2x.png", 5, 4), spriteBatch3);
 		this->mAnimatedCoins = EntityManager::create(100, AnimatedCoin::create("coins@2x.png", 1.5), spriteBatch3);
@@ -410,7 +410,7 @@ void Map::throwAnimation(float pX, float pY)
     
     for(int i = 0; i < 10; i++)
     {
-        for(int j = -10; j <= 10; j++)
+        for(int j = -(Options::CAMERA_CENTER_X / Utils::coord(40)); j <= (Options::CAMERA_CENTER_X / Utils::coord(40)); j++)
         {
             x = Utils::coord(Utils::randomf(40.0, 40.0)) * j;
             

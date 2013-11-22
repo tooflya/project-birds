@@ -29,8 +29,6 @@ class Button : public Entity
 
         ButtonReceiver* mSender;
     
-        Text* mText;
-    
         bool mIsModal;
 
         // ===========================================================
@@ -84,15 +82,17 @@ class Button : public Entity
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
+        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender);
+        static Button* create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
 
         // ===========================================================
         // Fields
         // ===========================================================
-
-        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
-        static Button* create(const char* pTextureFileName, int pHorizontalFramesCount, int mVerticalFramesCount, const int pButtonID, ButtonReceiver* pSender);
-        static Button* create(const EntityStructure pEntityStructure, CCNode* pParent, const int pButtonID, ButtonReceiver* pSender);
-       
+    
+        Text* mText;
+    
         // ===========================================================
         // Constructors
         // ===========================================================

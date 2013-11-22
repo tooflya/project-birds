@@ -3,6 +3,8 @@
 
 #include "Language.h"
 
+#include "Settings.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -135,13 +137,19 @@ Language::Language() :
 			this->mTextes[i - 2]->disableShadow();
 			this->mTextes[i - 2]->setCenterPosition(this->mNotAvailableBackgrounds[i - 2]->getCenterX(), this->mNotAvailableBackgrounds[i - 2]->getCenterY());
 		}
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Language* Language::create()
 {
     Language* screen = new Language();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -254,7 +262,8 @@ void Language::update(float pDeltaTime)
 
 void Language::onEnter()
 {
-    Screen::onEnter();}
+    Screen::onEnter();
+}
 
 void Language::onExit()
 {
@@ -265,7 +274,7 @@ void Language::keyBackClicked(bool pSound)
 {
     Screen::keyBackClicked(pSound);
     
-    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+    AppDelegate::screens->set(Settings::create());
 }
 
 #endif

@@ -130,6 +130,8 @@ class Screen : public CCScene, public Touchable, public ButtonReceiver, public C
         void onEnter();
         void onExit();
     
+        void onEnterTransitionDidFinish();
+    
         void visit();
 
         virtual void keyBackClicked();

@@ -5,6 +5,7 @@
 
 #include "Game.h"
 #include "Episodes.h"
+#include "Mode.h"
 
 // ===========================================================
 // Inner Classe
@@ -1072,9 +1073,10 @@ Levels::Levels() :
 		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
 		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(155), Utils::coord(138));
 		this->mBackgroundDecorations[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(63));
-		this->mBackgroundDecorations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(192));
+		this->mBackgroundDecorations[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT + Utils::coord(14));
 
 		this->mBackgroundDecorations[3]->setOpacity(50);
+        this->mBackgroundDecorations[3]->setAnchorPoint(ccp(0.5, 1.0));
     
 		/** Organization of level icons */
 
@@ -1149,17 +1151,21 @@ Levels::Levels() :
 		this->mGetLivesPopup = GetLives::create(this, true);
 		this->mUnlockLevelPopup = UnlockLevel::create(this);
 		this->mSurpriseLevelPopup = SurpriseLevel::create(this);
-
-		/** Experiments */
         
         this->mUnlockPanel = UnlockPanel::create(this);
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Levels* Levels::create()
 {
     Levels* screen = new Levels();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -1341,7 +1347,7 @@ void Levels::keyBackClicked(bool pSound)
     }
     else
     {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+        AppDelegate::screens->set(Mode::create());
     }
 }
 

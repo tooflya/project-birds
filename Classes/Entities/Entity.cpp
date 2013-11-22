@@ -10,20 +10,22 @@ Entity::~Entity()
 {
     free(this->mFramesCoordinatesX);
     free(this->mFramesCoordinatesY);
+    
+    CCLog(ccsf("DEALLOCING OF ENTITY with texture file name: %s", this->mTextureFileName));
 }
 
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)
 {
     CCSpriteFrame *pFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(pszFileName);
 
-    if(pFrame == NULL)
+    if(!pFrame)
     {
-        this->initWithFile(pszFileName);
+        pFrame = CCSpriteFrame::create(pszFileName, CCRectMake(0, 0, pWidth, pHeight));
+        
+        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(pFrame, pszFileName);
     }
-    else
-    {
-        this->initWithSpriteFrame(pFrame);
-    }
+    
+    this->initWithSpriteFrame(pFrame);
     
     if(pParent)
     {
@@ -32,11 +34,11 @@ void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, in
 
     this->mTextureFileName = pszFileName;
 
-    this->mWidth = pWidth >= 0 ? Utils::coord(pWidth) : (pFrame == NULL ? this->getTextureRect().size.width : pFrame->getRect().size.width);
-    this->mHeight = pHeight >= 0 ? Utils::coord(pHeight) : (pFrame == NULL ? this->getTextureRect().size.height : pFrame->getRect().size.height);
+    this->mWidth = pWidth >= 0 ? Utils::coord(pWidth) : (!pFrame ? this->getTextureRect().size.width : pFrame->getRect().size.width);
+    this->mHeight = pHeight >= 0 ? Utils::coord(pHeight) : (!pFrame ? this->getTextureRect().size.height : pFrame->getRect().size.height);
 
-    this->mPaddingX = (pFrame == NULL ? 0 : pFrame->getRect().origin.x) + Utils::coord(pX);
-    this->mPaddingY = (pFrame == NULL ? 0 : pFrame->getRect().origin.y) + Utils::coord(pY);
+    this->mPaddingX = (!pFrame ? 0 : pFrame->getRect().origin.x) + Utils::coord(pX);
+    this->mPaddingY = (!pFrame ? 0 : pFrame->getRect().origin.y) + Utils::coord(pY);
 
     this->mFrameWidth = this->mWidth / pHorizontalFramesCount;
     this->mFrameHeight = this->mHeight / pVerticalFramesCount;
@@ -383,6 +385,49 @@ Entity::Entity(EntityStructure pStructure, CCNode* pParent) :
 		this->constructor(pStructure.fileName, pStructure.horizontalFramesCount, pStructure.verticalFramesCount, pStructure.x, pStructure.y, pStructure.width, pStructure.height, pParent);
 	}
 
+Entity::Entity(const char* pszFileName, int pX, int pY, float pWidth, float pHeight, CCNode* pParent) :
+    mFramesCount(0),
+    mHorizontalFramesCount(0),
+    mVerticalFramesCount(0),
+    mCurrentFrameIndex(0),
+    mAnimationStartFrame(0),
+    mAnimationFinishFrame(0),
+    mAnimationFramesElapsed(0),
+    mAnimationRepeatCount(0),
+    mPercentage(0),
+    id(0),
+    mWidth(0),
+    mHeight(0),
+    mFrameWidth(0),
+    mFrameHeight(0),
+    mFramesCoordinatesX(0),
+    mFramesCoordinatesY(0),
+    mPaddingX(0),
+    mPaddingY(0),
+    mSpeed(0),
+    mPauseBeforeNewAnimationCircleTime(0),
+    mPauseBeforeNewAnimationCircleTimeElapsed(0),
+    mAnimationTime(0),
+    mAnimationTimeElapsed(0),
+    mAnimationStartTimeout(0),
+    mAnimationScaleDownTime(0),
+    mAnimationScaleUpTime(0),
+    mAnimationScaleDownFactor(0),
+    mAnimationScaleUpFactor(0),
+    mIsAnimationReverse(0),
+    mIsAnimationReverseNeed(0),
+    mAnimationRunning(0),
+    mWasTouched(0),
+    mAlphaParent(0),
+    mCreatedFromAtlas(0),
+    mTextureFileName(0),
+    //mStartTouchPoint(0),
+    mEntityManager(0),
+    mBatchEntityManager(0)
+    {
+        this->constructor(pszFileName, 1, 1, pX, pY, pWidth, pHeight, pParent);
+    }
+
 Entity* Entity::create(const char* pszFileName)
 {
     Entity* entity = new Entity(pszFileName);
@@ -418,6 +463,14 @@ Entity* Entity::create(const char* pszFileName, int pHorizontalFramesCount, int 
 Entity* Entity::create(EntityStructure pStructure, CCNode* pParent)
 {
     Entity* entity = new Entity(pStructure, pParent);
+    entity->autorelease();
+    
+    return entity;
+}
+
+Entity* Entity::create(const char* pszFileName, int pX, int pY, float pWidth, float pHeight, CCNode* pParent)
+{
+    Entity* entity = new Entity(pszFileName, pX, pY, pWidth, pHeight, pParent);
     entity->autorelease();
     
     return entity;
@@ -521,6 +574,7 @@ Entity* Entity::create()
 bool Entity::destroy(bool pManage)
 {
     this->unscheduleUpdate();
+    this->unscheduleAllSelectors();
     this->onDestroy();
 
     if(pManage)
@@ -817,6 +871,11 @@ void Entity::onEnter()
 void Entity::onExit()
 {
     CCSprite::onExit();
+    
+    this->unscheduleUpdate();
+    this->unscheduleAllSelectors();
+    
+    this->removeAllChildrenWithCleanup(true);
 
 	//if(this->isVisible())
 	//this->destroy();

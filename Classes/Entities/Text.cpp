@@ -67,6 +67,9 @@ Text::~Text()
     }
 
     TEXTES[this->mId] = NULL;
+    ID--;
+    
+    CCLog(ccsf("DEALLOCING OF TEXT with string: %s", this->getString()));
 }
 
 Text::Text(const char* pString, float pSize, CCNode* pParent) :
@@ -93,6 +96,8 @@ Text::Text(const char* pString, float pSize, CCNode* pParent) :
         
         this->mType1AnimationRunning = false;
         this->mType2AnimationRunning = false;
+        
+        this->mIsAnyAnimationRunning = false;
 	}
 
 Text::Text(Textes pParams, CCNode* pParent) :
@@ -119,6 +124,8 @@ Text::Text(Textes pParams, CCNode* pParent) :
         
         this->mType1AnimationRunning = false;
         this->mType2AnimationRunning = false;
+        
+        this->mIsAnyAnimationRunning = false;
 	}
 
 Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
@@ -145,6 +152,8 @@ Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
         
         this->mType1AnimationRunning = false;
         this->mType2AnimationRunning = false;
+        
+        this->mIsAnyAnimationRunning = false;
 	}
 
 Text* Text::create(const char* pString, float pSize, CCNode* pParent)
@@ -210,7 +219,7 @@ void Text::setPosition(float pX, float pY)
 
 void Text::changeLanguage()
 {
-    if(Options::TEXTES_HOLDER[this->mId].size != 0 && this->mId != -1 && this->mId >= 1)
+    if(Options::TEXTES_HOLDER[this->mId].size != 0 && this->mId != -1 && this->mId >= 1 && this->getParent())
     {
         this->setString(Options::TEXTES_HOLDER[this->mId].string);
         this->setFontSize(Utils::coord(Options::TEXTES_HOLDER[this->mId].size));
@@ -260,7 +269,7 @@ void Text::setString(const char* str)
 {
     CCLabelTTF::setString(str);
     
-    if(this->mShadow != NULL)
+    if(this->mShadow != NULL && this->mShadow)
     {
         this->mShadow->setString(str);
         this->mShadow->setFontSize(this->getFontSize());
@@ -331,6 +340,10 @@ void Text::disableShadow()
 
 void Text::animate(int pType)
 {
+    if(this->mIsAnyAnimationRunning) return;
+    
+    this->mIsAnyAnimationRunning = true;
+    
     switch(pType)
     {
         case 0:
@@ -354,6 +367,8 @@ void Text::animate(int pType)
             this->mShadow->runAction(CCScaleTo::create(this->mType2AnimationTime, 1.1));
             break;
     }
+    
+    this->scheduleUpdate();
 }
 
 // ===========================================================
@@ -387,7 +402,10 @@ void Text::update(float pDeltaTime)
                 case 2:
                     this->mType1AnimationRunning = false;
                     
-                    //this->onShow();
+                    this->unscheduleUpdate();
+                    this->unscheduleAllSelectors();
+                    
+                    this->mIsAnyAnimationRunning = false;
                     break;
             }
             
@@ -413,7 +431,10 @@ void Text::update(float pDeltaTime)
                 case 1:
                     this->mType2AnimationRunning = false;
                     
-                    //this->onHide();
+                    this->unscheduleUpdate();
+                    this->unscheduleAllSelectors();
+                    
+                    this->mIsAnyAnimationRunning = false;
                     break;
             }
             
@@ -426,9 +447,7 @@ void Text::onEnter()
 {
     CCLabelTTF::onEnter();
     
-    this->retain();
-    
-    this->scheduleUpdate();
+    //this->retain();
 }
 
 void Text::onExit()
@@ -441,10 +460,7 @@ void Text::onExit()
     
     //this->release();
     
-    ID--;
-    
-    this->unscheduleUpdate();
-    this->unscheduleAllSelectors();
+    //ID--;
 }
 
 void Text::draw()

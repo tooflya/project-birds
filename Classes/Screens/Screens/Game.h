@@ -167,7 +167,6 @@ class Game : public Screen
         PirateBox* mPirateBox;
     
         Entity* mBackgroundLights[8];
-        EntityManager* mBonusCircles;
 
         EventPanel* mEventPanel;
 

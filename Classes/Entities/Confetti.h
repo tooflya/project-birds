@@ -81,7 +81,7 @@ class Confetti : public Entity
         // Constants
         // ===========================================================
     
-        static ccColor3B COLORS[3];
+        static ccColor3B CONFETTI_COLORS[3];
 
         // ===========================================================
         // Fields

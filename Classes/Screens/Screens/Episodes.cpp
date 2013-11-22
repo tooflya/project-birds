@@ -4,6 +4,7 @@
 #include "Episodes.h"
 
 #include "Levels.h"
+#include "Mode.h"
 
 // ===========================================================
 // Inner Classes
@@ -402,13 +403,14 @@ Episodes::Episodes() :
         this->mFacebookText[1]->setZOrder(3);
         
         this->mPointsAnimationRunning = false;
+        
+        AppDelegate::clearCache();
 	}
 
 Episodes* Episodes::create()
 {
     Episodes* screen = new Episodes();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -428,35 +430,35 @@ void Episodes::onTouchButtonsCallback(const int pAction, const int pID)
                     
                 ACTION = 1;
 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                AppDelegate::screens->set(Levels::create());
 
                 break;
                 case Options::BUTTONS_EPISODE_2:
                     
                 ACTION = 2;
                     
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                AppDelegate::screens->set(Levels::create());
                     
                 break;
                 case Options::BUTTONS_EPISODE_3:
                     
                 ACTION = 3;
                     
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                AppDelegate::screens->set(Levels::create());
                     
                 break;
                 case Options::BUTTONS_EPISODE_4:
                     
                 ACTION = 4;
                     
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                AppDelegate::screens->set(Levels::create());
                     
                 break;
                 case Options::BUTTONS_EPISODE_5:
                     
                 ACTION = 5;
                     
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+                AppDelegate::screens->set(Levels::create());
                     
                 break;
             }
@@ -614,7 +616,7 @@ void Episodes::keyBackClicked()
 {
     Screen::keyBackClicked();
     
-    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+    AppDelegate::screens->set(Mode::create());
 }
 
 #endif

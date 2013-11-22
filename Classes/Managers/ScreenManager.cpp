@@ -80,11 +80,13 @@ ScreenManager* ScreenManager::create()
 void ScreenManager::generate()
 {
     this->load(3, -1);
-    this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
+    //this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
 }
 
 void ScreenManager::set(float pAnimationTime, int pIndex)
 {
+    return;
+    
     pAnimationTime = 0.3;
     this->mCurrentScreenIndex = pIndex;
     
@@ -93,8 +95,27 @@ void ScreenManager::set(float pAnimationTime, int pIndex)
     CCDirector::sharedDirector()->pushScene(transition);
 }
 
+void ScreenManager::set(Screen* pScreen)
+{
+    float pAnimationTime = 0.3;
+    this->mCurrentScreenIndex = -1;
+    
+    CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, pScreen);
+    
+    CCDirector::sharedDirector()->replaceScene(transition);
+    
+    /*CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    
+    CCDirector::sharedDirector()->purgeCachedData();
+    
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();*/
+}
+
 void ScreenManager::load(int pAction, int pDo)
 {
+    return;
+    
     switch(pAction)
     {
         case 3:
@@ -104,17 +125,17 @@ void ScreenManager::load(int pAction, int pDo)
             switch(pDo)
             {
                 case 1:
-                    CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
+                    //CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
                 break;
                 case 2:
-                    CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
+                    //CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
                 break;
                 case 3:
-                    CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
+                    //CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
                 break;
                 
 				default:
-                    this->mScreens[Screen::SCREEN_MENU] = Menu::create();
+                    /*this->mScreens[Screen::SCREEN_MENU] = Menu::create();
                     this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
                     this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();
                     this->mScreens[Screen::SCREEN_PROGRESS] = Progress::create();
@@ -123,7 +144,7 @@ void ScreenManager::load(int pAction, int pDo)
                     this->mScreens[Screen::SCREEN_MODE] = Mode::create();
                     this->mScreens[Screen::SCREEN_EPISODES] = Episodes::create();
                     this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
-                    this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
+                    this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();*/
                 break;
             }
             
@@ -134,7 +155,7 @@ void ScreenManager::load(int pAction, int pDo)
             {
                 default:
                     
-                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MENU]);
+                /*CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MENU]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SETTINGS]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CREDITS]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS]);
@@ -143,18 +164,18 @@ void ScreenManager::load(int pAction, int pDo)
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MODE]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SHOP]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_EPISODES]);
-                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LEVELS]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LEVELS]);*/
                     
                 break;
                     
                 case 1:
-                    this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
+                    //this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
                 break;
                 case 2:
-                    this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
+                    //this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
                 break;
                 case 3:
-                    this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progresses::create();
+                    //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progresses::create();
                 break;
             }
 

@@ -4,6 +4,8 @@
 #include "Menu.h"
 
 #include "Shop.h"
+#include "Settings.h"
+#include "Mode.h"
 
 // ===========================================================
 // Inner Classes
@@ -116,14 +118,20 @@ Menu::Menu() :
         this->mTutorial->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
         this->mTutorial->setRotation(-45);
         this->mTutorial->setScale(0.5);
-        this->mTutorial->setCenterPosition(this->mShopButton->getCenterX() + Utils::coord(40), this->mShopButton->getCenterY() - Utils::coord(50));*/
+         this->mTutorial->setCenterPosition(this->mShopButton->getCenterX() + Utils::coord(40), this->mShopButton->getCenterY() - Utils::coord(50));*/
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Menu* Menu::create()
 {
     Menu* screen = new Menu();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -143,17 +151,17 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 
                     Shop::ACTION = 0;
                     
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                    AppDelegate::screens->set(Shop::create());
 
                 break;
                 case Options::BUTTONS_ID_MENU_PLAY:
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+                    
+                    AppDelegate::screens->set(Mode::create());
 
                 break;
                 case Options::BUTTONS_ID_MENU_SETTINGS:
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+                    
+                    AppDelegate::screens->set(Settings::create());
 
                 break;
                 case Options::BUTTONS_ID_MENU_TWITTER:

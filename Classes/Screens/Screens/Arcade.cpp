@@ -158,7 +158,7 @@ Arcade::Arcade() :
         
         this->e5 = Entity::create("board_migalka@2x.png", spriteBatch17);
         
-        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID && CC_TARGET_PLATFORM != CC_PLATFORM_MAC
         if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
         {
             this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
@@ -200,6 +200,11 @@ Arcade::Arcade() :
         this->mAlgorithmBirdsTime2 = 7.0;
 
         this->addChild(this->mEventLayer);
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
     }
 
 Arcade* Arcade::create()

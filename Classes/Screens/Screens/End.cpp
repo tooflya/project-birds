@@ -182,17 +182,34 @@ End::End(int pType, Screen* pParent) :
         
 		Textes textes1 = {"0", Options::FONT, 64, -1};
         
-        this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 2, 1), spriteBatch1);
-        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 1, 2), spriteBatch1);
+        }
+        else
+        {
+            this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 2, 1), spriteBatch1);
+        }
+
         Entity* part;
         
         part = (Entity*) this->mParts->create();
         part->setCenterPosition(0, Options::CAMERA_HEIGHT + part->getHeight() / 2 - Options::CAMERA_CENTER_Y);
         part->setCurrentFrameIndex(0);
         
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            part->setScale(1.185);
+        }
+        
         part = (Entity*) this->mParts->create();
         part->setCenterPosition(0, -part->getHeight() / 2 - Options::CAMERA_CENTER_Y);
         part->setCurrentFrameIndex(1);
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            part->setScale(1.185);
+        }
         
         this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", spriteBatch3);
         this->mPrize = Entity::create("end_lvl_kybok_sprite@2x.png", 1, 2, spriteBatch3);
@@ -246,7 +263,7 @@ End::End(int pType, Screen* pParent) :
         this->mTextName->mShadow->setHorizontalAlignment(kCCTextAlignmentLeft);
         this->mTextCountValue->mShadow->setHorizontalAlignment(kCCTextAlignmentRight);
         
-        this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch7);
+        this->mConfetti = EntityManager::create(600, Confetti::create(), spriteBatch7);
     }
 
 End* End::create(int pType, Screen* pParent)
@@ -275,7 +292,7 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
                 
             Loader::ACTION = 3;
                 
-            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+            AppDelegate::screens->set(Loader::create());
                 
             break;
             case Options::BUTTONS_ID_END_RESTART:
@@ -297,7 +314,7 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             Loader::ACTION = 5;
             Shop::ACTION = 0;
                     
-            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+            AppDelegate::screens->set(Loader::create());
                 
             break;
             }
@@ -523,7 +540,7 @@ void End::throwConfetti()
 
     for(int i = 0; i < 10; i++)
     {
-        for(int j = -10; j <= 10; j++)
+        for(int j = -(Options::CAMERA_CENTER_X / Utils::coord(40)); j <= (Options::CAMERA_CENTER_X / Utils::coord(40)); j++)
         {
             x = Utils::coord(Utils::randomf(40.0, 40.0)) * j;
 
@@ -592,6 +609,11 @@ void End::update(float pDeltaTime)
                     particle->setCenterPosition(star->getCenterX(), star->getCenterY());
                     
                     particle->runAction(CCSequence::create(CCFadeTo::create(Utils::randomf(1.0, 2.0), particle->getOpacity()), CCFadeTo::create(0.2, 0), NULL));
+                    
+                    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+                    {
+                        particle->mSideImpulse *= 1.4;
+                    }
                 }
             }
             else
@@ -623,6 +645,11 @@ void End::update(float pDeltaTime)
                         particle->setCenterPosition(this->mPrize->getCenterX(), this->mPrize->getCenterY());
                         
                         particle->runAction(CCSequence::create(CCFadeTo::create(Utils::randomf(1.0, 2.0), particle->getOpacity()), CCFadeTo::create(0.2, 0), NULL));
+                        
+                        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+                        {
+                            particle->mSideImpulse *= 1.4;
+                        }
                     }
                 }
                 else

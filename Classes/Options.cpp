@@ -1512,7 +1512,7 @@ void Options::changeLanguage()
             TEXT_END[0].string = "Отлично!";
             TEXT_END[1].string = "Неплохо!";
             TEXT_END[2].string = "Хорошо!";
-            TEXT_END[3].string = "Попробуйте еще раз!";
+            TEXT_END[3].string = "Попробуйте снова!";
             
             TEXT_END[4].string = "Комбо ударов";
             TEXT_END[5].string = "Птицы летчики";

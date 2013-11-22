@@ -92,6 +92,7 @@ class ScreenManager : CCObject
 		void load(int pAction, int pDo);
 		
 		void set(float pAnimationTime, int pIndex);
+        void set(Screen* pScreen);
 		
 		// ===========================================================
 		// Override Methods

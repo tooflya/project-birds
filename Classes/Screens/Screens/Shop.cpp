@@ -3,6 +3,10 @@
 
 #include "Shop.h"
 
+#include "Menu.h"
+#include "Mode.h"
+#include "Levels.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -37,13 +41,11 @@ class TouchLayer : public CCLayer
 		mPostUpdate(0)
 		{
 			this->init();
-        
-			this->scheduleUpdate();
 
 			this->mId = pId;
 			this->mItemsCount = pItemsCount;
 
-			this->mMaxWidth = Utils::coord(230) * (this->mItemsCount - 3);
+			this->mMaxWidth = (Utils::coord(230) * this->mItemsCount) - (Options::CAMERA_WIDTH) + Utils::coord(30);
 
 			this->mPostUpdate = false;
 		}
@@ -51,7 +53,7 @@ class TouchLayer : public CCLayer
     static TouchLayer* create(const int pId, int pItemsCount)
     {
         TouchLayer* layer = new TouchLayer(pId, pItemsCount);
-        //layer->autorelease();
+        layer->autorelease();
         
         return layer;
     }
@@ -91,11 +93,11 @@ class TouchLayer : public CCLayer
 
         if(x > 0)
         {
-            this->runAction(CCMoveTo::create(0.3, ccp(0, this->getPosition().y)));
+            //this->runAction(CCMoveTo::create(0.3, ccp(0, this->getPosition().y)));
         }
         else if(x < -this->mMaxWidth)
         {
-            this->runAction(CCMoveTo::create(0.3, ccp(-this->mMaxWidth, this->getPosition().y)));
+            //this->runAction(CCMoveTo::create(0.3, ccp(-this->mMaxWidth, this->getPosition().y)));
         }
         else
         {
@@ -107,6 +109,7 @@ class TouchLayer : public CCLayer
 
             this->mPostUpdatePower = abs(floor(distance)) > Utils::coord(30.0) ? Utils::coord(30.0) * t : floor(distance);
 
+            if(abs(this->getPosition().x - this->mStartPositionCoordinateX) >= Utils::coord(10.0))
             this->mPostUpdate = true;
         }
     }
@@ -191,6 +194,8 @@ class TouchLayer : public CCLayer
         pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
         
         CCLayer::onEnter();
+        
+        this->scheduleUpdate();
     }
     
     void onExit()
@@ -199,6 +204,9 @@ class TouchLayer : public CCLayer
         pDirector->getTouchDispatcher()->removeDelegate(this);
         
         CCLayer::onExit();
+        
+        this->unscheduleUpdate();
+        this->unscheduleAllSelectors();
     }
 
     void updateWheels()
@@ -420,7 +428,7 @@ Shop::Shop() :
 			this->mWheels[i] = Entity::create("shop_wheel@2x.png", this->mSpriteBatch2);
 		}
     
-		float x = Options::CAMERA_CENTER_X;
+		float x = Utils::coord(400);
 		float y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(330);
     
 		this->mWeaponChecker = NULL;
@@ -490,19 +498,19 @@ Shop::Shop() :
 		this->mIcons[1]->setScale(0.75);
 		this->mIcons[1]->animate(0.05);
     
-		x = Options::CAMERA_CENTER_X - Utils::coord(500);
+		x = Options::CAMERA_CENTER_X - (Options::CAMERA_CENTER_X / 1.5) * 2;
 		y = Options::CAMERA_CENTER_Y - Utils::coord(100) + Utils::coord(300);
     
 		for(int i = 0; i < 9; i++)
 		{
 			if(i % 3 == 0 && i != 0)
 			{
-				x = Options::CAMERA_CENTER_X - Utils::coord(250);
+				x = Options::CAMERA_CENTER_X - Options::CAMERA_CENTER_X / 1.5;
 				y -= Utils::coord(300);
 			}
 			else
 			{
-				x += Utils::coord(250);
+				x += Options::CAMERA_CENTER_X / 1.5;
 			}
         
 			this->mWheels[i]->create()->setCenterPosition(x, y);
@@ -522,13 +530,19 @@ Shop::Shop() :
     
 		this->mIsAnimationOnItemBoughtRunning = false;
 		this->mIsAnimationPurchaseRunning = false;
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Shop* Shop::create()
 {
     Shop* screen = new Shop();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -1048,43 +1062,43 @@ void Shop::keyBackClicked(bool pSound)
     {
         if(ACTION == 0)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+            AppDelegate::screens->set(Menu::create());
         }
         else if(ACTION == 1)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+            AppDelegate::screens->set(Mode::create());
         }
         else if(ACTION == 2)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+            AppDelegate::screens->set(Levels::create());
         }
         else if(ACTION == 3)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+            AppDelegate::screens->set(Mode::create());
         }
         else if(ACTION == 4)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_LEVELS);
+            AppDelegate::screens->set(Levels::create());
         }
         else if(ACTION == 5)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+            AppDelegate::screens->set(Menu::create());
         }
         else if(ACTION == 6)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+            AppDelegate::screens->set(Mode::create());
         }
         else if(ACTION == 10)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+            AppDelegate::screens->set(Mode::create());
         }
         else if(ACTION == 11)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+            AppDelegate::screens->set(Mode::create());
         }
         else if(ACTION == 12)
         {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_MODE);
+            AppDelegate::screens->set(Mode::create());
         }
     
         ACTION = -1;

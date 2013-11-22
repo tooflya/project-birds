@@ -25,7 +25,7 @@ BuyItem::~BuyItem()
 }
 
 BuyItem::BuyItem(Screen* pScreen) :
-    Popup(pScreen),
+    Popup(pScreen, true),
 	mBuyButton(0),
 	mYesPressed(0),
 	mListBorders(),
@@ -110,7 +110,7 @@ void BuyItem::show()
 
     if(AppDelegate::isItemBought(Shop::CLICKED_ITEM_ID))
     {
-        this->mBuyButton->setText(Options::TEXT_BUYITEM_CHOOSE);
+        //this->mBuyButton->setText(Options::TEXT_BUYITEM_CHOOSE);
 
         if(Shop::CLICKED_ITEM_ID >= 20)
         {
@@ -124,7 +124,7 @@ void BuyItem::show()
     }
     else
     {
-        this->mBuyButton->setText(Options::TEXT_BUYITEM_BUY);
+        //this->mBuyButton->setText(Options::TEXT_BUYITEM_BUY);
     }
 }
 

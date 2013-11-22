@@ -574,8 +574,6 @@ Progresses::Progresses() :
         this->mTaskTimeIcon = Entity::create("game_panel_time_star@2x.png", spriteBatch8);
         this->mTaskShootsIcon = Entity::create("game_panel_shoot_count@2x.png", spriteBatch8);
 
-		this->mBonusCircles = EntityManager::create(200, Entity::create("bonus-animation@2x.png"), spriteBatch6);
-
 		//this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
 		//this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
 
@@ -583,7 +581,7 @@ Progresses::Progresses() :
 
         this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
-		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID && CC_TARGET_PLATFORM != CC_PLATFORM_MAC
 		if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
 		{
 			this->mBackgroundLights[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(480), Options::CAMERA_CENTER_Y - Utils::coord(50));
@@ -686,6 +684,11 @@ Progresses::Progresses() :
         
 		this->mTime = 0;
 		this->mStarTime = 0;
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
 	}
 
 Progresses* Progresses::create()
@@ -744,7 +747,7 @@ void Progresses::onMatch(int count, float a, float b)
     
     this->mAwesomeText->setString(Options::TEXT_BONUS[Utils::random(0, 11)].string);
     this->mAwesomeText->setScale(0);
-    this->mAwesomeText->setColor(Confetti::COLORS[Utils::random(0, 2)]);
+    this->mAwesomeText->setColor(Confetti::CONFETTI_COLORS[Utils::random(0, 2)]);
     this->mAwesomeText->runAction(CCScaleTo::create(0.5, 1.0));
     this->mAwesomeText->setCenterPosition(a, b);
     

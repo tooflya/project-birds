@@ -3,6 +3,12 @@
 
 #include "Settings.h"
 
+#include "Menu.h"
+#include "More.h"
+#include "Credits.h"
+#include "Language.h"
+#include "Progress.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -10,8 +16,6 @@
 // ===========================================================
 // Constants
 // ===========================================================
-
-Settings* Settings::m_Instance = NULL;
 
 // ===========================================================
 // Fields
@@ -36,14 +40,16 @@ Settings::Settings() :
 	mLanguageButton(0),
 	mSoundButton(0),
 	mMusicButton(0)
-	{
-		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+    {
+        SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+        SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas5");
 
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
 		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
 		this->mBackgroundDecorations[1] = Entity::create("bg_detail_settings@2x.png", spriteBatch);
 
 		this->addChild(spriteBatch);
+		this->addChild(spriteBatch2);
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
@@ -78,7 +84,7 @@ Settings::Settings() :
 		this->mLanguageButton->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(100));
 		this->mLanguageButton->setText(Options::TEXT_SETTINGS_LANGUAGE);
     
-		this->mLanguage = Entity::create("flag_sprite_small@2x.png", 2, 5, this);
+		this->mLanguage = Entity::create("flag_sprite_small@2x.png", 2, 5, spriteBatch2);
 		this->mLanguage->setCurrentFrameIndex(Options::CURRENT_LANGUAGE);
 		this->mLanguage->setAnchorPoint(ccp(0.0, 0.5));
     
@@ -86,15 +92,19 @@ Settings::Settings() :
 		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(165), Utils::coord(128));
     
 		this->mLanguage->create();
-    
-		m_Instance = this;
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Settings* Settings::create()
 {
     Settings* screen = new Settings();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -105,8 +115,6 @@ Settings* Settings::create()
 
 void Settings::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Settings* pSender = (Settings*) Settings::m_Instance;
-
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -118,8 +126,8 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_RATE:
-
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_PROGRESS);
+                    
+                    AppDelegate::screens->set(Progress::create());
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_MUSIC:
@@ -130,13 +138,13 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 
-                        pSender->mMusicButton->setCurrentFrameIndex(0);
+                        this->mMusicButton->setCurrentFrameIndex(0);
                     }
                     else
                     {
                         SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 
-                        pSender->mMusicButton->setCurrentFrameIndex(3);
+                        this->mMusicButton->setCurrentFrameIndex(3);
                     }
 
                     AppDelegate::setMusicEnable(Options::MUSIC_ENABLE);
@@ -148,11 +156,11 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                     
                     if(Options::SOUND_ENABLE)
                     {
-                        pSender->mSoundButton->setCurrentFrameIndex(1);
+                        this->mSoundButton->setCurrentFrameIndex(1);
                     }
                     else
                     {
-                        pSender->mSoundButton->setCurrentFrameIndex(4);
+                        this->mSoundButton->setCurrentFrameIndex(4);
                     }
 
                     AppDelegate::setSoundEnable(Options::SOUND_ENABLE);
@@ -160,17 +168,17 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SETTINGS_CREDITS:
 
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_CREDITS);
+                    AppDelegate::screens->set(Credits::create());
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_MORE:
                     
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_MORE);
+                    AppDelegate::screens->set(More::create());
                     
                 break;
                 case Options::BUTTONS_ID_SETTINGS_LANGUAGE:
                     
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_LANGUAGE);
+                    AppDelegate::screens->set(Language::create());
                     
                 break;
             }
@@ -215,7 +223,7 @@ void Settings::keyBackClicked(bool pSound)
 {
     Screen::keyBackClicked(pSound);
     
-    AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+    AppDelegate::screens->set(Menu::create());
 }
 
 #endif

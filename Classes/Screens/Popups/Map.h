@@ -48,7 +48,7 @@ class Map : public CCLayer, public Touchable, public ButtonReceiver
 		EntityManager* mWays;
 		EntityManager* mCoins;
 		EntityManager* mSilverCoins;
-		 EntityManager* mConfetti;
+        EntityManager* mConfetti;
 		EntityManager* mStars;
 		EntityManager* mAnimatedCoins;
 		EntityManager* mSilverAnimatedCoins;

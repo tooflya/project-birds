@@ -3,6 +3,8 @@
 
 #include "Progress.h"
 
+#include "Settings.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -10,8 +12,6 @@
 // ===========================================================
 // Constants
 // ===========================================================
-
-Progress* Progress::m_Instance = NULL;
 
 // ===========================================================
 // Fields
@@ -63,15 +63,19 @@ Progress::Progress() :
 		text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
 
 		this->mResetPopup = ResetProgress::create(this);
-    
-		m_Instance = this;
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
+        
+        AppDelegate::clearCache();
 	}
 
 Progress* Progress::create()
 {
     Progress* screen = new Progress();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }
@@ -82,8 +86,6 @@ Progress* Progress::create()
 
 void Progress::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    Progress* pSender = static_cast<Progress*>(Progress::m_Instance);
-    
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
@@ -96,7 +98,7 @@ void Progress::onTouchButtonsCallback(const int pAction, const int pID)
             break;
             case Options::BUTTONS_ID_PROGRESS_RESET:
                 
-                pSender->mResetPopup->show();
+                this->mResetPopup->show();
                 
             break;
         }
@@ -124,7 +126,7 @@ void Progress::keyBackClicked(bool pSound)
     }
     else
     {
-        AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+        AppDelegate::screens->set(Settings::create());
     }
 }
 

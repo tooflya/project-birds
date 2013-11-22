@@ -52,6 +52,11 @@ void KeyParticle::onCreate()
     this->mRotationSpeed = Utils::randomf(10, 20);
     this->mAlphaSpeed = Utils::randomf(1, 10);
     
+    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+    {
+        this->mMoveSpeed *= 1.4;
+    }
+    
     this->mMoveTime = 1;
     this->mMoveTimeElapsed = 0;
     

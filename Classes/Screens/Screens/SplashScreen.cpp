@@ -2,7 +2,9 @@
 #define CONST_SPLASHSCREEN
 
 #include "SplashScreen.h"
+
 #include "Loading.h"
+#include "Menu.h"
 
 // ===========================================================
 // Inner Classes
@@ -22,7 +24,6 @@
 
 SplashScreen::~SplashScreen()
 {
-    CC_SAFE_RELEASE(this->mNextScreen);
 }
 
 SplashScreen::SplashScreen() :
@@ -41,8 +42,7 @@ mLogos()
     
     this->addChild(layer);
     
-    this->mNextScreen = Loading::create();
-    this->mNextScreen->retain();
+    AppDelegate::screens = ScreenManager::create();
 }
 
 SplashScreen* SplashScreen::create()
@@ -111,12 +111,7 @@ void SplashScreen::update(float pDeltaTime)
                 case 8:
                     this->mAnimation = false;
                     
-                    
-                    float pAnimationTime = 0.5;
-                    
-                    CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, this->mNextScreen);
-                    
-                    CCDirector::sharedDirector()->pushScene(transition);
+                    AppDelegate::screens->set(Loading::create());
                 break;
             }
         }

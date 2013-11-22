@@ -119,7 +119,7 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 
                 Loader::ACTION = 3;
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                AppDelegate::screens->set(Loader::create());
                 
                 break;
             case Options::BUTTONS_ID_PAUSE_SHOP:
@@ -129,7 +129,7 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 Loader::ACTION = 5;
                 Shop::ACTION = 0;
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                AppDelegate::screens->set(Loader::create());
                 
                 break;
             case Options::BUTTONS_ID_PAUSE_RESTART:
@@ -194,7 +194,7 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 
                 Loader::ACTION = 4;
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+                AppDelegate::screens->set(Loader::create());
                 
                 break;
         }

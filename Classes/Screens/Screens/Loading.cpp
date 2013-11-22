@@ -3,6 +3,8 @@
 
 #include "Loading.h"
 
+#include "Menu.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -93,8 +95,13 @@ Loading::Loading() :
 		this->mLoading = false;
 		this->mLoadingProgress = false;
 
-		this->mLoadingPauseTime = 1.0;
+		this->mLoadingPauseTime = 0.0;
 		this->mLoadingPauseTimeElapsed = 0.0;
+        
+        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+        {
+            this->mBackground->setScale(1.185);
+        }
 	}
 
 Loading* Loading::create()
@@ -124,15 +131,13 @@ void Loading::loadingCallBack(CCObject *obj)
     {
         this->mLoadingProgress = false;
         
-        AppDelegate::screens = ScreenManager::create();
-        
         {
             Options::changeLanguage();
     
             this->mLoadingText->setString((Options::TEXT_LOADING_2.string + Utils::intToString(percent) + "%").c_str());
         }
         
-        AppDelegate::screens->set(0.5f, Screen::SCREEN_MENU);
+        AppDelegate::screens->set(Menu::create());
     }
     else
     {
