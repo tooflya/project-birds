@@ -1,9 +1,7 @@
 #ifndef CONST_SCREENMANAGER_H
 #define CONST_SCREENMANAGER_H
 
-#include "cocos2d.h"
-
-using namespace cocos2d;
+#include "Options.h"
 
 class Screen;
 
@@ -91,7 +89,7 @@ class ScreenManager : CCObject
 		void generate();
 		void load(int pAction, int pDo);
 		
-		void set(float pAnimationTime, int pIndex);
+		void set(int pIndex);
         void set(Screen* pScreen);
 		
 		// ===========================================================

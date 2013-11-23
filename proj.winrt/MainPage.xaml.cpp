@@ -52,7 +52,7 @@ MainPage::MainPage()
 
     CCEGLView* eglView = new CCEGLView();
 	eglView->Create(Window::Current->CoreWindow, SwapChainPanel);
-    eglView->setViewName("HelloCpp");
+    eglView->setViewName("Project Birds by Tooflya Inc.");
     CCApplication::sharedApplication()->run();
 }
 

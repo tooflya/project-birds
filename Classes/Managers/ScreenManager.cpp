@@ -79,42 +79,51 @@ ScreenManager* ScreenManager::create()
 
 void ScreenManager::generate()
 {
-    this->load(3, -1);
-    //this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
+	this->load(3, -1);
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
+	#endif
 }
 
-void ScreenManager::set(float pAnimationTime, int pIndex)
+void ScreenManager::set(int pIndex)
 {
-    return;
+	#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+	CCAssert(false, "This build is compiled without preload instructions so need to use new objects.");
+
+	return;
+	#endif
     
-    pAnimationTime = 0.3;
     this->mCurrentScreenIndex = pIndex;
     
-    CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, this->mScreens[pIndex]);
+    CCTransitionScene* transition = CCTransitionFade::create(0.3, this->mScreens[pIndex]);
 
     CCDirector::sharedDirector()->pushScene(transition);
 }
 
 void ScreenManager::set(Screen* pScreen)
 {
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	CCAssert(false, "This build is compiled with preload instructions so need to use exist arrays.");
+
+	return;
+	#endif
+
     float pAnimationTime = 0.3;
     this->mCurrentScreenIndex = -1;
     
     CCTransitionScene* transition = CCTransitionFade::create(pAnimationTime, pScreen);
     
     CCDirector::sharedDirector()->replaceScene(transition);
-    
-    /*CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    
-    CCDirector::sharedDirector()->purgeCachedData();
-    
-    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();*/
 }
 
 void ScreenManager::load(int pAction, int pDo)
 {
-    return;
+	#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+	CCAssert(false, "This build is compiled without preload instructions so need to use new objects.");
+
+	return;
+	#endif
     
     switch(pAction)
     {
@@ -125,37 +134,35 @@ void ScreenManager::load(int pAction, int pDo)
             switch(pDo)
             {
                 case 1:
-                    //CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CLASSIC_GAME]);
                 break;
                 case 2:
-                    //CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_ARCADE_GAME]);
                 break;
                 case 3:
-                    //CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS_GAME]);
                 break;
                 
 				default:
-                    /*this->mScreens[Screen::SCREEN_MENU] = Menu::create();
-                    this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
-                    this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();
-                    this->mScreens[Screen::SCREEN_PROGRESS] = Progress::create();
-                    this->mScreens[Screen::SCREEN_MORE] = More::create();
-                    this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
-                    this->mScreens[Screen::SCREEN_MODE] = Mode::create();
-                    this->mScreens[Screen::SCREEN_EPISODES] = Episodes::create();
-                    this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
-                    this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();*/
+				this->mScreens[Screen::SCREEN_MENU] = Menu::create();
+				this->mScreens[Screen::SCREEN_SETTINGS] = Settings::create();
+                this->mScreens[Screen::SCREEN_CREDITS] = Credits::create();
+                this->mScreens[Screen::SCREEN_PROGRESS] = Progress::create();
+                this->mScreens[Screen::SCREEN_MORE] = More::create();
+                this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
+                this->mScreens[Screen::SCREEN_MODE] = Mode::create();
+                this->mScreens[Screen::SCREEN_EPISODES] = Episodes::create();
+                this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
+                this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 break;
             }
-            
-        break;
+			break;
             
         default:
             switch(pDo)
             {
                 default:
-                    
-                /*CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MENU]);
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MENU]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SETTINGS]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_CREDITS]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_PROGRESS]);
@@ -164,21 +171,19 @@ void ScreenManager::load(int pAction, int pDo)
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MODE]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SHOP]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_EPISODES]);
-                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LEVELS]);*/
-                    
+                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LEVELS]);
                 break;
                     
                 case 1:
-                    //this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
+                this->mScreens[Screen::SCREEN_CLASSIC_GAME] = Classic::create();
                 break;
                 case 2:
-                    //this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
+                this->mScreens[Screen::SCREEN_ARCADE_GAME] = Arcade::create();
                 break;
                 case 3:
-                    //this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progresses::create();
+                this->mScreens[Screen::SCREEN_PROGRESS_GAME] = Progresses::create();
                 break;
             }
-
         break;
     }
 }

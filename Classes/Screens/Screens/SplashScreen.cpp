@@ -37,12 +37,15 @@ mLogos()
     this->mAnimationTimeElapsed = 0;
     
     CCLayerColor* layer = CCLayerColor::create(ccc4(255, 255, 255, 255));
-    this->mLogos[0] = Entity::create("splash_logo_abs.png", layer);
-    this->mLogos[1] = Entity::create("splash_logo_tfl.png", layer);
+	this->mLogos[0] = Entity::create("splash_logo_abs.png", 0, 0, 620, 221, layer);
+    this->mLogos[1] = Entity::create("splash_logo_tfl.png", 0, 0, 596, 240, layer);
     
     this->addChild(layer);
-    
+	
+	#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
     AppDelegate::screens = ScreenManager::create();
+	#endif
+
 }
 
 SplashScreen* SplashScreen::create()
@@ -110,8 +113,13 @@ void SplashScreen::update(float pDeltaTime)
                 break;
                 case 8:
                     this->mAnimation = false;
-                    
-                    AppDelegate::screens->set(Loading::create());
+
+					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Loading::create());
+					#else
+					CCTransitionScene* transition = CCTransitionFade::create(0.3, Loading::create());
+					CCDirector::sharedDirector()->pushScene(transition);
+					#endif
                 break;
             }
         }

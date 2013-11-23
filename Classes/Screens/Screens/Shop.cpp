@@ -531,9 +531,10 @@ Shop::Shop() :
 		this->mIsAnimationOnItemBoughtRunning = false;
 		this->mIsAnimationPurchaseRunning = false;
         
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+		if(AppDelegate::isGetWindeScreen())
         {
-            this->mBackground->setScale(1.185);
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mGamePanel->setScaleX(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
         }
         
         AppDelegate::clearCache();
@@ -542,7 +543,11 @@ Shop::Shop() :
 Shop* Shop::create()
 {
     Shop* screen = new Shop();
-    screen->autorelease();
+	screen->autorelease();
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+	#endif
     
     return screen;
 }
@@ -1061,44 +1066,84 @@ void Shop::keyBackClicked(bool pSound)
     else
     {
         if(ACTION == 0)
-        {
-            AppDelegate::screens->set(Menu::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MENU);
+			#else
+			AppDelegate::screens->set(Menu::create());
+			#endif
         }
         else if(ACTION == 1)
-        {
-            AppDelegate::screens->set(Mode::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MODE);
+			#else
+			AppDelegate::screens->set(Mode::create());
+			#endif
         }
         else if(ACTION == 2)
-        {
-            AppDelegate::screens->set(Levels::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_LEVELS);
+			#else
+			AppDelegate::screens->set(Levels::create());
+			#endif
         }
         else if(ACTION == 3)
-        {
-            AppDelegate::screens->set(Mode::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MODE);
+			#else
+			AppDelegate::screens->set(Mode::create());
+			#endif
         }
         else if(ACTION == 4)
-        {
-            AppDelegate::screens->set(Levels::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_LEVELS);
+			#else
+			AppDelegate::screens->set(Levels::create());
+			#endif
         }
         else if(ACTION == 5)
-        {
-            AppDelegate::screens->set(Menu::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MENU);
+			#else
+			AppDelegate::screens->set(Menu::create());
+			#endif
         }
         else if(ACTION == 6)
-        {
-            AppDelegate::screens->set(Mode::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MODE);
+			#else
+			AppDelegate::screens->set(Mode::create());
+			#endif
         }
         else if(ACTION == 10)
-        {
-            AppDelegate::screens->set(Mode::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MODE);
+			#else
+			AppDelegate::screens->set(Mode::create());
+			#endif
         }
         else if(ACTION == 11)
-        {
-            AppDelegate::screens->set(Mode::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MODE);
+			#else
+			AppDelegate::screens->set(Mode::create());
+			#endif
         }
         else if(ACTION == 12)
-        {
-            AppDelegate::screens->set(Mode::create());
+		{
+			#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+			AppDelegate::screens->set(Screen::SCREEN_MODE);
+			#else
+			AppDelegate::screens->set(Mode::create());
+			#endif
         }
     
         ACTION = -1;

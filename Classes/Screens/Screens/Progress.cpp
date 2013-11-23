@@ -63,11 +63,11 @@ Progress::Progress() :
 		text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
 
 		this->mResetPopup = ResetProgress::create(this);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         AppDelegate::clearCache();
 	}
@@ -75,7 +75,11 @@ Progress::Progress() :
 Progress* Progress::create()
 {
     Progress* screen = new Progress();
-    screen->autorelease();
+	screen->autorelease();
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+	#endif
     
     return screen;
 }
@@ -125,8 +129,12 @@ void Progress::keyBackClicked(bool pSound)
         this->mResetPopup->hide();
     }
     else
-    {
-        AppDelegate::screens->set(Settings::create());
+	{
+		#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+		AppDelegate::screens->set(Screen::SCREEN_SETTINGS);
+		#else
+		AppDelegate::screens->set(Settings::create());
+		#endif
     }
 }
 

@@ -210,6 +210,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\extensions\ExtensionMacros.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Entities\AnimatedCoin.h" />
     <ClInclude Include="..\Classes\Entities\Bird.h" />
@@ -259,6 +260,7 @@
     <ClInclude Include="..\Classes\Screens\Popups\GetCoins.h" />
     <ClInclude Include="..\Classes\Screens\Popups\GetKeys.h" />
     <ClInclude Include="..\Classes\Screens\Popups\GetLives.h" />
+    <ClInclude Include="..\Classes\Screens\Popups\GetShoots.h" />
     <ClInclude Include="..\Classes\Screens\Popups\Map.h" />
     <ClInclude Include="..\Classes\Screens\Popups\MapDescription.h" />
     <ClInclude Include="..\Classes\Screens\Popups\ModeHelp.h" />
@@ -277,6 +279,7 @@
     <ClInclude Include="..\Classes\Screens\Screens\Classic.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Credits.h" />
     <ClInclude Include="..\Classes\Screens\Screens\End.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\Episodes.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Game.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Language.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Levels.h" />
@@ -290,6 +293,7 @@
     <ClInclude Include="..\Classes\Screens\Screens\Settings.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Shop.h" />
     <ClInclude Include="..\Classes\Screens\Screens\Splash.h" />
+    <ClInclude Include="..\Classes\Screens\Screens\SplashScreen.h" />
     <ClInclude Include="..\Classes\TEST\CCBlade.h" />
     <ClInclude Include="..\Classes\TEST\TouchTrailLayer.h" />
     <ClInclude Include="..\Classes\Utils\ButtonReceiver.h" />
@@ -324,52 +328,64 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="..\Resources\Graphics\1280x720-PNG\TextureAtlas16.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas1.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas10.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas11.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas12.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas13.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas14.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas15.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas16.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas17.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas18.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas19.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas2.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas22.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas3.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas4.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.plist">
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas5.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas6.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas7.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas8.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\Resources\Graphics\1920x1080\TextureAtlas9.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="ProjectBirds_TemporaryKey.pfx" />
@@ -469,6 +485,7 @@
     <ClCompile Include="..\Classes\Screens\Popups\GetCoins.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\GetKeys.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\GetLives.cpp" />
+    <ClCompile Include="..\Classes\Screens\Popups\GetShoots.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\Map.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\MapDescription.cpp" />
     <ClCompile Include="..\Classes\Screens\Popups\ModeHelp.cpp" />
@@ -487,6 +504,7 @@
     <ClCompile Include="..\Classes\Screens\Screens\Classic.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Credits.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\End.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\Episodes.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Game.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Language.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Levels.cpp" />
@@ -500,6 +518,7 @@
     <ClCompile Include="..\Classes\Screens\Screens\Settings.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Shop.cpp" />
     <ClCompile Include="..\Classes\Screens\Screens\Splash.cpp" />
+    <ClCompile Include="..\Classes\Screens\Screens\SplashScreen.cpp" />
     <ClCompile Include="..\Classes\TEST\CCBlade.cpp" />
     <ClCompile Include="..\Classes\TEST\TouchTrailLayer.cpp" />
     <ClCompile Include="..\Classes\Utils\ButtonReceiver.cpp" />
@@ -548,36 +567,43 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Resources\Graphics\1280x720-PNG\TextureAtlas16.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\about_scroll_fill_small%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\more_games_list%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas1.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas10.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas11.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas12.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas13.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas14.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas15.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas2.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas3.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas4.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas5.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas6.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas7.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas8.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\TextureAtlas9.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_1%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_10%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_11%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_2%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_3%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_4%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_5%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_6%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_7%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_8%402x.png" />
-    <Image Include="Assets\Resources\Graphics\1280x720-PNG\wep_9%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\about_scroll_fill%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\about_scroll_fill_small%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\more_games_list%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\preloader%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\splash_logo_abs.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\splash_logo_tfl.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas1.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas10.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas11.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas12.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas13.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas14.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas15.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas16.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas17.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas18.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas19.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas2.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas22.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas3.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas4.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas5.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas6.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas7.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas8.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\TextureAtlas9.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_1%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_10%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_11%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_2%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_3%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_4%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_5%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_6%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_7%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_8%402x.png" />
+    <Image Include="..\Resources\Graphics\1920x1080\wep_9%402x.png" />
     <Image Include="Assets\SplashScreen.png" />
   </ItemGroup>
   <ItemGroup>

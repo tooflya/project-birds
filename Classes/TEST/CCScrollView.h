@@ -27,7 +27,9 @@
 #define __CCSCROLLVIEW_H__
 
 #include "cocos2d.h"
-#include "ExtensionMacros.h"
+#define NS_CC_EXT_BEGIN                     namespace cocos2d { namespace extension {
+#define NS_CC_EXT_END                       }}
+#define USING_NS_CC_EXT                     using namespace cocos2d::extension
 
 NS_CC_EXT_BEGIN
 

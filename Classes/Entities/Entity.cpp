@@ -574,7 +574,7 @@ Entity* Entity::create()
 bool Entity::destroy(bool pManage)
 {
     this->unscheduleUpdate();
-    this->unscheduleAllSelectors();
+    //this->unscheduleAllSelectors();
     this->onDestroy();
 
     if(pManage)

@@ -90,13 +90,13 @@ Settings::Settings() :
     
 		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
 		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(165), Utils::coord(128));
-    
+    					
 		this->mLanguage->create();
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         AppDelegate::clearCache();
 	}
@@ -104,7 +104,11 @@ Settings::Settings() :
 Settings* Settings::create()
 {
     Settings* screen = new Settings();
-    screen->autorelease();
+	screen->autorelease();
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+	#endif
     
     return screen;
 }
@@ -126,8 +130,12 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_RATE:
-                    
-                    AppDelegate::screens->set(Progress::create());
+
+					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Screen::SCREEN_PROGRESS);
+					#else
+					AppDelegate::screens->set(Progress::create());
+					#endif
 
                 break;
                 case Options::BUTTONS_ID_SETTINGS_MUSIC:
@@ -168,18 +176,30 @@ void Settings::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_SETTINGS_CREDITS:
 
-                    AppDelegate::screens->set(Credits::create());
+					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Screen::SCREEN_CREDITS);
+					#else
+					AppDelegate::screens->set(Credits::create());
+					#endif
 
                 break;
-                case Options::BUTTONS_ID_SETTINGS_MORE:
-                    
-                    AppDelegate::screens->set(More::create());
+				case Options::BUTTONS_ID_SETTINGS_MORE:
+
+					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Screen::SCREEN_MORE);
+					#else
+					AppDelegate::screens->set(More::create());
+					#endif
                     
                 break;
-                case Options::BUTTONS_ID_SETTINGS_LANGUAGE:
-                    
-                    AppDelegate::screens->set(Language::create());
-                    
+				case Options::BUTTONS_ID_SETTINGS_LANGUAGE:
+
+					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Screen::SCREEN_LANGUAGE);
+					#else
+					AppDelegate::screens->set(Language::create());
+					#endif
+
                 break;
             }
         break;
@@ -222,8 +242,12 @@ void Settings::onExit()
 void Settings::keyBackClicked(bool pSound)
 {
     Screen::keyBackClicked(pSound);
-    
-    AppDelegate::screens->set(Menu::create());
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	AppDelegate::screens->set(Screen::SCREEN_MENU);
+	#else
+	AppDelegate::screens->set(Menu::create());
+	#endif
 }
 
 #endif

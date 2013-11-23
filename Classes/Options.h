@@ -9,6 +9,11 @@ using namespace cocos2d;
 
 #define ccsf(...) CCString::createWithFormat(__VA_ARGS__)->getCString()
 
+#define CC_PRELOAD_LEVEL 2
+#define CC_PRELOAD_ALL 2
+#define CC_PRELOAD_ONLY_SCREENS 1
+#define CC_PRELOAD_NOTHING 0
+
 typedef struct tagCCTouchInformation {
     bool slice;
     long last_sound_time;
@@ -92,6 +97,8 @@ class Options
         // ===========================================================
     
         static bool IS_BUILD_FOR_ABSOLUTIST;
+
+		static CCSize designResolutionSize;
     
         static const char* GOOGLE_PLAY_BASE_64_KEY;
         static const char* SOOMLA_BASE_64_KEY;

@@ -199,12 +199,14 @@ Arcade::Arcade() :
         this->mAlgorithmBirdsTime1 = 2.0;
         this->mAlgorithmBirdsTime2 = 7.0;
 
-        this->addChild(this->mEventLayer);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+		this->addChild(this->mEventLayer);
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
+
+		AppDelegate::clearCache();
     }
 
 Arcade* Arcade::create()

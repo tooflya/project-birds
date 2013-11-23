@@ -14,9 +14,10 @@
 // ===========================================================
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
-TextureStructure Loading::TEXTURE_LIBRARY[11] =
+TextureStructure Loading::TEXTURE_LIBRARY[12] =
 {
-    {"TextureAtlas2.png", "TextureAtlas2.plist"},
+	{"TextureAtlas2.png", "TextureAtlas2.plist"},
+	{"TextureAtlas22.png", "TextureAtlas22.plist"},
     {"TextureAtlas3.png", "TextureAtlas3.plist"},
     {"TextureAtlas4.png", "TextureAtlas4.plist"},
     {"TextureAtlas5.png", "TextureAtlas5.plist"},
@@ -97,11 +98,11 @@ Loading::Loading() :
 
 		this->mLoadingPauseTime = 0.0;
 		this->mLoadingPauseTimeElapsed = 0.0;
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
 	}
 
 Loading* Loading::create()
@@ -130,14 +131,22 @@ void Loading::loadingCallBack(CCObject *obj)
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
         this->mLoadingProgress = false;
-        
+
+		#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+		AppDelegate::screens = ScreenManager::create();
+		#endif
+
         {
             Options::changeLanguage();
     
             this->mLoadingText->setString((Options::TEXT_LOADING_2.string + Utils::intToString(percent) + "%").c_str());
         }
-        
-        AppDelegate::screens->set(Menu::create());
+
+		#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+		AppDelegate::screens->set(Menu::create());
+		#else
+		AppDelegate::screens->set(Screen::SCREEN_MENU);
+		#endif
     }
     else
     {

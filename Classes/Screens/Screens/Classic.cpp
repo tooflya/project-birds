@@ -146,7 +146,7 @@ Classic::Classic() :
         
         this->mGoldLifeButton->create()->setCenterPosition(this->mTextAreas[2]->getCenterX() + this->mTextAreas[2]->getWidthScaled() / 2 - this->mGoldLifeButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(1));
 
-        this->mConfetti = EntityManager::create(300, Confetti::create(), spriteBatch2);
+        this->mConfetti = EntityManager::create(600, Confetti::create(), spriteBatch2);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
 
 		Textes textes1 = {"0", Options::FONT, 32, -1};
@@ -291,12 +291,14 @@ Classic::Classic() :
         }
         else
         {
-        }
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+		}
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
+
+		AppDelegate::clearCache();
     }
 
 Classic* Classic::create()

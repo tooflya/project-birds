@@ -86,8 +86,12 @@ class Loading : public Screen
         // ===========================================================
         // Constants
         // ===========================================================
-    
-        static TextureStructure TEXTURE_LIBRARY[11];
+
+		#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
+        static TextureStructure TEXTURE_LIBRARY[12];
+		#else
+		static TextureStructure TEXTURE_LIBRARY[11];
+		#endif
 
         // ===========================================================
         // Fields

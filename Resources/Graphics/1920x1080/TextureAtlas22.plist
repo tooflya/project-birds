@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>main_menu_bg@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{1920,1080}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1920,1080}}</string>
+                <key>sourceSize</key>
+                <string>{1920,1080}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>TextureAtlas22.png</string>
+            <key>size</key>
+            <string>{1924,1084}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:6261e1bc65d5cfb592d453f4e381f846:f456b218a168e3467c71eaa869fb6415:25e55e570e6f99aa30758ea1e29f268b$</string>
+            <key>textureFileName</key>
+            <string>TextureAtlas22.png</string>
+        </dict>
+    </dict>
+</plist>

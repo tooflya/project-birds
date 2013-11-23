@@ -4,6 +4,7 @@
 #include "ResetProgress.h"
 
 #include "Levels.h"
+#include "Menu.h"
 
 // ===========================================================
 // Inner Classes
@@ -130,9 +131,12 @@ void ResetProgress::onHide()
     if(this->mAction)
     {
         AppDelegate::install(true);
+
+		#if CC_TOTAL_PRELOAD == 0
         static_cast<Levels*>(AppDelegate::screens->mScreens[Screen::SCREEN_LEVELS])->updateIcons();
-        
-        AppDelegate::screens->set(0.5, Screen::SCREEN_MENU);
+		#endif
+
+		AppDelegate::screens->set(Menu::create());
     }
     
     this->mAction = false;

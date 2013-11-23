@@ -151,12 +151,14 @@ Episodes::Episodes() :
         this->mDarkLayers[3]->setPosition(ccp(this->mEpisodes[3]->getCenterX() - this->mEpisodes[3]->getWidthScaled() / 2, this->mEpisodes[3]->getCenterY() - this->mEpisodes[3]->getHeightScaled() / 2));
         this->mDarkLayers[4]->setPosition(ccp(this->mEpisodes[4]->getCenterX() - this->mEpisodes[4]->getWidthScaled() / 2, this->mEpisodes[4]->getCenterY() - this->mEpisodes[4]->getHeightScaled() / 2));
         
-        this->mEpisodeText[0] = Text::create((Textes) {Options::TEXT_LEVELS_EPISODE.string, Options::FONT, 48, -1}, this->mScroll);
-        this->mEpisodeText[1] = Text::create((Textes) {Options::TEXT_LEVELS_EPISODE.string, Options::FONT, 48, -1}, this->mScroll);
-        this->mEpisodeText[2] = Text::create((Textes) {Options::TEXT_LEVELS_EPISODE.string, Options::FONT, 48, -1}, this->mScroll);
-        this->mEpisodeText[3] = Text::create((Textes) {Options::TEXT_LEVELS_EPISODE.string, Options::FONT, 48, -1}, this->mScroll);
-        this->mEpisodeText[4] = Text::create((Textes) {Options::TEXT_LEVELS_EPISODE.string, Options::FONT, 48, -1}, this->mScroll);
-        this->mEpisodeText[5] = Text::create((Textes) {Options::TEXT_LEVELS_EPISODE.string, Options::FONT, 48, -1}, this->mScroll);
+		Textes textes1 = { Options::TEXT_LEVELS_EPISODE.string, Options::FONT, 48, -1 };
+
+		this->mEpisodeText[0] = Text::create(textes1, this->mScroll);
+		this->mEpisodeText[1] = Text::create(textes1, this->mScroll);
+		this->mEpisodeText[2] = Text::create(textes1, this->mScroll);
+		this->mEpisodeText[3] = Text::create(textes1, this->mScroll);
+		this->mEpisodeText[4] = Text::create(textes1, this->mScroll);
+		this->mEpisodeText[5] = Text::create(textes1, this->mScroll);
         
         this->mEpisodeText[0]->setZOrder(3);
         this->mEpisodeText[1]->setZOrder(3);
@@ -179,12 +181,14 @@ Episodes::Episodes() :
         this->mEpisodeNameText[4]->setZOrder(3);
         this->mEpisodeNameText[5]->setZOrder(3);
         
-        this->mStarsText[0] = Text::create((Textes) {"0", Options::FONT, 38, -1}, this->mScroll);
-        this->mStarsText[1] = Text::create((Textes) {"0", Options::FONT, 38, -1}, this->mScroll);
-        this->mStarsText[2] = Text::create((Textes) {"0", Options::FONT, 38, -1}, this->mScroll);
-        this->mStarsText[3] = Text::create((Textes) {"0", Options::FONT, 38, -1}, this->mScroll);
-        this->mStarsText[4] = Text::create((Textes) {"0", Options::FONT, 38, -1}, this->mScroll);
-        this->mStarsText[5] = Text::create((Textes) {"0", Options::FONT, 38, -1}, this->mScroll);
+		Textes textes2 = { "0", Options::FONT, 38, -1 };
+
+		this->mStarsText[0] = Text::create(textes2, this->mScroll);
+		this->mStarsText[1] = Text::create(textes2, this->mScroll);
+		this->mStarsText[2] = Text::create(textes2, this->mScroll);
+		this->mStarsText[3] = Text::create(textes2, this->mScroll);
+		this->mStarsText[4] = Text::create(textes2, this->mScroll);
+		this->mStarsText[5] = Text::create(textes2, this->mScroll);
         
         this->mUnlockText[0] = Text::create(Options::TEXT_NEED_TO_UNLOCK, this->mScroll);
         this->mUnlockText[1] = Text::create(Options::TEXT_NEED_TO_UNLOCK, this->mScroll);
@@ -391,12 +395,15 @@ Episodes::Episodes() :
         this->mPersonage = Entity::create("progress_map_fbico@2x.png", spriteBatch2);
         this->mPersonage->create()->setZOrder(3);
         
-        Text* t = Text::create((Textes) {"?", Options::FONT, 38, -1}, this->mScroll);
+		Text* t = Text::create(textes2, this->mScroll);
         t->setCenterPosition(static_cast<Entity*>(this->mPoints->objectAtIndex(5))->getCenterX() - t->getWidth() / 2, static_cast<Entity*>(this->mPoints->objectAtIndex(5))->getCenterY() - t->getHeight() / 2 + Utils::coord(200) * this->mScale);
         t->setZOrder(3);
         
-        this->mFacebookText[0] = Text::create((Textes) {"Connect\nwith Facebook", Options::FONT, 32, -1}, this->mEpisodes[5]);
-        this->mFacebookText[1] = Text::create((Textes) {"play with friends", Options::FONT, 22, -1}, this->mEpisodes[5]);
+		Textes textes3 = { "Connect\nwith Facebook", Options::FONT, 32, -1 };
+		Textes textes4 = { "play with friends", Options::FONT, 22, -1 };
+
+		this->mFacebookText[0] = Text::create(textes3, this->mEpisodes[5]);
+		this->mFacebookText[1] = Text::create(textes4, this->mEpisodes[5]);
         this->mFacebookText[0]->setCenterPosition(this->mEpisodes[5]->getWidth() / 2 + Utils::coord(60), this->mEpisodes[5]->getHeight() / 2 + Utils::coord(30));
         this->mFacebookText[1]->setCenterPosition(this->mEpisodes[5]->getWidth() / 2 + Utils::coord(60), this->mEpisodes[5]->getHeight() / 2 - Utils::coord(60));
         this->mFacebookText[0]->setZOrder(3);

@@ -55,11 +55,11 @@ Credits::Credits() :
 		this->mListBorders[1]->setScaleY(-1);
     
 		this->mList = CreditsList::create(this);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         AppDelegate::clearCache();
 	}
@@ -67,7 +67,11 @@ Credits::Credits() :
 Credits* Credits::create()
 {
     Credits* screen = new Credits();
-    screen->autorelease();
+	screen->autorelease();
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+	#endif
     
     return screen;
 }
@@ -119,8 +123,12 @@ void Credits::onExit()
 void Credits::keyBackClicked(bool pSound)
 {
     Screen::keyBackClicked(pSound);
-    
-    AppDelegate::screens->set(Settings::create());
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	AppDelegate::screens->set(Screen::SCREEN_SETTINGS);
+	#else
+	AppDelegate::screens->set(Settings::create());
+	#endif
 }
 
 #endif

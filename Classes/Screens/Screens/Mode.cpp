@@ -206,11 +206,12 @@ Mode::Mode() :
 		this->mIcons[1]->setRotation(-45);
 		this->mIcons[1]->setScale(0.75);
 		this->mIcons[1]->animate(0.05);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mGamePanel->setScaleX(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         AppDelegate::clearCache();
 	}
@@ -218,7 +219,11 @@ Mode::Mode() :
 Mode* Mode::create()
 {
     Mode* screen = new Mode();
-    screen->autorelease();
+	screen->autorelease();
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+	#endif
     
     return screen;
 }
@@ -257,9 +262,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         Loader::ACTION = 0;
                         Loader::T = 1;
-                        Loader::TYPE = -1;
+						Loader::TYPE = -1;
 
-                        AppDelegate::screens->set(Loader::create());
+						#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+						AppDelegate::screens->set(Loader::create());
+						#else
+						AppDelegate::screens->set(Screen::SCREEN_LOADER);
+						#endif
                     }
 
                 break;
@@ -279,9 +288,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                     {
                         Loader::ACTION = 1;
                         Loader::T = 2;
-                        Loader::TYPE = -1;
-                        
-                        AppDelegate::screens->set(Loader::create());
+						Loader::TYPE = -1;
+
+						#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+						AppDelegate::screens->set(Loader::create());
+						#else
+						AppDelegate::screens->set(Screen::SCREEN_LOADER);
+						#endif
                     }
 
                 break;
@@ -289,9 +302,13 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
 
                     Loader::ACTION = 2;
                     Loader::T = 3;
-                    Loader::TYPE = -1;
+					Loader::TYPE = -1;
 
-                    AppDelegate::screens->set(Episodes::create());
+					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Episodes::create());
+					#else
+					AppDelegate::screens->set(Screen::SCREEN_EPISODES);
+					#endif
 
                 break;
                 case Options::BUTTONS_ID_MODE_HELP:
@@ -311,31 +328,47 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MENU_SHOP:
 
-                    Shop::ACTION = 1;
+					Shop::ACTION = 1;
 
-                    AppDelegate::screens->set(Shop::create());
+					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Shop::create());
+					#else
+					AppDelegate::screens->set(Screen::SCREEN_SHOP);
+					#endif
 
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_SILVER_COINS:
                 case Options::BUTTONS_ID_SHOP_GET_GOLD_COINS:
                     
-                    Shop::ACTION = 10;
-                    
-                    AppDelegate::screens->set(Shop::create());
+					Shop::ACTION = 10;
+
+					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Shop::create());
+					#else
+					AppDelegate::screens->set(Screen::SCREEN_SHOP);
+					#endif
                     
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_LIVES:
                     
-                    Shop::ACTION = 11;
-                    
-                    AppDelegate::screens->set(Shop::create());
+					Shop::ACTION = 11;
+
+					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Shop::create());
+					#else
+					AppDelegate::screens->set(Screen::SCREEN_SHOP);
+					#endif
                     
                 break;
                 case Options::BUTTONS_ID_SHOP_GET_KEYS:
                     
-                    Shop::ACTION = 12;
-                    
-                    AppDelegate::screens->set(Shop::create());
+					Shop::ACTION = 12;
+
+					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Shop::create());
+					#else
+					AppDelegate::screens->set(Screen::SCREEN_SHOP);
+					#endif
                     
                 break;
 
@@ -490,7 +523,12 @@ void Mode::keyBackClicked(bool pSound)
         this->mModesUnlockPopup->hide();
     }
     else
-    {AppDelegate::screens->set(Menu::create());
+	{
+		#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+		AppDelegate::screens->set(Menu::create());
+		#else
+		AppDelegate::screens->set(Screen::SCREEN_MENU);
+		#endif
     }
 }
 

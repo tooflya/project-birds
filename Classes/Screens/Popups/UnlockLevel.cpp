@@ -154,9 +154,9 @@ void UnlockLevel::onHide()
         }
         else
         {
-            Shop::ACTION = 2;
-            
-            AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+			Shop::ACTION = 2;
+
+			AppDelegate::screens->set(Shop::create());
         }
     }
     

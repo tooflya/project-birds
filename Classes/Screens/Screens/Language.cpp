@@ -137,11 +137,11 @@ Language::Language() :
 			this->mTextes[i - 2]->disableShadow();
 			this->mTextes[i - 2]->setCenterPosition(this->mNotAvailableBackgrounds[i - 2]->getCenterX(), this->mNotAvailableBackgrounds[i - 2]->getCenterY());
 		}
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         AppDelegate::clearCache();
 	}
@@ -149,7 +149,11 @@ Language::Language() :
 Language* Language::create()
 {
     Language* screen = new Language();
-    screen->autorelease();
+	screen->autorelease();
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+	#endif
     
     return screen;
 }
@@ -174,18 +178,18 @@ void Language::onTouchButtonsCallback(const int pAction, const int pID)
                 
                 Options::CURRENT_LANGUAGE = 1;
                 
-                Options::changeLanguage();
-                
-                AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+				Options::changeLanguage();
+
+				AppDelegate::screens->set(Settings::create());
                 
             break;
             case Options::BUTTONS_ID_LANGUAGE_L_EN:
                 
                 Options::CURRENT_LANGUAGE = 0;
 
-                Options::changeLanguage();
-                
-                AppDelegate::screens->set(0.5, Screen::SCREEN_SETTINGS);
+				Options::changeLanguage();
+
+				AppDelegate::screens->set(Settings::create());
                 
             break;
             case Options::BUTTONS_ID_LANGUAGE_L_DE:
@@ -272,9 +276,13 @@ void Language::onExit()
 
 void Language::keyBackClicked(bool pSound)
 {
-    Screen::keyBackClicked(pSound);
-    
-    AppDelegate::screens->set(Settings::create());
+	Screen::keyBackClicked(pSound);
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	AppDelegate::screens->set(Screen::SCREEN_SETTINGS);
+	#else
+	AppDelegate::screens->set(Settings::create());
+	#endif
 }
 
 #endif

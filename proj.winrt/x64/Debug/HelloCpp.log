@@ -1,119 +1,131 @@
-﻿Build started 10/22/2013 5:56:24 PM.
-     1>Project "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\HelloCpp.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/22/2013 11:01:26 PM.
+     1>Project "D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\HelloCpp.vcxproj" on node 2 (Build target(s)).
      1>PreBuildEvent:
-         xcopy "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Resources" "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\Assets\Resources" /s /y /i /q & echo Copied Resource files to \Assets\Resources
+         xcopy "D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Resources" "D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\Assets\Resources" /s /y /i /q & echo Copied Resource files to \Assets\Resources
          :VCEnd
-         380 File(s) copied
+         570 File(s) copied
          Copied Resource files to \Assets\Resources
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\CocosDenshion\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\kazmath\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\winrt" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Entities" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Managers" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Graphics" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\TEST" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Utils" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Screens" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Popups" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"Generated Files\\" /Ix64\Debug\ /Zi /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /GL /D WINRT /D _WINRT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"pch.h" /Fp"x64\Debug\pch.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /wd4453 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /errorReport:prompt pch.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\CocosDenshion\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\kazmath\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\winrt" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Entities" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Managers" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Graphics" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\TEST" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Utils" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Screens" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Popups" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"Generated Files\\" /Ix64\Debug\ /Zi /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /GL /D WINRT /D _WINRT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"pch.h" /Fp"x64\Debug\pch.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /wd4453 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /errorReport:prompt pch.cpp
          pch.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\CocosDenshion\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\kazmath\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\winrt" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Entities" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Managers" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Graphics" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\TEST" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Utils" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Screens" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Popups" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"Generated Files\\" /Ix64\Debug\ /Zi /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /GL /D WINRT /D _WINRT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /wd4453 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /errorReport:prompt ..\Classes\AppDelegate.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\CocosDenshion\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\kazmath\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\winrt" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Entities" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Managers" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Graphics" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\TEST" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Utils" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Screens" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Popups" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"Generated Files\\" /Ix64\Debug\ /Zi /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /GL /D WINRT /D _WINRT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /wd4453 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /errorReport:prompt ..\Classes\AppDelegate.cpp
          AppDelegate.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\CocosDenshion\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\kazmath\include" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\winrt" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Entities" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Managers" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Graphics" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\TEST" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Utils" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Screens" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Popups" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"Generated Files\\" /Ix64\Debug\ /Zi /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /GL /D WINRT /D _WINRT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"pch.h" /Fp"x64\Debug\pch.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /wd4453 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /errorReport:prompt ..\Classes\Entities\AnimatedCoin.cpp ..\Classes\Entities\Bird.cpp ..\Classes\Entities\Button.cpp ..\Classes\Entities\Clock.cpp ..\Classes\Entities\Color.cpp ..\Classes\Entities\Confetti.cpp ..\Classes\Entities\Dust.cpp ..\Classes\Entities\Entity.cpp ..\Classes\Entities\EventPanel.cpp ..\Classes\Entities\Explosion.cpp ..\Classes\Entities\ExplosionBasic.cpp ..\Classes\Entities\Feather.cpp ..\Classes\Entities\GeneralExplosion.cpp ..\Classes\Entities\ImpulseEntity.cpp ..\Classes\Entities\Item.cpp ..\Classes\Entities\KeyDisplay.cpp ..\Classes\Entities\KeyParticle.cpp ..\Classes\Entities\LiveParticle.cpp ..\Classes\Entities\Mark.cpp ..\Classes\Entities\PirateBox.cpp ..\Classes\Entities\PlayButton.cpp ..\Classes\Entities\Rain.cpp ..\Classes\Entities\RainCircle.cpp ..\Classes\Entities\Ripple.cpp ..\Classes\Entities\RobotoGun.cpp ..\Classes\Entities\RobotoPart.cpp ..\Classes\Entities\SpecialBird.cpp ..\Classes\Entities\Star.cpp ..\Classes\Entities\StarParticle.cpp ..\Classes\Entities\StarParticle2.cpp ..\Classes\Entities\Text.cpp ..\Classes\Entities\WeaponParticle.cpp ..\Classes\Entities\ZombieExplosion.cpp ..\Classes\Graphics\Texture.cpp ..\Classes\Managers\BatchEntityManager.cpp ..\Classes\Managers\BladeParticlesManager.cpp ..\Classes\Managers\EntityManager.cpp ..\Classes\Managers\ScreenManager.cpp ..\Classes\Options.cpp ..\Classes\Screens\Popup.cpp ..\Classes\Screens\Popups\BoughtItem.cpp ..\Classes\Screens\Popups\BuyItem.cpp ..\Classes\Screens\Popups\Exit.cpp ..\Classes\Screens\Popups\GetCoins.cpp ..\Classes\Screens\Popups\GetKeys.cpp ..\Classes\Screens\Popups\GetLives.cpp ..\Classes\Screens\Popups\Map.cpp ..\Classes\Screens\Popups\ModeHelp.cpp ..\Classes\Screens\Popups\Pause.cpp ..\Classes\Screens\Popups\PaymentProceed.cpp ..\Classes\Screens\Popups\PleaseRate.cpp ..\Classes\Screens\Popups\ResetProgress.cpp ..\Classes\Screens\Popups\SurpriseLevel.cpp ..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp ..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp ..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp ..\Classes\Screens\Popups\UnlockLevel.cpp ..\Classes\Screens\Screen.cpp ..\Classes\Screens\Screens\Arcade.cpp ..\Classes\Screens\Screens\Classic.cpp ..\Classes\Screens\Screens\Credits.cpp ..\Classes\Screens\Screens\End.cpp ..\Classes\Screens\Screens\Game.cpp ..\Classes\Screens\Screens\Language.cpp ..\Classes\Screens\Screens\Levels.cpp ..\Classes\Screens\Screens\Loader.cpp ..\Classes\Screens\Screens\Loading.cpp ..\Classes\Screens\Screens\Menu.cpp ..\Classes\Screens\Screens\Mode.cpp ..\Classes\Screens\Screens\More.cpp ..\Classes\Screens\Screens\Progress.cpp ..\Classes\Screens\Screens\Progresses.cpp ..\Classes\Screens\Screens\Settings.cpp ..\Classes\Screens\Screens\Shop.cpp ..\Classes\Screens\Screens\Splash.cpp ..\Classes\TEST\CCBlade.cpp ..\Classes\TEST\TouchTrailLayer.cpp ..\Classes\Utils\ButtonReceiver.cpp ..\Classes\Utils\BuyItemList.cpp ..\Classes\Utils\CreditsList.cpp ..\Classes\Utils\List.cpp ..\Classes\Utils\ModeHelpList.cpp ..\Classes\Utils\SpriteBatch.cpp ..\Classes\Utils\Touchable.cpp ..\Classes\Utils\Utils.cpp App.xaml.cpp MainPage.xaml.cpp "Generated Files\XamlTypeInfo.Impl.g.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\third_party\winrt\angleproject\samples\gles2_book\Common" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\CocosDenshion\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\kazmath\include" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\..\..\..\cocos2dx\platform\winrt" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Entities" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Managers" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Graphics" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\TEST" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Utils" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Screens" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\..\Classes\Screens\Popups" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\\" /I"Generated Files\\" /Ix64\Debug\ /Zi /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /GL /D WINRT /D _WINRT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"pch.h" /Fp"x64\Debug\pch.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /wd4453 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /errorReport:prompt ..\Classes\Entities\AnimatedCoin.cpp ..\Classes\Entities\Bird.cpp ..\Classes\Entities\Button.cpp ..\Classes\Entities\Clock.cpp ..\Classes\Entities\Color.cpp ..\Classes\Entities\ColorParticle.cpp ..\Classes\Entities\Confetti.cpp ..\Classes\Entities\Dust.cpp ..\Classes\Entities\Entity.cpp ..\Classes\Entities\EventPanel.cpp ..\Classes\Entities\Explosion.cpp ..\Classes\Entities\ExplosionBasic.cpp ..\Classes\Entities\Feather.cpp ..\Classes\Entities\GeneralExplosion.cpp ..\Classes\Entities\Icon8.cpp ..\Classes\Entities\ImpulseEntity.cpp ..\Classes\Entities\Item.cpp ..\Classes\Entities\KeyDisplay.cpp ..\Classes\Entities\KeyParticle.cpp ..\Classes\Entities\LiveParticle.cpp ..\Classes\Entities\Mark.cpp ..\Classes\Entities\PirateBox.cpp ..\Classes\Entities\PlayButton.cpp ..\Classes\Entities\Rain.cpp ..\Classes\Entities\RainCircle.cpp ..\Classes\Entities\Ripple.cpp ..\Classes\Entities\RobotoGun.cpp ..\Classes\Entities\RobotoPart.cpp ..\Classes\Entities\SpecialBird.cpp ..\Classes\Entities\Star.cpp ..\Classes\Entities\StarParticle.cpp ..\Classes\Entities\StarParticle2.cpp ..\Classes\Entities\Text.cpp ..\Classes\Entities\WeaponParticle.cpp ..\Classes\Entities\ZombieExplosion.cpp ..\Classes\Graphics\Texture.cpp ..\Classes\Managers\BatchEntityManager.cpp ..\Classes\Managers\BladeParticlesManager.cpp ..\Classes\Managers\EntityManager.cpp ..\Classes\Managers\ScreenManager.cpp ..\Classes\Options.cpp ..\Classes\Screens\Popup.cpp ..\Classes\Screens\Popups\BoughtItem.cpp ..\Classes\Screens\Popups\BuyItem.cpp ..\Classes\Screens\Popups\Exit.cpp ..\Classes\Screens\Popups\GetCoins.cpp ..\Classes\Screens\Popups\GetKeys.cpp ..\Classes\Screens\Popups\GetLives.cpp ..\Classes\Screens\Popups\GetShoots.cpp ..\Classes\Screens\Popups\Map.cpp ..\Classes\Screens\Popups\MapDescription.cpp ..\Classes\Screens\Popups\ModeHelp.cpp ..\Classes\Screens\Popups\Pause.cpp ..\Classes\Screens\Popups\PaymentProceed.cpp ..\Classes\Screens\Popups\PleaseRate.cpp ..\Classes\Screens\Popups\ResetProgress.cpp ..\Classes\Screens\Popups\SurpriseLevel.cpp ..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp ..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp ..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp ..\Classes\Screens\Popups\UnlockLevel.cpp ..\Classes\Screens\Popups\UnlockMode.cpp ..\Classes\Screens\Screen.cpp ..\Classes\Screens\Screens\Arcade.cpp ..\Classes\Screens\Screens\Classic.cpp ..\Classes\Screens\Screens\Credits.cpp ..\Classes\Screens\Screens\End.cpp ..\Classes\Screens\Screens\Episodes.cpp ..\Classes\Screens\Screens\Game.cpp ..\Classes\Screens\Screens\Language.cpp ..\Classes\Screens\Screens\Levels.cpp ..\Classes\Screens\Screens\Loader.cpp ..\Classes\Screens\Screens\Loading.cpp ..\Classes\Screens\Screens\Menu.cpp ..\Classes\Screens\Screens\Mode.cpp ..\Classes\Screens\Screens\More.cpp ..\Classes\Screens\Screens\Progress.cpp ..\Classes\Screens\Screens\Progresses.cpp ..\Classes\Screens\Screens\Settings.cpp ..\Classes\Screens\Screens\Shop.cpp ..\Classes\Screens\Screens\Splash.cpp ..\Classes\Screens\Screens\SplashScreen.cpp ..\Classes\TEST\CCBlade.cpp ..\Classes\TEST\TouchTrailLayer.cpp ..\Classes\Utils\ButtonReceiver.cpp ..\Classes\Utils\BuyItemList.cpp ..\Classes\Utils\CreditsList.cpp ..\Classes\Utils\List.cpp ..\Classes\Utils\MapDescriptionList.cpp ..\Classes\Utils\ModeHelpList.cpp ..\Classes\Utils\SpriteBatch.cpp ..\Classes\Utils\Touchable.cpp ..\Classes\Utils\Utils.cpp App.xaml.cpp MainPage.xaml.cpp "Generated Files\XamlTypeInfo.Impl.g.cpp"
          AnimatedCoin.cpp
          Bird.cpp
          Button.cpp
          Clock.cpp
-     1>..\Classes\Entities\Button.cpp(4): warning C4627: '#include "Button.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Bird.cpp(4): warning C4627: '#include "Bird.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Button.cpp(182): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\Button.cpp(4): warning C4627: '#include "Button.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Bird.cpp(6): warning C4627: '#include "Feather.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Bird.cpp(8): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Bird.cpp(638): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         Color.cpp
      1>..\Classes\Entities\Clock.cpp(4): warning C4627: '#include "Clock.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Button.cpp(197): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\Clock.cpp(74): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\AnimatedCoin.cpp(4): warning C4627: '#include "AnimatedCoin.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\AnimatedCoin.cpp(84): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\AnimatedCoin.cpp(88): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\Bird.cpp(8): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Bird.cpp(9): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Bird.cpp(646): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Color.cpp
+         ColorParticle.cpp
          Confetti.cpp
          Dust.cpp
-         Entity.cpp
-     1>..\Classes\Entities\Color.cpp(4): warning C4627: '#include "Color.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Confetti.cpp(4): warning C4627: '#include "Confetti.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Confetti.cpp(125): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\Dust.cpp(4): warning C4627: '#include "Dust.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\ColorParticle.cpp(4): warning C4627: '#include "ColorParticle.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Color.cpp(4): warning C4627: '#include "Color.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\ColorParticle.cpp(93): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Entity.cpp
      1>..\Classes\Entities\Color.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Color.cpp(289): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\Dust.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\Color.cpp(7): warning C4627: '#include "Progresses.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Dust.cpp(179): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          EventPanel.cpp
+     1>..\Classes\Entities\Color.cpp(433): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          Explosion.cpp
      1>..\Classes\Entities\Entity.cpp(4): warning C4627: '#include "Entity.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-         ExplosionBasic.cpp
      1>..\Classes\Entities\Entity.cpp(6): warning C4627: '#include "EntityManager.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Entity.cpp(7): warning C4627: '#include "BatchEntityManager.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Entity.cpp(1053): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\Explosion.cpp(4): warning C4627: '#include "Explosion.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Entity.cpp(1115): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\EventPanel.cpp(4): warning C4627: '#include "EventPanel.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Explosion.cpp(71): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\EventPanel.cpp(6): warning C4627: '#include "StarParticle.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-         Feather.cpp
+     1>..\Classes\Entities\Explosion.cpp(4): warning C4627: '#include "Explosion.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Explosion.cpp(71): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\EventPanel.cpp(7): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\ExplosionBasic.cpp(4): warning C4627: '#include "ExplosionBasic.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\EventPanel.cpp(199): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\ExplosionBasic.cpp(69): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\EventPanel.cpp(203): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         ExplosionBasic.cpp
+         Feather.cpp
          GeneralExplosion.cpp
-         ImpulseEntity.cpp
-         Item.cpp
-     1>..\Classes\Entities\Feather.cpp(4): warning C4627: '#include "Feather.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Feather.cpp(173): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\ImpulseEntity.cpp(4): warning C4627: '#include "ImpulseEntity.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\ExplosionBasic.cpp(4): warning C4627: '#include "ExplosionBasic.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\GeneralExplosion.cpp(4): warning C4627: '#include "GeneralExplosion.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\ExplosionBasic.cpp(69): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\GeneralExplosion.cpp(70): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\Feather.cpp(4): warning C4627: '#include "Feather.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Feather.cpp(173): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Icon8.cpp
+         ImpulseEntity.cpp
+         Item.cpp
+     1>..\Classes\Entities\Icon8.cpp(4): warning C4627: '#include "Icon8.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Item.cpp(4): warning C4627: '#include "Item.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\GeneralExplosion.cpp(70): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\ImpulseEntity.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\Icon8.cpp(96): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\ImpulseEntity.cpp(4): warning C4627: '#include "ImpulseEntity.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\ImpulseEntity.cpp(111): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\Item.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Item.cpp(59): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\ImpulseEntity.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\ImpulseEntity.cpp(124): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          KeyDisplay.cpp
          KeyParticle.cpp
          LiveParticle.cpp
-         Mark.cpp
+     1>..\Classes\Entities\KeyDisplay.cpp(4): warning C4627: '#include "KeyDisplay.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\LiveParticle.cpp(4): warning C4627: '#include "LiveParticle.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Mark.cpp(4): warning C4627: '#include "Mark.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\LiveParticle.cpp(89): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\LiveParticle.cpp(88): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\KeyParticle.cpp(4): warning C4627: '#include "KeyParticle.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\KeyParticle.cpp(106): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\Mark.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\KeyParticle.cpp(110): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\KeyDisplay.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Mark.cpp(77): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\KeyDisplay.cpp(150): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Mark.cpp
          PirateBox.cpp
          PlayButton.cpp
-         Rain.cpp
-     1>..\Classes\Entities\PirateBox.cpp(4): warning C4627: '#include "PirateBox.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\Mark.cpp(4): warning C4627: '#include "Mark.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\PlayButton.cpp(4): warning C4627: '#include "PlayButton.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\PlayButton.cpp(69): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\PirateBox.cpp(4): warning C4627: '#include "PirateBox.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Mark.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Mark.cpp(77): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Rain.cpp
      1>..\Classes\Entities\PirateBox.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\PirateBox.cpp(148): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
@@ -122,69 +134,67 @@
      1>..\Classes\Entities\Rain.cpp(4): warning C4627: '#include "Rain.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Rain.cpp(82): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\KeyDisplay.cpp(4): warning C4627: '#include "KeyDisplay.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\KeyDisplay.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\KeyDisplay.cpp(150): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         RobotoGun.cpp
      1>..\Classes\Entities\RainCircle.cpp(4): warning C4627: '#include "RainCircle.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\RainCircle.cpp(77): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\Ripple.cpp(4): warning C4627: '#include "Ripple.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Ripple.cpp(145): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         RobotoGun.cpp
          RobotoPart.cpp
+     1>..\Classes\Entities\Dust.cpp(4): warning C4627: '#include "Dust.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Dust.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Dust.cpp(179): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\RobotoPart.cpp(4): warning C4627: '#include "RobotoPart.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\RobotoPart.cpp(135): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          SpecialBird.cpp
      1>..\Classes\Entities\RobotoGun.cpp(4): warning C4627: '#include "RobotoGun.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\RobotoGun.cpp(64): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\RobotoPart.cpp(4): warning C4627: '#include "RobotoPart.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\RobotoPart.cpp(135): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\SpecialBird.cpp(4): warning C4627: '#include "SpecialBird.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\SpecialBird.cpp(67): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          Star.cpp
          StarParticle.cpp
-         StarParticle2.cpp
-     1>..\Classes\Entities\StarParticle2.cpp(4): warning C4627: '#include "StarParticle2.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\SpecialBird.cpp(4): warning C4627: '#include "SpecialBird.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\StarParticle2.cpp(87): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\Star.cpp(4): warning C4627: '#include "Star.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\Star.cpp(78): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         Text.cpp
-         WeaponParticle.cpp
+     1>..\Classes\Entities\SpecialBird.cpp(81): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\StarParticle.cpp(4): warning C4627: '#include "StarParticle.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\StarParticle.cpp(140): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\Text.cpp(4): warning C4627: '#include "Text.h"': skipped when looking for precompiled header use
+         StarParticle2.cpp
+         Text.cpp
+         WeaponParticle.cpp
+     1>..\Classes\Entities\StarParticle2.cpp(4): warning C4627: '#include "StarParticle2.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\WeaponParticle.cpp(4): warning C4627: '#include "WeaponParticle.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\Text.cpp(237): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\Ripple.cpp(4): warning C4627: '#include "Ripple.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Entities\WeaponParticle.cpp(134): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Entities\Ripple.cpp(145): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Entities\StarParticle2.cpp(87): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          ZombieExplosion.cpp
          Texture.cpp
-         BatchEntityManager.cpp
-         BladeParticlesManager.cpp
-     1>..\Classes\Graphics\Texture.cpp(4): warning C4627: '#include "Texture.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\WeaponParticle.cpp(4): warning C4627: '#include "WeaponParticle.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Graphics\Texture.cpp(65): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Managers\BatchEntityManager.cpp(4): warning C4627: '#include "BatchEntityManager.h"': skipped when looking for precompiled header use
+     1>..\Classes\Entities\WeaponParticle.cpp(134): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         BatchEntityManager.cpp
+     1>..\Classes\Entities\Text.cpp(4): warning C4627: '#include "Text.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Entities\Text.cpp(472): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Graphics\Texture.cpp(4): warning C4627: '#include "Texture.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Entities\ZombieExplosion.cpp(4): warning C4627: '#include "ZombieExplosion.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Managers\BatchEntityManager.cpp(167): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Graphics\Texture.cpp(65): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Entities\ZombieExplosion.cpp(89): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Managers\BatchEntityManager.cpp(4): warning C4627: '#include "BatchEntityManager.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Managers\BatchEntityManager.cpp(167): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         BladeParticlesManager.cpp
          EntityManager.cpp
+         ScreenManager.cpp
      1>..\Classes\Managers\BladeParticlesManager.cpp(4): warning C4627: '#include "BladeParticlesManager.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Managers\BladeParticlesManager.cpp(37): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         ScreenManager.cpp
-         Options.cpp
-         Popup.cpp
      1>..\Classes\Managers\EntityManager.cpp(4): warning C4627: '#include "EntityManager.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Managers\EntityManager.cpp(258): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
@@ -192,6 +202,7 @@
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Managers\ScreenManager.cpp(6): warning C4627: '#include "Screen.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+         Options.cpp
      1>..\Classes\Managers\ScreenManager.cpp(8): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Managers\ScreenManager.cpp(9): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
@@ -210,58 +221,46 @@
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Managers\ScreenManager.cpp(16): warning C4627: '#include "Language.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+         Popup.cpp
      1>..\Classes\Managers\ScreenManager.cpp(17): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popup.cpp(4): warning C4627: '#include "Popup.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
+         BoughtItem.cpp
      1>..\Classes\Managers\ScreenManager.cpp(18): warning C4627: '#include "Classic.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popup.cpp(272): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Managers\ScreenManager.cpp(19): warning C4627: '#include "Arcade.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Managers\ScreenManager.cpp(20): warning C4627: '#include "Progresses.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Managers\ScreenManager.cpp(21): warning C4627: '#include "More.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Managers\ScreenManager.cpp(166): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         BoughtItem.cpp
-     1>..\Classes\Options.cpp(6): warning C4627: '#include "Text.h"': skipped when looking for precompiled header use
+     1>..\Classes\Managers\ScreenManager.cpp(22): warning C4627: '#include "Episodes.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Options.cpp(8): warning C4627: '#include "AppDelegate.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Options.cpp(1779): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Managers\ScreenManager.cpp(191): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          BuyItem.cpp
-     1>..\Classes\Screens\Popups\BoughtItem.cpp(4): warning C4627: '#include "BoughtItem.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-         Exit.cpp
-         GetCoins.cpp
-     1>..\Classes\Screens\Popups\BoughtItem.cpp(341): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         GetKeys.cpp
      1>..\Classes\Screens\Popups\BuyItem.cpp(4): warning C4627: '#include "BuyItem.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\BuyItem.cpp(157): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\BoughtItem.cpp(4): warning C4627: '#include "BoughtItem.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\BuyItem.cpp(182): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\BoughtItem.cpp(341): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Exit.cpp
+         GetCoins.cpp
+     1>..\Classes\Screens\Popup.cpp(4): warning C4627: '#include "Popup.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popup.cpp(272): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Screens\Popups\Exit.cpp(4): warning C4627: '#include "Exit.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\Exit.cpp(204): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\Exit.cpp(215): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         GetKeys.cpp
+     1>..\Classes\Screens\Popups\GetCoins.cpp(4): warning C4627: '#include "GetCoins.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
          GetLives.cpp
-         Map.cpp
-     1>..\Classes\Screens\Popups\GetKeys.cpp(4): warning C4627: '#include "GetKeys.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Popups\GetCoins.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\GetKeys.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\GetKeys.cpp(179): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         ModeHelp.cpp
-     1>..\Classes\Screens\Popups\Map.cpp(4): warning C4627: '#include "Map.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\Map.cpp(6): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\Map.cpp(895): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\GetCoins.cpp(203): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         GetShoots.cpp
      1>..\Classes\Screens\Popups\GetLives.cpp(4): warning C4627: '#include "GetLives.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\ModeHelp.cpp(4): warning C4627: '#include "ModeHelp.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\ModeHelp.cpp(102): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         Pause.cpp
      1>..\Classes\Screens\Popups\GetLives.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\GetLives.cpp(7): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
@@ -270,216 +269,333 @@
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\GetLives.cpp(10): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-         PaymentProceed.cpp
-     1>..\Classes\Screens\Popups\GetLives.cpp(240): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         PleaseRate.cpp
-     1>..\Classes\Screens\Popups\Pause.cpp(4): warning C4627: '#include "Pause.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Popups\GetLives.cpp(306): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\GetKeys.cpp(4): warning C4627: '#include "GetKeys.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\PaymentProceed.cpp(4): warning C4627: '#include "PaymentProceed.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Popups\GetShoots.cpp(4): warning C4627: '#include "GetShoots.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         Map.cpp
+     1>..\Classes\Screens\Popups\GetKeys.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\GetKeys.cpp(179): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\GetShoots.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\GetShoots.cpp(7): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\GetShoots.cpp(9): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\GetShoots.cpp(10): warning C4627: '#include "Progresses.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\GetShoots.cpp(181): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         MapDescription.cpp
+         ModeHelp.cpp
+     1>..\Classes\Screens\Popups\Map.cpp(4): warning C4627: '#include "Map.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\MapDescription.cpp(4): warning C4627: '#include "MapDescription.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\ModeHelp.cpp(4): warning C4627: '#include "ModeHelp.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\ModeHelp.cpp(102): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\Map.cpp(6): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\MapDescription.cpp(6): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\Map.cpp(902): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\MapDescription.cpp(114): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Pause.cpp
+     1>..\Classes\Options.cpp(6): warning C4627: '#include "Text.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         PaymentProceed.cpp
+     1>..\Classes\Options.cpp(8): warning C4627: '#include "AppDelegate.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         PleaseRate.cpp
+     1>..\Classes\Options.cpp(2052): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         ResetProgress.cpp
+     1>..\Classes\Screens\Popups\Pause.cpp(4): warning C4627: '#include "Pause.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\Pause.cpp(6): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\PaymentProceed.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\Pause.cpp(7): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\PaymentProceed.cpp(157): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Screens\Popups\Pause.cpp(257): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         ResetProgress.cpp
+     1>..\Classes\Screens\Popups\Pause.cpp(8): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\Pause.cpp(259): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          SurpriseLevel.cpp
      1>..\Classes\Screens\Popups\PleaseRate.cpp(4): warning C4627: '#include "PleaseRate.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\PleaseRate.cpp(149): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         TempPublisherAchievementsExplain.cpp
-     1>..\Classes\Screens\Popups\SurpriseLevel.cpp(4): warning C4627: '#include "SurpriseLevel.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Popups\PaymentProceed.cpp(4): warning C4627: '#include "PaymentProceed.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+         TempPublisherAchievementsExplain.cpp
+     1>..\Classes\Screens\Popups\PaymentProceed.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\PaymentProceed.cpp(233): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Screens\Popups\ResetProgress.cpp(4): warning C4627: '#include "ResetProgress.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         TempPublisherInAppExplain.cpp
+     1>..\Classes\Screens\Popups\ResetProgress.cpp(6): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\ResetProgress.cpp(165): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Popups\SurpriseLevel.cpp(4): warning C4627: '#include "SurpriseLevel.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\SurpriseLevel.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\ResetProgress.cpp(6): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
+         TempPublisherRatingExplain.cpp
      1>..\Classes\Screens\Popups\SurpriseLevel.cpp(7): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\ResetProgress.cpp(165): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Screens\Popups\SurpriseLevel.cpp(8): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\SurpriseLevel.cpp(177): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         UnlockLevel.cpp
      1>..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp(4): warning C4627: '#include "TempPublisherAchievementsExplain.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp(86): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         TempPublisherInAppExplain.cpp
-         TempPublisherRatingExplain.cpp
-         UnlockLevel.cpp
      1>..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp(4): warning C4627: '#include "TempPublisherInAppExplain.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\TempPublisherAchievementsExplain.cpp(86): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Screens\Popups\TempPublisherInAppExplain.cpp(86): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Screens\Popups\GetCoins.cpp(4): warning C4627: '#include "GetCoins.h"': skipped when looking for precompiled header use
+         UnlockMode.cpp
+         Screen.cpp
+     1>..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp(4): warning C4627: '#include "TempPublisherRatingExplain.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp(86): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Arcade.cpp
+     1>..\Classes\Screens\Screen.cpp(4): warning C4627: '#include "Screen.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screen.cpp(119): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Classic.cpp
      1>..\Classes\Screens\Popups\UnlockLevel.cpp(4): warning C4627: '#include "UnlockLevel.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\GetCoins.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\GetCoins.cpp(203): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Screens\Popups\UnlockLevel.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\UnlockLevel.cpp(7): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Popups\UnlockLevel.cpp(8): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-         Screen.cpp
      1>..\Classes\Screens\Popups\UnlockLevel.cpp(199): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         Arcade.cpp
-         Classic.cpp
-     1>..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp(4): warning C4627: '#include "TempPublisherRatingExplain.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Popups\TempPublisherRatingExplain.cpp(86): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          Credits.cpp
-     1>..\Classes\Screens\Screen.cpp(4): warning C4627: '#include "Screen.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screen.cpp(96): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         End.cpp
-     1>..\Classes\Screens\Screens\Classic.cpp(4): warning C4627: '#include "Classic.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Classic.cpp(6): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Classic.cpp(589): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Screens\Screens\Credits.cpp(4): warning C4627: '#include "Credits.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Credits.cpp(112): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Screens\Screens\End.cpp(4): warning C4627: '#include "End.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\End.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\End.cpp(7): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\End.cpp(542): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         Game.cpp
-         Language.cpp
      1>..\Classes\Screens\Screens\Arcade.cpp(4): warning C4627: '#include "Arcade.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Arcade.cpp(6): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Arcade.cpp(347): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Arcade.cpp(388): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         End.cpp
+     1>..\Classes\Screens\Popups\UnlockMode.cpp(4): warning C4627: '#include "UnlockMode.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\UnlockMode.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\UnlockMode.cpp(7): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\UnlockMode.cpp(8): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Popups\UnlockMode.cpp(199): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Episodes.cpp
+     1>..\Classes\Screens\Screens\Credits.cpp(4): warning C4627: '#include "Credits.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Credits.cpp(6): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Credits.cpp(127): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\End.cpp(4): warning C4627: '#include "End.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         Game.cpp
+     1>..\Classes\Screens\Screens\End.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\End.cpp(7): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\End.cpp(8): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\End.cpp(900): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Classic.cpp(4): warning C4627: '#include "Classic.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Classic.cpp(6): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Classic.cpp(642): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Language.cpp
          Levels.cpp
-         Loader.cpp
      1>..\Classes\Screens\Screens\Game.cpp(4): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Game.cpp(6): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Game.cpp(1411): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Loader.cpp
      1>..\Classes\Screens\Screens\Language.cpp(4): warning C4627: '#include "Language.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Game.cpp(1173): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Screens\Screens\Language.cpp(236): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Language.cpp(6): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Language.cpp(281): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          Loading.cpp
-         Menu.cpp
+     1>..\Classes\Screens\Screens\Levels.cpp(4): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Loader.cpp(4): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Episodes.cpp(4): warning C4627: '#include "Episodes.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Levels.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Loader.cpp(6): warning C4627: '#include "Loading.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Episodes.cpp(6): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Levels.cpp(7): warning C4627: '#include "Episodes.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Loader.cpp(7): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Loader.cpp(445): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Episodes.cpp(7): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Levels.cpp(8): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Loader.cpp(8): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Loader.cpp(9): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Episodes.cpp(630): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Levels.cpp(1357): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Loader.cpp(10): warning C4627: '#include "Classic.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Loader.cpp(11): warning C4627: '#include "Arcade.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Loader.cpp(12): warning C4627: '#include "Progresses.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Loader.cpp(461): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Menu.cpp
          Mode.cpp
+         More.cpp
+     1>..\Classes\Screens\Screens\Loading.cpp(4): warning C4627: '#include "Loading.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Loading.cpp(6): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Loading.cpp(214): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Progress.cpp
      1>..\Classes\Screens\Screens\Menu.cpp(4): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Menu.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Menu.cpp(248): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Screens\Screens\Loading.cpp(4): warning C4627: '#include "Loading.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Screens\Menu.cpp(7): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Loading.cpp(207): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         More.cpp
-     1>..\Classes\Screens\Screens\Levels.cpp(4): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Screens\Menu.cpp(8): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Levels.cpp(6): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Levels.cpp(1008): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Menu.cpp(301): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Screens\Screens\Mode.cpp(4): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Mode.cpp(6): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
+         Progresses.cpp
      1>..\Classes\Screens\Screens\Mode.cpp(7): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Mode.cpp(204): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         Progress.cpp
-         Progresses.cpp
-         Settings.cpp
-     1>..\Classes\Screens\Screens\Settings.cpp(4): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Screens\Mode.cpp(8): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Settings.cpp(215): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Mode.cpp(9): warning C4627: '#include "Episodes.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Mode.cpp(499): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Progress.cpp(4): warning C4627: '#include "Progress.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Progress.cpp(6): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Progress.cpp(134): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Settings.cpp
+         Shop.cpp
      1>..\Classes\Screens\Screens\More.cpp(4): warning C4627: '#include "More.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\More.cpp(91): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\More.cpp(6): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\More.cpp(107): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         Splash.cpp
      1>..\Classes\Screens\Screens\Progresses.cpp(4): warning C4627: '#include "Progresses.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Shop.cpp(4): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Splash.cpp(4): warning C4627: '#include "Splash.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Settings.cpp(4): warning C4627: '#include "Settings.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Screens\Screens\Progresses.cpp(6): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Progresses.cpp(736): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         Shop.cpp
-         Splash.cpp
-         CCBlade.cpp
-     1>..\Classes\Screens\Screens\Progress.cpp(4): warning C4627: '#include "Progress.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Screens\Shop.cpp(6): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Progress.cpp(118): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Splash.cpp(203): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Settings.cpp(6): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Shop.cpp(7): warning C4627: '#include "Mode.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Progresses.cpp(1503): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Settings.cpp(7): warning C4627: '#include "More.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Shop.cpp(8): warning C4627: '#include "Levels.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Settings.cpp(8): warning C4627: '#include "Credits.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\Shop.cpp(1109): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\Settings.cpp(9): warning C4627: '#include "Language.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         SplashScreen.cpp
+     1>..\Classes\Screens\Screens\Settings.cpp(10): warning C4627: '#include "Progress.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         CCBlade.cpp
+     1>..\Classes\Screens\Screens\Settings.cpp(230): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          TouchTrailLayer.cpp
-     1>..\Classes\Screens\Screens\Splash.cpp(4): warning C4627: '#include "Splash.h"': skipped when looking for precompiled header use
+         ButtonReceiver.cpp
+     1>..\Classes\Screens\Screens\SplashScreen.cpp(4): warning C4627: '#include "SplashScreen.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\TEST\CCBlade.cpp(27): warning C4627: '#include "CCBlade.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Splash.cpp(188): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\TEST\CCBlade.cpp(278): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         ButtonReceiver.cpp
-         BuyItemList.cpp
-     1>..\Classes\Screens\Screens\Shop.cpp(4): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+     1>..\Classes\Screens\Screens\SplashScreen.cpp(6): warning C4627: '#include "Loading.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Screens\Screens\Shop.cpp(966): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\TEST\CCBlade.cpp(278): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Screens\Screens\SplashScreen.cpp(7): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Screens\Screens\SplashScreen.cpp(122): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\TEST\TouchTrailLayer.cpp(4): warning C4627: '#include "TouchTrailLayer.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\TEST\TouchTrailLayer.cpp(6): warning C4627: '#include "CCBlade.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-         CreditsList.cpp
      1>..\Classes\Utils\ButtonReceiver.cpp(4): warning C4627: '#include "ButtonReceiver.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Utils\ButtonReceiver.cpp(59): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\Utils\BuyItemList.cpp(4): warning C4627: '#include "BuyItemList.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-         List.cpp
+         BuyItemList.cpp
+         CreditsList.cpp
      1>..\Classes\TEST\TouchTrailLayer.cpp(7): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
-                 Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Utils\BuyItemList.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\TEST\TouchTrailLayer.cpp(8): warning C4627: '#include "Loader.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Utils\BuyItemList.cpp(185): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-     1>..\Classes\TEST\TouchTrailLayer.cpp(169): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         ModeHelpList.cpp
-         SpriteBatch.cpp
+     1>..\Classes\TEST\TouchTrailLayer.cpp(167): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         List.cpp
+         MapDescriptionList.cpp
      1>..\Classes\Utils\CreditsList.cpp(4): warning C4627: '#include "CreditsList.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Utils\CreditsList.cpp(108): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Utils\CreditsList.cpp(110): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Utils\BuyItemList.cpp(4): warning C4627: '#include "BuyItemList.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+         ModeHelpList.cpp
      1>..\Classes\Utils\List.cpp(4): warning C4627: '#include "List.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Utils\List.cpp(288): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Utils\List.cpp(291): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Utils\MapDescriptionList.cpp(4): warning C4627: '#include "MapDescriptionList.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Utils\BuyItemList.cpp(6): warning C4627: '#include "Shop.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Utils\BuyItemList.cpp(199): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         SpriteBatch.cpp
+     1>..\Classes\Utils\MapDescriptionList.cpp(6): warning C4627: '#include "Menu.h"': skipped when looking for precompiled header use
+                 Add directive to 'pch.h' or rebuild precompiled header
+     1>..\Classes\Utils\MapDescriptionList.cpp(163): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          Touchable.cpp
          Utils.cpp
      1>..\Classes\Utils\ModeHelpList.cpp(4): warning C4627: '#include "ModeHelpList.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Utils\ModeHelpList.cpp(78): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-         App.xaml.cpp
      1>..\Classes\Utils\SpriteBatch.cpp(4): warning C4627: '#include "SpriteBatch.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Utils\SpriteBatch.cpp(79): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Utils\SpriteBatch.cpp(81): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
      1>..\Classes\Utils\Touchable.cpp(4): warning C4627: '#include "Touchable.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
-     1>..\Classes\Utils\Touchable.cpp(107): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+     1>..\Classes\Utils\Touchable.cpp(112): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+         App.xaml.cpp
      1>..\Classes\Utils\Utils.cpp(4): warning C4627: '#include "Utils.h"': skipped when looking for precompiled header use
                  Add directive to 'pch.h' or rebuild precompiled header
      1>..\Classes\Utils\Utils.cpp(110): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
          MainPage.xaml.cpp
          XamlTypeInfo.Impl.g.cpp
-     1>Done Building Project "C:\Users\Igor\Documents\GitHub\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\HelloCpp.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "D:\cocos2d-x-2.2\projects\2013\project-birds\proj.winrt\HelloCpp.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:08.56
+Time Elapsed 00:00:11.16

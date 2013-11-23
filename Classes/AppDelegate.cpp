@@ -522,8 +522,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     soomla::CCStoreController::createShared(assets, storeParams);
     #endif
     
-    CCSize designResolutionSize;
-    
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     if(screenSize.width >= 2048)
     {
@@ -533,18 +531,20 @@ bool AppDelegate::applicationDidFinishLaunching()
     {
         designResolutionSize = CCSizeMake(720, 1280);
     }
+	#elif CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
+	Options::designResolutionSize = CCSizeMake(1920, 1280);
     #else
-    designResolutionSize = CCSizeMake(720, 1280);
+	Options::designResolutionSize = CCSizeMake(720, 1280);
     #endif
 
 	director->setOpenGLView(EGLView);
-	director->setContentScaleFactor(designResolutionSize.height / screenSize.height);
+	director->setContentScaleFactor(Options::designResolutionSize.height / screenSize.height);
     
-    Options::SCREEN_WIDTH  = designResolutionSize.width;
-    Options::SCREEN_HEIGHT = designResolutionSize.height;
+	Options::SCREEN_WIDTH = Options::designResolutionSize.width;
+	Options::SCREEN_HEIGHT = Options::designResolutionSize.height;
     
-    Options::SCREEN_CENTER_X = designResolutionSize.width / 2;
-    Options::SCREEN_CENTER_Y = designResolutionSize.height / 2;
+	Options::SCREEN_CENTER_X = Options::designResolutionSize.width / 2;
+	Options::SCREEN_CENTER_Y = Options::designResolutionSize.height / 2;
     
     Options::CAMERA_WIDTH  = screenSize.width;
     Options::CAMERA_HEIGHT = screenSize.height;
@@ -584,7 +584,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     #elif CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     
-    searchPath.push_back(resources1280x720xPNG.directory);
+	searchPath.push_back(resources1920x1080.directory);
     
     Options::DEVICE_TYPE = Options::DEVICE_TYPE_MAC;
 
@@ -611,13 +611,15 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     #else
 
-    searchPath.push_back(resources1280x720xPNG.directory);
+	Options::DEVICE_TYPE = Options::DEVICE_TYPE_WINDOWS;
+
+	searchPath.push_back(resources1920x1080.directory);
 
     #endif
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 
-    director->setDisplayStats(false);
+    director->setDisplayStats(true);
     
     director->setProjection(kCCDirectorProjection2D);
 
@@ -658,14 +660,21 @@ void AppDelegate::applicationWillEnterForeground()
 
 //===
 
+bool AppDelegate::isGetWindeScreen()
+{
+	return Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA || Options::DEVICE_TYPE == Options::DEVICE_TYPE_WINDOWS;
+}
+
 void AppDelegate::clearCache()
 {
-    //CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+	#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
     CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     
     CCDirector::sharedDirector()->purgeCachedData();
     
     CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+	#endif
 }
 
 #endif

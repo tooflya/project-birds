@@ -66,8 +66,9 @@ GetLives::GetLives(CCNode* pParent, bool pFirst) :
         
         this->mCloseButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(290), Options::CAMERA_CENTER_Y + Utils::coord(450));
         
+		Textes textes1 = { "", Options::FONT, 48, -1 };
         Text* text1 = Text::create(Options::TEXT_GETLIVES_STRING_1, this);
-        this->mExpireTimeText = Text::create((Textes) {"10:17", Options::FONT, 48, -1}, this);
+        this->mExpireTimeText = Text::create(textes1, this);
         
         text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(220));
         this->mExpireTimeText->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(260));
@@ -219,7 +220,7 @@ void GetLives::onHide()
             {
                 Shop::ACTION = 3;
                 
-                AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+                AppDelegate::screens->set(Shop::create());
             }
             else
             {
@@ -228,15 +229,15 @@ void GetLives::onHide()
                 if(game != 0)
                 {
                     Shop::ACTION = 5;
-                    Loader::ACTION = 5;
-                    
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+					Loader::ACTION = 5;
+
+					AppDelegate::screens->set(Loader::create());
                 }
                 else
                 {
-                    Shop::ACTION = 4;
-                
-                    AppDelegate::screens->set(0.5, Screen::SCREEN_SHOP);
+					Shop::ACTION = 4;
+
+					AppDelegate::screens->set(Shop::create());
                 }
             }
         }
@@ -251,9 +252,9 @@ void GetLives::onHide()
             if(game != 0)
             {
                 Shop::ACTION = 11;
-                Loader::ACTION = 5;
-                
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+				Loader::ACTION = 5;
+
+				AppDelegate::screens->set(Loader::create());
             }
         }
         break;

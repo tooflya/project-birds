@@ -409,7 +409,9 @@ Progresses::Progresses() :
         
         Loader::TYPE = 3;
         
-        this->mAwesomeText = Text::create((Textes) {"Incredible", Options::FONT, 42, -1}, this);
+		Textes textes1 = { "Incredible", Options::FONT, 42, -1 };
+
+        this->mAwesomeText = Text::create(textes1, this);
         this->mAwesomeText->setZOrder(10);
         this->mAwesomeText->setScale(0);
         
@@ -521,14 +523,14 @@ Progresses::Progresses() :
         
 		this->mShootsButton->create()->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidthScaled() / 2 - this->mShootsButton->getWidth() / 4, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2 + Utils::coord(1));
 
-		Textes textes1 = {"0", Options::FONT, 32, -1};
+		Textes textes12 = {"0", Options::FONT, 32, -1};
 		Textes textes3 = {"x?", Options::FONT, 32, -1};
 		Textes textes4 = {"x??", Options::FONT, 32, -1};
 		Textes textes5 = {"0/0", Options::FONT, 32, -1};
         
 		this->mPanelText0 = Text::create(textes3, this);
 		this->mPanelText1 = Text::create(textes4, this);
-		this->mPanelText2 = Text::create(textes1, this);
+		this->mPanelText2 = Text::create(textes12, this);
         
 		for(int i = 0; i < 5; i++)
 		{
@@ -685,17 +687,18 @@ Progresses::Progresses() :
 		this->mTime = 0;
 		this->mStarTime = 0;
         
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+		if(AppDelegate::isGetWindeScreen())
         {
             this->mBackground->setScale(1.185);
         }
+
+		AppDelegate::clearCache();
 	}
 
 Progresses* Progresses::create()
 {
     Progresses* screen = new Progresses();
     screen->autorelease();
-    screen->retain();
     
     return screen;
 }

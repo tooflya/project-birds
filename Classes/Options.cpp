@@ -43,6 +43,8 @@ const char* Options::IN_APP_RESTORE_HITS_ID = "restore_level_hits_full";
 
 CCObject* Options::PAYMENT_PROCEED_HANDLER = NULL;
 
+CCSize Options::designResolutionSize = CCSizeZero;
+
 int Options::CENTER_X = 0;
 int Options::CENTER_Y = 0;
 

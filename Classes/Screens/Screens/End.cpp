@@ -182,7 +182,7 @@ End::End(int pType, Screen* pParent) :
         
 		Textes textes1 = {"0", Options::FONT, 64, -1};
         
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+		if (AppDelegate::isGetWindeScreen())
         {
             this->mParts = EntityManager::create(2, Entity::create("end_lvl_bg_sprite@2x.png", 1, 2), spriteBatch1);
         }
@@ -195,21 +195,21 @@ End::End(int pType, Screen* pParent) :
         
         part = (Entity*) this->mParts->create();
         part->setCenterPosition(0, Options::CAMERA_HEIGHT + part->getHeight() / 2 - Options::CAMERA_CENTER_Y);
-        part->setCurrentFrameIndex(0);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            part->setScale(1.185);
-        }
+		part->setCurrentFrameIndex(0);
+
+		if(AppDelegate::isGetWindeScreen())
+		{
+			part->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         part = (Entity*) this->mParts->create();
         part->setCenterPosition(0, -part->getHeight() / 2 - Options::CAMERA_CENTER_Y);
-        part->setCurrentFrameIndex(1);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            part->setScale(1.185);
-        }
+		part->setCurrentFrameIndex(1);
+
+		if(AppDelegate::isGetWindeScreen())
+		{
+			part->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", spriteBatch3);
         this->mPrize = Entity::create("end_lvl_kybok_sprite@2x.png", 1, 2, spriteBatch3);
@@ -610,7 +610,7 @@ void End::update(float pDeltaTime)
                     
                     particle->runAction(CCSequence::create(CCFadeTo::create(Utils::randomf(1.0, 2.0), particle->getOpacity()), CCFadeTo::create(0.2, 0), NULL));
                     
-                    if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+                    if(AppDelegate::isGetWindeScreen())
                     {
                         particle->mSideImpulse *= 1.4;
                     }
@@ -646,7 +646,7 @@ void End::update(float pDeltaTime)
                         
                         particle->runAction(CCSequence::create(CCFadeTo::create(Utils::randomf(1.0, 2.0), particle->getOpacity()), CCFadeTo::create(0.2, 0), NULL));
                         
-                        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+						if (AppDelegate::isGetWindeScreen())
                         {
                             particle->mSideImpulse *= 1.4;
                         }

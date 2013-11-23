@@ -55,13 +55,14 @@ Menu::Menu() :
 	mPlayDecorationColorUpdateTimeElapsed(0)
 	{
 		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas22");
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 324, 0, 162, 162};
 		EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 0, 0, 162, 162};
 		EntityStructure structure3 = {"btn_sprite@2x.png", 1, 1, 0, 162, 162, 162};
 		EntityStructure structure4 = {"btn_sprite@2x.png", 1, 1, 0, 324, 162, 162};
 
-		this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch);
+		this->mBackground = Entity::create("main_menu_bg@2x.png", spriteBatch2);
 		this->mPlayDecoration[0] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
 		this->mPlayDecoration[1] = Entity::create("main_menu_btn_bg_play@2x.png", spriteBatch);
 		this->mPlayButton = PlayButton::create("play_btn_animation@2x.png", 6, 2, spriteBatch, Options::BUTTONS_ID_MENU_PLAY, this);
@@ -70,11 +71,12 @@ Menu::Menu() :
 		this->mFacebookButton = Button::create(structure3, spriteBatch, Options::BUTTONS_ID_MENU_FACEBOOK, this);
 		this->mVkButton = Button::create("vk@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_MENU_VK, this);
 		this->mSettingsButton = Button::create(structure4, spriteBatch, Options::BUTTONS_ID_MENU_SETTINGS, this);
-    
+
+		this->addChild(spriteBatch2);
 		this->addChild(spriteBatch);
     
 		ccBlendFunc bf = {GL_ONE, GL_ZERO};
-		this->mBackground->setBlendFunc(bf);
+		spriteBatch2->setBlendFunc(bf);
 
 		#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
@@ -120,9 +122,9 @@ Menu::Menu() :
         this->mTutorial->setScale(0.5);
          this->mTutorial->setCenterPosition(this->mShopButton->getCenterX() + Utils::coord(40), this->mShopButton->getCenterY() - Utils::coord(50));*/
         
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
+		if (AppDelegate::isGetWindeScreen())
         {
-            this->mBackground->setScale(1.185);
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
         }
         
         AppDelegate::clearCache();
@@ -131,7 +133,11 @@ Menu::Menu() :
 Menu* Menu::create()
 {
     Menu* screen = new Menu();
-    screen->autorelease();
+	screen->autorelease();
+
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+	#endif
     
     return screen;
 }
@@ -149,19 +155,31 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
             {
                 case Options::BUTTONS_ID_MENU_SHOP:
 
-                    Shop::ACTION = 0;
-                    
-                    AppDelegate::screens->set(Shop::create());
+					Shop::ACTION = 0;
+
+					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Screen::SCREEN_SHOP);
+					#else
+					AppDelegate::screens->set(Shop::create());
+					#endif
 
                 break;
-                case Options::BUTTONS_ID_MENU_PLAY:
-                    
-                    AppDelegate::screens->set(Mode::create());
+				case Options::BUTTONS_ID_MENU_PLAY:
+
+					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Screen::SCREEN_MODE);
+					#else
+					AppDelegate::screens->set(Mode::create());
+					#endif
 
                 break;
-                case Options::BUTTONS_ID_MENU_SETTINGS:
-                    
-                    AppDelegate::screens->set(Settings::create());
+				case Options::BUTTONS_ID_MENU_SETTINGS:
+
+					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+					AppDelegate::screens->set(Settings::create());
+					#else
+					AppDelegate::screens->set(Screen::SCREEN_SETTINGS);
+					#endif
 
                 break;
                 case Options::BUTTONS_ID_MENU_TWITTER:

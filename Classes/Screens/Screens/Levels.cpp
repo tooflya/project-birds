@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "Episodes.h"
 #include "Mode.h"
+#include "Loader.h"
 
 // ===========================================================
 // Inner Classe
@@ -72,12 +73,14 @@ class UnlockPanel : public CCLayerColor
         this->ignoreAnchorPointForPosition(false);
         this->setAnchorPoint(ccp(0.5, 0.5));
         this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
-        
+		
+		Textes textes1 = { "36", Options::FONT, 36, -1 };
+
         this->mStarsCountIcon = Entity::create("end_lvl_star_sprite@2x.png", 3, 2, this);
         this->mStarsCountIcon->setScale(0.5);
         this->mStarsCountIcon->setCurrentFrameIndex(1);
         Text* text1 = Text::create(Options::TEXT_LEVELS_LOCKED, this);
-        this->mStarsCountText = Text::create((Textes) {"36", Options::FONT, 36, -1}, this);
+        this->mStarsCountText = Text::create(textes1, this);
         this->mStarsCountIcon->create()->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - Utils::coord(80));
         text1->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + Utils::coord(50));
         this->mStarsCountText->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - Utils::coord(80));
@@ -475,9 +478,9 @@ class LevelButton : public Entity
             }
             else
             {
-                Game::LEVEL = this->mId - 1;
-            
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+				Game::LEVEL = this->mId - 1;
+
+				AppDelegate::screens->set(Loader::create());
             }
         }
         
@@ -1152,12 +1155,12 @@ Levels::Levels() :
 		this->mUnlockLevelPopup = UnlockLevel::create(this);
 		this->mSurpriseLevelPopup = SurpriseLevel::create(this);
         
-        this->mUnlockPanel = UnlockPanel::create(this);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+		this->mUnlockPanel = UnlockPanel::create(this);
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
         
         AppDelegate::clearCache();
 	}
@@ -1280,8 +1283,8 @@ void Levels::update(float pDeltaTime)
             this->mIsUnlockAnimationRunning = false;
             
             if(SHOULD_START_AFTER_UNLOCK)
-            {
-                AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+			{
+				AppDelegate::screens->set(Loader::create());
             }
         }
     }

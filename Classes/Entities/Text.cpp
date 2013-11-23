@@ -69,7 +69,7 @@ Text::~Text()
     TEXTES[this->mId] = NULL;
     ID--;
     
-    CCLog(ccsf("DEALLOCING OF TEXT with string: %s", this->getString()));
+    //CCLog(ccsf("DEALLOCING OF TEXT with string: %s", this->getString()));
 }
 
 Text::Text(const char* pString, float pSize, CCNode* pParent) :
@@ -112,7 +112,7 @@ Text::Text(Textes pParams, CCNode* pParent) :
     
 		this->mId = pParams.identifier;
     
-		TEXTES[ID] = this;
+		//TEXTES[ID] = this;
     
 		ID++;
         
@@ -140,7 +140,7 @@ Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
     
 		this->mId = pParams.identifier;
     
-		TEXTES[ID] = this;
+		//TEXTES[ID] = this;
     
 		ID++;
         

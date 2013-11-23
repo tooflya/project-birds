@@ -74,6 +74,8 @@ void Screen::onEnter()
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(this);
     #endif
+
+	CCLog("%d", this->retainCount());
 }
 
 void Screen::onExit()
@@ -83,7 +85,9 @@ void Screen::onExit()
     this->stopAllActions();
     this->unscheduleAllSelectors();
 
-    //this->release();
+	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	this->release();
+	#endif
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     CCDirector::sharedDirector()->getKeypadDispatcher()->removeDelegate(this);

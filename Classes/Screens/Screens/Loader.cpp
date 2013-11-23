@@ -154,11 +154,11 @@ Loader::Loader() :
 		this->mLoadingProgress = false;
     
 		this->setRegisterAsTouchable(true);
-        
-        if(Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA)
-        {
-            this->mBackground->setScale(1.185);
-        }
+
+		if (AppDelegate::isGetWindeScreen())
+		{
+			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+		}
 	}
 
 Loader* Loader::create()

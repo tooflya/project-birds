@@ -6,6 +6,7 @@
 #include "Shop.h"
 #include "Levels.h"
 #include "Game.h"
+#include "Loader.h"
 
 // ===========================================================
 // Inner Classes
@@ -147,8 +148,8 @@ void SurpriseLevel::onHide()
             static_cast<Levels*>(this->getParent())->mUnlockLevelPopup->show();
         }
         else
-        {
-            AppDelegate::screens->set(0.5, Screen::SCREEN_LOADER);
+		{
+			AppDelegate::screens->set(Loader::create());
         }
     }
     
