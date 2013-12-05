@@ -247,9 +247,9 @@ void Popup::onEnter()
     CCDirector* pDirector = CCDirector::sharedDirector();
     pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     
-    CCLayer::onEnter();
-
     this->scheduleUpdate();
+    
+    CCLayer::onEnter();
 }
 
 void Popup::onExit()
@@ -257,10 +257,11 @@ void Popup::onExit()
     CCDirector* pDirector = CCDirector::sharedDirector();
     pDirector->getTouchDispatcher()->removeDelegate(this);
     
-    CCLayer::onExit();
-
     this->stopAllActions();
+    this->unscheduleUpdate();
     this->unscheduleAllSelectors();
+    
+    CCLayer::onExit();
 }
 
 bool Popup::ccTouchBegan(CCTouch* touch, CCEvent* event)

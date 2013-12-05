@@ -102,7 +102,6 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(120), Options::CAMERA_CENTER_Y + Utils::coord(120));
         
         this->mPreloaderSprite = Entity::create("preloader@2x.png", 0, 0, 64, 64, this);
-        this->mPreloaderSprite->runAction(CCRepeatForever::create(CCRotateTo::create(1.0, 720)));
     }
 
 BuyItemList* BuyItemList::create(CCNode* pParent)
@@ -133,8 +132,8 @@ void BuyItemList::showDescription()
 
 void BuyItemList::onEnter()
 {
-    List::onEnter();
-
+    this->mPreloaderSprite->runAction(CCRepeatForever::create(CCRotateTo::create(1.0, 720)));
+    
     this->mIcon->setCurrentFrameIndex(Shop::CLICKED_ITEM_ID);
     
     this->mDescriptionText->setVisible(false);
@@ -193,6 +192,8 @@ void BuyItemList::onEnter()
 
         this->mBoughtText->setVisible(false);
     }
+    
+    List::onEnter();
 }
 
 #endif

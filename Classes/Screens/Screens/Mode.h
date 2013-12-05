@@ -4,6 +4,7 @@
 #include "Screen.h"
 
 #include "ModeHelp.h"
+#include "Episodes.h"
 #include "UnlockMode.h"
 #include "TempPublisherRatingExplain.h"
 #include "TempPublisherAchievementsExplain.h"
@@ -54,6 +55,8 @@ class Mode : public Screen
         Popup* mModesUnlockPopup;
         Popup* mTempPublisherRatingExplain;
         Popup* mTempPublisherAchievementsExplain;
+    
+        Episodes* mEpisodesMap;
     
         Text* mTextText[4];
 

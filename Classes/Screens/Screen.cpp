@@ -34,6 +34,8 @@
 Screen::~Screen()
 {
     this->removeAllChildrenWithCleanup(true);
+    
+    CCLog("DEALLOCING OF PREVIOUS SCREEN");
 }
 
 Screen::Screen()
@@ -67,27 +69,22 @@ bool Screen::containsTouchLocation(CCTouch* touch)
 
 void Screen::onEnter()
 {
-    CCScene::onEnter();
-    
     this->scheduleUpdate();
+
+    CCScene::onEnter();
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(this);
     #endif
-
-	CCLog("%d", this->retainCount());
 }
 
 void Screen::onExit()
 {
-    CCScene::onExit();
-
     this->stopAllActions();
+    this->unscheduleUpdate();
     this->unscheduleAllSelectors();
 
-	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
-	this->release();
-	#endif
+    CCScene::onExit();
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     CCDirector::sharedDirector()->getKeypadDispatcher()->removeDelegate(this);

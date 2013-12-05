@@ -29,6 +29,7 @@ int Mode::PRICES[2] = {25, 40};
 
 Mode::~Mode()
 {
+    CC_SAFE_RELEASE(this->mEpisodesMap);
     CC_SAFE_RELEASE(this->mHelpPopup);
     CC_SAFE_RELEASE(this->mLivesPopup);
     CC_SAFE_RELEASE(this->mModesUnlockPopup);
@@ -114,6 +115,7 @@ Mode::Mode() :
         this->mModesUnlockPopup = UnlockMode::create(this);
 		this->mTempPublisherRatingExplain = TempPublisherRatingExplain::create(this);
 		this->mTempPublisherAchievementsExplain = TempPublisherAchievementsExplain::create(this);
+        this->mEpisodesMap = Episodes::create(this);
         
         this->mUnlockAnimationTimeElapsed = 0;
         
@@ -209,8 +211,8 @@ Mode::Mode() :
 
 		if (AppDelegate::isGetWindeScreen())
 		{
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
-			this->mGamePanel->setScaleX(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
+			this->mGamePanel->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
         
         AppDelegate::clearCache();
@@ -305,9 +307,9 @@ void Mode::onTouchButtonsCallback(const int pAction, const int pID)
 					Loader::TYPE = -1;
 
 					#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
-					AppDelegate::screens->set(Episodes::create());
+					//AppDelegate::screens->set(Episodes::create());
 					#else
-					AppDelegate::screens->set(Screen::SCREEN_EPISODES);
+					this->mEpisodesMap->show();
 					#endif
 
                 break;

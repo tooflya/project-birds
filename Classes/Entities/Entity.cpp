@@ -10,8 +10,6 @@ Entity::~Entity()
 {
     free(this->mFramesCoordinatesX);
     free(this->mFramesCoordinatesY);
-    
-    CCLog(ccsf("DEALLOCING OF ENTITY with texture file name: %s", this->mTextureFileName));
 }
 
 void Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)
@@ -565,17 +563,24 @@ float Entity::getSpeed(float pDeltaTime)
 
 Entity* Entity::create()
 {
-    this->scheduleUpdate();
     this->onCreate();
+    
+    if(this->hasEntityManager())
+    {
+        this->scheduleUpdate();
+    }
 
     return this;
 }
 
 bool Entity::destroy(bool pManage)
 {
-    this->unscheduleUpdate();
-    //this->unscheduleAllSelectors();
     this->onDestroy();
+    
+    if(this->hasEntityManager())
+    {
+        this->unscheduleUpdate();
+    }
 
     if(pManage)
     {
@@ -595,6 +600,25 @@ bool Entity::destroy(bool pManage)
 bool Entity::destroy()
 {
     return this->destroy(true);
+}
+
+void Entity::onEnter()
+{
+    if(this->isVisible() && !this->hasEntityManager())
+    {
+        this->scheduleUpdate();
+    }
+    
+    CCSprite::onEnter();
+}
+
+void Entity::onExit()
+{
+    this->stopAllActions();
+    this->unscheduleUpdate();
+    this->unscheduleAllSelectors();
+    
+    CCSprite::onExit();
 }
 
 EntityManager* Entity::getEntityManager()
@@ -653,6 +677,8 @@ void Entity::onCreate()
 void Entity::onDestroy()
 {
     this->setVisible(false);
+    
+    // this->removeAllChildrenWithCleanup(true); // TODO: Check his out.
 }
 
 void Entity::setAlphaParent(bool pIsAlphaParent)
@@ -863,24 +889,6 @@ void Entity::stopAnimation()
  *
  */
 
-void Entity::onEnter()
-{
-    CCSprite::onEnter();
-}
-
-void Entity::onExit()
-{
-    CCSprite::onExit();
-    
-    this->unscheduleUpdate();
-    this->unscheduleAllSelectors();
-    
-    this->removeAllChildrenWithCleanup(true);
-
-	//if(this->isVisible())
-	//this->destroy();
-}
-
 void Entity::onTouch(CCTouch* touch, CCEvent* event)
 {
 
@@ -956,7 +964,7 @@ Entity* Entity::deepCopy()
 void Entity::update(float pDeltaTime)
 {
     CCSprite::update(pDeltaTime);
-    
+
     if(this->mAnimationStartTimeout >= 0)
     {
         this->mAnimationStartTimeout -= pDeltaTime;

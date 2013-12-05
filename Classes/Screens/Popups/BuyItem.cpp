@@ -104,13 +104,11 @@ void BuyItem::onTouchButtonsCallback(const int pAction, const int pID)
 
 void BuyItem::show()
 {
-    Popup::show();
-
     this->mBuyButton->setVisible(true);
 
     if(AppDelegate::isItemBought(Shop::CLICKED_ITEM_ID))
     {
-        //this->mBuyButton->setText(Options::TEXT_BUYITEM_CHOOSE);
+        this->mBuyButton->setString(Options::TEXT_BUYITEM_CHOOSE.string);
 
         if(Shop::CLICKED_ITEM_ID >= 20)
         {
@@ -124,8 +122,10 @@ void BuyItem::show()
     }
     else
     {
-        //this->mBuyButton->setText(Options::TEXT_BUYITEM_BUY);
+        this->mBuyButton->setString(Options::TEXT_BUYITEM_BUY.string);
     }
+    
+    Popup::show();
 }
 
 void BuyItem::onShow()

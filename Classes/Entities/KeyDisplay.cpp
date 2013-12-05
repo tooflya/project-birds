@@ -86,6 +86,8 @@ void KeyDisplay::onDestroy()
         this->mLights[0] = 0;
         this->mLights[1] = 0;
     }
+    
+    Game::KEYS_COUNT++;
 }
 
 void KeyDisplay::update(float pDeltaTime)

@@ -561,7 +561,7 @@ cc.LabelTTF = cc.Sprite.extend(/** @lends cc.LabelTTF# */{
         //shadow style setup
         if (this._shadowEnabled) {
             var locShadowOffset = this._shadowOffset;
-            context.shadowColor = "rgba(128,128,128,1)";
+            context.shadowColor = "rgba(0,0,0,1)";
             isNegForOffsetX = locShadowOffset.width < 0;
             isNegForOffsetY = locShadowOffset.height < 0;
             context.shadowOffsetX = locShadowOffset.width;

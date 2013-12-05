@@ -27,7 +27,7 @@ bool Color::ANIMATION_RUNNING = false;
 // ===========================================================
 
 Color::Color() :
-    Entity("colors@2x.png", 7, 3),
+    Entity("colors@2x.png", 7, 5),
 	position(0),
 	mType(0),
 	mGoingToDestroy(0),
@@ -50,6 +50,9 @@ Color::Color() :
         this->mBlink = NULL;
         this->mPowerText = NULL;
         
+        this->mBonusWaitForDestroy = false;
+        this->mBonusWaitForDestroyTime = 1.0;
+        
         this->mIsSoftAnimationRunning = false;
     }
 
@@ -69,8 +72,9 @@ int Color::getCurrentFrameIndex()
 {
     int index = Entity::getCurrentFrameIndex();
     
-    if(index > 6) return (index - 7);
+    if(index > 19) return index;
     if(index > 13) return (index - 14);
+    if(index > 6) return (index - 7);
     
     return index; // TODO: Some problems here!
 }
@@ -197,7 +201,7 @@ void Color::runDestroy()
         {
             Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
             
-            if(color->position_in_matrtix_x == this->position_in_matrtix_x && (color->position_in_matrtix_y != this->position_in_matrtix_y) && !color->mGoingToDestroy)
+            if(color->position_in_matrtix_x == this->position_in_matrtix_x && (color->position_in_matrtix_y != this->position_in_matrtix_y) && !color->mGoingToDestroy && color->getCurrentFrameIndex() < 29)
             {
                 color->runDestroy();
 
@@ -210,7 +214,7 @@ void Color::runDestroy()
             SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
         }
     }
-    else if(Entity::getCurrentFrameIndex() > 13)
+    else if(Entity::getCurrentFrameIndex() > 13 && Entity::getCurrentFrameIndex() < 20)
     {
         static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColorEffectClearHorizontal->clear();
         
@@ -224,7 +228,7 @@ void Color::runDestroy()
         {
             Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
             
-            if(color->position_in_matrtix_y == this->position_in_matrtix_y && (color->position_in_matrtix_x != this->position_in_matrtix_x) && !color->mGoingToDestroy)
+            if(color->position_in_matrtix_y == this->position_in_matrtix_y && (color->position_in_matrtix_x != this->position_in_matrtix_x) && !color->mGoingToDestroy && color->getCurrentFrameIndex() < 29)
             {
                 color->runDestroy();
                 
@@ -236,6 +240,81 @@ void Color::runDestroy()
         {
             SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
         }
+    }
+    else if(Entity::getCurrentFrameIndex() == 23)
+    {
+        Entity* l1 = static_cast<Game*>(this->getParent()->getParent()->getParent())->mGunLaser->deepCopy();
+        static_cast<Game*>(this->getParent()->getParent()->getParent())->addChild(l1);
+        l1->animate(0.06);
+        l1->setRotation(-90);
+        l1->setScaleY(Options::CAMERA_HEIGHT / l1->getWidth() * 10.0);
+        l1->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+        l1->scheduleUpdate();
+        l1->runAction(CCFadeOut::create(1.0));
+        
+        l1 = static_cast<Game*>(this->getParent()->getParent()->getParent())->mGunLaser->deepCopy();
+        static_cast<Game*>(this->getParent()->getParent()->getParent())->addChild(l1);
+        l1->animate(0.06);
+        l1->setRotation(0);
+        l1->setScaleY(Options::CAMERA_WIDTH / l1->getWidth() * 10.0);
+        l1->create()->setCenterPosition(this->getCenterX(), this->getCenterY());
+        l1->scheduleUpdate();
+        l1->runAction(CCFadeOut::create(1.0));
+        
+        for(int i = 0; i < static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->getCount(); i++)
+        {
+            Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
+            
+            if(
+               ((color->position_in_matrtix_y == this->position_in_matrtix_y && (color->position_in_matrtix_x != this->position_in_matrtix_x)) ||
+               (color->position_in_matrtix_x == this->position_in_matrtix_x && (color->position_in_matrtix_y != this->position_in_matrtix_y))) && !color->mGoingToDestroy && color->getCurrentFrameIndex() < 29
+               )
+            {
+                color->runDestroy();
+                
+                Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
+            }
+        }
+        
+        if(Options::SOUND_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
+        }
+    }
+    else if(Entity::getCurrentFrameIndex() == 21)
+    {
+        for(int i = 0; i < static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->getCount(); i++)
+        {
+            Color* color = static_cast<Color*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mColors->objectAtIndex(i));
+            
+            if(Utils::probably(30) && !color->mGoingToDestroy && color->getCurrentFrameIndex() < 29)
+            {
+                color->runDestroy();
+                
+                Game::BURNED[color->getCurrentFrameIndex()] += color->mPower;
+                
+                for(int z = 0; z < 20; z++)
+                {
+                    StarParticle* particle = static_cast<StarParticle*>(static_cast<Progresses*>(this->getParent()->getParent()->getParent())->mStars->create());
+                    
+                    particle->mScaleSpeed = 0;
+                    particle->mRotationSpeed = 0;
+                    particle->mAlphaSpeed = 0;
+
+                    particle->setColor(ccc3(0.0, 250.0, 250.0));
+                    particle->setCenterPosition(this->getCenterX(), this->getCenterY());
+                    particle->setScale(Utils::randomf(0.1, 1.0));
+                    particle->runAction(CCRotateTo::create(Utils::randomf(0.1, 1.0), Utils::randomf(0.0, 720.0)));
+                    particle->runAction(CCMoveTo::create(Utils::randomf(0.1, 0.5), ccp(color->getCenterX(), color->getCenterY())));
+                    particle->runAction(CCFadeOut::create(Utils::randomf(0.5, 1.0)));
+                }
+            }
+        }
+    }
+    else if(Entity::getCurrentFrameIndex() == 29)
+    {
+        this->runAction(CCSequence::create(CCScaleTo::create(2.0, 2.0), CCScaleTo::create(0.2, 0),  NULL));
+        //this->runAction(CCFadeOut::create(2.0));
     }
 }
 
@@ -250,6 +329,11 @@ void Color::down()
     static_cast<Game*>(this->getParent()->getParent()->getParent())->deepFind(this->position_in_matrtix_x, this->position_in_matrtix_y, this->mType, true, this);
     
     ANIMATION_RUNNING = true;
+    
+    if(this->getCurrentFrameIndex() == 29 && this->position_in_matrtix_y == Game::MATRIX_SIZE_Y - 1)
+    {
+        this->runDestroy();
+    }
 }
 
 // ===========================================================
@@ -260,6 +344,8 @@ void Color::onCreate()
 {
     Entity::onCreate();
 
+    this->stopAllActions();
+    
     this->mIsSoftAnimationTime = 0.0; // TODO: Time?
     this->mIsSoftAnimationTimeElapsed = 0.1; // TODO: Do something with it!
     
@@ -286,9 +372,12 @@ void Color::onCreate()
     this->position_in_matrtix_x = -1;
     this->position_in_matrtix_y = -1;
 
-    this->mBlink = static_cast<Game*>(this->getParent()->getParent()->getParent())->mColorsBlink->create();
-    this->mBlink->animate(0.1);
-    this->mBlink->setOpacity(0);
+    //if(!this->mBonus) // Remove blink for special eggs.
+    {
+        this->mBlink = static_cast<Game*>(this->getParent()->getParent()->getParent())->mColorsBlink->create();
+        this->mBlink->animate(0.1);
+        this->mBlink->setOpacity(0);
+    }
 
     if(this->mPowerText == NULL)
     {
@@ -316,6 +405,11 @@ void Color::onDestroy()
     Entity::onDestroy();
     
     if(this->position_in_matrtix_x >= 0 && this->position_in_matrtix_y >= 0) Game::MATRIX[this->position_in_matrtix_x][this->position_in_matrtix_y] = -1;
+    
+    if(this->getCurrentFrameIndex() == 29)
+    {
+        Game::STARS_RESCUE++;
+    }
 }
 
 void Color::update(float pDeltaTime)
@@ -344,28 +438,48 @@ void Color::update(float pDeltaTime)
         }
     }
     
-    if(this->mBlinking)
+    //if(!this->mBonus) // Remove blink for special eggs.
     {
-        this->mBlinkTimeElapsed += pDeltaTime;
-        
-        if(this->mBlinkTimeElapsed >= this->mBlinkTime)
+        if(this->mBlinking)
         {
-            this->mBlink->runAction(CCFadeOut::create(1.0));
+            this->mBlinkTimeElapsed += pDeltaTime;
+        
+            if(this->mBlinkTimeElapsed >= this->mBlinkTime)
+            {
+                this->mBlink->runAction(CCFadeOut::create(1.0));
             
-            this->mBlinking = !this->mBlinking;
-            this->mBlinkTimeElapsed = 0;
+                this->mBlinking = !this->mBlinking;
+                this->mBlinkTimeElapsed = 0;
+            }
+        }
+        else
+        {
+            this->mBlinkTimeElapsed += pDeltaTime;
+        
+            if(this->mBlinkTimeElapsed >= this->mBlinkTime)
+            {
+                this->mBlink->runAction(CCFadeIn::create(1.0));
+            
+                this->mBlinking = !this->mBlinking;
+                this->mBlinkTimeElapsed = 0;
+            }
         }
     }
-    else
+    
+    if(this->mBonusWaitForDestroy)
     {
-        this->mBlinkTimeElapsed += pDeltaTime;
+        this->mBonusWaitForDestroyTimeElapsed += pDeltaTime;
         
-        if(this->mBlinkTimeElapsed >= this->mBlinkTime)
+        if(this->mBonusWaitForDestroyTimeElapsed >= this->mBonusWaitForDestroyTime)
         {
-            this->mBlink->runAction(CCFadeIn::create(1.0));
+            this->stopAllActions();
             
-            this->mBlinking = !this->mBlinking;
-            this->mBlinkTimeElapsed = 0;
+            this->setScale(1.0);
+            
+            this->runDestroy();
+            
+            this->mBonusWaitForDestroy = false;
+            this->mBonusWaitForDestroyTimeElapsed = 0;
         }
     }
     
@@ -394,6 +508,17 @@ void Color::update(float pDeltaTime)
             }
             
             this->mIsSoftAnimationRunning = true;
+            
+            if(Entity::getCurrentFrameIndex() >= 20)
+            {
+                if(Entity::getCurrentFrameIndex() < 29)
+                {
+                    this->mBonusWaitForDestroy = true;
+                    this->mBonusWaitForDestroyTimeElapsed = 0;
+                }
+                
+                //this->runAction(CCRepeatForever::create(CCSequence::create(CCScaleTo::create(0.05, 1.0), CCScaleTo::create(0.25, 1.2), NULL))); // This action is cilled my algorithm :(
+            }
         }
     }
     if(this->mGoingToDestroy)
@@ -407,6 +532,7 @@ void Color::update(float pDeltaTime)
             this->runAction(CCScaleTo::create(0.2, 0));
         }
     }
+    
     if(this->getScaleX() <= 0)
     {
         this->destroy();

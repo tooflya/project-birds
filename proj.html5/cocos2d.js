@@ -29,10 +29,32 @@
     tag:'canvas',
     engineDir:'Library/cocos2d/',
     appFiles:[
-      'Sources/resource.js',
+      'Sources/Resources.js',
+      'Sources/Options.js',
+      'Sources/Languages.js',
+      'Sources/Utils/Utils.js',
+      'Sources/Utils/List.js',
       'Sources/Screens/Screen.js',
-      'Sources/Screens/Preloader.js',
-      'Sources/Entity/Entity.js'
+      'Sources/Screens/Popup.js',
+      'Sources/Screens/Screens/SplashScreen.js',
+      'Sources/Screens/Screens/Preloader.js',
+      'Sources/Screens/Screens/Menu.js',
+      'Sources/Screens/Screens/Mode.js',
+      'Sources/Screens/Screens/Settings.js',
+      'Sources/Screens/Screens/Credits.js',
+      'Sources/Screens/Screens/Progress.js',
+      'Sources/Screens/Screens/More.js',
+      'Sources/Screens/Screens/Language.js',
+      'Sources/Screens/Screens/Shop.js',
+      'Sources/Screens/Screens/Loader.js',
+      'Sources/Screens/Popup/Rate.js',
+      'Sources/Screens/Popup/Reset.js',
+      'Sources/Screens/Popup/Help.js',
+      'Sources/Screens/Popup/Achievements.js',
+      'Sources/Screens/Popup/Leaderboard.js',
+      'Sources/Entity/Entity.js',
+      'Sources/Entity/Text.js',
+      'Sources/Entity/PlayButton.js'
     ]
   };
 

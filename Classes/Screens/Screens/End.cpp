@@ -119,7 +119,7 @@ End::End(int pType, Screen* pParent) :
 		this->mIcons[2] = Icon8::create("game_panel_goldlife@2x.png", spriteBatch5);
 		this->mIcons[3] = Icon8::create("popup_key_ico@2x.png", spriteBatch5);
         
-		Textes textes2 = {"0", Options::FONT, 32, -1};
+		Textes textes2 = {"", Options::FONT, 32, -1};
         
 		this->mTextText[0] = Text::create(textes2, this->mPanelLayer);
 		this->mTextText[1] = Text::create(textes2, this->mPanelLayer);
@@ -180,7 +180,7 @@ End::End(int pType, Screen* pParent) :
         
         this->mScaleLayer->setVisible(false);
         
-		Textes textes1 = {"0", Options::FONT, 64, -1};
+		Textes textes1 = {"", Options::FONT, 64, -1};
         
 		if (AppDelegate::isGetWindeScreen())
         {
@@ -199,7 +199,7 @@ End::End(int pType, Screen* pParent) :
 
 		if(AppDelegate::isGetWindeScreen())
 		{
-			part->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			part->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
         
         part = (Entity*) this->mParts->create();
@@ -208,7 +208,7 @@ End::End(int pType, Screen* pParent) :
 
 		if(AppDelegate::isGetWindeScreen())
 		{
-			part->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			part->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
         
         this->mBackground = Entity::create("end_lvl_bg_popup@2x.png", spriteBatch3);
@@ -291,8 +291,12 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             this->hide();
                 
             Loader::ACTION = 3;
-                
+                    
+            #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
             AppDelegate::screens->set(Loader::create());
+            #else
+            AppDelegate::screens->set(Screen::SCREEN_LOADER);
+            #endif
                 
             break;
             case Options::BUTTONS_ID_END_RESTART:
@@ -314,8 +318,61 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             Loader::ACTION = 5;
             Shop::ACTION = 0;
                     
+            #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
             AppDelegate::screens->set(Loader::create());
+            #else
+            AppDelegate::screens->set(Screen::SCREEN_LOADER);
+            #endif
                 
+            break;
+            case Options::BUTTONS_ID_MENU_SHOP:
+                    
+            Shop::ACTION = 1;
+            Loader::ACTION = 5;
+                    
+            #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+            AppDelegate::screens->set(Loader::create());
+            #else
+            AppDelegate::screens->set(Screen::SCREEN_LOADER);
+            #endif
+                    
+            break;
+            case Options::BUTTONS_ID_SHOP_GET_SILVER_COINS:
+            case Options::BUTTONS_ID_SHOP_GET_GOLD_COINS:
+                    
+            Shop::ACTION = 10;
+            Loader::ACTION = 5;
+                    
+            #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+            AppDelegate::screens->set(Loader::create());
+            #else
+            AppDelegate::screens->set(Screen::SCREEN_LOADER);
+            #endif
+                    
+            break;
+            case Options::BUTTONS_ID_SHOP_GET_LIVES:
+                    
+            Shop::ACTION = 11;
+            Loader::ACTION = 5;
+                    
+            #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+            AppDelegate::screens->set(Loader::create());
+            #else
+            AppDelegate::screens->set(Screen::SCREEN_LOADER);
+            #endif
+                    
+            break;
+            case Options::BUTTONS_ID_SHOP_GET_KEYS:
+                    
+            Shop::ACTION = 12;
+            Loader::ACTION = 5;
+                    
+            #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+            AppDelegate::screens->set(Shop::create());
+            #else
+            AppDelegate::screens->set(Screen::SCREEN_LOADER);
+            #endif
+                    
             break;
             }
         break;
@@ -341,7 +398,7 @@ void End::onShow()
     this->mCoinsAnimationTimeElapsed = 0;
     this->mCoinsAnimationCounter = 0;
     this->mCoinsAnimationCurrentTime = 0.2;
-    this->mCoinsAnimationCurrentTimeElapsed = 0;
+    this->mCoinsAnimationCurrentTimeElapsed = -0.8;
     
     this->mCurrentCount = 0;
     this->mBestCurrentCount = 0;
@@ -433,13 +490,20 @@ void End::onShow()
         if(Game::CURRENT_COUNT >= Game::BEST_COUNT)
         {
             this->mTextLevel->setText(Options::TEXT_END[0]);
+            
+            this->throwConfetti();
         }
         else
         {
             this->mTextLevel->setText(Options::TEXT_END[3]);
+            
+            if(Options::SOUND_ENABLE)
+            {
+                SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_LOSE);
+            }
         }
         
-        this->mTextLevel->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(370));
+        this->mTextLevel->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(530));
     }
     
     this->mTextName->setOpacity(0);
@@ -480,6 +544,7 @@ void End::onHide()
     
     this->mPanelLayer->removeFromParentAndCleanup(false);
     
+    this->mConfetti->clear();
     this->mStarsSplashes->clear();
     this->mStarsParticles->clear();
 }

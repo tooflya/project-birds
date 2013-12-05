@@ -117,6 +117,7 @@ class Button : public Entity
         void onExit();
     
         void setScale(float pScale);
+        void setVisible(bool pVisible);
     
         Button* deepCopy();
     

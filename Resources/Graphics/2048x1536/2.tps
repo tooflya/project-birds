@@ -186,7 +186,6 @@
             <filename>../../Graphics Sources/vk@2x.png</filename>
             <filename>../../Graphics Sources/lock@2x.png</filename>
             <filename>../../Graphics Sources/unlock_mode_effect@2x.png</filename>
-            <filename>../../Graphics Sources/Full HD/main_menu_bg@2x.png</filename>
             <filename>../../Graphics Sources/Full HD/settings_bg@2x.png</filename>
         </array>
         <key>ignoreFileList</key>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>temp_level_bg@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{375,480}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{375,480}}</string>
+                <key>sourceSize</key>
+                <string>{375,480}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>TextureAtlas25.pvr.ccz</string>
+            <key>size</key>
+            <string>{379,484}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:0017cc054ceb41459fcb95c62a2d17a6:1d2415f999689edb75e3235048064a74:77801964bb64b74dee88b796f480797d$</string>
+            <key>textureFileName</key>
+            <string>TextureAtlas25.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

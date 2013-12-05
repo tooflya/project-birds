@@ -14,6 +14,7 @@
 		7801630F18153DAB002A0CB7 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7801630B18153C51002A0CB7 /* libCocosDenshion.a */; };
 		78016312181575E6002A0CB7 /* KeyDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78016310181575E6002A0CB7 /* KeyDisplay.cpp */; };
 		780163151821002C002A0CB7 /* ColorParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 780163131821002C002A0CB7 /* ColorParticle.cpp */; };
+		78051FC018509CEE00846FA8 /* Episodes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78051FBE18509CEE00846FA8 /* Episodes.cpp */; };
 		78365442180BF85200AA9432 /* SpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78365440180BF85200AA9432 /* SpriteBatch.cpp */; };
 		78397ACE1807014A00C999E7 /* AppIcon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 78397AC51807014A00C999E7 /* AppIcon~iphone.png */; };
 		78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78397AC61807014A00C999E7 /* Icon-144-ios6.png */; };
@@ -245,7 +246,6 @@
 		7869167917F1DF9F00184E9D /* popup-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166E17F1DF9600184E9D /* popup-8.mp3 */; };
 		7869167A17F1DF9F00184E9D /* progress_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7869166F17F1DF9600184E9D /* progress_complete.mp3 */; };
 		7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7869167B17F2D84A00184E9D /* StarParticle2.cpp */; };
-		78791F5518326D1200821057 /* Episodes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78791F5318326D1200821057 /* Episodes.cpp */; };
 		787AD78F181007ED00738DE3 /* SurpriseLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */; };
 		787AD792181140FD00738DE3 /* TempPublisherInAppExplain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787AD790181140FD00738DE3 /* TempPublisherInAppExplain.cpp */; };
 		787CC98B18056EF400D54AD9 /* GetKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 787CC98918056ECC00D54AD9 /* GetKeys.cpp */; };
@@ -337,6 +337,8 @@
 		78016311181575E6002A0CB7 /* KeyDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyDisplay.h; sourceTree = "<group>"; };
 		780163131821002C002A0CB7 /* ColorParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorParticle.cpp; sourceTree = "<group>"; };
 		780163141821002C002A0CB7 /* ColorParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorParticle.h; sourceTree = "<group>"; };
+		78051FBE18509CEE00846FA8 /* Episodes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Episodes.cpp; sourceTree = "<group>"; };
+		78051FBF18509CEE00846FA8 /* Episodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Episodes.h; sourceTree = "<group>"; };
 		78365440180BF85200AA9432 /* SpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBatch.cpp; sourceTree = "<group>"; };
 		78365441180BF85200AA9432 /* SpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBatch.h; sourceTree = "<group>"; };
 		78397AC51807014A00C999E7 /* AppIcon~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon~iphone.png"; sourceTree = "<group>"; };
@@ -728,8 +730,6 @@
 		7869166F17F1DF9600184E9D /* progress_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = progress_complete.mp3; sourceTree = "<group>"; };
 		7869167B17F2D84A00184E9D /* StarParticle2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StarParticle2.cpp; sourceTree = "<group>"; };
 		7869167C17F2D84A00184E9D /* StarParticle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StarParticle2.h; sourceTree = "<group>"; };
-		78791F5318326D1200821057 /* Episodes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Episodes.cpp; sourceTree = "<group>"; };
-		78791F5418326D1200821057 /* Episodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Episodes.h; sourceTree = "<group>"; };
 		787AD78D181007ED00738DE3 /* SurpriseLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurpriseLevel.cpp; sourceTree = "<group>"; };
 		787AD78E181007ED00738DE3 /* SurpriseLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurpriseLevel.h; sourceTree = "<group>"; };
 		787AD790181140FD00738DE3 /* TempPublisherInAppExplain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TempPublisherInAppExplain.cpp; sourceTree = "<group>"; };
@@ -1055,6 +1055,8 @@
 		783E876D17C20CEB00FD49C1 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				78051FBE18509CEE00846FA8 /* Episodes.cpp */,
+				78051FBF18509CEE00846FA8 /* Episodes.h */,
 				785D1A4D1833F66F00A36DB8 /* GetShoots.cpp */,
 				785D1A4E1833F66F00A36DB8 /* GetShoots.h */,
 				78D358A21829111B001450F3 /* UnlockMode.cpp */,
@@ -1102,8 +1104,6 @@
 		783E879217C20CEB00FD49C1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				78791F5318326D1200821057 /* Episodes.cpp */,
-				78791F5418326D1200821057 /* Episodes.h */,
 				78D358B2182A6A0E001450F3 /* SplashScreen.cpp */,
 				78D358B3182A6A0E001450F3 /* SplashScreen.h */,
 				783E879317C20CEB00FD49C1 /* Arcade.cpp */,
@@ -2016,6 +2016,7 @@
 				783E88D617C20CEC00FD49C1 /* CreditsList.cpp in Sources */,
 				7861BFFB1834ED5D00B2A896 /* CCSingleUsePackVG.cpp in Sources */,
 				7861C0A11834EF9C00B2A896 /* hashtable.c in Sources */,
+				78051FC018509CEE00846FA8 /* Episodes.cpp in Sources */,
 				7861C06B1834ED7800B2A896 /* PurchasableVirtualItem.m in Sources */,
 				7861BFEB1834ED5D00B2A896 /* CCSoomlaJsonHelper.cpp in Sources */,
 				783E88D717C20CEC00FD49C1 /* List.cpp in Sources */,
@@ -2024,7 +2025,6 @@
 				7861C0A31834EF9C00B2A896 /* memory.c in Sources */,
 				7861C0891834EE6600B2A896 /* InAppPurchasesList.cpp in Sources */,
 				783E88D917C20CEC00FD49C1 /* Touchable.cpp in Sources */,
-				78791F5518326D1200821057 /* Episodes.cpp in Sources */,
 				785D1A6C1834ECC900A36DB8 /* StoreInfoBridge.mm in Sources */,
 				783E88DA17C20CEC00FD49C1 /* Utils.cpp in Sources */,
 			);

@@ -7,7 +7,7 @@
             <key>about_scroll_border@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1004,1284},{678,33}}</string>
+                <string>{{688,1809},{678,33}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>bg_detail_choose_bird@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1348,1638},{310,276}}</string>
+                <string>{{1004,530},{310,276}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>bg_detail_settings@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1684,1284},{329,256}}</string>
+                <string>{{1004,808},{329,256}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>bg_detail_stripe@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1660,1542},{383,207}}</string>
+                <string>{{1004,2},{383,207}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>btn_sfx_mfx_ach_lead_sprite_pause@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1660,1751},{301,200}}</string>
+                <string>{{1004,1066},{301,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>choose_box_navi_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1963,1751},{48,96}}</string>
+                <string>{{1311,211},{48,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>lock@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1963,1849},{64,64}}</string>
+                <string>{{1296,1844},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -134,23 +134,10 @@
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
-            <key>main_menu_bg@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1004,2},{1000,1280}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{1000,1280}}</string>
-                <key>sourceSize</key>
-                <string>{1000,1280}</string>
-            </dict>
             <key>main_menu_btn_bg_play@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1348,1319},{305,317}}</string>
+                <string>{{1004,211},{305,317}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +176,7 @@
             <key>settings_btn_big@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{688,1809},{435,187}}</string>
+                <string>{{688,1844},{435,187}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +202,7 @@
             <key>vk@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1125,1809},{169,182}}</string>
+                <string>{{1125,1844},{169,182}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -233,9 +220,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas2.pvr.ccz</string>
             <key>size</key>
-            <string>{2045,2001}</string>
+            <string>{1389,2033}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:eb07dad01ac97974693e7f1e2a6ffb17:ecf36a98af6d6e62504f34a54578ebe8:1622b2e3d2e266e16f21959f6ae95504$</string>
+            <string>$TexturePacker:SmartUpdate:f826cf12b822a26aaccc105095153d30:661aa6b4b630d3dfbd43df825b41c16f:1622b2e3d2e266e16f21959f6ae95504$</string>
             <key>textureFileName</key>
             <string>TextureAtlas2.pvr.ccz</string>
         </dict>

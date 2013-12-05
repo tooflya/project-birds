@@ -4,7 +4,7 @@
 #include "SplashScreen.h"
 
 #include "Loading.h"
-#include "Menu.h"
+#include "More.h"
 
 // ===========================================================
 // Inner Classes
@@ -118,7 +118,7 @@ void SplashScreen::update(float pDeltaTime)
 					AppDelegate::screens->set(Loading::create());
 					#else
 					CCTransitionScene* transition = CCTransitionFade::create(0.3, Loading::create());
-					CCDirector::sharedDirector()->pushScene(transition);
+					CCDirector::sharedDirector()->replaceScene(transition);
 					#endif
                 break;
             }

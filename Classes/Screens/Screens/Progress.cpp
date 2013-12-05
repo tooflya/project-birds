@@ -4,6 +4,8 @@
 #include "Progress.h"
 
 #include "Settings.h"
+#include "Levels.h"
+#include "Menu.h"
 
 // ===========================================================
 // Inner Classes
@@ -63,10 +65,22 @@ Progress::Progress() :
 		text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(300));
 
 		this->mResetPopup = ResetProgress::create(this);
+        
+        this->mDark = Dark::create();
+        this->mDark->setCascadeOpacityEnabled(true);
+        
+        this->addChild(this->mDark, 5);
+        
+        Text* text2 = Text::create(Options::TEXT_LOADING_RESET, this->mDark);
+        text2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+        
+        this->mDark->setOpacity(0);
+        
+        this->mResetAnimationRunning = false;
 
 		if (AppDelegate::isGetWindeScreen())
 		{
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
         
         AppDelegate::clearCache();
@@ -116,9 +130,46 @@ void Progress::onTouchButtonsCallback(const int pAction, const int pID)
     }
 }
 
+void Progress::reset()
+{
+    this->mDark->runAction(CCFadeTo::create(1.0, 230));
+    
+    this->mResetAnimationRunning = true;
+    this->mResetAnimationTimeElapsed = 0;
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
+
+void Progress::update(float pDeltaTime)
+{
+    Screen::update(pDeltaTime);
+    
+    if(this->mResetAnimationRunning)
+    {
+        this->mResetAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mResetAnimationTimeElapsed >= 3.0)
+        {
+            this->mResetAnimationRunning = false;
+            
+            this->onReset();
+        }
+    }
+}
+
+void Progress::onReset()
+{
+    AppDelegate::install(true);
+    
+    #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+    AppDelegate::screens->set(Menu::create());
+    #else
+    static_cast<Levels*>(AppDelegate::screens->mScreens[Screen::SCREEN_LEVELS])->updateIcons();
+    AppDelegate::screens->set(Screen::SCREEN_MENU);
+    #endif
+}
 
 void Progress::keyBackClicked(bool pSound)
 {
@@ -136,6 +187,18 @@ void Progress::keyBackClicked(bool pSound)
 		AppDelegate::screens->set(Settings::create());
 		#endif
     }
+}
+
+void Progress::onEnter()
+{
+    Screen::onEnter();
+}
+
+void Progress::onExit()
+{
+    Screen::onExit();
+    
+    this->mDark->setOpacity(0);
 }
 
 #endif

@@ -110,6 +110,11 @@ class Color : public Entity
         Entity* mBlink;
     
         Text* mPowerText;
+    
+        float mBonusWaitForDestroyTime;
+        float mBonusWaitForDestroyTimeElapsed;
+    
+        bool mBonusWaitForDestroy;
 
         // ===========================================================
         // Constructors

@@ -21,17 +21,17 @@ int Game::LEVEL_TYPE[80] = {
     0, 1, 2
 };
 int Game::LEVEL_SHOOT_COUNT[80] = {
-    5, 10, 15, 1
+    5, 10, 15, 15, 30, 30
 };
 int Game::LEVEL_HEIGHT[80] = {
     1, 1, 1, 2,
-    1, 2, 2, 2,
+    2, 3, 2, 2,
     2, 3, 3, 3,
     3, 3, 4, 4
 };
 int Game::LEVEL_COLORS[80] = {
     1, 1, 2, 2,
-    2, 2, 3, 3,
+    2, 3, 3, 3,
     3, 3, 3, 4,
     4, 4, 4, 4
 };
@@ -62,6 +62,8 @@ int Game::COMBO_COUNT = 0;
 int Game::FLAYER_COUNT = 0;
 int Game::CRITICAL_COUNT = 0;
 int Game::EGGS_4_COUNT = 0;
+int Game::KEYS_COUNT = 0;
+int Game::STARS_RESCUE = 0;
 
 int Game::BURNED[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -97,12 +99,18 @@ Game::~Game()
     CC_SAFE_RELEASE(this->mRobotParts);
     CC_SAFE_RELEASE(this->mKeys);
     CC_SAFE_RELEASE(this->mKeysLights);
+    CC_SAFE_RELEASE(this->mEventPanel);
+    CC_SAFE_RELEASE(this->mMexicanoHats);
+    CC_SAFE_RELEASE(this->mPirateHats);
     
     CC_SAFE_RELEASE(this->mPausePopup);
     CC_SAFE_RELEASE(this->mEndScreen);
     CC_SAFE_RELEASE(this->mGetLivesPopup);
     
     CC_SAFE_RELEASE(this->array);
+    CC_SAFE_RELEASE(this->marray);
+    
+    free(MATRIX);
 }
 
 Game::Game() :

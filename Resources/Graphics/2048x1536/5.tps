@@ -180,7 +180,6 @@
             <filename>../../Graphics Sources/icon_properties@2x.png</filename>
             <filename>../../Graphics Sources/flag_sprite_small@2x.png</filename>
             <filename>../../Graphics Sources/bar_remove@2x.png</filename>
-            <filename>../../Graphics Sources/popup_btn@2x.png</filename>
             <filename>../../Graphics Sources/about_logo@2x.png</filename>
             <filename>../../Graphics Sources/about_name_logo@2x.png</filename>
             <filename>../../Graphics Sources/shop_weapon_check@2x.png</filename>

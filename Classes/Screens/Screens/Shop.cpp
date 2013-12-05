@@ -475,7 +475,8 @@ Shop::Shop() :
 				{
 					if(AppDelegate::isItemSelected(j) && this->mWeaponChecker == NULL)
 					{
-						this->mWeaponChecker = Entity::create("shop_weapon_check@2x.png", item);this->mWeaponChecker->retain();
+						this->mWeaponChecker = Entity::create("shop_weapon_check@2x.png", item);
+                        this->mWeaponChecker->retain();
 						this->mWeaponChecker->create()->setCenterPosition(item->getWidth() / 2 + Utils::coord(64), item->getHeight() / 2 - Utils::coord(64));
                     
 						Options::SELECTED_WEAPON_ID = itemID;
@@ -533,8 +534,8 @@ Shop::Shop() :
         
 		if(AppDelegate::isGetWindeScreen())
         {
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
-			this->mGamePanel->setScaleX(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
+			this->mGamePanel->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
         }
         
         AppDelegate::clearCache();
@@ -558,7 +559,7 @@ Shop* Shop::create()
 
 void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 {
-    if(this->mIsAnimationOnItemBoughtRunning) return;
+    //if(this->mIsAnimationOnItemBoughtRunning) return;
 
     switch(pAction)
     {
@@ -679,28 +680,28 @@ void Shop::onPurchase(bool pProceed)
         switch(PURCHASE_ID)
         {
             case 0:
-                this->mIsAnimationPurchaseTime = 5.0;
+                this->mIsAnimationPurchaseTime = 2.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.2;
                 
                 AppDelegate::addCoins(1000, Options::SAVE_DATA_COINS_TYPE_SILVER);
                 AppDelegate::addCoins(25, Options::SAVE_DATA_COINS_TYPE_GOLD);
             break;
             case 1:
-                this->mIsAnimationPurchaseTime = 7.0;
+                this->mIsAnimationPurchaseTime = 3.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.15;
                 
                 AppDelegate::addCoins(5000, Options::SAVE_DATA_COINS_TYPE_SILVER);
                 AppDelegate::addCoins(150, Options::SAVE_DATA_COINS_TYPE_GOLD);
             break;
             case 2:
-                this->mIsAnimationPurchaseTime = 10.0;
+                this->mIsAnimationPurchaseTime = 4.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.1;
                 
                 AppDelegate::addCoins(15000, Options::SAVE_DATA_COINS_TYPE_SILVER);
                 AppDelegate::addCoins(500, Options::SAVE_DATA_COINS_TYPE_GOLD);
             break;
             case 3:
-                this->mIsAnimationPurchaseTime = 15.0;
+                this->mIsAnimationPurchaseTime = 5.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.05;
                 
                 AppDelegate::addCoins(50000, Options::SAVE_DATA_COINS_TYPE_SILVER);
@@ -964,7 +965,7 @@ void Shop::onEnter()
     
     int id = AppDelegate::getSelectedWeaponId();
     this->mItems[id]->addChild(this->mWeaponChecker);
-    this->mWeaponChecker->setCenterPosition(this->mItems[id]->getWidth() / 2 + Utils::coord(72), this->mItems[id]->getHeight() / 2 - Utils::coord(72));
+    this->mWeaponChecker->create()->setCenterPosition(this->mItems[id]->getWidth() / 2 + Utils::coord(72), this->mItems[id]->getHeight() / 2 - Utils::coord(72));
     
     this->mTextText[0]->setString(Utils::intToString(this->mPanelItems[0]).c_str());
     this->mTextText[0]->setCenterPosition(this->mTextBackgrounds[0]->getCenterX() + this->mTextBackgrounds[0]->getWidthScaled() / 2 - this->mTextText[0]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[0]->getCenterY());

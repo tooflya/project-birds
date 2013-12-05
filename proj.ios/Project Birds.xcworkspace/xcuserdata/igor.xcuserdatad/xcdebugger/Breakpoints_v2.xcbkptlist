@@ -102,11 +102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Progresses.cpp"
-            timestampString = "406717820.109582"
+            timestampString = "407417378.658836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "868"
-            endingLineNumber = "868"
+            startingLineNumber = "898"
+            endingLineNumber = "898"
             landmarkName = "Progresses::update(float pDeltaTime)"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Entities/Entity.cpp"
-            timestampString = "406816593.721029"
+            timestampString = "406997695.695318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "Entity::constructor(const char* pszFileName, int pHorizontalFramesCount, int pVerticalFramesCount, int pX, int pY, int pWidth, int pHeight, CCNode* pParent)"
             landmarkType = "5">
          </BreakpointContent>
@@ -485,12 +485,12 @@
                   symbolName = "BuyItem::BuyItem(Screen*)"
                   moduleName = "Project Birds"
                   urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Popups/BuyItem.cpp"
-                  timestampString = "406834152.83488"
+                  timestampString = "406987178.190999"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "124">
+                  offsetFromSymbolStart = "126">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -499,12 +499,12 @@
                   symbolName = "BuyItem::BuyItem(Screen*)"
                   moduleName = "Project Birds"
                   urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Popups/BuyItem.cpp"
-                  timestampString = "406834152.835087"
+                  timestampString = "406987178.191347"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "138">
+                  offsetFromSymbolStart = "142">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -513,12 +513,12 @@
                   symbolName = "BuyItem::BuyItem(Screen*)"
                   moduleName = "Project Birds"
                   urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Popups/BuyItem.cpp"
-                  timestampString = "406834152.835327"
+                  timestampString = "406987178.191738"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "188">
+                  offsetFromSymbolStart = "198">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -527,12 +527,12 @@
                   symbolName = "BuyItem::BuyItem(Screen*)"
                   moduleName = "Project Birds"
                   urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Popups/BuyItem.cpp"
-                  timestampString = "406834152.835658"
+                  timestampString = "406987178.192067"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "928">
+                  offsetFromSymbolStart = "752">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -541,12 +541,12 @@
                   symbolName = "BuyItem::BuyItem(Screen*)"
                   moduleName = "Project Birds"
                   urlString = "file://localhost/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/Classes/Screens/Popups/BuyItem.cpp"
-                  timestampString = "406834152.835907"
+                  timestampString = "406987178.1924"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "986">
+                  offsetFromSymbolStart = "806">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -554,7 +554,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Popup.cpp"
@@ -586,7 +586,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Popup.cpp"
@@ -596,6 +596,38 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "Popup::Popup(CCNode* pParent, bool pFirst)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/AppDelegate.cpp"
+            timestampString = "407433159.890485"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
+            landmarkName = "AppDelegate::applicationDidFinishLaunching()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Screens/Screens/Menu.cpp"
+            timestampString = "406988028.839806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "Menu::Menu()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -149,7 +149,11 @@ void SurpriseLevel::onHide()
         }
         else
 		{
+            #if CC_PRELOAD_LEVEL <= 0
 			AppDelegate::screens->set(Loader::create());
+            #else
+			AppDelegate::screens->set(Screen::SCREEN_LOADER);
+            #endif
         }
     }
     

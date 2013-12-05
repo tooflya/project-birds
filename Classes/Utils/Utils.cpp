@@ -53,7 +53,7 @@ int Utils::random(int min, int max)
 
 float Utils::coord(float pCoordinate)
 {
-	return pCoordinate / CCDirector::sharedDirector()->getContentScaleFactor();
+	return pCoordinate / CCDirector::sharedDirector()->getContentScaleFactor();// * 0.375;
 }
 
 float Utils::coordP(float pCoordinate)

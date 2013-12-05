@@ -9,35 +9,6 @@
 // Inner Classes
 // ===========================================================
 
-class Dark : public CCNodeRGBA
-{
-    public:
-    Dark()
-    {
-        this->setColor(ccc3(0, 0, 0));
-        this->setOpacity(50);
-    }
-    
-    static Dark* create()
-    {
-        Dark* background = new Dark();
-        background->autorelease();
-        
-        return background;
-    }
-
-    void draw()
-    {
-        if(this->getOpacity() <= 0) return;
-
-        #if CC_TARGET_PLATFORM != CC_PLATFORM_WINRT
-        glLineWidth(1);
-        #endif
-		CCPoint filledVertices[] = { ccp(0,0), ccp(0,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH,Options::CAMERA_HEIGHT), ccp(Options::CAMERA_WIDTH, 0)};
-        ccDrawSolidPoly(filledVertices, 4, ccc4f(this->getColor().r, this->getColor().g, this->getColor().b, this->getOpacity() / 255.0) );
-    }
-};
-
 // ===========================================================
 // Constants
 // ===========================================================
@@ -55,6 +26,7 @@ Language::Language() :
 	mBackButton(0),
 	mLanguages(),
 	mLanguageIndicator(0),
+    mDark(0),
 	mBackgroundDecorations(),
 	mNotAvailableBackgrounds(),
 	mTextes()
@@ -120,7 +92,6 @@ Language::Language() :
     
 		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
     
-		//this->mLanguageIndicator->setAnchorPoint(ccp(0.0, 0.0));
 		this->mLanguageIndicator->create();
     
 		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
@@ -137,10 +108,22 @@ Language::Language() :
 			this->mTextes[i - 2]->disableShadow();
 			this->mTextes[i - 2]->setCenterPosition(this->mNotAvailableBackgrounds[i - 2]->getCenterX(), this->mNotAvailableBackgrounds[i - 2]->getCenterY());
 		}
+        
+        this->mDark = Dark::create();
+        this->mDark->setCascadeOpacityEnabled(true);
+        
+        this->addChild(this->mDark, 5);
+        
+        Text* text1 = Text::create(Options::TEXT_LOADING_LANGUAGE, this->mDark);
+        text1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
+        
+        this->mDark->setOpacity(0);
+        
+        this->mLanguageChangeAnimationRunning = false;
 
 		if (AppDelegate::isGetWindeScreen())
 		{
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
         
         AppDelegate::clearCache();
@@ -167,6 +150,27 @@ void Language::onTouchButtonsCallback(const int pAction, const int pID)
     switch(pAction)
     {
         case Options::BUTTONS_ACTION_ONTOUCH:
+        
+        switch(pID)
+        {
+        case Options::BUTTONS_ID_LANGUAGE_L_RU:
+        case Options::BUTTONS_ID_LANGUAGE_L_EN:
+        /*case Options::BUTTONS_ID_LANGUAGE_L_DE:
+        case Options::BUTTONS_ID_LANGUAGE_L_ES:
+        case Options::BUTTONS_ID_LANGUAGE_L_FR:
+        case Options::BUTTONS_ID_LANGUAGE_L_NL:
+        case Options::BUTTONS_ID_LANGUAGE_L_IT:
+        case Options::BUTTONS_ID_LANGUAGE_L_JP:
+        case Options::BUTTONS_ID_LANGUAGE_L_KR:
+        case Options::BUTTONS_ID_LANGUAGE_L_CN:*/
+            
+        this->mDark->runAction(CCFadeTo::create(1.0, 230));
+            
+        this->mLanguageChangeAnimationRunning = true;
+        this->mLanguageChangeAnimationTimeElapsed = 0;
+        break;
+        }
+            
         switch(pID)
         {
             case Options::BUTTONS_ID_LANGUAGE_BACK:
@@ -178,18 +182,10 @@ void Language::onTouchButtonsCallback(const int pAction, const int pID)
                 
                 Options::CURRENT_LANGUAGE = 1;
                 
-				Options::changeLanguage();
-
-				AppDelegate::screens->set(Settings::create());
-                
             break;
             case Options::BUTTONS_ID_LANGUAGE_L_EN:
                 
                 Options::CURRENT_LANGUAGE = 0;
-
-				Options::changeLanguage();
-
-				AppDelegate::screens->set(Settings::create());
                 
             break;
             case Options::BUTTONS_ID_LANGUAGE_L_DE:
@@ -262,6 +258,24 @@ void Language::update(float pDeltaTime)
         this->mTextes[i]->setScale(this->mLanguages[i + 2]->getScaleX());
         this->mTextes[i]->setCenterPosition(this->mNotAvailableBackgrounds[i]->getCenterX(), this->mNotAvailableBackgrounds[i]->getCenterY());
     }
+    
+    if(this->mLanguageChangeAnimationRunning)
+    {
+        this->mLanguageChangeAnimationTimeElapsed += pDeltaTime;
+        
+        if(this->mLanguageChangeAnimationTimeElapsed >= 3.0)
+        {
+            this->mLanguageChangeAnimationRunning = false;
+            
+            Options::changeLanguage();
+            
+            #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+            AppDelegate::screens->set(Screen::SCREEN_SETTINGS);
+            #else
+            AppDelegate::screens->set(Settings::create());
+            #endif
+        }
+    }
 }
 
 void Language::onEnter()
@@ -272,6 +286,8 @@ void Language::onEnter()
 void Language::onExit()
 {
     Screen::onExit();
+    
+    this->mDark->setOpacity(0);
 }
 
 void Language::keyBackClicked(bool pSound)

@@ -152,8 +152,8 @@ void Button::setModal(bool pIsModal)
 void Button::update(float pDeltaTime)
 {
     Entity::update(pDeltaTime);
-
-    if(this->mText)
+    
+    if(this->mText != NULL)
     {
         this->mText->setScale(this->getScaleX());
         this->mText->setVisible(this->isVisible());
@@ -186,6 +186,16 @@ void Button::setScale(float pScale)
     Entity::setScale(pScale);
     
     this->mAnimationScaleUpFactor = pScale;
+}
+
+void Button::setVisible(bool pVisible)
+{
+    Entity::setVisible(pVisible);
+
+    if(this->mText != NULL)
+    {
+        this->mText->setVisible(pVisible);
+    }
 }
 
 Button* Button::deepCopy()

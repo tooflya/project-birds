@@ -14,7 +14,7 @@
 // ===========================================================
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
-TextureStructure Loading::TEXTURE_LIBRARY[12] =
+TextureStructure Loading::TEXTURE_LIBRARY[13] =
 {
 	{"TextureAtlas2.png", "TextureAtlas2.plist"},
 	{"TextureAtlas22.png", "TextureAtlas22.plist"},
@@ -25,14 +25,16 @@ TextureStructure Loading::TEXTURE_LIBRARY[12] =
     {"TextureAtlas13.png", "TextureAtlas13.plist"},
     {"TextureAtlas18.png", "TextureAtlas18.plist"},
     {"TextureAtlas15.png", "TextureAtlas15.plist"},
+    {"preloader@2x.png", NULL},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},
     {"about_scroll_fill_small@2x.png", NULL}
 };
 #else
-TextureStructure Loading::TEXTURE_LIBRARY[11] =
+TextureStructure Loading::TEXTURE_LIBRARY[13] =
 {
     {"TextureAtlas2.pvr.ccz", "TextureAtlas2.plist"},
+	{"TextureAtlas22.pvr.ccz", "TextureAtlas22.plist"},
     {"TextureAtlas3.pvr.ccz", "TextureAtlas3.plist"},
     {"TextureAtlas4.pvr.ccz", "TextureAtlas4.plist"},
     {"TextureAtlas5.pvr.ccz", "TextureAtlas5.plist"},
@@ -40,6 +42,7 @@ TextureStructure Loading::TEXTURE_LIBRARY[11] =
     {"TextureAtlas13.pvr.ccz", "TextureAtlas13.plist"},
     {"TextureAtlas18.pvr.ccz", "TextureAtlas18.plist"},
     {"TextureAtlas15.pvr.ccz", "TextureAtlas15.plist"},
+    {"preloader@2x.png", NULL},
     {"more_games_list@2x.png", NULL},
     {"about_scroll_fill@2x.png", NULL},
     {"about_scroll_fill_small@2x.png", NULL}
@@ -84,10 +87,10 @@ Loading::Loading() :
 		this->mBarBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
 		this->mBar->create()->setCenterPosition(Options::CAMERA_CENTER_X, Utils::coord(100));
 		this->mBar->showPercentage(0);
-    
+
 		this->mNumberOfLoadedSprites = -1;
 		this->mNumberOfSprites = sizeof(TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
-    
+
 		this->addChild(spriteBatch);
 
 		this->mLoadingText = Text::create(Options::TEXT_LOADING_1, this);
@@ -96,12 +99,12 @@ Loading::Loading() :
 		this->mLoading = false;
 		this->mLoadingProgress = false;
 
-		this->mLoadingPauseTime = 0.0;
+		this->mLoadingPauseTime = 1.5;
 		this->mLoadingPauseTimeElapsed = 0.0;
 
 		if (AppDelegate::isGetWindeScreen())
 		{
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
 	}
 
@@ -157,7 +160,7 @@ void Loading::startLoading()
 {
     this->mLoadingProgress = true;
     
-    this->mLoadingProgressTime = 0.3;
+    this->mLoadingProgressTime = 0.5;
     this->mLoadingProgressTimeElapsed = 0;
 }
 

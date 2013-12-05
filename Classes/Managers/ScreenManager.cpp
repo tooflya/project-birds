@@ -79,9 +79,9 @@ ScreenManager* ScreenManager::create()
 
 void ScreenManager::generate()
 {
-	this->load(3, -1);
-
-	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+    #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+    this->load(3, -1);
+    
 	this->mScreens[Screen::SCREEN_LOADER] = Loader::create();
 	#endif
 }
@@ -90,23 +90,19 @@ void ScreenManager::set(int pIndex)
 {
 	#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
 	CCAssert(false, "This build is compiled without preload instructions so need to use new objects.");
-
-	return;
 	#endif
     
     this->mCurrentScreenIndex = pIndex;
     
     CCTransitionScene* transition = CCTransitionFade::create(0.3, this->mScreens[pIndex]);
 
-    CCDirector::sharedDirector()->pushScene(transition);
+    CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 void ScreenManager::set(Screen* pScreen)
 {
 	#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
 	CCAssert(false, "This build is compiled with preload instructions so need to use exist arrays.");
-
-	return;
 	#endif
 
     float pAnimationTime = 0.3;
@@ -121,8 +117,6 @@ void ScreenManager::load(int pAction, int pDo)
 {
 	#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
 	CCAssert(false, "This build is compiled without preload instructions so need to use new objects.");
-
-	return;
 	#endif
     
     switch(pAction)
@@ -151,7 +145,7 @@ void ScreenManager::load(int pAction, int pDo)
                 this->mScreens[Screen::SCREEN_MORE] = More::create();
                 this->mScreens[Screen::SCREEN_LANGUAGE] = Language::create();
                 this->mScreens[Screen::SCREEN_MODE] = Mode::create();
-                this->mScreens[Screen::SCREEN_EPISODES] = Episodes::create();
+                //this->mScreens[Screen::SCREEN_EPISODES] = Episodes::create();
                 this->mScreens[Screen::SCREEN_SHOP] = Shop::create();
                 this->mScreens[Screen::SCREEN_LEVELS] = Levels::create();
                 break;
@@ -170,7 +164,7 @@ void ScreenManager::load(int pAction, int pDo)
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LANGUAGE]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_MODE]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_SHOP]);
-                CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_EPISODES]);
+                //CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_EPISODES]);
                 CC_SAFE_RELEASE(this->mScreens[Screen::SCREEN_LEVELS]);
                 break;
                     

@@ -381,6 +381,8 @@ class Options
         static Textes TEXT_NEED_TO_UNLOCK;
         static Textes TEXT_GETSHOOTS_STRING_1;
         static Textes TEXT_LEVELS_TASKS[80][3];
+        static Textes TEXT_LOADING_LANGUAGE;
+        static Textes TEXT_LOADING_RESET;
     
         static const char* IN_APP_COINS_PACK_1_ID;
         static const char* IN_APP_COINS_PACK_2_ID;

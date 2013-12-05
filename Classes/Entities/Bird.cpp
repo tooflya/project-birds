@@ -119,7 +119,7 @@ void Bird::init(int pChalangeType, int pSomeData[3])
             
         this->mWeight = Utils::coord(1000.0);
         this->mImpulsePower = Utils::coord(Utils::randomf(200.0, 700.0));
-        this->mSideImpulse = Utils::coord(250.0);
+        this->mSideImpulse = Options::CAMERA_CENTER_X / 2;
         this->mSideImpulse = this->getCenterX() < Options::CAMERA_CENTER_X ? -this->mSideImpulse : this->mSideImpulse;
 
         break;

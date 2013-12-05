@@ -20,14 +20,6 @@ class StarParticle : public ImpulseEntity
         // Fields
         // ===========================================================
 
-        int mType;
-    
-        float mScaleSpeed;
-        float mRotationSpeed;
-        float mAlphaSpeed;
-    
-        bool mIsParticle;
-
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -79,6 +71,14 @@ class StarParticle : public ImpulseEntity
         // ===========================================================
         // Fields
         // ===========================================================
+    
+        int mType;
+    
+        float mScaleSpeed;
+        float mRotationSpeed;
+        float mAlphaSpeed;
+    
+        bool mIsParticle;
 
         // ===========================================================
         // Constructors

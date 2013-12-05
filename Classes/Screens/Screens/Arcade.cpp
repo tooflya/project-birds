@@ -203,7 +203,7 @@ Arcade::Arcade() :
 
 		if (AppDelegate::isGetWindeScreen())
 		{
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
 
 		AppDelegate::clearCache();
@@ -213,7 +213,10 @@ Arcade* Arcade::create()
 {
     Arcade* screen = new Arcade();
     screen->autorelease();
-    screen->retain();
+    
+    #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+    #endif
     
     return screen;
 }

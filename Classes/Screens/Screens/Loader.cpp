@@ -147,7 +147,7 @@ Loader::Loader() :
 		this->mCircleAnimationTime = 0.5;
 		this->mCircleAnimationTimeElapsed = 0;
 
-		this->mLoadingTime = 0.5;
+		this->mLoadingTime = 1.5;
 		this->mLoadingTimeElapsed = 0;
 
 		this->mLoading = false;
@@ -157,7 +157,7 @@ Loader::Loader() :
 
 		if (AppDelegate::isGetWindeScreen())
 		{
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
 		}
 	}
 
@@ -165,6 +165,10 @@ Loader* Loader::create()
 {
     Loader* screen = new Loader();
     screen->autorelease();
+    
+    #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+	screen->retain();
+    #endif
     
     return screen;
 }
@@ -183,9 +187,13 @@ void Loader::loadingCallBack(CCObject *obj)
     
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
+        this->mLoadingText->setColor(ccc3(0, 150, 255));
+        
         this->mLoadingProgress = false;
         
+        #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
         AppDelegate::screens->load(ACTION, T);
+        #endif
         
         this->mLoadingText->setOpacity(0.0);
         this->mLoadingText->setString(Options::TEXT_TAP_TO_CONTINUE.string);
@@ -203,16 +211,7 @@ void Loader::loadingCallBack(CCObject *obj)
             AppDelegate::IS_ALREADY_PLAYED = true;
         }
         
-        //CCDirector::sharedDirector()->purgeCachedData();
-        
-        //CCTextureCache::sharedTextureCache()->purgeSharedTextureCache();
-        //CCSpriteFrameCache::sharedSpriteFrameCache()->purgeSharedSpriteFrameCache();
-        //CCAnimationCache::sharedAnimationCache()->purgeSharedAnimationCache();
-        
-        CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-        CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
-        
-        CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+        AppDelegate::clearCache();
     }
     else
     {
@@ -221,10 +220,19 @@ void Loader::loadingCallBack(CCObject *obj)
 
 void Loader::startLoading()
 {
+    #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
     AppDelegate::screens->load(ACTION, TYPE);
+    #endif
     
-    CCTextureCache::sharedTextureCache()->removeAllTextures();
-    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFrames();
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames();
+	CCSpriteFrameCache::sharedSpriteFrameCache()->purgeSharedSpriteFrameCache();
+    
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+    CCTextureCache::sharedTextureCache()->purgeSharedTextureCache();
+    
+    CCDirector::sharedDirector()->purgeCachedData();
+    
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
     
     this->mNumberOfLoadedSprites = -1;
     
@@ -248,34 +256,58 @@ void Loader::onTouch(CCTouch* touch, CCEvent* event)
         {
             case 0:
                 
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
                 AppDelegate::screens->set(Classic::create());
+                #else
+                AppDelegate::screens->set(Screen::SCREEN_CLASSIC_GAME);
+                #endif
                 
             break;
             case 1:
                 
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
                 AppDelegate::screens->set(Arcade::create());
+                #else
+                AppDelegate::screens->set(Screen::SCREEN_ARCADE_GAME);
+                #endif
                 
             break;
             case 2:
                 
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
                 AppDelegate::screens->set(Progresses::create());
+                #else
+                AppDelegate::screens->set(Screen::SCREEN_PROGRESS_GAME);
+                #endif
                 
             break;
             case 3:
                 
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
                 AppDelegate::screens->set(Menu::create());
+                #else
+                AppDelegate::screens->set(Screen::SCREEN_MENU);
+                #endif
                 
             break;
             case 4:
                 
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
                 AppDelegate::screens->set(Mode::create());
+                #else
+                AppDelegate::screens->set(Screen::SCREEN_MODE);
+                #endif
                 
             break;
             case 5:
 
                 //Shop::ACTION = 0;
                 
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
                 AppDelegate::screens->set(Shop::create());
+                #else
+                AppDelegate::screens->set(Screen::SCREEN_SHOP);
+                #endif
                 
             break;
         }
@@ -445,8 +477,30 @@ void Loader::onEnter()
     this->mLoadingText->setString(Options::TEXT_LOADING_1.string);
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     this->mLoadingText->setOpacity(255.0);
+    this->mLoadingText->setColor(ccc3(255, 255, 255));
 
     SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+    
+    if(Game::LEVEL <= 15)
+    {
+        Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas16.pvr.ccz", "TextureAtlas16.plist"};
+    }
+    else if(Game::LEVEL <= 31)
+    {
+        Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas23.pvr.ccz", "TextureAtlas23.plist"};
+    }
+    else if(Game::LEVEL <= 47)
+    {
+        Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas24.pvr.ccz", "TextureAtlas24.plist"};
+    }
+    else if(Game::LEVEL <= 63)
+    {
+        Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas25.pvr.ccz", "TextureAtlas25.plist"};
+    }
+    else if(Game::LEVEL <= 79)
+    {
+        Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas26.pvr.ccz", "TextureAtlas26.plist"};
+    }
 }
 
 void Loader::onExit()

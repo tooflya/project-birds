@@ -72,6 +72,7 @@ EventPanel* EventPanel::create(Screen *pParent)
 {
     EventPanel* panel = new EventPanel(pParent);
     panel->autorelease();
+    panel->retain();
     
     return panel;
 }

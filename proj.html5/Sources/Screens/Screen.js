@@ -17,15 +17,16 @@
  *
  */
 
- cc.Screen = cc.Scene.extend({
-    init:function() {
+cc.Screen = cc.Scene.extend({
+    onEnter:function() {
+        this.scheduleUpdate();
+
+        this._super();
+    },
+    onExit:function() {
+        this.stopAllActions();
+        this.unscheduleUpdate();
+
         this._super();
     }
 });
-
-cc.Screen.create = function() {
-    var screen = new cc.Screen();
-    screen.init();
-    
-    return screen;
-};

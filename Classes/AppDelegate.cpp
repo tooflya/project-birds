@@ -525,13 +525,16 @@ bool AppDelegate::applicationDidFinishLaunching()
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     if(screenSize.width >= 2048)
     {
-        designResolutionSize = CCSizeMake(1920, 1280);
+        Options::designResolutionSize = CCSizeMake(1920, 1280);
     }
     else
     {
-        designResolutionSize = CCSizeMake(720, 1280);
+        Options::designResolutionSize = CCSizeMake(720, 1280);
     }
-	#elif CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
+	#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+	//Options::designResolutionSize = CCSizeMake(270, 480);
+    Options::designResolutionSize = CCSizeMake(720, 1280);
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 	Options::designResolutionSize = CCSizeMake(1920, 1280);
     #else
 	Options::designResolutionSize = CCSizeMake(720, 1280);
@@ -564,10 +567,11 @@ bool AppDelegate::applicationDidFinishLaunching()
         }
         else
         {
-            searchPath.push_back(resources1280x720.directory);
             
             if(Options::CAMERA_HEIGHT == 960)
             {
+                searchPath.push_back(resources1280x720xPVRTC2.directory);
+                
                 Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE4;
             
                 if(AppDelegate::IS_IPOD)
@@ -577,6 +581,8 @@ bool AppDelegate::applicationDidFinishLaunching()
             }
             else
             {
+                searchPath.push_back(resources1280x720.directory);
+                
                 Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE5;
             }
         }
@@ -595,6 +601,12 @@ bool AppDelegate::applicationDidFinishLaunching()
         Options::DEVICE_TYPE = Options::DEVICE_TYPE_NEXUS3;
         
         searchPath.push_back(resources1280x720.directory);
+    }
+    else if(Options::CAMERA_HEIGHT < 720)
+    {
+        Options::DEVICE_TYPE = Options::DEVICE_TYPE_IPHONE5;
+        
+        searchPath.push_back(resources480x320.directory);
     }
     else
     {
@@ -619,7 +631,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
     
     director->setProjection(kCCDirectorProjection2D);
 

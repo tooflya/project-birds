@@ -220,7 +220,11 @@ void GetLives::onHide()
             {
                 Shop::ACTION = 3;
                 
-                AppDelegate::screens->set(Shop::create());
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+				AppDelegate::screens->set(Shop::create());
+                #else
+				AppDelegate::screens->set(Screen::SCREEN_SHOP);
+                #endif
             }
             else
             {
@@ -230,14 +234,22 @@ void GetLives::onHide()
                 {
                     Shop::ACTION = 5;
 					Loader::ACTION = 5;
-
-					AppDelegate::screens->set(Loader::create());
+                    
+                    #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+                    AppDelegate::screens->set(Loader::create());
+                    #else
+                    AppDelegate::screens->set(Screen::SCREEN_LOADER);
+                    #endif
                 }
                 else
                 {
 					Shop::ACTION = 4;
-
-					AppDelegate::screens->set(Shop::create());
+                    
+                    #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+                    AppDelegate::screens->set(Shop::create());
+                    #else
+                    AppDelegate::screens->set(Screen::SCREEN_SHOP);
+                    #endif
                 }
             }
         }
@@ -254,7 +266,11 @@ void GetLives::onHide()
                 Shop::ACTION = 11;
 				Loader::ACTION = 5;
 
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
 				AppDelegate::screens->set(Loader::create());
+                #else
+				AppDelegate::screens->set(Screen::SCREEN_LOADER);
+                #endif
             }
         }
         break;

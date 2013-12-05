@@ -106,4 +106,12 @@ CreditsList* CreditsList::create(CCNode* pParent)
 // Override Methods
 // ===========================================================
 
+void CreditsList::onEnter()
+{
+    List::onEnter();
+    
+    this->mText[1]->setString(ccsf(Options::TEXT_CREDITS_STRING_2.string, Options::VERSION));
+    this->mText[2]->setString(ccsf(Options::TEXT_CREDITS_STRING_3.string, Options::BUILD));
+}
+
 #endif

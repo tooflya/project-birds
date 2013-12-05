@@ -155,8 +155,12 @@ void UnlockMode::onHide()
         else
         {
 			Shop::ACTION = 6;
-
-			AppDelegate::screens->set(Shop::create());
+            
+            #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+            AppDelegate::screens->set(Shop::create());
+            #else
+            AppDelegate::screens->set(Screen::SCREEN_SHOP);
+            #endif
         }
     }
     

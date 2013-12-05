@@ -41,6 +41,9 @@ static AppDelegate s_sharedApplication;
                                    multiSampling: NO
                                  numberOfSamples: 0 ];
     
+    UIApplication* app = [UIApplication sharedApplication];
+    app.idleTimerDisabled = YES;
+    
     // Use RootViewController manage EAGLView
     viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
     viewController.wantsFullScreenLayout = YES;
@@ -63,6 +66,18 @@ static AppDelegate s_sharedApplication;
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
     [__glView setMultipleTouchEnabled:YES];
+    
+    NSString* deviceType = machineName();
+    NSRange match = [deviceType rangeOfString: @"iPod"];
+    
+    if(match.location != NSNotFound)
+    {
+        s_sharedApplication.IS_IPOD = true;
+    }
+    else
+    {
+        s_sharedApplication.IS_IPOD = false;
+    }
     
     //[self PlayVideo:0 fullscreen:1 file:@"a" fileExtension:@"m4v"];
     cocos2d::CCApplication::sharedApplication()->run();
@@ -210,18 +225,6 @@ int g_iPlayVideoState=0;
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
     [__glView setMultipleTouchEnabled:NO];
-    
-    NSString* deviceType = machineName();
-    NSRange match = [deviceType rangeOfString: @"iPod"];
-    
-    if(match.location != NSNotFound)
-    {
-        s_sharedApplication.IS_IPOD = true;
-    }
-    else
-    {
-        s_sharedApplication.IS_IPOD = false;
-    }
     
     cocos2d::CCApplication::sharedApplication()->run();
     

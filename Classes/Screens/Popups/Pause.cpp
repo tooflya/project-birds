@@ -6,6 +6,7 @@
 #include "Loader.h"
 #include "Game.h"
 #include "Shop.h"
+#include "Classic.h"
 
 // ===========================================================
 // Inner Classes
@@ -119,7 +120,11 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 
                 Loader::ACTION = 3;
                 
+                #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+                AppDelegate::screens->set(Screen::SCREEN_LOADER);
+                #else
                 AppDelegate::screens->set(Loader::create());
+                #endif
                 
                 break;
             case Options::BUTTONS_ID_PAUSE_SHOP:
@@ -129,7 +134,11 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 Loader::ACTION = 5;
                 Shop::ACTION = 0;
                 
+                #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+                AppDelegate::screens->set(Screen::SCREEN_LOADER);
+                #else
                 AppDelegate::screens->set(Loader::create());
+                #endif
                 
                 break;
             case Options::BUTTONS_ID_PAUSE_RESTART:
@@ -194,7 +203,11 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 
                 Loader::ACTION = 4;
                 
+                #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
+                AppDelegate::screens->set(Screen::SCREEN_LOADER);
+                #else
                 AppDelegate::screens->set(Loader::create());
+                #endif
                 
                 break;
         }

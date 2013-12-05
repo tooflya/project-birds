@@ -33,8 +33,8 @@
     var director = cc.Director.getInstance();
 
     var screenSize = cc.EGLView.getInstance().getFrameSize();
-    var resourceSize = cc.size(1000, 1280);
-    var designSize = cc.size(1000, 1280);
+    var resourceSize = cc.size(1920, 1080);
+    var designSize = cc.size(1920, 1080);
 
     var searchPaths = [];
 
@@ -48,12 +48,10 @@
     director.setDisplayStats(this.config['showFPS']);
     director.setAnimationInterval(1.0 / this.config['frameRate']);
 
-    cc.Preloader.preload(g_resources, function() {
-      //director.replaceScene(cc.Preloader.create());
-    }, this);
+    director.runWithScene(cc.SplashScreen.create());
 
     return true;
   }
 });
 
-new cocos2dApp();
+var app = new cocos2dApp();

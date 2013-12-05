@@ -68,11 +68,10 @@ Text::~Text()
 
     TEXTES[this->mId] = NULL;
     ID--;
-    
-    //CCLog(ccsf("DEALLOCING OF TEXT with string: %s", this->getString()));
 }
 
 Text::Text(const char* pString, float pSize, CCNode* pParent) :
+    mShadow(NULL),
 	mId(0),
 	mInitCenterX(0),
 	mInitCenterY(0)
@@ -101,6 +100,7 @@ Text::Text(const char* pString, float pSize, CCNode* pParent) :
 	}
 
 Text::Text(Textes pParams, CCNode* pParent) :
+    mShadow(NULL),
 	mId(0),
 	mInitCenterX(0),
     mInitCenterY(0)
@@ -112,7 +112,7 @@ Text::Text(Textes pParams, CCNode* pParent) :
     
 		this->mId = pParams.identifier;
     
-		//TEXTES[ID] = this;
+		TEXTES[ID] = this;
     
 		ID++;
         
@@ -129,6 +129,7 @@ Text::Text(Textes pParams, CCNode* pParent) :
 	}
 
 Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
+    mShadow(NULL),
 	mId(0),
 	mInitCenterX(0),
     mInitCenterY(0)
@@ -140,7 +141,7 @@ Text::Text(Textes pParams, const CCSize pDimensions, CCNode* pParent) :
     
 		this->mId = pParams.identifier;
     
-		//TEXTES[ID] = this;
+		TEXTES[ID] = this;
     
 		ID++;
         
@@ -219,7 +220,7 @@ void Text::setPosition(float pX, float pY)
 
 void Text::changeLanguage()
 {
-    if(Options::TEXTES_HOLDER[this->mId].size != 0 && this->mId != -1 && this->mId >= 1 && this->getParent())
+    if(this->mId != -1 && this->mId >= 1 && this->getParent())
     {
         this->setString(Options::TEXTES_HOLDER[this->mId].string);
         this->setFontSize(Utils::coord(Options::TEXTES_HOLDER[this->mId].size));
@@ -315,7 +316,10 @@ void Text::runAction(CCAction* pAction)
     
     if(this->mShadow != NULL)
     {
-        this->mShadow->runAction(static_cast<CCAction*>(pAction->copy()));
+        CCAction* copy = static_cast<CCAction*>(pAction->copy());
+        copy->autorelease();
+        
+        this->mShadow->runAction(static_cast<CCAction*>(copy));
     }
 }
 
@@ -446,21 +450,11 @@ void Text::update(float pDeltaTime)
 void Text::onEnter()
 {
     CCLabelTTF::onEnter();
-    
-    //this->retain();
 }
 
 void Text::onExit()
 {
     CCLabelTTF::onExit();
-    
-    /** Some leaks here */
-    
-    //TEXTES[this->mId] = NULL;
-    
-    //this->release();
-    
-    //ID--;
 }
 
 void Text::draw()

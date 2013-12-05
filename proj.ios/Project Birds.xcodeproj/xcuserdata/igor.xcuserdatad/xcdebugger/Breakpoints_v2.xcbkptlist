@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Shop.cpp"
-            timestampString = "406829817.687746"
+            timestampString = "407166624.170654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "478"
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Entities/Entity.cpp"
-            timestampString = "406824762.263499"
+            timestampString = "406997695.695318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "762"
-            endingLineNumber = "762"
+            startingLineNumber = "788"
+            endingLineNumber = "788"
             landmarkName = "Entity::animate(float pAnimationTime)"
             landmarkType = "5">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Game.cpp"
-            timestampString = "406632877.082134"
+            timestampString = "407410997.118216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "Game::Game()"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Progresses.cpp"
-            timestampString = "406717820.109582"
+            timestampString = "407417378.658836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1008"
-            endingLineNumber = "1008"
+            startingLineNumber = "1040"
+            endingLineNumber = "1040"
             landmarkName = "Progresses::onGameEnd()"
             landmarkType = "5">
          </BreakpointContent>
@@ -210,11 +210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Loader.cpp"
-            timestampString = "406831064.34738"
+            timestampString = "407242415.182702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "Loader::startLoading()"
             landmarkType = "5">
          </BreakpointContent>
@@ -226,12 +226,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Managers/ScreenManager.cpp"
-            timestampString = "406809161.191641"
+            timestampString = "406977986.47342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "ScreenManager::set(float pAnimationTime, int pIndex)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "ScreenManager::set(int pIndex)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -242,11 +242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Managers/ScreenManager.cpp"
-            timestampString = "406832649.616123"
+            timestampString = "406977986.47342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "ScreenManager::load(int pAction, int pDo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -290,11 +290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Screens/Screens/Loader.cpp"
-            timestampString = "406831064.34738"
+            timestampString = "407242415.182702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "Loader::onTouch(CCTouch* touch, CCEvent* event)"
             landmarkType = "5">
          </BreakpointContent>

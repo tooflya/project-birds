@@ -3,8 +3,7 @@
 
 #include "ResetProgress.h"
 
-#include "Levels.h"
-#include "Menu.h"
+#include "Progress.h"
 
 // ===========================================================
 // Inner Classes
@@ -126,20 +125,14 @@ void ResetProgress::onShow()
 
 void ResetProgress::onHide()
 {
-    Popup::onHide();
-
     if(this->mAction)
     {
-        AppDelegate::install(true);
-
-		#if CC_TOTAL_PRELOAD == 0
-        static_cast<Levels*>(AppDelegate::screens->mScreens[Screen::SCREEN_LEVELS])->updateIcons();
-		#endif
-
-		AppDelegate::screens->set(Menu::create());
+        static_cast<Progress*>(this->getParent())->reset();
     }
     
     this->mAction = false;
+    
+    Popup::onHide();
 }
 
 void ResetProgress::hide()

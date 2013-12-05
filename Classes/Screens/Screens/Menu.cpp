@@ -106,7 +106,10 @@ Menu::Menu() :
     
 		this->mPlayDecorationColorUpdateTimeElapsed = 0;
 
-		SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true);
+        if(!SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying())
+        {
+            SimpleAudioEngine::sharedEngine()->playBackgroundMusic(Options::MUSIC_1, true);
+        }
 
 		if(!Options::MUSIC_ENABLE)
 		{
@@ -124,7 +127,7 @@ Menu::Menu() :
         
 		if (AppDelegate::isGetWindeScreen())
         {
-			this->mBackground->setScale(Options::designResolutionSize.height / Options::CAMERA_HEIGHT);
+			this->mBackground->setScale(MAX(Options::CAMERA_HEIGHT / Options::designResolutionSize.height, Options::designResolutionSize.height / Options::CAMERA_HEIGHT));
         }
         
         AppDelegate::clearCache();

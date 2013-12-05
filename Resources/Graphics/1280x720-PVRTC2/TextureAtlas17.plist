@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>board_migalka@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{720,1280}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{720,1280}}</string>
+                <key>sourceSize</key>
+                <string>{720,1280}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>TextureAtlas17.pvr.ccz</string>
+            <key>size</key>
+            <string>{2048,2048}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:361b2cc1b1a47e7fe9028cbf24f80507:6dfc214f8e4d10d71f5c2217489f7f19:9c6e782e29f58a4789ae64299aab3989$</string>
+            <key>textureFileName</key>
+            <string>TextureAtlas17.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

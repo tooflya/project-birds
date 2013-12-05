@@ -79,10 +79,10 @@ const char* Options::TEXTURES_EXTENSION = ".pvr.ccz";
 bool Options::MUSIC_ENABLE = true;
 bool Options::SOUND_ENABLE = true;
 
-const char* Options::VERSION = "0.8.7";
-string Options::STRING_VERSION = "0.8.7";
+const char* Options::VERSION = "0.8.9";
+string Options::STRING_VERSION = "0.8.9";
 
-int Options::BUILD = 8130;
+int Options::BUILD = 9025;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
@@ -519,8 +519,27 @@ Textes Options::TEXT_LEVELS_TASKS[80][3] = {
     { {"", FONT, 32, 416}, {"", FONT, 32, 417}, {"", FONT, 32, 418} },
     { {"", FONT, 32, 419}, {"", FONT, 32, 420}, {"", FONT, 32, 421} },
     { {"", FONT, 32, 422}, {"", FONT, 32, 423}, {"", FONT, 32, 424} },
-    { {"", FONT, 32, 425}, {"", FONT, 32, 426}, {"", FONT, 32, 427} }
+    { {"", FONT, 32, 425}, {"", FONT, 32, 426}, {"", FONT, 32, 427} },
+    { {"", FONT, 32, 432}, {"", FONT, 32, 431}, {"", FONT, 32, 432} },
+    { {"", FONT, 32, 433}, {"", FONT, 32, 434}, {"", FONT, 32, 435} },
+    
+    { {"", FONT, 32, 436}, {"", FONT, 32, 437}, {"", FONT, 32, 438} },
+    { {"", FONT, 32, 439}, {"", FONT, 32, 440}, {"", FONT, 32, 441} },
+    { {"", FONT, 32, 442}, {"", FONT, 32, 443}, {"", FONT, 32, 444} },
+    { {"", FONT, 32, 445}, {"", FONT, 32, 446}, {"", FONT, 32, 447} },
+    { {"", FONT, 32, 448}, {"", FONT, 32, 449}, {"", FONT, 32, 450} },
+    { {"", FONT, 32, 451}, {"", FONT, 32, 452}, {"", FONT, 32, 453} },
+    { {"", FONT, 32, 454}, {"", FONT, 32, 455}, {"", FONT, 32, 456} },
+    { {"", FONT, 32, 457}, {"", FONT, 32, 458}, {"", FONT, 32, 459} },
+    { {"", FONT, 32, 460}, {"", FONT, 32, 461}, {"", FONT, 32, 462} },
+    { {"", FONT, 32, 463}, {"", FONT, 32, 464}, {"", FONT, 32, 465} },
+    { {"", FONT, 32, 466}, {"", FONT, 32, 467}, {"", FONT, 32, 468} },
+    { {"", FONT, 32, 469}, {"", FONT, 32, 470}, {"", FONT, 32, 471} },
+    { {"", FONT, 32, 472}, {"", FONT, 32, 473}, {"", FONT, 32, 474} },
+    { {"", FONT, 32, 475}, {"", FONT, 32, 476}, {"", FONT, 32, 477} }
 };
+Textes Options::TEXT_LOADING_LANGUAGE = {"", FONT, 42, 428};
+Textes Options::TEXT_LOADING_RESET = {"", FONT, 42, 429};
 
 // ===========================================================
 // Fields
@@ -561,7 +580,6 @@ void Options::init()
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 
     CCDictionary* pConfInfo = CCDictionary::createWithContentsOfFile("Info.plist");
-    pConfInfo->retain(); // It's really need?
     Options::BUILD = pConfInfo->valueForKey("CFBundleVersion")->intValue();
 
     #endif
@@ -695,10 +713,10 @@ void Options::changeLanguage()
             TEXT_CREDITS_STRING_1.string = "About";
             TEXT_CREDITS_STRING_1.size = 48;
 
-            TEXT_CREDITS_STRING_2.string = ccsf("Version: %s", Options::VERSION);
+            TEXT_CREDITS_STRING_2.string = "Version: %s";
             TEXT_CREDITS_STRING_2.size = 36;
 
-            TEXT_CREDITS_STRING_3.string = ccsf("Build: %d", Options::BUILD);
+            TEXT_CREDITS_STRING_3.string = "Build: %d";
             TEXT_CREDITS_STRING_3.size = 36;
             
             TEXT_CREDITS_STRING_4.string = "Created by:";
@@ -870,10 +888,10 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Ice bird has a unique ability to freeze time. It will help you to react quickly at the right time and get as many coins as you can.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "When this bird will break the spirit of an Indian will show you where these birds will fly.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "This bird will give you a big laser gun but only for 5 seconds.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "By killing the bird appears chest full of coins or other valuable prize.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Break it and you will fall on the blessed rain of birds.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "This bird is capable for great massive explosions.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Infected birds rest, which leads to a decrease in their health.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "This bird here, to slow down the time. You can easily straightened with a mass of other birds.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Information not found.";
@@ -1091,6 +1109,9 @@ void Options::changeLanguage()
             TEXT_LEVELS_TASKS[4][0].string = "Save 3 stars";
             TEXT_LEVELS_TASKS[4][1].string = "Gather all the eggs";
             TEXT_LEVELS_TASKS[4][2].string = "Destroy all the eggs\nafter the previous tasks";
+            
+            TEXT_LOADING_LANGUAGE.string = "We are changing a language\nPlease wait a moment";
+            TEXT_LOADING_RESET.string = "Reset in progress now\nPlease wait a moment";
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1207,10 +1228,10 @@ void Options::changeLanguage()
             TEXT_CREDITS_STRING_1.string = "Об игре";
             TEXT_CREDITS_STRING_1.size = 48;
             
-            TEXT_CREDITS_STRING_2.string = ccsf("Версия: %s", Options::VERSION);
+            TEXT_CREDITS_STRING_2.string = "Версия: %s";
             TEXT_CREDITS_STRING_2.size = 36;
             
-            TEXT_CREDITS_STRING_3.string = ccsf("Сборка: %d", Options::BUILD);
+            TEXT_CREDITS_STRING_3.string = "Сборка: %d";
             TEXT_CREDITS_STRING_3.size = 36;
             
             TEXT_CREDITS_STRING_4.string = "Над игрой работали:";
@@ -1382,10 +1403,10 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Ледяная птица обладает уникальной способностью заморажевать время. Она поможет вам быстро среагировать в нужный момент и получить как можно больше монет.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Когда разобьете эту птицу, дух индейца покажет вам откуда будут вылетать следующие птицы.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Эта птица даст вам большую лазерную пушку но лишь на 5 секунд.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "При убийстве этой птицы появляется сундук набитый монетами, либо другой ценный приз.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Разбейте её и на вас обрушится благословенный дождь из птиц.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Эта птица способна на большие массовые взрывы.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Заражает остальных птиц, что приводит к уменьшению их здоровья.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Эта птица здесь, для того чтобы замедлить время. Вы с легкостью расправитесь с массой остальных птиц.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Информации не найдено.";
@@ -1400,13 +1421,13 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[37].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[38].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[39].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "O";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "ж";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "м";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "рищепка";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "дабл килл";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Золотой ключ";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Золотое сердце";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[47].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[48].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[49].string = "Информации не найдено.";
@@ -1599,12 +1620,87 @@ void Options::changeLanguage()
             TEXT_LEVELS_TASKS[2][2].string = "Успейте за 60 секунд";
             
             TEXT_LEVELS_TASKS[3][0].string = "Соберите все яйца";
-            TEXT_LEVELS_TASKS[3][1].string = "Соберите 4 в ряд";
-            TEXT_LEVELS_TASKS[3][2].string = "Успейте за 60 секунд";
+            TEXT_LEVELS_TASKS[3][1].string = "Соберите 2 ключа";
+            TEXT_LEVELS_TASKS[3][2].string = "Успейте за 10 ударов";
             
-            TEXT_LEVELS_TASKS[4][0].string = "Спасите 3 звездочки";
-            TEXT_LEVELS_TASKS[4][1].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[4][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[4][1].string = "Спасите 3 звездочки";
             TEXT_LEVELS_TASKS[4][2].string = "Уничтожте все яйца\nпосле выполнения задания";
+            
+            TEXT_LEVELS_TASKS[5][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[5][1].string = "Успейте за 20 ударов";
+            TEXT_LEVELS_TASKS[5][2].string = "Уничтожте все яйца\nпосле выполнения задания";
+            
+            TEXT_LEVELS_TASKS[6][0].string = "";
+            TEXT_LEVELS_TASKS[6][1].string = "";
+            TEXT_LEVELS_TASKS[6][2].string = "";
+            
+            TEXT_LEVELS_TASKS[7][0].string = "";
+            TEXT_LEVELS_TASKS[7][1].string = "";
+            TEXT_LEVELS_TASKS[7][2].string = "";
+            
+            TEXT_LEVELS_TASKS[8][0].string = "";
+            TEXT_LEVELS_TASKS[8][1].string = "";
+            TEXT_LEVELS_TASKS[8][2].string = "";
+            
+            TEXT_LEVELS_TASKS[9][0].string = "";
+            TEXT_LEVELS_TASKS[9][1].string = "";
+            TEXT_LEVELS_TASKS[9][2].string = "";
+            
+            TEXT_LEVELS_TASKS[10][0].string = "";
+            TEXT_LEVELS_TASKS[10][1].string = "";
+            TEXT_LEVELS_TASKS[10][2].string = "";
+            
+            TEXT_LEVELS_TASKS[10][0].string = "";
+            TEXT_LEVELS_TASKS[10][1].string = "";
+            TEXT_LEVELS_TASKS[10][2].string = "";
+            
+            TEXT_LEVELS_TASKS[10][0].string = "";
+            TEXT_LEVELS_TASKS[10][1].string = "";
+            TEXT_LEVELS_TASKS[10][2].string = "";
+            
+            TEXT_LEVELS_TASKS[11][0].string = "";
+            TEXT_LEVELS_TASKS[11][1].string = "";
+            TEXT_LEVELS_TASKS[11][2].string = "";
+            
+            TEXT_LEVELS_TASKS[12][0].string = "";
+            TEXT_LEVELS_TASKS[12][1].string = "";
+            TEXT_LEVELS_TASKS[12][2].string = "";
+            
+            TEXT_LEVELS_TASKS[13][0].string = "";
+            TEXT_LEVELS_TASKS[13][1].string = "";
+            TEXT_LEVELS_TASKS[13][2].string = "";
+            
+            TEXT_LEVELS_TASKS[14][0].string = "";
+            TEXT_LEVELS_TASKS[14][1].string = "";
+            TEXT_LEVELS_TASKS[14][2].string = "";
+            
+            TEXT_LEVELS_TASKS[15][0].string = "";
+            TEXT_LEVELS_TASKS[15][1].string = "";
+            TEXT_LEVELS_TASKS[15][2].string = "";
+            
+            TEXT_LEVELS_TASKS[16][0].string = "";
+            TEXT_LEVELS_TASKS[16][1].string = "";
+            TEXT_LEVELS_TASKS[16][2].string = "";
+            
+            TEXT_LEVELS_TASKS[17][0].string = "";
+            TEXT_LEVELS_TASKS[17][1].string = "";
+            TEXT_LEVELS_TASKS[17][2].string = "";
+            
+            TEXT_LEVELS_TASKS[18][0].string = "";
+            TEXT_LEVELS_TASKS[18][1].string = "";
+            TEXT_LEVELS_TASKS[18][2].string = "";
+            
+            TEXT_LEVELS_TASKS[19][0].string = "";
+            TEXT_LEVELS_TASKS[19][1].string = "";
+            TEXT_LEVELS_TASKS[19][2].string = "";
+            
+            TEXT_LEVELS_TASKS[20][0].string = "";
+            TEXT_LEVELS_TASKS[20][1].string = "";
+            TEXT_LEVELS_TASKS[20][2].string = "";
+            
+            TEXT_LOADING_LANGUAGE.string = "Происходит смена языка\nПожалуйста подождите";
+            TEXT_LOADING_RESET.string = "Происходит сброс прогреса\nПожалуйста подождите";
         break;
     }
     
@@ -2036,8 +2132,72 @@ void Options::changeLanguage()
     TEXTES_HOLDER[425] = TEXT_LEVELS_TASKS[4][0];
     TEXTES_HOLDER[426] = TEXT_LEVELS_TASKS[4][1];
     TEXTES_HOLDER[427] = TEXT_LEVELS_TASKS[4][2];
+    TEXTES_HOLDER[428] = TEXT_LOADING_LANGUAGE;
+    TEXTES_HOLDER[429] = TEXT_LOADING_RESET;
+    TEXTES_HOLDER[430] = TEXT_LEVELS_TASKS[5][0];
+    TEXTES_HOLDER[431] = TEXT_LEVELS_TASKS[5][1];
+    TEXTES_HOLDER[432] = TEXT_LEVELS_TASKS[5][2];
+    TEXTES_HOLDER[433] = TEXT_LEVELS_TASKS[6][0];
+    TEXTES_HOLDER[434] = TEXT_LEVELS_TASKS[6][1];
+    TEXTES_HOLDER[435] = TEXT_LEVELS_TASKS[6][2];
     
-    for(int i = 0; i <= 427; i++)
+    TEXTES_HOLDER[436] = TEXT_LEVELS_TASKS[7][0];
+    TEXTES_HOLDER[437] = TEXT_LEVELS_TASKS[7][1];
+    TEXTES_HOLDER[438] = TEXT_LEVELS_TASKS[7][2];
+    
+    TEXTES_HOLDER[439] = TEXT_LEVELS_TASKS[8][0];
+    TEXTES_HOLDER[440] = TEXT_LEVELS_TASKS[8][1];
+    TEXTES_HOLDER[441] = TEXT_LEVELS_TASKS[8][2];
+    
+    TEXTES_HOLDER[442] = TEXT_LEVELS_TASKS[9][0];
+    TEXTES_HOLDER[443] = TEXT_LEVELS_TASKS[9][1];
+    TEXTES_HOLDER[444] = TEXT_LEVELS_TASKS[9][2];
+    
+    TEXTES_HOLDER[445] = TEXT_LEVELS_TASKS[10][0];
+    TEXTES_HOLDER[446] = TEXT_LEVELS_TASKS[10][1];
+    TEXTES_HOLDER[447] = TEXT_LEVELS_TASKS[10][2];
+    
+    TEXTES_HOLDER[448] = TEXT_LEVELS_TASKS[11][0];
+    TEXTES_HOLDER[449] = TEXT_LEVELS_TASKS[11][1];
+    TEXTES_HOLDER[450] = TEXT_LEVELS_TASKS[11][2];
+    
+    TEXTES_HOLDER[451] = TEXT_LEVELS_TASKS[12][0];
+    TEXTES_HOLDER[452] = TEXT_LEVELS_TASKS[12][1];
+    TEXTES_HOLDER[453] = TEXT_LEVELS_TASKS[12][2];
+    
+    TEXTES_HOLDER[454] = TEXT_LEVELS_TASKS[13][0];
+    TEXTES_HOLDER[455] = TEXT_LEVELS_TASKS[13][1];
+    TEXTES_HOLDER[456] = TEXT_LEVELS_TASKS[13][2];
+    
+    TEXTES_HOLDER[457] = TEXT_LEVELS_TASKS[14][0];
+    TEXTES_HOLDER[458] = TEXT_LEVELS_TASKS[14][1];
+    TEXTES_HOLDER[459] = TEXT_LEVELS_TASKS[14][2];
+    
+    TEXTES_HOLDER[460] = TEXT_LEVELS_TASKS[15][0];
+    TEXTES_HOLDER[461] = TEXT_LEVELS_TASKS[15][1];
+    TEXTES_HOLDER[462] = TEXT_LEVELS_TASKS[15][2];
+    
+    TEXTES_HOLDER[463] = TEXT_LEVELS_TASKS[16][0];
+    TEXTES_HOLDER[464] = TEXT_LEVELS_TASKS[16][1];
+    TEXTES_HOLDER[465] = TEXT_LEVELS_TASKS[16][2];
+    
+    TEXTES_HOLDER[466] = TEXT_LEVELS_TASKS[17][0];
+    TEXTES_HOLDER[467] = TEXT_LEVELS_TASKS[17][1];
+    TEXTES_HOLDER[468] = TEXT_LEVELS_TASKS[17][2];
+    
+    TEXTES_HOLDER[469] = TEXT_LEVELS_TASKS[18][0];
+    TEXTES_HOLDER[470] = TEXT_LEVELS_TASKS[18][1];
+    TEXTES_HOLDER[471] = TEXT_LEVELS_TASKS[18][2];
+    
+    TEXTES_HOLDER[472] = TEXT_LEVELS_TASKS[19][0];
+    TEXTES_HOLDER[473] = TEXT_LEVELS_TASKS[19][1];
+    TEXTES_HOLDER[474] = TEXT_LEVELS_TASKS[19][2];
+    
+    TEXTES_HOLDER[475] = TEXT_LEVELS_TASKS[20][0];
+    TEXTES_HOLDER[476] = TEXT_LEVELS_TASKS[20][1];
+    TEXTES_HOLDER[477] = TEXT_LEVELS_TASKS[20][2];
+    
+    for(int i = 0; i <= 477; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

@@ -3,6 +3,8 @@
 
 #include "StarParticle.h"
 
+#include "AppDelegate.h"
+
 // ===========================================================
 // Inner Classes
 // ===========================================================
@@ -114,6 +116,8 @@ void StarParticle::onCreate()
             this->mRotateImpulse = Utils::randomf(-160.0, 160.0);
             this->mWeight = Utils::coord(500.0);
             this->mImpulsePower = Utils::randomf(100.0, 300.0);
+            
+            if(AppDelegate::isGetWindeScreen()) this->mSideImpulse *= 2.5;
 
         break;
         case 2:
