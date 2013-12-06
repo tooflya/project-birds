@@ -28,7 +28,7 @@ void Button::constructor(const int pButtonID, ButtonReceiver* pSender)
     this->mID = pButtonID;
     
     this->mText = NULL;
-    this->mIsModal = false;
+    this->mIsModal = true;
 
     this->setRegisterAsTouchable(true);
 }

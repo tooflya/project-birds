@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.2.0</string>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -26,8 +26,6 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
         <false/>
@@ -174,19 +172,17 @@
         <key>fileList</key>
         <array>
             <filename>../../Graphics Sources/progress_map_dot@2x.png</filename>
-            <filename>../../Graphics Sources/progress_map_episode1@2x.png</filename>
-            <filename>../../Graphics Sources/progress_map_episode2@2x.png</filename>
-            <filename>../../Graphics Sources/progress_map_episode3@2x.png</filename>
-            <filename>../../Graphics Sources/progress_map_episode4@2x.png</filename>
-            <filename>../../Graphics Sources/progress_map_episode5@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_fbico@2x.png</filename>
-            <filename>../../Graphics Sources/progress_map_point_sprite@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_fb_share@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_fbconnect@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_gplus_share@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_tw_share@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_vk_share@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_share_ico@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map.png</filename>
+            <filename>../../Graphics Sources/progress_map_episode_sprite@2x.png</filename>
+            <filename>../../Graphics Sources/progress_map_episode_light@2x.png</filename>
+            <filename>../../Graphics Sources/lock_1@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

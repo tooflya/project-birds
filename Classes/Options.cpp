@@ -16,6 +16,7 @@
 // ===========================================================
 
 bool Options::IS_BUILD_FOR_ABSOLUTIST = false;
+bool Options::IS_BUILD_FOR_UBINURI = false;
 
 const char* Options::GOOGLE_PLAY_BASE_64_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnxTibzwKbgWhSfNuVJmKOWXmRmCAsxT8Z8+jf5DRTKcsIm6BTJOC27d2wKeuH9Uw/7i39KmRUgg+zwAFxT3X8TLpC/pM/mSLpUSfv85iN3yRE85zCrW4NQsxLbyHqjPNNxoMzC5bLBh3pqSB0qSp/2ZC+woOncQKs/J6i3O/vDFuAmnyuJVUaNDTRYYpmOPmcZiMU/hC0PLiVQAnWcM/WDFmWm6h5lBmhRvTYnRdU2Ha+cax8UpAliceS+URRmeFCM0kV2hBhHRLNCXycGa9L4vCErJnH2mcBwOztHV5x7ZIHxMFxq4Kx7h1EyI6gzorrF28m5gP9TBTihAUXaC0XQIDAQAB";
 const char* Options::SOOMLA_BASE_64_KEY = "?";
@@ -609,16 +610,24 @@ void Options::changeLanguage()
             TEXT_LOADING_2.size = 32;
             
             TEXT_SETTINGS_CREDITS.string = "About";
-            TEXT_SETTINGS_CREDITS.size = 64;
+            TEXT_SETTINGS_CREDITS.size = 48;
             
             TEXT_SETTINGS_PROGRESS.string = "Progress";
-            TEXT_SETTINGS_PROGRESS.size = 64;
+            TEXT_SETTINGS_PROGRESS.size = 48;
             
-            TEXT_SETTINGS_MORE.string = "More";
-            TEXT_SETTINGS_MORE.size = 64;
+            if(Options::IS_BUILD_FOR_UBINURI)
+            {
+                TEXT_SETTINGS_MORE.string = "Privacy Policy";
+                TEXT_SETTINGS_MORE.size = 48;
+            }
+            else
+            {
+                TEXT_SETTINGS_MORE.string = "More";
+                TEXT_SETTINGS_MORE.size = 64;
+            }
             
             TEXT_SETTINGS_LANGUAGE.string = "Language";
-            TEXT_SETTINGS_LANGUAGE.size = 64;
+            TEXT_SETTINGS_LANGUAGE.size = 48;
             
             TEXT_BUYITEM_BUY.string = "Buy";
             TEXT_BUYITEM_BUY.size = 46;
@@ -759,13 +768,13 @@ void Options::changeLanguage()
             TEXT_SHOP_DESCRIPTION[2].size = 36;
             
             TEXT_MODE_CLASSIC.string = "Classic";
-            TEXT_MODE_CLASSIC.size = 64;
+            TEXT_MODE_CLASSIC.size = 48;
             
             TEXT_MODE_ARCADE.string = "Arcade";
-            TEXT_MODE_ARCADE.size = 64;
+            TEXT_MODE_ARCADE.size = 48;
             
             TEXT_MODE_PROGRESS.string = "Progress";
-            TEXT_MODE_PROGRESS.size = 64;
+            TEXT_MODE_PROGRESS.size = 48;
             
             TEXT_MODEHELP_OK.string = "Close";
             TEXT_MODEHELP_OK.size = 46;
@@ -1126,8 +1135,16 @@ void Options::changeLanguage()
             TEXT_SETTINGS_PROGRESS.string = "Прогресс";
             TEXT_SETTINGS_PROGRESS.size = 64;
             
-            TEXT_SETTINGS_MORE.string = "Больше";
-            TEXT_SETTINGS_MORE.size = 64;
+            if(Options::IS_BUILD_FOR_UBINURI)
+            {
+                TEXT_SETTINGS_MORE.string = "Политика конфиденциальности";
+                TEXT_SETTINGS_MORE.size = 64;
+            }
+            else
+            {
+                TEXT_SETTINGS_MORE.string = "Больше";
+                TEXT_SETTINGS_MORE.size = 64;
+            }
             
             TEXT_SETTINGS_LANGUAGE.string = "Язык";
             TEXT_SETTINGS_LANGUAGE.size = 64;

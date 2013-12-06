@@ -38,8 +38,8 @@ class Episodes : public CCLayer, public Touchable, public ButtonReceiver
     
         CCNode* mParent;
         Entity* mDarkness;
+        Entity* mScroll;
         BackgroundEntity* mBackground;
-		Entity* mScroll;
 		CCNodeRGBA* mSquare;
 
         float mShowAnimationTime;
@@ -55,6 +55,13 @@ class Episodes : public CCLayer, public Touchable, public ButtonReceiver
         float mAnimatedCoinsAnimationTimeElpased;
     
         bool mShowed;
+    
+        Entity* mPointLight;
+        Entity* mLocks[5];
+        Entity* mPoints[5];
+        Entity* mWays[15];
+    
+        Text* mTextes[5];
 
         // ===========================================================
         // Constructors
@@ -103,6 +110,8 @@ class Episodes : public CCLayer, public Touchable, public ButtonReceiver
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static int ACTION;
 
         // ===========================================================
         // Fields
@@ -129,6 +138,8 @@ class Episodes : public CCLayer, public Touchable, public ButtonReceiver
         virtual void onHide();
     
         void onAnimationEnd();
+    
+        void fastHide();
     
         // ===========================================================
         // Override Methods

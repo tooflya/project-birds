@@ -4,10 +4,36 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>lock_1@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1929,287},{64,64}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{64,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>progress_map.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{669,1222}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{669,1222}}</string>
+                <key>sourceSize</key>
+                <string>{669,1222}</string>
+            </dict>
             <key>progress_map_dot@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2036,2},{10,11}}</string>
+                <string>{{2011,204},{10,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,75 +43,36 @@
                 <key>sourceSize</key>
                 <string>{10,11}</string>
             </dict>
-            <key>progress_map_episode1@2x.png</key>
+            <key>progress_map_episode_light@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,484},{360,400}}</string>
+                <string>{{1675,204},{252,252}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{360,400}}</string>
+                <string>{{0,0},{252,252}}</string>
                 <key>sourceSize</key>
-                <string>{360,400}</string>
+                <string>{252,252}</string>
             </dict>
-            <key>progress_map_episode2@2x.png</key>
+            <key>progress_map_episode_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1449,2},{360,400}}</string>
+                <string>{{673,2},{1000,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{360,400}}</string>
+                <string>{{0,0},{1000,400}}</string>
                 <key>sourceSize</key>
-                <string>{360,400}</string>
-            </dict>
-            <key>progress_map_episode3@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{724,204},{360,400}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{360,400}}</string>
-                <key>sourceSize</key>
-                <string>{360,400}</string>
-            </dict>
-            <key>progress_map_episode4@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1087,2},{360,400}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{360,400}}</string>
-                <key>sourceSize</key>
-                <string>{360,400}</string>
-            </dict>
-            <key>progress_map_episode5@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{720,480}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{720,480}}</string>
-                <key>sourceSize</key>
-                <string>{720,480}</string>
+                <string>{1000,400}</string>
             </dict>
             <key>progress_map_fb_share@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1811,308},{180,100}}</string>
+                <string>{{2,1532},{180,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +85,7 @@
             <key>progress_map_fbconnect@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{724,2},{361,200}}</string>
+                <string>{{1675,2},{361,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +98,7 @@
             <key>progress_map_fbico@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1993,2},{41,62}}</string>
+                <string>{{1995,287},{41,62}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +111,7 @@
             <key>progress_map_gplus_share@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1811,206},{180,100}}</string>
+                <string>{{2,1430},{180,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -134,23 +121,10 @@
                 <key>sourceSize</key>
                 <string>{180,100}</string>
             </dict>
-            <key>progress_map_point_sprite@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{364,484},{85,170}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{85,170}}</string>
-                <key>sourceSize</key>
-                <string>{85,170}</string>
-            </dict>
             <key>progress_map_share_ico@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,484},{80,81}}</string>
+                <string>{{1929,204},{80,81}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +137,7 @@
             <key>progress_map_tw_share@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1811,104},{180,100}}</string>
+                <string>{{2,1328},{180,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +150,7 @@
             <key>progress_map_vk_share@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1811,2},{180,100}}</string>
+                <string>{{2,1226},{180,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -196,7 +170,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:29818380ddee27b7695eb943409edf85:c553135e1f4a3900fd2488870fb413f4:bbd0c4aa2c46eec563be74e473e8dd59$</string>
+            <string>$TexturePacker:SmartUpdate:d98584a5d10d17bcd0e2ee1d74ba2784:b3de3a9f7ab6b3db408df01e3c539cda:bbd0c4aa2c46eec563be74e473e8dd59$</string>
             <key>textureFileName</key>
             <string>TextureAtlas18.pvr.ccz</string>
         </dict>

@@ -4,7 +4,7 @@
 #include "Levels.h"
 
 #include "Game.h"
-//#include "Episodes.h"
+#include "Episodes.h"
 #include "Mode.h"
 #include "Loader.h"
 
@@ -1306,7 +1306,7 @@ void Levels::onEnter()
 {
     Screen::onEnter();
 
-    //this->mMainList->setPosition(ccp(-Options::CAMERA_CENTER_X * 1.66 * (Episodes::ACTION - 1) - Utils::coord(60) * (Episodes::ACTION - 1), 0));
+    this->mMainList->setPosition(ccp(-Options::CAMERA_CENTER_X * 1.66 * (Episodes::ACTION - 1) - Utils::coord(60) * (Episodes::ACTION - 1), 0));
 
     for(int i = 0; i < LEVEL_PACKS_COUNT + 1; i++)
     {

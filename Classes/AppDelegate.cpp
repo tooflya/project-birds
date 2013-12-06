@@ -670,8 +670,6 @@ void AppDelegate::applicationWillEnterForeground()
     }
 }
 
-//===
-
 bool AppDelegate::isGetWindeScreen()
 {
 	return Options::DEVICE_TYPE == Options::DEVICE_TYPE_IPAD_RETINA || Options::DEVICE_TYPE == Options::DEVICE_TYPE_WINDOWS;

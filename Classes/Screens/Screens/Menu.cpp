@@ -244,6 +244,13 @@ void Menu::onEnter()
         this->mVkButton->setVisible(false);
         this->mFacebookButton->setVisible(true);
     }
+    
+    if(Options::IS_BUILD_FOR_UBINURI)
+    {
+        this->mVkButton->setVisible(false);
+        this->mFacebookButton->setVisible(false);
+        this->mTwitterButton->setVisible(false);
+    }
 }
 
 void Menu::onExit()

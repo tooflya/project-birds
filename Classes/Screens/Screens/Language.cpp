@@ -44,49 +44,68 @@ Language::Language() :
 		this->addChild(spriteBatch);
 		this->addChild(spriteBatch2);
     
-		this->mLanguages[0] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_EN, this);
-		this->mLanguages[1] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_RU, this);
-		this->mLanguages[2] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_DE, this);
-		this->mLanguages[3] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_ES, this);
-		this->mLanguages[4] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_FR, this);
-		this->mLanguages[5] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_NL, this);
-		this->mLanguages[6] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_IT, this);
-		this->mLanguages[7] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_JP, this);
-		this->mLanguages[8] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_KR, this);
-		this->mLanguages[9] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_CN, this);
+        if(Options::IS_BUILD_FOR_UBINURI)
+        {
+            this->mLanguages[0] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_EN, this);
+            this->mLanguages[1] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_RU, this);
+            this->mLanguages[2] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_JP, this);
+            
+            this->mNotAvailableBackgrounds[0] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            
+            this->mLanguages[0]->setCurrentFrameIndex(0);
+            this->mLanguages[1]->setCurrentFrameIndex(1);
+            this->mLanguages[2]->setCurrentFrameIndex(7);
+            
+            this->mLanguages[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(250));
+            this->mLanguages[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(0));
+            this->mLanguages[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(250));
+        }
+        else
+        {
+            this->mLanguages[0] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_EN, this);
+            this->mLanguages[1] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_RU, this);
+            this->mLanguages[2] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_DE, this);
+            this->mLanguages[3] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_ES, this);
+            this->mLanguages[4] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_FR, this);
+            this->mLanguages[5] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_NL, this);
+            this->mLanguages[6] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_IT, this);
+            this->mLanguages[7] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_JP, this);
+            this->mLanguages[8] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_KR, this);
+            this->mLanguages[9] = Button::create("flag_sprite_big@2x.png", 2, 5, spriteBatch2, Options::BUTTONS_ID_LANGUAGE_L_CN, this);
     
-		this->mNotAvailableBackgrounds[0] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
-		this->mNotAvailableBackgrounds[1] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
-		this->mNotAvailableBackgrounds[2] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
-		this->mNotAvailableBackgrounds[3] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
-		this->mNotAvailableBackgrounds[4] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
-		this->mNotAvailableBackgrounds[5] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
-		this->mNotAvailableBackgrounds[6] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
-		this->mNotAvailableBackgrounds[7] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[0] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[1] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[2] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[3] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[4] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[5] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[6] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            this->mNotAvailableBackgrounds[7] = Entity::create("flag_not_avaliable_bg@2x.png", spriteBatch2);
+            
+            this->mLanguages[0]->setCurrentFrameIndex(0);
+            this->mLanguages[1]->setCurrentFrameIndex(1);
+            this->mLanguages[2]->setCurrentFrameIndex(2);
+            this->mLanguages[3]->setCurrentFrameIndex(3);
+            this->mLanguages[4]->setCurrentFrameIndex(4);
+            this->mLanguages[5]->setCurrentFrameIndex(5);
+            this->mLanguages[6]->setCurrentFrameIndex(6);
+            this->mLanguages[7]->setCurrentFrameIndex(7);
+            this->mLanguages[8]->setCurrentFrameIndex(8);
+            this->mLanguages[9]->setCurrentFrameIndex(9);
+            
+            this->mLanguages[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(460));
+            this->mLanguages[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(460));
+            this->mLanguages[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(260));
+            this->mLanguages[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(260));
+            this->mLanguages[4]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(60));
+            this->mLanguages[5]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(60));
+            this->mLanguages[6]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(140));
+            this->mLanguages[7]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(140));
+            this->mLanguages[8]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(340));
+            this->mLanguages[9]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(340));
+        }
     
 		this->mLanguageIndicator = Entity::create("settings_lang_check@2x.png", spriteBatch2);
-    
-		this->mLanguages[0]->setCurrentFrameIndex(0);
-		this->mLanguages[1]->setCurrentFrameIndex(1);
-		this->mLanguages[2]->setCurrentFrameIndex(2);
-		this->mLanguages[3]->setCurrentFrameIndex(3);
-		this->mLanguages[4]->setCurrentFrameIndex(4);
-		this->mLanguages[5]->setCurrentFrameIndex(5);
-		this->mLanguages[6]->setCurrentFrameIndex(6);
-		this->mLanguages[7]->setCurrentFrameIndex(7);
-		this->mLanguages[8]->setCurrentFrameIndex(8);
-		this->mLanguages[9]->setCurrentFrameIndex(9);
-    
-		this->mLanguages[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(460));
-		this->mLanguages[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(460));
-		this->mLanguages[2]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(260));
-		this->mLanguages[3]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(260));
-		this->mLanguages[4]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(60));
-		this->mLanguages[5]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y + Utils::coord(60));
-		this->mLanguages[6]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(140));
-		this->mLanguages[7]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(140));
-		this->mLanguages[8]->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(340));
-		this->mLanguages[9]->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(180), Options::CAMERA_CENTER_Y - Utils::coord(340));
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
     
@@ -99,15 +118,27 @@ Language::Language() :
     
 		this->mBackgroundDecorations[1]->setScale(-1);
 
-		for(int i = 2; i < 10; i++)
-		{
-			this->mNotAvailableBackgrounds[i - 2]->create()->setCenterPosition(this->mLanguages[i]->getCenterX(), this->mLanguages[i]->getCenterY() - this->mLanguages[i]->getHeight() / 2 + Utils::coord(50));
+        if(Options::IS_BUILD_FOR_UBINURI)
+        {
+            this->mNotAvailableBackgrounds[0]->create()->setCenterPosition(this->mLanguages[2]->getCenterX(), this->mLanguages[2]->getCenterY() - this->mLanguages[2]->getHeight() / 2 + Utils::coord(50));
+            
+            this->mTextes[0] = Text::create(Options::TEXT_LANGUAGE_NOT_AVAILABLE,  this);
+            this->mTextes[0]->setColor(ccc3(0.0, 0.0, 0.0));
+            this->mTextes[0]->disableShadow();
+            this->mTextes[0]->setCenterPosition(this->mNotAvailableBackgrounds[0]->getCenterX(), this->mNotAvailableBackgrounds[0]->getCenterY());
+        }
+        else
+        {
+            for(int i = 2; i < 10; i++)
+            {
+                this->mNotAvailableBackgrounds[i - 2]->create()->setCenterPosition(this->mLanguages[i]->getCenterX(), this->mLanguages[i]->getCenterY() - this->mLanguages[i]->getHeight() / 2 + Utils::coord(50));
 
-			this->mTextes[i - 2] = Text::create(Options::TEXT_LANGUAGE_NOT_AVAILABLE,  this);
-			this->mTextes[i - 2]->setColor(ccc3(0.0, 0.0, 0.0));
-			this->mTextes[i - 2]->disableShadow();
-			this->mTextes[i - 2]->setCenterPosition(this->mNotAvailableBackgrounds[i - 2]->getCenterX(), this->mNotAvailableBackgrounds[i - 2]->getCenterY());
-		}
+                this->mTextes[i - 2] = Text::create(Options::TEXT_LANGUAGE_NOT_AVAILABLE,  this);
+                this->mTextes[i - 2]->setColor(ccc3(0.0, 0.0, 0.0));
+                this->mTextes[i - 2]->disableShadow();
+                this->mTextes[i - 2]->setCenterPosition(this->mNotAvailableBackgrounds[i - 2]->getCenterX(), this->mNotAvailableBackgrounds[i - 2]->getCenterY());
+            }
+        }
         
         this->mDark = Dark::create();
         this->mDark->setCascadeOpacityEnabled(true);
@@ -250,13 +281,24 @@ void Language::update(float pDeltaTime)
     this->mLanguageIndicator->setScale(this->mLanguages[Options::CURRENT_LANGUAGE]->getScaleX());
     this->mLanguageIndicator->setCenterPosition(this->mLanguages[Options::CURRENT_LANGUAGE]->getCenterX() + this->mLanguages[Options::CURRENT_LANGUAGE]->getWidthScaled() / 2 - Utils::coord(32) * this->mLanguages[Options::CURRENT_LANGUAGE]->getScaleX(), this->mLanguages[Options::CURRENT_LANGUAGE]->getCenterY() - this->mLanguages[Options::CURRENT_LANGUAGE]->getHeightScaled() / 2 + Utils::coord(64) * this->mLanguages[Options::CURRENT_LANGUAGE]->getScaleY());
 
-    for(int i = 0; i < 8; i++)
+    if(Options::IS_BUILD_FOR_UBINURI)
     {
-        this->mNotAvailableBackgrounds[i]->setScale(this->mLanguages[i + 2]->getScaleX());
-        this->mNotAvailableBackgrounds[i]->setCenterPosition(this->mLanguages[i + 2]->getCenterX(), this->mLanguages[i + 2]->getCenterY() - this->mLanguages[i + 2]->getHeightScaled() / 2 + Utils::coord(50) * this->mLanguages[i + 2]->getScaleY());
+        this->mNotAvailableBackgrounds[0]->setScale(this->mLanguages[2]->getScaleX());
+        this->mNotAvailableBackgrounds[0]->setCenterPosition(this->mLanguages[2]->getCenterX(), this->mLanguages[2]->getCenterY() - this->mLanguages[2]->getHeightScaled() / 2 + Utils::coord(50) * this->mLanguages[2]->getScaleY());
         
-        this->mTextes[i]->setScale(this->mLanguages[i + 2]->getScaleX());
-        this->mTextes[i]->setCenterPosition(this->mNotAvailableBackgrounds[i]->getCenterX(), this->mNotAvailableBackgrounds[i]->getCenterY());
+        this->mTextes[0]->setScale(this->mLanguages[2]->getScaleX());
+        this->mTextes[0]->setCenterPosition(this->mNotAvailableBackgrounds[0]->getCenterX(), this->mNotAvailableBackgrounds[0]->getCenterY());
+    }
+    else
+    {
+        for(int i = 0; i < 8; i++)
+        {
+            this->mNotAvailableBackgrounds[i]->setScale(this->mLanguages[i + 2]->getScaleX());
+            this->mNotAvailableBackgrounds[i]->setCenterPosition(this->mLanguages[i + 2]->getCenterX(), this->mLanguages[i + 2]->getCenterY() - this->mLanguages[i + 2]->getHeightScaled() / 2 + Utils::coord(50) * this->mLanguages[i + 2]->getScaleY());
+        
+            this->mTextes[i]->setScale(this->mLanguages[i + 2]->getScaleX());
+            this->mTextes[i]->setCenterPosition(this->mNotAvailableBackgrounds[i]->getCenterX(), this->mNotAvailableBackgrounds[i]->getCenterY());
+        }
     }
     
     if(this->mLanguageChangeAnimationRunning)

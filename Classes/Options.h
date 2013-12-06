@@ -97,6 +97,7 @@ class Options
         // ===========================================================
     
         static bool IS_BUILD_FOR_ABSOLUTIST;
+        static bool IS_BUILD_FOR_UBINURI;
 
 		static CCSize designResolutionSize;
     
