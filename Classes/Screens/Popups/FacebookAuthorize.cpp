@@ -2,6 +2,7 @@
 #define CONST_FACEBOOKAUTHORIZE
 
 #include "FacebookAuthorize.h"
+#include "EziSocialObject.h"
 
 #include "Mode.h"
 
@@ -135,11 +136,24 @@ void FacebookAuthorize::onHide()
             #else
             AppDelegate::screens->set(Mode::create());
             #endif
+            
+            if(!AppDelegate::isVideoShowed())
+            {
+                AppDelegate::mGameCenter->playVideo(AppDelegate::isMusicEnable());
+                
+                CCUserDefault::sharedUserDefault()->setBoolForKey("is_video_showed", true);
+                CCUserDefault::sharedUserDefault()->flush();
+            }
         }
         else
         {
             static_cast<Mode*>(this->mParent)->onGooglePlayAuthorizeHide();
         }
+    }
+    else
+    {
+        EziSocialObject::sharedObject()->setFacebookDelegate(this);
+        EziSocialObject::sharedObject()->performLoginUsingFacebook(false);
     }
     
     this->mAction = false;
@@ -170,6 +184,34 @@ void FacebookAuthorize::update(float pDeltaTime)
         Entity* light = ((Entity*) this->mLights->objectAtIndex(i));
         
         light->setRotation(light->getRotation() + ((i == 0) ? Utils::randomf(0.0, 0.1) : Utils::randomf(-0.1, 0.0)));
+    }
+}
+
+void FacebookAuthorize::fbSessionCallback(int responseCode, const char *responseMessage)
+{
+    if (responseCode != EziSocialWrapperNS::RESPONSE_CODE::FB_LOGIN_SUCCESSFUL)
+    {
+        CCMessageBox(responseMessage, "Facebook Login");
+    }
+    else
+    {
+        CCLOG("Login Success!!!");
+    }
+}
+
+void FacebookAuthorize::fbUserDetailCallback(int responseCode, const char *responseMessage, EziFacebookUser *fbUser)
+{
+    if (responseCode == EziSocialWrapperNS::RESPONSE_CODE::FB_USER_DETAIL_SUCCESS && fbUser != NULL)
+    {
+        EziSocialObject::sharedObject()->setCurrentFacebookUser(fbUser);
+        std::string message = "Welcome ";
+        message.append(EziSocialObject::sharedObject()->getCurrentFacebookUser()->getFullName());
+        message.append(" !!! ");
+        CCMessageBox(message.c_str(), "Facebook Login");
+    }
+    else
+    {
+        CCMessageBox(responseMessage, "Facebook User Details");
     }
 }
 

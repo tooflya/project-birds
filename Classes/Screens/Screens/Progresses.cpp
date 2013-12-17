@@ -1132,6 +1132,8 @@ void Progresses::onExit()
 
 void Progresses::onShow()
 {
+    if(End::ACTION < 0) return;
+
     STARS = 0;
     Game::EGGS_4_COUNT = 0;
     Game::KEYS_COUNT = 0;

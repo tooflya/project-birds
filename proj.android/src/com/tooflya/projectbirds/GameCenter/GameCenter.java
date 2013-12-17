@@ -5,7 +5,9 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.VideoView;
@@ -229,6 +231,16 @@ public abstract class GameCenter {
 				activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri
 						.parse("https://www.vk.com/tooflya")));
 			}
+		} else if (target.endsWith("more")) {
+			try {
+				Intent intent = new Intent(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse("market://developer?id=Tooflya+Inc."));
+				activity.startActivity(intent);
+			} catch (Exception e) {
+				activity.startActivity(new Intent(
+						Intent.ACTION_VIEW,
+						Uri.parse("http://play.google.com/store/apps/developer?id=Tooflya+Inc.")));
+			}
 		}
 	}
 
@@ -296,15 +308,28 @@ public abstract class GameCenter {
 				params.leftMargin = 0;
 				videoView.setLayoutParams(params);
 
-				videoView
-						.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+				videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 							@Override
 							public void onCompletion(MediaPlayer mp) {
 								Game.mSurfaceView.setVisibility(View.VISIBLE);
-								
 								Game.mContentView.removeView(videoView);
+
+								nativeOnVideoPlayback();
 							}
 						});
+			
+				videoView.setOnTouchListener(new OnTouchListener() {
+					@Override
+					public boolean onTouch(View v, MotionEvent event) {
+						Game.mSurfaceView.setVisibility(View.VISIBLE);
+						Game.mContentView.removeView(videoView);
+
+						nativeOnVideoPlayback();
+						
+						return true;
+					}
+					
+				});
 
 				videoView.setMediaController(null);
 				videoView.requestFocus();
@@ -312,4 +337,6 @@ public abstract class GameCenter {
 			}
 		});
 	}
+	
+	public static native void nativeOnVideoPlayback();
 }

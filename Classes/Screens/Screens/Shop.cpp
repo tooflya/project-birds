@@ -614,7 +614,23 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 }
 
 void Shop::onItemBought(int pItemId)
-{  
+{
+    if(pItemId == 45)
+    {
+        PURCHASE_ID = 7;
+        this->onPurchase(true);
+
+        return;
+    }
+
+    if(pItemId == 46)
+    {
+        PURCHASE_ID = 5;
+        this->onPurchase(true);
+
+        return;
+    }
+
     if(pItemId < 20)
     {
         if(AppDelegate::isItemBought(pItemId))

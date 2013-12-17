@@ -136,15 +136,13 @@ void GooglePlayAuthorize::onHide()
             AppDelegate::screens->set(Mode::create());
             #endif
             
-            #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
             if(!AppDelegate::isVideoShowed())
             {
-                callStaticVoidMethod("intro");
+                AppDelegate::mGameCenter->playVideo(AppDelegate::isMusicEnable());
                 
                 CCUserDefault::sharedUserDefault()->setBoolForKey("is_video_showed", true);
                 CCUserDefault::sharedUserDefault()->flush();
             }
-            #endif
         }
         else
         {

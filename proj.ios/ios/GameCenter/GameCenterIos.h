@@ -16,4 +16,17 @@
 
 - (void)open:(int)target;
 
+- (void)playVideo:(BOOL)enableMusic;
+- (void)onVideoPlayback;
+
 @end
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
+void onVideoPlayback();
+    
+#ifdef __cplusplus
+}
+#endif

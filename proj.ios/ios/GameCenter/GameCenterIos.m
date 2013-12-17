@@ -1,20 +1,10 @@
 #import "GameCenterIos.h"
-#import <GameKit/GameKit.h>
 #import "AppController.h"
 #import "RootViewController.h"
 
-@interface GameCenterIos(intern)
-- (void)saveAchievementToDevice:(GKAchievement*)achievement;
-- (void)retrieveAchievementsFromDevice;
-
-- (void)saveScoreToDevice:(GKScore*)score;
-- (void)retrieveScoresFromDevice;
-
-- (void)registerForAuthenticationNotification;
-- (void)authenticationChanged;
-
-- (NSString*)getGameCenterSavePath:(NSString*)postfix;
-@end
+#import <MediaPlayer/MediaPlayer.h>
+#import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
 
 @implementation GameCenterIos
 
@@ -367,6 +357,57 @@ static GameCenterIos* instance = nil;
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)aViewController
 {
     NSLog(@"DONE!");
+}
+
+#pragma mark -
+#pragma mark Video Player
+
+- (void)playVideo:(BOOL)enableMusic
+{
+    NSString *url = [[NSBundle mainBundle] pathForResource:@"intro" ofType:@"mp4"];
+    
+    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:url]];
+    [player view].userInteractionEnabled = NO;
+
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(movieFinishedCallback:)
+     name:MPMoviePlayerPlaybackDidFinishNotification
+     object:player];
+    
+    UIWindow* window = [[UIApplication sharedApplication] keyWindow];
+
+    //[[MPMusicPlayerController applicationMusicPlayer] setVolume:(enableMusic ? 1.0 : 0.0)];
+    
+    [player setControlStyle:MPMovieControlStyleNone];
+    [player setScalingMode:MPMovieScalingModeAspectFill];
+    [window addSubview:player.view];
+    [window bringSubviewToFront:player.view];
+    [player setFullscreen:YES animated:NO];
+    [player setControlStyle:MPMovieControlStyleNone];
+    
+    //player.useApplicationAudioSession = YES;
+
+    [player play];
+}
+
+- (void)movieFinishedCallback:(NSNotification*) aNotification
+{
+    MPMoviePlayerController *player = [aNotification object];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+
+    [player.view removeFromSuperview];
+    [player stop];
+    
+    //[[MPMusicPlayerController applicationMusicPlayer] setVolume:1.0];
+    
+    [self onVideoPlayback];
+}
+
+- (void)onVideoPlayback
+{
+    onVideoPlayback();
 }
 
 @end

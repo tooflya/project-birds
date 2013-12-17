@@ -105,12 +105,10 @@ void More::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
                 case Options::BUTTONS_ID_MORE_VIDEO:
                     
-                    #if CC_TARGET_LATFORM == CC_PLATFORM_ANDROID
-                    callStaticVoidMethod("intro");
+                    AppDelegate::mGameCenter->playVideo(AppDelegate::isMusicEnable());
                     
                     CCUserDefault::sharedUserDefault()->setBoolForKey("is_video_showed", true);
                     CCUserDefault::sharedUserDefault()->flush();
-                    #endif
                     
                 break;
                 case Options::BUTTONS_ID_MORE_MORE_GAMES:

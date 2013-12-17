@@ -1,6 +1,8 @@
 #include "GameCenter.h"
 #include "GameCenterIos.h"
 
+#include "AppDelegate.h"
+
 void GameCenter::login()
 {
     [[GameCenterIos shared] login];
@@ -36,9 +38,27 @@ void GameCenter::clearAllScores()
     [[GameCenterIos shared] clearAllScores];
 }
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 void GameCenter::open(int target)
 {
     [[GameCenterIos shared] open:target];
 }
-#endif
+
+void GameCenter::playVideo(bool enableMusic)
+{
+    SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+
+    [[GameCenterIos shared] playVideo:enableMusic];
+}
+
+void GameCenter::onVideoPlayback()
+{
+    if(AppDelegate::isMusicEnable())
+    {
+        SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    }
+}
+
+void onVideoPlayback()
+{
+    GameCenter::onVideoPlayback();
+}

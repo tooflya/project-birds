@@ -50,6 +50,8 @@ class End : public Splash
         Entity* mTextBackgrounds[4];
         Entity* mPrize;
     
+        SpriteBatch* mSpriteBatch7;
+    
         Text* mTextText[4];
     
         Button* mTextPluses[4];
@@ -125,6 +127,8 @@ class End : public Splash
         // ===========================================================
         // Constants
         // ===========================================================
+    
+        static int ACTION;
 
         // ===========================================================
         // Fields

@@ -6,7 +6,8 @@
 #include "Shop.h"
 #include "Settings.h"
 #include "Mode.h"
-#include "CCDate.cpp"
+#include "Date.h"
+#include "EziSocialObject.h"
 
 // ===========================================================
 // Inner Classes
@@ -181,21 +182,22 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
                         
                         return;
                     }
-                    else if(!AppDelegate::isVideoShowed())
-                    {
-                        callStaticVoidMethod("intro");
-
-                        CCUserDefault::sharedUserDefault()->setBoolForKey("is_video_showed", true);
-                        CCUserDefault::sharedUserDefault()->flush();
-                    }
                     #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-                    if(true)
+                    if(!EziSocialObject::sharedObject()->isFacebookSessionActive())
                     {
                         this->mFacebookAuthorizePopup->show();
                         
                         return;
                     }
                     #endif
+                    
+                    if(!AppDelegate::isVideoShowed())
+                    {
+                        AppDelegate::mGameCenter->playVideo(AppDelegate::isMusicEnable());
+                    
+                        CCUserDefault::sharedUserDefault()->setBoolForKey("is_video_showed", true);
+                        CCUserDefault::sharedUserDefault()->flush();
+                    }
 
 					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
 					AppDelegate::screens->set(Screen::SCREEN_MODE);

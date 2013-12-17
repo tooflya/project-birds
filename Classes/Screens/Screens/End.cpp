@@ -15,6 +15,8 @@
 // Constants
 // ===========================================================
 
+int End::ACTION = -1;
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -29,6 +31,7 @@ End::~End()
     CC_SAFE_RELEASE(this->mStarsSplashes);
     CC_SAFE_RELEASE(this->mStars);
     CC_SAFE_RELEASE(this->mPanelLayer);
+    CC_SAFE_RELEASE(this->mSpriteBatch7);
 }
 
 End::End(int pType, Screen* pParent) :
@@ -56,8 +59,11 @@ End::End(int pType, Screen* pParent) :
 	mCoinsAnimationCurrentTimeElapsed(0),
 	mIsAnimationRunning(0),
 	mIsCoinsAnimationRunning(0),
+    mSpriteBatch7(0),
 	mIsCoinsAnimationCurrentRunning(0)
     {
+        ACTION = 1;
+
         this->mType = pType;
         
         this->mScaleLayer = CCLayer::create();
@@ -71,14 +77,15 @@ End::End(int pType, Screen* pParent) :
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
         SpriteBatch* spriteBatch4 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch5 = SpriteBatch::create("TextureAtlas6");
-        SpriteBatch* spriteBatch7 = SpriteBatch::create("TextureAtlas7");
+        this->mSpriteBatch7 = SpriteBatch::create("TextureAtlas7");
+        this->mSpriteBatch7->retain();
         
         this->addChild(spriteBatch1);
         this->mScaleLayer->addChild(spriteBatch3);
         this->mScaleLayer->addChild(spriteBatch2, 2);
         this->mScaleLayer->addChild(spriteBatch4, 3);
         this->mPanelLayer->addChild(spriteBatch5, 4);
-        this->mPanelLayer->addChild(spriteBatch7, 4);
+        this->mPanelLayer->addChild(this->mSpriteBatch7, 4);
         
         /////////////////////////
         
@@ -114,8 +121,8 @@ End::End(int pType, Screen* pParent) :
 		this->mTextPluses[2] = Button::create(structure1, spriteBatch5, Options::BUTTONS_ID_SHOP_GET_GOLD_COINS, this);
 		this->mTextPluses[3] = Button::create(structure1, spriteBatch5, Options::BUTTONS_ID_SHOP_GET_KEYS, this);
         
-		this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, spriteBatch7);
-		this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, spriteBatch7);
+		this->mIcons[0] = Entity::create("coins_silver@2x.png", 5, 4, this->mSpriteBatch7);
+		this->mIcons[1] = Entity::create("coins@2x.png", 5, 4, this->mSpriteBatch7);
 		this->mIcons[2] = Icon8::create("game_panel_goldlife@2x.png", spriteBatch5);
 		this->mIcons[3] = Icon8::create("popup_key_ico@2x.png", spriteBatch5);
         
@@ -257,7 +264,7 @@ End::End(int pType, Screen* pParent) :
         this->mTextName->setHorizontalAlignment(kCCTextAlignmentLeft);
         this->mTextCountValue->setHorizontalAlignment(kCCTextAlignmentRight);
         
-        this->mConfetti = EntityManager::create(600, Confetti::create(), spriteBatch7);
+        this->mConfetti = EntityManager::create(600, Confetti::create(), this->mSpriteBatch7);
     }
 
 End* End::create(int pType, Screen* pParent)
@@ -296,6 +303,8 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             case Options::BUTTONS_ID_END_RESTART:
                 
             this->hide();
+                    
+            ACTION = 1;
                 
             break;
             case Options::BUTTONS_ID_END_CONTINUE:
@@ -303,6 +312,8 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             Game::LEVEL++;
                 
             this->hide();
+                    
+            ACTION = 1;
                 
             break;
             case Options::BUTTONS_ID_END_SHOP:
@@ -382,6 +393,8 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
 void End::onShow()
 {
     Splash::onShow();
+    
+    ACTION = -1;
 
     this->mIsAnimationRunning = Game::STARS > 0;
     
@@ -483,7 +496,7 @@ void End::onShow()
         this->mPrize->setVisible(true);
         this->mPrize->setCurrentFrameIndex(0);
         
-        if(Game::CURRENT_COUNT >= Game::BEST_COUNT)
+        if(Game::CURRENT_COUNT >= Game::BEST_COUNT && Game::CURRENT_COUNT > 10)
         {
             this->mTextLevel->setText(Options::TEXT_END[0]);
             
@@ -554,6 +567,11 @@ void End::onStartShow()
 {
     Splash::onStartShow();
     
+    for(int i = 0; i < this->mConfetti->getCapacity(); i++)
+    {
+        static_cast<Entity*>(this->mConfetti->objectAtIndex(i))->setOpacity(255);
+    }
+
     if(Game::STARS > 0) this->throwConfetti();
     
     //int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
@@ -595,6 +613,11 @@ void End::onStartHide()
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
     
     this->mPanelLayer->runAction(CCMoveTo::create(0.2, ccp(0, this->mGamePanel->getHeightScaled())));
+    
+    for(int i = 0; i < this->mConfetti->getCapacity(); i++)
+    {
+        static_cast<Entity*>(this->mConfetti->objectAtIndex(i))->runAction(CCFadeTo::create(0.15, 0));
+    }
 }
 
 void End::throwConfetti()

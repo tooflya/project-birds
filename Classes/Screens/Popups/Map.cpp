@@ -4,7 +4,7 @@
 #include "Map.h"
 
 #include "Menu.h"
-#include "CCDate.cpp"
+#include "Date.h"
 
 // ===========================================================
 // Inner Classes

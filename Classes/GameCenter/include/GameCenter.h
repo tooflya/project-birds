@@ -94,6 +94,9 @@ class GameCenter
     void open(int target);
     #endif
     
+    void playVideo(bool enableMusic);
+    static void onVideoPlayback();
+    
     // ===========================================================
     // Override Methods
     // ===========================================================

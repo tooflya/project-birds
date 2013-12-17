@@ -74,7 +74,7 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mCoinsIcon->setScale(0.75);
         this->mCoinsIcon->animate(0.05);
 
-        this->mPropertiesIcon = Entity::create("icon_properties@2x.png", 1, 2, this->mSpriteBatch);
+        this->mPropertiesIcon = Entity::create("icon_properties@2x.png", 1, 3, this->mSpriteBatch);
         this->mPropertiesIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(15), Options::CAMERA_CENTER_Y + Utils::coord(112));
 
 		Textes textes2 = {"0", Options::FONT, 32, 0};
@@ -173,6 +173,10 @@ void BuyItemList::onEnter()
     if(Shop::CLICKED_ITEM_ID < Shop::ITEMS_COUNT[0])
     {
         this->mPropertiesIcon->setCurrentFrameIndex(1);
+    }
+    else if(Shop::CLICKED_ITEM_ID == 45 || Shop::CLICKED_ITEM_ID == 46)
+    {
+        this->mPropertiesIcon->setCurrentFrameIndex(2);
     }
     else
     {

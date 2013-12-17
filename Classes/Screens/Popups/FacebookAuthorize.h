@@ -1,9 +1,11 @@
 #ifndef CONST_FACEBOOKAUTHORIZE_H
 #define CONST_FACEBOOKAUTHORIZE_H
 
+#include "EziSocialDelegate.h"
+
 #include "Popup.h"
 
-class FacebookAuthorize : public Popup
+class FacebookAuthorize : public Popup, public EziFacebookDelegate
 {
     protected:
         // ===========================================================
@@ -105,6 +107,9 @@ class FacebookAuthorize : public Popup
         virtual void onHide();
     
         void onTouchButtonsCallback(const int pAction, const int pID);
+    
+        virtual void fbSessionCallback(int responseCode, const char* responseMessage);
+        virtual void fbUserDetailCallback(int responseCode, const char* responseMessage, EziFacebookUser* fbUser);
 };
 
 #endif

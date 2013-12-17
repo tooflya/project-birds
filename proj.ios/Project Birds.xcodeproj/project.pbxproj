@@ -131,7 +131,6 @@
 		783E899517C20CEC00FD49C1 /* throw-bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 783E889017C20CEC00FD49C1 /* throw-bomb.mp3 */; };
 		783EBF9717E87C9B00536895 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78B1F7AA17E87B5B009E2F0E /* Map.cpp */; };
 		783EBF9817E87CA800536895 /* Ripple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78B1F7AC17E87B6D009E2F0E /* Ripple.cpp */; };
-		784E4E19183E39CB000A1867 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 783E885617C20CEB00FD49C1 /* Info.plist */; };
 		78582AE117BBD91A00C96267 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78582AE017BBD91900C96267 /* Default.png */; };
 		78582AE317BBD92400C96267 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78582AE217BBD92300C96267 /* Default@2x.png */; };
 		78582AE517BBD92D00C96267 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78582AE417BBD92D00C96267 /* Default-568h@2x.png */; };
@@ -258,6 +257,20 @@
 		78A1F2851832921C00435951 /* CCSorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F27E1832921C00435951 /* CCSorting.cpp */; };
 		78A1F2861832921C00435951 /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F2801832921C00435951 /* CCTableView.cpp */; };
 		78A1F2871832921C00435951 /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78A1F2821832921C00435951 /* CCTableViewCell.cpp */; };
+		78ABB00C1860B79200677CD5 /* EziSocialSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ABB00A1860B79200677CD5 /* EziSocialSDK.framework */; };
+		78ABB00D1860B79200677CD5 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ABB00B1860B79200677CD5 /* FacebookSDK.framework */; };
+		78ABB00F1860B7C900677CD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ABB00E1860B7C900677CD5 /* SystemConfiguration.framework */; };
+		78ABB0111860B7CF00677CD5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ABB0101860B7CF00677CD5 /* MessageUI.framework */; };
+		78ABB0131860B7E200677CD5 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ABB0121860B7E200677CD5 /* libc++.dylib */; };
+		78ABB0151860B7EE00677CD5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ABB0141860B7EE00677CD5 /* Twitter.framework */; };
+		78ABB0331860BC7900677CD5 /* ezibyte_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78ABB0321860BC7900677CD5 /* ezibyte_logo.png */; };
+		78ABB03F1860C5FA00677CD5 /* ezisocial.ios in Resources */ = {isa = PBXBuildFile; fileRef = 78ABB03E1860C5FA00677CD5 /* ezisocial.ios */; };
+		78ABB0671860C77700677CD5 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ABB0511860C77600677CD5 /* libwebsockets.a */; };
+		78ABB0821860CB3400677CD5 /* EziFacebookFriend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ABB07A1860CB3400677CD5 /* EziFacebookFriend.cpp */; };
+		78ABB0831860CB3400677CD5 /* EziFacebookUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ABB07B1860CB3400677CD5 /* EziFacebookUser.cpp */; };
+		78ABB0841860CB3400677CD5 /* EziFBIncomingRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ABB07C1860CB3400677CD5 /* EziFBIncomingRequest.cpp */; };
+		78ABB0851860CB3400677CD5 /* EziFBIncomingRequestManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ABB07D1860CB3400677CD5 /* EziFBIncomingRequestManager.cpp */; };
+		78ABB0861860CB3400677CD5 /* EziSocialObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ABB07E1860CB3400677CD5 /* EziSocialObject.cpp */; };
 		78AE31C6183E0B4200E148E5 /* Icon-52-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE31C4183E0B4200E148E5 /* Icon-52-ios6.png */; };
 		78AE31C7183E0B4200E148E5 /* Icon-57-ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE31C5183E0B4200E148E5 /* Icon-57-ios6.png */; };
 		78AE447D1808105C00FBABDD /* upsell_whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */; };
@@ -494,7 +507,6 @@
 		783E87C817C20CEB00FD49C1 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		783E87C917C20CEB00FD49C1 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		783E87CC17C20CEB00FD49C1 /* Comic Sans MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comic Sans MS.ttf"; sourceTree = "<group>"; };
-		783E885617C20CEB00FD49C1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		783E885717C20CEB00FD49C1 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
 		783E885917C20CEB00FD49C1 /* music-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "music-1.mp3"; sourceTree = "<group>"; };
 		783E885B17C20CEC00FD49C1 /* music-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "music-2.mp3"; sourceTree = "<group>"; };
@@ -758,7 +770,29 @@
 		78A1F2811832921C00435951 /* CCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTableView.h; sourceTree = "<group>"; };
 		78A1F2821832921C00435951 /* CCTableViewCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTableViewCell.cpp; sourceTree = "<group>"; };
 		78A1F2831832921C00435951 /* CCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTableViewCell.h; sourceTree = "<group>"; };
-		78ABB005185F236F00677CD5 /* CCDate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCDate.cpp; sourceTree = "<group>"; };
+		78ABB0091860AB8D00677CD5 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
+		78ABB00A1860B79200677CD5 /* EziSocialSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EziSocialSDK.framework; sourceTree = "<group>"; };
+		78ABB00B1860B79200677CD5 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		78ABB00E1860B7C900677CD5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		78ABB0101860B7CF00677CD5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		78ABB0121860B7E200677CD5 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		78ABB0141860B7EE00677CD5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		78ABB0321860BC7900677CD5 /* ezibyte_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ezibyte_logo.png; sourceTree = "<group>"; };
+		78ABB03E1860C5FA00677CD5 /* ezisocial.ios */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ezisocial.ios; sourceTree = "<group>"; };
+		78ABB04F1860C77600677CD5 /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libwebsockets.h; sourceTree = "<group>"; };
+		78ABB0511860C77600677CD5 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebsockets.a; sourceTree = "<group>"; };
+		78ABB0721860CB3400677CD5 /* EziFacebookFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EziFacebookFriend.h; sourceTree = "<group>"; };
+		78ABB0731860CB3400677CD5 /* EziFacebookUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EziFacebookUser.h; sourceTree = "<group>"; };
+		78ABB0741860CB3400677CD5 /* EziFBIncomingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EziFBIncomingRequest.h; sourceTree = "<group>"; };
+		78ABB0751860CB3400677CD5 /* EziFBIncomingRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EziFBIncomingRequestManager.h; sourceTree = "<group>"; };
+		78ABB0761860CB3400677CD5 /* EziSocialDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EziSocialDefinition.h; sourceTree = "<group>"; };
+		78ABB0771860CB3400677CD5 /* EziSocialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EziSocialDelegate.h; sourceTree = "<group>"; };
+		78ABB0781860CB3400677CD5 /* EziSocialObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EziSocialObject.h; sourceTree = "<group>"; };
+		78ABB07A1860CB3400677CD5 /* EziFacebookFriend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EziFacebookFriend.cpp; sourceTree = "<group>"; };
+		78ABB07B1860CB3400677CD5 /* EziFacebookUser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EziFacebookUser.cpp; sourceTree = "<group>"; };
+		78ABB07C1860CB3400677CD5 /* EziFBIncomingRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EziFBIncomingRequest.cpp; sourceTree = "<group>"; };
+		78ABB07D1860CB3400677CD5 /* EziFBIncomingRequestManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EziFBIncomingRequestManager.cpp; sourceTree = "<group>"; };
+		78ABB07E1860CB3400677CD5 /* EziSocialObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EziSocialObject.cpp; sourceTree = "<group>"; };
 		78AE31C4183E0B4200E148E5 /* Icon-52-ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-52-ios6.png"; sourceTree = "<group>"; };
 		78AE31C5183E0B4200E148E5 /* Icon-57-ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57-ios6.png"; sourceTree = "<group>"; };
 		78AE447C1808105C00FBABDD /* upsell_whoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = upsell_whoosh.mp3; sourceTree = "<group>"; };
@@ -823,9 +857,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78ABB0671860C77700677CD5 /* libwebsockets.a in Frameworks */,
+				7861C0AB1834EFBB00B2A896 /* Security.framework in Frameworks */,
+				78ABB00C1860B79200677CD5 /* EziSocialSDK.framework in Frameworks */,
+				78ABB00D1860B79200677CD5 /* FacebookSDK.framework in Frameworks */,
+				78ABB0151860B7EE00677CD5 /* Twitter.framework in Frameworks */,
+				78ABB0131860B7E200677CD5 /* libc++.dylib in Frameworks */,
+				78ABB0111860B7CF00677CD5 /* MessageUI.framework in Frameworks */,
+				78ABB00F1860B7C900677CD5 /* SystemConfiguration.framework in Frameworks */,
 				7861C0AE1834EFD600B2A896 /* StoreKit.framework in Frameworks */,
 				7861C0AD1834EFCF00B2A896 /* libsqlite3.0.dylib in Frameworks */,
-				7861C0AB1834EFBB00B2A896 /* Security.framework in Frameworks */,
 				7801630F18153DAB002A0CB7 /* libCocosDenshion.a in Frameworks */,
 				7801630E18153DA9002A0CB7 /* libcocos2dx.a in Frameworks */,
 				78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */,
@@ -858,6 +899,7 @@
 			isa = PBXGroup;
 			children = (
 				7801630618153C51002A0CB7 /* CocosDenshion.xcodeproj */,
+				78ABB06C1860CB3400677CD5 /* ezisocial */,
 				780162FE18153C35002A0CB7 /* cocos2dx.xcodeproj */,
 				785B4F331806F3DA008B444E /* Project Birds.entitlements */,
 				785B4F311806F39F008B444E /* Media.xcassets */,
@@ -873,6 +915,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78ABB0141860B7EE00677CD5 /* Twitter.framework */,
+				78ABB0121860B7E200677CD5 /* libc++.dylib */,
+				78ABB0101860B7CF00677CD5 /* MessageUI.framework */,
+				78ABB00E1860B7C900677CD5 /* SystemConfiguration.framework */,
+				78ABB00A1860B79200677CD5 /* EziSocialSDK.framework */,
+				78ABB00B1860B79200677CD5 /* FacebookSDK.framework */,
 				7861C0AC1834EFCF00B2A896 /* libsqlite3.0.dylib */,
 				7861C0AA1834EFBB00B2A896 /* Security.framework */,
 				785B4F361806F3E3008B444E /* StoreKit.framework */,
@@ -1193,7 +1241,7 @@
 		783E87BD17C20CEB00FD49C1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				78ABB005185F236F00677CD5 /* CCDate.cpp */,
+				78ABB0091860AB8D00677CD5 /* Date.h */,
 				78D3589D1827A0EA001450F3 /* MapDescriptionList.cpp */,
 				78D3589E1827A0EA001450F3 /* MapDescriptionList.h */,
 				78365440180BF85200AA9432 /* SpriteBatch.cpp */,
@@ -1219,13 +1267,14 @@
 		783E87CA17C20CEB00FD49C1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				78ABB03E1860C5FA00677CD5 /* ezisocial.ios */,
+				78ABB0321860BC7900677CD5 /* ezibyte_logo.png */,
 				78FF0421183FCA8C00804CFF /* Graphics */,
 				78397AC41807014A00C999E7 /* Icons */,
 				783E87CB17C20CEB00FD49C1 /* Fonts */,
 				783E885817C20CEB00FD49C1 /* Music */,
 				783E885E17C20CEC00FD49C1 /* Sound */,
 				783E885D17C20CEC00FD49C1 /* Shaders */,
-				783E885617C20CEB00FD49C1 /* Info.plist */,
 				783E885717C20CEB00FD49C1 /* intro.mp4 */,
 			);
 			name = Resources;
@@ -1647,9 +1696,80 @@
 			name = external;
 			sourceTree = "<group>";
 		};
+		78ABB0411860C77600677CD5 /* libwebsockets */ = {
+			isa = PBXGroup;
+			children = (
+				78ABB04D1860C77600677CD5 /* ios */,
+			);
+			name = libwebsockets;
+			path = ../../../../external/libwebsockets;
+			sourceTree = "<group>";
+		};
+		78ABB04D1860C77600677CD5 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				78ABB04E1860C77600677CD5 /* include */,
+				78ABB0501860C77600677CD5 /* lib */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		78ABB04E1860C77600677CD5 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				78ABB04F1860C77600677CD5 /* libwebsockets.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		78ABB0501860C77600677CD5 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				78ABB0511860C77600677CD5 /* libwebsockets.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		78ABB06C1860CB3400677CD5 /* ezisocial */ = {
+			isa = PBXGroup;
+			children = (
+				78ABB0711860CB3400677CD5 /* include */,
+				78ABB0791860CB3400677CD5 /* src */,
+			);
+			name = ezisocial;
+			path = ../../../ezibyte/ezisocial;
+			sourceTree = "<group>";
+		};
+		78ABB0711860CB3400677CD5 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				78ABB0721860CB3400677CD5 /* EziFacebookFriend.h */,
+				78ABB0731860CB3400677CD5 /* EziFacebookUser.h */,
+				78ABB0741860CB3400677CD5 /* EziFBIncomingRequest.h */,
+				78ABB0751860CB3400677CD5 /* EziFBIncomingRequestManager.h */,
+				78ABB0761860CB3400677CD5 /* EziSocialDefinition.h */,
+				78ABB0771860CB3400677CD5 /* EziSocialDelegate.h */,
+				78ABB0781860CB3400677CD5 /* EziSocialObject.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		78ABB0791860CB3400677CD5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				78ABB07A1860CB3400677CD5 /* EziFacebookFriend.cpp */,
+				78ABB07B1860CB3400677CD5 /* EziFacebookUser.cpp */,
+				78ABB07C1860CB3400677CD5 /* EziFBIncomingRequest.cpp */,
+				78ABB07D1860CB3400677CD5 /* EziFBIncomingRequestManager.cpp */,
+				78ABB07E1860CB3400677CD5 /* EziSocialObject.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		78B38A4B177E5D0600773C6A /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				78ABB0411860C77600677CD5 /* libwebsockets */,
 				78CA9A071858B8840076343A /* GameCenter */,
 				7861BFAC1834ED3A00B2A896 /* InAppPurchase */,
 				78582AEC17BBD94500C96267 /* Default-Portrait@2x~ipad.png */,
@@ -1792,7 +1912,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				784E4E19183E39CB000A1867 /* Info.plist in Resources */,
 				78397AD51807014A00C999E7 /* Icon-72-ios6.png in Resources */,
 				7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */,
 				78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */,
@@ -1803,6 +1922,7 @@
 				7869167217F1DF9F00184E9D /* popup-1.mp3 in Resources */,
 				7869167317F1DF9F00184E9D /* popup-2.mp3 in Resources */,
 				7869167417F1DF9F00184E9D /* popup-3.mp3 in Resources */,
+				78ABB03F1860C5FA00677CD5 /* ezisocial.ios in Resources */,
 				78D358791821384D001450F3 /* lose.mp3 in Resources */,
 				7869167517F1DF9F00184E9D /* popup-4.mp3 in Resources */,
 				78D358971821670D001450F3 /* star2.mp3 in Resources */,
@@ -1863,6 +1983,7 @@
 				783E898017C20CEC00FD49C1 /* combo-blitz-backing-light.mp3 in Resources */,
 				783E898217C20CEC00FD49C1 /* combo-blitz-backing.mp3 in Resources */,
 				783E898417C20CEC00FD49C1 /* critical.mp3 in Resources */,
+				78ABB0331860BC7900677CD5 /* ezibyte_logo.png in Resources */,
 				78D358991821670D001450F3 /* timer.wav in Resources */,
 				783E898617C20CEC00FD49C1 /* equip-new-sword.mp3 in Resources */,
 				783E898817C20CEC00FD49C1 /* equip-unlock.mp3 in Resources */,
@@ -1914,6 +2035,7 @@
 				78CA3A1A17F5830700FD7886 /* RobotoPart.cpp in Sources */,
 				7897DA9E17F312260023C1F9 /* Rain.cpp in Sources */,
 				7861C0601834ED7800B2A896 /* NonConsumableStorage.m in Sources */,
+				78ABB0851860CB3400677CD5 /* EziFBIncomingRequestManager.cpp in Sources */,
 				7897DA9F17F312260023C1F9 /* RainCircle.cpp in Sources */,
 				7861C06E1834ED7800B2A896 /* VirtualCurrencyPack.m in Sources */,
 				7869167D17F2D89200184E9D /* StarParticle2.cpp in Sources */,
@@ -1942,6 +2064,7 @@
 				7861BFF61834ED5D00B2A896 /* CCVirtualItem.cpp in Sources */,
 				783E889317C20CEC00FD49C1 /* AnimatedCoin.cpp in Sources */,
 				783E889417C20CEC00FD49C1 /* Bird.cpp in Sources */,
+				78ABB0861860CB3400677CD5 /* EziSocialObject.cpp in Sources */,
 				783E889517C20CEC00FD49C1 /* Button.cpp in Sources */,
 				783E889617C20CEC00FD49C1 /* Clock.cpp in Sources */,
 				783E889717C20CEC00FD49C1 /* Color.cpp in Sources */,
@@ -2005,6 +2128,7 @@
 				7861BFFF1834ED5D00B2A896 /* CCPurchaseType.cpp in Sources */,
 				7861C0721834ED7800B2A896 /* SingleUseVG.m in Sources */,
 				783E88B517C20CEC00FD49C1 /* Exit.cpp in Sources */,
+				78ABB0831860CB3400677CD5 /* EziFacebookUser.cpp in Sources */,
 				783E88B617C20CEC00FD49C1 /* GetCoins.cpp in Sources */,
 				7861C0741834ED7800B2A896 /* VirtualGood.m in Sources */,
 				7861C0821834ED7800B2A896 /* StoreController.m in Sources */,
@@ -2044,6 +2168,7 @@
 				7861BFF91834ED5D00B2A896 /* CCEquippableVG.cpp in Sources */,
 				783E88CE17C20CEC00FD49C1 /* Progresses.cpp in Sources */,
 				78CA9A0C1858B8840076343A /* GameCenterIos.m in Sources */,
+				78ABB0821860CB3400677CD5 /* EziFacebookFriend.cpp in Sources */,
 				7861C0781834ED7800B2A896 /* NotEnoughGoodsException.m in Sources */,
 				785D1A6D1834ECC900A36DB8 /* StoreInventoryBridge.mm in Sources */,
 				783E88CF17C20CEC00FD49C1 /* Settings.cpp in Sources */,
@@ -2062,6 +2187,7 @@
 				783E88D417C20CEC00FD49C1 /* TouchTrailLayer.cpp in Sources */,
 				783E88D517C20CEC00FD49C1 /* BuyItemList.cpp in Sources */,
 				783E88D617C20CEC00FD49C1 /* CreditsList.cpp in Sources */,
+				78ABB0841860CB3400677CD5 /* EziFBIncomingRequest.cpp in Sources */,
 				7861BFFB1834ED5D00B2A896 /* CCSingleUsePackVG.cpp in Sources */,
 				7861C0A11834EF9C00B2A896 /* hashtable.c in Sources */,
 				78051FC018509CEE00846FA8 /* Episodes.cpp in Sources */,
@@ -2103,6 +2229,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/proj.ios",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2130,15 +2260,23 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/ios/libraries",
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/linux/libraries/lib64",
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/linux/libraries",
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/mac/libraries",
 					"/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/proj.ios/ios",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/android/lib/armeabi",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/android/lib/armeabi-v7a",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/android/lib/x86",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/ios/lib",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/tizen/lib/armv7l",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/tizen/lib/x86",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/win32/lib",
 				);
 				OTHER_CFLAGS = "-O2";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Project Birds";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -2159,6 +2297,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/proj.ios",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2184,14 +2326,22 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/ios/libraries",
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/linux/libraries/lib64",
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/linux/libraries",
 					"/Users/igor/Development/cocos2d-x-2.1.4/cocos2dx/platform/third_party/mac/libraries",
 					"/Users/igor/Development/cocos2d-x-2.1.4/projects/project-birds/proj.ios/ios",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/android/lib/armeabi",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/android/lib/armeabi-v7a",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/android/lib/x86",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/ios/lib",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/tizen/lib/armv7l",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/tizen/lib/x86",
+					"/Users/igor/Development/cocos2d-x-2.1.4/external/libwebsockets/win32/lib",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Project Birds";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

@@ -2,6 +2,7 @@
 #define CONST_GAMECENTER
 
 #include "GameCenter.h"
+#include "AppDelegate.h"
 
 #include "Menu.h"
 
@@ -102,6 +103,13 @@ extern "C"
 
         return 0;
     }
+
+    jint Java_com_tooflya_projectbirds_GameCenter_GameCenter_nativeOnVideoPlayback(JNIEnv *env, jobject thiz)
+    {
+        GameCenter::onVideoPlayback();
+
+        return 0;
+    }
 }
 
 // ===========================================================
@@ -192,6 +200,21 @@ void GameCenter::signOut()
 bool GameCenter::isSignedIn()
 {
     return callStaticBoolMethod("isSignedIn");
+}
+
+void GameCenter::playVideo()
+{
+    SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+
+    callStaticVoidMethod("intro");
+}
+
+void GameCenter::onVideoPlayback()
+{
+    if(AppDelegate::isMusicEnable())
+    {
+        SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    }
 }
 
 // ===========================================================
