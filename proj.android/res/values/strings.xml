@@ -4,5 +4,9 @@
     <string name="signing_in">Signing in with Google</string>
     <string name="signing_out">Signing out</string>
     <string name="unknown_error">For some unknown reason, authorization failed</string>
+    <string name="daily_revenue_notification_title">Daily revenue is available</string>
+    <string name="daily_revenue_notification_content">So, come and get it now!</string>
+    <string name="full_lives_notification_title">Gold lives restored</string>
+    <string name="full_lives_notification_content">So, come and spend it right now!</string>
    
 </resources>

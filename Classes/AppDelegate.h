@@ -11,6 +11,7 @@
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include "InAppPurchaseEventHandler.h"
+#include "GameCenter.h"
 #endif
 
 using namespace std;
@@ -98,6 +99,10 @@ class AppDelegate : private CCApplication
         static ScreenManager* screens;
 
         static bool IS_ALREADY_PLAYED;
+    
+        #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        static GameCenter* mGameCenter;
+        #endif
 
         // ===========================================================
         // Fields
@@ -177,6 +182,21 @@ class AppDelegate : private CCApplication
 		static bool isGetWindeScreen();
 
         static void clearCache();
+    
+        static void nativeOnGooglePlusSignInSucceeded();
+    
+        static bool isAdvertisiment();
+    
+        static int getTotalBirdsKilled();
+        static int getTotalLevelsUnlocked();
+    
+        static void setTotalBirdsKilled();
+        static void setTotalLevelsUnlocked();
+    
+        static void addTotalBirdsKilled(int add);
+        static void addTotalLevelsUnlocked(int add);
+    
+        static bool isVideoShowed();
     
         // ===========================================================
         // Override Methods

@@ -306,6 +306,11 @@ void Bird::onDestroy()
     {
         if(game->mGameRunning)
         {
+            if(this->mLifeCount <= 0)
+            {
+                AppDelegate::addTotalBirdsKilled(1);
+            }
+            
             if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange && !this->mBonus && this->mChalangeType != 3 && !Game::LASERGUN)
             {
                 game->removeLife();

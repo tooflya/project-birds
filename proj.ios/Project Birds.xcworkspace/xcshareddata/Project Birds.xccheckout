@@ -5,20 +5,32 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F35C60CC-7BBD-40B7-99CE-2C1D448FC7A0</string>
+	<string>F1F7BBA6-508D-411D-B5AA-66CACB8FA6BB</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Project Birds</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>26EC9852-A6FE-4FC4-8D07-6B2314D9D34C</key>
 		<string>ssh://github.com/tooflya/project-birds.git</string>
+		<key>657AFD01-5F35-44E4-8684-E81FEEBA0D70</key>
+		<string>ssh://github.com/vedi/jansson.git</string>
+		<key>7E2313AA-E66D-46E3-9E04-8E99992A8341</key>
+		<string>ssh://github.com/soomla/cocos2dx-store.git</string>
+		<key>DED4DDB9-6FC5-467E-B623-CDEDF286C66A</key>
+		<string>ssh://github.com/soomla/ios-store.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>proj.ios/Project Birds.xcodeproj/project.xcworkspace</string>
+	<string>proj.ios/Project Birds.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>26EC9852-A6FE-4FC4-8D07-6B2314D9D34C</key>
-		<string>../../..</string>
+		<string>../..</string>
+		<key>657AFD01-5F35-44E4-8684-E81FEEBA0D70</key>
+		<string>../../../../external/jansson</string>
+		<key>7E2313AA-E66D-46E3-9E04-8E99992A8341</key>
+		<string>../../../../extensions/cocos2dx-store</string>
+		<key>DED4DDB9-6FC5-467E-B623-CDEDF286C66A</key>
+		<string>../../../../extensions/cocos2dx-store/submodules/ios-store</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/tooflya/project-birds.git</string>
@@ -28,6 +40,30 @@
 	<string>26EC9852-A6FE-4FC4-8D07-6B2314D9D34C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7E2313AA-E66D-46E3-9E04-8E99992A8341</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cocos2dx-store</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DED4DDB9-6FC5-467E-B623-CDEDF286C66A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-store</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>657AFD01-5F35-44E4-8684-E81FEEBA0D70</string>
+			<key>IDESourceControlWCCName</key>
+			<string>jansson</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

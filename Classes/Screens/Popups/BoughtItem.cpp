@@ -270,7 +270,7 @@ void BoughtItem::update(float pDeltaTime)
         }
     }
     
-    if(true)
+    if(!this->mShowAnimation && !this->mHideAnimation)
     {
         if(this->mTapToContinueAnimationReverse)
         {

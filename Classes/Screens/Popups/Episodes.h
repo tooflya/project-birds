@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-class BackgroundEntity;
+class BackgroundEntity2;
 
 class Episodes : public CCLayer, public Touchable, public ButtonReceiver
 {
@@ -39,7 +39,7 @@ class Episodes : public CCLayer, public Touchable, public ButtonReceiver
         CCNode* mParent;
         Entity* mDarkness;
         Entity* mScroll;
-        BackgroundEntity* mBackground;
+        BackgroundEntity2* mBackground;
 		CCNodeRGBA* mSquare;
 
         float mShowAnimationTime;

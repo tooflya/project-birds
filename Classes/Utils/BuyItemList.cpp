@@ -49,9 +49,10 @@ BuyItemList::BuyItemList(CCNode* pParent) :
 
         this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this->mSpriteBatch);
 
-		Textes textes1 = {"", "Comic Sans MS", 24, -1};
+		Textes textes1 = {"", Options::FONT, 24, -1};
 
         this->mDescriptionText = Text::create(textes1, ccp(Utils::coord(450), 0), this);
+        this->mDescriptionText->cocos2d::CCLabelTTF::enableShadow(CCSize(Utils::coord(1), -Utils::coord(1)), 255.0, 2.0, true);
 
         this->mStars[0] = Entity::create("popup_item_rate_stars@2x.png", 1, 2, this->mSpriteBatch);
         this->mStars[1] = Entity::create("popup_item_rate_stars@2x.png", 1, 2, this->mSpriteBatch);

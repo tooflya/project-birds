@@ -43,27 +43,35 @@ Settings::Settings() :
     {
         SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas5");
+        SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas2");
 
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
-		this->mBackgroundDecorations[1] = Entity::create("bg_detail_settings@2x.png", spriteBatch);
+		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch3);
+		this->mBackgroundDecorations[1] = Entity::create("bg_detail_settings@2x.png", spriteBatch3);
 
 		this->addChild(spriteBatch);
+		this->addChild(spriteBatch3);
 		this->addChild(spriteBatch2);
+        
+		ccBlendFunc bf = {GL_ONE, GL_ZERO};
+		spriteBatch->setBlendFunc(bf);
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
-		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_SETTINGS_BACK, this);
-		this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_CREDITS, this);
-		this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_RATE, this);
-		this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_MORE, this);
-		this->mLanguageButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch, Options::BUTTONS_ID_SETTINGS_LANGUAGE, this);
-		this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_SOUND, this);
-		this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch, Options::BUTTONS_ID_SETTINGS_MUSIC, this);
+		this->mBackButton = Button::create(structure1, spriteBatch3, Options::BUTTONS_ID_SETTINGS_BACK, this);
+		this->mCreditsButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch3, Options::BUTTONS_ID_SETTINGS_CREDITS, this);
+		this->mProgressButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch3, Options::BUTTONS_ID_SETTINGS_RATE, this);
+		this->mMoreButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch3, Options::BUTTONS_ID_SETTINGS_MORE, this);
+		this->mLanguageButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch3, Options::BUTTONS_ID_SETTINGS_LANGUAGE, this);
+		this->mSoundButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch3, Options::BUTTONS_ID_SETTINGS_SOUND, this);
+		this->mMusicButton = Button::create("btn_sfx_mfx_ach_lead_sprite@2x.png", 3, 2, spriteBatch3, Options::BUTTONS_ID_SETTINGS_MUSIC, this);
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
 
-		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        if(!AppDelegate::isAdvertisiment())
+        {
+            this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        }
 
 		this->mSoundButton->create()->setCenterPosition(Options::CAMERA_CENTER_X - Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
 		this->mMusicButton->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(110), Options::CAMERA_CENTER_Y - Utils::coord(310));
@@ -232,6 +240,12 @@ void Settings::onEnter()
 
     this->mSoundButton->setCurrentFrameIndex(Options::SOUND_ENABLE ? 1 : 4);
     this->mMusicButton->setCurrentFrameIndex(Options::MUSIC_ENABLE ? 0 : 3);
+    
+    if(!AppDelegate::isAdvertisiment())
+    {
+        if(!this->mBackButton->isVisible()) this->mBackButton->create();
+        this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    }
 }
 
 void Settings::onExit()

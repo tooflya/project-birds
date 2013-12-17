@@ -7,7 +7,7 @@
             <key>lock_1@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{927,404},{64,64}}</string>
+                <string>{{1004,2},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -16,6 +16,19 @@
                 <string>{{0,0},{64,64}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
+            </dict>
+            <key>popup_social_picture@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{673,404},{515,627}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{515,627}}</string>
+                <key>sourceSize</key>
+                <string>{515,627}</string>
             </dict>
             <key>progress_map.png</key>
             <dict>
@@ -33,7 +46,7 @@
             <key>progress_map_dot@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{970,470},{10,11}}</string>
+                <string>{{1070,2},{10,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>progress_map_episode_light@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{673,404},{252,252}}</string>
+                <string>{{673,1033},{252,252}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,97 +82,6 @@
                 <key>sourceSize</key>
                 <string>{1000,400}</string>
             </dict>
-            <key>progress_map_fb_share@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{729,760},{180,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{180,100}}</string>
-                <key>sourceSize</key>
-                <string>{180,100}</string>
-            </dict>
-            <key>progress_map_fbconnect@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,1628},{361,200}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{361,200}}</string>
-                <key>sourceSize</key>
-                <string>{361,200}</string>
-            </dict>
-            <key>progress_map_fbico@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{927,470},{41,62}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{41,62}}</string>
-                <key>sourceSize</key>
-                <string>{41,62}</string>
-            </dict>
-            <key>progress_map_gplus_share@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{729,658},{180,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{180,100}}</string>
-                <key>sourceSize</key>
-                <string>{180,100}</string>
-            </dict>
-            <key>progress_map_share_ico@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{365,1730},{80,81}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{80,81}}</string>
-                <key>sourceSize</key>
-                <string>{80,81}</string>
-            </dict>
-            <key>progress_map_tw_share@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{547,1628},{180,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{180,100}}</string>
-                <key>sourceSize</key>
-                <string>{180,100}</string>
-            </dict>
-            <key>progress_map_vk_share@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{365,1628},{180,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{180,100}}</string>
-                <key>sourceSize</key>
-                <string>{180,100}</string>
-            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -168,9 +90,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas18.pvr.ccz</string>
             <key>size</key>
-            <string>{1004,1830}</string>
+            <string>{1190,1628}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1d79eb739d5fe7e2aa96e469e4cdd331:b3de3a9f7ab6b3db408df01e3c539cda:bbd0c4aa2c46eec563be74e473e8dd59$</string>
+            <string>$TexturePacker:SmartUpdate:be42f6d72baf9211f93b9414356526f0:04d779b1da8ddb5b305678677e9fe662:bbd0c4aa2c46eec563be74e473e8dd59$</string>
             <key>textureFileName</key>
             <string>TextureAtlas18.pvr.ccz</string>
         </dict>

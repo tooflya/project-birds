@@ -49,11 +49,14 @@ Progress::Progress() :
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch1);
-		this->mBackButton = Button::create(structure1, spriteBatch2, Options::BUTTONS_ID_PROGRESS_BACK, this);
-    
+        this->mBackButton = Button::create(structure1, spriteBatch2, Options::BUTTONS_ID_PROGRESS_BACK, this);
+        
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-
-		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        
+        if(!AppDelegate::isAdvertisiment())
+        {
+            this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        }
     
 		this->mResetButton = Button::create("settings_btn_big@2x.png", 1, 1, spriteBatch2, Options::BUTTONS_ID_PROGRESS_RESET, this);
 
@@ -192,6 +195,12 @@ void Progress::keyBackClicked(bool pSound)
 void Progress::onEnter()
 {
     Screen::onEnter();
+    
+    if(!AppDelegate::isAdvertisiment())
+    {
+        if(!this->mBackButton->isVisible()) this->mBackButton->create();
+        this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    }
 }
 
 void Progress::onExit()

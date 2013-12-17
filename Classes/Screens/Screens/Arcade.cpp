@@ -56,6 +56,9 @@ Arcade::Arcade() :
 		this->mGameLayer->addChild(spriteBatch0);
         this->mGameLayer->addChild(spriteBatch6);
         
+		ccBlendFunc bf = {GL_ONE, GL_ZERO};
+		spriteBatch0->setBlendFunc(bf);
+        
         this->e2 = Effect::create();
         this->mGameLayer->addChild(this->e2);
         

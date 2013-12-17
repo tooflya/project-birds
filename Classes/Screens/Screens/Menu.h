@@ -8,6 +8,8 @@
 #include "PleaseRate.h"
 #include "MapDescription.h"
 #include "TempPublisherInAppExplain.h"
+#include "GooglePlayAuthorize.h"
+#include "FacebookAuthorize.h"
 
 #include "PlayButton.h"
 
@@ -95,6 +97,8 @@ class Menu : public Screen
         Popup* mRatePopup;
         Popup* mMapDescription;
         Popup* mTempPublisherInAppExplainPopup;
+        GooglePlayAuthorize* mGooglePlayAuthorizePopup;
+        FacebookAuthorize* mFacebookAuthorizePopup;
     
         Map* mMapPopup;
 
@@ -130,6 +134,8 @@ class Menu : public Screen
         #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         void keyBackClicked(bool pSound);
         #endif
+    
+        void onGooglePlusSignInSucceeded();
 };
 
 #endif

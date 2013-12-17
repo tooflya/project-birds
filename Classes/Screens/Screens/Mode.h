@@ -8,6 +8,7 @@
 #include "UnlockMode.h"
 #include "TempPublisherRatingExplain.h"
 #include "TempPublisherAchievementsExplain.h"
+#include "GooglePlayAuthorize.h"
 
 #include "AppDelegate.h"
 
@@ -55,6 +56,7 @@ class Mode : public Screen
         Popup* mModesUnlockPopup;
         Popup* mTempPublisherRatingExplain;
         Popup* mTempPublisherAchievementsExplain;
+        GooglePlayAuthorize* mGooglePlayAuthorizePopup;
     
         Episodes* mEpisodesMap;
     
@@ -108,6 +110,7 @@ class Mode : public Screen
         // Constants
         // ===========================================================
     
+        static int GAME_CENTER_ACTION;
         static int UNLOCK_ACTION;
     
         static int PRICES[2];
@@ -130,6 +133,8 @@ class Mode : public Screen
     
         void unlock();
     
+        void onGooglePlayAuthorizeHide();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
@@ -142,6 +147,8 @@ class Mode : public Screen
         void onExit();
     
         void keyBackClicked(bool pSound);
+    
+        void onGooglePlusSignInSucceeded();
 };
 
 #endif

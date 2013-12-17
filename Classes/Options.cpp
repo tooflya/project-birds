@@ -18,6 +18,23 @@
 bool Options::IS_BUILD_FOR_ABSOLUTIST = false;
 bool Options::IS_BUILD_FOR_UBINURI = false;
 
+const char* Options::ACHIEVEMENTS_UNLOCK_CLASSIC_MODE = "CgkIvPfE39QGEAIQBA";
+const char* Options::ACHIEVEMENTS_UNLOCK_ARCADE_MODE = "CgkIvPfE39QGEAIQBQ";
+
+const char* Options::ACHIEVEMENTS_UNLOCK_FREEZER = "CgkIvPfE39QGEAIQBg";
+const char* Options::ACHIEVEMENTS_UNLOCK_REDSKIN = "CgkIvPfE39QGEAIQBw";
+const char* Options::ACHIEVEMENTS_UNLOCK_MEXICAN = "CgkIvPfE39QGEAIQCA";
+const char* Options::ACHIEVEMENTS_UNLOCK_SAMURAI = "CgkIvPfE39QGEAIQCQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_PIRATE = "CgkIvPfE39QGEAIQCg";
+const char* Options::ACHIEVEMENTS_UNLOCK_ROBOBIRD = "CgkIvPfE39QGEAIQCw";
+const char* Options::ACHIEVEMENTS_UNLOCK_COMANDO = "CgkIvPfE39QGEAIQDA";
+const char* Options::ACHIEVEMENTS_UNLOCK_ZOMBIE = "CgkIvPfE39QGEAIQDQ";
+
+const char* Options::LEADERBOARD_BIRDS = "CgkIvPfE39QGEAIQDg";
+const char* Options::LEADERBOARD_LEVELS = "CgkIvPfE39QGEAIQDw";
+const char* Options::LEADERBOARD_CLASSIC = "";
+const char* Options::LEADERBOARD_ARCADE = "";
+
 const char* Options::GOOGLE_PLAY_BASE_64_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnxTibzwKbgWhSfNuVJmKOWXmRmCAsxT8Z8+jf5DRTKcsIm6BTJOC27d2wKeuH9Uw/7i39KmRUgg+zwAFxT3X8TLpC/pM/mSLpUSfv85iN3yRE85zCrW4NQsxLbyHqjPNNxoMzC5bLBh3pqSB0qSp/2ZC+woOncQKs/J6i3O/vDFuAmnyuJVUaNDTRYYpmOPmcZiMU/hC0PLiVQAnWcM/WDFmWm6h5lBmhRvTYnRdU2Ha+cax8UpAliceS+URRmeFCM0kV2hBhHRLNCXycGa9L4vCErJnH2mcBwOztHV5x7ZIHxMFxq4Kx7h1EyI6gzorrF28m5gP9TBTihAUXaC0XQIDAQAB";
 const char* Options::SOOMLA_BASE_64_KEY = "?";
 const char* Options::SOOMLA_CUSTOM_BASE_64_KEY = "?";
@@ -288,39 +305,7 @@ const char* Options::SHOP_ITEMS_PROPERTIES[100] =
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00"
 };
 
-Textes Options::TEXTES_HOLDER[600] =
-{
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
-};
+Textes Options::TEXTES_HOLDER[600] = {};
 
 Textes Options::TEXT_LOADING_1 = { "", FONT, 0, 0 };
 Textes Options::TEXT_LOADING_2 = { "", FONT, 0, 1 };
@@ -541,6 +526,23 @@ Textes Options::TEXT_LEVELS_TASKS[80][3] = {
 };
 Textes Options::TEXT_LOADING_LANGUAGE = {"", FONT, 42, 428};
 Textes Options::TEXT_LOADING_RESET = {"", FONT, 42, 429};
+Textes Options::TEXT_GOOGLE_PLUS[2] =
+{
+    {"", FONT, 48, 478},
+    {"", FONT, 36, 479}
+};
+Textes Options::TEXT_FACEBOOK[2] =
+{
+    {"", FONT, 48, 480},
+    {"", FONT, 36, 481}
+};
+Textes Options::TEXT_SING_IN = {"", FONT, 42, 482};
+Textes Options::TEXT_MORE[3] =
+{
+    {"", FONT, 42, 483},
+    {"", FONT, 42, 484},
+    {"", FONT, 32, 485}
+};
 
 // ===========================================================
 // Fields
@@ -615,16 +617,8 @@ void Options::changeLanguage()
             TEXT_SETTINGS_PROGRESS.string = "Progress";
             TEXT_SETTINGS_PROGRESS.size = 48;
             
-            if(Options::IS_BUILD_FOR_UBINURI)
-            {
-                TEXT_SETTINGS_MORE.string = "Privacy Policy";
-                TEXT_SETTINGS_MORE.size = 48;
-            }
-            else
-            {
-                TEXT_SETTINGS_MORE.string = "More";
-                TEXT_SETTINGS_MORE.size = 64;
-            }
+            TEXT_SETTINGS_MORE.string = "More";
+            TEXT_SETTINGS_MORE.size = 48;
             
             TEXT_SETTINGS_LANGUAGE.string = "Language";
             TEXT_SETTINGS_LANGUAGE.size = 48;
@@ -1121,6 +1115,19 @@ void Options::changeLanguage()
             
             TEXT_LOADING_LANGUAGE.string = "We are changing a language\nPlease wait a moment";
             TEXT_LOADING_RESET.string = "Reset in progress now\nPlease wait a moment";
+            
+            TEXT_GOOGLE_PLUS[0].string = "Sign in via Google+";
+            TEXT_GOOGLE_PLUS[1].string = "Sign in via social network Google+ for unclock achievements and leaderboards!";
+            
+            TEXT_FACEBOOK[0].string = "Sign in via Facebook";
+            TEXT_FACEBOOK[1].string = "Sign in via Facebook to see progress of your friends!";
+            
+            TEXT_SING_IN.string = "Sign in";
+            
+            TEXT_MORE[0].string = "Watch video";
+            TEXT_MORE[1].string = "More games";
+            TEXT_MORE[2].string = "Privacy policy";
+            TEXT_MORE[2].size = 42;
         break;
         case 1:
             TEXT_LOADING_1.string = "Загрузка... 0%";
@@ -1130,24 +1137,16 @@ void Options::changeLanguage()
             TEXT_LOADING_2.size = 32;
             
             TEXT_SETTINGS_CREDITS.string = "Об игре";
-            TEXT_SETTINGS_CREDITS.size = 64;
+            TEXT_SETTINGS_CREDITS.size = 48;
             
             TEXT_SETTINGS_PROGRESS.string = "Прогресс";
-            TEXT_SETTINGS_PROGRESS.size = 64;
+            TEXT_SETTINGS_PROGRESS.size = 48;
             
-            if(Options::IS_BUILD_FOR_UBINURI)
-            {
-                TEXT_SETTINGS_MORE.string = "Политика конфиденциальности";
-                TEXT_SETTINGS_MORE.size = 64;
-            }
-            else
-            {
-                TEXT_SETTINGS_MORE.string = "Больше";
-                TEXT_SETTINGS_MORE.size = 64;
-            }
+            TEXT_SETTINGS_MORE.string = "Больше";
+            TEXT_SETTINGS_MORE.size = 48;
             
             TEXT_SETTINGS_LANGUAGE.string = "Язык";
-            TEXT_SETTINGS_LANGUAGE.size = 64;
+            TEXT_SETTINGS_LANGUAGE.size = 48;
             
             TEXT_BUYITEM_BUY.string = "Купить";
             TEXT_BUYITEM_BUY.size = 46;
@@ -1718,6 +1717,19 @@ void Options::changeLanguage()
             
             TEXT_LOADING_LANGUAGE.string = "Происходит смена языка\nПожалуйста подождите";
             TEXT_LOADING_RESET.string = "Происходит сброс прогреса\nПожалуйста подождите";
+            
+            TEXT_GOOGLE_PLUS[0].string = "Вход через Google+";
+            TEXT_GOOGLE_PLUS[1].string = "Войдите через социальную сеть Google Plus чтобы получить доступ к достижениям и рейтингам!";
+            
+            TEXT_FACEBOOK[0].string = "Вход через Facebook";
+            TEXT_FACEBOOK[1].string = "Войдите через социальную сеть Facebook чтобы получить доступ к достижениям друзей!";
+            
+            TEXT_SING_IN.string = "Войти";
+            
+            TEXT_MORE[0].string = "Смотреть видео";
+            TEXT_MORE[1].string = "Другие игры";
+            TEXT_MORE[2].string = "Политика \n конфиденциальности";
+            TEXT_MORE[2].size = 32;
         break;
     }
     
@@ -2157,64 +2169,58 @@ void Options::changeLanguage()
     TEXTES_HOLDER[433] = TEXT_LEVELS_TASKS[6][0];
     TEXTES_HOLDER[434] = TEXT_LEVELS_TASKS[6][1];
     TEXTES_HOLDER[435] = TEXT_LEVELS_TASKS[6][2];
-    
     TEXTES_HOLDER[436] = TEXT_LEVELS_TASKS[7][0];
     TEXTES_HOLDER[437] = TEXT_LEVELS_TASKS[7][1];
     TEXTES_HOLDER[438] = TEXT_LEVELS_TASKS[7][2];
-    
     TEXTES_HOLDER[439] = TEXT_LEVELS_TASKS[8][0];
     TEXTES_HOLDER[440] = TEXT_LEVELS_TASKS[8][1];
     TEXTES_HOLDER[441] = TEXT_LEVELS_TASKS[8][2];
-    
     TEXTES_HOLDER[442] = TEXT_LEVELS_TASKS[9][0];
     TEXTES_HOLDER[443] = TEXT_LEVELS_TASKS[9][1];
     TEXTES_HOLDER[444] = TEXT_LEVELS_TASKS[9][2];
-    
     TEXTES_HOLDER[445] = TEXT_LEVELS_TASKS[10][0];
     TEXTES_HOLDER[446] = TEXT_LEVELS_TASKS[10][1];
     TEXTES_HOLDER[447] = TEXT_LEVELS_TASKS[10][2];
-    
     TEXTES_HOLDER[448] = TEXT_LEVELS_TASKS[11][0];
     TEXTES_HOLDER[449] = TEXT_LEVELS_TASKS[11][1];
     TEXTES_HOLDER[450] = TEXT_LEVELS_TASKS[11][2];
-    
     TEXTES_HOLDER[451] = TEXT_LEVELS_TASKS[12][0];
     TEXTES_HOLDER[452] = TEXT_LEVELS_TASKS[12][1];
     TEXTES_HOLDER[453] = TEXT_LEVELS_TASKS[12][2];
-    
     TEXTES_HOLDER[454] = TEXT_LEVELS_TASKS[13][0];
     TEXTES_HOLDER[455] = TEXT_LEVELS_TASKS[13][1];
     TEXTES_HOLDER[456] = TEXT_LEVELS_TASKS[13][2];
-    
     TEXTES_HOLDER[457] = TEXT_LEVELS_TASKS[14][0];
     TEXTES_HOLDER[458] = TEXT_LEVELS_TASKS[14][1];
     TEXTES_HOLDER[459] = TEXT_LEVELS_TASKS[14][2];
-    
     TEXTES_HOLDER[460] = TEXT_LEVELS_TASKS[15][0];
     TEXTES_HOLDER[461] = TEXT_LEVELS_TASKS[15][1];
     TEXTES_HOLDER[462] = TEXT_LEVELS_TASKS[15][2];
-    
     TEXTES_HOLDER[463] = TEXT_LEVELS_TASKS[16][0];
     TEXTES_HOLDER[464] = TEXT_LEVELS_TASKS[16][1];
     TEXTES_HOLDER[465] = TEXT_LEVELS_TASKS[16][2];
-    
     TEXTES_HOLDER[466] = TEXT_LEVELS_TASKS[17][0];
     TEXTES_HOLDER[467] = TEXT_LEVELS_TASKS[17][1];
     TEXTES_HOLDER[468] = TEXT_LEVELS_TASKS[17][2];
-    
     TEXTES_HOLDER[469] = TEXT_LEVELS_TASKS[18][0];
     TEXTES_HOLDER[470] = TEXT_LEVELS_TASKS[18][1];
     TEXTES_HOLDER[471] = TEXT_LEVELS_TASKS[18][2];
-    
     TEXTES_HOLDER[472] = TEXT_LEVELS_TASKS[19][0];
     TEXTES_HOLDER[473] = TEXT_LEVELS_TASKS[19][1];
     TEXTES_HOLDER[474] = TEXT_LEVELS_TASKS[19][2];
-    
     TEXTES_HOLDER[475] = TEXT_LEVELS_TASKS[20][0];
     TEXTES_HOLDER[476] = TEXT_LEVELS_TASKS[20][1];
     TEXTES_HOLDER[477] = TEXT_LEVELS_TASKS[20][2];
+    TEXTES_HOLDER[478] = TEXT_GOOGLE_PLUS[0];
+    TEXTES_HOLDER[479] = TEXT_GOOGLE_PLUS[1];
+    TEXTES_HOLDER[480] = TEXT_FACEBOOK[0];
+    TEXTES_HOLDER[481] = TEXT_FACEBOOK[1];
+    TEXTES_HOLDER[482] = TEXT_SING_IN;
+    TEXTES_HOLDER[483] = TEXT_MORE[0];
+    TEXTES_HOLDER[484] = TEXT_MORE[1];
+    TEXTES_HOLDER[485] = TEXT_MORE[2];
     
-    for(int i = 0; i <= 477; i++)
+    for(int i = 0; i <= 485; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

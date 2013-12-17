@@ -106,6 +106,34 @@ static AppDelegate s_sharedApplication;
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
     cocos2d::CCApplication::sharedApplication()->applicationDidEnterBackground();
+    
+    UILocalNotification* notification1 = [[UILocalNotification alloc] init];
+    UILocalNotification* notification2 = [[UILocalNotification alloc] init];
+    UILocalNotification* notification3 = [[UILocalNotification alloc] init];
+
+    notification1.fireDate = [NSDate dateWithTimeIntervalSinceNow:3600*10];
+    notification2.fireDate = [NSDate dateWithTimeIntervalSinceNow:3600*24];
+    notification3.fireDate = [NSDate dateWithTimeIntervalSinceNow:60*30];
+    
+    notification1.alertBody = @"We are miss you! Play our awesome game again!"; // TODO: Need to translate this strings
+    notification2.alertBody = @"Daily revenue is available! So, come and get it now!";
+    notification3.alertBody = @"Gold lives restored! So, come and spend it right now!";
+
+    notification1.timeZone = [NSTimeZone defaultTimeZone];
+    notification2.timeZone = [NSTimeZone defaultTimeZone];
+    notification3.timeZone = [NSTimeZone defaultTimeZone];
+    
+    notification1.applicationIconBadgeNumber = 1;
+    notification2.applicationIconBadgeNumber = 1;
+    notification3.applicationIconBadgeNumber = 1;
+    
+    notification1.soundName = UILocalNotificationDefaultSoundName;
+    notification2.soundName = UILocalNotificationDefaultSoundName;
+    notification3.soundName = UILocalNotificationDefaultSoundName;
+
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification1];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification2];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification3];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -113,6 +141,9 @@ static AppDelegate s_sharedApplication;
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
     cocos2d::CCApplication::sharedApplication()->applicationWillEnterForeground();
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: -1];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

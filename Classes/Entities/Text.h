@@ -98,8 +98,6 @@ class Text : public CCLabelTTF
     
         float mInitCenterX;
         float mInitCenterY;
-    
-        CCLabelTTF* mShadow;
 
         // ===========================================================
         // Constructors
@@ -128,7 +126,6 @@ class Text : public CCLabelTTF
         void setText(Textes pParams);
 
         void enableShadow();
-        void disableShadow();
     
         void animate(int pType);
     
@@ -140,14 +137,6 @@ class Text : public CCLabelTTF
         void onExit();
     
         void update(float pDeltaTime);
-    
-        void draw();
-    
-        void setString(const char* str);
-        void setVisible(bool pVisible);
-        void setScale(float pScale);
-        void setOpacity(GLubyte pOpaquee);
-        void runAction(CCAction* pAction);
 };
 
 #endif

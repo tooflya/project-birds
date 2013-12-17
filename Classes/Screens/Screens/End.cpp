@@ -257,12 +257,6 @@ End::End(int pType, Screen* pParent) :
         this->mTextName->setHorizontalAlignment(kCCTextAlignmentLeft);
         this->mTextCountValue->setHorizontalAlignment(kCCTextAlignmentRight);
         
-        this->mTextName->mShadow->setDimensions(CCSize(Utils::coord(500), 0));
-        this->mTextCountValue->mShadow->setDimensions(CCSize(Utils::coord(200), 0));
-        
-        this->mTextName->mShadow->setHorizontalAlignment(kCCTextAlignmentLeft);
-        this->mTextCountValue->mShadow->setHorizontalAlignment(kCCTextAlignmentRight);
-        
         this->mConfetti = EntityManager::create(600, Confetti::create(), spriteBatch7);
     }
 
@@ -422,6 +416,8 @@ void End::onShow()
         {
             AppDelegate::setLevelStars(Game::LEVEL, Game::STARS);
             AppDelegate::setLevelStars(Game::LEVEL + 1, 0);
+            
+            AppDelegate::addTotalLevelsUnlocked(1);
         }
         
         switch(Game::STARS)
@@ -518,6 +514,11 @@ void End::onShow()
     this->addChild(this->mPanelLayer);
     this->mPanelLayer->setPosition(ccp(0, this->mGamePanel->getHeightScaled()));
     this->mPanelLayer->runAction(CCMoveTo::create(1.0, ccp(0, 0)));
+    
+    if(this->mType == TYPE_CLASSIC)
+    {
+        AppDelegate::mGameCenter->postScore(Options::LEADERBOARD_CLASSIC, Game::BEST_COUNT);
+    }
 }
 
 void End::onHide()
@@ -761,7 +762,6 @@ void End::update(float pDeltaTime)
                         this->mTextCountValue->animate(0);
                         
                         this->mTextName->setHorizontalAlignment(kCCTextAlignmentLeft);
-                        this->mTextName->mShadow->setHorizontalAlignment(kCCTextAlignmentLeft);
                         
                         this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
                         this->mTextCountValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
@@ -819,7 +819,6 @@ void End::update(float pDeltaTime)
                         break;
                     case 4:
                         this->mTextName->setHorizontalAlignment(kCCTextAlignmentCenter);
-                        this->mTextName->mShadow->setHorizontalAlignment(kCCTextAlignmentCenter);
                         
                         this->mTextName->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(20));
                         this->mTextName->setText(Options::TEXT_END[6]);

@@ -33,20 +33,28 @@ Credits::Credits() :
 	mList(0)
 	{
 		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas2");
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
 
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_CREDITS_BACK, this);
-    
-		this->mListBorders[0] = Entity::create("about_scroll_border@2x.png", spriteBatch);
-		this->mListBorders[1] = Entity::create("about_scroll_border@2x.png", spriteBatch);
+        this->mBackButton = Button::create(structure1, spriteBatch2, Options::BUTTONS_ID_CREDITS_BACK, this);
+        
+		this->mListBorders[0] = Entity::create("about_scroll_border@2x.png", spriteBatch2);
+		this->mListBorders[1] = Entity::create("about_scroll_border@2x.png", spriteBatch2);
 
 		this->addChild(spriteBatch);
+		this->addChild(spriteBatch2);
+        
+		ccBlendFunc bf = {GL_ONE, GL_ZERO};
+		spriteBatch->setBlendFunc(bf);
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    
-		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        
+        if(!AppDelegate::isAdvertisiment())
+        {
+            this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        }
     
 		this->mListBorders[0]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y + Utils::coord(500));
 		this->mListBorders[1]->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(400));
@@ -113,6 +121,12 @@ void Credits::onEnter()
     
     this->mList->setPosition(ccp(0, 0));
     this->mList->runAction(CCMoveTo::create(10.0, ccp(this->mList->getPosition().x, this->mList->getPosition().y + Utils::coord(800))));
+    
+    if(!AppDelegate::isAdvertisiment())
+    {
+        if(!this->mBackButton->isVisible()) this->mBackButton->create();
+        this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    }
 }
 
 void Credits::onExit()

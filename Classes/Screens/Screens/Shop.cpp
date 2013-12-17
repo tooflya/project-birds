@@ -288,7 +288,8 @@ Shop::~Shop()
 Shop::Shop() :
 	mPanelItems(),
 	mSpriteBatch1(0),
-	mSpriteBatch2(0),
+    mSpriteBatch2(0),
+    mSpriteBatch3(0),
 	mGamePanel(0),
 	mBackgroundDecorations(),
 	mBackground(0),
@@ -320,16 +321,18 @@ Shop::Shop() :
 	mIsAnimationPurchaseTimeEpisodeElapsed(0),
 	mIsAnimationOnItemBoughtRunning(0),
 	mIsAnimationPurchaseRunning(0)
-	{
-		this->mSpriteBatch1 = SpriteBatch::create("TextureAtlas2");
+    {
+        this->mSpriteBatch1 = SpriteBatch::create("TextureAtlas2");
+        this->mSpriteBatch3 = SpriteBatch::create("TextureAtlas2");
 		this->mSpriteBatch2 = SpriteBatch::create("TextureAtlas5");
     
 		this->addChild(this->mSpriteBatch1);
+		this->addChild(this->mSpriteBatch3);
 		this->addChild(this->mSpriteBatch2);
 
 		this->mBackground = Entity::create("settings_bg@2x.png", this->mSpriteBatch1);
-		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
-		this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch1);
+		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch3);
+		this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", this->mSpriteBatch3);
     
 		ccBlendFunc bf = {GL_ONE, GL_ZERO};
 		this->mBackground->setBlendFunc(bf);
@@ -423,9 +426,8 @@ Shop::Shop() :
 		//this->mCoin = Entity::create("coins@2x.png", 5, 4, spriteBatch2);
 
 		EntityStructure structure2 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
-
-		this->mBackButton = Button::create(structure2, this->mSpriteBatch1, Options::BUTTONS_ID_SHOP_BACK, this);
-    
+        this->mBackButton = Button::create(structure2, this->mSpriteBatch3, Options::BUTTONS_ID_SHOP_BACK, this);
+        
 		for(int i = 0; i < 9; i++)
 		{
 			this->mWheels[i] = Entity::create("shop_wheel@2x.png", this->mSpriteBatch2);
@@ -491,9 +493,7 @@ Shop::Shop() :
 		}
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    
-		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
-
+        
 		this->mIcons[0]->setRotation(-45);
 		this->mIcons[0]->setScale(0.75);
 		this->mIcons[0]->animate(0.05);
@@ -524,6 +524,11 @@ Shop::Shop() :
 		this->mBackgroundDecorations[1]->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(192), Utils::coord(103));
     
 		this->mBackgroundDecorations[1]->setScale(-1);
+        
+        if(!AppDelegate::isAdvertisiment())
+        {
+            this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        }
 
 		this->mBuyItemPopup = BuyItem::create(this);
 		this->mGetCoinsPopup = GetCoins::create(this);
@@ -671,6 +676,34 @@ void Shop::onItemBought(int pItemId)
         {
             SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_UNLOCKED);
         }
+    }
+    
+    switch(pItemId)
+    {
+        case 20:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_FREEZER, 100);
+            break;
+        case 21:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_REDSKIN, 100);
+            break;
+        case 22:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_ROBOBIRD, 100);
+            break;
+        case 23:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_PIRATE, 100);
+            break;
+        case 24:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_MEXICAN, 100);
+            break;
+        case 25:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_COMANDO, 100);
+            break;
+        case 26:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_ZOMBIE, 100);
+            break;
+        case 27:
+            AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_SAMURAI, 100);
+            break;
     }
 }
 
@@ -985,6 +1018,12 @@ void Shop::onEnter()
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     soomla::CCStoreController::sharedStoreController()->storeOpening();
     #endif
+    
+    if(!AppDelegate::isAdvertisiment())
+    {
+        if(!this->mBackButton->isVisible()) this->mBackButton->create();
+        this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    }
 }
 
 void Shop::onExit()
@@ -1066,6 +1105,10 @@ void Shop::keyBackClicked(bool pSound)
     else if(this->mBoughtItem->getParent())
     {
         this->mBoughtItem->hide();
+    }
+    else if(this->mPaymentProceed->getParent())
+    {
+        this->mPaymentProceed->hide();
     }
     else
     {

@@ -187,8 +187,6 @@ void Loader::loadingCallBack(CCObject *obj)
     
     if(this->mNumberOfLoadedSprites == this->mNumberOfSprites)
     {
-        this->mLoadingText->setColor(ccc3(0, 150, 255));
-        
         this->mLoadingProgress = false;
         
         #if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
@@ -477,7 +475,6 @@ void Loader::onEnter()
     this->mLoadingText->setString(Options::TEXT_LOADING_1.string);
     this->mLoadingText->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(160), Utils::coord(50));
     this->mLoadingText->setOpacity(255.0);
-    this->mLoadingText->setColor(ccc3(255, 255, 255));
 
     SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
     

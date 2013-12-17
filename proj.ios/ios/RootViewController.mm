@@ -66,5 +66,12 @@
     [super dealloc];
 }
 
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 @end

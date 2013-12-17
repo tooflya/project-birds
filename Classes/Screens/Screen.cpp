@@ -34,8 +34,6 @@
 Screen::~Screen()
 {
     this->removeAllChildrenWithCleanup(true);
-    
-    CCLog("DEALLOCING OF PREVIOUS SCREEN");
 }
 
 Screen::Screen()
@@ -55,6 +53,10 @@ Screen::Screen()
 // ===========================================================
 
 void Screen::onTouchButtonsCallback(const int pAction, const int pID)
+{
+}
+
+void Screen::onGooglePlusSignInSucceeded()
 {
 }
 

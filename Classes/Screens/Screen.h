@@ -122,7 +122,9 @@ class Screen : public CCScene, public Touchable, public ButtonReceiver, public C
         // ===========================================================
     
         void onTouchButtonsCallback(const int pAction, const int pID);
-        
+    
+        virtual void onGooglePlusSignInSucceeded();
+    
         // ===========================================================
         // Override Methods
         // ===========================================================
