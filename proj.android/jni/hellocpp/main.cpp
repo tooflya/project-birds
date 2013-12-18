@@ -1,3 +1,4 @@
+#include "GameCenter.cpp"
 #include "AppDelegate.cpp"
 #include "Options.cpp"
 #include "AppDelegate.cpp"
@@ -12,6 +13,7 @@
 #include "PlayButton.cpp"
 #include "Text.cpp"
 #include "Confetti.cpp"
+#include "CCDate.cpp"
 #include "Star.cpp"
 #include "ImpulseEntity.cpp"
 #include "Bird.cpp"
@@ -94,6 +96,7 @@
 #include "MapDescriptionList.cpp"
 #include "SurpriseLevel.cpp"
 #include "InAppPurchaseEventHandler.cpp"
+#include "GooglePlayAuthorize.cpp"
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
 #include <platform/CCPlatformConfig.h>

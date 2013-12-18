@@ -27,6 +27,7 @@ PleaseRate::~PleaseRate()
 PleaseRate::PleaseRate(CCNode* pParent) :
     Popup(pParent),
 	mRateButton(0),
+    mAction(false),
 	mLights()
     {
         this->mLights = EntityManager::create(2, Entity::create("get_coins_light@2x.png"), this->mSpriteBatch2, -1);
@@ -86,6 +87,8 @@ void PleaseRate::onTouchButtonsCallback(const int pAction, const int pID)
 
                 this->hide();
                 
+                this->mAction = true;
+                
             break;
         }
         break;
@@ -111,6 +114,17 @@ void PleaseRate::onShow()
 void PleaseRate::onHide()
 {
     Popup::onHide();
+    
+    if(this->mAction)
+    {
+        #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        callStaticVoidMethodWithString("open", "store");
+        #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+        AppDelegate::mGameCenter->open(3);
+        #endif
+    }
+    
+    this->mAction = false;
 }
 
 void PleaseRate::show()

@@ -31,6 +31,8 @@ class Exit : public Popup
         // ===========================================================
         // Constructors
         // ===========================================================
+    
+        Exit(CCNode* pParent);
 
         // ===========================================================
         // Methods
@@ -82,7 +84,7 @@ class Exit : public Popup
         // Constructors
         // ===========================================================
     
-        Exit(CCNode* pParent);
+        static Exit* create(Screen* pScreen);
     
         ~Exit();
 

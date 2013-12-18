@@ -112,11 +112,6 @@ void Button::setText(Textes pParams)
     {
         this->mText->removeFromParentAndCleanup(true);
         
-        if(this->mText->mShadow != NULL)
-        {
-            this->mText->mShadow->removeFromParentAndCleanup(true);
-        }
-        
         this->mText = NULL;
     }
 

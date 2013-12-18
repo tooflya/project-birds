@@ -31,6 +31,8 @@ Exit::Exit(CCNode* pParent) :
 	mLight(0),
 	mLights(0)
     {
+        this->mSpriteBatch2->setZOrder(2);
+
         this->mCloseButton = Button::create("btn_sprite_close@2x.png", 1, 1, this->mSpriteBatch, Options::BUTTONS_ID_POPUP_CLOSE, this);
         this->mLight = Entity::create("popup_quit_picture_light_main@2x.png", this->mSpriteBatch2);
         this->mLights = EntityManager::create(3, Entity::create("popup_quit_picture_light_2@2x.png"), this->mSpriteBatch2);
@@ -75,6 +77,15 @@ Exit::Exit(CCNode* pParent) :
         this->mDoAction = false;
     }
 
+Exit* Exit::create(Screen* pScreen)
+{
+    Exit* popup = new Exit(pScreen);
+    popup->autorelease();
+    popup->retain();
+    
+    return popup;
+}
+
 // ===========================================================
 // Methods
 // ===========================================================
@@ -117,7 +128,7 @@ void Exit::update(float pDeltaTime)
 {
     Popup::update(pDeltaTime);
     
-    if(this->mBackground->getScaleX() == 1.0)
+    if(this->getScaleX() == 1.0)
     {
         for(int i = 0; i < 3; i++)
         {
@@ -163,19 +174,21 @@ void Exit::hide()
 {
     Popup::hide();
     
-    this->mLight->runAction(CCFadeTo::create(0.3, 0.0));
+    this->mLight->runAction(CCFadeTo::create(0.1, 0.0));
     
     for(int i = 0; i < 3; i++)
     {
         Entity* light = (Entity*) this->mLights->objectAtIndex(i);
                          
-        light->runAction(CCFadeTo::create(0.3, 0.0));
+        light->runAction(CCFadeTo::create(0.1, 0.0));
     }
 }
 
 void Exit::show()
 {
     Popup::show();
+    
+    this->mLight->setOpacity(0.0);
     
     for(int i = 0; i < 3; i++)
     {

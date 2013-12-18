@@ -39,6 +39,8 @@ ModeHelpList::ModeHelpList(CCNode* pParent) :
 
         this->mText[0]->setColor(ccc3(167.0, 65.0, 7.0));
         this->mText[1]->setColor(ccc3(167.0, 65.0, 7.0));
+        
+        this->mText[1]->cocos2d::CCLabelTTF::enableShadow(CCSize(Utils::coord(1), -Utils::coord(1)), 255.0, 2.0, true);
     }
 
 ModeHelpList* ModeHelpList::create(CCNode* pParent)

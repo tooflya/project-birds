@@ -6,6 +6,8 @@
 #include "Shop.h"
 #include "Settings.h"
 #include "Mode.h"
+#include "Date.h"
+#include "EziSocialObject.h"
 
 // ===========================================================
 // Inner Classes
@@ -31,9 +33,10 @@ Menu::~Menu()
     CC_SAFE_RELEASE(this->mTempPublisherInAppExplainPopup);
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    
+    CC_SAFE_RELEASE(this->mGooglePlayAuthorizePopup);
     CC_SAFE_RELEASE(this->mExitPopup);
-    
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CC_SAFE_RELEASE(this->mFacebookAuthorizePopup);
     #endif
 }
 
@@ -52,7 +55,9 @@ Menu::Menu() :
 	mTempPublisherInAppExplainPopup(0),
 	mMapPopup(0),
     mTutorial(0),
-	mPlayDecorationColorUpdateTimeElapsed(0)
+	mPlayDecorationColorUpdateTimeElapsed(0),
+    mGooglePlayAuthorizePopup(0),
+    mFacebookAuthorizePopup(0)
 	{
 		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
 		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas22");
@@ -79,9 +84,10 @@ Menu::Menu() :
 		spriteBatch2->setBlendFunc(bf);
 
 		#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-
-		this->mExitPopup = new Exit(this);
-
+		this->mExitPopup = Exit::create(this);
+        this->mGooglePlayAuthorizePopup = GooglePlayAuthorize::create(this);
+        #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+        this->mFacebookAuthorizePopup = FacebookAuthorize::create(this);
 		#endif
 
 		this->mRatePopup = PleaseRate::create(this);
@@ -168,6 +174,30 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
 				case Options::BUTTONS_ID_MENU_PLAY:
+                    
+                    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                    if(!AppDelegate::mGameCenter->isSignedIn())
+                    {
+                        this->mGooglePlayAuthorizePopup->show();
+                        
+                        return;
+                    }
+                    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+                    if(!EziSocialObject::sharedObject()->isFacebookSessionActive())
+                    {
+                        this->mFacebookAuthorizePopup->show();
+                        
+                        return;
+                    }
+                    #endif
+                    
+                    if(!AppDelegate::isVideoShowed())
+                    {
+                        AppDelegate::mGameCenter->playVideo(AppDelegate::isMusicEnable());
+                    
+                        CCUserDefault::sharedUserDefault()->setBoolForKey("is_video_showed", true);
+                        CCUserDefault::sharedUserDefault()->flush();
+                    }
 
 					#if CC_PRELOAD_LEVEL > CC_PRELOAD_NOTHING
 					AppDelegate::screens->set(Screen::SCREEN_MODE);
@@ -186,18 +216,30 @@ void Menu::onTouchButtonsCallback(const int pAction, const int pID)
 
                 break;
                 case Options::BUTTONS_ID_MENU_TWITTER:
-
-                    // TODO: Call JNI
+                    
+                    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                    callStaticVoidMethodWithString("open", "twitter");
+                    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+                    AppDelegate::mGameCenter->open(0);
+                    #endif
 
                 break;
                 case Options::BUTTONS_ID_MENU_FACEBOOK:
-
-                    // TODO: Call JNI
+                    
+                    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                    callStaticVoidMethodWithString("open", "facebook");
+                    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+                    AppDelegate::mGameCenter->open(1);
+                    #endif
 
                 break;
                 case Options::BUTTONS_ID_MENU_VK:
                     
-                    // TODO: Call JNI
+                    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                    callStaticVoidMethodWithString("open", "vk");
+                    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+                    AppDelegate::mGameCenter->open(2);
+                    #endif
                     
                 break;
             }
@@ -267,7 +309,7 @@ void Menu::onEnterTransitionDidFinish()
 
 void Menu::onShow()
 {
-    int dn = Utils::millisecondNow() / 1000 / 86400000;
+    int dn = (new CCDate())->mday();
     int dl = AppDelegate::getLastVisitDaysCount();
     
     if(!AppDelegate::isRate() && AppDelegate::IS_ALREADY_PLAYED)
@@ -307,6 +349,18 @@ void Menu::keyBackClicked(bool pSound)
             this->mMapDescription->hide();
         }
     }
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    else if(this->mGooglePlayAuthorizePopup->getParent())
+    {
+        this->mGooglePlayAuthorizePopup->mAction = true;
+        this->mGooglePlayAuthorizePopup->hide();
+    }
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    else if(this->mFacebookAuthorizePopup->getParent())
+    {
+        this->mFacebookAuthorizePopup->hide();
+    }
+    #endif
     else if(this->mRatePopup->getParent())
     {
         this->mRatePopup->hide();
@@ -324,5 +378,13 @@ void Menu::keyBackClicked(bool pSound)
     }
 }
 #endif
+
+void Menu::onGooglePlusSignInSucceeded()
+{
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    this->mGooglePlayAuthorizePopup->mAction = true;
+    this->mGooglePlayAuthorizePopup->hide();
+    #endif
+}
 
 #endif

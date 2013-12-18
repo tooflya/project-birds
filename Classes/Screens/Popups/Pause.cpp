@@ -189,12 +189,12 @@ void Pause::onTouchButtonsCallback(const int pAction, const int pID)
                 break;
             case Options::BUTTONS_ID_PAUSE_LEADERBOARD:
                 
-                // TODO: Open leaderboard.
+                AppDelegate::mGameCenter->showScores();
                 
                 break;
             case Options::BUTTONS_ID_PAUSE_ACHIEVEMENTS:
                 
-                // TODO: Open achievements.
+                AppDelegate::mGameCenter->showAchievements();
                 
                 break;
             case Options::BUTTONS_ID_PAUSE_MODE:

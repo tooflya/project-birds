@@ -4,6 +4,7 @@
 #include "Map.h"
 
 #include "Menu.h"
+#include "Date.h"
 
 // ===========================================================
 // Inner Classes
@@ -480,7 +481,7 @@ void Map::onShow()
     this->mAnimationCount = 0;
     this->mAnimationCount2 = 0;
     
-    AppDelegate::setLastVisitDaysCount(Utils::millisecondNow() / 1000 / 86400000);
+    AppDelegate::setLastVisitDaysCount((new CCDate())->mday());
 }
 
 void Map::onHide()

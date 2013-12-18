@@ -82,6 +82,9 @@ void InAppPurchaseEventHandler::onItemPurchased(soomla::CCPurchasableVirtualItem
         case 8:
         if(Options::PAYMENT_PROCEED_HANDLER != NULL)
         {
+            CCUserDefault::sharedUserDefault()->setBoolForKey("ads", false);
+            CCUserDefault::sharedUserDefault()->flush();
+
             static_cast<PaymentProceed*>(Options::PAYMENT_PROCEED_HANDLER)->onItemPurchased();
         }
         break;

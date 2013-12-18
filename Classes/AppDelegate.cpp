@@ -26,6 +26,10 @@ ScreenManager* AppDelegate::screens = NULL;
 bool AppDelegate::IS_ALREADY_PLAYED = false;
 bool AppDelegate::IS_IPOD = true;
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+GameCenter* AppDelegate::mGameCenter = new GameCenter();
+#endif
+
 // ===========================================================
 // Fields
 // ===========================================================
@@ -152,7 +156,7 @@ void AppDelegate::install(bool soft)
     if(AppDelegate::getLastVisitDaysCount() != 0)
     {
         CCUserDefault::sharedUserDefault()->setIntegerForKey("last_visit_days_count", 0);
-    } else CCUserDefault::sharedUserDefault()->setIntegerForKey("last_visit_days_count", -1);
+    } else if(!soft) CCUserDefault::sharedUserDefault()->setIntegerForKey("last_visit_days_count", -1);
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_COINS_ID[1], 0);
@@ -161,6 +165,19 @@ void AppDelegate::install(bool soft)
 
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[0], 0);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(Options::SAVE_DATA_BEST_RESULT[1], 0);
+
+    if(!soft) CCUserDefault::sharedUserDefault()->setBoolForKey("google_plus_entered", false);
+    if(!soft) CCUserDefault::sharedUserDefault()->setBoolForKey("ads", true);
+    if(!soft) CCUserDefault::sharedUserDefault()->setBoolForKey("is_video_showed", false);
+    
+    if(soft)
+    {
+        AppDelegate::mGameCenter->clearAllAchievements();
+        AppDelegate::mGameCenter->clearAllScores();
+    }
+    
+    AppDelegate::setTotalBirdsKilled();
+    AppDelegate::setTotalLevelsUnlocked();
 
     CCUserDefault::sharedUserDefault()->setBoolForKey("mode_0_unlocked", false);
     CCUserDefault::sharedUserDefault()->setBoolForKey("mode_1_unlocked", false);
@@ -393,8 +410,11 @@ bool AppDelegate::isSomeBonusBirdBought()
 void AppDelegate::setLastVisitDaysCount(int pCount)
 {
     CCUserDefault::sharedUserDefault()->setIntegerForKey("last_visit_days_count", pCount);
-    
     CCUserDefault::sharedUserDefault()->flush();
+
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    callStaticVoidMethodWithInt("com/tooflya/projectbirds/notify/NotifyService", "setLastVisitDaysCount", pCount);
+    #endif
 }
 
 int AppDelegate::getLastVisitDaysCount()
@@ -442,6 +462,10 @@ void AppDelegate::setLivesMustRestore(int pIndex, bool pMust)
         CCUserDefault::sharedUserDefault()->setIntegerForKey(text, Utils::millisecondNow());
         sprintf(text, "live_%d_restoring", pIndex);
         CCUserDefault::sharedUserDefault()->setBoolForKey(text, true);
+
+        #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        callStaticVoidMethod("com/tooflya/projectbirds/notify/NotifyService", "setLivesMustRestore");
+        #endif
     }
     else
     {
@@ -495,6 +519,67 @@ int AppDelegate::getLiveNearestReleaseTime(int pIndex)
     return time;
 }
 
+void AppDelegate::nativeOnGooglePlusSignInSucceeded()
+{
+    if(screens == NULL) return;
+
+    CCUserDefault::sharedUserDefault()->setBoolForKey("google_plus_entered", true);
+    
+    screens->mScreens[screens->mCurrentScreenIndex]->onGooglePlusSignInSucceeded();
+}
+
+bool AppDelegate::isAdvertisiment()
+{
+    #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+    return false;
+    #endif
+
+    return CCUserDefault::sharedUserDefault()->getBoolForKey("ads");
+}
+
+int AppDelegate::getTotalBirdsKilled()
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey("leader_board_birds_killed");
+}
+
+int AppDelegate::getTotalLevelsUnlocked()
+{
+    return CCUserDefault::sharedUserDefault()->getIntegerForKey("leader_board_levels_unlocked");
+}
+
+void AppDelegate::setTotalBirdsKilled()
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("leader_board_birds_killed", 0);
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+void AppDelegate::setTotalLevelsUnlocked()
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("leader_board_levels_unlocked", 0);
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+void AppDelegate::addTotalBirdsKilled(int add)
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("leader_board_birds_killed", AppDelegate::getTotalBirdsKilled() + add);
+    CCUserDefault::sharedUserDefault()->flush();
+    
+    AppDelegate::mGameCenter->postScore(Options::LEADERBOARD_BIRDS, AppDelegate::getTotalBirdsKilled());
+}
+
+void AppDelegate::addTotalLevelsUnlocked(int add)
+{
+    CCUserDefault::sharedUserDefault()->setIntegerForKey("leader_board_levels_unlocked", AppDelegate::getTotalLevelsUnlocked() + add);
+    CCUserDefault::sharedUserDefault()->flush();
+    
+    AppDelegate::mGameCenter->postScore(Options::LEADERBOARD_LEVELS, AppDelegate::getTotalLevelsUnlocked());
+}
+
+bool AppDelegate::isVideoShowed()
+{
+    return CCUserDefault::sharedUserDefault()->getBoolForKey("is_video_showed");
+}
+
 // ===========================================================
 // Override Methods
 // ===========================================================
@@ -512,10 +597,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCDictionary *storeParams = CCDictionary::create();
     
     storeParams->setObject(CCString::create(Options::SOOMLA_BASE_64_KEY), "soomSec");
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     storeParams->setObject(CCString::create(Options::GOOGLE_PLAY_BASE_64_KEY), "androidPublicKey");
+    #endif
     storeParams->setObject(CCString::create(Options::SOOMLA_CUSTOM_BASE_64_KEY), "customSecret");
     
-    #if COCOS2D_DEBUG >= 1
+    #if COCOS2D_DEBUG >= 1 && CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     storeParams->setObject(CCBool::create(true), "androidTestMode");
     #endif
     
@@ -639,7 +726,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     if(!AppDelegate::isInstalled() || AppDelegate::lastVersion() != Options::VERSION)
     {
-        AppDelegate::install(true);
+        AppDelegate::install(false); // NOT SOFT INSTALLATION
     }
 
     Options::init();
@@ -668,6 +755,10 @@ void AppDelegate::applicationWillEnterForeground()
     {
         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
     }
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    AppDelegate::mGameCenter->login();
+    #endif
 }
 
 bool AppDelegate::isGetWindeScreen()

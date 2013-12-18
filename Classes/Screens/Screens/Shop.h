@@ -39,6 +39,7 @@ class Shop : public Screen
     
         SpriteBatch* mSpriteBatch1;
         SpriteBatch* mSpriteBatch2;
+        SpriteBatch* mSpriteBatch3;
     
         Entity* mGamePanel;
         Entity* mBackgroundDecorations[2];

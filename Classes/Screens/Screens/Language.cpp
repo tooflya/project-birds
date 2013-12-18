@@ -32,17 +32,22 @@ Language::Language() :
 	mTextes()
 	{
 		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas2");
+		SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas2");
 		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas4");
 
 		this->mBackground = Entity::create("settings_bg@2x.png", spriteBatch);
-		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
-		this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", spriteBatch);
+		this->mBackgroundDecorations[0] = Entity::create("bg_detail_stripe@2x.png", spriteBatch3);
+		this->mBackgroundDecorations[1] = Entity::create("bg_detail_stripe@2x.png", spriteBatch3);
 
 		EntityStructure structure1 = {"btn_sprite@2x.png", 1, 1, 162, 0, 162, 162};
-		this->mBackButton = Button::create(structure1, spriteBatch, Options::BUTTONS_ID_LANGUAGE_BACK, this);
+        this->mBackButton = Button::create(structure1, spriteBatch3, Options::BUTTONS_ID_LANGUAGE_BACK, this);
 
 		this->addChild(spriteBatch);
+		this->addChild(spriteBatch3);
 		this->addChild(spriteBatch2);
+        
+		ccBlendFunc bf = {GL_ONE, GL_ZERO};
+		spriteBatch->setBlendFunc(bf);
     
         if(Options::IS_BUILD_FOR_UBINURI)
         {
@@ -108,9 +113,12 @@ Language::Language() :
 		this->mLanguageIndicator = Entity::create("settings_lang_check@2x.png", spriteBatch2);
     
 		this->mBackground->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y);
-    
-		this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
-    
+        
+        if(!AppDelegate::isAdvertisiment())
+        {
+            this->mBackButton->create()->setCenterPosition(Utils::coord(100), Utils::coord(100));
+        }
+        
 		this->mLanguageIndicator->create();
     
 		this->mBackgroundDecorations[0]->create()->setCenterPosition(Utils::coord(192), Options::CAMERA_HEIGHT - Utils::coord(103));
@@ -323,6 +331,12 @@ void Language::update(float pDeltaTime)
 void Language::onEnter()
 {
     Screen::onEnter();
+    
+    if(!AppDelegate::isAdvertisiment())
+    {
+        if(!this->mBackButton->isVisible()) this->mBackButton->create();
+        this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    }
 }
 
 void Language::onExit()

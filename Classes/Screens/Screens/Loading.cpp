@@ -162,6 +162,12 @@ void Loading::startLoading()
     
     this->mLoadingProgressTime = 0.5;
     this->mLoadingProgressTimeElapsed = 0;
+    
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    AppDelegate::mGameCenter->login();
+    #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    if(CCUserDefault::sharedUserDefault()->getBoolForKey("google_plus_entered")) AppDelegate::mGameCenter->login();
+    #endif
 }
 
 // ===========================================================

@@ -2,6 +2,7 @@
 #define CONST_BOUGHTITEM
 
 #include "BoughtItem.h"
+#include "EziSocialObject.h"
 
 // ===========================================================
 // Inner Classes
@@ -82,9 +83,9 @@ BoughtItem::BoughtItem(CCNode* pParent) :
 		this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(350));
 		this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(450));
     
-		this->mTwitterButton->setScale(0);
-		this->mFacebookButton->setScale(0);
-		this->mVkButton->setScale(0);
+		//this->mTwitterButton->setScale(0);
+		//this->mFacebookButton->setScale(0);
+		//this->mVkButton->setScale(0);
 
 		this->mTwitterButton->setModal(true);
 		this->mFacebookButton->setModal(true);
@@ -133,21 +134,26 @@ void BoughtItem::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_SHARE:
                 
-                this->mTwitterButton->runAction(CCScaleTo::create(0.1, this->mShare ? 0.0 : 1.0));
-                this->mFacebookButton->runAction(CCScaleTo::create(0.2, this->mShare ? 0.0 : 1.0));
-                this->mVkButton->runAction(CCScaleTo::create(0.3, this->mShare ? 0.0 : 1.0));
+                //this->mTwitterButton->runAction(CCScaleTo::create(0.1, this->mShare ? 0.0 : 1.0));
+                //this->mFacebookButton->runAction(CCScaleTo::create(0.2, this->mShare ? 0.0 : 1.0));
+                //this->mVkButton->runAction(CCScaleTo::create(0.3, this->mShare ? 0.0 : 1.0));
                 
                 this->mShare = !this->mShare;
                 
             break;
             case Options::BUTTONS_ID_SHARE_TWITTER:
                 
-                //
+                EziSocialObject::sharedObject()->tweet("123", "");
                 
             break;
             case Options::BUTTONS_ID_SHARE_FACEBOOK:
                 
-                //
+                EziSocialObject::sharedObject()->postMessageOnWall("EziSocial Plugin by EziByte",
+                                                                   "Have you tried it?",
+                                                                   "Try EziSocial Plugin developed by EziByte team to harness the power of Facebook APIs in your games",
+                                                                   "Try EziSocial Plugin developed by EziByte team to harness the power of Facebook APIs in your games",
+                                                                   "https://1.gravatar.com/avatar/5c85a0424f7948506baed85755bc0f8d",
+                                                                   "http://ezibyte.com");
                 
             break;
             case Options::BUTTONS_ID_SHARE_VK:
@@ -270,7 +276,7 @@ void BoughtItem::update(float pDeltaTime)
         }
     }
     
-    if(true)
+    if(!this->mShowAnimation && !this->mHideAnimation)
     {
         if(this->mTapToContinueAnimationReverse)
         {
@@ -320,9 +326,9 @@ void BoughtItem::onEnter()
     
     this->mShare = false;
     
-    this->mTwitterButton->setScale(0);
-    this->mFacebookButton->setScale(0);
-    this->mVkButton->setScale(0);
+    //this->mTwitterButton->setScale(0);
+    //this->mFacebookButton->setScale(0);
+    //this->mVkButton->setScale(0);
     
     this->setRegisterAsTouchable(true);
 }

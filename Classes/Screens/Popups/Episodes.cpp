@@ -10,17 +10,17 @@
 // Inner Classes
 // ===========================================================
 
-class Background1 : public CCNodeRGBA
+class Background2 : public CCNodeRGBA
 {
 public:
-    Background1()
+    Background2()
     {
         this->setOpacity(0);
     }
     
-    static Background1* create()
+    static Background2* create()
     {
-        Background1* background = new Background1();
+        Background2* background = new Background2();
         background->autorelease();
 
         return background;
@@ -38,11 +38,11 @@ public:
     }
 };
 
-class BackgroundEntity : public Entity
+class BackgroundEntity2 : public Entity
 {
 public:
     float p;
-    BackgroundEntity(const char* pTextureFileName, CCNode* pParent) :
+    BackgroundEntity2(const char* pTextureFileName, CCNode* pParent) :
     Entity(pTextureFileName, pParent),
 	p(0)
     {
@@ -69,9 +69,9 @@ public:
         kmGLPopMatrix();
     }
     
-    static BackgroundEntity* create(const char* pTextureFileName, CCNode* pParent)
+    static BackgroundEntity2* create(const char* pTextureFileName, CCNode* pParent)
     {
-        BackgroundEntity* entity = new BackgroundEntity(pTextureFileName, pParent);
+        BackgroundEntity2* entity = new BackgroundEntity2(pTextureFileName, pParent);
         entity->autorelease();
         entity->retain();
         
@@ -113,13 +113,13 @@ Episodes::Episodes(CCNode* pParent) :
 		this->setPosition(ccp(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y));
     
 		this->ignoreAnchorPointForPosition(false);
-		this->mSquare = Background1::create();
-    
+		this->mSquare = Background2::create();
+
 		SpriteBatch* spriteBatch = SpriteBatch::create("TextureAtlas13");
 		SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas4");
 		SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas18");
 
-		this->mBackground = BackgroundEntity::create("progress_map.png", this);
+		this->mBackground = BackgroundEntity2::create("progress_map.png", this);
         this->mPointLight = Entity::create("progress_map_episode_light@2x.png", this->mBackground);
         this->mPointLight->create();
         

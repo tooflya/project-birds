@@ -150,6 +150,8 @@ bool List::ccTouchBegan(CCTouch* touch, CCEvent* event)
     this->mStartPositionCoordinateX = this->getPosition().x;
     this->mStartPositionCoordinateY = this->getPosition().y;
     
+    this->ml = touch->getLocation().x;
+    
     return this->containsTouchLocation(touch);
 }
 
@@ -176,6 +178,13 @@ void List::ccTouchMoved(CCTouch* touch, CCEvent* event)
         }
         
         this->setPosition(ccp(x, y));
+        
+        if(abs(this->ml - touch->getLocation().x) >= Utils::coord(10))
+        {
+            this->ml = touch->getLocation().x;
+            
+            this->mLastMoveTime = Utils::millisecondNow();
+        }
     }
 }
 
@@ -216,6 +225,11 @@ void List::ccTouchEnded(CCTouch* touch, CCEvent* event)
     this->mLastDistanceY = this->mStartPositionCoordinateY - y;
 
     this->mPostUpdate = kWillPostUpdate;
+    CCLog("%lu", Utils::millisecondNow() - this->mLastMoveTime);
+    if(Utils::millisecondNow() - this->mLastMoveTime >= 100)
+    {
+        this->mPostUpdate = false;
+    }
 
     this->mSpeedY = this->mLastDistanceY / 10.0;
 }

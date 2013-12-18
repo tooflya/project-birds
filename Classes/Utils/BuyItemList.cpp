@@ -49,9 +49,10 @@ BuyItemList::BuyItemList(CCNode* pParent) :
 
         this->mIcon = Entity::create("shop_item_icon@2x.png", 10, 6, this->mSpriteBatch);
 
-		Textes textes1 = {"", "Comic Sans MS", 24, -1};
+		Textes textes1 = {"", Options::FONT, 24, -1};
 
         this->mDescriptionText = Text::create(textes1, ccp(Utils::coord(450), 0), this);
+        this->mDescriptionText->cocos2d::CCLabelTTF::enableShadow(CCSize(Utils::coord(1), -Utils::coord(1)), 255.0, 2.0, true);
 
         this->mStars[0] = Entity::create("popup_item_rate_stars@2x.png", 1, 2, this->mSpriteBatch);
         this->mStars[1] = Entity::create("popup_item_rate_stars@2x.png", 1, 2, this->mSpriteBatch);
@@ -73,7 +74,7 @@ BuyItemList::BuyItemList(CCNode* pParent) :
         this->mCoinsIcon->setScale(0.75);
         this->mCoinsIcon->animate(0.05);
 
-        this->mPropertiesIcon = Entity::create("icon_properties@2x.png", 1, 2, this->mSpriteBatch);
+        this->mPropertiesIcon = Entity::create("icon_properties@2x.png", 1, 3, this->mSpriteBatch);
         this->mPropertiesIcon->create()->setCenterPosition(Options::CAMERA_CENTER_X + Utils::coord(15), Options::CAMERA_CENTER_Y + Utils::coord(112));
 
 		Textes textes2 = {"0", Options::FONT, 32, 0};
@@ -172,6 +173,10 @@ void BuyItemList::onEnter()
     if(Shop::CLICKED_ITEM_ID < Shop::ITEMS_COUNT[0])
     {
         this->mPropertiesIcon->setCurrentFrameIndex(1);
+    }
+    else if(Shop::CLICKED_ITEM_ID == 45 || Shop::CLICKED_ITEM_ID == 46)
+    {
+        this->mPropertiesIcon->setCurrentFrameIndex(2);
     }
     else
     {

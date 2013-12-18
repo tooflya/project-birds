@@ -20,6 +20,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
                     $(LOCAL_PATH)/../../Classes/Graphics \
                     $(LOCAL_PATH)/../../Classes/TEST \
                     $(LOCAL_PATH)/../../Classes/InApp \
+                    $(LOCAL_PATH)/../../Classes/GameCenter \
+                    $(LOCAL_PATH)/../../Classes/GameCenter/include \
 
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

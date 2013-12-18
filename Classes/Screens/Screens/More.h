@@ -20,16 +20,13 @@ class More : public Screen
         // Fields
         // ===========================================================
     
-        Entity* mIcons[4];
-        Entity* mTextBackgrounds[4];
-    
-        Text* mTextText[4];
-    
-        Button* mTextPluses[4];
-    
         Entity* mBackground;
+        Entity* mBackgroundDecorations[2];
     
         Button* mBackButton;
+        Button* mVideoButton;
+        Button* mMoreGamesButton;
+        Button* mPrivacyPolicyButton;
     
         // ===========================================================
         // Constructors

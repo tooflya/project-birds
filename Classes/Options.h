@@ -284,6 +284,26 @@ class Options
         static const int BUTTONS_EPISODE_VK = 2208;
         static const int BUTTONS_EPISODE_TWITTER = 2209;
         static const int BUTTONS_EPISODE_FACEBOOK = 2210;
+        static const int BUTTONS_ID_GOOGLE_PLUS_CANCEL = 2301;
+        static const int BUTTONS_ID_MORE_VIDEO = 2401;
+        static const int BUTTONS_ID_MORE_MORE_GAMES = 2402;
+        static const int BUTTONS_ID_MORE_PRIVACY_POLICY = 2403;
+    
+        static const char* ACHIEVEMENTS_UNLOCK_CLASSIC_MODE;
+        static const char* ACHIEVEMENTS_UNLOCK_ARCADE_MODE;
+        static const char* ACHIEVEMENTS_UNLOCK_FREEZER;
+        static const char* ACHIEVEMENTS_UNLOCK_REDSKIN;
+        static const char* ACHIEVEMENTS_UNLOCK_MEXICAN;
+        static const char* ACHIEVEMENTS_UNLOCK_SAMURAI;
+        static const char* ACHIEVEMENTS_UNLOCK_PIRATE;
+        static const char* ACHIEVEMENTS_UNLOCK_ROBOBIRD;
+        static const char* ACHIEVEMENTS_UNLOCK_COMANDO;
+        static const char* ACHIEVEMENTS_UNLOCK_ZOMBIE;
+    
+        static const char* LEADERBOARD_BIRDS;
+        static const char* LEADERBOARD_LEVELS;
+        static const char* LEADERBOARD_CLASSIC;
+        static const char* LEADERBOARD_ARCADE;
     
         static Textes TEXT_SETTINGS_CREDITS;
         static Textes TEXT_SETTINGS_PROGRESS;
@@ -384,6 +404,10 @@ class Options
         static Textes TEXT_LEVELS_TASKS[80][3];
         static Textes TEXT_LOADING_LANGUAGE;
         static Textes TEXT_LOADING_RESET;
+        static Textes TEXT_GOOGLE_PLUS[2];
+        static Textes TEXT_FACEBOOK[2];
+        static Textes TEXT_SING_IN;
+        static Textes TEXT_MORE[3];
     
         static const char* IN_APP_COINS_PACK_1_ID;
         static const char* IN_APP_COINS_PACK_2_ID;

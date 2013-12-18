@@ -1,20 +1,11 @@
-//
-//  NuclearPizzaWarAppController.mm
-//  NuclearPizzaWar
-//
-//  Created by Igor Mats on 5/2/13.
-//  Copyright __MyCompanyName__ 2013. All rights reserved.
-//
 #import <UIKit/UIKit.h>
+#import <EziSocialSDK/EziSocialManager.h>
 #import "AppController.h"
 #import "cocos2d.h"
 #import "EAGLView.h"
 #import "AppDelegate.h"
 
 #import "RootViewController.h"
-
-//#import <MPMoviePlayerViewController.h>
-#import <MediaPlayer/MediaPlayer.h>
 
 @implementation AppController
 
@@ -24,14 +15,10 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-// cocos2d application instance
 static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Override point for customization after application launch.
-    
-    // Add the view controller's view to the window and display.
     window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     EAGLView *__glView = [EAGLView viewWithFrame: [window bounds]
                                      pixelFormat: kEAGLColorFormatRGBA8
@@ -44,20 +31,16 @@ static AppDelegate s_sharedApplication;
     UIApplication* app = [UIApplication sharedApplication];
     app.idleTimerDisabled = YES;
     
-    // Use RootViewController manage EAGLView
     viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
     viewController.wantsFullScreenLayout = YES;
     viewController.view = __glView;
     
-    // Set RootViewController to window
-    if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
+    if([[UIDevice currentDevice].systemVersion floatValue] < 6.0)
     {
-        // warning: addSubView doesn't work on iOS6
         [window addSubview: viewController.view];
     }
     else
     {
-        // use this method on ios6
         [window setRootViewController:viewController];
     }
     
@@ -79,47 +62,64 @@ static AppDelegate s_sharedApplication;
         s_sharedApplication.IS_IPOD = false;
     }
     
-    //[self PlayVideo:0 fullscreen:1 file:@"a" fileExtension:@"m4v"];
+    [[EziSocialManager sharedManager] setDebug: NO];
+    
     cocos2d::CCApplication::sharedApplication()->run();
+    
     return YES;
 }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
     cocos2d::CCDirector::sharedDirector()->pause();
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
     cocos2d::CCDirector::sharedDirector()->resume();
+    
+    [[EziSocialManager sharedManager] handleApplicationDidBecomeActive];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-     If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
-     */
     cocos2d::CCApplication::sharedApplication()->applicationDidEnterBackground();
+    
+    UILocalNotification* notification1 = [[UILocalNotification alloc] init];
+    UILocalNotification* notification2 = [[UILocalNotification alloc] init];
+    UILocalNotification* notification3 = [[UILocalNotification alloc] init];
+
+    notification1.fireDate = [NSDate dateWithTimeIntervalSinceNow:3600*10];
+    notification2.fireDate = [NSDate dateWithTimeIntervalSinceNow:3600*24];
+    notification3.fireDate = [NSDate dateWithTimeIntervalSinceNow:60*30];
+    
+    notification1.alertBody = @"We are miss you! Play our awesome game again!"; // TODO: Need to translate this strings
+    notification2.alertBody = @"Daily revenue is available! So, come and get it now!";
+    notification3.alertBody = @"Gold lives restored! So, come and spend it right now!";
+
+    notification1.timeZone = [NSTimeZone defaultTimeZone];
+    notification2.timeZone = [NSTimeZone defaultTimeZone];
+    notification3.timeZone = [NSTimeZone defaultTimeZone];
+    
+    notification1.applicationIconBadgeNumber = 1;
+    notification2.applicationIconBadgeNumber = 1;
+    notification3.applicationIconBadgeNumber = 1;
+    
+    notification1.soundName = UILocalNotificationDefaultSoundName;
+    notification2.soundName = UILocalNotificationDefaultSoundName;
+    notification3.soundName = UILocalNotificationDefaultSoundName;
+
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification1];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification2];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification3];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    /*
-     Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
-     */
     cocos2d::CCApplication::sharedApplication()->applicationWillEnterForeground();
+
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    /*
-     Called when the application is about to terminate.
-     See also applicationDidEnterBackground:.
-     */
 }
 
 
@@ -127,107 +127,12 @@ static AppDelegate s_sharedApplication;
 #pragma mark Memory management
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
-     */
     cocos2d::CCDirector::sharedDirector()->purgeCachedData();
 }
 
 
 - (void)dealloc {
     [super dealloc];
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-MPMoviePlayerViewController *playerViewController=NULL;
-int g_iPlayVideoState=0;
-
-- (void)PlayVideo:(int)iStateAfterPlay fullscreen:(int)iFullScreen file:(NSString*)strFilennameNoExtension fileExtension:(NSString*)strExtension
-{
-    NSLog(@"PlayVideo start");
-    
-    NSString *url = [[NSBundle mainBundle]
-                     pathForResource:@"intro2"
-                     ofType:@"mp4"];
-    
-    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:url]];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(movieFinishedCallback:)
-     name:MPMoviePlayerPlaybackDidFinishNotification
-     object:player];
-    
-    [player setFullscreen:YES animated:YES];
-    [player setControlStyle:MPMovieControlStyleNone];
-    [player setScalingMode:MPMovieScalingModeAspectFill];
-    [window addSubview:player.view];
-    [window bringSubviewToFront:player.view];
-    [player setFullscreen:YES animated:YES];
-    [player setControlStyle:MPMovieControlStyleNone];
-    
-    player.view.userInteractionEnabled = NO;
-    
-    [player play];
-    
-    g_iPlayVideoState = 1;
-    
-    NSLog(@"PlayVideo done");
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void) movieFinishedCallback:(NSNotification*) aNotification
-{
-    NSLog(@"movieFinishedCallback");
-    MPMoviePlayerController *player = [aNotification object];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doneButtonClicked) name:MPMoviePlayerWillExitFullscreenNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
-    
-    //[player.view removeFromSuperview];
-    [player autorelease];
-    g_iPlayVideoState = 0;
-    
-    [window setRootViewController:viewController];
-    
-    NSLog(@"movieFinishedCallback done");
-    
-    // Override point for customization after application launch.
-    
-    // Add the view controller's view to the window and display.
-    window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
-    EAGLView *__glView = [EAGLView viewWithFrame: [window bounds]
-                                     pixelFormat: kEAGLColorFormatRGBA8
-                                     depthFormat: GL_DEPTH_COMPONENT16
-                              preserveBackbuffer: NO
-                                      sharegroup: nil
-                                   multiSampling: NO
-                                 numberOfSamples:0 ];
-    
-    // Use RootViewController manage EAGLView
-    viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-    viewController.wantsFullScreenLayout = YES;
-    viewController.view = __glView;
-    
-    // Set RootViewController to window
-    if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
-    {
-        // warning: addSubView doesn't work on iOS6
-        [window addSubview: viewController.view];
-    }
-    else
-    {
-        // use this method on ios6
-        [window setRootViewController:viewController];
-    }
-    
-    [window makeKeyAndVisible];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden: YES];
-    
-    [__glView setMultipleTouchEnabled:NO];
-    
-    cocos2d::CCApplication::sharedApplication()->run();
-    
 }
 
 #import <sys/utsname.h>
@@ -238,6 +143,19 @@ NSString* machineName()
     uname(&systemInfo);
     
     return [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+}
+
+- (BOOL)application: (UIApplication*) application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([sourceApplication isEqualToString:@"com.apple.mobilesafari"] ||
+        [sourceApplication isEqualToString:@"com.facebook.Facebook"])
+    {
+        return [[EziSocialManager sharedManager] handleURL:url];
+    }
+    else
+    {
+        return NO;
+    }
 }
 
 @end
