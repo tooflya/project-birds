@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_id">368439279914485</string>
+    <string name="app_name">Project Birds</string>
+    <string name="signing_in">Авторизация в Google</string>
+    <string name="signing_out">Выход</string>
+    <string name="unknown_error">По неизвестным причинам авторизация невозможна</string>
+    <string name="daily_revenue_notification_title">Дневное вознаграждение доступно</string>
+    <string name="daily_revenue_notification_content">получите его прямо сейчас!</string>
+    <string name="full_lives_notification_title">Сердечки восстановлены</string>
+    <string name="full_lives_notification_content">Вы можете потратить их прямо сейчас!</string>
+    <string name="invite_notification_title">Птички соскучились!</string>
+    <string name="invite_notification_content">Поиграйтесь с ними прямо сейчас!</string>
+   
+</resources>

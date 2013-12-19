@@ -472,8 +472,7 @@ public class GameHelper implements
 		mAutoSignIn = true;
 
 		// Is Google Play services available?
-		int result = GooglePlayServicesUtil
-				.isGooglePlayServicesAvailable(getContext());
+		int result = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());
 		debugLog("isGooglePlayServicesAvailable returned " + result);
 		if (result != ConnectionResult.SUCCESS) {
 			// Nope.

@@ -124,15 +124,15 @@
             <key>icon_properties@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1964,264},{40,100}}</string>
+                <string>{{1964,264},{40,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{40,100}}</string>
+                <string>{{0,0},{40,150}}</string>
                 <key>sourceSize</key>
-                <string>{40,100}</string>
+                <string>{40,150}</string>
             </dict>
             <key>popup_glife_pic_fall@2x.png</key>
             <dict>
@@ -287,7 +287,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:82fe8aa682cc292fc60153d84d9f78a5:4d2bbff7e3bcfc7b1b2ae2144274f6da:a690933c470b7cfccf0ecf314b3c7631$</string>
+            <string>$TexturePacker:SmartUpdate:eebff2d55245c5ff5fabe0ab6206c5de:090404dde4889888e250f7055c612afb:a690933c470b7cfccf0ecf314b3c7631$</string>
             <key>textureFileName</key>
             <string>TextureAtlas5.pvr.ccz</string>
         </dict>

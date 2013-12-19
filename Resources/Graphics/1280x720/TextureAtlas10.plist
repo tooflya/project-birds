@@ -30,10 +30,49 @@
                 <key>sourceSize</key>
                 <string>{2044,1434}</string>
             </dict>
+            <key>bonus-heart@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{475,1437},{149,134}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{149,134}}</string>
+                <key>sourceSize</key>
+                <string>{149,134}</string>
+            </dict>
+            <key>bonus-shield@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{259,1437},{115,138}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{115,138}}</string>
+                <key>sourceSize</key>
+                <string>{115,138}</string>
+            </dict>
+            <key>bonus-time@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{376,1437},{97,136}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{97,136}}</string>
+                <key>sourceSize</key>
+                <string>{97,136}</string>
+            </dict>
             <key>popup_key_ico_fall@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{259,1437},{54,65}}</string>
+                <string>{{259,1577},{54,65}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -53,7 +92,7 @@
             <key>size</key>
             <string>{2046,1694}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c93f5b09b23a7cbf68b0d2d2bb4a13cb:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:e44f94ea4bf996181d752a1cce37df93:624f889bc87b1e111d34aaac9876329e:9d5d1a95c7a41bfe7dc996a89c328ad2$</string>
             <key>textureFileName</key>
             <string>TextureAtlas10.pvr.ccz</string>
         </dict>

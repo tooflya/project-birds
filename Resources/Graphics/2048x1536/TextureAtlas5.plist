@@ -7,7 +7,7 @@
             <key>about_logo@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{678,1684},{345,128}}</string>
+                <string>{{1547,1375},{345,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>about_name_logo@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1149,1656},{501,233}}</string>
+                <string>{{1044,1654},{501,233}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>bar_remove@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{409,1833},{738,49}}</string>
+                <string>{{2,1846},{738,49}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>coins@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1303,1402},{300,240}}</string>
+                <string>{{940,1412},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>coins_silver@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1001,1414},{300,240}}</string>
+                <string>{{742,1656},{300,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>end_lvl_star_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{338,1282},{600,400}}</string>
+                <string>{{338,1254},{600,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>flag_sprite_small@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1282},{334,590}}</string>
+                <string>{{2,1254},{334,590}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>game_panel_goldlife@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{508,1684},{168,147}}</string>
+                <string>{{550,1656},{168,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>game_panel_plus@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{940,1330},{78,72}}</string>
+                <string>{{940,1338},{78,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,20 +124,20 @@
             <key>icon_properties@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1924,1180},{40,100}}</string>
+                <string>{{338,1656},{40,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{40,100}}</string>
+                <string>{{0,0},{40,150}}</string>
                 <key>sourceSize</key>
-                <string>{40,100}</string>
+                <string>{40,150}</string>
             </dict>
             <key>popup_glife_pic_fall@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{338,1833},{69,56}}</string>
+                <string>{{1852,1254},{69,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>popup_item_rate_stars@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{940,1254},{201,74}}</string>
+                <string>{{1242,1374},{201,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>popup_key_ico@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{338,1684},{168,147}}</string>
+                <string>{{380,1656},{168,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>popup_key_ico_fall@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{940,1467},{54,65}}</string>
+                <string>{{1894,1375},{54,65}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>shop_money_bg@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1652,1402},{305,125}}</string>
+                <string>{{1242,1505},{305,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +228,7 @@
             <key>shop_panel_textbox@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1605,1529},{150,35}}</string>
+                <string>{{338,1808},{150,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +241,7 @@
             <key>shop_shelf_sprite@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1149,1282},{806,118}}</string>
+                <string>{{1044,1254},{806,118}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +254,7 @@
             <key>shop_weapon_check@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{940,1404},{59,61}}</string>
+                <string>{{1852,1312},{59,61}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +267,7 @@
             <key>shop_wheel@2x.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1025,1330},{83,82}}</string>
+                <string>{{940,1254},{83,82}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -285,9 +285,9 @@
             <key>realTextureFileName</key>
             <string>TextureAtlas5.pvr.ccz</string>
             <key>size</key>
-            <string>{1966,1895}</string>
+            <string>{1964,1898}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:af166e85ba2e475d3553d3548bf2e432:308d115d8531b74d05b2a514f4dfff98:a690933c470b7cfccf0ecf314b3c7631$</string>
+            <string>$TexturePacker:SmartUpdate:b17c901b58761bc43d46a70b049c8ff3:b84fabc0f9e4da88be506bdef15906a7:a690933c470b7cfccf0ecf314b3c7631$</string>
             <key>textureFileName</key>
             <string>TextureAtlas5.pvr.ccz</string>
         </dict>

@@ -82,10 +82,14 @@ BoughtItem::BoughtItem(CCNode* pParent) :
 		this->mTwitterButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(250));
 		this->mFacebookButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(350));
 		this->mVkButton->create()->setCenterPosition(Options::CAMERA_WIDTH - Utils::coord(100), Utils::coord(450));
-    
-		//this->mTwitterButton->setScale(0);
-		//this->mFacebookButton->setScale(0);
-		//this->mVkButton->setScale(0);
+        
+        this->mTwitterButton->setScaleX(0);
+        this->mFacebookButton->setScaleX(0);
+        this->mVkButton->setScaleX(0);
+        
+        this->mTwitterButton->setScaleY(0);
+        this->mFacebookButton->setScaleY(0);
+        this->mVkButton->setScaleY(0);
 
 		this->mTwitterButton->setModal(true);
 		this->mFacebookButton->setModal(true);
@@ -134,9 +138,9 @@ void BoughtItem::onTouchButtonsCallback(const int pAction, const int pID)
         {
             case Options::BUTTONS_ID_SHARE:
                 
-                //this->mTwitterButton->runAction(CCScaleTo::create(0.1, this->mShare ? 0.0 : 1.0));
-                //this->mFacebookButton->runAction(CCScaleTo::create(0.2, this->mShare ? 0.0 : 1.0));
-                //this->mVkButton->runAction(CCScaleTo::create(0.3, this->mShare ? 0.0 : 1.0));
+                this->mTwitterButton->runAction(CCScaleTo::create(0.1, this->mShare ? 0.0 : 1.0));
+                this->mFacebookButton->runAction(CCScaleTo::create(0.2, this->mShare ? 0.0 : 1.0));
+                this->mVkButton->runAction(CCScaleTo::create(0.3, this->mShare ? 0.0 : 1.0));
                 
                 this->mShare = !this->mShare;
                 
@@ -326,9 +330,13 @@ void BoughtItem::onEnter()
     
     this->mShare = false;
     
-    //this->mTwitterButton->setScale(0);
-    //this->mFacebookButton->setScale(0);
-    //this->mVkButton->setScale(0);
+    this->mTwitterButton->setScaleX(0);
+    this->mFacebookButton->setScaleX(0);
+    this->mVkButton->setScaleX(0);
+    
+    this->mTwitterButton->setScaleY(0);
+    this->mFacebookButton->setScaleY(0);
+    this->mVkButton->setScaleY(0);
     
     this->setRegisterAsTouchable(true);
 }

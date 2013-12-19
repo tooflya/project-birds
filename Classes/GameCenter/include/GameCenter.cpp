@@ -202,7 +202,7 @@ bool GameCenter::isSignedIn()
     return callStaticBoolMethod("isSignedIn");
 }
 
-void GameCenter::playVideo()
+void GameCenter::playVideo(bool enableSound)
 {
     SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 

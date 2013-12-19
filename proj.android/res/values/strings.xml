@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="facebook_id">368439279914485</string>
     <string name="app_name">Project Birds</string>
     <string name="signing_in">Signing in with Google</string>
     <string name="signing_out">Signing out</string>
@@ -8,5 +9,7 @@
     <string name="daily_revenue_notification_content">So, come and get it now!</string>
     <string name="full_lives_notification_title">Gold lives restored</string>
     <string name="full_lives_notification_content">So, come and spend it right now!</string>
+    <string name="invite_notification_title">We are missing you!</string>
+    <string name="invite_notification_content">Play our awesome game again!</string>
    
 </resources>

@@ -125,8 +125,12 @@ class Bird : public ImpulseEntity
         Entity* e1;
         Entity* e2;
     
+        Entity* mShield;
+    
         float mLifeCount;
         float mInitLifeCount;
+    
+        bool mShieldShows;
 
         // ===========================================================
         // Constructors

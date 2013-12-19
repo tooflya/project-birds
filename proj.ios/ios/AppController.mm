@@ -77,6 +77,9 @@ static AppDelegate s_sharedApplication;
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     cocos2d::CCDirector::sharedDirector()->resume();
     
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     [[EziSocialManager sharedManager] handleApplicationDidBecomeActive];
 }
 
@@ -91,9 +94,9 @@ static AppDelegate s_sharedApplication;
     notification2.fireDate = [NSDate dateWithTimeIntervalSinceNow:3600*24];
     notification3.fireDate = [NSDate dateWithTimeIntervalSinceNow:60*30];
     
-    notification1.alertBody = @"We are miss you! Play our awesome game again!"; // TODO: Need to translate this strings
-    notification2.alertBody = @"Daily revenue is available! So, come and get it now!";
-    notification3.alertBody = @"Gold lives restored! So, come and spend it right now!";
+    notification1.alertBody = NSLocalizedString(@"1", @"");
+    notification2.alertBody = NSLocalizedString(@"2", @"");
+    notification3.alertBody = NSLocalizedString(@"3", @"");
 
     notification1.timeZone = [NSTimeZone defaultTimeZone];
     notification2.timeZone = [NSTimeZone defaultTimeZone];
@@ -114,9 +117,6 @@ static AppDelegate s_sharedApplication;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     cocos2d::CCApplication::sharedApplication()->applicationWillEnterForeground();
-
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

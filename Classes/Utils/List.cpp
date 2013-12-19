@@ -225,7 +225,7 @@ void List::ccTouchEnded(CCTouch* touch, CCEvent* event)
     this->mLastDistanceY = this->mStartPositionCoordinateY - y;
 
     this->mPostUpdate = kWillPostUpdate;
-    CCLog("%lu", Utils::millisecondNow() - this->mLastMoveTime);
+
     if(Utils::millisecondNow() - this->mLastMoveTime >= 100)
     {
         this->mPostUpdate = false;

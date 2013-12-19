@@ -532,6 +532,10 @@ void End::onShow()
     {
         AppDelegate::mGameCenter->postScore(Options::LEADERBOARD_CLASSIC, Game::BEST_COUNT);
     }
+    else if(this->mType == TYPE_ARCADE)
+    {
+        AppDelegate::mGameCenter->postScore(Options::LEADERBOARD_ARCADE, Game::BEST_COUNT);
+    }
 }
 
 void End::onHide()
@@ -707,7 +711,7 @@ void End::update(float pDeltaTime)
             }
             else
             {
-                if(Game::CURRENT_COUNT >= Game::BEST_COUNT)
+                if(Game::CURRENT_COUNT >= Game::BEST_COUNT && Game::BEST_COUNT > 10)
                 {
                     this->mPrize->setCurrentFrameIndex(1);
                     Entity* splash = static_cast<Entity*>(this->mStarsSplashes->create());

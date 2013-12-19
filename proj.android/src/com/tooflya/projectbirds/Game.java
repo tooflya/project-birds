@@ -1,5 +1,7 @@
 package com.tooflya.projectbirds;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -9,6 +11,10 @@ import org.cocos2dx.lib.Cocos2dxRenderer;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +22,7 @@ import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
+import com.ezibyte.social.EziSocialManager;
 import com.soomla.cocos2dx.store.StoreControllerBridge;
 import com.soomla.store.SoomlaApp;
 import com.tooflya.projectbirds.GameCenter.GameCenter;
@@ -25,10 +32,6 @@ import com.tooflya.projectbirds.notify.NotifyService;
 @SuppressLint("NewApi")
 public class Game extends Cocos2dxActivity implements
 		OnSystemUiVisibilityChangeListener {
-
-	static {
-		System.loadLibrary("game");
-	}
 
 	public static GameHelper mHelper;
 	public static RelativeLayout mContentView;
@@ -42,24 +45,44 @@ public class Game extends Cocos2dxActivity implements
 	@Override
 	protected void onCreate(Bundle b) {
 		super.onCreate(b);
+		
+		GameCenter.getGameHelper().getGamesClient().setViewForPopups(Game.mContentView);
 
-		this.getWindow().addFlags(
-				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		if (Build.VERSION.SDK_INT >= 11) {
 			try {
-				getWindow().getDecorView().setSystemUiVisibility(
-						View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 			} catch (Exception ex) {
 			}
 		}
 
-		this.getWindow().getDecorView()
-				.setOnSystemUiVisibilityChangeListener(this);
+		this.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(this);
 
 		startService(new Intent(Game.this, NotifyService.class));
 
 		NotifyService.setLastGameEnter();
+
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo("com.tooflya.projectbirds", PackageManager.GET_SIGNATURES);
+			for (Signature signature : info.signatures) {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				md.update(signature.toByteArray());
+			}
+		} catch (NameNotFoundException e) {
+		} catch (NoSuchAlgorithmException e) {
+		}
+
+		//EziSocialManager.initWithActivity(GameCenter.activity, GameCenter.activity.getApplicationContext().getString(R.string.facebook_id), false, b);
+		
+		
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		//EziSocialManager.applicationDestroyed();
 	}
 
 	@Override
@@ -77,9 +100,24 @@ public class Game extends Cocos2dxActivity implements
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+
+		//EziSocialManager.applicationResumed();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+
+		//EziSocialManager.applicationPaused();
+	}
+
+	@Override
 	protected void onActivityResult(int request, int response, Intent data) {
 		super.onActivityResult(request, response, data);
-
+		
+		//EziSocialManager.onActivityResult(request, request, data);
 		GameCenter.onActivityResult(request, response, data);
 	}
 
@@ -133,5 +171,9 @@ public class Game extends Cocos2dxActivity implements
 				});
 			}
 		}, 1000);
+	}
+
+	static {
+		System.loadLibrary("game");
 	}
 }

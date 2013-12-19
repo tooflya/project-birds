@@ -15,6 +15,7 @@
 
 int Game::STARS = 0;
 int Game::GAME_TYPE = -1;
+int Game::mAchievementsBirdsBlowCount[3] = {0, 0, 0};
 
 int** Game::MATRIX = NULL;
 int Game::LEVEL_TYPE[80] = {
@@ -99,6 +100,7 @@ Game::~Game()
     CC_SAFE_RELEASE(this->mRobotParts);
     CC_SAFE_RELEASE(this->mKeys);
     CC_SAFE_RELEASE(this->mKeysLights);
+    CC_SAFE_RELEASE(this->mShield);
     CC_SAFE_RELEASE(this->mEventPanel);
     CC_SAFE_RELEASE(this->mMexicanoHats);
     CC_SAFE_RELEASE(this->mPirateHats);
@@ -202,7 +204,8 @@ Game::Game() :
 	mSchematicSmall(0),
 	mColorsBlink(0),
 	mKeys(0),
-	mKeysLights(0),
+    mKeysLights(0),
+    mShield(0),
 	mColors(0),
 	e1(0),
 	mRains(0),
@@ -287,6 +290,10 @@ Game::Game() :
         this->mBonusAnimationFrameTime = 0;
         this->mBonusAnimationFrameTimeElapsed = 0;
         
+        this->mAchievementsTime[0] = 1.0;
+        this->mAchievementsTime[1] = 2.0;
+        this->mAchievementsTime[2] = 3.0;
+        
         Game::mShouldShowEndScreen = false;
 
         this->mGameLayer->addChild(TouchTrailLayer::create(), 10);
@@ -347,6 +354,7 @@ void Game::startGame()
     this->mExplosions->clear();
     this->mExplosionsBasic->clear();
     this->mKeys->clear();
+    this->mShield->clear();
     this->mKeysLights->clear();
 
     HEALTH = LEVEL_HEALTH[LEVEL];
@@ -785,6 +793,31 @@ void Game::update(float pDeltaTime)
     if(this->mPause || this->mEndScreen->getParent())
     {
         return;
+    }
+    
+    for(int i = 0; i < 3; i++)
+    {
+        this->mAchievementsTimeElapsed[i] += pDeltaTime;
+        
+        if(this->mAchievementsTimeElapsed[i] >= this->mAchievementsTime[i])
+        {
+            this->mAchievementsTimeElapsed[i] = 0;
+            
+            switch(i)
+            {
+                case 0:
+                if(Game::mAchievementsBirdsBlowCount[i] >= 3) AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_TRIPPLE_KILL, 100);
+                break;
+                case 1:
+                if(Game::mAchievementsBirdsBlowCount[i] >= 5) AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_ULTRA_KILL, 100);
+                break;
+                case 2:
+                if(Game::mAchievementsBirdsBlowCount[i] >= 10) AppDelegate::mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_RAMPAGE, 100);
+                break;
+            }
+            
+            Game::mAchievementsBirdsBlowCount[i] = 0;
+        }
     }
     
     if(!Color::ANIMATION_RUNNING)

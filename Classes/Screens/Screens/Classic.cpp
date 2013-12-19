@@ -24,6 +24,7 @@
 Classic::~Classic()
 {
     CC_SAFE_RELEASE(this->mConfetti);
+    CC_SAFE_RELEASE(this->mBonus1);
 }
 
 Classic::Classic() :
@@ -40,7 +41,8 @@ Classic::Classic() :
 	mCountText(0),
 	mBestCountText(0),
 	mGoldLifesCount(0),
-	mLevelUpText(0),
+    mLevelUpText(0),
+    mBonus1(0),
 	mBonusTimeText(0)
     {
         Loader::TYPE = 1;
@@ -48,8 +50,35 @@ Classic::Classic() :
         this->mEventLayer = CCLayer::create();
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-
-		SpriteBatch* spriteBatch0 = SpriteBatch::create("TextureAtlas16");
+        
+        Game::LEVEL = 31;//Utils::random(0, 10);
+        
+        const char* background = "";
+        
+        if(Game::LEVEL <= 15)
+        {
+            background = "TextureAtlas16";
+        }
+        else if(Game::LEVEL <= 31)
+        {
+            background = "TextureAtlas23";
+        }
+        else if(Game::LEVEL <= 47)
+        {
+            background = "TextureAtlas24";
+        }
+        else if(Game::LEVEL <= 63)
+        {
+            background = "TextureAtlas25";
+        }
+        else
+        {
+            background = "TextureAtlas26";
+        }
+        
+        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(ccsf("%s%s", background, ".plist"));
+        
+		SpriteBatch* spriteBatch0 = SpriteBatch::create("TextureAtlas23");
         SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
@@ -180,8 +209,11 @@ Classic::Classic() :
         this->mGeneralExplosions = EntityManager::create(100, GeneralExplosion::create(), spriteBatch9);
         this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
         this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
+        this->mShield = EntityManager::create(10, ShieldDisplay::create(), spriteBatch4);
         this->mPirateHats = EntityManager::create(10, ImpulseEntity::create("bonus_pirat_hat@2x.png"), spriteBatch8);
         this->mMexicanoHats = EntityManager::create(10, ImpulseEntity::create("bonus_amigo_hat@2x.png"), spriteBatch8);
+        this->mBonus1 = Entity::create("bonus-heart@2x.png", spriteBatch4);
+        this->mBonus1->retain();
 
         this->mLevelUpText = Text::create(Options::TEXT_GAME_CLASSIC_LEVEL_UP, this);
         this->mBonusTimeText = Text::create(Options::TEXT_GAME_CLASSIC_BONUS_TIME, this);
@@ -564,6 +596,8 @@ void Classic::onGameStarted()
 
     this->mLevelUpTimeElapsed = 0;
     this->mChalangeTimeElapsed = 0;
+    
+    this->mBonus1Used = false;
 }
 
 void Classic::onGameEnd()
@@ -617,6 +651,33 @@ void Classic::removeLife()
         if(LIFES >= 2)
         {
             this->onGameEnd();
+        }
+        else if(LIFES == 0 && !this->mBonus1Used)
+        {
+            if(AppDelegate::isItemBought(41))
+            {
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
+                }
+                
+                this->mBonus1Used = true;
+                
+                this->mHearts[LIFES--]->setCurrentFrameIndex(1);
+                
+                Entity* kl1 = this->mKeysLights->create();
+                Entity* kl2 = this->mKeysLights->create();
+                
+                kl1->runAction(CCSequence::create(CCFadeIn::create(0.2), CCRotateTo::create(2.0, 0.0), CCFadeOut::create(0.2), NULL));
+                kl2->runAction(CCSequence::create(CCFadeIn::create(0.2), CCRotateTo::create(2.0, 0.0), CCFadeOut::create(0.2), NULL));
+
+                kl1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(200));
+                kl2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(200));
+
+                this->mBonus1->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(200));
+                this->mBonus1->runAction(CCSequence::create(CCFadeIn::create(0.2), CCRotateTo::create(2.0, 0.0), CCFadeOut::create(0.2), NULL));
+                this->mBonus1->runAction(CCSequence::create(CCScaleTo::create(0.2, 1.2), CCScaleTo::create(0.1, 0.8), CCScaleTo::create(0.1, 1.0), NULL));
+            }
         }
     }
 }

@@ -31,12 +31,11 @@ Menu::~Menu()
     CC_SAFE_RELEASE(this->mMapPopup);
 	CC_SAFE_RELEASE(this->mMapDescription);
     CC_SAFE_RELEASE(this->mTempPublisherInAppExplainPopup);
+    CC_SAFE_RELEASE(this->mFacebookAuthorizePopup);
     
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     CC_SAFE_RELEASE(this->mGooglePlayAuthorizePopup);
     CC_SAFE_RELEASE(this->mExitPopup);
-    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    CC_SAFE_RELEASE(this->mFacebookAuthorizePopup);
     #endif
 }
 
@@ -86,9 +85,9 @@ Menu::Menu() :
 		#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 		this->mExitPopup = Exit::create(this);
         this->mGooglePlayAuthorizePopup = GooglePlayAuthorize::create(this);
-        #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+        #endif
+
         this->mFacebookAuthorizePopup = FacebookAuthorize::create(this);
-		#endif
 
 		this->mRatePopup = PleaseRate::create(this);
 		this->mMapPopup = Map::create(this);
@@ -349,16 +348,15 @@ void Menu::keyBackClicked(bool pSound)
             this->mMapDescription->hide();
         }
     }
+    else if(this->mFacebookAuthorizePopup->getParent())
+    {
+        this->mFacebookAuthorizePopup->hide();
+    }
     #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     else if(this->mGooglePlayAuthorizePopup->getParent())
     {
         this->mGooglePlayAuthorizePopup->mAction = true;
         this->mGooglePlayAuthorizePopup->hide();
-    }
-    #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    else if(this->mFacebookAuthorizePopup->getParent())
-    {
-        this->mFacebookAuthorizePopup->hide();
     }
     #endif
     else if(this->mRatePopup->getParent())

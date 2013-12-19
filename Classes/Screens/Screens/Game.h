@@ -25,6 +25,7 @@
 #include "Color.h"
 #include "KeyDisplay.h"
 #include "Icon8.h"
+#include "ShieldDisplay.h"
 
 #include "Pause.h"
 #include "GetLives.h"
@@ -183,6 +184,9 @@ class Game : public Screen
     
         CCNodeRGBA* e2;
     
+        float mAchievementsTime[3];
+        float mAchievementsTimeElapsed[3];
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -256,6 +260,8 @@ class Game : public Screen
         static int STARS_RESCUE;
     
         static int STARS;
+    
+        static int mAchievementsBirdsBlowCount[3];
 
         // ===========================================================
         // Fields
@@ -293,6 +299,7 @@ class Game : public Screen
         EntityManager* mColorsBlink;
         EntityManager* mKeys;
         EntityManager* mKeysLights;
+        EntityManager* mShield;
         EntityManager* mPirateHats;
         EntityManager* mMexicanoHats;
     

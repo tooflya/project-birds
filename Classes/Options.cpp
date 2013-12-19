@@ -20,7 +20,6 @@ bool Options::IS_BUILD_FOR_UBINURI = false;
 
 const char* Options::ACHIEVEMENTS_UNLOCK_CLASSIC_MODE = "CgkIvPfE39QGEAIQBA";
 const char* Options::ACHIEVEMENTS_UNLOCK_ARCADE_MODE = "CgkIvPfE39QGEAIQBQ";
-
 const char* Options::ACHIEVEMENTS_UNLOCK_FREEZER = "CgkIvPfE39QGEAIQBg";
 const char* Options::ACHIEVEMENTS_UNLOCK_REDSKIN = "CgkIvPfE39QGEAIQBw";
 const char* Options::ACHIEVEMENTS_UNLOCK_MEXICAN = "CgkIvPfE39QGEAIQCA";
@@ -30,10 +29,46 @@ const char* Options::ACHIEVEMENTS_UNLOCK_ROBOBIRD = "CgkIvPfE39QGEAIQCw";
 const char* Options::ACHIEVEMENTS_UNLOCK_COMANDO = "CgkIvPfE39QGEAIQDA";
 const char* Options::ACHIEVEMENTS_UNLOCK_ZOMBIE = "CgkIvPfE39QGEAIQDQ";
 
+const char* Options::ACHIEVEMENTS_UNLOCK_JUNIOR = "CgkIvPfE39QGEAIQEA";
+const char* Options::ACHIEVEMENTS_UNLOCK_AVIARIST = "CgkIvPfE39QGEAIQEQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER = "CgkIvPfE39QGEAIQEg";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_BIRDS = "CgkIvPfE39QGEAIQEw";
+const char* Options::ACHIEVEMENTS_UNLOCK_TRIPPLE_KILL = "CgkIvPfE39QGEAIQFA";
+const char* Options::ACHIEVEMENTS_UNLOCK_ULTRA_KILL = "CgkIvPfE39QGEAIQFQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_RAMPAGE = "CgkIvPfE39QGEAIQFg";
+const char* Options::ACHIEVEMENTS_UNLOCK_FAN_OF_GREEN_BIRDS = "CgkIvPfE39QGEAIQFw";
+const char* Options::ACHIEVEMENTS_UNLOCK_FAN_OF_YELLOW_BIRDS = "CgkIvPfE39QGEAIQGA";
+const char* Options::ACHIEVEMENTS_UNLOCK_FAN_OF_AZURE_BIRDS = "CgkIvPfE39QGEAIQGQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_FAN_OF_PURPLE_BIRDS = "CgkIvPfE39QGEAIQGg";
+const char* Options::ACHIEVEMENTS_UNLOCK_FAN_OF_RED_BIRDS = "CgkIvPfE39QGEAIQGw";
+const char* Options::ACHIEVEMENTS_UNLOCK_FAN_OF_ORANGE_BIRDS = "CgkIvPfE39QGEAIQHA";
+const char* Options::ACHIEVEMENTS_UNLOCK_FAN_OF_BLUE_BIRDS = "CgkIvPfE39QGEAIQHQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_GREEN_BIRDS = "CgkIvPfE39QGEAIQHg";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_YELLOW_BIRDS = "CgkIvPfE39QGEAIQHw";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_AZURE_BIRDS = "CgkIvPfE39QGEAIQIA";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_PURPLE_BIRDS = "CgkIvPfE39QGEAIQIQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_RED_BIRDS = "CgkIvPfE39QGEAIQIg";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_ORANGE_BIRDS = "CgkIvPfE39QGEAIQIw";
+const char* Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_BLUE_BIRDS = "CgkIvPfE39QGEAIQJA";
+const char* Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_GREEN_BIRDS = "CgkIvPfE39QGEAIQJQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_YELLOW_BIRDS = "CgkIvPfE39QGEAIQJg";
+const char* Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_AZURE_BIRDS = "CgkIvPfE39QGEAIQJw";
+const char* Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_PURPLE_BIRDS = "CgkIvPfE39QGEAIQKA";
+const char* Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_RED_BIRDS = "CgkIvPfE39QGEAIQKQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_ORANGE_BIRDS = "CgkIvPfE39QGEAIQKg";
+const char* Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_BLUE_BIRDS = "CgkIvPfE39QGEAIQKw";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_GREEN_BIRDS = "CgkIvPfE39QGEAIQLA";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_YELLOW_BIRDS = "CgkIvPfE39QGEAIQLQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_AZURE_BIRDS = "CgkIvPfE39QGEAIQLg";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_PURPLE_BIRDS = "CgkIvPfE39QGEAIQLw";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_RED_BIRDS = "CgkIvPfE39QGEAIQMA";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_ORANGE_BIRDS = "CgkIvPfE39QGEAIQMQ";
+const char* Options::ACHIEVEMENTS_UNLOCK_LORD_OF_BLUE_BIRDS = "CgkIvPfE39QGEAIQMg";
+
 const char* Options::LEADERBOARD_BIRDS = "CgkIvPfE39QGEAIQDg";
 const char* Options::LEADERBOARD_LEVELS = "CgkIvPfE39QGEAIQDw";
-const char* Options::LEADERBOARD_CLASSIC = "";
-const char* Options::LEADERBOARD_ARCADE = "";
+const char* Options::LEADERBOARD_CLASSIC = "CgkIvPfE39QGEAIQMw";
+const char* Options::LEADERBOARD_ARCADE = "CgkIvPfE39QGEAIQNA";
 
 const char* Options::GOOGLE_PLAY_BASE_64_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnxTibzwKbgWhSfNuVJmKOWXmRmCAsxT8Z8+jf5DRTKcsIm6BTJOC27d2wKeuH9Uw/7i39KmRUgg+zwAFxT3X8TLpC/pM/mSLpUSfv85iN3yRE85zCrW4NQsxLbyHqjPNNxoMzC5bLBh3pqSB0qSp/2ZC+woOncQKs/J6i3O/vDFuAmnyuJVUaNDTRYYpmOPmcZiMU/hC0PLiVQAnWcM/WDFmWm6h5lBmhRvTYnRdU2Ha+cax8UpAliceS+URRmeFCM0kV2hBhHRLNCXycGa9L4vCErJnH2mcBwOztHV5x7ZIHxMFxq4Kx7h1EyI6gzorrF28m5gP9TBTihAUXaC0XQIDAQAB";
 const char* Options::SOOMLA_BASE_64_KEY = "?";
@@ -108,6 +143,7 @@ const char* Options::MUSIC_1 = "Music/music-1.ogg";
 const char* Options::MUSIC_2 = "Music/music-2.ogg";
 
 const char* Options::SOUND_TAP = "Sound/tap.ogg";
+const char* Options::SOUND_TIMER = "Sound/timer.wav";
 const char* Options::SOUND_UNLOCKED = "Sound/equip-unlock.ogg";
 const char* Options::SOUND_EQUIP_SWORD = "Sound/equip-new-sword.ogg";
 const char* Options::SOUND_BIRD_BLOW = "Sound/bird-blow.ogg";
@@ -138,6 +174,7 @@ const char* Options::MUSIC_1 = "Music/music-1.mp3";
 const char* Options::MUSIC_2 = "Music/music-2.mp3";
 
 const char* Options::SOUND_TAP = "Sound/tap.mp3";
+const char* Options::SOUND_TIMER = "Sound/timer.wav";
 const char* Options::SOUND_UNLOCKED = "Sound/equip-unlock.mp3";
 const char* Options::SOUND_EQUIP_SWORD = "Sound/equip-new-sword.mp3";
 const char* Options::SOUND_BIRD_BLOW = "Sound/bird-blow.mp3";
@@ -168,6 +205,7 @@ const char* Options::MUSIC_1 = "music-1.mp3";
 const char* Options::MUSIC_2 = "music-2.mp3";
 
 const char* Options::SOUND_TAP = "tap.wav";
+const char* Options::SOUND_TIMER = "timer.wav";
 const char* Options::SOUND_UNLOCKED = "equip-unlock.mp3";
 const char* Options::SOUND_EQUIP_SWORD = "equip-new-sword.mp3";
 const char* Options::SOUND_BIRD_BLOW = "bird-blow.mp3";
@@ -283,7 +321,7 @@ int Options::SHOP_ITEMS_RATING_FACTOR[100] =
       100, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       90, 90, 90, 90, 90, 90, 90, 90, 90, 90,
       90, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      100, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -297,7 +335,7 @@ const char* Options::SHOP_ITEMS_PROPERTIES[100] =
     "88", "0", "0", "0", "0", "0", "0", "0", "0", "0",
     "0:10", "0:30", "0:00", "0:00", "0:23", "0:00", "0:45", "0:00", "0:20", "0",
     "0:02", "0:05", "0:12", "0:20", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00",
-    "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
+    "50%", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00",
@@ -812,50 +850,56 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[10].string = "Sword of Jedi";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[20].string = "Freeze Bird";
+            TEXT_SHOP_ITEMS[20].string = "Ice Bird";
             TEXT_SHOP_ITEMS[20].size = 48;
             
-            TEXT_SHOP_ITEMS[21].string = "Comanche Bird";
+            TEXT_SHOP_ITEMS[21].string = "Redskin Bird";
             TEXT_SHOP_ITEMS[21].size = 48;
             
             TEXT_SHOP_ITEMS[22].string = "Robo Bird";
             TEXT_SHOP_ITEMS[22].size = 48;
             
-            TEXT_SHOP_ITEMS[23].string = "Pirat Bird";
+            TEXT_SHOP_ITEMS[23].string = "Bird Pirate";
             TEXT_SHOP_ITEMS[23].size = 48;
             
-            TEXT_SHOP_ITEMS[24].string = "Mexico Bird";
+            TEXT_SHOP_ITEMS[24].string = "Mexican Bird";
             TEXT_SHOP_ITEMS[24].size = 48;
             
-            TEXT_SHOP_ITEMS[25].string = "Commandor";
+            TEXT_SHOP_ITEMS[25].string = "Comandos Bird";
             TEXT_SHOP_ITEMS[25].size = 48;
             
-            TEXT_SHOP_ITEMS[26].string = "Zombie";
+            TEXT_SHOP_ITEMS[26].string = "Zombie Bird";
             TEXT_SHOP_ITEMS[26].size = 48;
             
-            TEXT_SHOP_ITEMS[27].string = "Ninja";
+            TEXT_SHOP_ITEMS[27].string = "Samurai Bird";
             TEXT_SHOP_ITEMS[27].size = 48;
             
             TEXT_SHOP_ITEMS[28].string = "Information not found.";
             TEXT_SHOP_ITEMS[28].size = 48;
             
-            TEXT_SHOP_ITEMS[40].string = "Information not found.";
+            TEXT_SHOP_ITEMS[40].string = "Shield of Wind";
             TEXT_SHOP_ITEMS[40].size = 48;
             
-            TEXT_SHOP_ITEMS[41].string = "Information not found.";
+            TEXT_SHOP_ITEMS[41].string = "Hearts of Lives";
             TEXT_SHOP_ITEMS[41].size = 48;
             
-            TEXT_SHOP_ITEMS[42].string = "Information not found.";
+            TEXT_SHOP_ITEMS[42].string = "Sand of time";
             TEXT_SHOP_ITEMS[42].size = 48;
             
-            TEXT_SHOP_ITEMS[43].string = "Information not found.";
+            TEXT_SHOP_ITEMS[43].string = "Extra Lives";
             TEXT_SHOP_ITEMS[43].size = 48;
             
-            TEXT_SHOP_ITEMS[44].string = "Information not found.";
+            TEXT_SHOP_ITEMS[44].string = "Happy Keys";
             TEXT_SHOP_ITEMS[44].size = 48;
             
-            TEXT_SHOP_ITEMS[45].string = "Information not found.";
+            TEXT_SHOP_ITEMS[45].string = "Coin Boost";
             TEXT_SHOP_ITEMS[45].size = 48;
+            
+            TEXT_SHOP_ITEMS[46].string = "Coin Boost";
+            TEXT_SHOP_ITEMS[46].size = 48;
+            
+            TEXT_SHOP_ITEMS[47].string = "Multiple kills";
+            TEXT_SHOP_ITEMS[47].size = 48;
             
             TEXT_SHOP_BOUGHT.string = "was unlocked";
             TEXT_SHOP_BOUGHT.size = 48;
@@ -889,14 +933,14 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[17].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[18].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Ice bird has a unique ability to freeze time. It will help you to react quickly at the right time and get as many coins as you can.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "When this bird will break the spirit of an Indian will show you where these birds will fly.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "This bird will give you a big laser gun but only for 5 seconds.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "By killing the bird appears chest full of coins or other valuable prize.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Break it and you will fall on the blessed rain of birds.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "This bird is capable for great massive explosions.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Infected birds rest, which leads to a decrease in their health.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "This bird here, to slow down the time. You can easily straightened with a mass of other birds.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "When all the birds flew away to warmer climes, this bird remained sitting on a branch fabulous tree, no one knew what she expected. But with the advent of cold weather, this bird was completely frozen and turned into ice. Since then, wherever bird appeared, all around freezing.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "In times of drought, it has always helped the dux to bring rain, after that, chief of indians was let go the bird fly and she always came back. One day, after another flight, the bird brought the bad news that the paleface go on the attack on the redskins. Nobody gave this value, in consequence of which the Redskins camp was burned. Remember, the bird never lies!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "This bird kept involuntarily in a secret laboratory, where scientists are developing laser weapons. At one point it all went wrong: as a result of man-made disaster this bird has evolved. She also remembered all the scientific developments and now this bird can self made laser gun. Try it bird!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "Ship bird of filibusters, participated in all the campaigns and battles. This bird was mascot and key to the success of the battle. It will definitely bring you good luck! Possibly give you a pirate chest full of gold or other no less valuable prize!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "This bird is a big fan of tacos and burritos, she also likes to drink a few glasses of the famous Mexican tequila. But when she starts to drink - no one can't stop it. This bird will drink until, she will have double eyesight, and in eyes will blink stars. Exactly the ability of this bird you like! ;)";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Experienced fighter, held a lot of great battles and battles, in past - blaster. Very explosive character. With him is dangerous to negotiate - he always have hidden grenade somewhere and you never know where and at what time it exploding.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "There is an ancient legend about this bird, some fear, some not. But no one has never seen her. The legend says that this bird leaves a trails - a poison cloud of green smoke. Ordinary birds that flying behind her, thru these clouds may have never come back.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Completed courses samurai in the nearby forest. Specialization: \"Master of warglaive and throwing weapons\". A big fan of sushi and all sorts of insects. Especially worth noting his ability - Mass Attack all enemies of the shurikens. You're lucky if you has this bird!";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Information not found.";
@@ -909,14 +953,14 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[37].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[38].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[39].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Information not found.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[47].string = "Information not found.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "Ancient shield was in service during the time of the bird's crusade, bringing the crusade was defeated. When using this shield that all birds has reduced protection and you can easily deal with them.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "A kind of talisman. Be sure to purchase it for best results in game. \n While you have it - you can continue playing.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "This bonus is specifically for arcade mode game. When you buy this bonus you get a chance to earn extra time of the arcade game. Thus you will be able to overcome rivals and set new records.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "After each level you losing burns on one's heart, but it also restored: one in 30 minutes. Tired of waiting - buy more extra lives to continue game.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "Buy more keys and you can unlock new game modes. And also, if you can't pass a some level - with the aid of this keys, you can unlock new levels.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Bonus from uncle Sam - the old rockefeller. With this bonus, you will recive in 2 times more coins and will be able to buy better weapons or a cool bird. Next, earn coins!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Bonus from uncle Sam - the old rockefeller. With this bonus, you will recive in 2 times more coins and will be able to buy better weapons or a cool bird. Next, earn coins!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[47].string = "2-fold increases all your kills. With this bonus, you can easily beat records of your friends, and take a leadership.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[48].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[49].string = "Information not found.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[50].string = "Information not found.";
@@ -1340,50 +1384,56 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS[10].string = "Меч Джедая";
             TEXT_SHOP_ITEMS[10].size = 48;
             
-            TEXT_SHOP_ITEMS[20].string = "Ледяная птица";
+            TEXT_SHOP_ITEMS[20].string = "Ледяная Птица";
             TEXT_SHOP_ITEMS[20].size = 48;
             
-            TEXT_SHOP_ITEMS[21].string = "Птица команч";
+            TEXT_SHOP_ITEMS[21].string = "Птица Индеец";
             TEXT_SHOP_ITEMS[21].size = 48;
             
-            TEXT_SHOP_ITEMS[22].string = "Птица робот";
+            TEXT_SHOP_ITEMS[22].string = "Птица Робот";
             TEXT_SHOP_ITEMS[22].size = 48;
             
-            TEXT_SHOP_ITEMS[23].string = "Птица пират";
+            TEXT_SHOP_ITEMS[23].string = "Птица Пират";
             TEXT_SHOP_ITEMS[23].size = 48;
             
-            TEXT_SHOP_ITEMS[24].string = "Птица мексиканец";
+            TEXT_SHOP_ITEMS[24].string = "Птица Мексиканец";
             TEXT_SHOP_ITEMS[24].size = 48;
             
-            TEXT_SHOP_ITEMS[25].string = "Птица командор";
+            TEXT_SHOP_ITEMS[25].string = "Птица Командор";
             TEXT_SHOP_ITEMS[25].size = 48;
             
-            TEXT_SHOP_ITEMS[26].string = "Птица зомби";
+            TEXT_SHOP_ITEMS[26].string = "Птица Зомби";
             TEXT_SHOP_ITEMS[26].size = 48;
             
-            TEXT_SHOP_ITEMS[27].string = "Ниндзя";
+            TEXT_SHOP_ITEMS[27].string = "Птица Ниндзя";
             TEXT_SHOP_ITEMS[27].size = 48;
             
             TEXT_SHOP_ITEMS[28].string = "Информации не найдено";
             TEXT_SHOP_ITEMS[28].size = 48;
             
-            TEXT_SHOP_ITEMS[40].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[40].string = "Щит Ветра";
             TEXT_SHOP_ITEMS[40].size = 48;
             
-            TEXT_SHOP_ITEMS[41].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[41].string = "Сердца жизней";
             TEXT_SHOP_ITEMS[41].size = 48;
             
-            TEXT_SHOP_ITEMS[42].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[42].string = "Песок времени";
             TEXT_SHOP_ITEMS[42].size = 48;
             
-            TEXT_SHOP_ITEMS[43].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[43].string = "Экстра жизни";
             TEXT_SHOP_ITEMS[43].size = 48;
             
-            TEXT_SHOP_ITEMS[44].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[44].string = "Счастливый ключ";
             TEXT_SHOP_ITEMS[44].size = 48;
             
-            TEXT_SHOP_ITEMS[45].string = "Информации не найдено";
+            TEXT_SHOP_ITEMS[45].string = "Увеличение монет";
             TEXT_SHOP_ITEMS[45].size = 48;
+            
+            TEXT_SHOP_ITEMS[46].string = "Увеличение монет";
+            TEXT_SHOP_ITEMS[46].size = 48;
+            
+            TEXT_SHOP_ITEMS[47].string = "Множитель убийств";
+            TEXT_SHOP_ITEMS[47].size = 48;
             
             TEXT_SHOP_BOUGHT.string = "было куплено";
             TEXT_SHOP_BOUGHT.size = 48;
@@ -1417,14 +1467,14 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[17].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[18].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[19].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Ледяная птица обладает уникальной способностью заморажевать время. Она поможет вам быстро среагировать в нужный момент и получить как можно больше монет.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Когда разобьете эту птицу, дух индейца покажет вам откуда будут вылетать следующие птицы.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Эта птица даст вам большую лазерную пушку но лишь на 5 секунд.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "При убийстве этой птицы появляется сундук набитый монетами, либо другой ценный приз.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Разбейте её и на вас обрушится благословенный дождь из птиц.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Эта птица способна на большие массовые взрывы.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Заражает остальных птиц, что приводит к уменьшению их здоровья.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Эта птица здесь, для того чтобы замедлить время. Вы с легкостью расправитесь с массой остальных птиц.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[20].string = "Когда все птицы улетали в теплые края, эта птица оставалась сидеть на ветке сказочного дерева, никто не знал чего она ждала. Но с приходом холодов, она насквозь промерзла и превратилась в льдышку. С тех пор, где бы она не появилась, все вокруге замерзает.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[21].string = "Эта любимая птица вождя племени краснокожих. Когда наступали периоды засухи,она всегда помогала вождю вызывать дождь, после чего индеец выпускал птицу полетать и она всегда возвращалась. Однажды, после очередного полета, птица принесла плохую новость о том, что бледнолицие идут в атаку на краснокожих. Никто не предал этому значение, в следствии чего лагерь краснокожих был сожжен. Помните, птица никогда не врет!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[22].string = "Эта птица невольно удерживалась в лаборатории секретной базы, где ученые проводили разработки лазерного оружия. В один момент все пошло не так: в результате техногенной катастрофы птица эволюционировала. Так же она запомнила все разработки ученых и теперь может сама создавать лазерные пушки. Попробуйте эту птицу!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[23].string = "Корабельная птица флибустьеров, участвовала во всех походах и боях. Была талисманом и залогом успешной битвы. Она определенно принесет вам удачу! Это может быть полный сундук пиратского золота или другой не менее ценный приз!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[24].string = "Эта птица большая любительница тако и бурито, так же она не прочь опрокинуть стопку, другую знаменитой мексиканской текилы. Но когда она начинает пить - её уже не остановить. Пьет до тех пор, пока не начнет все вокруг двоится, а в глазах сыпаться звезды. Вам точно придется по вкусу способность этой птицы! ;)";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[25].string = "Бывалый вояка, прошедший множество великих битв и сражений, в прошлом подрывник. Очень взрывной персонаж. С ним опасно вести переговоры - у него всегда где-то запрятана граната и никогда не знаешь в каком месте и в какой момент она рванет.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[26].string = "Существует древняя легенда о этой птице, некоторые боятся её, некоторые нет. Но никто так и не встречал её. В легенде говорится, что эта птица оставляет за собой следы - облака ядовитого зеленого дыма. Обыкновенные птицы, которые полетят за ней в эти облака уже могут никогда не вернуться.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[27].string = "Закончил курсы самураев в соседнем лесу. Специальность: \"Мастер боевых клинков и метательного оружия\". Большой любитель суши и всяческих насекомых. Особенно, стоит отметить его умение - массово атаковать всех противников сюрикэнами. Вы счастливчик, если владеете этой птицей!";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[28].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[29].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[30].string = "Информации не найдено.";
@@ -1437,14 +1487,14 @@ void Options::changeLanguage()
             TEXT_SHOP_ITEMS_DESCRIPTIONS[37].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[38].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[39].string = "Информации не найдено.";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "O";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "ж";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "м";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "рищепка";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "дабл килл";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Золотой ключ";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Золотое сердце";
-            TEXT_SHOP_ITEMS_DESCRIPTIONS[47].string = "Информации не найдено.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[40].string = "Древний щит был на вооружении во времена птичьего похода, в результате чего поход был провален. \n При использовании этого щита у всех птиц снижается защита и вы без труда разделаетесь с ними.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[41].string = "Является своего рода талисманом. Обязательно приобретите его для достижения лучших результатов в игре. \n Пока у вас есть сердца - вы можете продолжать игру.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[42].string = "Этот бонус специально для аркадного режима игры. С покупкой этого бонуса вы получаете возможность выбить из птиц дополнительное время игры. Таким образом вы сможете преодолеть своих соперников и поставить новые рекорды.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[43].string = "После каждого проигранного уровня у вас сгорает по 1 сердцу, но оно так же восстанавливается за 30 минут. \n Надоело ждать - купите больше экстра жизней, чтобы продолжить игру.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[44].string = "Купите больше ключей и сможете открыть новые режимы игры. \n А так же, если не можете пройти какой-то уровень - с помошью ключей вы сможете открыть новые уровни.";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[45].string = "Бонус от дядюшки Сэма - старого рокфеллера. С этим бонусом, вы будет в 2 раза больше получать монеты и быстрее сможете купить крутую пушку или птицу. Вперед, зарабатывать монеты!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[46].string = "Бонус от дядюшки Сэма - старого рокфеллера. С этим бонусом, вы будет в 2 раза больше получать монеты и быстрее сможете купить крутую пушку или птицу. Вперед, зарабатывать монеты!";
+            TEXT_SHOP_ITEMS_DESCRIPTIONS[47].string = "В 2 раза увеличит все ваши убийства. С этим бонусом, вы с легкостью можете побить рекорды ваших друзей и занять лидирующую позицию.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[48].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[49].string = "Информации не найдено.";
             TEXT_SHOP_ITEMS_DESCRIPTIONS[50].string = "Информации не найдено.";

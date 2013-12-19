@@ -12,8 +12,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
 import com.tooflya.projectbirds.Game;
 import com.tooflya.projectbirds.R;
@@ -29,53 +31,65 @@ public class NotifyService extends Service {
 	private static boolean mIsPlayAgainShowed = true;
 
 	private NotificationManager mNotificationManager;
-	private Timer mTimer = new Timer();
+
+	private final Timer mTimer = new Timer();
+	private final IBinder mBinder = new LocalBinder();
+
+    public class LocalBinder extends Binder {
+    	NotifyService getService() {
+            return NotifyService.this;
+        }
+    }
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		return null;
+		return mBinder;
 	}
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-
-		this.launchCounter();
-	}
+    @Override
+    public void onCreate() {
+    	super.onCreate();
+    	
+    	this.launchCounter();
+    }
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
 
 		this.shutdownCounter();
+		
+        Toast.makeText(this, "Service stopped to.", Toast.LENGTH_SHORT).show();
 	}
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return Service.START_STICKY;
+    }
+
 	private void showInviteNotification() {
-		//this.showNotification(0, 0);
+		mIsPlayAgainShowed = true;
+		this.showNotification(R.string.invite_notification_title, R.string.invite_notification_content);
 	}
 
 	private void showRevenueNotification() {
 		mIsDailyRevenueShowed = true;
-		this.showNotification(R.string.daily_revenue_notification_title,
-				R.string.daily_revenue_notification_content);
+		this.showNotification(R.string.daily_revenue_notification_title, R.string.daily_revenue_notification_content);
 	}
 
 	private void showGoldLivesNotification() {
 		mIsFullLivesNotification = true;
-		this.showNotification(R.string.full_lives_notification_title,
-				R.string.full_lives_notification_content);
+		this.showNotification(R.string.full_lives_notification_title, R.string.full_lives_notification_content);
 	}
 
 	private void showNotification(int contentTitle, int contentText) {
-		Uri sound = RingtoneManager
-				.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+		Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
 		Intent notificationIntent = new Intent(this, Game.class);
-		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-				notificationIntent, 0);
+		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
 		Notification notification = new NotificationCompat.Builder(this)
-				.setContentIntent(pendingIntent).setSmallIcon(R.drawable.icon)
+				.setContentIntent(pendingIntent).setSmallIcon(R.drawable.icon_bw)
 				.setContentTitle(getString(contentTitle))
 				.setContentText(getString(contentText))
 				.setVibrate(new long[] { 0, 100, 200, 300 }).setSound(sound)
@@ -102,7 +116,7 @@ public class NotifyService extends Service {
 
 				// Play
 
-				if (Utils.getHourOfDay() > 11 && System.currentTimeMillis() - mLastGameEnter > 0.2 * 60 * 60 * 1000) {//24 * 60 * 60 * 1000) {
+				if (!mIsPlayAgainShowed && Utils.getHourOfDay() > 11 && System.currentTimeMillis() - mLastGameEnter > 24 * 60 * 60 * 1000) {
 					NotifyService.this.showInviteNotification();
 				}
 			}
@@ -120,8 +134,7 @@ public class NotifyService extends Service {
 			return false;
 		}
 
-		return !mIsDailyRevenueShowed
-				&& mLastVisitDayCount - Utils.getDayOfMonth() > 0;
+		return !mIsDailyRevenueShowed && mLastVisitDayCount - Utils.getDayOfMonth() > 0;
 	}
 
 	private boolean isLivesRestored() {
@@ -129,8 +142,7 @@ public class NotifyService extends Service {
 			return false;
 		}
 
-		return !mIsFullLivesNotification
-				&& System.currentTimeMillis() >= mLastLiveRestoreTime;
+		return !mIsFullLivesNotification && System.currentTimeMillis() >= mLastLiveRestoreTime;
 	}
 
 	public static void setLastVisitDaysCount(String a, int daysCount) {

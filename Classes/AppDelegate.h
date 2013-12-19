@@ -193,7 +193,7 @@ class AppDelegate : private CCApplication
         static void setTotalBirdsKilled();
         static void setTotalLevelsUnlocked();
     
-        static void addTotalBirdsKilled(int add);
+        static void addTotalBirdsKilled(int add, int color);
         static void addTotalLevelsUnlocked(int add);
     
         static bool isVideoShowed();

@@ -87,6 +87,7 @@ class Clock : public CCNode
         void start();
 
         float getTimeElapsed();
+        void setTimeElapsed(float pTimeElapsed);
 
         void updateTime(float pDeltaTime);
         void pause();

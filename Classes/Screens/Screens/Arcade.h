@@ -30,6 +30,11 @@ class Arcade : public Game
         Text* mTimeText;
         Text* mGoldLifesCount;
     
+        bool mTimerSound;
+        bool mBonus1Used;
+    
+        Entity* mBonus1;
+    
         // ===========================================================
         // Constructors
         // ===========================================================
@@ -113,6 +118,10 @@ class Arcade : public Game
         void onTouchButtonsCallback(const int pAction, const int pID);
     
         void keyBackClicked(bool pSound);
+    
+        void onBirBlow(int pType, float pX, float pY, bool pBonus);
+    
+        void removeLife();
 };
 
 #endif

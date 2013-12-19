@@ -706,6 +706,8 @@ class MainList : public CCLayer
     {
         if(this->containsTouchLocation(touch))
         {
+            if(abs(this->mStartCoordinateX - touch->getLocation().x) <= Utils::coord(30)) return;
+            
             if(this->mParent->mLevels[0]->isRegisteredAsTouchable())
             {
                 for(int i = 0 ; i < 80; i++)

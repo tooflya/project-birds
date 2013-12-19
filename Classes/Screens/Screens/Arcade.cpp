@@ -23,6 +23,7 @@
 
 Arcade::~Arcade()
 {
+    CC_SAFE_RELEASE(this->mBonus1);
 }
 
 Arcade::Arcade() :
@@ -38,8 +39,33 @@ Arcade::Arcade() :
         this->mEventLayer = CCLayer::create();
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
-
-		SpriteBatch* spriteBatch0 = SpriteBatch::create("TextureAtlas16");
+        
+        Game::LEVEL = Utils::random(0, 100);
+        
+        const char* background = "";
+        
+        if(Game::LEVEL <= 15)
+        {
+            background = "TextureAtlas16";
+        }
+        else if(Game::LEVEL <= 31)
+        {
+            background = "TextureAtlas23";
+        }
+        else if(Game::LEVEL <= 47)
+        {
+            background = "TextureAtlas24";
+        }
+        else if(Game::LEVEL <= 63)
+        {
+            background = "TextureAtlas25";
+        }
+        else if(Game::LEVEL <= 71)
+        {
+            background = "TextureAtlas26";
+        }
+        
+		SpriteBatch* spriteBatch0 = SpriteBatch::create(background);
         SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
@@ -155,10 +181,13 @@ Arcade::Arcade() :
         this->mGun = RobotoGun::create(spriteBatch7);
         this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
         this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
-        
+        this->mShield = EntityManager::create(10, ShieldDisplay::create(), spriteBatch4);
+        this->mBonus1 = Entity::create("bonus-time@2x.png", spriteBatch4);
+        this->mBonus1->retain();
+
         this->mGunLaser->setAnchorPoint(ccp(0.5, 1));
         this->mGunLaser->animate(0.04);
-        
+
         this->e5 = Entity::create("board_migalka@2x.png", spriteBatch17);
         
         #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID && CC_TARGET_PLATFORM != CC_PLATFORM_MAC
@@ -307,6 +336,49 @@ void Arcade::update(float pDeltaTime)
         {
             this->onGameEnd();
         }
+        
+        if(this->mTimeIcon->getTimeElapsed() >= 55.0)
+        {
+            if(AppDelegate::isItemBought(42) && !this->mBonus1Used)
+            {
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
+                }
+                
+                this->mTimeIcon->setTimeElapsed(45);
+                
+                this->mBonus1Used = true;
+                
+                Entity* kl1 = this->mKeysLights->create();
+                Entity* kl2 = this->mKeysLights->create();
+                
+                kl1->runAction(CCSequence::create(CCFadeIn::create(0.2), CCRotateTo::create(2.0, 0.0), CCFadeOut::create(0.2), NULL));
+                kl2->runAction(CCSequence::create(CCFadeIn::create(0.2), CCRotateTo::create(2.0, 0.0), CCFadeOut::create(0.2), NULL));
+                
+                kl1->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(200));
+                kl2->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(200));
+                
+                this->mBonus1->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT - Utils::coord(200));
+                this->mBonus1->runAction(CCSequence::create(CCFadeIn::create(0.2), CCRotateTo::create(2.0, 0.0), CCFadeOut::create(0.2), NULL));
+                this->mBonus1->runAction(CCSequence::create(CCScaleTo::create(0.2, 1.2), CCScaleTo::create(0.1, 0.8), CCScaleTo::create(0.1, 1.0), NULL));
+            }
+            else if(!this->mTimerSound)
+            {
+                this->mTimerSound = true;
+                
+                this->mTimeText->setColor(ccc3(255, 0, 0));
+                
+                if(Options::SOUND_ENABLE)
+                {
+                    SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_TIMER);
+                }
+            }
+        }
+        else
+        {
+            this->mTimeText->setColor(ccc3(255, 255, 255));
+        }
     }
         
     int timer = 60.0 - this->mTimeIcon->getTimeElapsed();
@@ -328,6 +400,9 @@ void Arcade::onGameStarted()
     this->mEventPanel->setEvent(30)->show();
 
     BEST_COUNT = AppDelegate::getBestResult(1);
+    
+    this->mTimerSound = false;
+    this->mBonus1Used = false;
 }
 
 void Arcade::onGameEnd()
@@ -344,6 +419,8 @@ void Arcade::onGameEnd()
     {
         AppDelegate::removeCoins(1, Options::SAVE_DATA_COINS_TYPE_LIVES);
     }
+    
+    this->mTimeText->setColor(ccc3(255, 255, 255));
 }
 
 void Arcade::onEnter()
@@ -390,6 +467,23 @@ void Arcade::keyBackClicked(bool pSound)
             this->mPausePopup->show();
         }
     }
+}
+
+void Arcade::onBirBlow(int pType, float pX, float pY, bool pBonus)
+{
+    Game::onBirBlow(pType, pX, pY, pBonus);
+    
+    if(pType == Bird::TYPE_DANGER)
+    {
+        Game::CURRENT_COUNT = Game::CURRENT_COUNT > 5 ? CURRENT_COUNT - 5 : 0;
+
+        Game::removeLife();
+    }
+}
+
+void Arcade::removeLife()
+{
+    
 }
 
 #endif

@@ -257,7 +257,7 @@ class TouchLayer : public CCLayer
 // ===========================================================
 
 int Shop::CLICKED_ITEM_ID = -1;
-int Shop::ITEMS_COUNT[3] = { 11, 8, 7 };
+int Shop::ITEMS_COUNT[3] = { 11, 8, 8 };
 int Shop::ACTION = -1;
 int Shop::PURCHASE_ID = -1;
 
@@ -615,7 +615,7 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 
 void Shop::onItemBought(int pItemId)
 {
-    if(pItemId == 45)
+    if(pItemId == 43)
     {
         PURCHASE_ID = 7;
         this->onPurchase(true);
@@ -623,7 +623,7 @@ void Shop::onItemBought(int pItemId)
         return;
     }
 
-    if(pItemId == 46)
+    if(pItemId == 44)
     {
         PURCHASE_ID = 5;
         this->onPurchase(true);

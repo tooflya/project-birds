@@ -5,14 +5,17 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.games.GamesClient;
 import com.tooflya.projectbirds.Game;
 import com.tooflya.projectbirds.R;
 
@@ -175,7 +178,7 @@ public abstract class GameCenter {
 
 	}
 
-	private static GameHelper getGameHelper() {
+	public static GameHelper getGameHelper() {
 		if (Game.mHelper == null) {
 			Game.mHelper = new GameHelper(activity);
 			Game.mHelper.enableDebugLog(true, TAG);
@@ -329,6 +332,13 @@ public abstract class GameCenter {
 						return true;
 					}
 					
+				});
+				
+				videoView.setOnKeyListener(new OnKeyListener() {
+					@Override
+					public boolean onKey(View arg0, int arg1, KeyEvent arg2) {
+						return true;
+					}
 				});
 
 				videoView.setMediaController(null);

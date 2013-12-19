@@ -46,6 +46,7 @@ Bird::Bird(bool pBonus) :
     ImpulseEntity(pBonus ? "special_birds_sprite@2x.png" : "birds_sprite@2x.png", 14, pBonus ? 8 : 9),
     mChalangeType(0),
     mType(0),
+    mShield(0),
     mSoundEffect(0),
     mDestroyAnimationFrames(0),
     mMarkTime(0),
@@ -160,6 +161,7 @@ void Bird::onCreate()
     ImpulseEntity::onCreate();
     
     this->mChalangeType = 0;
+    this->mShieldShows = false;
     
     Game* game = static_cast<Game*>(this->getParent()->getParent()->getParent());
 
@@ -306,9 +308,14 @@ void Bird::onDestroy()
     {
         if(game->mGameRunning)
         {
-            if(this->mLifeCount <= 0)
+            if(this->mLifeCount <= 0 && this->mType != TYPE_DANGER && !this->mBonus && !Game::LASERGUN)
             {
-                AppDelegate::addTotalBirdsKilled(1);
+                AppDelegate::addTotalBirdsKilled(1, this->mType);
+                
+                for(int i = 0; i < 3; i++)
+                {
+                    Game::mAchievementsBirdsBlowCount[i] += 1;
+                }
             }
             
             if(this->mLifeCount > 0 && this->mType != TYPE_DANGER && !this->mChalange && !this->mBonus && this->mChalangeType != 3 && !Game::LASERGUN)
@@ -639,6 +646,30 @@ void Bird::update(float pDeltaTime)
     else
     {
         Entity::update(pDeltaTime);
+    }
+    
+    Game* game = static_cast<Game*>(this->getParent()->getParent()->getParent());
+    
+    if(this->mImpulsePower <= 0 && !game->mChalange && !this->mShieldShows && AppDelegate::isItemBought(40) && this->mType != TYPE_DANGER && this->mType != TYPE_FLAYER && !this->mBonus)
+    {
+        this->mShieldShows = true;
+        
+        this->mShield = game->mShield->create();
+        this->mShield->setCenterPosition(this->getCenterX(), this->getCenterY());
+        
+        this->mLifeCount /= 2;
+    }
+    
+    if(this->mShield != 0)
+    {
+        if(this->mShield->isVisible())
+        {
+            this->mShield->setCenterPosition(this->getCenterX(), this->getCenterY());
+        }
+        else
+        {
+            this->mShield = 0;
+        }
     }
 }
 

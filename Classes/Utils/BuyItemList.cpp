@@ -125,6 +125,9 @@ void BuyItemList::showDescription()
     this->mDescriptionText->setVisible(true);
     this->mDescriptionText->setString(Options::TEXT_SHOP_ITEMS_DESCRIPTIONS[Shop::CLICKED_ITEM_ID].string);
     this->mDescriptionText->setCenterPosition(this->mParent->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(5) - this->mDescriptionText->getHeight() / 2);
+    
+    this->mMaxHeight = this->mDescriptionText->getHeight() - Utils::coord(250);
+    this->mMaxHeight = this->mMaxHeight > 0 ? this->mMaxHeight : 0;
 }
 
 // ===========================================================
@@ -170,7 +173,7 @@ void BuyItemList::onEnter()
     this->mStars[1]->showPercentage(Options::SHOP_ITEMS_RATING_FACTOR[Shop::CLICKED_ITEM_ID]);
     this->mStars[1]->setCenterPosition(this->mParent->getWidth() / 2 - Utils::coord(5) + this->mStars[1]->getWidth() / 2, Options::CAMERA_CENTER_Y + Utils::coord(50));
 
-    if(Shop::CLICKED_ITEM_ID < Shop::ITEMS_COUNT[0])
+    if(Shop::CLICKED_ITEM_ID < Shop::ITEMS_COUNT[0] || Shop::CLICKED_ITEM_ID == 40)
     {
         this->mPropertiesIcon->setCurrentFrameIndex(1);
     }

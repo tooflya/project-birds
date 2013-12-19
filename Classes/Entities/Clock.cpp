@@ -53,6 +53,11 @@ float Clock::getTimeElapsed()
     return this->mTimeElapsed <= 0 ? 0 : this->mTimeElapsed;
 }
 
+void Clock::setTimeElapsed(float pTimeElapsed)
+{
+    this->mTimeElapsed = pTimeElapsed;
+}
+
 void Clock::pause()
 {
     this->mPause = !this->mPause;

@@ -194,6 +194,15 @@ void AppDelegate::install(bool soft)
     CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restore_time", 0);
     CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restore_time", 0);
     
+    for(int i = 0; i < 7; i++)
+    {
+        char text[64];
+        
+        sprintf(text, "leader_board_birds_killed_%d", i);
+        
+        CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 0);
+    }
+    
     int id = -1;
     for(int i = 1; i < 4; i++)
     {
@@ -559,9 +568,164 @@ void AppDelegate::setTotalLevelsUnlocked()
     CCUserDefault::sharedUserDefault()->flush();
 }
 
-void AppDelegate::addTotalBirdsKilled(int add)
+void AppDelegate::addTotalBirdsKilled(int add, int color)
 {
+    char text[64];
+    
+    sprintf(text, "leader_board_birds_killed_%d", color);
+    
+    if(AppDelegate::getTotalBirdsKilled() >= 5000)
+    {
+        mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_LORD_OF_BIRDS, 100);
+    }
+    else if(AppDelegate::getTotalBirdsKilled() >= 1000)
+    {
+        mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_KILLER, 100);
+    }
+    else if(AppDelegate::getTotalBirdsKilled() >= 500)
+    {
+        mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_AVIARIST, 100);
+    }
+    else if(AppDelegate::getTotalBirdsKilled() >= 100)
+    {
+        mGameCenter->postAchievement(Options::ACHIEVEMENTS_UNLOCK_JUNIOR, 100);
+    }
+    
+    for(int i = 0; i < 7; i++)
+    {
+        char text2[64];
+        
+        sprintf(text2, "leader_board_birds_killed_%d", i);
+        
+        if(CCUserDefault::sharedUserDefault()->getIntegerForKey(text2) >= 5000)
+        {
+            const char* id = "";
+            
+            switch(i)
+            {
+                case 0:
+                    id = Options::ACHIEVEMENTS_UNLOCK_LORD_OF_GREEN_BIRDS;
+                break;
+                case 1:
+                    id = Options::ACHIEVEMENTS_UNLOCK_LORD_OF_YELLOW_BIRDS;
+                break;
+                case 2:
+                    id = Options::ACHIEVEMENTS_UNLOCK_LORD_OF_AZURE_BIRDS;
+                break;
+                case 3:
+                    id = Options::ACHIEVEMENTS_UNLOCK_LORD_OF_PURPLE_BIRDS;
+                break;
+                case 4:
+                    id = Options::ACHIEVEMENTS_UNLOCK_LORD_OF_RED_BIRDS;
+                break;
+                case 5:
+                    id = Options::ACHIEVEMENTS_UNLOCK_LORD_OF_ORANGE_BIRDS;
+                break;
+                case 6:
+                    id = Options::ACHIEVEMENTS_UNLOCK_LORD_OF_BLUE_BIRDS;
+                break;
+            }
+            
+            mGameCenter->postAchievement(id, 100);
+        }
+        else if(CCUserDefault::sharedUserDefault()->getIntegerForKey(text2) >= 1000)
+        {
+            const char* id = "";
+            
+            switch(i)
+            {
+                case 0:
+                    id = Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_GREEN_BIRDS;
+                break;
+                case 1:
+                    id = Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_YELLOW_BIRDS;
+                break;
+                case 2:
+                    id = Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_AZURE_BIRDS;
+                break;
+                case 3:
+                    id = Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_PURPLE_BIRDS;
+                break;
+                case 4:
+                    id = Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_RED_BIRDS;
+                break;
+                case 5:
+                    id = Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_ORANGE_BIRDS;
+                break;
+                case 6:
+                    id = Options::ACHIEVEMENTS_UNLOCK_HUNTER_OF_BLUE_BIRDS;
+                break;
+            }
+            
+            mGameCenter->postAchievement(id, 100);
+        }
+        else if(CCUserDefault::sharedUserDefault()->getIntegerForKey(text2) >= 500)
+        {
+            const char* id = "";
+            
+            switch(i)
+            {
+                case 0:
+                    id = Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_GREEN_BIRDS;
+                    break;
+                case 1:
+                    id = Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_YELLOW_BIRDS;
+                    break;
+                case 2:
+                    id = Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_AZURE_BIRDS;
+                    break;
+                case 3:
+                    id = Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_PURPLE_BIRDS;
+                    break;
+                case 4:
+                    id = Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_RED_BIRDS;
+                    break;
+                case 5:
+                    id = Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_ORANGE_BIRDS;
+                    break;
+                case 6:
+                    id = Options::ACHIEVEMENTS_UNLOCK_KILLER_OF_BLUE_BIRDS;
+                    break;
+            }
+            
+            mGameCenter->postAchievement(id, 100);
+        }
+        else if(CCUserDefault::sharedUserDefault()->getIntegerForKey(text2) >= 100)
+        {
+            const char* id = "";
+            
+            switch(i)
+            {
+                case 0:
+                    id = Options::ACHIEVEMENTS_UNLOCK_FAN_OF_GREEN_BIRDS;
+                    break;
+                case 1:
+                    id = Options::ACHIEVEMENTS_UNLOCK_FAN_OF_YELLOW_BIRDS;
+                    break;
+                case 2:
+                    id = Options::ACHIEVEMENTS_UNLOCK_FAN_OF_AZURE_BIRDS;
+                    break;
+                case 3:
+                    id = Options::ACHIEVEMENTS_UNLOCK_FAN_OF_PURPLE_BIRDS;
+                    break;
+                case 4:
+                    id = Options::ACHIEVEMENTS_UNLOCK_FAN_OF_RED_BIRDS;
+                    break;
+                case 5:
+                    id = Options::ACHIEVEMENTS_UNLOCK_FAN_OF_ORANGE_BIRDS;
+                    break;
+                case 6:
+                    id = Options::ACHIEVEMENTS_UNLOCK_FAN_OF_BLUE_BIRDS;
+                    break;
+            }
+            
+            mGameCenter->postAchievement(id, 100);
+        }
+    }
+
     CCUserDefault::sharedUserDefault()->setIntegerForKey("leader_board_birds_killed", AppDelegate::getTotalBirdsKilled() + add);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(text, CCUserDefault::sharedUserDefault()->getIntegerForKey(text) + add);
+
     CCUserDefault::sharedUserDefault()->flush();
     
     AppDelegate::mGameCenter->postScore(Options::LEADERBOARD_BIRDS, AppDelegate::getTotalBirdsKilled());

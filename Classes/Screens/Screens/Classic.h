@@ -35,6 +35,7 @@ class Classic : public Game
         float mSoundChalangeTimeElapsed;
 
         bool mIsLevelUpAnimation;
+        bool mBonus1Used;
 
         EntityManager* mConfetti;
 
@@ -43,6 +44,8 @@ class Classic : public Game
         Text* mGoldLifesCount;
         Text* mLevelUpText;
         Text* mBonusTimeText;
+    
+        Entity* mBonus1;
     
         // ===========================================================
         // Constructors

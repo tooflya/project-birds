@@ -598,6 +598,7 @@ Progresses::Progresses() :
 		this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 7, 1), spriteBatch8);
 		this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
 		this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
+        this->mShield = EntityManager::create(10, ShieldDisplay::create(), spriteBatch4);
         this->mPirateHats = EntityManager::create(10, ImpulseEntity::create("bonus_pirat_hat@2x.png"), spriteBatch8);
         this->mMexicanoHats = EntityManager::create(10, ImpulseEntity::create("bonus_amigo_hat@2x.png"), spriteBatch8);
 		this->mShootsDecorations = EntityManager::create(10, Entity::create("move_circle@2x.png"), spriteBatch8, 10);

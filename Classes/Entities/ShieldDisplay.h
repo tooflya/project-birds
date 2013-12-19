@@ -1,9 +1,9 @@
-#ifndef CONST_LOADER_H
-#define CONST_LOADER_H
+#ifndef CONST_SHIELDDISPLAY_H
+#define CONST_SHIELDDISPLAY_H
 
-#include "Screen.h"
+#include "Entity.h"
 
-class Loader : public Screen
+class ShieldDisplay : public Entity
 {
     protected:
         // ===========================================================
@@ -18,47 +18,20 @@ class Loader : public Screen
         // Fields
         // ===========================================================
     
-        int mNumberOfSprites;
-        int mNumberOfLoadedSprites;
-    
-        float mCircleAnimationTime;
-        float mCircleAnimationTimeElapsed;
-    
-        float mLoadingProgressTime;
-        float mLoadingProgressTimeElapsed;
-
-        float mLoadingTime;
-        float mLoadingTimeElapsed;
-    
-        bool mTapToContinueAnimation;
-        bool mTapToContinueAnimationReverse;
-    
-        bool mIsWorkDone;
-        bool mLoading;
-        bool mLoadingProgress;
-    
-        Entity* mBackground;
-        Entity* mBird;
-    
-        Text* mLoadingText;
-        Text* mTipText;
-    
-        EntityManager* mCircles;
+        Entity* mLights[2];
 
         // ===========================================================
         // Constructors
         // ===========================================================
     
-        Loader();
+        ShieldDisplay();
 
         // ===========================================================
         // Methods
         // ===========================================================
-    
-        void loadingCallBack(CCObject *obj);
 
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     private:
@@ -81,9 +54,11 @@ class Loader : public Screen
         // ===========================================================
         // Methods
         // ===========================================================
+    
+        void onAnimationsEnd();
         
         // ===========================================================
-        // Override Methods
+        // Virtual Methods
         // ===========================================================
 
     public:
@@ -95,13 +70,6 @@ class Loader : public Screen
         // Constants
         // ===========================================================
 
-        static int ACTION;
-        static int TYPE;
-        static int T;
-    
-        static TextureStructure TEXTURE_LIBRARY[11];
-        static const char* WEAPON_TEXTURE[11];
-
         // ===========================================================
         // Fields
         // ===========================================================
@@ -110,29 +78,24 @@ class Loader : public Screen
         // Constructors
         // ===========================================================
     
-        static Loader* create();
-    
-        ~Loader();
+        static ShieldDisplay* create();
 
         // ===========================================================
         // Methods
         // ===========================================================
-
-        void startLoading();
-        
-        // ===========================================================
-        // Override Methods
-        // ===========================================================
     
         void update(float pDeltaTime);
+        
+        // ===========================================================
+        // Virtual Methods
+        // ===========================================================
     
-        void onEnterTransitionDidFinish();
-        void onExitTransitionDidStart();
-
-        void onEnter();
-        void onExit();
+        void setCenterPosition(float pCenterX, float pCenterY);
     
-        void onTouch(CCTouch* touch, CCEvent* event);
+        void onCreate();
+        void onDestroy();
+    
+        ShieldDisplay* deepCopy();
 };
 
 #endif
