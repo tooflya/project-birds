@@ -20,8 +20,8 @@ void EntityManager::init(int pCreateCount, int pMaxCount, Entity* pEntity, CCNod
     for(int i = 0; i < pCreateCount; i++)
     {
         Entity* currentEntity = pEntity->deepCopy();
-        currentEntity->autorelease();
-        currentEntity->retain();
+        //currentEntity->autorelease();
+        //currentEntity->retain();
         
         currentEntity->setEntityManager(this);
         currentEntity->setEntityManagerId(i);

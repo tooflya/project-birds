@@ -106,6 +106,7 @@ Episodes::Episodes(CCNode* pParent) :
 	mBackground(0),
 	mScroll(0),
 	mSquare(0),
+    mAnimation(false),
     mWays()
 	{
 		this->init();
@@ -143,7 +144,7 @@ Episodes::Episodes(CCNode* pParent) :
         this->mWays[5]->create()->setCenterPosition(this->mBackground->getWidth() / 2 - Utils::coord(30), this->mBackground->getHeight() / 2 - Utils::coord(20));
         this->mWays[6]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(50), this->mBackground->getHeight() / 2 + Utils::coord(10));
         
-        this->mWays[7]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(200), this->mBackground->getHeight() / 2 - Utils::coord(110));
+        //this->mWays[7]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(200), this->mBackground->getHeight() / 2 - Utils::coord(110));
         this->mWays[8]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(190), this->mBackground->getHeight() / 2 - Utils::coord(190));
         this->mWays[9]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(140), this->mBackground->getHeight() / 2 - Utils::coord(250));
         this->mWays[10]->create()->setCenterPosition(this->mBackground->getWidth() / 2 + Utils::coord(70), this->mBackground->getHeight() / 2 - Utils::coord(270));
@@ -183,7 +184,7 @@ Episodes::Episodes(CCNode* pParent) :
         this->mTextes[2] = Text::create(Options::TEXT_EPISODES_NAMES[2], this->mBackground);
         this->mTextes[3] = Text::create(Options::TEXT_EPISODES_NAMES[1], this->mBackground);
         this->mTextes[4] = Text::create(Options::TEXT_EPISODES_NAMES[0], this->mBackground);
-        
+
         this->mTextes[0]->setCenterPosition(this->mPoints[0]->getCenterX(), this->mPoints[0]->getCenterY() + Utils::coord(140));
         this->mTextes[1]->setCenterPosition(this->mPoints[1]->getCenterX(), this->mPoints[1]->getCenterY() + Utils::coord(120));
         this->mTextes[2]->setCenterPosition(this->mPoints[2]->getCenterX(), this->mPoints[2]->getCenterY() + Utils::coord(120));
@@ -213,9 +214,9 @@ Episodes::Episodes(CCNode* pParent) :
     
 		this->mScroll->create()->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_HEIGHT);
 		this->mScroll->animate(0.04);
-    
+
 		this->mParent = pParent;
-    
+
 		this->mParent->addChild(this->mSquare, 500);
         
         this->mHideAnimationRunning = false;
@@ -430,6 +431,42 @@ void Episodes::update(float pDeltaTime)
             }
         }
     }
+    
+    if(this->mAnimation && !this->mShowAnimationRunning)
+    {
+        this->mAnimation = false;
+        
+        int totalStars = AppDelegate::getLevelStarsTotalCount();
+        
+        if(totalStars >= Levels::STARS[1])
+        {
+            this->mPointLight->setCenterPosition(this->mPoints[3]->getCenterX(), this->mPoints[3]->getCenterY());
+        }
+        
+        if(totalStars >= Levels::STARS[2])
+        {
+            this->mPointLight->setCenterPosition(this->mPoints[2]->getCenterX(), this->mPoints[2]->getCenterY());
+        }
+        
+        if(totalStars >= Levels::STARS[3])
+        {
+            this->mPointLight->setCenterPosition(this->mPoints[1]->getCenterX(), this->mPoints[1]->getCenterY());
+        }
+        
+        if(totalStars >= Levels::STARS[4])
+        {
+            this->mPointLight->setCenterPosition(this->mPoints[0]->getCenterX(), this->mPoints[0]->getCenterY());
+        }
+        
+        this->mPointLight->setVisible(true);
+        this->mPointLight->setScale(0);
+        this->mPointLight->runAction(CCScaleTo::create(0.5, 1.0));
+
+        if(Options::SOUND_ENABLE)
+        {
+            SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
+        }
+    }
 }
 
 void Episodes::draw()
@@ -448,19 +485,61 @@ void Episodes::onEnter()
 
     int totalStars = AppDelegate::getLevelStarsTotalCount();
 
-    if(true) { this->mPoints[4]->setCurrentFrameIndex(0); this->mLocks[4]->setVisible(false); }
-    if(totalStars >= Levels::STARS[1]) { this->mPoints[3]->setCurrentFrameIndex(1); this->mLocks[3]->setVisible(false); } else { this->mPoints[3]->setCurrentFrameIndex(6); this->mLocks[3]->setVisible(true); }
-    if(totalStars >= Levels::STARS[2]) { this->mPoints[2]->setCurrentFrameIndex(2); this->mLocks[2]->setVisible(false); } else { this->mPoints[2]->setCurrentFrameIndex(7); this->mLocks[2]->setVisible(true); }
-    if(totalStars >= Levels::STARS[3]) { this->mPoints[1]->setCurrentFrameIndex(3); this->mLocks[1]->setVisible(false); } else { this->mPoints[1]->setCurrentFrameIndex(8); this->mLocks[1]->setVisible(true); }
-    if(totalStars >= Levels::STARS[4]) { this->mPoints[0]->setCurrentFrameIndex(4); this->mLocks[0]->setVisible(false); } else { this->mPoints[0]->setCurrentFrameIndex(9); this->mLocks[0]->setVisible(true); }
+    if(true)
+    {
+        this->mPoints[4]->setCurrentFrameIndex(0); this->mLocks[4]->setVisible(false);
+        
+        this->mPointLight->setCenterPosition(this->mPoints[4]->getCenterX(), this->mPoints[4]->getCenterY());
+    }
     
-    /*if(this->mStarsText[0]) this->mStarsText[0]->setString(ccsf("%d", Levels::STARS[0] - totalStars));
-    if(this->mStarsText[1]) this->mStarsText[1]->setString(ccsf("%d", Levels::STARS[1] - totalStars));
-    if(this->mStarsText[2]) this->mStarsText[2]->setString(ccsf("%d", Levels::STARS[2] - totalStars));
-    if(this->mStarsText[3]) this->mStarsText[3]->setString(ccsf("%d", Levels::STARS[3] - totalStars));
-    if(this->mStarsText[4]) this->mStarsText[4]->setString(ccsf("%d", Levels::STARS[4] - totalStars));*/ // TODO: If we need to show stars
+    if(this->mAnimation)
+    {
+        this->mPointLight->setVisible(false);
+    }
+
+    if(totalStars >= Levels::STARS[1])
+    {
+        this->mPoints[3]->setCurrentFrameIndex(1); this->mLocks[3]->setVisible(false);
+        
+        this->mPointLight->setCenterPosition(this->mPoints[3]->getCenterX(), this->mPoints[3]->getCenterY());
+    }
+    else
+    {
+        this->mPoints[3]->setCurrentFrameIndex(6); this->mLocks[3]->setVisible(true);
+    }
     
-    this->mPointLight->setCenterPosition(this->mPoints[4]->getCenterX(), this->mPoints[4]->getCenterY());
+    if(totalStars >= Levels::STARS[2])
+    {
+        this->mPoints[2]->setCurrentFrameIndex(2); this->mLocks[2]->setVisible(false);
+        
+        this->mPointLight->setCenterPosition(this->mPoints[2]->getCenterX(), this->mPoints[2]->getCenterY());
+    }
+    else
+    {
+        this->mPoints[2]->setCurrentFrameIndex(7); this->mLocks[2]->setVisible(true);
+    }
+    
+    if(totalStars >= Levels::STARS[3])
+    {
+        this->mPoints[1]->setCurrentFrameIndex(3); this->mLocks[1]->setVisible(false);
+        
+        this->mPointLight->setCenterPosition(this->mPoints[1]->getCenterX(), this->mPoints[1]->getCenterY());
+    }
+    else
+    {
+        this->mPoints[1]->setCurrentFrameIndex(8); this->mLocks[1]->setVisible(true);
+    }
+    
+    if(totalStars >= Levels::STARS[4])
+    {
+        this->mPoints[0]->setCurrentFrameIndex(4); this->mLocks[0]->setVisible(false);
+        
+        this->mPointLight->setCenterPosition(this->mPoints[0]->getCenterX(), this->mPoints[0]->getCenterY());
+    }
+    else
+    {
+        this->mPoints[0]->setCurrentFrameIndex(9); this->mLocks[0]->setVisible(true);
+    }
 }
 
 void Episodes::onExit()

@@ -65,7 +65,9 @@ class End : public Splash
         int mComboCount;
         int mCriticalCount;
         int mEarnedCoins;
-        int mTotalEarnedCoins;
+        int mTotalEarnedCoinsSilver;
+        int mTotalEarnedCoinsGold;
+        int mStarsCount;
     
         float mAnimationTime;
         float mAnimationtimeElapsed;

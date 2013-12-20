@@ -195,7 +195,7 @@ class Options
     
         static int CURRENT_LANGUAGE;
     
-        static Textes TEXTES_HOLDER[600];
+        static Textes TEXTES_HOLDER[1024];
 
         static int SHOP_ITEMS_PRICES[100];
         static int SHOP_ITEMS_PRICES_GOLD[100];
@@ -416,7 +416,7 @@ class Options
         static Textes TEXT_EVENTS[90];
         static Textes TEXT_GAME_CLASSIC_BONUS_TIME;
         static Textes TEXT_PAYMENT_STRING[6];
-        static Textes TEXT_END[7];
+        static Textes TEXT_END[11];
         static Textes TEXT_DAILY_MAP;
         static Textes TEXT_COINS_BONUS[10];
         static Textes TEXT_UNLOCKLEVEL;

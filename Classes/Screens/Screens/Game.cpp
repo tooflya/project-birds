@@ -18,29 +18,66 @@ int Game::GAME_TYPE = -1;
 int Game::mAchievementsBirdsBlowCount[3] = {0, 0, 0};
 
 int** Game::MATRIX = NULL;
-int Game::LEVEL_TYPE[80] = {
-    0, 1, 2
+
+int Game::LEVEL_SHOOT_COUNT_LEFT = -1;
+
+int Game::LEVEL_TYPE[80] =
+{
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
-int Game::LEVEL_SHOOT_COUNT[80] = {
-    5, 10, 15, 15, 30, 30
+int Game::LEVEL_SHOOT_COUNT[80] =
+{
+    5, 10, 15, 15, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30
 };
-int Game::LEVEL_HEIGHT[80] = {
-    1, 1, 1, 2,
-    2, 3, 2, 2,
-    2, 3, 3, 3,
-    3, 3, 4, 4
+int Game::LEVEL_HEIGHT[80] =
+{
+    1, 1, 1, 2, 2, 3, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4,
+    4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    6, 6, 6, 6, 4, 6, 4, 6, 7, 4, 6, 6, 7, 7, 7, 7,
+    7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9, 9,
+    9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11
 };
-int Game::LEVEL_COLORS[80] = {
-    1, 1, 2, 2,
-    2, 3, 3, 3,
-    3, 3, 3, 4,
-    4, 4, 4, 4
+int Game::LEVEL_COLORS[80] =
+{
+    1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4,
+    4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6,
+    6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7,
+    7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+    7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
 };
-int Game::LEVEL_HEALTH[80] = {
-    12, 12, 12, 12,
-    12, 12, 12, 24,
-    24, 24, 24, 24,
-    24, 36, 36, 36
+int Game::LEVEL_HEALTH[80] =
+{
+    12, 12, 12, 12, 12, 12, 12, 12, 22, 22, 22, 22, 22, 22, 22, 22,
+    31, 31, 31, 31, 31, 31, 31, 31, 36, 36, 36, 36, 36, 36, 36, 36,
+    48, 48, 48, 48, 48, 48, 48, 48, 52, 52, 52, 52, 52, 52, 52, 52,
+    61, 61, 61, 61, 61, 61, 61, 61, 68, 68, 68, 68, 68, 68, 68, 68,
+    75, 75, 75, 75, 75, 75, 75, 75, 88, 88, 88, 88, 88, 88, 88, 88
+};
+
+int Game::TASK[80][10] =
+{
+    {1, 1},
+    {1, 3},
+    {1, 3, 2, 3},
+    {1, 3, 2, 6},
+    {1, 10, 2, 10},
+    {2, 20},
+    {2, 30},
+    {1, 10, 2, 10, 3, 5},
+    {2, 40, 3, 5},
+    {1, 5, 2, 10, 3, 15},
+    {1, 10, 2, 10, 3, 10},
+    {1, 20, 2, 10, 3, 10},
+    {3, 100},
+    {1, 10, 2, 20, 3, 30, 4, 40}
 };
 
 int Game::MATRIX_SIZE_X = 0;
@@ -322,14 +359,10 @@ void Game::startGame()
 {
     Game::mShouldShowEndScreen = false;
     
-    ZOMBIE_AREA = false;
     this->mZombieAnimation = false;
     
     this->e5->stopAllActions();
     this->e5->setOpacity(0);
-    
-    CURRENT_COUNT = 0;
-    RECORD_BEATEAN = 0;
 
     this->mGameRunning = false;
     this->mGamePaused = false;
@@ -359,9 +392,14 @@ void Game::startGame()
 
     HEALTH = LEVEL_HEALTH[LEVEL];
     
+    ZOMBIE_AREA = false;
+
+    CURRENT_COUNT = 0;
+    RECORD_BEATEAN = 0;
     COMBO_COUNT = 0;
     FLAYER_COUNT = 0;
     CRITICAL_COUNT = 0;
+    KEYS_COUNT = 0;
 }
 
 void Game::onGameStarted()
@@ -371,7 +409,7 @@ void Game::onGameStarted()
 
 void Game::onGameEnd()
 {
-
+    Game::TIME_SLOW = 1;
 }
 
 void Game::removeLife()
@@ -475,7 +513,7 @@ void Game::startBoxAnimation()
     this->mGameLayer->setAnchorPoint(ccp(this->mPirateBox->getCenterX() / Options::CAMERA_WIDTH, this->mPirateBox->getCenterY() / Options::CAMERA_HEIGHT));
     this->mGameLayer->runAction(CCScaleTo::create(0.2, 1.5));
     this->mGameLayer->runAction(CCRotateTo::create(0.2, Utils::randomf(-15, 15)));
-    this->mGameLayer->runAction(CCFollow::create(this->mPirateBox, CCRectMake(-Options::CAMERA_WIDTH/4, -Options::CAMERA_HEIGHT/4, Options::CAMERA_WIDTH+Options::CAMERA_WIDTH/4, Options::CAMERA_HEIGHT+Options::CAMERA_HEIGHT/4)));
+    this->mGameLayer->runAction(CCFollow::create(this->mPirateBox, CCRectMake(-Options::CAMERA_WIDTH/8, -Options::CAMERA_HEIGHT/8, Options::CAMERA_WIDTH+Options::CAMERA_WIDTH/8, Options::CAMERA_HEIGHT+Options::CAMERA_HEIGHT/8)));
 }
 
 void Game::stopBoxAnimation()
@@ -608,7 +646,7 @@ void Game::onBonus(int pId, float pX, float pY)
         case 3:
             this->mPirateAnimation = true;
             
-            this->mPirateBox->create()->setCenterPosition(pX, pY);
+            this->mPirateBox->Entity::create()->setCenterPosition(pX, pY);
             
             this->mEventPanel->setEvent(64)->show();
         break;
@@ -894,6 +932,23 @@ void Game::update(float pDeltaTime)
             entity->mWeight = Utils::coord(1500.0);
             entity->mImpulsePower = Utils::coord(Utils::randomf(1200.0, 1900.0));
             entity->mRotateImpulse = Utils::coord(Utils::randomf(10.0, 100.0));
+        }
+    }
+    
+    if(this->mPirateAnimation)
+    {
+        if(!this->mPirateBox->isVisible())
+        {
+            this->mGameLayer->stopAllActions();
+            
+            this->mGameLayer->runAction(CCScaleTo::create(0.2, 1.0));
+            this->mGameLayer->runAction(CCRotateTo::create(0.2, 0.0));
+            this->mGameLayer->runAction(CCMoveTo::create(0.2, ccp(0.0, 0.0)));
+            
+            this->mPirateAnimation = false;
+            this->mPirateBoxAnimation = false;
+            
+            Game::TIME_SLOW = 1;
         }
     }
 

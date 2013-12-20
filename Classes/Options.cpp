@@ -289,11 +289,11 @@ int Options::SAVE_DATA_COINS_TYPE_KEYS = 3;
 
 int Options::SHOP_ITEMS_PRICES[100] =
 {
-      999, 1499, 2939, 3420, 3850, 4400, 5100, 6800, 1100, 20000,
-      22199, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      10000, 15200, 18760, 21780, 33110, 37600, 40050, 44220, 50670, 60200,
+      0, 200, 300, 400, 500, 600, 1500, 3000, 5000, 8000,
+      10000, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      2000, 2500, 3000, 5000, 7000, 8000, 9000, 10000, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      1000, 2000, 2000, 3000, 2500, 5000, 5000, 4000, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -303,11 +303,11 @@ int Options::SHOP_ITEMS_PRICES[100] =
 
 int Options::SHOP_ITEMS_PRICES_GOLD[100] =
 {
-    1, 0, 5, 0, 0, 0, 10, 0, 0, 0,
-    2, 0, 0, 50, 0, 0, 50, 0, 0, 0,
-    20, 50, 40, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 25, 35, 45, 100, 200, 300, 350,
+    600, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    50, 60, 70, 100, 100, 120, 150, 150, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    100, 100, 200, 150, 100, 50, 100, 100, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -343,7 +343,7 @@ const char* Options::SHOP_ITEMS_PROPERTIES[100] =
     "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "0:00", "00:00", "0:00", "0:00"
 };
 
-Textes Options::TEXTES_HOLDER[600] = {};
+Textes Options::TEXTES_HOLDER[1024] = {};
 
 Textes Options::TEXT_LOADING_1 = { "", FONT, 0, 0 };
 Textes Options::TEXT_LOADING_2 = { "", FONT, 0, 1 };
@@ -470,15 +470,19 @@ Textes Options::TEXT_PAYMENT_STRING[6] =
     {"", FONT, 36, 356},
     {"", FONT, 46, 357}
   };
-Textes Options::TEXT_END[7] =
+Textes Options::TEXT_END[11] =
 {
     {"", FONT, 64, 358},
     {"", FONT, 64, 359},
     {"", FONT, 64, 360},
     {"", FONT, 64, 361},
-    {"", FONT, 42, 362},
-    {"", FONT, 42, 363},
-    {"", FONT, 42, 364}
+    {"", FONT, 32, 362},
+    {"", FONT, 32, 363},
+    {"", FONT, 32, 364},
+    {"", FONT, 32, 486},
+    {"", FONT, 32, 487},
+    {"", FONT, 32, 488},
+    {"", FONT, 32, 489}
 };
 Textes Options::TEXT_DAILY_MAP = {"", Options::FONT, 42, 365};
 Textes Options::TEXT_COINS_BONUS[10] =
@@ -539,28 +543,27 @@ Textes Options::TEXT_NEED_TO_UNLOCK = {"", FONT, 22, 411};
 Textes Options::TEXT_GETSHOOTS_STRING_1 = {"", Options::FONT, 0, 412};
 
 Textes Options::TEXT_LEVELS_TASKS[80][3] = {
-    { {"", FONT, 32, 413}, {"", FONT, 32, 414}, {"", FONT, 32, 415} },
-    { {"", FONT, 32, 416}, {"", FONT, 32, 417}, {"", FONT, 32, 418} },
-    { {"", FONT, 32, 419}, {"", FONT, 32, 420}, {"", FONT, 32, 421} },
-    { {"", FONT, 32, 422}, {"", FONT, 32, 423}, {"", FONT, 32, 424} },
-    { {"", FONT, 32, 425}, {"", FONT, 32, 426}, {"", FONT, 32, 427} },
-    { {"", FONT, 32, 432}, {"", FONT, 32, 431}, {"", FONT, 32, 432} },
-    { {"", FONT, 32, 433}, {"", FONT, 32, 434}, {"", FONT, 32, 435} },
-    
-    { {"", FONT, 32, 436}, {"", FONT, 32, 437}, {"", FONT, 32, 438} },
-    { {"", FONT, 32, 439}, {"", FONT, 32, 440}, {"", FONT, 32, 441} },
-    { {"", FONT, 32, 442}, {"", FONT, 32, 443}, {"", FONT, 32, 444} },
-    { {"", FONT, 32, 445}, {"", FONT, 32, 446}, {"", FONT, 32, 447} },
-    { {"", FONT, 32, 448}, {"", FONT, 32, 449}, {"", FONT, 32, 450} },
-    { {"", FONT, 32, 451}, {"", FONT, 32, 452}, {"", FONT, 32, 453} },
-    { {"", FONT, 32, 454}, {"", FONT, 32, 455}, {"", FONT, 32, 456} },
-    { {"", FONT, 32, 457}, {"", FONT, 32, 458}, {"", FONT, 32, 459} },
-    { {"", FONT, 32, 460}, {"", FONT, 32, 461}, {"", FONT, 32, 462} },
-    { {"", FONT, 32, 463}, {"", FONT, 32, 464}, {"", FONT, 32, 465} },
-    { {"", FONT, 32, 466}, {"", FONT, 32, 467}, {"", FONT, 32, 468} },
-    { {"", FONT, 32, 469}, {"", FONT, 32, 470}, {"", FONT, 32, 471} },
-    { {"", FONT, 32, 472}, {"", FONT, 32, 473}, {"", FONT, 32, 474} },
-    { {"", FONT, 32, 475}, {"", FONT, 32, 476}, {"", FONT, 32, 477} }
+    { {"", FONT, 30, 413}, {"", FONT, 30, 414}, {"", FONT, 30, 415} },
+    { {"", FONT, 30, 416}, {"", FONT, 30, 417}, {"", FONT, 30, 418} },
+    { {"", FONT, 30, 419}, {"", FONT, 30, 420}, {"", FONT, 30, 421} },
+    { {"", FONT, 30, 422}, {"", FONT, 30, 423}, {"", FONT, 30, 424} },
+    { {"", FONT, 30, 425}, {"", FONT, 30, 426}, {"", FONT, 30, 427} },
+    { {"", FONT, 30, 432}, {"", FONT, 30, 431}, {"", FONT, 30, 432} },
+    { {"", FONT, 30, 433}, {"", FONT, 30, 434}, {"", FONT, 30, 435} },
+    { {"", FONT, 30, 436}, {"", FONT, 30, 437}, {"", FONT, 30, 438} },
+    { {"", FONT, 30, 439}, {"", FONT, 30, 440}, {"", FONT, 30, 441} },
+    { {"", FONT, 30, 442}, {"", FONT, 30, 443}, {"", FONT, 30, 444} },
+    { {"", FONT, 30, 445}, {"", FONT, 30, 446}, {"", FONT, 30, 447} },
+    { {"", FONT, 30, 448}, {"", FONT, 30, 449}, {"", FONT, 30, 450} },
+    { {"", FONT, 30, 451}, {"", FONT, 30, 452}, {"", FONT, 30, 453} },
+    { {"", FONT, 30, 454}, {"", FONT, 30, 455}, {"", FONT, 30, 456} },
+    { {"", FONT, 30, 457}, {"", FONT, 30, 458}, {"", FONT, 30, 459} },
+    { {"", FONT, 30, 460}, {"", FONT, 30, 461}, {"", FONT, 30, 462} },
+    { {"", FONT, 30, 463}, {"", FONT, 30, 464}, {"", FONT, 30, 465} },
+    { {"", FONT, 30, 466}, {"", FONT, 30, 467}, {"", FONT, 30, 468} },
+    { {"", FONT, 30, 469}, {"", FONT, 30, 470}, {"", FONT, 30, 471} },
+    { {"", FONT, 30, 472}, {"", FONT, 30, 473}, {"", FONT, 30, 474} },
+    { {"", FONT, 30, 475}, {"", FONT, 30, 476}, {"", FONT, 30, 477} }
 };
 Textes Options::TEXT_LOADING_LANGUAGE = {"", FONT, 42, 428};
 Textes Options::TEXT_LOADING_RESET = {"", FONT, 42, 429};
@@ -1082,13 +1085,14 @@ void Options::changeLanguage()
             TEXT_END[2].string = "Good!";
             TEXT_END[3].string = "Try again!";
             
-            TEXT_END[4].string = "Combo hits";
-            TEXT_END[5].string = "Flyers kills";
-            TEXT_END[6].string = "Total coins earned";
+            TEXT_END[4].string = "Birds count";
+            TEXT_END[5].string = "Combo hits";
+            TEXT_END[6].string = "Flayer birds";
+            TEXT_END[7].string = "Record was beaten";
+            TEXT_END[8].string = "Total coins earned";
             
-            TEXT_END[4].size = 42;
-            TEXT_END[5].size = 42;
-            TEXT_END[6].size = 42;
+            TEXT_END[9].string = "Tasks completed";
+            TEXT_END[10].string = "Hits left";
             
             TEXT_DAILY_MAP.string = "Daily revenue";
             
@@ -1603,13 +1607,14 @@ void Options::changeLanguage()
             TEXT_END[2].string = "Хорошо!";
             TEXT_END[3].string = "Попробуйте снова!";
             
-            TEXT_END[4].string = "Комбо ударов";
-            TEXT_END[5].string = "Птицы летчики";
-            TEXT_END[6].string = "Всего монет заработано";
+            TEXT_END[4].string = "Поймано птиц";
+            TEXT_END[5].string = "Комбо ударов";
+            TEXT_END[6].string = "Птицы летчики";
+            TEXT_END[7].string = "Рекорд был побит";
+            TEXT_END[8].string = "Всего монет заработано";
             
-            TEXT_END[4].size = 36;
-            TEXT_END[5].size = 36;
-            TEXT_END[6].size = 36;
+            TEXT_END[9].string = "Заданий выполнено";
+            TEXT_END[10].string = "Ударов осталось";
             
             TEXT_DAILY_MAP.string = "Вознаграждение";
             
@@ -1674,96 +1679,96 @@ void Options::changeLanguage()
             TEXT_NEED_TO_UNLOCK.string = "Вам необоходимо\n \nдля доступа";
             
             TEXT_LEVELS_TASKS[0][0].string = "Соберите все яйца";
-            TEXT_LEVELS_TASKS[0][1].string = "Успейте за 20 секунд";
-            TEXT_LEVELS_TASKS[0][2].string = "Используйте только\nодин удар";
+            TEXT_LEVELS_TASKS[0][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[0][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
             TEXT_LEVELS_TASKS[1][0].string = "Соберите все яйца";
-            TEXT_LEVELS_TASKS[1][1].string = "Соберите 4 в ряд";
+            TEXT_LEVELS_TASKS[1][1].string = "Успейте за\nполовину ударов";
             TEXT_LEVELS_TASKS[1][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
             TEXT_LEVELS_TASKS[2][0].string = "Соберите все яйца";
-            TEXT_LEVELS_TASKS[2][1].string = "Соберите 4 в ряд";
-            TEXT_LEVELS_TASKS[2][2].string = "Успейте за 60 секунд";
+            TEXT_LEVELS_TASKS[2][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[2][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
             TEXT_LEVELS_TASKS[3][0].string = "Соберите все яйца";
-            TEXT_LEVELS_TASKS[3][1].string = "Соберите 2 ключа";
-            TEXT_LEVELS_TASKS[3][2].string = "Успейте за 10 ударов";
+            TEXT_LEVELS_TASKS[3][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[3][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
             TEXT_LEVELS_TASKS[4][0].string = "Соберите все яйца";
-            TEXT_LEVELS_TASKS[4][1].string = "Спасите 3 звездочки";
+            TEXT_LEVELS_TASKS[4][1].string = "Успейте за\nполовину ударов";
             TEXT_LEVELS_TASKS[4][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
             TEXT_LEVELS_TASKS[5][0].string = "Соберите все яйца";
-            TEXT_LEVELS_TASKS[5][1].string = "Успейте за 20 ударов";
+            TEXT_LEVELS_TASKS[5][1].string = "Успейте за\nполовину ударов";
             TEXT_LEVELS_TASKS[5][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[6][0].string = "";
-            TEXT_LEVELS_TASKS[6][1].string = "";
-            TEXT_LEVELS_TASKS[6][2].string = "";
+            TEXT_LEVELS_TASKS[6][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[6][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[6][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[7][0].string = "";
-            TEXT_LEVELS_TASKS[7][1].string = "";
-            TEXT_LEVELS_TASKS[7][2].string = "";
+            TEXT_LEVELS_TASKS[7][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[7][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[7][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[8][0].string = "";
-            TEXT_LEVELS_TASKS[8][1].string = "";
-            TEXT_LEVELS_TASKS[8][2].string = "";
+            TEXT_LEVELS_TASKS[8][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[8][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[8][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[9][0].string = "";
-            TEXT_LEVELS_TASKS[9][1].string = "";
-            TEXT_LEVELS_TASKS[9][2].string = "";
+            TEXT_LEVELS_TASKS[9][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[9][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[9][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[10][0].string = "";
-            TEXT_LEVELS_TASKS[10][1].string = "";
-            TEXT_LEVELS_TASKS[10][2].string = "";
+            TEXT_LEVELS_TASKS[10][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[10][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[10][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[10][0].string = "";
-            TEXT_LEVELS_TASKS[10][1].string = "";
-            TEXT_LEVELS_TASKS[10][2].string = "";
+            TEXT_LEVELS_TASKS[10][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[10][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[10][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[10][0].string = "";
-            TEXT_LEVELS_TASKS[10][1].string = "";
-            TEXT_LEVELS_TASKS[10][2].string = "";
+            TEXT_LEVELS_TASKS[10][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[10][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[10][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[11][0].string = "";
-            TEXT_LEVELS_TASKS[11][1].string = "";
-            TEXT_LEVELS_TASKS[11][2].string = "";
+            TEXT_LEVELS_TASKS[11][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[11][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[11][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[12][0].string = "";
-            TEXT_LEVELS_TASKS[12][1].string = "";
-            TEXT_LEVELS_TASKS[12][2].string = "";
+            TEXT_LEVELS_TASKS[12][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[12][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[12][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[13][0].string = "";
-            TEXT_LEVELS_TASKS[13][1].string = "";
-            TEXT_LEVELS_TASKS[13][2].string = "";
+            TEXT_LEVELS_TASKS[13][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[13][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[13][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[14][0].string = "";
-            TEXT_LEVELS_TASKS[14][1].string = "";
-            TEXT_LEVELS_TASKS[14][2].string = "";
+            TEXT_LEVELS_TASKS[14][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[14][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[14][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[15][0].string = "";
-            TEXT_LEVELS_TASKS[15][1].string = "";
-            TEXT_LEVELS_TASKS[15][2].string = "";
+            TEXT_LEVELS_TASKS[15][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[15][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[15][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[16][0].string = "";
-            TEXT_LEVELS_TASKS[16][1].string = "";
-            TEXT_LEVELS_TASKS[16][2].string = "";
+            TEXT_LEVELS_TASKS[16][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[16][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[16][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[17][0].string = "";
-            TEXT_LEVELS_TASKS[17][1].string = "";
-            TEXT_LEVELS_TASKS[17][2].string = "";
+            TEXT_LEVELS_TASKS[17][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[17][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[17][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[18][0].string = "";
-            TEXT_LEVELS_TASKS[18][1].string = "";
-            TEXT_LEVELS_TASKS[18][2].string = "";
+            TEXT_LEVELS_TASKS[18][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[18][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[18][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[19][0].string = "";
-            TEXT_LEVELS_TASKS[19][1].string = "";
-            TEXT_LEVELS_TASKS[19][2].string = "";
+            TEXT_LEVELS_TASKS[19][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[19][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[19][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
-            TEXT_LEVELS_TASKS[20][0].string = "";
-            TEXT_LEVELS_TASKS[20][1].string = "";
-            TEXT_LEVELS_TASKS[20][2].string = "";
+            TEXT_LEVELS_TASKS[20][0].string = "Соберите все яйца";
+            TEXT_LEVELS_TASKS[20][1].string = "Успейте за\nполовину ударов";
+            TEXT_LEVELS_TASKS[20][2].string = "Уничтожте все яйца\nпосле выполнения задания";
             
             TEXT_LOADING_LANGUAGE.string = "Происходит смена языка\nПожалуйста подождите";
             TEXT_LOADING_RESET.string = "Происходит сброс прогреса\nПожалуйста подождите";
@@ -2269,8 +2274,12 @@ void Options::changeLanguage()
     TEXTES_HOLDER[483] = TEXT_MORE[0];
     TEXTES_HOLDER[484] = TEXT_MORE[1];
     TEXTES_HOLDER[485] = TEXT_MORE[2];
+    TEXTES_HOLDER[486] = TEXT_END[7];
+    TEXTES_HOLDER[487] = TEXT_END[8];
+    TEXTES_HOLDER[488] = TEXT_END[9];
+    TEXTES_HOLDER[489] = TEXT_END[10];
     
-    for(int i = 0; i <= 485; i++)
+    for(int i = 0; i <= 489; i++)
     {
         if(Text::TEXTES[i] != NULL)
         {

@@ -223,6 +223,8 @@ void AppDelegate::install(bool soft)
                 if(j == 0)
                 {
                     CCUserDefault::sharedUserDefault()->setIntegerForKey(text, 1);
+                    
+                    Options::SELECTED_WEAPON_ID = 0;
                 }
                 else
                 {
@@ -761,7 +763,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCDictionary *storeParams = CCDictionary::create();
     
     storeParams->setObject(CCString::create(Options::SOOMLA_BASE_64_KEY), "soomSec");
-    #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     storeParams->setObject(CCString::create(Options::GOOGLE_PLAY_BASE_64_KEY), "androidPublicKey");
     #endif
     storeParams->setObject(CCString::create(Options::SOOMLA_CUSTOM_BASE_64_KEY), "customSecret");

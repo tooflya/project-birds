@@ -50,8 +50,8 @@ void Mark::onCreate()
     this->setOpacity(255.0);
     this->setScale(0.7);
     
-    this->runAction(CCFadeTo::create(0.5, 0.0));
-    this->runAction(CCScaleTo::create(0.5, 0.3));
+    this->runAction(CCFadeTo::create(0.5 * Game::TIME_SLOW, 0.0));
+    this->runAction(CCScaleTo::create(0.5 * Game::TIME_SLOW, 0.3));
 }
     
 Mark* Mark::deepCopy()

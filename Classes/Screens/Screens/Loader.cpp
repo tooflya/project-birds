@@ -10,6 +10,8 @@
 #include "Classic.h"
 #include "Arcade.h"
 #include "Progresses.h"
+#include "Levels.h"
+#include "Episodes.h"
 
 // ===========================================================
 // Inner Classes
@@ -39,9 +41,10 @@ const char* Loader::WEAPON_TEXTURE[11] =
 };
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-TextureStructure Loader::TEXTURE_LIBRARY[11] =
+TextureStructure Loader::TEXTURE_LIBRARY[12] =
 {
 	{"TextureAtlas19.png", "TextureAtlas19.plist"},
+	{"TextureAtlas16.png", "TextureAtlas16.plist"},
     {"TextureAtlas6.png", "TextureAtlas6.plist"},
     {"TextureAtlas7.png", "TextureAtlas7.plist"},
     {"TextureAtlas8.png", "TextureAtlas8.plist"},
@@ -54,9 +57,10 @@ TextureStructure Loader::TEXTURE_LIBRARY[11] =
     {WEAPON_TEXTURE[Options::SELECTED_WEAPON_ID], NULL}
 };
 #else
-TextureStructure Loader::TEXTURE_LIBRARY[11] =
+TextureStructure Loader::TEXTURE_LIBRARY[12] =
 {
 	{"TextureAtlas19.pvr.ccz", "TextureAtlas19.plist"},
+	{"TextureAtlas16.pvr.ccz", "TextureAtlas16.plist"},
     {"TextureAtlas6.pvr.ccz", "TextureAtlas6.plist"},
     {"TextureAtlas7.pvr.ccz", "TextureAtlas7.plist"},
     {"TextureAtlas8.pvr.ccz", "TextureAtlas8.plist"},
@@ -305,6 +309,38 @@ void Loader::onTouch(CCTouch* touch, CCEvent* event)
                 AppDelegate::screens->set(Screen::SCREEN_SHOP);
                 #endif
                 
+                break;
+            case 6:
+                
+                int index = 0;
+                
+                if(Game::LEVEL == 15) index = 1;
+                else if(Game::LEVEL == 31) index = 2;
+                else if(Game::LEVEL == 47) index = 3;
+                else if(Game::LEVEL == 63) index = 4;
+                else if(Game::LEVEL == 76) index = 5;
+                
+                if(AppDelegate::getLevelStarsTotalCount() >= Levels::STARS[index])
+                {
+                    Mode::ACTION = 1;
+
+                    #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+                    AppDelegate::screens->set(Mode::create());
+                    #else
+                    AppDelegate::screens->set(Screen::SCREEN_MODE);
+                    #endif
+                }
+                else
+                {
+                    Episodes::ACTION = index + 1;
+
+                    #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+                    AppDelegate::screens->set(Levels::create());
+                    #else
+                    AppDelegate::screens->set(Screen::SCREEN_LEVELS);
+                    #endif
+                }
+                
             break;
         }
     }
@@ -396,7 +432,8 @@ void Loader::update(float pDeltaTime)
                     {
                         if(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].frames == NULL)
                         {
-                            CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                            //CCTextureCache::sharedTextureCache()->addImageAsync(TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                            this->loadingCallBack(NULL);
                         }
                         else
                         {
@@ -416,12 +453,14 @@ void Loader::update(float pDeltaTime)
                 case 3:
                 case 4:
                 case 5:
+                case 6:
                     this->mNumberOfSprites = sizeof(Loading::TEXTURE_LIBRARY) / sizeof(TextureStructure) - 1;
                 
                     {
                         if(Loading::TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].frames == NULL)
                         {
-                            CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                            //CCTextureCache::sharedTextureCache()->addImageAsync(Loading::TEXTURE_LIBRARY[this->mNumberOfLoadedSprites + 1].texture, this, callfuncO_selector(Loader::loadingCallBack));
+                            this->loadingCallBack(NULL);
                         }
                         else
                         {
@@ -476,6 +515,11 @@ void Loader::onEnter()
 
     SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
     
+    if(ACTION == 0 || ACTION == 1)
+    {
+        Game::LEVEL = Utils::random(0, 100);
+    }
+
     if(Game::LEVEL <= 15)
     {
         Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas16.pvr.ccz", "TextureAtlas16.plist"};
@@ -492,7 +536,7 @@ void Loader::onEnter()
     {
         Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas25.pvr.ccz", "TextureAtlas25.plist"};
     }
-    else if(Game::LEVEL <= 79)
+    else
     {
         Loader::TEXTURE_LIBRARY[1] = (TextureStructure) {"TextureAtlas26.pvr.ccz", "TextureAtlas26.plist"};
     }

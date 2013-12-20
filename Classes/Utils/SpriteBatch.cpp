@@ -31,7 +31,7 @@ SpriteBatch::SpriteBatch()
 SpriteBatch* SpriteBatch::create(const char* pTextureAtlas)
 {
 	#if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(ccsf("%s%s", pTextureAtlas, ".plist"));
+    //CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(ccsf("%s%s", pTextureAtlas, ".plist"));
 	#endif
 
     SpriteBatch* entity = new SpriteBatch();

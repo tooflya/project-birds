@@ -112,6 +112,7 @@ class Mode : public Screen
     
         static int GAME_CENTER_ACTION;
         static int UNLOCK_ACTION;
+        static int ACTION;
     
         static int PRICES[2];
 

@@ -88,7 +88,7 @@ class Text : public CCLabelTTF
     
         static int ID;
     
-        static Text* TEXTES[512];
+        static Text* TEXTES[1024];
 
         // ===========================================================
         // Fields

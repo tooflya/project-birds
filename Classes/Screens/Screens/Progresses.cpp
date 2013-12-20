@@ -32,6 +32,7 @@ class TaskPanel : public CCLayer
     CCNode* mParent;
     
     Entity* mStarsCountIcon[9];
+    Entity* u2;
     
     float mStarsCountIconAnimationTime;
     
@@ -56,7 +57,7 @@ class TaskPanel : public CCLayer
         SpriteBatch* sb1 = SpriteBatch::create("TextureAtlas6");
         
         Entity* u = Entity::create("popup_cloud@2x.png", sb1);
-        Entity* u2 = Entity::create("bg_detail_choose_bird@2x.png", sb1);
+        u2 = Entity::create("bg_detail_choose_bird@2x.png", sb1);
         u->create()->setCenterPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - Utils::coord(50));
         u2->create()->setCenterPosition(this->getContentSize().width / 2 + Utils::coord(200), u2->getHeight() / 2 - Options::CAMERA_CENTER_Y);
         u->setOpacity(200);
@@ -181,6 +182,8 @@ class TaskPanel : public CCLayer
     
     void update(float pDeltaTime)
     {
+        u2->create()->setCenterPosition(this->getContentSize().width / 2 + Utils::coord(200), u2->getHeight() / 2 - (this->getPosition().y > Options::CAMERA_CENTER_Y ? this->getPosition().y : Options::CAMERA_CENTER_Y));
+
         if(this->mUpAnimation)
         {
             this->mUpAnimationStepTimeElapsed += pDeltaTime;
@@ -293,24 +296,6 @@ class TaskPanel : public CCLayer
 // ===========================================================
 // Constants
 // ===========================================================
-
-int Progresses::TASK[80][10] =
-{
-    {1, 1},
-    {1, 3},
-    {1, 3, 2, 3},
-    {1, 3, 2, 6},
-    {1, 10, 2, 10},
-    {2, 20},
-    {2, 30},
-    {1, 10, 2, 10, 3, 5},
-    {2, 40, 3, 5},
-    {1, 5, 2, 10, 3, 15},
-    {1, 10, 2, 10, 3, 10},
-    {1, 20, 2, 10, 3, 10},
-    {3, 100},
-    {1, 10, 2, 20, 3, 30, 4, 40}
-};
 
 class Grid : public CCNode
 {
@@ -476,7 +461,7 @@ Progresses::Progresses() :
         
         this->e5 = Entity::create("board_migalka@2x.png", spriteBatch17);
     
-		this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
+		this->mBackground = Entity::create("background@2x.png", spriteBatch0);
     
 		#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
 		if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
@@ -597,8 +582,8 @@ Progresses::Progresses() :
 		this->mTasksBackground = EntityManager::create(10, Entity::create("task-background@2x.png"), spriteBatch8);
 		this->mColorsSmall = EntityManager::create(10, Entity::create("colors_small@2x.png", 7, 1), spriteBatch8);
 		this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
-		this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
-        this->mShield = EntityManager::create(10, ShieldDisplay::create(), spriteBatch4);
+		this->mKeysLights = EntityManager::create(30, Entity::create("get_coins_light@2x.png"), spriteBatch99);
+        this->mShield = EntityManager::create(30, ShieldDisplay::create(), spriteBatch4);
         this->mPirateHats = EntityManager::create(10, ImpulseEntity::create("bonus_pirat_hat@2x.png"), spriteBatch8);
         this->mMexicanoHats = EntityManager::create(10, ImpulseEntity::create("bonus_amigo_hat@2x.png"), spriteBatch8);
 		this->mShootsDecorations = EntityManager::create(10, Entity::create("move_circle@2x.png"), spriteBatch8, 10);
@@ -1039,6 +1024,8 @@ void Progresses::onGameStarted()
 
 void Progresses::onGameEnd()
 {
+    Game::onGameEnd();
+
     if(this->mGetShootsPopup->getParent()) return;
 
     if(!this->mTaskDone)
@@ -1066,6 +1053,8 @@ void Progresses::onGameEnd()
     {
         AppDelegate::removeCoins(1, Options::SAVE_DATA_COINS_TYPE_LIVES);
     }
+    
+    Game::LEVEL_SHOOT_COUNT_LEFT = this->mShootCount;
 }
 
 void Progresses::onBirBlow(int pType, float pX, float pY, bool pBonus)
@@ -1323,7 +1312,7 @@ void Progresses::setGamePanelLeftLevelIcons()
             Entity* background = this->mTasksBackground->create();
             Entity* color = this->mColorsSmall->create();
             
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
+            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(33), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
             color->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
             color->setCurrentFrameIndex(TASK[Game::LEVEL][i] - 1);
             
@@ -1333,332 +1322,25 @@ void Progresses::setGamePanelLeftLevelIcons()
             c++;
         }
     }
-    
-    switch(Game::LEVEL)
-    {
-        case 0:
-        {
-            Entity* background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-
-            this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-
-            this->mTime = 20;
-            this->mTaskText[c]->setString("0:20");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-
-            c++;
-
-            background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-
-            this->mTaskShootsIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            this->mTaskShootsIcon->setScale(0.7);
-            this->mTaskText[c]->setString("1");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-        }
-        break;
-            
-        case 1:
-        {
-            Entity* background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/1");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-            
-            c++;
-            
-            background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskShootsIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            //this->mTaskShootsIcon->setScale(0.7);
-            this->mTaskText[c]->setString("0/1");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-        }
-        break;
-            
-        case 2:
-        {
-            Entity* background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/1");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-
-            c++;
-
-            background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-
-            this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTime = 60;
-            this->mTaskText[c]->setString("0:60");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-        }
-            break;
-            
-        case 3:
-        {
-            Entity* background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/2");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-            
-            c++;
-            
-            background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/10");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-        }
-            break;
-            
-        case 4:
-        {
-            Entity* background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/3");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-            
-            c++;
-            
-            background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/1");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-        }
-            break;
-            
-        case 5:
-        {
-            Entity* background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/20");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-            
-            c++;
-            
-            background = this->mTasksBackground->create();
-            background->setCenterPosition(background->getWidth() / 2 + Utils::coord(30), Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            //this->mTaskTimeIcon->create()->setCenterPosition(background->getCenterX() - background->getWidth() / 2, Options::CAMERA_HEIGHT - Utils::coord(100) - Utils::coord(40) * c);
-            
-            this->mTaskText[c]->setString("0/1");
-            this->mTaskText[c]->setColor(ccc3(255, 255, 255));
-            this->mTaskText[c]->setVisible(true);
-            this->mTaskText[c]->setCenterPosition(background->getCenterX() + background->getWidth() / 2 - this->mTaskText[c]->getWidth() / 2 - Utils::coord(10), background->getCenterY());
-        }
-            break;
-    }
 }
 
 void Progresses::checkStarsRuntime()
 {
-    
-    switch(Game::LEVEL)
+    if(this->mTaskDone) // TODO: REWRITE THIS METHOD!
     {
-        case 0:
-            if(this->mTaskDone) {
-                STARS++;
-                if(this->mTime > 0) STARS++;
-                if(this->mShootMakeCount <= 1) STARS++;
-                
-                Game::mShouldShowEndScreen = true;
-            }
-            if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); if(this->mTime <= 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); } }
-            if(this->mTime <= 0) { this->mPanelStars[1]->setColor(ccc3(100, 100, 100)); this->mTaskText[1]->setColor(ccc3(255, 0, 0)); }
-            if(this->mShootMakeCount > 1) { this->mPanelStars[2]->setColor(ccc3(100, 100, 100)); this->mTaskText[2]->setColor(ccc3(255, 0, 0)); }
-            break;
-        case 1:
-            if(this->mTaskDone) {
-                if(this->mShootCount <= 0 || (Game::EGGS_4_COUNT > 0 && this->mColors->getCount() <= 0))
-                {
-                    STARS++;
-                    if(Game::EGGS_4_COUNT > 0) STARS++;
-                    if(this->mColors->getCount() <= 0) STARS++;
-
-                    Game::mShouldShowEndScreen = true;
-                }
-            }
-            if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); }
-            if(Game::EGGS_4_COUNT > 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); this->mTaskText[1]->setColor(ccc3(0, 255, 0)); }
-            if(this->mTaskDone) if(this->mColors->getCount() <= 0) { this->mPanelStars[2]->setCurrentFrameIndex(2); this->mTaskText[2]->setColor(ccc3(0, 255, 0)); }
-            break;
-        case 2:
-            if(this->mTaskDone && Game::EGGS_4_COUNT > 0) { // ?
-                STARS++;
-                if(this->mTime > 0) STARS++;
-                if(Game::EGGS_4_COUNT > 0) STARS++;
-                
-                Game::mShouldShowEndScreen = true;
-            }
-            if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); if(this->mTime <= 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); } }
-            if(Game::EGGS_4_COUNT > 0) { this->mPanelStars[1]->setCurrentFrameIndex(1); this->mTaskText[2]->setColor(ccc3(0, 255, 0)); }
-            if(this->mTime <= 0) { this->mPanelStars[2]->setColor(ccc3(100, 100, 100)); this->mTaskText[3]->setColor(ccc3(255, 0, 0)); }
-            break;
-        case 3:
-            if(this->mTaskDone) {
-                STARS = 0;
-                STARS++;
-                if(Game::KEYS_COUNT >= 2) STARS++;
-                if(this->mShootMakeCount <= 10) STARS++;
-                
-                if(Game::KEYS_COUNT < 2 && this->mShootCount > 0)
-                {
-                    
-                }
-                else
-                Game::mShouldShowEndScreen = true;
-            }
-            if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); }
-            if(Game::KEYS_COUNT >= 2) { this->mPanelStars[1]->setCurrentFrameIndex(1); }
-            if(this->mShootMakeCount > 10) { this->mPanelStars[2]->setColor(ccc3(100, 100, 100)); this->mTaskText[3]->setColor(ccc3(255, 0, 0)); }
-            break;
-        case 4:
-            if(this->mTaskDone) {
-                if(this->mShootCount <= 0 || this->mColors->getCount() <= 0)
-                {
-                    STARS = 0;
-                    STARS++;
-                    if(Game::STARS_RESCUE >= 2) STARS++;
-                    if(this->mColors->getCount() <= 0) STARS++;
-                    
-                    Game::mShouldShowEndScreen = true;
-                }
-            }
-            if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); }
-            if(Game::STARS_RESCUE >= 2) { this->mPanelStars[1]->setCurrentFrameIndex(1); this->mTaskText[2]->setColor(ccc3(0, 255, 0)); }
-            if(this->mColors->getCount() <= 0) { this->mPanelStars[2]->setCurrentFrameIndex(2); this->mTaskText[2]->setColor(ccc3(0, 255, 0)); }
-            break;
-        case 5:
-            if(this->mTaskDone) {
-                if(this->mShootCount <= 0 || this->mColors->getCount() <= 0)
-                {
-                    STARS = 0;
-                    STARS++;
-                    if(this->mShootMakeCount <= 20) STARS++;
-                    if(this->mColors->getCount() <= 0) STARS++;
-                    
-                    Game::mShouldShowEndScreen = true;
-                }
-            }
-            if(this->mTaskDone) { this->mPanelStars[0]->setCurrentFrameIndex(0); }
-            if(Game::STARS_RESCUE >= 2) { this->mPanelStars[1]->setCurrentFrameIndex(1); this->mTaskText[2]->setColor(ccc3(0, 255, 0)); }
-            if(this->mShootMakeCount > 20) { this->mPanelStars[2]->setColor(ccc3(100, 100, 100)); this->mTaskText[3]->setColor(ccc3(255, 0, 0)); }
-            break;
+        STARS = 3;
+        
+        Game::mShouldShowEndScreen = true;
     }
 }
 
 void Progresses::lookAtTheTasks()
 {
     if(!Game::mShouldShowEndScreen) this->checkStarsRuntime();
-    
-    switch(Game::LEVEL)
-    {
-        case 0:
-            if(this->mTime >= 0)
-            {
-             int a;
-             int b;
-             
-             const char* str = 0;
-             
-             a = (int)(this->mTime / 60);
-             b = (int)(this->mTime - (int)(this->mTime / 60) * 60);
-             
-             if(a < 10) str = "0%d:%d";
-             if(b < 10) str = "%d:0%d";
-             if(a < 10 && b < 10) str = "0%d:0%d";
-             if(a >= 10 && b >= 10) str = "%d:%d";
-             
-             this->mTaskText[1]->setString(ccsf(str, a, b));
-             //this->mTaskText[1]->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() / 2 - this->mPanelText0->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-            }
-            break;
-        case 1:
-            break;
-        case 2:
-            if(this->mTime >= 0)
-            {
-                int a;
-                int b;
-                
-                const char* str = 0;
-                
-                a = (int)(this->mTime / 60);
-                b = (int)(this->mTime - (int)(this->mTime / 60) * 60);
-                
-                if(a < 10) str = "0%d:%d";
-                if(b < 10) str = "%d:0%d";
-                if(a < 10 && b < 10) str = "0%d:0%d";
-                if(a >= 10 && b >= 10) str = "%d:%d";
-                
-                this->mTaskText[3]->setString(ccsf(str, a, b));
-                //this->mTaskText[1]->setCenterPosition(this->mTextAreas[0]->getCenterX() + this->mTextAreas[0]->getWidth() / 2 - this->mPanelText0->getWidth() / 2, Options::CAMERA_HEIGHT - this->mGamePanel->getHeight() / 2);
-            }
-            break;
-        case 3:
-            this->mTaskText[2]->setString(ccsf("%d/2", Game::KEYS_COUNT));
-            this->mTaskText[3]->setString(ccsf("%d/10", this->mShootMakeCount));
-            break;
-        case 4:
-            this->mTaskText[2]->setString(ccsf("%d/2", Game::STARS_RESCUE));
-            //this->mTaskText[3]->setString(ccsf("%d/10", this->mShootMakeCount));
-            break;
-        case 5:
-            this->mTaskText[2]->setString(ccsf("%d/20", this->mShootMakeCount));
-            //this->mTaskText[3]->setString(ccsf("%d/10", this->mShootMakeCount));
-            break;
-    }
 }
 
 void Progresses::standStartEggs()
-{
-    
+{return;
     switch(Game::LEVEL)
     {
         case 0:
@@ -1727,6 +1409,10 @@ void Progresses::keyBackClicked(bool pSound)
     if(this->mGetLivesPopup->getParent())
     {
         this->mGetLivesPopup->hide();
+    }
+    else if(this->mEndScreen->getParent())
+    {
+        
     }
     else
     {

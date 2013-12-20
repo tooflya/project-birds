@@ -260,8 +260,11 @@ class Game : public Screen
         static int STARS_RESCUE;
     
         static int STARS;
+        static int LEVEL_SHOOT_COUNT_LEFT;
     
         static int mAchievementsBirdsBlowCount[3];
+    
+        static int TASK[80][10];
 
         // ===========================================================
         // Fields

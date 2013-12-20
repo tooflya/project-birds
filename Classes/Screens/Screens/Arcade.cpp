@@ -40,32 +40,7 @@ Arcade::Arcade() :
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
         
-        Game::LEVEL = Utils::random(0, 100);
-        
-        const char* background = "";
-        
-        if(Game::LEVEL <= 15)
-        {
-            background = "TextureAtlas16";
-        }
-        else if(Game::LEVEL <= 31)
-        {
-            background = "TextureAtlas23";
-        }
-        else if(Game::LEVEL <= 47)
-        {
-            background = "TextureAtlas24";
-        }
-        else if(Game::LEVEL <= 63)
-        {
-            background = "TextureAtlas25";
-        }
-        else if(Game::LEVEL <= 71)
-        {
-            background = "TextureAtlas26";
-        }
-        
-		SpriteBatch* spriteBatch0 = SpriteBatch::create(background);
+		CCSpriteBatchNode* spriteBatch0 = CCSpriteBatchNode::create(Loader::TEXTURE_LIBRARY[1].texture, 1);
         SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
@@ -99,7 +74,7 @@ Arcade::Arcade() :
         this->mMenuLayer->addChild(spriteBatch8);
         this->mMenuLayer->addChild(spriteBatch17);
 
-        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
+        this->mBackground = Entity::create("background@2x.png", spriteBatch0);
         this->mTimeIcon = Clock::create(this->mEventLayer);
         this->mStars = EntityManager::create(1000, StarParticle::create(), spriteBatch2);
         
@@ -179,9 +154,11 @@ Arcade::Arcade() :
         this->mRobotParts = EntityManager::create(8, RobotoPart::create(0), spriteBatch7);
         this->mGunLaser = Entity::create("gun_laser.png", 4, 1, spriteBatch7);
         this->mGun = RobotoGun::create(spriteBatch7);
+        this->mPirateHats = EntityManager::create(10, ImpulseEntity::create("bonus_pirat_hat@2x.png"), spriteBatch8);
+        this->mMexicanoHats = EntityManager::create(10, ImpulseEntity::create("bonus_amigo_hat@2x.png"), spriteBatch8);
         this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
-        this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
-        this->mShield = EntityManager::create(10, ShieldDisplay::create(), spriteBatch4);
+        this->mKeysLights = EntityManager::create(30, Entity::create("get_coins_light@2x.png"), spriteBatch99);
+        this->mShield = EntityManager::create(30, ShieldDisplay::create(), spriteBatch4);
         this->mBonus1 = Entity::create("bonus-time@2x.png", spriteBatch4);
         this->mBonus1->retain();
 
@@ -407,6 +384,8 @@ void Arcade::onGameStarted()
 
 void Arcade::onGameEnd()
 {
+    Game::onGameEnd();
+
     this->mGamePaused = true;
 
     this->mEndScreen->show();
@@ -455,6 +434,10 @@ void Arcade::keyBackClicked(bool pSound)
     if(this->mGetLivesPopup->getParent())
     {
         this->mGetLivesPopup->hide();
+    }
+    else if(this->mEndScreen->getParent())
+    {
+        
     }
     else
     {

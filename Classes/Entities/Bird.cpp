@@ -333,7 +333,14 @@ void Bird::onDestroy()
                 }
                 else
                 {
-                    game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY(), this->mBonus);
+                    if(Game::GAME_TYPE == Game::GAME_TYPE_ARCADE)
+                    {
+                        if(this->mLifeCount <= 0) game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY(), this->mBonus);
+                    }
+                    else
+                    {
+                        game->onBirBlow(this->mType, this->getCenterX(), this->getCenterY(), this->mBonus);
+                    }
                 }
 
                 if(this->mType == TYPE_DANGER)
@@ -346,7 +353,7 @@ void Bird::onDestroy()
             }
         }
         
-        if(this->mType == TYPE_FLAYER)
+        if(this->mLifeCount <= 0 && this->mType == TYPE_FLAYER)
         {
             Game::FLAYER_COUNT++;
             

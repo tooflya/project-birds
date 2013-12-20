@@ -19,6 +19,7 @@
 int Mode::UNLOCK_ACTION = -1;
 int Mode::PRICES[2] = {25, 40};
 int Mode::GAME_CENTER_ACTION = -1;
+int Mode::ACTION = -1;
 
 // ===========================================================
 // Fields
@@ -483,6 +484,11 @@ void Mode::unlock()
     {
         SimpleAudioEngine::sharedEngine()->playEffect(Options::SOUND_LEVEL_UNLOCK);
     }
+    
+    this->mPanelItems[3] = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_KEYS);
+    
+    this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
+    this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(Options::IS_BUILD_FOR_UBINURI ? 0 : 20), this->mTextBackgrounds[3]->getCenterY());
 }
 
 // ===========================================================
@@ -575,6 +581,12 @@ void Mode::onEnter()
     {
         if(!this->mBackButton->isVisible()) this->mBackButton->create();
         this->mBackButton->setCenterPosition(Utils::coord(100), Utils::coord(100));
+    }
+    
+    if(ACTION == 1)
+    {
+        this->mEpisodesMap->mAnimation = true;
+        this->mEpisodesMap->show();
     }
 }
 

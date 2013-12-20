@@ -51,34 +51,7 @@ Classic::Classic() :
         
         CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("TextureAtlas3.plist");
         
-        Game::LEVEL = 31;//Utils::random(0, 10);
-        
-        const char* background = "";
-        
-        if(Game::LEVEL <= 15)
-        {
-            background = "TextureAtlas16";
-        }
-        else if(Game::LEVEL <= 31)
-        {
-            background = "TextureAtlas23";
-        }
-        else if(Game::LEVEL <= 47)
-        {
-            background = "TextureAtlas24";
-        }
-        else if(Game::LEVEL <= 63)
-        {
-            background = "TextureAtlas25";
-        }
-        else
-        {
-            background = "TextureAtlas26";
-        }
-        
-        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(ccsf("%s%s", background, ".plist"));
-        
-		SpriteBatch* spriteBatch0 = SpriteBatch::create("TextureAtlas23");
+		CCSpriteBatchNode* spriteBatch0 = CCSpriteBatchNode::create(Loader::TEXTURE_LIBRARY[1].texture, 1);
         SpriteBatch* spriteBatch1 = SpriteBatch::create("TextureAtlas3");
         SpriteBatch* spriteBatch2 = SpriteBatch::create("TextureAtlas7");
         SpriteBatch* spriteBatch3 = SpriteBatch::create("TextureAtlas8");
@@ -114,7 +87,7 @@ Classic::Classic() :
         
         this->e5 = Entity::create("board_migalka@2x.png", spriteBatch17);
         
-        this->mBackground = Entity::create("temp_level_bg@2x.png", spriteBatch0);
+        this->mBackground = Entity::create("background@2x.png", spriteBatch0);
         
         #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
         if(Options::DEVICE_TYPE != Options::DEVICE_TYPE_IPOD4)
@@ -208,8 +181,8 @@ Classic::Classic() :
         this->mZombieExplosions = EntityManager::create(300, ZombieExplosion::create(), spriteBatch7);
         this->mGeneralExplosions = EntityManager::create(100, GeneralExplosion::create(), spriteBatch9);
         this->mKeys = EntityManager::create(5, KeyDisplay::create(), spriteBatch4);
-        this->mKeysLights = EntityManager::create(10, Entity::create("get_coins_light@2x.png"), spriteBatch99);
-        this->mShield = EntityManager::create(10, ShieldDisplay::create(), spriteBatch4);
+        this->mKeysLights = EntityManager::create(30, Entity::create("get_coins_light@2x.png"), spriteBatch99);
+        this->mShield = EntityManager::create(30, ShieldDisplay::create(), spriteBatch4);
         this->mPirateHats = EntityManager::create(10, ImpulseEntity::create("bonus_pirat_hat@2x.png"), spriteBatch8);
         this->mMexicanoHats = EntityManager::create(10, ImpulseEntity::create("bonus_amigo_hat@2x.png"), spriteBatch8);
         this->mBonus1 = Entity::create("bonus-heart@2x.png", spriteBatch4);
@@ -602,6 +575,8 @@ void Classic::onGameStarted()
 
 void Classic::onGameEnd()
 {
+    Game::onGameEnd();
+
     this->mGamePaused = true;
     this->mChalange = false;
 
@@ -694,6 +669,10 @@ void Classic::keyBackClicked(bool pSound)
     if(this->mGetLivesPopup->getParent())
     {
         this->mGetLivesPopup->hide();
+    }
+    else if(this->mEndScreen->getParent())
+    {
+        
     }
     else
     {

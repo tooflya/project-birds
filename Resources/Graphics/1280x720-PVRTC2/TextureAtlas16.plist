@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>temp_level_bg@2x.png</key>
+            <key>background@2x.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{1000,1280}}</string>
@@ -27,7 +27,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:463c57e94237c5b0fab846e73570d0f7:5d1551e24bdb80859bf2099814856fc4:374afa45886277319a4270834c2dd463$</string>
+            <string>$TexturePacker:SmartUpdate:42dc13d821a63b2bb4c37affd45c8827:5d1551e24bdb80859bf2099814856fc4:374afa45886277319a4270834c2dd463$</string>
             <key>textureFileName</key>
             <string>TextureAtlas16.pvr.ccz</string>
         </dict>

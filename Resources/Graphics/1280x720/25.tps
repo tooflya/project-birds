@@ -171,7 +171,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../Graphics Sources/backgrounds/4/temp_level_bg@2x.png</filename>
+            <filename>../../Graphics Sources/backgrounds/4/background@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

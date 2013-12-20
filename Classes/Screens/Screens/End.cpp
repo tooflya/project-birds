@@ -50,7 +50,7 @@ End::End(int pType, Screen* pParent) :
 	mComboCount(0),
 	mCriticalCount(0),
 	mEarnedCoins(0),
-	mTotalEarnedCoins(0),
+	mTotalEarnedCoinsSilver(0),
 	mAnimationTime(0),
 	mAnimationtimeElapsed(0),
 	mCoinsAnimationTime(0),
@@ -309,11 +309,26 @@ void End::onTouchButtonsCallback(const int pAction, const int pID)
             break;
             case Options::BUTTONS_ID_END_CONTINUE:
                     
-            Game::LEVEL++;
+            if((Game::LEVEL == 15 || Game::LEVEL == 31 || Game::LEVEL == 47 || Game::LEVEL == 63 || Game::LEVEL == 76) && AppDelegate::getLevelStars(Game::LEVEL + 1) < 0)
+            {
+                this->hide();
                 
-            this->hide();
-                    
-            ACTION = 1;
+                Loader::ACTION = 6;
+                
+                #if CC_PRELOAD_LEVEL <= CC_PRELOAD_NOTHING
+                AppDelegate::screens->set(Loader::create());
+                #else
+                AppDelegate::screens->set(Screen::SCREEN_LOADER);
+                #endif
+            }
+            else
+            {
+                Game::LEVEL++;
+                
+                this->hide();
+                
+                ACTION = 1;
+            }
                 
             break;
             case Options::BUTTONS_ID_END_SHOP:
@@ -412,23 +427,42 @@ void End::onShow()
     this->mFlayerCount = 0;
     this->mComboCount = 0;
     this->mCriticalCount = 0;
-    this->mTotalEarnedCoins = 0;
+    this->mTotalEarnedCoinsSilver = 0;
+    this->mTotalEarnedCoinsGold = 0;
     this->mEarnedCoins = 0;
+    this->mStarsCount = Game::STARS;
     
     this->mIsCoinsAnimationRunning = false;
     this->mIsCoinsAnimationCurrentRunning = false;
     
-    this->mTotalEarnedCoins += Game::CURRENT_COUNT;
-    this->mTotalEarnedCoins += Game::FLAYER_COUNT * 10;
-    this->mTotalEarnedCoins += Game::CRITICAL_COUNT * 2;
-    this->mTotalEarnedCoins += Game::COMBO_COUNT * 5;
+    if(this->mType == TYPE_PROGRESS)
+    {
+        this->mTotalEarnedCoinsSilver += Game::STARS * (Game::LEVEL + 1) * Game::LEVEL_SHOOT_COUNT_LEFT;
+        if(Game::STARS >= 3) this->mTotalEarnedCoinsGold += 5;
+    }
+    else if(this->mType == TYPE_ARCADE)
+    {
+        this->mTotalEarnedCoinsSilver += Game::CURRENT_COUNT;
+        if(Game::STARS >= 3) this->mTotalEarnedCoinsGold += 5;
+    }
+    else
+    {
+        this->mTotalEarnedCoinsSilver += Game::CURRENT_COUNT;
+        this->mTotalEarnedCoinsSilver += Game::CRITICAL_COUNT;
+        this->mTotalEarnedCoinsSilver += Game::COMBO_COUNT * 2;
+        this->mTotalEarnedCoinsGold += Game::FLAYER_COUNT * 5;
+    }
+    
+    AppDelegate::addCoins(this->mTotalEarnedCoinsSilver, Options::SAVE_DATA_COINS_TYPE_SILVER);
+    AppDelegate::addCoins(this->mTotalEarnedCoinsGold, Options::SAVE_DATA_COINS_TYPE_GOLD);
+    AppDelegate::addCoins(Game::KEYS_COUNT, Options::SAVE_DATA_COINS_TYPE_KEYS);
     
     if(this->mType == TYPE_PROGRESS)
     {
         if(AppDelegate::getLevelStars(Game::LEVEL) < Game::STARS)
         {
             AppDelegate::setLevelStars(Game::LEVEL, Game::STARS);
-            AppDelegate::setLevelStars(Game::LEVEL + 1, 0);
+            AppDelegate::setLevelStars(Game::LEVEL + 1, AppDelegate::getLevelStars(Game::LEVEL + 1) > 0 ? AppDelegate::getLevelStars(Game::LEVEL + 1) : 0);
             
             AppDelegate::addTotalLevelsUnlocked(1);
         }
@@ -608,6 +642,9 @@ void End::onStartShow()
     
     this->mTextText[3]->setString(Utils::intToString(this->mPanelItems[3]).c_str());
     this->mTextText[3]->setCenterPosition(this->mTextBackgrounds[3]->getCenterX() + this->mTextBackgrounds[3]->getWidthScaled() / 2 - this->mTextText[3]->getWidth() / 2 - Utils::coord(20), this->mTextBackgrounds[3]->getCenterY());
+
+    this->mTextName->setHorizontalAlignment(kCCTextAlignmentLeft);
+    this->mTextValue->setString("0");
 }
 
 void End::onStartHide()
@@ -776,8 +813,8 @@ void End::update(float pDeltaTime)
         
             if(this->mCoinsAnimationCurrentTimeElapsed >= this->mCoinsAnimationCurrentTime)
             {
-                //int coins = AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_SILVER);
-                
+                if(Game::GAME_TYPE == Game::GAME_TYPE_CLASSIC)
+                {
                 switch(this->mCoinsAnimationCounter)
                 {
                     case 0:
@@ -798,10 +835,10 @@ void End::update(float pDeltaTime)
                         this->mCoinsAnimationCurrentTimeElapsed = 0;
                         this->mCoinsAnimationCounter++;
                     case 1:
-                        if(this->mComboCount < Game::COMBO_COUNT) this->mComboCount++;
-                        this->mTextCountValue->setString(ccsf("%d", this->mComboCount));
+                        if(this->mCurrentCount < Game::CURRENT_COUNT) this->mCurrentCount++;
+                        this->mTextCountValue->setString(ccsf("%d", this->mCurrentCount));
                         
-                        if(this->mComboCount >= Game::COMBO_COUNT && this->mTextName->numberOfRunningActions() <= 0)
+                        if(this->mCurrentCount >= Game::CURRENT_COUNT && this->mTextName->numberOfRunningActions() <= 0)
                         {
                             this->mCoinsAnimationCurrentTime = 0.6;
                             this->mCoinsAnimationCurrentTimeElapsed = 0;
@@ -827,6 +864,41 @@ void End::update(float pDeltaTime)
                         this->mCoinsAnimationCurrentTimeElapsed = 0;
                         this->mCoinsAnimationCounter++;
                     case 3:
+                        if(this->mComboCount < Game::COMBO_COUNT) this->mComboCount++;
+                        this->mTextCountValue->setString(ccsf("%d", this->mComboCount));
+                        
+                        if(this->mComboCount >= Game::COMBO_COUNT && this->mTextName->numberOfRunningActions() <= 0)
+                        {
+                            this->mCoinsAnimationCurrentTime = 0.6;
+                            this->mCoinsAnimationCurrentTimeElapsed = 0;
+                            
+                            this->mCoinsAnimationCounter++;
+                            
+                            this->mTextName->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                            this->mTextCountValue->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                            
+                            this->mTextName->animate(1);
+                            this->mTextCountValue->animate(1);
+                        }
+                        break;
+                    case 4:
+                        this->mTextName->setText(Options::TEXT_END[6]);
+                        this->mTextCountValue->setText(Options::TEXT_END[6]);
+                        
+                        this->mTextName->animate(0);
+                        this->mTextValue->animate(0);
+                        this->mTextCountValue->animate(0);
+                        
+                        this->mTextName->setHorizontalAlignment(kCCTextAlignmentLeft);
+                        
+                        this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                        this->mTextCountValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                        this->mTextValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                        
+                        this->mCoinsAnimationCurrentTime = 0.2;
+                        this->mCoinsAnimationCurrentTimeElapsed = 0;
+                        this->mCoinsAnimationCounter++;
+                    case 5:
                         if(this->mFlayerCount < Game::FLAYER_COUNT) this->mFlayerCount++;
                         this->mTextCountValue->setString(ccsf("%d", this->mFlayerCount));
                         
@@ -844,11 +916,53 @@ void End::update(float pDeltaTime)
                             this->mTextCountValue->animate(1);
                         }
                         break;
-                    case 4:
+                    case 6:
+                        if(Game::CURRENT_COUNT >= Game::BEST_COUNT && Game::CURRENT_COUNT > 10)
+                        {
+                            this->mTextName->setHorizontalAlignment(kCCTextAlignmentCenter);
+                            this->mTextName->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(20));
+                            this->mTextName->setText(Options::TEXT_END[7]);
+                            this->mTextCountValue->setText(Options::TEXT_END[7]);
+                        
+                            this->mTextName->animate(0);
+                            this->mTextValue->animate(0);
+                            this->mTextCountValue->animate(0);
+                        
+                            this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                            this->mTextCountValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                            this->mTextValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                        
+                            this->mCoinsAnimationCurrentTime = 0.2;
+                            this->mCoinsAnimationCurrentTimeElapsed = 0;
+                            this->mCoinsAnimationCounter++;
+                        }
+                        else
+                        {
+                            goto noBest;
+                        }
+                    case 7:
+                        this->mTextCountValue->setString("");
+                        
+                        if(true)
+                        {
+                            this->mCoinsAnimationCurrentTime = 0.6;
+                            this->mCoinsAnimationCurrentTimeElapsed = 0;
+                            
+                            this->mCoinsAnimationCounter++;
+                            
+                            this->mTextName->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                            this->mTextCountValue->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                            
+                            this->mTextName->animate(1);
+                            this->mTextCountValue->animate(1);
+                        }
+                        break;
+                    case 8:
+                    noBest:
                         this->mTextName->setHorizontalAlignment(kCCTextAlignmentCenter);
                         
                         this->mTextName->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(20));
-                        this->mTextName->setText(Options::TEXT_END[6]);
+                        this->mTextName->setText(Options::TEXT_END[8]);
                         this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
                         
                         this->mTextName->animate(0);
@@ -856,8 +970,119 @@ void End::update(float pDeltaTime)
                         this->mIsCoinsAnimationCurrentRunning = false;
                         break;
                 }
+                }
+                else if(Game::GAME_TYPE == Game::GAME_TYPE_ARCADE)
+                {
+                    switch(this->mCoinsAnimationCounter)
+                    {
+                        case 0:
+                            this->mTextName->setText(Options::TEXT_END[4]);
+                            this->mTextCountValue->setText(Options::TEXT_END[4]);
+                            
+                            this->mTextName->animate(0);
+                            this->mTextValue->animate(0);
+                            this->mTextCountValue->animate(0);
+                            
+                            this->mTextName->setHorizontalAlignment(kCCTextAlignmentLeft);
+                            
+                            this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                            this->mTextCountValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                            this->mTextValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                            
+                            this->mCoinsAnimationCurrentTime = 0.2;
+                            this->mCoinsAnimationCurrentTimeElapsed = 0;
+                            this->mCoinsAnimationCounter++;
+                        case 1:
+                            if(this->mCurrentCount < Game::CURRENT_COUNT) this->mCurrentCount++;
+                            this->mTextCountValue->setString(ccsf("%d", this->mCurrentCount));
+                            
+                            if(this->mCurrentCount >= Game::CURRENT_COUNT && this->mTextName->numberOfRunningActions() <= 0)
+                            {
+                                this->mCoinsAnimationCurrentTime = 0.6;
+                                this->mCoinsAnimationCurrentTimeElapsed = 0;
+                                
+                                this->mCoinsAnimationCounter++;
+                                
+                                this->mTextName->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                                this->mTextCountValue->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                                
+                                this->mTextName->animate(1);
+                                this->mTextCountValue->animate(1);
+                            }
+                            break;
+                        case 2:
+                            if(Game::CURRENT_COUNT >= Game::BEST_COUNT && Game::CURRENT_COUNT > 10)
+                            {
+                                this->mTextName->setHorizontalAlignment(kCCTextAlignmentCenter);
+                                this->mTextName->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(20));
+                                this->mTextName->setText(Options::TEXT_END[7]);
+                                this->mTextCountValue->setText(Options::TEXT_END[7]);
+                                
+                                this->mTextName->animate(0);
+                                this->mTextValue->animate(0);
+                                this->mTextCountValue->animate(0);
+                                
+                                this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                                this->mTextCountValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                                
+                                this->mCoinsAnimationCurrentTime = 0.2;
+                                this->mCoinsAnimationCurrentTimeElapsed = 0;
+                                this->mCoinsAnimationCounter++;
+                            }
+                            else
+                            {
+                                goto noBest2;
+                            }
+                        case 3:
+                            this->mTextCountValue->setString("");
+                            
+                            if(true)
+                            {
+                                this->mCoinsAnimationCurrentTime = 0.6;
+                                this->mCoinsAnimationCurrentTimeElapsed = 0;
+                                
+                                this->mCoinsAnimationCounter++;
+                                
+                                this->mTextName->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                                this->mTextCountValue->runAction(CCFadeOut::create(this->mCoinsAnimationCurrentTime));
+                                
+                                this->mTextName->animate(1);
+                                this->mTextCountValue->animate(1);
+                            }
+                            break;
+                        case 4:
+                        noBest2:
+                            this->mTextName->setHorizontalAlignment(kCCTextAlignmentCenter);
+                            
+                            this->mTextName->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(20));
+                            this->mTextName->setText(Options::TEXT_END[8]);
+                            this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                            
+                            this->mTextName->animate(0);
+                            
+                            this->mIsCoinsAnimationCurrentRunning = false;
+                            break;
+                    }
+                }
+                else if(Game::GAME_TYPE == Game::GAME_TYPE_PROGRESS)
+                {
+                    if(this->mStarsCount > -2)
+                    {
+                        this->mTextName->setHorizontalAlignment(kCCTextAlignmentCenter);
+                        
+                        this->mTextName->setCenterPosition(Options::CAMERA_CENTER_X, Options::CAMERA_CENTER_Y - Utils::coord(20));
+                        this->mTextName->setText(Options::TEXT_END[8]);
+                        this->mTextName->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                        
+                        this->mTextName->animate(0);
+                        
+                        this->mStarsCount = -2;
+                        
+                        this->mTextValue->runAction(CCFadeIn::create(this->mCoinsAnimationCurrentTime));
+                    }
+                }
                 
-                if(this->mEarnedCoins < this->mTotalEarnedCoins)
+                if(this->mEarnedCoins < (this->mTotalEarnedCoinsSilver + this->mTotalEarnedCoinsGold))
                 {
                     this->mEarnedCoins++;
                     this->mTextValue->setString(ccsf("%d", this->mEarnedCoins));

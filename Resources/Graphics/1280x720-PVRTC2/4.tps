@@ -68,9 +68,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>4096</int>
+            <int>2048</int>
             <key>height</key>
-            <int>4096</int>
+            <int>2048</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -174,8 +174,6 @@
             <filename>../../Graphics Sources/popup_bg@2x.png</filename>
             <filename>../../Graphics Sources/popup_getcoins_picture@2x.png</filename>
             <filename>../../Graphics Sources/popup_progress_picture@2x.png</filename>
-            <filename>../../Graphics Sources/popup_quit_picture@2x.png</filename>
-            <filename>../../Graphics Sources/popup_rate_picture@2x.png</filename>
             <filename>../../Graphics Sources/popup_buy_coins_btn_sprite@2x.png</filename>
             <filename>../../Graphics Sources/btn_sprite_close@2x.png</filename>
             <filename>../../Graphics Sources/flag_sprite_big@2x.png</filename>
@@ -192,6 +190,8 @@
             <filename>../../Graphics Sources/popup_key_btn2@2x.png</filename>
             <filename>../../Graphics Sources/popup_key_pic@2x.png</filename>
             <filename>../../Graphics Sources/popup_btn@2x.png</filename>
+            <filename>../../Graphics Sources/popup_rate_picture@2x.png</filename>
+            <filename>../../Graphics Sources/popup_quit_picture@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

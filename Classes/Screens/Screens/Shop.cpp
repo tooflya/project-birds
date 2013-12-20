@@ -615,18 +615,24 @@ void Shop::onTouchButtonsCallback(const int pAction, const int pID)
 
 void Shop::onItemBought(int pItemId)
 {
-    if(pItemId == 43)
+    if(pItemId == 44)
     {
-        PURCHASE_ID = 7;
+        PURCHASE_ID = 8;
         this->onPurchase(true);
+        
+        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_SILVER);
+        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES_GOLD[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
 
         return;
     }
 
-    if(pItemId == 44)
+    if(pItemId == 43)
     {
-        PURCHASE_ID = 5;
+        PURCHASE_ID = 9;
         this->onPurchase(true);
+        
+        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES[pItemId], Options::SAVE_DATA_COINS_TYPE_SILVER);
+        AppDelegate::removeCoins(Options::SHOP_ITEMS_PRICES_GOLD[pItemId], Options::SAVE_DATA_COINS_TYPE_GOLD);
 
         return;
     }
@@ -804,8 +810,32 @@ void Shop::onPurchase(bool pProceed)
             case 7:
                 this->mIsAnimationPurchaseTime = 5.0;
                 this->mIsAnimationPurchaseTimeEpisode = 0.05;
-                
+
                 AppDelegate::addCoins(200, Options::SAVE_DATA_COINS_TYPE_KEYS);
+            break;
+            case 8:
+                this->mIsAnimationPurchaseTime = 2.5;
+                this->mIsAnimationPurchaseTimeEpisode = 0.1;
+
+                AppDelegate::addCoins(25, Options::SAVE_DATA_COINS_TYPE_KEYS);
+            break;
+            case 9:
+                this->mIsAnimationPurchaseTime = 1.0;
+                this->mIsAnimationPurchaseTimeEpisode = 0.2;
+                
+                AppDelegate::addCoins(5 - AppDelegate::getCoins(Options::SAVE_DATA_COINS_TYPE_LIVES), Options::SAVE_DATA_COINS_TYPE_LIVES);
+                
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restoring", false); // TODO: Transfer it to the own method;
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restoring", false);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restoring", false);
+                
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_0_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_1_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_2_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_3_restore_time", 0);
+                CCUserDefault::sharedUserDefault()->setBoolForKey("live_4_restore_time", 0);
             break;
         }
 
@@ -948,11 +978,13 @@ void Shop::update(float pDeltaTime)
                 break;
                 case 4:
                 case 5:
+                case 9:
                     // Hearts
                     this->mPurchaseLives->create();
                 break;
                 case 6:
                 case 7:
+                case 8:
                     // Keys
                     this->mPurchaseKeys->create();
                 break;

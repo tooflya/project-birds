@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>temp_level_bg@2x.png</key>
+            <key>background@2x.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{1000,1280}}</string>
@@ -17,6 +17,45 @@
                 <key>sourceSize</key>
                 <string>{1000,1280}</string>
             </dict>
+            <key>episode3_clouds@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1284},{300,401}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{300,401}}</string>
+                <key>sourceSize</key>
+                <string>{300,401}</string>
+            </dict>
+            <key>episode3_sky@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1687},{485,345}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{485,345}}</string>
+                <key>sourceSize</key>
+                <string>{485,345}</string>
+            </dict>
+            <key>episode3_vint@2x.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{304,1284},{63,62}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{63,62}}</string>
+                <key>sourceSize</key>
+                <string>{63,62}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -27,7 +66,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0f9eab055f587e25ad159304e3aac753:602f5d073f0351c6d0bdf5d253453b56:8f2710b6f868e9dfcf3bffbcc94acacc$</string>
+            <string>$TexturePacker:SmartUpdate:a5eb7c35cc4862d91469f9930eb2d0fd:4f50ad88967ea745620d33d5aa05fd22:8f2710b6f868e9dfcf3bffbcc94acacc$</string>
             <key>textureFileName</key>
             <string>TextureAtlas24.pvr.ccz</string>
         </dict>

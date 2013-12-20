@@ -174,6 +174,9 @@
             <filename>../../Graphics Sources/birds_sprite@2x.png</filename>
             <filename>../../Graphics Sources/birds_life@2x.png</filename>
             <filename>../../Graphics Sources/popup_key_ico_fall@2x.png</filename>
+            <filename>../../Graphics Sources/bonus-heart@2x.png</filename>
+            <filename>../../Graphics Sources/bonus-shield@2x.png</filename>
+            <filename>../../Graphics Sources/bonus-time@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

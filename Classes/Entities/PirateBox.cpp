@@ -48,14 +48,11 @@ PirateBox* PirateBox::create(CCNode* pParent)
 // Methods
 // ===========================================================
 
-Entity* PirateBox::create()
-{
-    return Entity::create();
-}
-
 void PirateBox::onCreate()
 {
     ImpulseEntity::onCreate();
+    
+    this->scheduleUpdate();
     
     this->setOpacity(255);
     this->setScale(1.0);
@@ -81,6 +78,8 @@ void PirateBox::onCreate()
 void PirateBox::onDestroy()
 {
     ImpulseEntity::onDestroy();
+    
+    this->unscheduleUpdate();
     
     this->mLight->destroy();
 }

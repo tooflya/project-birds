@@ -305,7 +305,7 @@
 		78D358AB182A3DF1001450F3 /* Icon8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358A9182A3DF1001450F3 /* Icon8.cpp */; };
 		78D358B5182A6A0E001450F3 /* SplashScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D358B2182A6A0E001450F3 /* SplashScreen.cpp */; };
 		78E205DB177E73A6002CA285 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E205DA177E73A6002CA285 /* MediaPlayer.framework */; };
-		78FF0422183FCA8C00804CFF /* Graphics in Resources */ = {isa = PBXBuildFile; fileRef = 78FF0421183FCA8C00804CFF /* Graphics */; };
+		78E9766818633BBD000B8796 /* Graphics in Resources */ = {isa = PBXBuildFile; fileRef = 78E9766718633BBD000B8796 /* Graphics */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -849,7 +849,7 @@
 		78D358B2182A6A0E001450F3 /* SplashScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScreen.cpp; sourceTree = "<group>"; };
 		78D358B3182A6A0E001450F3 /* SplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreen.h; sourceTree = "<group>"; };
 		78E205DA177E73A6002CA285 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		78FF0421183FCA8C00804CFF /* Graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Graphics; sourceTree = "<group>"; };
+		78E9766718633BBD000B8796 /* Graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Graphics; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1278,7 +1278,7 @@
 				785B4F311806F39F008B444E /* Media.xcassets */,
 				78ABB03E1860C5FA00677CD5 /* ezisocial.ios */,
 				78ABB0321860BC7900677CD5 /* ezibyte_logo.png */,
-				78FF0421183FCA8C00804CFF /* Graphics */,
+				78E9766718633BBD000B8796 /* Graphics */,
 				78397AC41807014A00C999E7 /* Icons */,
 				783E87CB17C20CEB00FD49C1 /* Fonts */,
 				783E885817C20CEB00FD49C1 /* Music */,
@@ -1942,6 +1942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78ADF2571862052B00EDDA39 /* Localizable.strings in Resources */,
+				78E9766818633BBD000B8796 /* Graphics in Resources */,
 				78397AD51807014A00C999E7 /* Icon-72-ios6.png in Resources */,
 				7869167017F1DF9F00184E9D /* pome-rampdown.mp3 in Resources */,
 				78397ACF1807014A00C999E7 /* Icon-144-ios6.png in Resources */,
@@ -1999,7 +2000,6 @@
 				783E896A17C20CEC00FD49C1 /* bomb-fuse.mp3 in Resources */,
 				783E896C17C20CEC00FD49C1 /* bonus-gong.mp3 in Resources */,
 				783E896E17C20CEC00FD49C1 /* combo-1.mp3 in Resources */,
-				78FF0422183FCA8C00804CFF /* Graphics in Resources */,
 				783E897017C20CEC00FD49C1 /* combo-2.mp3 in Resources */,
 				783E897217C20CEC00FD49C1 /* combo-3.mp3 in Resources */,
 				783E897417C20CEC00FD49C1 /* combo-4.mp3 in Resources */,
@@ -2359,7 +2359,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					USE_FILE32API,
 					CC_TARGET_OS_IPHONE,
-					CC_ENABLE_CHIPMUNK_INTEGRATION,
+					"COCOS2D_DEBUG=0",
+					"CC_ENABLE_CHIPMUNK_INTEGRATION=0",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;

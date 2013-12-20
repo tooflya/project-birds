@@ -183,6 +183,7 @@
             <filename>../../Graphics Sources/progress_map_episode_light@2x.png</filename>
             <filename>../../Graphics Sources/progress_map_episode_sprite@2x.png</filename>
             <filename>../../Graphics Sources/progress_map.png</filename>
+            <filename>../../Graphics Sources/popup_social_picture@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
